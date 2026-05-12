@@ -1,26 +1,129 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Updated tokens — Waitlister-inspired deep blue-black base */
+  --color-purple-300: #c4b5fd;
+  --color-purple-400: #a78bfa;
+  --color-purple-500: #8b5cf6;
+  --color-purple-600: #7c3aed;
+  --color-purple-700: #6d28d9;
+  --color-surface:        #0e0e1c;
+  --color-surface-raised: #13132a;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ── Base ─────────────────────────────────────────────── */
+:root { color-scheme: dark; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { background-color: #07070e; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #07070e;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* { box-sizing: border-box; }
+
+/* ── Noise grain overlay ─────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* ── Scrollbar ───────────────────────────────────────── */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+
+/* ── Keyframes ───────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0)    scale(1);    }
+  50%       { transform: translateY(-24px) scale(1.04); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0)    scale(1);    }
+  50%       { transform: translateY(-14px) scale(1.02); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0); }
+  50%       { box-shadow: 0 0 0 8px rgba(124,58,237,0.15); }
+}
+
+@keyframes shimmer-sweep {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes tab-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* ── Animation utility classes ───────────────────────── */
+.animate-fade-up   { animation: fade-up  0.55s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fade-in   { animation: fade-in  0.4s  ease both; }
+.animate-tab-fade  { animation: tab-fade 0.35s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-float     { animation: float      7s ease-in-out infinite; }
+.animate-float-slow{ animation: float-slow 11s ease-in-out infinite; }
+
+/* Stagger helpers — apply as data-delay on children */
+.delay-0   { animation-delay:   0ms; }
+.delay-75  { animation-delay:  75ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-250 { animation-delay: 250ms; }
+.delay-350 { animation-delay: 350ms; }
+.delay-450 { animation-delay: 450ms; }
+
+/* Card stagger: first 8 cards get an incremental delay */
+.card-stagger > *:nth-child(1)  { animation-delay:  40ms; }
+.card-stagger > *:nth-child(2)  { animation-delay:  80ms; }
+.card-stagger > *:nth-child(3)  { animation-delay: 120ms; }
+.card-stagger > *:nth-child(4)  { animation-delay: 160ms; }
+.card-stagger > *:nth-child(5)  { animation-delay: 200ms; }
+.card-stagger > *:nth-child(6)  { animation-delay: 240ms; }
+.card-stagger > *:nth-child(7)  { animation-delay: 280ms; }
+.card-stagger > *:nth-child(8)  { animation-delay: 320ms; }
+
+/* CTA glow pulse */
+.cta-pulse { animation: pulse-ring 2.4s ease-in-out infinite; }
+
+/* Shimmer on CTA hover */
+.shimmer-btn {
+  background-size: 200% auto;
+  transition: background-position 0.4s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+.shimmer-btn:hover {
+  background-position: right center;
+}
+.shimmer-btn:active {
+  transform: scale(0.97);
 }

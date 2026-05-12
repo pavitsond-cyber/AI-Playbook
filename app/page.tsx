@@ -1,65 +1,103 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { ArrowRight, BookOpen, Zap, Layers } from 'lucide-react'
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen flex flex-col">
+
+      {/* Minimal top bar */}
+      <header className="flex items-center px-5 pt-6 animate-fade-in delay-0">
+        <div className="flex items-center gap-2">
+          <div className="size-7 rounded-lg bg-purple-600 flex items-center justify-center
+            shadow-lg shadow-purple-600/40">
+            <span className="text-white text-xs font-bold leading-none">H</span>
+          </div>
+          <span className="text-sm font-semibold text-white/70">Headout</span>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </header>
+
+      {/* Hero */}
+      <main className="flex-1 flex flex-col items-center justify-center px-5 py-16 text-center">
+
+        {/* Eyebrow pill */}
+        <div
+          className="animate-fade-up delay-75 inline-flex items-center gap-2 px-3.5 py-1.5
+            rounded-full bg-purple-500/10 border border-purple-500/20 mb-8"
+        >
+          <div className="size-1.5 rounded-full bg-purple-400" />
+          <span className="text-xs font-semibold text-purple-300 tracking-wide uppercase">
+            Headout AI Education Session
+          </span>
+        </div>
+
+        {/* Title */}
+        <h1
+          className="animate-fade-up delay-150 text-[44px] sm:text-5xl font-bold
+            leading-[1.08] tracking-tight mb-5"
+        >
+          <span className="text-white">Headout</span>
+          <br />
+          <span
+            style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(167,139,250,0.6) 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            AI Library.
+          </span>
+        </h1>
+
+        {/* Subtitle */}
+        <p
+          className="animate-fade-up delay-250 text-base sm:text-lg text-white/40
+            leading-relaxed max-w-sm mb-10"
+        >
+          Plain-English explanations of every AI term, abbreviation, and tool —
+          curated for the Headout AI session, 2026.
+        </p>
+
+        {/* CTA */}
+        <div className="animate-fade-up delay-350">
+          <Link
+            href="/glossary"
+            className="cta-pulse shimmer-btn group inline-flex items-center gap-2.5
+              px-6 py-3.5 rounded-2xl font-semibold text-base text-white
+              shadow-xl shadow-purple-600/20"
+            style={{
+              background: 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #7c3aed 100%)',
+            }}
+          >
+            Get Started
+            <ArrowRight
+              size={17}
+              className="group-hover:translate-x-1 transition-transform duration-200"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </Link>
         </div>
+
+        {/* Trust indicators */}
+        <div className="animate-fade-up delay-450 flex items-center gap-6 mt-10">
+          {[
+            { icon: BookOpen, label: '20+ terms' },
+            { icon: Layers,   label: '5 categories' },
+            { icon: Zap,      label: 'Instant search' },
+          ].map(({ icon: Icon, label }) => (
+            <div key={label} className="flex items-center gap-1.5">
+              <Icon size={13} className="text-white/20" />
+              <span className="text-xs text-white/25">{label}</span>
+            </div>
+          ))}
+        </div>
+
       </main>
+
+      {/* Bottom hint */}
+      <div className="animate-fade-in delay-450 pb-8 flex justify-center">
+        <p className="text-xs text-white/12">For internal use · Scan QR to access</p>
+      </div>
+
     </div>
-  );
+  )
 }
