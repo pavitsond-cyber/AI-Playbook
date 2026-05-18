@@ -54,7 +54,7 @@ export default function LandingPage() {
           className="animate-fade-up delay-250 text-base sm:text-lg text-white/40
             leading-relaxed max-w-sm mb-10"
         >
-          Plain-English explanations of every AI term, abbreviation, and tool —
+          Plain-English explanations for every AI term, abbreviation, and tool —
           curated for the Headout AI session, 2026.
         </p>
 
