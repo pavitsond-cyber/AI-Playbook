@@ -3,7 +3,6 @@
 import { useState, useMemo } from 'react'
 import { GlossaryTerm } from '@/types'
 import { filterTerms } from '@/lib/utils/search'
-import SiteHeader from './SiteHeader'
 import SearchBar from './SearchBar'
 import GlossaryGrid from './GlossaryGrid'
 import EmptyState from './EmptyState'
@@ -47,7 +46,6 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SiteHeader showBack />
 
       <div className="flex-1 max-w-3xl mx-auto w-full">
 
@@ -61,7 +59,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
 
         {/* Sticky: search then tabs */}
         <div
-          className="sticky top-14 z-20 animate-fade-in delay-0"
+          className="sticky top-0 lg:top-0 z-20 animate-fade-in delay-0"
           style={{
             background: 'rgba(7,7,14,0.92)',
             backdropFilter: 'blur(16px)',
