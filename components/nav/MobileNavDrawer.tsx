@@ -62,29 +62,28 @@ export default function MobileNavDrawer() {
       <header
         className="fixed top-0 left-0 right-0 z-30 h-14 flex items-center justify-between px-5"
         style={{
-          background: 'rgba(7,7,14,0.92)',
+          background: 'rgba(255,255,255,0.94)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: '1px solid rgba(255,255,255,0.05)',
+          borderBottom: '1px solid #e3e8ee',
         }}
       >
         <Link href="/" className="flex items-center gap-2.5" onClick={() => setIsOpen(false)}>
           <div
             className="size-7 rounded-lg flex items-center justify-center"
             style={{
-              background: 'linear-gradient(135deg, #7c3aed, #6d28d9)',
-              boxShadow: '0 0 10px rgba(124,58,237,0.3)',
+              background: 'linear-gradient(135deg, #533afd, #4434d4)',
             }}
           >
             <span className="text-white text-xs font-bold leading-none">H</span>
           </div>
-          <span className="text-sm font-semibold text-white/85">AI Playbook</span>
+          <span className="text-sm font-semibold" style={{ color: '#0d253d' }}>AI Playbook</span>
         </Link>
 
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="flex items-center justify-center size-8 rounded-lg transition-colors duration-150"
-          style={{ color: 'rgba(255,255,255,0.6)', background: 'rgba(255,255,255,0.05)' }}
+          style={{ color: '#64748d', background: '#f6f9fc' }}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
         >
           {isOpen ? <X size={18} /> : <Menu size={18} />}
@@ -95,7 +94,7 @@ export default function MobileNavDrawer() {
       {isOpen && (
         <div
           className="fixed inset-0 z-40"
-          style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
+          style={{ background: 'rgba(13,37,61,0.4)', backdropFilter: 'blur(4px)' }}
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -104,35 +103,34 @@ export default function MobileNavDrawer() {
       <div
         className="fixed top-0 left-0 h-full z-50 w-64 overflow-y-auto scrollbar-hide transition-transform duration-300"
         style={{
-          background: 'rgba(10,10,22,0.98)',
-          borderRight: '1px solid rgba(255,255,255,0.07)',
+          background: '#ffffff',
+          borderRight: '1px solid #e3e8ee',
           transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
         }}
       >
         {/* Drawer header */}
         <div
           className="flex items-center justify-between px-4 py-4"
-          style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+          style={{ borderBottom: '1px solid #e3e8ee' }}
         >
           <Link href="/" className="flex items-center gap-2.5" onClick={() => setIsOpen(false)}>
             <div
               className="size-8 rounded-lg flex items-center justify-center"
               style={{
-                background: 'linear-gradient(135deg, #7c3aed, #6d28d9)',
-                boxShadow: '0 0 12px rgba(124,58,237,0.35)',
+                background: 'linear-gradient(135deg, #533afd, #4434d4)',
               }}
             >
               <span className="text-white text-sm font-bold leading-none">H</span>
             </div>
             <div>
-              <div className="text-sm font-semibold text-white leading-tight">AI Playbook</div>
-              <div className="text-[10px] text-white/30 leading-tight">Headout · 2026</div>
+              <div className="text-sm font-semibold leading-tight" style={{ color: '#0d253d' }}>AI Playbook</div>
+              <div className="text-[10px] leading-tight" style={{ color: '#64748d' }}>Headout · 2026</div>
             </div>
           </Link>
           <button
             onClick={() => setIsOpen(false)}
             className="flex items-center justify-center size-7 rounded-lg"
-            style={{ color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.05)' }}
+            style={{ color: '#64748d', background: '#f6f9fc' }}
           >
             <X size={15} />
           </button>
@@ -143,8 +141,8 @@ export default function MobileNavDrawer() {
           {navSections.map((section) => (
             <div key={section.label} className="mb-5">
               <div
-                className="text-[10px] font-semibold uppercase tracking-wider px-2 mb-1.5"
-                style={{ color: 'rgba(255,255,255,0.25)' }}
+                className="text-[10px] font-normal uppercase tracking-wider px-2 mb-1.5"
+                style={{ color: '#64748d' }}
               >
                 {section.label}
               </div>
@@ -157,9 +155,9 @@ export default function MobileNavDrawer() {
                     onClick={() => setIsOpen(false)}
                     className="flex items-center px-2 py-2 rounded-lg text-sm mb-0.5 transition-all duration-150"
                     style={{
-                      color: isActive ? '#ffffff' : 'rgba(255,255,255,0.55)',
-                      background: isActive ? 'rgba(124,58,237,0.12)' : 'transparent',
-                      borderLeft: isActive ? '2px solid #8b5cf6' : '2px solid transparent',
+                      color: isActive ? '#0d253d' : '#61718a',
+                      background: isActive ? 'rgba(83,58,253,0.06)' : 'transparent',
+                      borderLeft: isActive ? '2px solid #533afd' : '2px solid transparent',
                     }}
                   >
                     {item.label}

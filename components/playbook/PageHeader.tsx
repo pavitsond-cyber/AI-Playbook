@@ -11,21 +11,20 @@ export default function PageHeader({ title, description, badge }: PageHeaderProp
         <div
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-3 text-xs font-semibold uppercase tracking-wider"
           style={{
-            background: 'rgba(124,58,237,0.1)',
-            color: 'rgba(167,139,250,0.9)',
-            border: '1px solid rgba(124,58,237,0.2)',
+            background: '#b9b9f9',
+            color: '#4434d4',
           }}
         >
           <span
             className="size-1.5 rounded-full"
-            style={{ background: '#8b5cf6' }}
+            style={{ background: '#533afd' }}
           />
           {badge}
         </div>
       )}
-      <h1 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-2">{title}</h1>
+      <h1 className="text-2xl sm:text-3xl leading-tight mb-2" style={{ color: '#0d253d', fontWeight: 300, letterSpacing: '-0.64px' }}>{title}</h1>
       {description && (
-        <p className="text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>
+        <p className="text-base leading-relaxed" style={{ color: '#64748d', fontWeight: 300 }}>
           {description}
         </p>
       )}

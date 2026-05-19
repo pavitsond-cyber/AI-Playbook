@@ -1,3 +1,5 @@
+'use client'
+
 import { ArrowRight } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 
@@ -60,25 +62,27 @@ export default function ContributePage() {
       <div
         className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-5 rounded-xl mb-10"
         style={{
-          background: 'rgba(124,58,237,0.08)',
-          border: '1px solid rgba(124,58,237,0.2)',
+          background: 'rgba(83,58,253,0.05)',
+          border: '1px solid rgba(83,58,253,0.2)',
           borderRadius: '12px',
         }}
       >
         <div className="flex-1">
-          <h3 className="text-sm font-semibold text-white mb-1">Contribution Sheet</h3>
-          <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
+          <h3 className="text-sm font-semibold mb-1" style={{ color: '#0d253d' }}>Contribution Sheet</h3>
+          <p className="text-sm" style={{ color: '#64748d' }}>
             Use the shared Google Sheet to submit your contributions. Fill in the template, paste it in, and it will be reviewed.
           </p>
         </div>
         <a
           href="#contribution-sheet"
-          className="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150"
+          className="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-normal transition-all duration-150"
           style={{
-            background: 'rgba(124,58,237,0.25)',
-            color: 'rgba(167,139,250,0.95)',
-            border: '1px solid rgba(124,58,237,0.35)',
+            background: '#533afd',
+            color: '#ffffff',
+            borderRadius: '9999px',
           }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#4434d4' }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#533afd' }}
         >
           Open sheet <ArrowRight size={14} />
         </a>
@@ -88,7 +92,7 @@ export default function ContributePage() {
       <div className="mb-10">
         <h2
           className="text-xs font-semibold uppercase tracking-wider mb-4"
-          style={{ color: 'rgba(255,255,255,0.3)' }}
+          style={{ color: '#64748d' }}
         >
           How it works
         </h2>
@@ -98,23 +102,24 @@ export default function ContributePage() {
               key={step.step}
               className="flex gap-4 p-4 rounded-xl"
               style={{
-                background: 'rgba(14,14,28,0.8)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: '#ffffff',
+                border: '1px solid #e3e8ee',
+                boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
               }}
             >
               <div
                 className="shrink-0 size-7 rounded-full flex items-center justify-center text-xs font-bold"
                 style={{
-                  background: 'rgba(124,58,237,0.15)',
-                  color: 'rgba(167,139,250,0.9)',
+                  background: 'rgba(83,58,253,0.1)',
+                  color: '#533afd',
                   minWidth: '28px',
                 }}
               >
                 {step.step}
               </div>
               <div>
-                <div className="text-sm font-semibold text-white mb-0.5">{step.title}</div>
-                <p className="text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>{step.detail}</p>
+                <div className="text-sm font-semibold mb-0.5" style={{ color: '#0d253d' }}>{step.title}</div>
+                <p className="text-sm" style={{ color: '#64748d' }}>{step.detail}</p>
               </div>
             </div>
           ))}
@@ -125,7 +130,7 @@ export default function ContributePage() {
       <div>
         <h2
           className="text-xs font-semibold uppercase tracking-wider mb-4"
-          style={{ color: 'rgba(255,255,255,0.3)' }}
+          style={{ color: '#64748d' }}
         >
           What you can contribute
         </h2>
@@ -135,27 +140,28 @@ export default function ContributePage() {
               key={cat.title}
               className="p-5 rounded-xl"
               style={{
-                background: 'rgba(14,14,28,0.8)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: '#ffffff',
+                border: '1px solid #e3e8ee',
                 borderRadius: '12px',
+                boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
               }}
             >
               <div className="text-2xl mb-3">{cat.icon}</div>
-              <h3 className="text-sm font-semibold text-white mb-1.5">{cat.title}</h3>
-              <p className="text-xs leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>
+              <h3 className="text-sm font-semibold mb-1.5" style={{ color: '#0d253d' }}>{cat.title}</h3>
+              <p className="text-xs leading-relaxed mb-3" style={{ color: '#64748d' }}>
                 {cat.description}
               </p>
               <div className="flex items-center justify-between">
                 <span
                   className="text-[10px] px-2 py-0.5 rounded"
-                  style={{ background: 'rgba(124,58,237,0.1)', color: 'rgba(167,139,250,0.7)' }}
+                  style={{ background: 'rgba(83,58,253,0.08)', color: '#4434d4' }}
                 >
                   → {cat.where}
                 </span>
                 <a
                   href={cat.template}
                   className="text-xs"
-                  style={{ color: 'rgba(167,139,250,0.6)' }}
+                  style={{ color: '#533afd' }}
                 >
                   Get template →
                 </a>
@@ -169,12 +175,12 @@ export default function ContributePage() {
       <div
         className="mt-8 p-4 rounded-xl text-sm"
         style={{
-          background: 'rgba(255,255,255,0.02)',
-          border: '1px solid rgba(255,255,255,0.06)',
-          color: 'rgba(255,255,255,0.35)',
+          background: '#f6f9fc',
+          border: '1px solid #e3e8ee',
+          color: '#64748d',
         }}
       >
-        <strong className="text-white/50">Quality bar:</strong> Contributions should be tested, specific, and useful to others. Rough notes and unverified content won&apos;t be published without review.
+        <strong style={{ color: '#273951' }}>Quality bar:</strong> Contributions should be tested, specific, and useful to others. Rough notes and unverified content won&apos;t be published without review.
       </div>
     </div>
   )

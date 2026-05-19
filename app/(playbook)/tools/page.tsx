@@ -60,10 +60,10 @@ export default function ToolsPage() {
             onClick={() => setFilter(audience)}
             className="px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-150"
             style={{
-              background: filter === audience ? 'rgba(124,58,237,0.2)' : 'rgba(14,14,28,0.8)',
+              background: filter === audience ? '#b9b9f9' : '#f6f9fc',
               border: '1px solid',
-              borderColor: filter === audience ? 'rgba(124,58,237,0.4)' : 'rgba(255,255,255,0.08)',
-              color: filter === audience ? 'rgba(167,139,250,0.9)' : 'rgba(255,255,255,0.5)',
+              borderColor: filter === audience ? 'rgba(83,58,253,0.3)' : '#e3e8ee',
+              color: filter === audience ? '#4434d4' : '#64748d',
             }}
           >
             {audience}
@@ -78,57 +78,58 @@ export default function ToolsPage() {
             key={tool.name}
             className="flex flex-col p-5 rounded-xl transition-all duration-150"
             style={{
-              background: 'rgba(14,14,28,0.8)',
-              border: '1px solid rgba(255,255,255,0.06)',
+              background: '#ffffff',
+              border: '1px solid #e3e8ee',
               borderRadius: '12px',
+              boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(124,58,237,0.25)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(83,58,253,0.3)' }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e3e8ee' }}
           >
             {/* Header */}
             <div className="flex items-start justify-between mb-3">
               <div>
-                <h3 className="text-base font-semibold text-white">{tool.name}</h3>
-                <p className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.35)' }}>by {tool.maker}</p>
+                <h3 className="text-base font-semibold" style={{ color: '#0d253d' }}>{tool.name}</h3>
+                <p className="text-xs mt-0.5" style={{ color: '#64748d' }}>by {tool.maker}</p>
               </div>
               <a
                 href={tool.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 shrink-0"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-normal transition-all duration-150 shrink-0"
                 style={{
-                  background: 'rgba(124,58,237,0.1)',
-                  color: 'rgba(167,139,250,0.8)',
-                  border: '1px solid rgba(124,58,237,0.15)',
+                  background: '#533afd',
+                  color: '#ffffff',
+                  borderRadius: '9999px',
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(124,58,237,0.2)' }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(124,58,237,0.1)' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = '#4434d4' }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#533afd' }}
               >
                 Open <ExternalLink size={11} />
               </a>
             </div>
 
-            <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.65)' }}>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: '#273951' }}>
               {tool.bestFor}
             </p>
 
             {/* Inputs / Outputs */}
             <div className="flex gap-4 mb-4 text-xs">
               <div>
-                <span className="block mb-1" style={{ color: 'rgba(255,255,255,0.25)' }}>Inputs</span>
+                <span className="block mb-1" style={{ color: '#64748d' }}>Inputs</span>
                 <div className="flex flex-wrap gap-1">
                   {tool.inputs.map((i) => (
-                    <span key={i} className="px-1.5 py-0.5 rounded" style={{ background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.5)' }}>
+                    <span key={i} className="px-1.5 py-0.5 rounded" style={{ background: '#f6f9fc', color: '#64748d', border: '1px solid #e3e8ee' }}>
                       {i}
                     </span>
                   ))}
                 </div>
               </div>
               <div>
-                <span className="block mb-1" style={{ color: 'rgba(255,255,255,0.25)' }}>Outputs</span>
+                <span className="block mb-1" style={{ color: '#64748d' }}>Outputs</span>
                 <div className="flex flex-wrap gap-1">
                   {tool.outputs.map((o) => (
-                    <span key={o} className="px-1.5 py-0.5 rounded" style={{ background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.5)' }}>
+                    <span key={o} className="px-1.5 py-0.5 rounded" style={{ background: '#f6f9fc', color: '#64748d', border: '1px solid #e3e8ee' }}>
                       {o}
                     </span>
                   ))}
@@ -138,23 +139,23 @@ export default function ToolsPage() {
 
             {/* Strength / Limitation */}
             <div className="space-y-1.5 mb-3 text-xs">
-              <div className="flex items-start gap-2">
-                <span style={{ color: '#86efac' }}>✓</span>
-                <span style={{ color: 'rgba(255,255,255,0.5)' }}>{tool.strength}</span>
+              <div className="flex items-start gap-2 px-3 py-2 rounded-lg" style={{ background: 'rgba(34,197,94,0.06)' }}>
+                <span style={{ color: '#16a34a' }}>✓</span>
+                <span style={{ color: '#16a34a' }}>{tool.strength}</span>
               </div>
-              <div className="flex items-start gap-2">
-                <span style={{ color: '#fca5a5' }}>⚠</span>
-                <span style={{ color: 'rgba(255,255,255,0.4)' }}>{tool.limitation}</span>
+              <div className="flex items-start gap-2 px-3 py-2 rounded-lg" style={{ background: 'rgba(239,68,68,0.06)' }}>
+                <span style={{ color: '#dc2626' }}>⚠</span>
+                <span style={{ color: '#dc2626' }}>{tool.limitation}</span>
               </div>
             </div>
 
             {/* Audiences */}
-            <div className="flex flex-wrap gap-1 mt-auto pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+            <div className="flex flex-wrap gap-1 mt-auto pt-3" style={{ borderTop: '1px solid #e3e8ee' }}>
               {tool.usefulFor.map((team) => (
                 <span
                   key={team}
                   className="text-[10px] px-2 py-0.5 rounded-full"
-                  style={{ background: 'rgba(124,58,237,0.1)', color: 'rgba(167,139,250,0.7)' }}
+                  style={{ background: 'rgba(83,58,253,0.08)', color: '#4434d4' }}
                 >
                   {team}
                 </span>
@@ -164,7 +165,7 @@ export default function ToolsPage() {
         ))}
       </div>
 
-      <p className="text-xs mt-6" style={{ color: 'rgba(255,255,255,0.2)' }}>
+      <p className="text-xs mt-6" style={{ color: '#64748d' }}>
         {filtered.length} of {tools.length} tools shown
       </p>
     </div>

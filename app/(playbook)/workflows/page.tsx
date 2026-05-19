@@ -119,9 +119,10 @@ export default function WorkflowsPage() {
               key={workflow.id}
               className="rounded-xl overflow-hidden transition-all duration-150"
               style={{
-                background: 'rgba(14,14,28,0.8)',
-                border: `1px solid ${isOpen ? 'rgba(124,58,237,0.25)' : 'rgba(255,255,255,0.06)'}`,
+                background: '#ffffff',
+                border: `1px solid ${isOpen ? 'rgba(83,58,253,0.25)' : '#e3e8ee'}`,
                 borderRadius: '12px',
+                boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
               }}
             >
               {/* Accordion header */}
@@ -130,8 +131,8 @@ export default function WorkflowsPage() {
                 className="w-full flex items-center justify-between px-5 py-4 text-left"
               >
                 <div className="flex-1">
-                  <div className="text-sm font-semibold text-white mb-1">{workflow.title}</div>
-                  <div className="flex flex-wrap gap-3 text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                  <div className="text-sm font-semibold mb-1" style={{ color: '#0d253d' }}>{workflow.title}</div>
+                  <div className="flex flex-wrap gap-3 text-xs" style={{ color: '#64748d' }}>
                     <span>{workflow.team}</span>
                     <span>·</span>
                     <span>{workflow.time}</span>
@@ -143,7 +144,7 @@ export default function WorkflowsPage() {
                   size={16}
                   className="shrink-0 ml-4 transition-transform duration-200"
                   style={{
-                    color: 'rgba(255,255,255,0.3)',
+                    color: '#64748d',
                     transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                   }}
                 />
@@ -153,26 +154,30 @@ export default function WorkflowsPage() {
               {isOpen && (
                 <div
                   className="px-5 pb-5"
-                  style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
+                  style={{ borderTop: '1px solid #e3e8ee', background: '#f6f9fc' }}
                 >
                   <div className="pt-4 space-y-4">
-                    {workflow.steps.map((step) => (
+                    {workflow.steps.map((step, idx) => (
                       <div key={step.step} className="flex gap-4">
                         <div
                           className="shrink-0 size-7 rounded-full flex items-center justify-center text-xs font-bold mt-0.5"
                           style={{
-                            background: 'rgba(124,58,237,0.15)',
-                            color: 'rgba(167,139,250,0.9)',
+                            background: 'rgba(83,58,253,0.1)',
+                            color: '#533afd',
+                            border: '1px solid rgba(83,58,253,0.2)',
                             minWidth: '28px',
                           }}
                         >
                           {step.step}
                         </div>
                         <div>
-                          <div className="text-sm font-semibold text-white mb-1">{step.action}</div>
-                          <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                          <div className="text-sm font-semibold mb-1" style={{ color: '#0d253d' }}>{step.action}</div>
+                          <p className="text-sm leading-relaxed" style={{ color: '#64748d' }}>
                             {step.detail}
                           </p>
+                          {idx < workflow.steps.length - 1 && (
+                            <div className="mt-4 ml-[-20px] w-px h-4" style={{ background: '#e3e8ee' }} />
+                          )}
                         </div>
                       </div>
                     ))}

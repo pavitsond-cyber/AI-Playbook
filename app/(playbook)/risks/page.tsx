@@ -53,9 +53,9 @@ const risks = [
 ]
 
 const severityStyles = {
-  high: { bg: 'rgba(239,68,68,0.1)', text: '#fca5a5', border: 'rgba(239,68,68,0.2)', label: 'High' },
-  medium: { bg: 'rgba(251,191,36,0.1)', text: '#fcd34d', border: 'rgba(251,191,36,0.2)', label: 'Medium' },
-  low: { bg: 'rgba(34,197,94,0.1)', text: '#86efac', border: 'rgba(34,197,94,0.2)', label: 'Low' },
+  high: { bg: 'rgba(239,68,68,0.1)', text: '#dc2626', border: 'rgba(239,68,68,0.2)', label: 'High' },
+  medium: { bg: 'rgba(234,136,12,0.1)', text: '#b45309', border: 'rgba(234,136,12,0.2)', label: 'Medium' },
+  low: { bg: 'rgba(34,197,94,0.1)', text: '#16a34a', border: 'rgba(34,197,94,0.2)', label: 'Low' },
 }
 
 export default function RisksPage() {
@@ -71,8 +71,9 @@ export default function RisksPage() {
       <div
         className="hidden lg:grid grid-cols-12 px-5 py-3 text-xs font-semibold uppercase tracking-wider mb-2 rounded-lg"
         style={{
-          background: 'rgba(14,14,28,0.6)',
-          color: 'rgba(255,255,255,0.3)',
+          background: '#f6f9fc',
+          color: '#64748d',
+          border: '1px solid #e3e8ee',
         }}
       >
         <div className="col-span-2">Risk</div>
@@ -89,15 +90,16 @@ export default function RisksPage() {
               key={risk.risk}
               className="p-5 rounded-xl"
               style={{
-                background: 'rgba(14,14,28,0.8)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: '#ffffff',
+                border: '1px solid #e3e8ee',
                 borderRadius: '12px',
+                boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
               }}
             >
               <div className="flex items-start gap-4 mb-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-sm font-semibold text-white">{risk.risk}</h3>
+                    <h3 className="text-sm font-semibold" style={{ color: '#0d253d' }}>{risk.risk}</h3>
                     <span
                       className="text-xs font-medium px-2 py-0.5 rounded-full"
                       style={{ background: sev.bg, color: sev.text, border: `1px solid ${sev.border}` }}
@@ -105,7 +107,7 @@ export default function RisksPage() {
                       {sev.label}
                     </span>
                   </div>
-                  <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                  <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>
                     {risk.whatItMeans}
                   </p>
                 </div>
@@ -115,7 +117,7 @@ export default function RisksPage() {
                 <div>
                   <div
                     className="text-[10px] font-semibold uppercase tracking-wider mb-2"
-                    style={{ color: 'rgba(255,255,255,0.3)' }}
+                    style={{ color: '#64748d' }}
                   >
                     Examples
                   </div>
@@ -123,7 +125,7 @@ export default function RisksPage() {
                     {risk.examples.map((ex) => (
                       <li key={ex} className="flex items-start gap-2">
                         <span className="shrink-0 mt-1.5 size-1 rounded-full" style={{ background: sev.text, opacity: 0.6 }} />
-                        <span style={{ color: 'rgba(255,255,255,0.45)' }}>{ex}</span>
+                        <span style={{ color: '#64748d' }}>{ex}</span>
                       </li>
                     ))}
                   </ul>
@@ -131,17 +133,17 @@ export default function RisksPage() {
                 <div
                   className="p-3 rounded-lg text-sm"
                   style={{
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.05)',
+                    background: '#f6f9fc',
+                    border: '1px solid #e3e8ee',
                   }}
                 >
                   <div
                     className="text-[10px] font-semibold uppercase tracking-wider mb-2"
-                    style={{ color: 'rgba(255,255,255,0.3)' }}
+                    style={{ color: '#64748d' }}
                   >
                     How to reduce it
                   </div>
-                  <p style={{ color: 'rgba(255,255,255,0.55)' }}>{risk.howToReduce}</p>
+                  <p style={{ color: '#273951' }}>{risk.howToReduce}</p>
                 </div>
               </div>
             </div>

@@ -114,31 +114,34 @@ export default function TechBasicsPage() {
               key={concept.id}
               className="rounded-xl overflow-hidden"
               style={{
-                background: 'rgba(14,14,28,0.8)',
-                border: `1px solid ${isOpen ? 'rgba(124,58,237,0.25)' : 'rgba(255,255,255,0.06)'}`,
+                background: '#ffffff',
+                border: `1px solid ${isOpen ? 'rgba(83,58,253,0.25)' : '#e3e8ee'}`,
                 borderRadius: '12px',
+                boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
               }}
             >
               <button
                 onClick={() => setOpenId(isOpen ? null : concept.id)}
-                className="w-full flex items-center justify-between px-5 py-4 text-left"
+                className="w-full flex items-center justify-between px-5 py-4 text-left transition-colors duration-150"
+                onMouseEnter={(e) => { if (!isOpen) e.currentTarget.style.background = '#f6f9fc' }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent' }}
               >
                 <div>
                   <div className="flex items-center gap-2">
                     <span
                       className="text-xs font-bold font-mono px-2 py-0.5 rounded"
-                      style={{ background: 'rgba(124,58,237,0.12)', color: 'rgba(167,139,250,0.9)' }}
+                      style={{ background: 'rgba(83,58,253,0.08)', color: '#4434d4' }}
                     >
                       {concept.term}
                     </span>
                   </div>
-                  <div className="text-sm font-medium text-white mt-1">{concept.subtitle}</div>
+                  <div className="text-sm font-medium mt-1" style={{ color: '#0d253d' }}>{concept.subtitle}</div>
                 </div>
                 <ChevronDown
                   size={16}
                   className="shrink-0 ml-4 transition-transform duration-200"
                   style={{
-                    color: 'rgba(255,255,255,0.3)',
+                    color: '#64748d',
                     transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                   }}
                 />
@@ -147,18 +150,18 @@ export default function TechBasicsPage() {
               {isOpen && (
                 <div
                   className="px-5 pb-5"
-                  style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
+                  style={{ borderTop: '1px solid #e3e8ee' }}
                 >
-                  <p className="pt-4 text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                  <p className="pt-4 text-sm leading-relaxed mb-5" style={{ color: '#273951' }}>
                     {concept.explanation}
                   </p>
 
                   <div
                     className="rounded-lg px-4 py-3 mb-4 font-mono text-xs leading-relaxed whitespace-pre overflow-x-auto"
                     style={{
-                      background: 'rgba(13,13,26,0.8)',
-                      border: '1px solid rgba(255,255,255,0.07)',
-                      color: 'rgba(167,139,250,0.8)',
+                      background: '#f6f9fc',
+                      border: '1px solid #e3e8ee',
+                      color: '#273951',
                     }}
                   >
                     {concept.example}
@@ -167,12 +170,12 @@ export default function TechBasicsPage() {
                   <div
                     className="rounded-lg px-4 py-3 text-sm"
                     style={{
-                      background: 'rgba(124,58,237,0.05)',
-                      border: '1px solid rgba(124,58,237,0.12)',
-                      color: 'rgba(255,255,255,0.5)',
+                      background: 'rgba(83,58,253,0.05)',
+                      border: '1px solid rgba(83,58,253,0.12)',
+                      color: '#64748d',
                     }}
                   >
-                    <span className="font-semibold text-white/60">At Headout:</span>{' '}
+                    <span className="font-semibold" style={{ color: '#273951' }}>At Headout:</span>{' '}
                     {concept.realWorld}
                   </div>
                 </div>

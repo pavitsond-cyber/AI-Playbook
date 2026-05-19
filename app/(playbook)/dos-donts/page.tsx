@@ -38,8 +38,8 @@ export default function DosDontsPage() {
             className="flex items-center gap-2 px-4 py-2 rounded-lg mb-4 text-sm font-semibold"
             style={{
               background: 'rgba(34,197,94,0.08)',
-              border: '1px solid rgba(34,197,94,0.15)',
-              color: '#86efac',
+              border: '1px solid rgba(34,197,94,0.2)',
+              color: '#16a34a',
             }}
           >
             <span className="text-base">✓</span>
@@ -51,14 +51,14 @@ export default function DosDontsPage() {
                 key={i}
                 className="p-4 rounded-xl"
                 style={{
-                  background: 'rgba(14,14,28,0.8)',
-                  border: '1px solid rgba(34,197,94,0.08)',
+                  background: 'rgba(34,197,94,0.08)',
+                  border: '1px solid rgba(34,197,94,0.2)',
                   borderRadius: '12px',
-                  borderLeft: '3px solid rgba(34,197,94,0.3)',
+                  borderLeft: '3px solid rgba(34,197,94,0.4)',
                 }}
               >
-                <h3 className="text-sm font-semibold mb-1" style={{ color: '#86efac' }}>{item.title}</h3>
-                <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{item.detail}</p>
+                <h3 className="text-sm font-semibold mb-1" style={{ color: '#16a34a' }}>{item.title}</h3>
+                <p className="text-xs leading-relaxed" style={{ color: '#273951' }}>{item.detail}</p>
               </div>
             ))}
           </div>
@@ -70,8 +70,8 @@ export default function DosDontsPage() {
             className="flex items-center gap-2 px-4 py-2 rounded-lg mb-4 text-sm font-semibold"
             style={{
               background: 'rgba(239,68,68,0.08)',
-              border: '1px solid rgba(239,68,68,0.15)',
-              color: '#fca5a5',
+              border: '1px solid rgba(239,68,68,0.2)',
+              color: '#dc2626',
             }}
           >
             <span className="text-base">✗</span>
@@ -83,14 +83,14 @@ export default function DosDontsPage() {
                 key={i}
                 className="p-4 rounded-xl"
                 style={{
-                  background: 'rgba(14,14,28,0.8)',
-                  border: '1px solid rgba(239,68,68,0.08)',
+                  background: 'rgba(239,68,68,0.08)',
+                  border: '1px solid rgba(239,68,68,0.2)',
                   borderRadius: '12px',
-                  borderLeft: '3px solid rgba(239,68,68,0.25)',
+                  borderLeft: '3px solid rgba(239,68,68,0.3)',
                 }}
               >
-                <h3 className="text-sm font-semibold mb-1" style={{ color: '#fca5a5' }}>{item.title}</h3>
-                <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{item.detail}</p>
+                <h3 className="text-sm font-semibold mb-1" style={{ color: '#dc2626' }}>{item.title}</h3>
+                <p className="text-xs leading-relaxed" style={{ color: '#273951' }}>{item.detail}</p>
               </div>
             ))}
           </div>

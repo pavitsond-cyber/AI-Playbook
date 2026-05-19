@@ -10,7 +10,7 @@ const bucketCards = [
     description: 'Decode the language of AI. Glossary, abbreviations, and technical basics.',
     count: '35 entries',
     href: '/glossary',
-    color: '#7c3aed',
+    color: '#533afd',
   },
   {
     icon: Zap,
@@ -18,7 +18,7 @@ const bucketCards = [
     description: 'Practical skills, tools, prompts, and workflows for your daily work.',
     count: '30 skills · 19 tools',
     href: '/skills',
-    color: '#6d28d9',
+    color: '#533afd',
   },
   {
     icon: Play,
@@ -26,7 +26,7 @@ const bucketCards = [
     description: 'Real examples from Headout teams. What worked, what failed, and what you can reuse.',
     count: '8 case studies',
     href: '/case-studies',
-    color: '#7c3aed',
+    color: '#533afd',
   },
   {
     icon: Shield,
@@ -34,7 +34,7 @@ const bucketCards = [
     description: "Do's, don'ts, limitations, hallucinations, and privacy guidelines.",
     count: '12 guidelines',
     href: '/dos-donts',
-    color: '#6d28d9',
+    color: '#533afd',
   },
   {
     icon: Plus,
@@ -42,7 +42,7 @@ const bucketCards = [
     description: 'Contribute prompts, skills, and workflows. Help the playbook grow.',
     count: 'Contribute',
     href: '/contribute',
-    color: '#7c3aed',
+    color: '#533afd',
   },
 ]
 
@@ -79,19 +79,21 @@ export default function HubPage() {
         <div
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6 text-xs font-semibold uppercase tracking-wide"
           style={{
-            background: 'rgba(124,58,237,0.1)',
-            border: '1px solid rgba(124,58,237,0.2)',
-            color: 'rgba(167,139,250,0.9)',
+            background: '#b9b9f9',
+            color: '#4434d4',
           }}
         >
-          <span className="size-1.5 rounded-full bg-purple-400" />
+          <span className="size-1.5 rounded-full" style={{ background: '#533afd' }} />
           Headout · AI Session 2026
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-bold text-white leading-tight mb-4">
+        <h1
+          className="text-3xl sm:text-5xl leading-tight mb-4"
+          style={{ color: '#0d253d', fontWeight: 300, letterSpacing: '-1.4px' }}
+        >
           Your AI Playbook
         </h1>
-        <p className="text-base sm:text-lg leading-relaxed mb-8 max-w-2xl" style={{ color: 'rgba(255,255,255,0.45)' }}>
+        <p className="text-base sm:text-lg leading-relaxed mb-8 max-w-2xl" style={{ color: '#64748d', fontWeight: 300 }}>
           Everything you need to understand, use, and experiment with AI — built for Headout.
         </p>
 
@@ -101,11 +103,11 @@ export default function HubPage() {
             <div
               key={stat}
               className="flex items-center gap-1.5 text-sm"
-              style={{ color: 'rgba(255,255,255,0.35)' }}
+              style={{ color: '#64748d' }}
             >
               <span
                 className="size-1 rounded-full"
-                style={{ background: 'rgba(124,58,237,0.6)' }}
+                style={{ background: '#533afd' }}
               />
               {stat}
             </div>
@@ -117,7 +119,7 @@ export default function HubPage() {
       <div className="mb-12">
         <h2
           className="text-xs font-semibold uppercase tracking-wider mb-4"
-          style={{ color: 'rgba(255,255,255,0.3)' }}
+          style={{ color: '#64748d' }}
         >
           Sections
         </h2>
@@ -130,43 +132,46 @@ export default function HubPage() {
                 href={card.href}
                 className="group flex flex-col p-5 rounded-xl animate-fade-up transition-all duration-200"
                 style={{
-                  background: 'rgba(14,14,28,0.8)',
-                  border: '1px solid rgba(255,255,255,0.06)',
+                  background: '#ffffff',
+                  border: '1px solid #e3e8ee',
                   borderRadius: '12px',
+                  boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(124,58,237,0.3)'
+                  e.currentTarget.style.borderColor = 'rgba(83,58,253,0.3)'
                   e.currentTarget.style.transform = 'translateY(-2px)'
+                  e.currentTarget.style.boxShadow = 'rgba(0,55,112,0.08) 0 8px 24px, rgba(0,55,112,0.04) 0 2px 6px'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'
+                  e.currentTarget.style.borderColor = '#e3e8ee'
                   e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = 'rgba(0,55,112,0.08) 0 1px 3px'
                 }}
               >
                 {/* Icon */}
                 <div
                   className="size-9 rounded-lg flex items-center justify-center mb-4"
-                  style={{ background: 'rgba(124,58,237,0.12)', color: '#a78bfa' }}
+                  style={{ background: 'rgba(83,58,253,0.08)', color: '#533afd' }}
                 >
                   <Icon size={18} />
                 </div>
 
-                <h3 className="text-base font-semibold text-white mb-1.5">{card.title}</h3>
-                <p className="text-sm leading-relaxed flex-1 mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>
+                <h3 className="text-base font-semibold mb-1.5" style={{ color: '#0d253d' }}>{card.title}</h3>
+                <p className="text-sm leading-relaxed flex-1 mb-3" style={{ color: '#64748d' }}>
                   {card.description}
                 </p>
 
                 <div className="flex items-center justify-between">
                   <span
                     className="text-xs font-medium"
-                    style={{ color: 'rgba(167,139,250,0.7)' }}
+                    style={{ color: '#533afd' }}
                   >
                     {card.count}
                   </span>
                   <ArrowRight
                     size={15}
                     className="group-hover:translate-x-1 transition-transform duration-200"
-                    style={{ color: 'rgba(255,255,255,0.3)' }}
+                    style={{ color: '#64748d' }}
                   />
                 </div>
               </Link>
@@ -179,7 +184,7 @@ export default function HubPage() {
       <div className="mb-12">
         <h2
           className="text-xs font-semibold uppercase tracking-wider mb-4"
-          style={{ color: 'rgba(255,255,255,0.3)' }}
+          style={{ color: '#64748d' }}
         >
           Start Here
         </h2>
@@ -190,29 +195,31 @@ export default function HubPage() {
               href={card.href}
               className="group flex items-center justify-between px-5 py-4 rounded-xl transition-all duration-150"
               style={{
-                background: 'rgba(14,14,28,0.8)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: '#f6f9fc',
+                border: '1px solid #e3e8ee',
                 borderRadius: '12px',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(124,58,237,0.25)'
-                e.currentTarget.style.background = 'rgba(14,14,28,0.95)'
+                e.currentTarget.style.borderColor = 'rgba(83,58,253,0.3)'
+                e.currentTarget.style.background = '#ffffff'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'
-                e.currentTarget.style.background = 'rgba(14,14,28,0.8)'
+                e.currentTarget.style.borderColor = '#e3e8ee'
+                e.currentTarget.style.background = '#f6f9fc'
               }}
             >
               <div>
-                <div className="text-sm font-semibold text-white">{card.label}</div>
-                <div className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                <div className="text-sm font-semibold" style={{ color: '#0d253d' }}>{card.label}</div>
+                <div className="text-xs mt-0.5" style={{ color: '#64748d' }}>
                   {card.description}
                 </div>
               </div>
               <ArrowRight
                 size={16}
                 className="group-hover:translate-x-1 transition-transform duration-200 shrink-0"
-                style={{ color: 'rgba(255,255,255,0.25)' }}
+                style={{ color: '#a8c3de' }}
+                onMouseEnter={(e) => { (e.currentTarget as SVGElement).style.color = '#533afd' }}
+                onMouseLeave={(e) => { (e.currentTarget as SVGElement).style.color = '#a8c3de' }}
               />
             </Link>
           ))}
@@ -223,7 +230,7 @@ export default function HubPage() {
       <div>
         <h2
           className="text-xs font-semibold uppercase tracking-wider mb-4"
-          style={{ color: 'rgba(255,255,255,0.3)' }}
+          style={{ color: '#64748d' }}
         >
           All sections
         </h2>
@@ -234,19 +241,19 @@ export default function HubPage() {
               href={section.href}
               className="px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-150"
               style={{
-                background: 'rgba(14,14,28,0.8)',
-                border: '1px solid rgba(255,255,255,0.07)',
-                color: 'rgba(255,255,255,0.55)',
+                background: '#f6f9fc',
+                border: '1px solid #e3e8ee',
+                color: '#61718a',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(124,58,237,0.3)'
-                e.currentTarget.style.color = 'rgba(255,255,255,0.9)'
-                e.currentTarget.style.background = 'rgba(124,58,237,0.08)'
+                e.currentTarget.style.borderColor = 'rgba(83,58,253,0.25)'
+                e.currentTarget.style.color = '#533afd'
+                e.currentTarget.style.background = 'rgba(83,58,253,0.06)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'
-                e.currentTarget.style.color = 'rgba(255,255,255,0.55)'
-                e.currentTarget.style.background = 'rgba(14,14,28,0.8)'
+                e.currentTarget.style.borderColor = '#e3e8ee'
+                e.currentTarget.style.color = '#61718a'
+                e.currentTarget.style.background = '#f6f9fc'
               }}
             >
               {section.label}

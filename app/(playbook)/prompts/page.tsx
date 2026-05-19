@@ -5,7 +5,7 @@ const categories = [
   {
     id: 'ux-writing',
     label: 'UX Writing',
-    color: '#a78bfa',
+    color: '#533afd',
     prompts: [
       {
         title: 'Empty state copy',
@@ -24,7 +24,7 @@ const categories = [
   {
     id: 'product',
     label: 'Product',
-    color: '#fcd34d',
+    color: '#533afd',
     prompts: [
       {
         title: 'PRD from rough idea',
@@ -43,7 +43,7 @@ const categories = [
   {
     id: 'research',
     label: 'Research',
-    color: '#86efac',
+    color: '#533afd',
     prompts: [
       {
         title: 'Interview synthesis',
@@ -62,7 +62,7 @@ const categories = [
   {
     id: 'engineering',
     label: 'Engineering',
-    color: '#7dd3fc',
+    color: '#533afd',
     prompts: [
       {
         title: 'Code review',
@@ -81,7 +81,7 @@ const categories = [
   {
     id: 'brand-marketing',
     label: 'Brand & Marketing',
-    color: '#f9a8d4',
+    color: '#533afd',
     prompts: [
       {
         title: 'Visual direction concepts',
@@ -116,7 +116,7 @@ export default function PromptsPage() {
                 className="w-2 h-5 rounded-sm"
                 style={{ background: category.color, opacity: 0.7 }}
               />
-              <h2 className="text-base font-semibold text-white">{category.label} Prompts</h2>
+              <h2 className="text-base font-semibold" style={{ color: '#0d253d' }}>{category.label} Prompts</h2>
             </div>
 
             <div className="space-y-3">
@@ -125,18 +125,19 @@ export default function PromptsPage() {
                   key={prompt.title}
                   className="rounded-xl overflow-hidden"
                   style={{
-                    background: 'rgba(14,14,28,0.8)',
-                    border: '1px solid rgba(255,255,255,0.06)',
+                    background: '#ffffff',
+                    border: '1px solid #e3e8ee',
+                    boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
                   }}
                 >
                   {/* Header */}
                   <div
                     className="flex items-start justify-between px-5 py-4"
-                    style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+                    style={{ borderBottom: '1px solid #e3e8ee' }}
                   >
                     <div>
-                      <h3 className="text-sm font-semibold text-white mb-1">{prompt.title}</h3>
-                      <div className="flex flex-wrap gap-3 text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                      <h3 className="text-sm font-semibold mb-1" style={{ color: '#0d253d' }}>{prompt.title}</h3>
+                      <div className="flex flex-wrap gap-3 text-xs" style={{ color: '#64748d' }}>
                         <span>Use case: {prompt.useCase}</span>
                         <span>Output: {prompt.expectedOutput}</span>
                       </div>
@@ -148,8 +149,9 @@ export default function PromptsPage() {
                   <div
                     className="px-5 py-4 text-sm font-mono leading-relaxed whitespace-pre-wrap"
                     style={{
-                      background: 'rgba(13,13,26,0.8)',
-                      color: 'rgba(255,255,255,0.65)',
+                      background: '#f6f9fc',
+                      border: '1px solid #e3e8ee',
+                      color: '#273951',
                       fontSize: '0.8rem',
                     }}
                   >
@@ -165,12 +167,12 @@ export default function PromptsPage() {
       <div
         className="mt-10 p-4 rounded-xl text-sm"
         style={{
-          background: 'rgba(124,58,237,0.06)',
-          border: '1px solid rgba(124,58,237,0.15)',
-          color: 'rgba(255,255,255,0.45)',
+          background: 'rgba(83,58,253,0.05)',
+          border: '1px solid rgba(83,58,253,0.15)',
+          color: '#64748d',
         }}
       >
-        <strong className="text-white/70">Tip:</strong> Replace anything in [brackets] with your specifics before sending. The more context you give, the better the output.
+        <strong style={{ color: '#273951' }}>Tip:</strong> Replace anything in [brackets] with your specifics before sending. The more context you give, the better the output.
       </div>
     </div>
   )

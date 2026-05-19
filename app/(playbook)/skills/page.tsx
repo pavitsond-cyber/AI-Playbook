@@ -37,9 +37,9 @@ const skills: Skill[] = [
 ]
 
 const difficultyStyles: Record<Difficulty, { bg: string; text: string; label: string }> = {
-  Beginner: { bg: 'rgba(34,197,94,0.12)', text: '#86efac', label: 'Beginner' },
-  Intermediate: { bg: 'rgba(251,191,36,0.12)', text: '#fcd34d', label: 'Intermediate' },
-  Advanced: { bg: 'rgba(239,68,68,0.12)', text: '#fca5a5', label: 'Advanced' },
+  Beginner: { bg: 'rgba(34,197,94,0.1)', text: '#16a34a', label: 'Beginner' },
+  Intermediate: { bg: 'rgba(234,136,12,0.1)', text: '#b45309', label: 'Intermediate' },
+  Advanced: { bg: 'rgba(239,68,68,0.1)', text: '#dc2626', label: 'Advanced' },
 }
 
 type Filter = 'All' | Difficulty
@@ -70,10 +70,10 @@ export default function SkillsPage() {
             onClick={() => setFilter(f)}
             className="px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-150"
             style={{
-              background: filter === f ? 'rgba(124,58,237,0.2)' : 'rgba(14,14,28,0.8)',
+              background: filter === f ? '#b9b9f9' : '#f6f9fc',
               border: '1px solid',
-              borderColor: filter === f ? 'rgba(124,58,237,0.4)' : 'rgba(255,255,255,0.08)',
-              color: filter === f ? 'rgba(167,139,250,0.9)' : 'rgba(255,255,255,0.5)',
+              borderColor: filter === f ? 'rgba(83,58,253,0.3)' : '#e3e8ee',
+              color: filter === f ? '#4434d4' : '#64748d',
             }}
           >
             {f === 'All' ? `All (${skills.length})` : `${f} (${skills.filter((s) => s.difficulty === f).length})`}
@@ -90,15 +90,16 @@ export default function SkillsPage() {
               key={skill.name}
               className="flex flex-col p-4 rounded-xl transition-all duration-150"
               style={{
-                background: 'rgba(14,14,28,0.8)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: '#ffffff',
+                border: '1px solid #e3e8ee',
                 borderRadius: '12px',
+                boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(124,58,237,0.25)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(83,58,253,0.3)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e3e8ee' }}
             >
               <div className="flex items-start justify-between mb-2">
-                <h3 className="text-sm font-semibold text-white leading-snug flex-1 pr-2">{skill.name}</h3>
+                <h3 className="text-sm font-semibold leading-snug flex-1 pr-2" style={{ color: '#0d253d' }}>{skill.name}</h3>
                 <span
                   className="shrink-0 text-xs font-medium px-2 py-0.5 rounded-full"
                   style={{ background: diff.bg, color: diff.text }}
@@ -107,7 +108,7 @@ export default function SkillsPage() {
                 </span>
               </div>
 
-              <p className="text-xs leading-relaxed mb-3 flex-1" style={{ color: 'rgba(255,255,255,0.45)' }}>
+              <p className="text-xs leading-relaxed mb-3 flex-1" style={{ color: '#64748d' }}>
                 {skill.helpsWith}
               </p>
 
@@ -117,7 +118,7 @@ export default function SkillsPage() {
                   <span
                     key={tool}
                     className="text-xs px-2 py-0.5 rounded-md"
-                    style={{ background: 'rgba(124,58,237,0.1)', color: 'rgba(167,139,250,0.8)' }}
+                    style={{ background: 'rgba(83,58,253,0.08)', color: '#4434d4' }}
                   >
                     {tool}
                   </span>
@@ -130,7 +131,7 @@ export default function SkillsPage() {
                   <span
                     key={team}
                     className="text-[10px] px-1.5 py-0.5 rounded"
-                    style={{ background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.35)' }}
+                    style={{ background: '#f6f9fc', color: '#64748d' }}
                   >
                     {team}
                   </span>
@@ -141,7 +142,7 @@ export default function SkillsPage() {
         })}
       </div>
 
-      <p className="text-xs mt-6" style={{ color: 'rgba(255,255,255,0.2)' }}>
+      <p className="text-xs mt-6" style={{ color: '#64748d' }}>
         {filtered.length} of {skills.length} skills shown
       </p>
     </div>

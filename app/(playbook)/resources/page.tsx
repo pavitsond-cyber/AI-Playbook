@@ -67,13 +67,13 @@ export default function ResourcesPage() {
           <section key={cat.category}>
             <h2
               className="text-xs font-semibold uppercase tracking-wider mb-3"
-              style={{ color: 'rgba(255,255,255,0.3)' }}
+              style={{ color: '#64748d' }}
             >
               {cat.category}
             </h2>
             <div
               className="rounded-xl overflow-hidden"
-              style={{ border: '1px solid rgba(255,255,255,0.06)' }}
+              style={{ border: '1px solid #e3e8ee', background: '#ffffff', boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px' }}
             >
               {cat.resources.map((resource, i) => (
                 <a
@@ -83,34 +83,34 @@ export default function ResourcesPage() {
                   rel="noopener noreferrer"
                   className="flex items-center justify-between px-5 py-3.5 group transition-colors duration-100"
                   style={{
-                    background: i % 2 === 0 ? 'rgba(14,14,28,0.8)' : 'rgba(14,14,28,0.5)',
-                    borderBottom: i < cat.resources.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
+                    background: '#ffffff',
+                    borderBottom: i < cat.resources.length - 1 ? '1px solid #e3e8ee' : 'none',
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(124,58,237,0.06)' }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = i % 2 === 0 ? 'rgba(14,14,28,0.8)' : 'rgba(14,14,28,0.5)' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(83,58,253,0.03)' }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = '#ffffff' }}
                 >
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-white/85 group-hover:text-white transition-colors">
+                      <span className="text-sm font-medium transition-colors" style={{ color: '#0d253d' }}>
                         {resource.name}
                       </span>
                       {resource.free && (
                         <span
                           className="text-[10px] px-1.5 py-0.5 rounded font-medium"
-                          style={{ background: 'rgba(34,197,94,0.1)', color: '#86efac' }}
+                          style={{ background: 'rgba(34,197,94,0.1)', color: '#16a34a' }}
                         >
                           Free
                         </span>
                       )}
                     </div>
-                    <p className="text-xs mt-0.5 truncate" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                    <p className="text-xs mt-0.5 truncate" style={{ color: '#64748d' }}>
                       {resource.description}
                     </p>
                   </div>
                   <ExternalLink
                     size={13}
                     className="shrink-0 ml-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                    style={{ color: 'rgba(167,139,250,0.7)' }}
+                    style={{ color: '#533afd' }}
                   />
                 </a>
               ))}

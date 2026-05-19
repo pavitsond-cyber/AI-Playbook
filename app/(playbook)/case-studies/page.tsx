@@ -51,14 +51,14 @@ export default function CaseStudiesPage() {
       <div
         className="rounded-xl px-5 py-4 mb-8 flex items-start gap-3 text-sm"
         style={{
-          background: 'rgba(124,58,237,0.06)',
-          border: '1px solid rgba(124,58,237,0.15)',
+          background: 'rgba(83,58,253,0.05)',
+          border: '1px solid rgba(83,58,253,0.15)',
         }}
       >
         <span className="shrink-0 text-lg">📖</span>
         <div>
-          <strong className="text-white/80">Case studies are being collected.</strong>
-          <span className="ml-1" style={{ color: 'rgba(255,255,255,0.45)' }}>
+          <strong style={{ color: '#273951' }}>Case studies are being collected.</strong>
+          <span className="ml-1" style={{ color: '#64748d' }}>
             Full write-ups with screenshots, prompts, and learnings will be published here. Here's a preview of what's coming.
           </span>
         </div>
@@ -68,7 +68,7 @@ export default function CaseStudiesPage() {
       <div>
         <h2
           className="text-xs font-semibold uppercase tracking-wider mb-4"
-          style={{ color: 'rgba(255,255,255,0.3)' }}
+          style={{ color: '#64748d' }}
         >
           Coming soon
         </h2>
@@ -78,10 +78,11 @@ export default function CaseStudiesPage() {
               key={i}
               className="flex flex-col sm:flex-row sm:items-center gap-4 p-5 rounded-xl"
               style={{
-                background: 'rgba(14,14,28,0.8)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: '#ffffff',
+                border: '1px solid #e3e8ee',
                 borderRadius: '12px',
-                opacity: 0.8,
+                boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
+                opacity: 0.9,
               }}
             >
               {/* Team badge */}
@@ -89,8 +90,8 @@ export default function CaseStudiesPage() {
                 <span
                   className="text-xs font-medium px-2.5 py-1 rounded-full"
                   style={{
-                    background: 'rgba(124,58,237,0.12)',
-                    color: 'rgba(167,139,250,0.8)',
+                    background: '#b9b9f9',
+                    color: '#4434d4',
                   }}
                 >
                   {cs.team}
@@ -98,20 +99,19 @@ export default function CaseStudiesPage() {
               </div>
 
               <div className="flex-1">
-                <p className="text-sm text-white/75 mb-1">{cs.problem}</p>
-                <div className="flex flex-wrap gap-3 text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                <p className="text-sm mb-1" style={{ color: '#273951' }}>{cs.problem}</p>
+                <div className="flex flex-wrap gap-3 text-xs" style={{ color: '#64748d' }}>
                   <span>Tool: {cs.tool}</span>
                   <span>·</span>
-                  <span className="text-green-400/60">{cs.outcome}</span>
+                  <span style={{ color: '#16a34a' }}>{cs.outcome}</span>
                 </div>
               </div>
 
               <div
                 className="shrink-0 text-xs px-2.5 py-1 rounded-full"
                 style={{
-                  background: 'rgba(255,255,255,0.04)',
-                  color: 'rgba(255,255,255,0.25)',
-                  border: '1px solid rgba(255,255,255,0.07)',
+                  background: '#b9b9f9',
+                  color: '#4434d4',
                 }}
               >
                 Coming soon
@@ -125,21 +125,22 @@ export default function CaseStudiesPage() {
       <div
         className="mt-10 p-5 rounded-xl"
         style={{
-          background: 'rgba(14,14,28,0.8)',
-          border: '1px solid rgba(124,58,237,0.15)',
+          background: '#ffffff',
+          border: '1px solid rgba(83,58,253,0.2)',
+          boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
         }}
       >
-        <h3 className="text-sm font-semibold text-white mb-1">Have a case study to share?</h3>
-        <p className="text-sm mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>
+        <h3 className="text-sm font-semibold mb-1" style={{ color: '#0d253d' }}>Have a case study to share?</h3>
+        <p className="text-sm mb-4" style={{ color: '#64748d' }}>
           Did AI save you time this week? Tell us what you did, what tool you used, and what the result was.
         </p>
         <a
           href="/contribute"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-normal transition-colors duration-150"
           style={{
-            background: 'rgba(124,58,237,0.2)',
-            color: 'rgba(167,139,250,0.9)',
-            border: '1px solid rgba(124,58,237,0.25)',
+            background: '#533afd',
+            color: '#ffffff',
+            borderRadius: '9999px',
           }}
         >
           Submit yours →

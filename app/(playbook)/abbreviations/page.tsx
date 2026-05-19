@@ -59,13 +59,14 @@ export default function AbbreviationsPage() {
       {/* Search */}
       <div className="mb-6">
         <div
-          className="flex items-center gap-2 px-4 py-3 rounded-xl"
+          className="flex items-center gap-2 px-4 py-3 rounded-xl transition-colors duration-150"
           style={{
-            background: 'rgba(14,14,28,0.8)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            background: '#f6f9fc',
+            border: '1px solid #e3e8ee',
           }}
+          onFocus={() => {}}
         >
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="shrink-0" style={{ color: 'rgba(255,255,255,0.3)' }}>
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="shrink-0" style={{ color: '#a8c3de' }}>
             <path d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464C13.0488 12.3417 13.0488 12.6583 12.8536 12.8536C12.6583 13.0488 12.3417 13.0488 12.1464 12.8536L9.30884 10.0159Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" />
           </svg>
           <input
@@ -73,14 +74,14 @@ export default function AbbreviationsPage() {
             placeholder="Search abbreviations…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="flex-1 bg-transparent text-sm outline-none placeholder-white/25"
-            style={{ color: 'rgba(255,255,255,0.85)' }}
+            className="flex-1 bg-transparent text-sm outline-none"
+            style={{ color: '#0d253d' }}
           />
           {query && (
             <button
               onClick={() => setQuery('')}
               className="text-xs px-2 py-0.5 rounded"
-              style={{ color: 'rgba(255,255,255,0.3)', background: 'rgba(255,255,255,0.05)' }}
+              style={{ color: '#64748d', background: '#e3e8ee' }}
             >
               Clear
             </button>
@@ -90,7 +91,7 @@ export default function AbbreviationsPage() {
 
       {/* Count */}
       {query && (
-        <p className="text-xs mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>
+        <p className="text-xs mb-4" style={{ color: '#64748d' }}>
           {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
         </p>
       )}
@@ -98,15 +99,15 @@ export default function AbbreviationsPage() {
       {/* Table */}
       <div
         className="rounded-xl overflow-hidden"
-        style={{ border: '1px solid rgba(255,255,255,0.06)' }}
+        style={{ border: '1px solid #e3e8ee', boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px', background: '#ffffff' }}
       >
         {/* Header row */}
         <div
           className="grid grid-cols-12 px-4 py-3 text-xs font-semibold uppercase tracking-wider"
           style={{
-            background: 'rgba(14,14,28,0.9)',
-            color: 'rgba(255,255,255,0.3)',
-            borderBottom: '1px solid rgba(255,255,255,0.06)',
+            background: '#f6f9fc',
+            color: '#64748d',
+            borderBottom: '1px solid #e3e8ee',
           }}
         >
           <div className="col-span-2">Abbr.</div>
@@ -115,7 +116,7 @@ export default function AbbreviationsPage() {
         </div>
 
         {filtered.length === 0 ? (
-          <div className="py-12 text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>
+          <div className="py-12 text-center" style={{ color: '#64748d' }}>
             <p className="text-sm">No abbreviations found for &ldquo;{query}&rdquo;</p>
           </div>
         ) : (
@@ -124,31 +125,31 @@ export default function AbbreviationsPage() {
               key={item.abbr}
               className="grid grid-cols-12 px-4 py-3.5 text-sm transition-colors duration-100"
               style={{
-                background: i % 2 === 0 ? 'rgba(14,14,28,0.6)' : 'rgba(14,14,28,0.3)',
-                borderBottom: i < filtered.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
+                background: '#ffffff',
+                borderBottom: i < filtered.length - 1 ? '1px solid #e3e8ee' : 'none',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(124,58,237,0.05)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = i % 2 === 0 ? 'rgba(14,14,28,0.6)' : 'rgba(14,14,28,0.3)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(83,58,253,0.03)' }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = '#ffffff' }}
             >
               <div className="col-span-2">
                 <span
                   className="px-2 py-0.5 rounded-md text-xs font-bold font-mono"
                   style={{
-                    background: 'rgba(124,58,237,0.12)',
-                    color: 'rgba(167,139,250,0.9)',
+                    background: 'rgba(83,58,253,0.08)',
+                    color: '#4434d4',
                   }}
                 >
                   {item.abbr}
                 </span>
               </div>
-              <div className="col-span-4 font-medium text-white/80">{item.full}</div>
-              <div className="col-span-6" style={{ color: 'rgba(255,255,255,0.5)' }}>{item.meaning}</div>
+              <div className="col-span-4 font-medium" style={{ color: '#273951' }}>{item.full}</div>
+              <div className="col-span-6" style={{ color: '#64748d' }}>{item.meaning}</div>
             </div>
           ))
         )}
       </div>
 
-      <p className="text-xs mt-4" style={{ color: 'rgba(255,255,255,0.2)' }}>
+      <p className="text-xs mt-4" style={{ color: '#64748d' }}>
         {abbreviations.length} abbreviations total
       </p>
     </div>

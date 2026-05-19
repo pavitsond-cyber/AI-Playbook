@@ -128,30 +128,31 @@ export default function TemplatesPage() {
             key={template.id}
             className="rounded-xl overflow-hidden"
             style={{
-              background: 'rgba(14,14,28,0.8)',
-              border: '1px solid rgba(255,255,255,0.06)',
+              background: '#ffffff',
+              border: '1px solid #e3e8ee',
               borderRadius: '12px',
+              boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
             }}
           >
             {/* Header */}
             <div
               className="flex items-start justify-between px-5 py-4"
-              style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+              style={{ borderBottom: '1px solid #e3e8ee' }}
             >
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-sm font-semibold text-white">{template.title}</h3>
+                  <h3 className="text-sm font-semibold" style={{ color: '#0d253d' }}>{template.title}</h3>
                   <span
                     className="text-[10px] px-2 py-0.5 rounded-full"
                     style={{
-                      background: 'rgba(124,58,237,0.12)',
-                      color: 'rgba(167,139,250,0.8)',
+                      background: '#b9b9f9',
+                      color: '#4434d4',
                     }}
                   >
                     {template.category}
                   </span>
                 </div>
-                <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{template.description}</p>
+                <p className="text-xs" style={{ color: '#64748d' }}>{template.description}</p>
               </div>
               <CopyButton text={template.template} />
             </div>
@@ -160,8 +161,9 @@ export default function TemplatesPage() {
             <div
               className="px-5 py-4 text-xs font-mono leading-relaxed whitespace-pre-wrap overflow-x-auto"
               style={{
-                background: 'rgba(13,13,26,0.7)',
-                color: 'rgba(255,255,255,0.55)',
+                background: '#f6f9fc',
+                border: '1px solid #e3e8ee',
+                color: '#273951',
               }}
             >
               {template.template}
@@ -173,13 +175,13 @@ export default function TemplatesPage() {
       <div
         className="mt-8 p-4 rounded-xl text-sm"
         style={{
-          background: 'rgba(124,58,237,0.06)',
-          border: '1px solid rgba(124,58,237,0.15)',
-          color: 'rgba(255,255,255,0.45)',
+          background: 'rgba(83,58,253,0.05)',
+          border: '1px solid rgba(83,58,253,0.15)',
+          color: '#64748d',
         }}
       >
         After filling in a template, head to the{' '}
-        <a href="/contribute" className="underline" style={{ color: 'rgba(167,139,250,0.7)' }}>
+        <a href="/contribute" className="underline" style={{ color: '#533afd' }}>
           Contribute page
         </a>{' '}
         to submit it.
