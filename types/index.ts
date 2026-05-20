@@ -17,6 +17,9 @@ export interface GlossaryTerm {
   updated_by: string | null
   created_at: string
   updated_at: string
+  layman_explanation?: string | null
+  where_used?: string[] | null
+  related_links?: Array<{ label: string; href: string }> | null
 }
 
 export interface GlossaryEdit {

@@ -79,7 +79,7 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
       {/* Expanded body with smooth reveal */}
       <div
         className="overflow-hidden transition-all duration-300 ease-in-out"
-        style={{ maxHeight: expanded ? '600px' : '0px' }}
+        style={{ maxHeight: expanded ? '1200px' : '0px' }}
       >
         <div
           className="px-5 pb-5 space-y-4 animate-fade-in"
@@ -89,6 +89,45 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
             <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>
               {term.detailed_explanation}
             </p>
+          )}
+
+          {term.layman_explanation && (
+            <div
+              className="rounded-xl px-4 py-3.5"
+              style={{
+                background: '#fdf8f0',
+                border: '1px solid rgba(155,104,41,0.15)',
+              }}
+            >
+              <div className="flex items-center gap-1.5 mb-2">
+                <span style={{ fontSize: '11px' }}>💡</span>
+                <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#9b6829' }}>
+                  In plain English
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: '#5c3d1a' }}>
+                {term.layman_explanation}
+              </p>
+            </div>
+          )}
+
+          {term.where_used && term.where_used.length > 0 && (
+            <div>
+              <span className="text-[10px] font-semibold uppercase tracking-widest block mb-2" style={{ color: '#64748d' }}>
+                Where you&apos;ll see this
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {term.where_used.map((place) => (
+                  <span
+                    key={place}
+                    className="px-2 py-0.5 rounded-md text-xs"
+                    style={{ background: '#f6f9fc', border: '1px solid #e3e8ee', color: '#64748d' }}
+                  >
+                    {place}
+                  </span>
+                ))}
+              </div>
+            </div>
           )}
 
           {term.example_usage && (
@@ -157,6 +196,42 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
                   >
                     {alias}
                   </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {term.related_links && term.related_links.length > 0 && (
+            <div>
+              <span className="text-[10px] font-semibold uppercase tracking-widest block mb-2" style={{ color: '#64748d' }}>
+                Quick links
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {term.related_links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium transition-all duration-150"
+                    style={{
+                      background: 'rgba(83,58,253,0.07)',
+                      border: '1px solid rgba(83,58,253,0.18)',
+                      color: '#4434d4',
+                      textDecoration: 'none',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = '#533afd'
+                      e.currentTarget.style.color = '#ffffff'
+                      e.currentTarget.style.borderColor = '#533afd'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(83,58,253,0.07)'
+                      e.currentTarget.style.color = '#4434d4'
+                      e.currentTarget.style.borderColor = 'rgba(83,58,253,0.18)'
+                    }}
+                  >
+                    <span>→</span>
+                    {link.label}
+                  </a>
                 ))}
               </div>
             </div>

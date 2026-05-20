@@ -1,19 +1,27 @@
 import { createClient } from '@/lib/supabase/server'
 import GlossaryPage from '@/components/glossary/GlossaryPage'
 import { GlossaryTerm } from '@/types'
+import { staticTerms } from '@/lib/data/glossary-static'
 
 export const revalidate = 60
 
 export default async function Page() {
-  const supabase = await createClient()
+  let terms: GlossaryTerm[] = staticTerms
 
-  const { data } = await supabase
-    .from('glossary_terms')
-    .select('*')
-    .eq('status', 'published')
-    .order('term', { ascending: true })
+  try {
+    const supabase = await createClient()
+    const { data } = await supabase
+      .from('glossary_terms')
+      .select('*')
+      .eq('status', 'published')
+      .order('term', { ascending: true })
 
-  const terms: GlossaryTerm[] = data ?? []
+    if (data && data.length > 0) {
+      terms = data
+    }
+  } catch {
+    // Fall back to static data
+  }
 
   return <GlossaryPage terms={terms} />
 }
