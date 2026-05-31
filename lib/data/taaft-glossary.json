@@ -1,0 +1,1094 @@
+{
+  "terms": [
+    {
+      "id": "taaft-activation-function",
+      "term": "Activation Function",
+      "pronunciation": "/ˌæktɪˈveɪʃən ˈfʌŋkʃən/",
+      "definition": "A mathematical function applied to each neuron in a neural network that determines whether and to what degree the neuron should 'fire'. It introduces non-linearity, enabling networks to learn complex patterns. Common types include ReLU, sigmoid, and softmax.",
+      "category": "ai_basics",
+      "taaft_category": "Deep Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-adversarial-attack",
+      "term": "Adversarial Attack",
+      "pronunciation": "/ədˈvɜːrsəriəl əˈtæk/",
+      "definition": "A technique where specially crafted inputs are designed to fool an AI model into making incorrect predictions. For example, adding imperceptible noise to an image can cause a computer vision model to misclassify a cat as a car.",
+      "category": "ai_basics",
+      "taaft_category": "Ethics & Safety",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-agent",
+      "term": "Agent",
+      "pronunciation": "/ˈeɪdʒənt/",
+      "definition": "An AI system capable of taking actions in an environment to achieve a goal. Unlike a simple chatbot, an agent can plan multi-step tasks, use tools, browse the web, write and run code, and adapt its approach based on feedback.",
+      "category": "ai_basics",
+      "taaft_category": "Artificial Intelligence",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-ai-alignment",
+      "term": "AI Alignment",
+      "pronunciation": "/ˌeɪ ˈaɪ əˈlaɪnmənt/",
+      "definition": "The challenge of ensuring AI systems act in accordance with human values and intentions. A misaligned AI might achieve its goal in unintended or harmful ways — for example, an AI optimised for clicks might promote outrage.",
+      "category": "ai_basics",
+      "taaft_category": "Ethics & Safety",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-ai-hallucination",
+      "term": "Hallucination",
+      "pronunciation": "/həˌluːsɪˈneɪʃən/",
+      "definition": "When an AI model confidently generates false or fabricated information — presenting it as fact. LLMs can hallucinate names, dates, citations, statistics, and URLs that don't exist. Always verify critical AI-generated facts.",
+      "category": "ai_basics",
+      "taaft_category": "Language Models and NLP",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-ai-safety",
+      "term": "AI Safety",
+      "pronunciation": "/ˌeɪ ˈaɪ ˈseɪfti/",
+      "definition": "A field of research focused on ensuring AI systems are reliable, interpretable, and aligned with human values. It encompasses preventing misuse, avoiding unintended consequences, and building in safeguards as models become more powerful.",
+      "category": "ai_basics",
+      "taaft_category": "Ethics & Safety",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-annotation",
+      "term": "Annotation",
+      "pronunciation": "/ˌænəˈteɪʃən/",
+      "definition": "The process of labelling training data with correct answers so a model can learn from it. For example, annotating thousands of images with bounding boxes around objects, or tagging text with sentiment labels.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-api",
+      "term": "API",
+      "pronunciation": "/ˌeɪ piː ˈaɪ/",
+      "definition": "A defined interface that lets software systems communicate. AI APIs let developers send prompts and receive responses programmatically, without building the underlying model.",
+      "category": "coding",
+      "taaft_category": "AI Infrastructure",
+      "type": "abbreviation",
+      "full_form": "Application Programming Interface"
+    },
+    {
+      "id": "taaft-artificial-general-intelligence",
+      "term": "AGI",
+      "pronunciation": "/ˌeɪ dʒiː ˈaɪ/",
+      "definition": "Hypothetical AI with the ability to understand, learn, and apply intelligence across any domain at human level. Distinguished from narrow AI (which excels at specific tasks). We do not have AGI today.",
+      "category": "ai_basics",
+      "taaft_category": "Artificial Intelligence",
+      "type": "abbreviation",
+      "full_form": "Artificial General Intelligence"
+    },
+    {
+      "id": "taaft-attention-mechanism",
+      "term": "Attention Mechanism",
+      "pronunciation": "/əˈtenʃən ˈmekənɪzəm/",
+      "definition": "A core component of Transformer models that allows the model to focus on relevant parts of the input when generating each output token. 'Attention is all you need' — the 2017 Google paper that introduced this — became one of the most cited AI papers ever.",
+      "category": "ai_basics",
+      "taaft_category": "Deep Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-autoregressive",
+      "term": "Autoregressive",
+      "pronunciation": "/ˌɔːtəʊrɪˈɡresɪv/",
+      "definition": "A type of model that generates output one token at a time, using all previously generated tokens as context. Most LLMs including GPT-4 and Claude are autoregressive — they predict the next word given everything before it.",
+      "category": "ai_basics",
+      "taaft_category": "Language Models and NLP",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-backpropagation",
+      "term": "Backpropagation",
+      "pronunciation": "/ˌbækˌprɒpəˈɡeɪʃən/",
+      "definition": "The algorithm that trains neural networks by calculating how much each parameter contributed to the error and adjusting weights accordingly. The backbone of modern deep learning training.",
+      "category": "ai_basics",
+      "taaft_category": "Deep Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-baseline",
+      "term": "Baseline",
+      "pronunciation": "/ˈbeɪslaɪn/",
+      "definition": "A simple, reference model or method used as a benchmark to compare the performance of more complex models. If your fancy model doesn't beat a simple heuristic, you may not need the complexity.",
+      "category": "ai_basics",
+      "taaft_category": "Model Evaluation",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-batch-size",
+      "term": "Batch Size",
+      "pronunciation": "/bætʃ saɪz/",
+      "definition": "The number of training examples processed together in one forward/backward pass during training. Larger batches are more computationally efficient but may generalise less well.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-benchmark",
+      "term": "Benchmark",
+      "pronunciation": "/ˈbentʃmɑːrk/",
+      "definition": "A standardised test used to evaluate and compare AI model performance. Common benchmarks include MMLU (general knowledge), HumanEval (coding), and HELM. Model leaderboards are built on benchmark scores.",
+      "category": "ai_basics",
+      "taaft_category": "Model Evaluation",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-bias-in-ai",
+      "term": "Bias (in AI)",
+      "pronunciation": "/baɪəs/",
+      "definition": "Systematic errors in model outputs arising from biased training data or flawed design. An AI trained on historical hiring data may perpetuate past discrimination. AI bias is a major ethical concern in high-stakes applications.",
+      "category": "ai_basics",
+      "taaft_category": "Ethics & Safety",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-bounding-box",
+      "term": "Bounding Box",
+      "pronunciation": "/ˈbaʊndɪŋ bɒks/",
+      "definition": "A rectangle drawn around an object in an image to localise it for computer vision tasks. Object detection models output bounding boxes with class labels and confidence scores.",
+      "category": "ai_basics",
+      "taaft_category": "Computer Vision",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-chain-of-thought",
+      "term": "Chain of Thought",
+      "pronunciation": "/tʃeɪn əv θɔːt/",
+      "definition": "A prompting technique where you instruct the AI to reason step-by-step before giving a final answer. Adding 'Let's think step by step' to a prompt dramatically improves accuracy on complex reasoning, math, and logic tasks.",
+      "category": "prompting",
+      "taaft_category": "Language Models and NLP",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-chatbot",
+      "term": "Chatbot",
+      "pronunciation": "/ˈtʃætbɒt/",
+      "definition": "A software application designed to simulate human conversation. Modern AI chatbots like ChatGPT and Claude use LLMs to understand and respond to natural language at near-human quality.",
+      "category": "ai_basics",
+      "taaft_category": "User-Facing AI Concepts",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-classification",
+      "term": "Classification",
+      "pronunciation": "/ˌklæsɪfɪˈkeɪʃən/",
+      "definition": "An ML task where the model assigns input to a predefined category. Examples: spam/not-spam email, sentiment positive/negative/neutral, image of cat/dog/car. The output is a class label, optionally with a confidence score.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-clip",
+      "term": "CLIP",
+      "pronunciation": "/klɪp/",
+      "definition": "A model by OpenAI that learns to associate images and text together. CLIP enables zero-shot image classification and powers many text-to-image systems including DALL·E and Stable Diffusion.",
+      "category": "ai_basics",
+      "taaft_category": "Computer Vision",
+      "type": "abbreviation",
+      "full_form": "Contrastive Language-Image Pre-Training"
+    },
+    {
+      "id": "taaft-clustering",
+      "term": "Clustering",
+      "pronunciation": "/ˈklʌstərɪŋ/",
+      "definition": "An unsupervised learning technique that groups similar data points together without predefined labels. Used to discover natural patterns — for example, clustering customer bookings to find travel segments.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-cnn",
+      "term": "CNN",
+      "pronunciation": "/ˌsiː en ˈen/",
+      "definition": "A deep learning architecture designed for processing structured grid data like images. CNNs use convolutional filters to detect local features (edges, shapes, textures) that build into complex representations.",
+      "category": "ai_basics",
+      "taaft_category": "Computer Vision",
+      "type": "abbreviation",
+      "full_form": "Convolutional Neural Network"
+    },
+    {
+      "id": "taaft-context-length",
+      "term": "Context Length",
+      "pronunciation": "/ˈkɒntekst leŋθ/",
+      "definition": "The maximum amount of text (measured in tokens) an LLM can process at once — both input and output combined. GPT-4 has a 128k token context; Claude 3 supports up to 200k. Longer context = more you can feed in at once.",
+      "category": "ai_basics",
+      "taaft_category": "Language Models and NLP",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-context-window",
+      "term": "Context Window",
+      "pronunciation": "/ˈkɒntekst ˈwɪndəʊ/",
+      "definition": "The 'working memory' of an LLM — the sliding window of text the model can 'see' during generation. Everything inside the context window influences the output. Text outside is ignored.",
+      "category": "ai_basics",
+      "taaft_category": "Language Models and NLP",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-copilot",
+      "term": "Copilot",
+      "pronunciation": "/ˈkəʊpaɪlət/",
+      "definition": "An AI assistant embedded in a product to help users do tasks faster. Microsoft Copilot is built into Word, Excel, and Teams. GitHub Copilot helps engineers write code. The pattern: human stays in control, AI handles repetitive drafting.",
+      "category": "tools",
+      "taaft_category": "User-Facing AI Concepts",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-data-augmentation",
+      "term": "Data Augmentation",
+      "pronunciation": "/ˈdeɪtə ˌɔːɡmenˈteɪʃən/",
+      "definition": "Techniques to artificially expand training data by creating variations of existing examples. For images: flipping, rotating, cropping. For text: paraphrasing. Helps models generalise better with limited data.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-dataset",
+      "term": "Dataset",
+      "pronunciation": "/ˈdeɪtəset/",
+      "definition": "A collection of data used to train, validate, or test a machine learning model. The quality and size of the dataset is often the most important factor in how well a model performs.",
+      "category": "ai_basics",
+      "taaft_category": "Data Science",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-deep-learning",
+      "term": "Deep Learning",
+      "pronunciation": "/diːp ˈlɜːrnɪŋ/",
+      "definition": "A subset of machine learning that uses neural networks with many layers (hence 'deep') to learn representations from raw data. Powers modern AI breakthroughs in vision, language, speech, and gaming.",
+      "category": "ai_basics",
+      "taaft_category": "Deep Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-diffusion-model",
+      "term": "Diffusion Model",
+      "pronunciation": "/dɪˈfjuːʒən ˈmɒdəl/",
+      "definition": "A type of generative model that learns to create images by gradually denoising random noise. Stable Diffusion and DALL·E 3 are diffusion models. They work by learning to reverse a process that adds noise step by step.",
+      "category": "ai_basics",
+      "taaft_category": "Generative AI and Multimedia",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-embedding",
+      "term": "Embedding",
+      "pronunciation": "/ɪmˈbedɪŋ/",
+      "definition": "A numerical vector representation of data (text, images, audio) that captures semantic meaning. Similar concepts are close together in embedding space. Embeddings enable semantic search — finding results by meaning, not just keywords.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-emergent-behaviour",
+      "term": "Emergent Behaviour",
+      "pronunciation": "/ɪˈmɜːrdʒənt bɪˈheɪvjər/",
+      "definition": "Capabilities that appear in large AI models that weren't explicitly trained for. As models scale, they suddenly gain abilities like multi-step reasoning, analogy-making, or code generation. These emerge unpredictably at scale.",
+      "category": "ai_basics",
+      "taaft_category": "Artificial Intelligence",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-encoder-decoder",
+      "term": "Encoder-Decoder",
+      "pronunciation": "/ɪnˈkəʊdər dɪˈkəʊdər/",
+      "definition": "A neural network architecture where the encoder compresses input into a latent representation, and the decoder generates output from it. Used in translation, summarisation, and image generation.",
+      "category": "ai_basics",
+      "taaft_category": "Deep Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-epoch",
+      "term": "Epoch",
+      "pronunciation": "/ˈiːpɒk/",
+      "definition": "One complete pass through the entire training dataset during model training. More epochs mean the model sees the data more times. Too few → underfitting. Too many → overfitting.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-explainability",
+      "term": "Explainability",
+      "pronunciation": "/ɪkˌspleɪnəˈbɪlɪti/",
+      "definition": "The degree to which an AI model's reasoning process can be understood by humans. Black-box models (like large neural networks) produce good results but offer limited explanation. Explainability matters most in healthcare, finance, and legal AI.",
+      "category": "ai_basics",
+      "taaft_category": "Ethics & Safety",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-few-shot",
+      "term": "Few-Shot",
+      "pronunciation": "/fjuː ʃɒt/",
+      "definition": "A prompting technique where you include a few examples of input-output pairs to show the model the desired format or behaviour. Contrasted with zero-shot (no examples) and one-shot (one example).",
+      "category": "prompting",
+      "taaft_category": "Language Models and NLP",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-fine-tuning",
+      "term": "Fine-Tuning",
+      "pronunciation": "/faɪn ˈtjuːnɪŋ/",
+      "definition": "Continuing to train a pre-trained model on a smaller, task-specific dataset to specialise its behaviour. For example, fine-tuning GPT on your company's support tickets to create a customer support bot with your voice and knowledge.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-foundation-model",
+      "term": "Foundation Model",
+      "pronunciation": "/faʊnˈdeɪʃən ˈmɒdəl/",
+      "definition": "A large AI model trained on vast data that can be adapted to many downstream tasks. GPT-4, Claude, and Gemini are foundation models. The term emphasises their role as a base layer other products are built on top of.",
+      "category": "ai_basics",
+      "taaft_category": "Artificial Intelligence",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-gans",
+      "term": "GAN",
+      "pronunciation": "/ɡæn/",
+      "definition": "A generative model architecture where two neural networks — a generator and a discriminator — compete against each other. The generator creates fake samples; the discriminator tries to detect them. Together they learn to produce convincing synthetic data.",
+      "category": "ai_basics",
+      "taaft_category": "Generative AI and Multimedia",
+      "type": "abbreviation",
+      "full_form": "Generative Adversarial Network"
+    },
+    {
+      "id": "taaft-generative-ai",
+      "term": "Generative AI",
+      "pronunciation": "/ˈdʒenərətɪv ˌeɪ ˈaɪ/",
+      "definition": "AI systems that can create new content — text, images, audio, video, code — rather than just classify or predict. ChatGPT, Midjourney, Sora, ElevenLabs are all generative AI. The term distinguishes creative AI from analytical AI.",
+      "category": "ai_basics",
+      "taaft_category": "Generative AI and Multimedia",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-gradient-descent",
+      "term": "Gradient Descent",
+      "pronunciation": "/ˈɡreɪdiənt dɪˈsent/",
+      "definition": "The core optimisation algorithm used to train neural networks. It adjusts model parameters in the direction that reduces the prediction error, iteratively improving the model's performance.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-ground-truth",
+      "term": "Ground Truth",
+      "pronunciation": "/ɡraʊnd truːθ/",
+      "definition": "The actual, correct answer used as the reference when evaluating a model's predictions. In supervised learning, ground truth labels are what the model is trained to match.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-hyperparameter",
+      "term": "Hyperparameter",
+      "pronunciation": "/ˌhaɪpəˈpærəmɪtər/",
+      "definition": "Configuration settings for a model that are set before training begins — unlike model parameters which are learned. Learning rate, batch size, and number of layers are hyperparameters. Tuning them is both art and science.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-image-generation",
+      "term": "Image Generation",
+      "pronunciation": "/ˈɪmɪdʒ ˌdʒenəˈreɪʃən/",
+      "definition": "Creating images from text prompts or other images using generative AI. Tools like Midjourney, DALL·E, and Stable Diffusion use diffusion models to render highly detailed images from a text description.",
+      "category": "ai_basics",
+      "taaft_category": "Generative AI and Multimedia",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-inference",
+      "term": "Inference",
+      "pronunciation": "/ˈɪnfərəns/",
+      "definition": "Running a trained AI model to make predictions or generate outputs on new data. Inference is what happens every time you send a message to ChatGPT. Contrasted with training, which is the computationally expensive learning phase.",
+      "category": "ai_basics",
+      "taaft_category": "AI Infrastructure",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-instruction-tuning",
+      "term": "Instruction Tuning",
+      "pronunciation": "/ɪnˈstrʌkʃən ˈtjuːnɪŋ/",
+      "definition": "Fine-tuning a language model on a dataset of instruction-response pairs to make it follow human directions more accurately. ChatGPT and Claude underwent instruction tuning to become assistants — not just autocomplete engines.",
+      "category": "ai_basics",
+      "taaft_category": "Language Models and NLP",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-knowledge-graph",
+      "term": "Knowledge Graph",
+      "pronunciation": "/ˈnɒlɪdʒ ɡrɑːf/",
+      "definition": "A structured representation of facts as a network of entities and their relationships. Google's Knowledge Graph powers its rich search results. Used to give AI systems structured, factual grounding.",
+      "category": "ai_basics",
+      "taaft_category": "Data Science",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-latency",
+      "term": "Latency",
+      "pronunciation": "/ˈleɪtənsi/",
+      "definition": "The time between sending a request to an AI model and receiving its response. Low latency is critical for real-time applications. Streaming responses (tokens appearing word by word) are used to reduce perceived latency.",
+      "category": "ai_basics",
+      "taaft_category": "AI Infrastructure",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-latent-space",
+      "term": "Latent Space",
+      "pronunciation": "/ˈleɪtənt speɪs/",
+      "definition": "The compressed, abstract representation of data learned by an AI model's hidden layers. In a diffusion model, image editing happens by moving through latent space. Similar concepts cluster nearby in latent space.",
+      "category": "ai_basics",
+      "taaft_category": "Deep Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-learning-rate",
+      "term": "Learning Rate",
+      "pronunciation": "/ˈlɜːrnɪŋ reɪt/",
+      "definition": "A hyperparameter that controls how large the weight updates are during training. Too high → overshoots and diverges. Too low → trains very slowly. Finding the right learning rate is a key part of model training.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-llm",
+      "term": "LLM",
+      "pronunciation": "/ˌel el ˈem/",
+      "definition": "A neural network trained on vast text data to understand and generate natural language. Examples include GPT-4, Claude, Gemini, and Llama. Powers most AI assistants and text-based AI products.",
+      "category": "ai_basics",
+      "taaft_category": "Language Models and NLP",
+      "type": "abbreviation",
+      "full_form": "Large Language Model"
+    },
+    {
+      "id": "taaft-lora",
+      "term": "LoRA",
+      "pronunciation": "/ˈlɔːrə/",
+      "definition": "A parameter-efficient fine-tuning method that adds small trainable matrices to a frozen base model. LoRA lets you customise large models cheaply — fine-tuning a style, persona, or domain without retraining billions of parameters.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "abbreviation",
+      "full_form": "Low-Rank Adaptation"
+    },
+    {
+      "id": "taaft-machine-learning",
+      "term": "Machine Learning",
+      "pronunciation": "/məˈʃiːn ˈlɜːrnɪŋ/",
+      "definition": "A subfield of AI where systems improve at tasks through experience with data, rather than being explicitly programmed with rules. A spam filter that learns from examples of spam and not-spam is machine learning.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-mcp",
+      "term": "MCP",
+      "pronunciation": "/ˌem siː ˈpiː/",
+      "definition": "An open standard (by Anthropic) for connecting AI models to external tools, databases, and services. Like USB-C for AI — any MCP-compatible tool can be plugged into any MCP-compatible model.",
+      "category": "workflow",
+      "taaft_category": "AI Infrastructure",
+      "type": "abbreviation",
+      "full_form": "Model Context Protocol"
+    },
+    {
+      "id": "taaft-mlops",
+      "term": "MLOps",
+      "pronunciation": "/ˈem el ɒps/",
+      "definition": "Practices and tools for deploying, monitoring, and maintaining machine learning models in production. Analogous to DevOps for software. Covers model versioning, data pipelines, monitoring for drift, and retraining.",
+      "category": "workflow",
+      "taaft_category": "AI Infrastructure",
+      "type": "abbreviation",
+      "full_form": "Machine Learning Operations"
+    },
+    {
+      "id": "taaft-model-collapse",
+      "term": "Model Collapse",
+      "pronunciation": "/ˈmɒdəl kəˈlæps/",
+      "definition": "A degradation that occurs when AI models are trained on data generated by other AI models, causing quality to decay over successive generations. A risk as AI-generated content floods the internet.",
+      "category": "ai_basics",
+      "taaft_category": "Ethics & Safety",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-multimodal",
+      "term": "Multimodal",
+      "pronunciation": "/ˌmʌltiˈməʊdəl/",
+      "definition": "An AI model that can process and generate multiple types of data — text, images, audio, video. GPT-4o and Gemini Ultra are multimodal; they can see images and hear audio in addition to reading text.",
+      "category": "ai_basics",
+      "taaft_category": "Generative AI and Multimedia",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-natural-language-processing",
+      "term": "NLP",
+      "pronunciation": "/ˌen el ˈpiː/",
+      "definition": "AI techniques for understanding, interpreting, and generating human language. Powers search, translation, summarisation, and conversational AI. LLMs are the current state-of-the-art in NLP.",
+      "category": "ai_basics",
+      "taaft_category": "Natural Language Processing",
+      "type": "abbreviation",
+      "full_form": "Natural Language Processing"
+    },
+    {
+      "id": "taaft-neural-network",
+      "term": "Neural Network",
+      "pronunciation": "/ˈnjʊərəl ˈnetwɜːrk/",
+      "definition": "A computational architecture loosely inspired by the human brain, consisting of layers of interconnected nodes (neurons). Deep neural networks with many layers are the foundation of modern AI.",
+      "category": "ai_basics",
+      "taaft_category": "Deep Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-nlg",
+      "term": "NLG",
+      "pronunciation": "/ˌen el ˈdʒiː/",
+      "definition": "The task of generating coherent, fluent natural language text from structured data or internal representations. LLMs are natural language generation systems — they produce language as output.",
+      "category": "ai_basics",
+      "taaft_category": "Natural Language Processing",
+      "type": "abbreviation",
+      "full_form": "Natural Language Generation"
+    },
+    {
+      "id": "taaft-nlu",
+      "term": "NLU",
+      "pronunciation": "/ˌen el ˈjuː/",
+      "definition": "The ability of an AI to understand the meaning and intent of human language input. NLU powers intent recognition in voice assistants and semantic search. A core component of any conversational AI.",
+      "category": "ai_basics",
+      "taaft_category": "Natural Language Processing",
+      "type": "abbreviation",
+      "full_form": "Natural Language Understanding"
+    },
+    {
+      "id": "taaft-object-detection",
+      "term": "Object Detection",
+      "pronunciation": "/ˈɒbdʒɪkt dɪˈtekʃən/",
+      "definition": "A computer vision task that identifies and locates objects within an image, returning bounding boxes and class labels. Used in self-driving cars, security cameras, and visual search.",
+      "category": "ai_basics",
+      "taaft_category": "Computer Vision",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-ocr",
+      "term": "OCR",
+      "pronunciation": "/ˌəʊ siː ˈɑːr/",
+      "definition": "Technology that converts text in images or scanned documents into machine-readable, editable text. Useful for extracting text from PDFs, receipts, forms, and photos to feed into AI workflows.",
+      "category": "workflow",
+      "taaft_category": "AI Applications",
+      "type": "abbreviation",
+      "full_form": "Optical Character Recognition"
+    },
+    {
+      "id": "taaft-openai",
+      "term": "OpenAI",
+      "pronunciation": "/ˈəʊpən ˌeɪ ˈaɪ/",
+      "definition": "The AI research company behind ChatGPT, GPT-4, DALL·E, and Sora. One of the most influential AI labs in the world. Originally non-profit, now has a capped-profit structure backed by Microsoft.",
+      "category": "tools",
+      "taaft_category": "AI Companies and Platforms",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-overfitting",
+      "term": "Overfitting",
+      "pronunciation": "/ˌəʊvəˈfɪtɪŋ/",
+      "definition": "When a model learns the training data too well — including its noise and quirks — and fails to generalise to new data. An overfit model has high training accuracy but poor real-world performance.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-parameters",
+      "term": "Parameters",
+      "pronunciation": "/pəˈræmɪtərz/",
+      "definition": "The learnable numerical weights in a neural network that are adjusted during training. GPT-4 is estimated to have ~1.7 trillion parameters. More parameters generally means more capacity to learn complex patterns.",
+      "category": "ai_basics",
+      "taaft_category": "Deep Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-perplexity",
+      "term": "Perplexity",
+      "pronunciation": "/pəˈpleksɪti/",
+      "definition": "A metric for evaluating language models — it measures how well the model predicts a sample of text. Lower perplexity = better model. Also the name of an AI search engine that uses LLMs to answer queries with citations.",
+      "category": "ai_basics",
+      "taaft_category": "Model Evaluation",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-prompt",
+      "term": "Prompt",
+      "pronunciation": "/prɒmpt/",
+      "definition": "The text input you send to an AI model. Prompt design (prompting) is the practice of crafting inputs that reliably produce the output you need. A well-engineered prompt includes context, role, format instructions, and examples.",
+      "category": "prompting",
+      "taaft_category": "User-Facing AI Concepts",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-prompt-engineering",
+      "term": "Prompt Engineering",
+      "pronunciation": "/prɒmpt ˌendʒɪˈnɪərɪŋ/",
+      "definition": "The practice of designing and optimising prompts to reliably elicit high-quality responses from AI models. Techniques include role-setting, chain-of-thought, few-shot examples, and structured output instructions.",
+      "category": "prompting",
+      "taaft_category": "User-Facing AI Concepts",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-prompt-injection",
+      "term": "Prompt Injection",
+      "pronunciation": "/prɒmpt ɪnˈdʒekʃən/",
+      "definition": "A security attack where malicious instructions are embedded in data the AI processes, causing it to ignore its original instructions and execute the attacker's commands instead. A key safety concern in agentic AI systems.",
+      "category": "prompting",
+      "taaft_category": "Ethics & Safety",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-rag",
+      "term": "RAG",
+      "pronunciation": "/ræɡ/",
+      "definition": "An architecture that retrieves relevant documents from a knowledge base and injects them into the prompt before generation, enabling models to answer questions grounded in specific, up-to-date sources.",
+      "category": "ai_basics",
+      "taaft_category": "Language Models and NLP",
+      "type": "abbreviation",
+      "full_form": "Retrieval-Augmented Generation"
+    },
+    {
+      "id": "taaft-reasoning-model",
+      "term": "Reasoning Model",
+      "pronunciation": "/ˈriːzənɪŋ ˈmɒdəl/",
+      "definition": "An AI model that performs extended internal reasoning before generating a final answer. OpenAI's o1/o3 and DeepSeek R1 are reasoning models — they 'think' through problems step by step, achieving much better results on math and logic.",
+      "category": "ai_basics",
+      "taaft_category": "Language Models and NLP",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-reinforcement-learning",
+      "term": "Reinforcement Learning",
+      "pronunciation": "/ˌriːɪnˈfɔːrsmənt ˈlɜːrnɪŋ/",
+      "definition": "A type of machine learning where an agent learns by receiving rewards and penalties based on its actions in an environment. AlphaGo used RL to master Go. RL from Human Feedback (RLHF) is how ChatGPT learned to be helpful.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-rlhf",
+      "term": "RLHF",
+      "pronunciation": "/ˌɑːr el eɪtʃ ˈef/",
+      "definition": "A training technique that uses human preference feedback to fine-tune AI models to be more helpful, harmless, and honest. Human raters compare model outputs and their preferences are used to train a reward model.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "abbreviation",
+      "full_form": "Reinforcement Learning from Human Feedback"
+    },
+    {
+      "id": "taaft-robotics",
+      "term": "Robotics",
+      "pronunciation": "/rəʊˈbɒtɪks/",
+      "definition": "The field combining AI with physical machines that can interact with the world. Modern robotics uses computer vision, reinforcement learning, and language models. Humanoid robots like those from Figure and Boston Dynamics represent the frontier.",
+      "category": "ai_basics",
+      "taaft_category": "Robotics",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-segmentation",
+      "term": "Segmentation",
+      "pronunciation": "/ˌseɡmenˈteɪʃən/",
+      "definition": "A computer vision task that classifies each pixel in an image, producing a precise mask of where objects are located. More granular than object detection (bounding boxes). Used in medical imaging, autonomous driving, and photo editing.",
+      "category": "ai_basics",
+      "taaft_category": "Computer Vision",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-semantic-search",
+      "term": "Semantic Search",
+      "pronunciation": "/sɪˈmæntɪk sɜːrtʃ/",
+      "definition": "Search that understands the meaning and intent of a query, not just matching keywords. Uses embeddings to find semantically similar content. Perplexity and AI-powered search use semantic search under the hood.",
+      "category": "ai_basics",
+      "taaft_category": "Natural Language Processing",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-sentiment-analysis",
+      "term": "Sentiment Analysis",
+      "pronunciation": "/ˈsentɪmənt əˈnælɪsɪs/",
+      "definition": "NLP technique that determines whether text expresses positive, negative, or neutral sentiment. Used to analyse product reviews, social media, and customer feedback at scale.",
+      "category": "ai_basics",
+      "taaft_category": "Natural Language Processing",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-slm",
+      "term": "SLM",
+      "pronunciation": "/ˌes el ˈem/",
+      "definition": "Smaller, more efficient language models that can run on devices (phones, laptops) without cloud infrastructure. Microsoft Phi-3 and Apple Intelligence use SLMs to enable private, low-latency AI on-device.",
+      "category": "ai_basics",
+      "taaft_category": "Language Models and NLP",
+      "type": "abbreviation",
+      "full_form": "Small Language Model"
+    },
+    {
+      "id": "taaft-supervised-learning",
+      "term": "Supervised Learning",
+      "pronunciation": "/ˈsuːpəvaɪzd ˈlɜːrnɪŋ/",
+      "definition": "A machine learning approach where the model is trained on labelled input-output pairs. Most practical AI today is supervised — email spam detection, image classification, and voice recognition are all supervised tasks.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-system-prompt",
+      "term": "System Prompt",
+      "pronunciation": "/ˈsɪstəm prɒmpt/",
+      "definition": "Instructions given to an LLM before the conversation starts, defining its role, persona, constraints, and rules. Invisible to end users in most products. The system prompt shapes everything: 'You are a helpful travel guide for Headout.'",
+      "category": "prompting",
+      "taaft_category": "User-Facing AI Concepts",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-temperature",
+      "term": "Temperature",
+      "pronunciation": "/ˈtemprɪtʃər/",
+      "definition": "A parameter that controls randomness in LLM output. Temperature 0 = always picks the most likely token (deterministic, consistent). Temperature 1+ = more creative and varied. For factual tasks use low temperature; for creative tasks use higher.",
+      "category": "prompting",
+      "taaft_category": "Language Models and NLP",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-token",
+      "term": "Token",
+      "pronunciation": "/ˈtəʊkən/",
+      "definition": "The basic unit that LLMs process. Roughly 4 characters or ¾ of a word. 'Hello world' = 2 tokens. Your context window size is measured in tokens. API costs are priced per token consumed.",
+      "category": "ai_basics",
+      "taaft_category": "Language Models and NLP",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-training-data",
+      "term": "Training Data",
+      "pronunciation": "/ˈtreɪnɪŋ ˈdeɪtə/",
+      "definition": "The dataset used to teach a machine learning model. LLMs are trained on trillions of words from the web, books, and code. The quality, quantity, and diversity of training data heavily determines what a model knows and can do.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-transfer-learning",
+      "term": "Transfer Learning",
+      "pronunciation": "/ˈtrænsfɜːr ˈlɜːrnɪŋ/",
+      "definition": "Using a model trained on one task as the starting point for a related task. Pre-training on massive data then fine-tuning on a specific task is transfer learning. It enables AI models to specialise efficiently.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-transformer",
+      "term": "Transformer",
+      "pronunciation": "/trænsˈfɔːrmər/",
+      "definition": "The dominant neural network architecture in modern AI, introduced by Google in 2017. Transformers use attention mechanisms to process entire sequences at once, enabling unprecedented language understanding. GPT, BERT, Claude, and Gemini are all Transformer-based.",
+      "category": "ai_basics",
+      "taaft_category": "Deep Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-underfitting",
+      "term": "Underfitting",
+      "pronunciation": "/ˌʌndəˈfɪtɪŋ/",
+      "definition": "When a model is too simple to capture the patterns in training data, resulting in poor performance on both training and test sets. The opposite of overfitting. Fix by increasing model complexity or training longer.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-unsupervised-learning",
+      "term": "Unsupervised Learning",
+      "pronunciation": "/ˌʌnsˈuːpəvaɪzd ˈlɜːrnɪŋ/",
+      "definition": "Machine learning without labelled data — the model finds structure, clusters, and patterns on its own. Used for anomaly detection, topic modelling, and dimensionality reduction.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-vae",
+      "term": "VAE",
+      "pronunciation": "/ˌviː eɪ ˈiː/",
+      "definition": "A generative model that encodes data into a probabilistic latent space and decodes it back. Used for data generation, compression, and as a component in diffusion models like Stable Diffusion.",
+      "category": "ai_basics",
+      "taaft_category": "Generative AI and Multimedia",
+      "type": "abbreviation",
+      "full_form": "Variational Autoencoder"
+    },
+    {
+      "id": "taaft-vector-database",
+      "term": "Vector Database",
+      "pronunciation": "/ˈvektər ˈdeɪtəbeɪs/",
+      "definition": "A database optimised for storing and searching embedding vectors. Used in RAG systems to retrieve semantically relevant content. Pinecone, Weaviate, and pgvector are popular vector databases.",
+      "category": "coding",
+      "taaft_category": "AI Infrastructure",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-zero-shot",
+      "term": "Zero-Shot",
+      "pronunciation": "/ˈzɪərəʊ ʃɒt/",
+      "definition": "Asking an AI model to perform a task it hasn't been explicitly trained on or shown examples of, relying solely on its general knowledge. Large models have strong zero-shot performance — you can ask them to do things without examples.",
+      "category": "prompting",
+      "taaft_category": "Language Models and NLP",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-bert",
+      "term": "BERT",
+      "pronunciation": "/bɜːrt/",
+      "definition": "A Transformer-based language model by Google trained to understand text context bidirectionally (reading both left-to-right and right-to-left). BERT powered major improvements in Google Search's understanding of queries.",
+      "category": "ai_basics",
+      "taaft_category": "Language Models and NLP",
+      "type": "abbreviation",
+      "full_form": "Bidirectional Encoder Representations from Transformers"
+    },
+    {
+      "id": "taaft-dalle",
+      "term": "DALL·E",
+      "pronunciation": "/ˈdæli/",
+      "definition": "OpenAI's text-to-image generation model. Given a text prompt, it generates a corresponding image. DALL·E 3 is integrated into ChatGPT and produces photorealistic and artistic images from natural language descriptions.",
+      "category": "tools",
+      "taaft_category": "AI Companies and Platforms",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-gpt",
+      "term": "GPT",
+      "pronunciation": "/ˌdʒiː piː ˈtiː/",
+      "definition": "The Transformer architecture and model family from OpenAI. Pre-trained on massive text data, GPT models (GPT-3, GPT-4, GPT-4o) can generate fluent text, answer questions, write code, and more.",
+      "category": "ai_basics",
+      "taaft_category": "Language Models and NLP",
+      "type": "abbreviation",
+      "full_form": "Generative Pre-trained Transformer"
+    },
+    {
+      "id": "taaft-tts",
+      "term": "TTS",
+      "pronunciation": "/ˌtiː tiː ˈes/",
+      "definition": "AI systems that convert written text into natural-sounding spoken audio. Modern TTS models like ElevenLabs can clone voices and produce highly expressive, natural speech in multiple languages and styles.",
+      "category": "tools",
+      "taaft_category": "Generative AI and Multimedia",
+      "type": "abbreviation",
+      "full_form": "Text-to-Speech"
+    },
+    {
+      "id": "taaft-stt",
+      "term": "STT",
+      "pronunciation": "/ˌes tiː ˈtiː/",
+      "definition": "AI systems that transcribe spoken audio into text. OpenAI Whisper is the leading open-source STT model, with near-human accuracy in 100+ languages. Enables voice-to-text workflows for meeting notes and interviews.",
+      "category": "tools",
+      "taaft_category": "Generative AI and Multimedia",
+      "type": "abbreviation",
+      "full_form": "Speech-to-Text"
+    },
+    {
+      "id": "taaft-asr",
+      "term": "ASR",
+      "pronunciation": "/ˌeɪ es ˈɑːr/",
+      "definition": "The technology that converts spoken language into written text. ASR powers voice assistants like Siri and Alexa, meeting transcription tools, and real-time captioning systems.",
+      "category": "ai_basics",
+      "taaft_category": "Natural Language Processing",
+      "type": "abbreviation",
+      "full_form": "Automatic Speech Recognition"
+    },
+    {
+      "id": "taaft-computer-vision",
+      "term": "Computer Vision",
+      "pronunciation": "/kəmˈpjuːtər ˈvɪʒən/",
+      "definition": "A field of AI that enables computers to interpret and understand visual information from images and video. Applications include object detection, face recognition, medical imaging, and autonomous vehicles.",
+      "category": "ai_basics",
+      "taaft_category": "Computer Vision",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-data-drift",
+      "term": "Data Drift",
+      "pronunciation": "/ˈdeɪtə drɪft/",
+      "definition": "A change in the statistical distribution of model inputs over time that degrades model performance. A fraud detection model trained on 2022 data may underperform in 2024 because fraud patterns have changed.",
+      "category": "ai_basics",
+      "taaft_category": "Model Evaluation",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-decision-tree",
+      "term": "Decision Tree",
+      "pronunciation": "/dɪˈsɪʒən triː/",
+      "definition": "An interpretable machine learning model that makes predictions by following a series of if-else rules, forming a tree structure. Easy to visualise and explain — the opposite of a black-box neural network.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-dropout",
+      "term": "Dropout",
+      "pronunciation": "/ˈdrɒpaʊt/",
+      "definition": "A regularisation technique that randomly disables neurons during training to prevent overfitting. Forces the network to learn redundant representations rather than relying on specific neurons.",
+      "category": "ai_basics",
+      "taaft_category": "Deep Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-f1-score",
+      "term": "F1 Score",
+      "pronunciation": "/ef wʌn skɔːr/",
+      "definition": "A metric that balances precision (how often the model is right when it predicts positive) and recall (how often it catches all actual positives). The harmonic mean of both. Commonly used to evaluate classifiers.",
+      "category": "ai_basics",
+      "taaft_category": "Model Evaluation",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-feature",
+      "term": "Feature",
+      "pronunciation": "/ˈfiːtʃər/",
+      "definition": "An individual measurable property or characteristic used as input to a machine learning model. For a house price prediction model, features might include: number of bedrooms, location, square footage.",
+      "category": "ai_basics",
+      "taaft_category": "Machine Learning",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-gpt-4",
+      "term": "GPT-4",
+      "pronunciation": "/ˌdʒiː piː ˈtiː fɔːr/",
+      "definition": "OpenAI's flagship large language model (released 2023). Powers ChatGPT Plus and the API used by thousands of AI products. Multimodal (accepts text and images), with strong reasoning, coding, and language abilities.",
+      "category": "tools",
+      "taaft_category": "AI Companies and Platforms",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-llama",
+      "term": "Llama",
+      "pronunciation": "/ˈlɑːmə/",
+      "definition": "Meta's family of open-weight large language models. Llama 3 is one of the most capable open-source models available, enabling companies to run powerful AI locally without sending data to OpenAI or Anthropic.",
+      "category": "tools",
+      "taaft_category": "AI Companies and Platforms",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-stable-diffusion",
+      "term": "Stable Diffusion",
+      "pronunciation": "/ˈsteɪbəl dɪˈfjuːʒən/",
+      "definition": "An open-source image generation model that uses diffusion to create images from text prompts. Unlike DALL·E, it can be run locally, fine-tuned freely, and is the foundation of many commercial image tools.",
+      "category": "tools",
+      "taaft_category": "AI Companies and Platforms",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-responsible-ai",
+      "term": "Responsible AI",
+      "pronunciation": "/rɪˈspɒnsɪbəl ˌeɪ ˈaɪ/",
+      "definition": "A framework for designing, deploying, and using AI in ways that are ethical, fair, transparent, accountable, and safe. Includes considerations of bias, privacy, explainability, and societal impact.",
+      "category": "ai_basics",
+      "taaft_category": "Ethics & Safety",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-synthetic-data",
+      "term": "Synthetic Data",
+      "pronunciation": "/sɪnˈθetɪk ˈdeɪtə/",
+      "definition": "Artificially generated data that mimics the statistical properties of real data, used to train models when real data is scarce, expensive, or privacy-sensitive. AI companies increasingly use synthetic data to train the next generation of models.",
+      "category": "ai_basics",
+      "taaft_category": "Data Science",
+      "type": "terminology",
+      "full_form": null
+    },
+    {
+      "id": "taaft-watermarking",
+      "term": "Watermarking",
+      "pronunciation": "/ˈwɔːtərˌmɑːrkɪŋ/",
+      "definition": "Embedding hidden signals into AI-generated content to identify its origin. Used to detect AI-generated images and text, helping distinguish machine-made content from human-created work.",
+      "category": "ai_basics",
+      "taaft_category": "Ethics & Safety",
+      "type": "terminology",
+      "full_form": null
+    }
+  ]
+}
