@@ -42,14 +42,6 @@ const navSections = [
       { href: '/risks', label: 'Risks & Limitations' },
     ],
   },
-  {
-    label: 'Keep Improving It',
-    items: [
-      { href: '/templates', label: 'Templates' },
-      { href: '/resources', label: 'Resources' },
-      { href: '/contribute', label: 'Contribute' },
-    ],
-  },
 ]
 
 export default function MobileNavDrawer() {

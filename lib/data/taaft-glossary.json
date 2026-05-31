@@ -201,7 +201,7 @@
       "full_form": null
     },
     {
-      "id": "taaft-ai-act-eu",
+      "id": "taaft-eu",
       "term": "AI Act (EU)",
       "pronunciation": "[eɪ aɪ ækt iː juː]",
       "definition": "Landmark EU legislation establishing a risk-based framework for regulating AI systems.",
@@ -761,14 +761,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-artificial-general-intelligence-agi",
-      "term": "Artificial General Intelligence (AGI)",
+      "id": "taaft-agi",
+      "term": "AGI",
       "pronunciation": "[ɑːtɪˈfɪʃəl ˈdʒɛnərəl ɪnˈtɛlɪdʒəns]",
       "definition": "A hypothetical form of AI that would match or exceed human-level intelligence across virtually all domains.",
       "category": "ai_basics",
       "taaft_category": "AI Fundamentals",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Artificial General Intelligence"
     },
     {
       "id": "taaft-artificial-intelligence",
@@ -921,14 +921,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-automatic-speech-recognition-asr",
-      "term": "Automatic Speech Recognition (ASR)",
+      "id": "taaft-asr",
+      "term": "ASR",
       "pronunciation": "[ɔːtəˈmætɪk spiːtʃ ˌrɛkəɡˈnɪʃən]",
       "definition": "System that automatically converts spoken language into text without human intervention.",
       "category": "ai_basics",
       "taaft_category": "Artificial Intelligence",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Automatic Speech Recognition"
     },
     {
       "id": "taaft-automation",
@@ -1151,14 +1151,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-byte-pair-encoding-bpe",
-      "term": "Byte-Pair Encoding (BPE)",
+      "id": "taaft-bpe",
+      "term": "BPE",
       "pronunciation": "[baɪt peə ɛnˈkoʊdɪŋ]",
       "definition": "A data compression algorithm that iteratively merges the most frequent pairs of bytes or characters into single tokens.",
       "category": "ai_basics",
       "taaft_category": "Artificial Intelligence",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Byte-Pair Encoding"
     },
     {
       "id": "taaft-caffe",
@@ -1191,14 +1191,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-california-consumer-privacy-act-ccpa",
-      "term": "California Consumer Privacy Act (CCPA)",
+      "id": "taaft-ccpa",
+      "term": "CCPA",
       "pronunciation": "[ˌkælɪˈfɔrnjə kənˈsumər ˈpraɪvəsi ækt]",
       "definition": "California state law that enhances privacy rights and consumer protection for residents.",
       "category": "ai_basics",
       "taaft_category": "Artificial Intelligence",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "California Consumer Privacy Act"
     },
     {
       "id": "taaft-canary-deployment",
@@ -2281,14 +2281,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-direct-preference-optimization-dpo",
-      "term": "Direct Preference Optimization (DPO)",
+      "id": "taaft-dpo",
+      "term": "DPO",
       "pronunciation": "[dɪˈrɛkt ˈprɛfərəns ˌɒptɪmaɪˈzeɪʃən di pi oʊ]",
       "definition": "A technique aligning LLMs with human preferences directly using preference data, often simpler than RLHF.",
       "category": "ai_basics",
       "taaft_category": "Language Models and Natural Language Processing",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Direct Preference Optimization"
     },
     {
       "id": "taaft-discourse-analysis",
@@ -2691,14 +2691,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-explainable-ai-xai",
-      "term": "Explainable AI (XAI)",
+      "id": "taaft-xai",
+      "term": "XAI",
       "pronunciation": "[ɪkˈspleɪnəbəl eɪ aɪ]",
       "definition": "AI systems designed to make their decisions transparent and interpretable to humans.",
       "category": "ai_basics",
       "taaft_category": "Ethics & Safety",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Explainable AI"
     },
     {
       "id": "taaft-exploration-vs-exploitation",
@@ -3021,14 +3021,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-general-data-protection-regulation-gdpr",
-      "term": "General Data Protection Regulation (GDPR)",
+      "id": "taaft-gdpr",
+      "term": "GDPR",
       "pronunciation": "[ˈdʒɛnərəl ˈdeɪtə prəˈtɛkʃən ˌrɛgjuˈleɪʃən]",
       "definition": "A comprehensive EU law that protects personal data privacy and gives individuals control over their data processing.",
       "category": "ai_basics",
       "taaft_category": "Ethics & Safety",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "General Data Protection Regulation"
     },
     {
       "id": "taaft-generative-adversarial-networks",
@@ -3981,14 +3981,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-lora-low-rank-adaptation",
-      "term": "LoRA (Low-Rank Adaptation)",
+      "id": "taaft-lora",
+      "term": "LoRA",
       "pronunciation": "[ˈlɔːrə loʊ ræŋk ædæpˈteɪʃən]",
       "definition": "A parameter-efficient fine-tuning (PEFT) technique freezing base model weights and training injected low-rank matrices.",
       "category": "ai_basics",
       "taaft_category": "Language Models and Natural Language Processing",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Low-Rank Adaptation"
     },
     {
       "id": "taaft-machine-consciousness",
@@ -4261,14 +4261,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-model-context-protocol-mcp",
-      "term": "Model Context Protocol (MCP)",
+      "id": "taaft-mcp",
+      "term": "MCP",
       "pronunciation": "[ˈmɒdəl ˈkɒntɛkst ˈproʊtəˌkɔl ɛm si pi]",
       "definition": "A standard allowing AI models/agents to discover and use external tools, services, and data sources.",
       "category": "prompting",
       "taaft_category": "User-Facing AI Concepts",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Model Context Protocol"
     },
     {
       "id": "taaft-model-deployment",
@@ -4481,14 +4481,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-natural-language-generation-nlg",
-      "term": "Natural Language Generation (NLG)",
+      "id": "taaft-nlg",
+      "term": "NLG",
       "pronunciation": "[ˈnætʃərəl ˈlæŋgwɪdʒ dʒɛnəˈreɪʃən]",
       "definition": "AI technology that produces human-like written or spoken content from structured data or other inputs.",
       "category": "ai_basics",
       "taaft_category": "Natural Language Processing",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Natural Language Generation"
     },
     {
       "id": "taaft-natural-language-processing",
@@ -4501,14 +4501,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-natural-language-processing-nlp",
-      "term": "Natural Language Processing (NLP)",
+      "id": "taaft-nlp",
+      "term": "NLP",
       "pronunciation": "[ˈnætʃɹəl ˈlæŋɡwɪdʒ ˈpɹɑsɛsɪŋ]",
       "definition": "A branch of AI that enables computers to understand, interpret, and generate human language.",
       "category": "ai_basics",
       "taaft_category": "Natural Language Processing",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Natural Language Processing"
     },
     {
       "id": "taaft-natural-language-understanding",
@@ -4561,14 +4561,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-neural-processing-unit-npu",
-      "term": "Neural Processing Unit (NPU)",
+      "id": "taaft-npu",
+      "term": "NPU",
       "pronunciation": "[ˈnʊərəl ˈprɑːsɛsɪŋ ˈjuːnɪt ɛn pi juː]",
       "definition": "Specialized processor optimized for accelerating ML algorithms, especially neural network computations.",
       "category": "ai_basics",
       "taaft_category": "Deep Learning",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Neural Processing Unit"
     },
     {
       "id": "taaft-neuromorphic-computing",
@@ -4771,14 +4771,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-parameter-efficient-fine-tuning-peft",
-      "term": "Parameter-Efficient Fine-Tuning (PEFT)",
+      "id": "taaft-peft",
+      "term": "PEFT",
       "pronunciation": "[pəˈræmɪtər ɪˈfɪʃənt faɪn ˈtuːnɪŋ pi i ɛf ti]",
       "definition": "Techniques (like LoRA, QLoRA) adapting large models with fewer trainable parameters and resources.",
       "category": "ai_basics",
       "taaft_category": "Language Models and Natural Language Processing",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Parameter-Efficient Fine-Tuning"
     },
     {
       "id": "taaft-part-of-speech-tagging",
@@ -5181,8 +5181,8 @@
       "full_form": null
     },
     {
-      "id": "taaft-qlora-quantized-low-rank-adaptation",
-      "term": "QLoRA (Quantized Low-Rank Adaptation)",
+      "id": "taaft-qlora",
+      "term": "QLoRA",
       "pronunciation": "[kjuː ˈlɔːrə ˈkwɒntaɪzd loʊ ræŋk ædæpˈteɪʃən]",
       "definition": "An efficient fine-tuning method combining quantization and LoRA for LLMs, reducing memory/compute needs.",
       "category": "ai_basics",
@@ -5481,14 +5481,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-robotic-operating-system-ros",
-      "term": "Robotic Operating System (ROS)",
+      "id": "taaft-ros",
+      "term": "ROS",
       "pronunciation": "[ˈroʊbɒtɪk ˈɒpəreɪtɪŋ ˈsɪstəm]",
       "definition": "Open-source software framework for robot software development.",
       "category": "ai_basics",
       "taaft_category": "Robotics",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Robotic Operating System"
     },
     {
       "id": "taaft-robotics-transformers",
@@ -5901,14 +5901,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-simultaneous-localization-and-mapping-slam",
-      "term": "Simultaneous Localization and Mapping (SLAM)",
+      "id": "taaft-slam",
+      "term": "SLAM",
       "pronunciation": "[slaːm]",
       "definition": "Technology enabling robots to build maps of unknown environments while tracking their location.",
       "category": "ai_basics",
       "taaft_category": "Robotics",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Simultaneous Localization and Mapping"
     },
     {
       "id": "taaft-smote",
@@ -5941,8 +5941,8 @@
       "full_form": null
     },
     {
-      "id": "taaft-sota-state-of-the-art",
-      "term": "SOTA (State of the Art)",
+      "id": "taaft-sota",
+      "term": "SOTA",
       "pronunciation": "[ˈsoʊtə]",
       "definition": "Refers to the current best-performing method or model in a particular research domain.",
       "category": "ai_basics",
@@ -6431,14 +6431,14 @@
       "full_form": null
     },
     {
-      "id": "taaft-text-to-speech-tts",
-      "term": "Text-to-Speech (TTS)",
+      "id": "taaft-tts",
+      "term": "TTS",
       "pronunciation": "[tɛkst tuː spiːtʃ]",
       "definition": "System that converts written text into natural-sounding spoken words.",
       "category": "ai_basics",
       "taaft_category": "Artificial Intelligence",
-      "type": "terminology",
-      "full_form": null
+      "type": "abbreviation",
+      "full_form": "Text-to-Speech"
     },
     {
       "id": "taaft-text-to-video-generation",
