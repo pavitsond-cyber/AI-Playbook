@@ -85,19 +85,21 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
           className="px-5 pb-5 space-y-4 animate-fade-in"
           style={{ borderTop: '1px solid #e3e8ee', paddingTop: '1rem' }}
         >
-          {term.detailed_explanation && (
+          {/* Full explanation — only shown when it adds content beyond the short def */}
+          {term.detailed_explanation &&
+            term.detailed_explanation.trim() !== term.short_definition?.trim() && (
             <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>
               {term.detailed_explanation}
             </p>
           )}
 
-          {term.layman_explanation && (
+          {/* In plain English — only when genuinely different from definition */}
+          {term.layman_explanation &&
+            term.layman_explanation.trim() !== term.short_definition?.trim() &&
+            term.layman_explanation.trim() !== term.detailed_explanation?.trim() && (
             <div
               className="rounded-xl px-4 py-3.5"
-              style={{
-                background: '#fdf8f0',
-                border: '1px solid rgba(155,104,41,0.15)',
-              }}
+              style={{ background: '#fdf8f0', border: '1px solid rgba(155,104,41,0.15)' }}
             >
               <div className="flex items-center gap-1.5 mb-2">
                 <span style={{ fontSize: '11px' }}>💡</span>
@@ -111,6 +113,25 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
             </div>
           )}
 
+          {/* Real-world example */}
+          {term.example_usage && (
+            <div
+              className="rounded-xl px-4 py-3.5"
+              style={{ background: 'rgba(83,58,253,0.05)', border: '1px solid rgba(83,58,253,0.12)' }}
+            >
+              <div className="flex items-center gap-1.5 mb-2">
+                <BookOpen size={11} style={{ color: '#533afd' }} />
+                <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#533afd' }}>
+                  Real-world example
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>
+                {term.example_usage}
+              </p>
+            </div>
+          )}
+
+          {/* Where you'll see this */}
           {term.where_used && term.where_used.length > 0 && (
             <div>
               <span className="text-[10px] font-semibold uppercase tracking-widest block mb-2" style={{ color: '#64748d' }}>
@@ -120,7 +141,7 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
                 {term.where_used.map((place) => (
                   <span
                     key={place}
-                    className="px-2 py-0.5 rounded-md text-xs"
+                    className="px-2.5 py-1 rounded-lg text-xs"
                     style={{ background: '#f6f9fc', border: '1px solid #e3e8ee', color: '#64748d' }}
                   >
                     {place}
@@ -130,44 +151,21 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
             </div>
           )}
 
-          {term.example_usage && (
-            <div
-              className="rounded-xl px-4 py-3.5"
-              style={{
-                background: 'rgba(83,58,253,0.05)',
-                border: '1px solid rgba(83,58,253,0.12)',
-              }}
-            >
-              <div className="flex items-center gap-1.5 mb-2">
-                <BookOpen size={11} style={{ color: '#533afd' }} />
-                <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#533afd' }}>
-                  Example
-                </span>
-              </div>
-              <p className="text-sm italic leading-relaxed" style={{ color: '#64748d' }}>
-                {term.example_usage}
-              </p>
-            </div>
-          )}
-
+          {/* Related tools */}
           {term.tool_tags.length > 0 && (
             <div>
               <div className="flex items-center gap-1.5 mb-2.5">
                 <Wrench size={11} style={{ color: '#64748d' }} />
                 <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#64748d' }}>
-                  Related Tools
+                  Tools that use this
                 </span>
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {term.tool_tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2.5 py-1 rounded-lg text-xs transition-colors duration-150"
-                    style={{
-                      background: '#f6f9fc',
-                      border: '1px solid #e3e8ee',
-                      color: '#64748d',
-                    }}
+                    className="px-2.5 py-1 rounded-lg text-xs"
+                    style={{ background: '#f0f4ff', border: '1px solid rgba(83,58,253,0.15)', color: '#4434d4' }}
                   >
                     {tag}
                   </span>
@@ -176,6 +174,7 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
             </div>
           )}
 
+          {/* Also known as */}
           {term.aliases.length > 0 && (
             <div>
               <div className="flex items-center gap-1.5 mb-2.5">
@@ -188,11 +187,8 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
                 {term.aliases.map((alias) => (
                   <span
                     key={alias}
-                    className="px-2.5 py-1 rounded-lg text-xs transition-colors duration-150"
-                    style={{
-                      background: '#b9b9f9',
-                      color: '#4434d4',
-                    }}
+                    className="px-2.5 py-1 rounded-lg text-xs"
+                    style={{ background: '#b9b9f9', color: '#4434d4' }}
                   >
                     {alias}
                   </span>
@@ -201,10 +197,11 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
             </div>
           )}
 
+          {/* Quick links to related sections */}
           {term.related_links && term.related_links.length > 0 && (
             <div>
               <span className="text-[10px] font-semibold uppercase tracking-widest block mb-2" style={{ color: '#64748d' }}>
-                Quick links
+                Explore further
               </span>
               <div className="flex flex-wrap gap-2">
                 {term.related_links.map((link) => (
