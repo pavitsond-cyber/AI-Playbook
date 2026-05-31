@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { BookOpen, Zap, Play, Shield, Plus, ArrowRight } from 'lucide-react'
+import { BookOpen, Zap, Play, Shield, ArrowRight } from 'lucide-react'
 
 const bucketCards = [
   {
@@ -36,14 +36,6 @@ const bucketCards = [
     href: '/dos-donts',
     color: '#533afd',
   },
-  {
-    icon: Plus,
-    title: 'Keep Improving It',
-    description: 'Contribute prompts, skills, and workflows. Help the playbook grow.',
-    count: 'Contribute',
-    href: '/contribute',
-    color: '#533afd',
-  },
 ]
 
 const startHereCards = [
@@ -64,9 +56,6 @@ const allSections = [
   { label: "By Team", href: '/by-team' },
   { label: "Do's & Don'ts", href: '/dos-donts' },
   { label: 'Risks & Limitations', href: '/risks' },
-  { label: 'Templates', href: '/templates' },
-  { label: 'Resources', href: '/resources' },
-  { label: 'Contribute', href: '/contribute' },
 ]
 
 export default function HubPage() {
