@@ -1,0 +1,6530 @@
+[
+  {
+    "key": "2026-05",
+    "month": "May",
+    "year": 2026,
+    "count": 38,
+    "entries": [
+      {
+        "date": "2026-05-30",
+        "display_date": "30 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Academic supervisor matching",
+        "tool": "SupervisorMatch"
+      },
+      {
+        "date": "2026-05-29",
+        "display_date": "29 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Digital legacy",
+        "tool": "Aeterna"
+      },
+      {
+        "date": "2026-05-29",
+        "display_date": "29 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Server management",
+        "tool": "RemoteX"
+      },
+      {
+        "date": "2026-05-28",
+        "display_date": "28 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Football coaching",
+        "tool": "Hobbit AI"
+      },
+      {
+        "date": "2026-05-27",
+        "display_date": "27 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Video remixing",
+        "tool": "Vid2vid"
+      },
+      {
+        "date": "2026-05-26",
+        "display_date": "26 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "City to Minecraft map",
+        "tool": "CartoVoxel"
+      },
+      {
+        "date": "2026-05-25",
+        "display_date": "25 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Digital memorials",
+        "tool": "CreateMemorial"
+      },
+      {
+        "date": "2026-05-25",
+        "display_date": "25 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Brand mentions",
+        "tool": "MentionAgent"
+      },
+      {
+        "date": "2026-05-24",
+        "display_date": "24 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Resale advice",
+        "tool": "FlipTip AI"
+      },
+      {
+        "date": "2026-05-23",
+        "display_date": "23 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Asset discovery",
+        "tool": "Thrive Financial"
+      },
+      {
+        "date": "2026-05-20",
+        "display_date": "20 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Resume anonymization",
+        "tool": "Distill.cv"
+      },
+      {
+        "date": "2026-05-19",
+        "display_date": "19 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Travel advice",
+        "tool": "BookYolo"
+      },
+      {
+        "date": "2026-05-18",
+        "display_date": "18 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Brand battles",
+        "tool": "DebaterX"
+      },
+      {
+        "date": "2026-05-18",
+        "display_date": "18 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Official documents Q&A",
+        "tool": "Ask the Record"
+      },
+      {
+        "date": "2026-05-18",
+        "display_date": "18 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Astrocartography charts",
+        "tool": "AstroCarto"
+      },
+      {
+        "date": "2026-05-17",
+        "display_date": "17 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "College counseling",
+        "tool": "Solyo | AI College Counselor"
+      },
+      {
+        "date": "2026-05-17",
+        "display_date": "17 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Aviation studies",
+        "tool": "GroundScholar"
+      },
+      {
+        "date": "2026-05-16",
+        "display_date": "16 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Property tracking",
+        "tool": "NestTrack"
+      },
+      {
+        "date": "2026-05-15",
+        "display_date": "15 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Playable Ads",
+        "tool": "Playable Maker"
+      },
+      {
+        "date": "2026-05-13",
+        "display_date": "13 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Baby images",
+        "tool": "Baby Magic"
+      },
+      {
+        "date": "2026-05-13",
+        "display_date": "13 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Music watermark removal",
+        "tool": "Undetectr"
+      },
+      {
+        "date": "2026-05-12",
+        "display_date": "12 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "3D printing",
+        "tool": "VNTANA"
+      },
+      {
+        "date": "2026-05-12",
+        "display_date": "12 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "RPG storytelling",
+        "tool": "Mythx.AI"
+      },
+      {
+        "date": "2026-05-12",
+        "display_date": "12 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Email audits",
+        "tool": "KlavAudit Pro"
+      },
+      {
+        "date": "2026-05-11",
+        "display_date": "11 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Blog to videos",
+        "tool": "Blog2Video"
+      },
+      {
+        "date": "2026-05-11",
+        "display_date": "11 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Guitar tone matching",
+        "tool": "TonesMatch"
+      },
+      {
+        "date": "2026-05-11",
+        "display_date": "11 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Agent building courses",
+        "tool": "AgentSwarms"
+      },
+      {
+        "date": "2026-05-09",
+        "display_date": "9 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "User manuals",
+        "tool": "PIQAPART"
+      },
+      {
+        "date": "2026-05-07",
+        "display_date": "7 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Passport photos",
+        "tool": "PasWow"
+      },
+      {
+        "date": "2026-05-07",
+        "display_date": "7 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Video to prompt",
+        "tool": "Vid2Prompt"
+      },
+      {
+        "date": "2026-05-06",
+        "display_date": "6 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Product renders",
+        "tool": "RENDERCAD"
+      },
+      {
+        "date": "2026-05-06",
+        "display_date": "6 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Medical image analysis",
+        "tool": "ReadingScan"
+      },
+      {
+        "date": "2026-05-05",
+        "display_date": "5 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Party invitations",
+        "tool": "Party Invitation AI"
+      },
+      {
+        "date": "2026-05-05",
+        "display_date": "5 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Congressional trading",
+        "tool": "Kapitol.ai"
+      },
+      {
+        "date": "2026-05-04",
+        "display_date": "4 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Real estate videos",
+        "tool": "Reel Estate"
+      },
+      {
+        "date": "2026-05-03",
+        "display_date": "3 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Website schemas",
+        "tool": "SchemaGen"
+      },
+      {
+        "date": "2026-05-02",
+        "display_date": "2 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Stakeholder management",
+        "tool": "Orvo"
+      },
+      {
+        "date": "2026-05-01",
+        "display_date": "1 May 2026",
+        "month": "May",
+        "year": 2026,
+        "capability": "Training videos",
+        "tool": "VideoLearningAI"
+      }
+    ]
+  },
+  {
+    "key": "2026-04",
+    "month": "Apr",
+    "year": 2026,
+    "count": 43,
+    "entries": [
+      {
+        "date": "2026-04-30",
+        "display_date": "30 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Rock identification",
+        "tool": "Crystal Identifier: AI Rock ID"
+      },
+      {
+        "date": "2026-04-30",
+        "display_date": "30 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Object identification",
+        "tool": "Lens AI"
+      },
+      {
+        "date": "2026-04-29",
+        "display_date": "29 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Instagram scraping",
+        "tool": "IG Follower Export Tool - SoLeads.ai"
+      },
+      {
+        "date": "2026-04-29",
+        "display_date": "29 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Agent payments",
+        "tool": "Link Wallet"
+      },
+      {
+        "date": "2026-04-29",
+        "display_date": "29 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Scientific visualization",
+        "tool": "PaperPlot"
+      },
+      {
+        "date": "2026-04-28",
+        "display_date": "28 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Personalized trip planning",
+        "tool": "MOVA Guide"
+      },
+      {
+        "date": "2026-04-27",
+        "display_date": "27 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Website documentation",
+        "tool": "Docsio"
+      },
+      {
+        "date": "2026-04-27",
+        "display_date": "27 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Video thumbnails",
+        "tool": "Thumix AI"
+      },
+      {
+        "date": "2026-04-26",
+        "display_date": "26 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Product appraisal",
+        "tool": "ThriftBrain"
+      },
+      {
+        "date": "2026-04-24",
+        "display_date": "24 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Book illustrations",
+        "tool": "pintame"
+      },
+      {
+        "date": "2026-04-20",
+        "display_date": "20 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Old English translation",
+        "tool": "Old English Translator.app"
+      },
+      {
+        "date": "2026-04-20",
+        "display_date": "20 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "GIF background removal",
+        "tool": "AdWorker | GIF Background Remover"
+      },
+      {
+        "date": "2026-04-20",
+        "display_date": "20 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Life simulation",
+        "tool": "Wiki 2066"
+      },
+      {
+        "date": "2026-04-19",
+        "display_date": "19 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Digital waivers",
+        "tool": "WaiverKit"
+      },
+      {
+        "date": "2026-04-17",
+        "display_date": "17 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Newsletter analysis",
+        "tool": "Newsletrix"
+      },
+      {
+        "date": "2026-04-17",
+        "display_date": "17 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Social intelligence",
+        "tool": "Interhuman AI"
+      },
+      {
+        "date": "2026-04-16",
+        "display_date": "16 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Video Ratings",
+        "tool": "Rate My Clip by ClipFinder"
+      },
+      {
+        "date": "2026-04-16",
+        "display_date": "16 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Amazon data analytics",
+        "tool": "APIClaw"
+      },
+      {
+        "date": "2026-04-16",
+        "display_date": "16 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "AI skills assessment",
+        "tool": "AISA - AI Skills Assessment"
+      },
+      {
+        "date": "2026-04-16",
+        "display_date": "16 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Image seo optimization",
+        "tool": "Metadata Reactor"
+      },
+      {
+        "date": "2026-04-15",
+        "display_date": "15 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Subscription management",
+        "tool": "Suprascribe"
+      },
+      {
+        "date": "2026-04-15",
+        "display_date": "15 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Financial calculations",
+        "tool": "CalcFi"
+      },
+      {
+        "date": "2026-04-15",
+        "display_date": "15 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Personal introspection",
+        "tool": "TheWayIn"
+      },
+      {
+        "date": "2026-04-14",
+        "display_date": "14 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Message optimization",
+        "tool": "pause"
+      },
+      {
+        "date": "2026-04-12",
+        "display_date": "12 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Booklets",
+        "tool": "Booklet AI"
+      },
+      {
+        "date": "2026-04-12",
+        "display_date": "12 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Sports schedule",
+        "tool": "Gridcast Sports Guide"
+      },
+      {
+        "date": "2026-04-11",
+        "display_date": "11 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Architectural visualization",
+        "tool": "Rendershop"
+      },
+      {
+        "date": "2026-04-10",
+        "display_date": "10 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Proposal evaluation",
+        "tool": "Ruthless Evaluator"
+      },
+      {
+        "date": "2026-04-09",
+        "display_date": "9 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Presentation scripts",
+        "tool": "SlideScript"
+      },
+      {
+        "date": "2026-04-09",
+        "display_date": "9 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Blog images",
+        "tool": "PixelPost"
+      },
+      {
+        "date": "2026-04-08",
+        "display_date": "8 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Cybersecurity threat intelligence",
+        "tool": "Cynomi CISO Intelligence"
+      },
+      {
+        "date": "2026-04-08",
+        "display_date": "8 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Meta tags",
+        "tool": "OpenGraph"
+      },
+      {
+        "date": "2026-04-06",
+        "display_date": "6 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Veteran claims assistance",
+        "tool": "claim.vet"
+      },
+      {
+        "date": "2026-04-06",
+        "display_date": "6 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Website widgets",
+        "tool": "Common Ninja"
+      },
+      {
+        "date": "2026-04-06",
+        "display_date": "6 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Bias detection",
+        "tool": "Cognitive Bias Labs"
+      },
+      {
+        "date": "2026-04-05",
+        "display_date": "5 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "E-sports",
+        "tool": "LHM.gg"
+      },
+      {
+        "date": "2026-04-03",
+        "display_date": "3 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Comment analysis",
+        "tool": "Comment2Content"
+      },
+      {
+        "date": "2026-04-03",
+        "display_date": "3 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "MEP",
+        "tool": "Autotag by Bimrock AI"
+      },
+      {
+        "date": "2026-04-01",
+        "display_date": "1 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Self-evaluation",
+        "tool": "BetterSelfCheck"
+      },
+      {
+        "date": "2026-04-01",
+        "display_date": "1 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Ghost mannequins",
+        "tool": "Ghost Mannequin"
+      },
+      {
+        "date": "2026-04-01",
+        "display_date": "1 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Coding assistance",
+        "tool": "Yaw Terminal"
+      },
+      {
+        "date": "2026-04-01",
+        "display_date": "1 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Thangka art",
+        "tool": "Thangka Space"
+      },
+      {
+        "date": "2026-04-01",
+        "display_date": "1 Apr 2026",
+        "month": "Apr",
+        "year": 2026,
+        "capability": "Production planning",
+        "tool": "Zentio"
+      }
+    ]
+  },
+  {
+    "key": "2026-03",
+    "month": "Mar",
+    "year": 2026,
+    "count": 62,
+    "entries": [
+      {
+        "date": "2026-03-31",
+        "display_date": "31 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Software architecture",
+        "tool": "JigsawML"
+      },
+      {
+        "date": "2026-03-31",
+        "display_date": "31 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Local marketing",
+        "tool": "Pluspoint – AI Local Marketing and Review Generation"
+      },
+      {
+        "date": "2026-03-31",
+        "display_date": "31 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "iMessage CRM",
+        "tool": "TextAlley"
+      },
+      {
+        "date": "2026-03-30",
+        "display_date": "30 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Investment management",
+        "tool": "Reuben AI"
+      },
+      {
+        "date": "2026-03-30",
+        "display_date": "30 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Pollen tracking",
+        "tool": "PollenTracker"
+      },
+      {
+        "date": "2026-03-29",
+        "display_date": "29 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Manga",
+        "tool": "Oniichan"
+      },
+      {
+        "date": "2026-03-29",
+        "display_date": "29 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Face swap",
+        "tool": "Swap Me In"
+      },
+      {
+        "date": "2026-03-29",
+        "display_date": "29 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Graphical abstracts",
+        "tool": "GAAbstract"
+      },
+      {
+        "date": "2026-03-29",
+        "display_date": "29 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Worksite inspections",
+        "tool": "Site Protocol AI"
+      },
+      {
+        "date": "2026-03-27",
+        "display_date": "27 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Ticket generation",
+        "tool": "Jitbit"
+      },
+      {
+        "date": "2026-03-26",
+        "display_date": "26 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Thesis defence",
+        "tool": "VivaCoach"
+      },
+      {
+        "date": "2026-03-25",
+        "display_date": "25 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Sign design",
+        "tool": "Sign Customiser"
+      },
+      {
+        "date": "2026-03-24",
+        "display_date": "24 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "EV assistance",
+        "tool": "EVcourse"
+      },
+      {
+        "date": "2026-03-24",
+        "display_date": "24 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Marketing automation",
+        "tool": "VibeCom"
+      },
+      {
+        "date": "2026-03-24",
+        "display_date": "24 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Grant discovery",
+        "tool": "SeeGrant"
+      },
+      {
+        "date": "2026-03-24",
+        "display_date": "24 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Text-to-speech",
+        "tool": "Lightning TTS"
+      },
+      {
+        "date": "2026-03-24",
+        "display_date": "24 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "F&B market research",
+        "tool": "Tastewise"
+      },
+      {
+        "date": "2026-03-23",
+        "display_date": "23 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Link analytics",
+        "tool": "Bitly Assist"
+      },
+      {
+        "date": "2026-03-23",
+        "display_date": "23 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Agent collaboration",
+        "tool": "Band"
+      },
+      {
+        "date": "2026-03-23",
+        "display_date": "23 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Image perspectives",
+        "tool": "Multiple Angles"
+      },
+      {
+        "date": "2026-03-22",
+        "display_date": "22 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Advertising creatives",
+        "tool": "Silo"
+      },
+      {
+        "date": "2026-03-22",
+        "display_date": "22 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Outfit feedback",
+        "tool": "FashionAdvice.ai"
+      },
+      {
+        "date": "2026-03-22",
+        "display_date": "22 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Music visualization",
+        "tool": "MP3 to MP4 AI"
+      },
+      {
+        "date": "2026-03-21",
+        "display_date": "21 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Birth charts",
+        "tool": "Astro Seek"
+      },
+      {
+        "date": "2026-03-20",
+        "display_date": "20 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Sales call assistance",
+        "tool": "Call Prompter"
+      },
+      {
+        "date": "2026-03-20",
+        "display_date": "20 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Crochet patterns",
+        "tool": "Crochets.site"
+      },
+      {
+        "date": "2026-03-20",
+        "display_date": "20 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Bingo cards",
+        "tool": "BingWow"
+      },
+      {
+        "date": "2026-03-20",
+        "display_date": "20 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Data processing",
+        "tool": "DataFlow"
+      },
+      {
+        "date": "2026-03-20",
+        "display_date": "20 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Due diligence assistance",
+        "tool": "Unbiased Ventures"
+      },
+      {
+        "date": "2026-03-20",
+        "display_date": "20 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Trump Translation",
+        "tool": "Trump Speak by Polytranslator"
+      },
+      {
+        "date": "2026-03-20",
+        "display_date": "20 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Sign translation",
+        "tool": "Talksign"
+      },
+      {
+        "date": "2026-03-20",
+        "display_date": "20 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Evidence-based answers",
+        "tool": "Dewey"
+      },
+      {
+        "date": "2026-03-18",
+        "display_date": "18 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Workplace wellness",
+        "tool": "mentalport"
+      },
+      {
+        "date": "2026-03-18",
+        "display_date": "18 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Graffiti images",
+        "tool": "AI Graffiti Generator"
+      },
+      {
+        "date": "2026-03-18",
+        "display_date": "18 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Dating practice",
+        "tool": "DatingX - Practice Virtual Date"
+      },
+      {
+        "date": "2026-03-16",
+        "display_date": "16 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Legal terms explanation",
+        "tool": "Termzy AI"
+      },
+      {
+        "date": "2026-03-16",
+        "display_date": "16 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Mascots",
+        "tool": "MascotVibe"
+      },
+      {
+        "date": "2026-03-13",
+        "display_date": "13 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Visual storytelling",
+        "tool": "C2Story"
+      },
+      {
+        "date": "2026-03-13",
+        "display_date": "13 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Jewelry try-ons",
+        "tool": "AI Jewelry Model"
+      },
+      {
+        "date": "2026-03-12",
+        "display_date": "12 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "TEF preparation",
+        "tool": "Mocko"
+      },
+      {
+        "date": "2026-03-11",
+        "display_date": "11 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Fantasy baseball",
+        "tool": "Oddsmyth"
+      },
+      {
+        "date": "2026-03-11",
+        "display_date": "11 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Remodel bid analysis",
+        "tool": "Remodeler IQ"
+      },
+      {
+        "date": "2026-03-10",
+        "display_date": "10 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Api cost reduction",
+        "tool": "Lexi"
+      },
+      {
+        "date": "2026-03-10",
+        "display_date": "10 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Video text removal",
+        "tool": "Video Text Remover"
+      },
+      {
+        "date": "2026-03-09",
+        "display_date": "9 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Mortgage advice",
+        "tool": "MyRateAdvisor.ai"
+      },
+      {
+        "date": "2026-03-09",
+        "display_date": "9 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Accounting automation",
+        "tool": "Arvexi"
+      },
+      {
+        "date": "2026-03-08",
+        "display_date": "8 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Keyword clustering",
+        "tool": "SEOcluster.ai"
+      },
+      {
+        "date": "2026-03-06",
+        "display_date": "6 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Review posts",
+        "tool": "Shoutjar"
+      },
+      {
+        "date": "2026-03-06",
+        "display_date": "6 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "UCAS feedback",
+        "tool": "Statementory - UCAS Personal Statement Checker"
+      },
+      {
+        "date": "2026-03-06",
+        "display_date": "6 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Body count",
+        "tool": "Check Her Bodycount"
+      },
+      {
+        "date": "2026-03-06",
+        "display_date": "6 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "AI skills",
+        "tool": "SkillRaptor"
+      },
+      {
+        "date": "2026-03-06",
+        "display_date": "6 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "ASCII art",
+        "tool": "ASCII Art Converter"
+      },
+      {
+        "date": "2026-03-05",
+        "display_date": "5 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "App assistant",
+        "tool": "Pillar | App Copilot"
+      },
+      {
+        "date": "2026-03-05",
+        "display_date": "5 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Funny postcards",
+        "tool": "SLOPDROP.NET"
+      },
+      {
+        "date": "2026-03-04",
+        "display_date": "4 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Influencer vetting",
+        "tool": "PlutoBa"
+      },
+      {
+        "date": "2026-03-04",
+        "display_date": "4 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Business scheduling",
+        "tool": "Pencil'd"
+      },
+      {
+        "date": "2026-03-04",
+        "display_date": "4 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "AI replacement risk",
+        "tool": "ReplaceMe"
+      },
+      {
+        "date": "2026-03-02",
+        "display_date": "2 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Boat ticket booking",
+        "tool": "Thailand Boat Tickets"
+      },
+      {
+        "date": "2026-03-02",
+        "display_date": "2 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Clinical documentation",
+        "tool": "ClinFolio"
+      },
+      {
+        "date": "2026-03-02",
+        "display_date": "2 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Basketball training",
+        "tool": "BounceBunny"
+      },
+      {
+        "date": "2026-03-01",
+        "display_date": "1 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Pet videos",
+        "tool": "Pet.Video"
+      },
+      {
+        "date": "2026-03-01",
+        "display_date": "1 Mar 2026",
+        "month": "Mar",
+        "year": 2026,
+        "capability": "Privacy risk assessment",
+        "tool": "Serus"
+      }
+    ]
+  },
+  {
+    "key": "2026-02",
+    "month": "Feb",
+    "year": 2026,
+    "count": 40,
+    "entries": [
+      {
+        "date": "2026-02-28",
+        "display_date": "28 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "World creation",
+        "tool": "Chronostates"
+      },
+      {
+        "date": "2026-02-28",
+        "display_date": "28 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Website redesign",
+        "tool": "Rewebly"
+      },
+      {
+        "date": "2026-02-27",
+        "display_date": "27 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Wall art",
+        "tool": "Wallnora"
+      },
+      {
+        "date": "2026-02-26",
+        "display_date": "26 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Medical report analysis",
+        "tool": "Radily"
+      },
+      {
+        "date": "2026-02-25",
+        "display_date": "25 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "AI recommendations",
+        "tool": "Genezio"
+      },
+      {
+        "date": "2026-02-24",
+        "display_date": "24 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Recipe modification",
+        "tool": "RecipeFix"
+      },
+      {
+        "date": "2026-02-24",
+        "display_date": "24 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Cybersecurity risk assessment",
+        "tool": "Astelia"
+      },
+      {
+        "date": "2026-02-22",
+        "display_date": "22 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Screenwriting",
+        "tool": "Short Film Script Doctor"
+      },
+      {
+        "date": "2026-02-22",
+        "display_date": "22 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Conversation practice",
+        "tool": "MockWise"
+      },
+      {
+        "date": "2026-02-21",
+        "display_date": "21 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Manga colorization",
+        "tool": "Watashi Colorizer"
+      },
+      {
+        "date": "2026-02-21",
+        "display_date": "21 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Brand protection",
+        "tool": "Bustem"
+      },
+      {
+        "date": "2026-02-20",
+        "display_date": "20 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Meeting backgrounds",
+        "tool": "Meeting Backgrounds"
+      },
+      {
+        "date": "2026-02-20",
+        "display_date": "20 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Post-visit patient care",
+        "tool": "PostVisit.ai"
+      },
+      {
+        "date": "2026-02-20",
+        "display_date": "20 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Multi-model deliberation",
+        "tool": "LLM Council"
+      },
+      {
+        "date": "2026-02-19",
+        "display_date": "19 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Agent integrity monitoring",
+        "tool": "Mnemom"
+      },
+      {
+        "date": "2026-02-19",
+        "display_date": "19 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Government letters",
+        "tool": "DocuGov.ai"
+      },
+      {
+        "date": "2026-02-19",
+        "display_date": "19 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Employee monitoring",
+        "tool": "ScreenJournal AI"
+      },
+      {
+        "date": "2026-02-19",
+        "display_date": "19 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Epstein research",
+        "tool": "Jemini"
+      },
+      {
+        "date": "2026-02-18",
+        "display_date": "18 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Course creation",
+        "tool": "LearnWorlds"
+      },
+      {
+        "date": "2026-02-16",
+        "display_date": "16 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "AI interviewing",
+        "tool": "Braintrust AIR"
+      },
+      {
+        "date": "2026-02-15",
+        "display_date": "15 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Manga creation",
+        "tool": "MangaMaker"
+      },
+      {
+        "date": "2026-02-15",
+        "display_date": "15 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Drawing guessing game",
+        "tool": "Doodle Duel"
+      },
+      {
+        "date": "2026-02-14",
+        "display_date": "14 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Webinar content repurposing",
+        "tool": "BigMarker Content Studio"
+      },
+      {
+        "date": "2026-02-13",
+        "display_date": "13 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "BPMN diagrams",
+        "tool": "patchley | BPMN AI Generator"
+      },
+      {
+        "date": "2026-02-13",
+        "display_date": "13 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Celebrity videos",
+        "tool": "CelebrityAI"
+      },
+      {
+        "date": "2026-02-12",
+        "display_date": "12 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Content promotion",
+        "tool": "Corippl"
+      },
+      {
+        "date": "2026-02-12",
+        "display_date": "12 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "AI orchestration",
+        "tool": "Warp.dev Oz"
+      },
+      {
+        "date": "2026-02-11",
+        "display_date": "11 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Creative validation",
+        "tool": "Alison | Preflight Plus"
+      },
+      {
+        "date": "2026-02-10",
+        "display_date": "10 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Product classification",
+        "tool": "GingerControl - Classifier"
+      },
+      {
+        "date": "2026-02-10",
+        "display_date": "10 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Security audits",
+        "tool": "AI QA Monkey"
+      },
+      {
+        "date": "2026-02-10",
+        "display_date": "10 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Body fat estimation",
+        "tool": "BodyFatEstimator.ai"
+      },
+      {
+        "date": "2026-02-07",
+        "display_date": "7 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Surfing",
+        "tool": "AI Surf Coach"
+      },
+      {
+        "date": "2026-02-06",
+        "display_date": "6 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Bikini videos",
+        "tool": "Vidflux - Bikini Video Generator"
+      },
+      {
+        "date": "2026-02-04",
+        "display_date": "4 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Gameplay summaries",
+        "tool": "Tabletop Scribe"
+      },
+      {
+        "date": "2026-02-04",
+        "display_date": "4 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Video extension",
+        "tool": "Viyou AI Video Extender"
+      },
+      {
+        "date": "2026-02-03",
+        "display_date": "3 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Vision boards",
+        "tool": "dreamervision.ai"
+      },
+      {
+        "date": "2026-02-03",
+        "display_date": "3 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Scroll animations",
+        "tool": "Scrollsequence"
+      },
+      {
+        "date": "2026-02-03",
+        "display_date": "3 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Animated videos",
+        "tool": "FrameCall"
+      },
+      {
+        "date": "2026-02-02",
+        "display_date": "2 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Process optimization",
+        "tool": "Celonis Process Intelligence Platform"
+      },
+      {
+        "date": "2026-02-02",
+        "display_date": "2 Feb 2026",
+        "month": "Feb",
+        "year": 2026,
+        "capability": "Code permissions",
+        "tool": "Redlight Greenlight for Claude Code"
+      }
+    ]
+  },
+  {
+    "key": "2026-01",
+    "month": "Jan",
+    "year": 2026,
+    "count": 53,
+    "entries": [
+      {
+        "date": "2026-01-31",
+        "display_date": "31 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Music marketing",
+        "tool": "Orphiq"
+      },
+      {
+        "date": "2026-01-31",
+        "display_date": "31 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Agents research archive",
+        "tool": "clawXiv"
+      },
+      {
+        "date": "2026-01-31",
+        "display_date": "31 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Game worlds",
+        "tool": "Robbyant LingBot-World"
+      },
+      {
+        "date": "2026-01-30",
+        "display_date": "30 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Topical maps",
+        "tool": "TopicalMap.ai"
+      },
+      {
+        "date": "2026-01-29",
+        "display_date": "29 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Cloud computing",
+        "tool": "Medjed AI"
+      },
+      {
+        "date": "2026-01-28",
+        "display_date": "28 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Micro-dramas",
+        "tool": "ShotRio"
+      },
+      {
+        "date": "2026-01-28",
+        "display_date": "28 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Agent networking",
+        "tool": "Moltbook"
+      },
+      {
+        "date": "2026-01-27",
+        "display_date": "27 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Personality assessment",
+        "tool": "The Color Quiz"
+      },
+      {
+        "date": "2026-01-27",
+        "display_date": "27 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Youtube thumbnail optimization",
+        "tool": "BerryViral"
+      },
+      {
+        "date": "2026-01-27",
+        "display_date": "27 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Triathlon training",
+        "tool": "Transition"
+      },
+      {
+        "date": "2026-01-27",
+        "display_date": "27 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Realtime image editing",
+        "tool": "Krea AI Realtime"
+      },
+      {
+        "date": "2026-01-26",
+        "display_date": "26 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Halal verification",
+        "tool": "Tayib"
+      },
+      {
+        "date": "2026-01-26",
+        "display_date": "26 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Family photos",
+        "tool": "PixReunion - AI Family Photo Studio"
+      },
+      {
+        "date": "2026-01-26",
+        "display_date": "26 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Anime videos",
+        "tool": "Nereo AI Anime Shorts"
+      },
+      {
+        "date": "2026-01-25",
+        "display_date": "25 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Solar site analysis",
+        "tool": "SolarScope"
+      },
+      {
+        "date": "2026-01-25",
+        "display_date": "25 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Photo styling",
+        "tool": "Mujo AI Photoshoot"
+      },
+      {
+        "date": "2026-01-25",
+        "display_date": "25 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Financial modeling",
+        "tool": "ProFormaGen"
+      },
+      {
+        "date": "2026-01-24",
+        "display_date": "24 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Collaborative design",
+        "tool": "Pencil"
+      },
+      {
+        "date": "2026-01-23",
+        "display_date": "23 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Price monitoring",
+        "tool": "DiffScout"
+      },
+      {
+        "date": "2026-01-23",
+        "display_date": "23 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Children's book illustrations",
+        "tool": "KidBooks.pics - Kids Book Image Generator"
+      },
+      {
+        "date": "2026-01-23",
+        "display_date": "23 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Vehicle diagnosis",
+        "tool": "DIAGLO"
+      },
+      {
+        "date": "2026-01-22",
+        "display_date": "22 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Sports data analysis",
+        "tool": "SportBot AI"
+      },
+      {
+        "date": "2026-01-22",
+        "display_date": "22 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Appointments",
+        "tool": "TalkWiz.ai"
+      },
+      {
+        "date": "2026-01-22",
+        "display_date": "22 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Social media planning",
+        "tool": "Kontentino"
+      },
+      {
+        "date": "2026-01-21",
+        "display_date": "21 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Architecture",
+        "tool": "Vaethat - AI Render Enhancer for Architecture Renders"
+      },
+      {
+        "date": "2026-01-21",
+        "display_date": "21 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Prompt challenges",
+        "tool": "The Prompt Challenge"
+      },
+      {
+        "date": "2026-01-20",
+        "display_date": "20 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "AI lessons",
+        "tool": "Sorai Academy"
+      },
+      {
+        "date": "2026-01-20",
+        "display_date": "20 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Cricket coaching",
+        "tool": "Crickzy"
+      },
+      {
+        "date": "2026-01-17",
+        "display_date": "17 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Gaming highlights",
+        "tool": "FragCut"
+      },
+      {
+        "date": "2026-01-15",
+        "display_date": "15 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Programmatic videos",
+        "tool": "Remotion"
+      },
+      {
+        "date": "2026-01-14",
+        "display_date": "14 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Business proposals",
+        "tool": "Velocibid"
+      },
+      {
+        "date": "2026-01-13",
+        "display_date": "13 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Order automation",
+        "tool": "Hyperfox"
+      },
+      {
+        "date": "2026-01-13",
+        "display_date": "13 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Email verification",
+        "tool": "BillionVerify"
+      },
+      {
+        "date": "2026-01-13",
+        "display_date": "13 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Life management",
+        "tool": "PlanWiseNow"
+      },
+      {
+        "date": "2026-01-12",
+        "display_date": "12 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Decision support",
+        "tool": "Crucible AI Braintrust - Decision Intelligence Platform"
+      },
+      {
+        "date": "2026-01-12",
+        "display_date": "12 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "LLM gateway",
+        "tool": "Bizgraph"
+      },
+      {
+        "date": "2026-01-12",
+        "display_date": "12 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Square face icons",
+        "tool": "Square Face Icon Generator"
+      },
+      {
+        "date": "2026-01-12",
+        "display_date": "12 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Computer science",
+        "tool": "LEGO Education Computer Science & AI"
+      },
+      {
+        "date": "2026-01-12",
+        "display_date": "12 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Social networking",
+        "tool": "Nubix Social Network"
+      },
+      {
+        "date": "2026-01-12",
+        "display_date": "12 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Paper animation",
+        "tool": "Paper Animator"
+      },
+      {
+        "date": "2026-01-10",
+        "display_date": "10 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Meeting analysis",
+        "tool": "Echother"
+      },
+      {
+        "date": "2026-01-08",
+        "display_date": "8 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Video to code",
+        "tool": "Replay"
+      },
+      {
+        "date": "2026-01-08",
+        "display_date": "8 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Kids recipes",
+        "tool": "BabyMealBot"
+      },
+      {
+        "date": "2026-01-08",
+        "display_date": "8 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Content insights",
+        "tool": "CoreWise.video"
+      },
+      {
+        "date": "2026-01-08",
+        "display_date": "8 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Claude Code calls",
+        "tool": "call-me by ZeframLou"
+      },
+      {
+        "date": "2026-01-08",
+        "display_date": "8 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "YouTube content analysis",
+        "tool": "TubeYakker"
+      },
+      {
+        "date": "2026-01-06",
+        "display_date": "6 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "SEO analysis",
+        "tool": "Beacon AI"
+      },
+      {
+        "date": "2026-01-04",
+        "display_date": "4 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Reminders",
+        "tool": "Please Remind"
+      },
+      {
+        "date": "2026-01-04",
+        "display_date": "4 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Product personalization",
+        "tool": "Personyze"
+      },
+      {
+        "date": "2026-01-03",
+        "display_date": "3 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Birthday invitations",
+        "tool": "Birthday Invitation AI"
+      },
+      {
+        "date": "2026-01-02",
+        "display_date": "2 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Terms of service analysis",
+        "tool": "TermOver AI"
+      },
+      {
+        "date": "2026-01-01",
+        "display_date": "1 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Line art",
+        "tool": "AI Line Art"
+      },
+      {
+        "date": "2026-01-01",
+        "display_date": "1 Jan 2026",
+        "month": "Jan",
+        "year": 2026,
+        "capability": "Context engineering",
+        "tool": "iGPT"
+      }
+    ]
+  },
+  {
+    "key": "2025-12",
+    "month": "Dec",
+    "year": 2025,
+    "count": 40,
+    "entries": [
+      {
+        "date": "2025-12-31",
+        "display_date": "31 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Birthday songs",
+        "tool": "Birthday Song Maker"
+      },
+      {
+        "date": "2025-12-30",
+        "display_date": "30 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Coworking recommendations",
+        "tool": "LANS"
+      },
+      {
+        "date": "2025-12-29",
+        "display_date": "29 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "BPMN",
+        "tool": "BPMNify"
+      },
+      {
+        "date": "2025-12-29",
+        "display_date": "29 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "New Years resolutions",
+        "tool": "Resolution Builder"
+      },
+      {
+        "date": "2025-12-29",
+        "display_date": "29 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Hotel deals",
+        "tool": "AI Hotel Price Checker - BusinessHotels.com"
+      },
+      {
+        "date": "2025-12-28",
+        "display_date": "28 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Moire removal",
+        "tool": "RemoveMoire.com"
+      },
+      {
+        "date": "2025-12-26",
+        "display_date": "26 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Fantasy maps",
+        "tool": "TT-RPG AI Battle Map Generator"
+      },
+      {
+        "date": "2025-12-25",
+        "display_date": "25 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Pet portraits",
+        "tool": "Pet2AI"
+      },
+      {
+        "date": "2025-12-24",
+        "display_date": "24 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Viral video analysis",
+        "tool": "Virlo"
+      },
+      {
+        "date": "2025-12-24",
+        "display_date": "24 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Test management",
+        "tool": "Test Management by Testsigma | Test Faster with AI"
+      },
+      {
+        "date": "2025-12-24",
+        "display_date": "24 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Artwork analysis",
+        "tool": "ArtScan - Painting Recognition"
+      },
+      {
+        "date": "2025-12-24",
+        "display_date": "24 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Content creation",
+        "tool": "YouMind"
+      },
+      {
+        "date": "2025-12-23",
+        "display_date": "23 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Video hook rating",
+        "tool": "Marketeze"
+      },
+      {
+        "date": "2025-12-23",
+        "display_date": "23 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "File conversion",
+        "tool": "AI Convert Hub"
+      },
+      {
+        "date": "2025-12-22",
+        "display_date": "22 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Startup fundraising",
+        "tool": "Gordon"
+      },
+      {
+        "date": "2025-12-21",
+        "display_date": "21 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Logo animation",
+        "tool": "Logo Animation App"
+      },
+      {
+        "date": "2025-12-21",
+        "display_date": "21 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Ski coaching",
+        "tool": "SkiCoach"
+      },
+      {
+        "date": "2025-12-21",
+        "display_date": "21 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Trading strategies",
+        "tool": "TradeOS AI"
+      },
+      {
+        "date": "2025-12-20",
+        "display_date": "20 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "LLM behavior analysis",
+        "tool": "Bloom by Safety Research"
+      },
+      {
+        "date": "2025-12-18",
+        "display_date": "18 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Face shape recognition",
+        "tool": "AI Face Shape Detector"
+      },
+      {
+        "date": "2025-12-17",
+        "display_date": "17 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Elf images",
+        "tool": "Elf on the Shelf Generator"
+      },
+      {
+        "date": "2025-12-16",
+        "display_date": "16 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Open graph images",
+        "tool": "OG Herro"
+      },
+      {
+        "date": "2025-12-15",
+        "display_date": "15 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Video blurring",
+        "tool": "AVCLabs Video Blur AI"
+      },
+      {
+        "date": "2025-12-14",
+        "display_date": "14 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Eating coaching",
+        "tool": "Crave-Guide.Ai"
+      },
+      {
+        "date": "2025-12-14",
+        "display_date": "14 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Vision testing",
+        "tool": "Visual Field Test"
+      },
+      {
+        "date": "2025-12-12",
+        "display_date": "12 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Onboarding emails",
+        "tool": "HappyPanda"
+      },
+      {
+        "date": "2025-12-12",
+        "display_date": "12 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Price tracking",
+        "tool": "Size the Market"
+      },
+      {
+        "date": "2025-12-10",
+        "display_date": "10 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Virtual shoppers",
+        "tool": "Shopify SimGym"
+      },
+      {
+        "date": "2025-12-10",
+        "display_date": "10 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "People search",
+        "tool": "Surfface AI"
+      },
+      {
+        "date": "2025-12-10",
+        "display_date": "10 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Linkedin profile optimization",
+        "tool": "LinkedIn Profile Analyzer"
+      },
+      {
+        "date": "2025-12-10",
+        "display_date": "10 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Video dating",
+        "tool": "Meet Zero"
+      },
+      {
+        "date": "2025-12-08",
+        "display_date": "8 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Invitations",
+        "tool": "Greetings Island | AI Invitation Generator"
+      },
+      {
+        "date": "2025-12-07",
+        "display_date": "7 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Baby videos",
+        "tool": "BabyVideo AI"
+      },
+      {
+        "date": "2025-12-07",
+        "display_date": "7 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Video to PPT",
+        "tool": "Video2PPT"
+      },
+      {
+        "date": "2025-12-05",
+        "display_date": "5 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Browser automation",
+        "tool": "AIPex AI Browser Automation Assistant"
+      },
+      {
+        "date": "2025-12-03",
+        "display_date": "3 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Kitchen design",
+        "tool": "AI Kitchen Design"
+      },
+      {
+        "date": "2025-12-03",
+        "display_date": "3 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Feng Shui",
+        "tool": "Feng Shui Bedroom AI"
+      },
+      {
+        "date": "2025-12-02",
+        "display_date": "2 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Palm reading",
+        "tool": "Palm Reading.app"
+      },
+      {
+        "date": "2025-12-02",
+        "display_date": "2 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Password management",
+        "tool": "The Password App"
+      },
+      {
+        "date": "2025-12-02",
+        "display_date": "2 Dec 2025",
+        "month": "Dec",
+        "year": 2025,
+        "capability": "Christmas images",
+        "tool": "PiXmas"
+      }
+    ]
+  },
+  {
+    "key": "2025-11",
+    "month": "Nov",
+    "year": 2025,
+    "count": 29,
+    "entries": [
+      {
+        "date": "2025-11-30",
+        "display_date": "30 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "YouTube Optimization",
+        "tool": "OverseerOS"
+      },
+      {
+        "date": "2025-11-29",
+        "display_date": "29 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Image text translation",
+        "tool": "Free Image Translate"
+      },
+      {
+        "date": "2025-11-29",
+        "display_date": "29 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Outdoor lighting",
+        "tool": "AILightDesign"
+      },
+      {
+        "date": "2025-11-29",
+        "display_date": "29 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Artistic poses",
+        "tool": "ArtPose"
+      },
+      {
+        "date": "2025-11-27",
+        "display_date": "27 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "DET preparation",
+        "tool": "DETPractice"
+      },
+      {
+        "date": "2025-11-27",
+        "display_date": "27 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Dj assistance",
+        "tool": "Offtrack - AI DJ App"
+      },
+      {
+        "date": "2025-11-27",
+        "display_date": "27 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Voice commands",
+        "tool": "GoatRemote"
+      },
+      {
+        "date": "2025-11-26",
+        "display_date": "26 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Jewelry recommendations",
+        "tool": "Lovely Rita's Jewelry Advisor"
+      },
+      {
+        "date": "2025-11-24",
+        "display_date": "24 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Lesson generation",
+        "tool": "Grain AI"
+      },
+      {
+        "date": "2025-11-23",
+        "display_date": "23 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Employee handbooks",
+        "tool": "HandbookHub AI"
+      },
+      {
+        "date": "2025-11-23",
+        "display_date": "23 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Tooth Fairy videos",
+        "tool": "Kiki The Tooth Fairy Tracker"
+      },
+      {
+        "date": "2025-11-22",
+        "display_date": "22 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Hybrid animals",
+        "tool": "AI Animal Generator"
+      },
+      {
+        "date": "2025-11-21",
+        "display_date": "21 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "PDF to audio",
+        "tool": "PDF2MP3"
+      },
+      {
+        "date": "2025-11-20",
+        "display_date": "20 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "WhatsApp translation",
+        "tool": "WhatsApp Translate"
+      },
+      {
+        "date": "2025-11-19",
+        "display_date": "19 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Kirkification",
+        "tool": "Kirkify AI"
+      },
+      {
+        "date": "2025-11-18",
+        "display_date": "18 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Furniture design",
+        "tool": "daisy | Stitchify"
+      },
+      {
+        "date": "2025-11-18",
+        "display_date": "18 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Tech stack advice",
+        "tool": "CapGaps - Slash Your Tech Stack Costs by 40-50%"
+      },
+      {
+        "date": "2025-11-18",
+        "display_date": "18 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Instagram",
+        "tool": "Sidewalk Social"
+      },
+      {
+        "date": "2025-11-17",
+        "display_date": "17 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Startup evaluation",
+        "tool": "Athanor Market"
+      },
+      {
+        "date": "2025-11-17",
+        "display_date": "17 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Text removal",
+        "tool": "Remove Text From Image"
+      },
+      {
+        "date": "2025-11-15",
+        "display_date": "15 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Pinterest marketing",
+        "tool": "KeywordToPin"
+      },
+      {
+        "date": "2025-11-10",
+        "display_date": "10 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Movies",
+        "tool": "Rusheslab"
+      },
+      {
+        "date": "2025-11-10",
+        "display_date": "10 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Partnership management",
+        "tool": "PartnerStack AI"
+      },
+      {
+        "date": "2025-11-09",
+        "display_date": "9 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Feedback analysis",
+        "tool": "WinFeedback"
+      },
+      {
+        "date": "2025-11-09",
+        "display_date": "9 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Comic scripts",
+        "tool": "AI Script Generator"
+      },
+      {
+        "date": "2025-11-08",
+        "display_date": "8 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Movie posters",
+        "tool": "daisy | Posterfy"
+      },
+      {
+        "date": "2025-11-07",
+        "display_date": "7 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Business cards",
+        "tool": "HiHup - Create your Digital Business Cards"
+      },
+      {
+        "date": "2025-11-05",
+        "display_date": "5 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Party planning",
+        "tool": "PartyPilotAI"
+      },
+      {
+        "date": "2025-11-02",
+        "display_date": "2 Nov 2025",
+        "month": "Nov",
+        "year": 2025,
+        "capability": "Speaker matching",
+        "tool": "SpeakUp"
+      }
+    ]
+  },
+  {
+    "key": "2025-10",
+    "month": "Oct",
+    "year": 2025,
+    "count": 35,
+    "entries": [
+      {
+        "date": "2025-10-31",
+        "display_date": "31 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "IT financial management",
+        "tool": "Serviceware ITFM Software"
+      },
+      {
+        "date": "2025-10-31",
+        "display_date": "31 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Rap lyrics",
+        "tool": "AI Rap Generator"
+      },
+      {
+        "date": "2025-10-30",
+        "display_date": "30 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "RPG games",
+        "tool": "Fables.gg"
+      },
+      {
+        "date": "2025-10-29",
+        "display_date": "29 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Event wishes",
+        "tool": "Greetings Island - Event wishes"
+      },
+      {
+        "date": "2025-10-28",
+        "display_date": "28 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Documentation",
+        "tool": "Docuit"
+      },
+      {
+        "date": "2025-10-28",
+        "display_date": "28 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Film ideas",
+        "tool": "Filmpitch"
+      },
+      {
+        "date": "2025-10-27",
+        "display_date": "27 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Ad search",
+        "tool": "Pipiads"
+      },
+      {
+        "date": "2025-10-26",
+        "display_date": "26 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Text extraction",
+        "tool": "Deep OCR"
+      },
+      {
+        "date": "2025-10-25",
+        "display_date": "25 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Couple images",
+        "tool": "Couple Prompt"
+      },
+      {
+        "date": "2025-10-25",
+        "display_date": "25 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Financial document analysis",
+        "tool": "Richys"
+      },
+      {
+        "date": "2025-10-25",
+        "display_date": "25 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Trading cards grading",
+        "tool": "TCGrader"
+      },
+      {
+        "date": "2025-10-23",
+        "display_date": "23 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "AI Workspace",
+        "tool": "Liminary"
+      },
+      {
+        "date": "2025-10-23",
+        "display_date": "23 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Halloween images",
+        "tool": "Halloween AI Filters by Media.io"
+      },
+      {
+        "date": "2025-10-23",
+        "display_date": "23 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Rent late fee calculation",
+        "tool": "RentLateFee.com"
+      },
+      {
+        "date": "2025-10-23",
+        "display_date": "23 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Shadow removal",
+        "tool": "Remove Shadow From Photo"
+      },
+      {
+        "date": "2025-10-23",
+        "display_date": "23 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Video background removal",
+        "tool": "Unscreen Pro"
+      },
+      {
+        "date": "2025-10-22",
+        "display_date": "22 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Audio lessons",
+        "tool": "VoiceBrief"
+      },
+      {
+        "date": "2025-10-20",
+        "display_date": "20 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Citation verification",
+        "tool": "CiteTrue"
+      },
+      {
+        "date": "2025-10-18",
+        "display_date": "18 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Survey Analysis",
+        "tool": "BTInsights"
+      },
+      {
+        "date": "2025-10-17",
+        "display_date": "17 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Text visualization",
+        "tool": "Text2Visual.com"
+      },
+      {
+        "date": "2025-10-16",
+        "display_date": "16 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Image expansion",
+        "tool": "Image Extender by Picsman"
+      },
+      {
+        "date": "2025-10-16",
+        "display_date": "16 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Morning briefings",
+        "tool": "DayStart AI"
+      },
+      {
+        "date": "2025-10-15",
+        "display_date": "15 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Databases",
+        "tool": "Stackby AI"
+      },
+      {
+        "date": "2025-10-14",
+        "display_date": "14 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Birthday planning",
+        "tool": "PleaseRSVP AI"
+      },
+      {
+        "date": "2025-10-13",
+        "display_date": "13 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Video compression",
+        "tool": "Video Compress AI"
+      },
+      {
+        "date": "2025-10-12",
+        "display_date": "12 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Tattoo cover-ups",
+        "tool": "TattooCoverUp.AI"
+      },
+      {
+        "date": "2025-10-09",
+        "display_date": "9 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Software recommendations",
+        "tool": "Tecmate"
+      },
+      {
+        "date": "2025-10-08",
+        "display_date": "8 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Action figures",
+        "tool": "RegiAI | Action Figure Generator"
+      },
+      {
+        "date": "2025-10-08",
+        "display_date": "8 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Aerial security",
+        "tool": "Guardian Security Drone | Asylon Robotics"
+      },
+      {
+        "date": "2025-10-08",
+        "display_date": "8 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Crypto fortune",
+        "tool": "Crypto Portfolio Horoscope"
+      },
+      {
+        "date": "2025-10-06",
+        "display_date": "6 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Character consistency",
+        "tool": "Neolemon (Consistent Character AI)"
+      },
+      {
+        "date": "2025-10-06",
+        "display_date": "6 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Life sciences",
+        "tool": "Claude for Life Sciences"
+      },
+      {
+        "date": "2025-10-03",
+        "display_date": "3 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Crypto",
+        "tool": "Crypto AI Assistant by ASCN"
+      },
+      {
+        "date": "2025-10-01",
+        "display_date": "1 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Process map optimization",
+        "tool": "Leanify"
+      },
+      {
+        "date": "2025-10-01",
+        "display_date": "1 Oct 2025",
+        "month": "Oct",
+        "year": 2025,
+        "capability": "Webinars",
+        "tool": "Livestorm AI"
+      }
+    ]
+  },
+  {
+    "key": "2025-09",
+    "month": "Sep",
+    "year": 2025,
+    "count": 25,
+    "entries": [
+      {
+        "date": "2025-09-30",
+        "display_date": "30 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Tax compliance",
+        "tool": "Avalara"
+      },
+      {
+        "date": "2025-09-29",
+        "display_date": "29 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Coin identification",
+        "tool": "HeritCoin"
+      },
+      {
+        "date": "2025-09-29",
+        "display_date": "29 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "SaaS management",
+        "tool": "Stackify"
+      },
+      {
+        "date": "2025-09-25",
+        "display_date": "25 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Supplement scanning",
+        "tool": "Amino: Supplement Scanner"
+      },
+      {
+        "date": "2025-09-24",
+        "display_date": "24 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Change management",
+        "tool": "Changify"
+      },
+      {
+        "date": "2025-09-23",
+        "display_date": "23 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Ideas",
+        "tool": "Mixboard"
+      },
+      {
+        "date": "2025-09-21",
+        "display_date": "21 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Startup names",
+        "tool": "StartupNameGenerator"
+      },
+      {
+        "date": "2025-09-20",
+        "display_date": "20 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Floor design",
+        "tool": "FloorDesign.ai"
+      },
+      {
+        "date": "2025-09-20",
+        "display_date": "20 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Floor plans",
+        "tool": "Floor Plan AI"
+      },
+      {
+        "date": "2025-09-18",
+        "display_date": "18 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "math",
+        "tool": "Math.inc |Gauss"
+      },
+      {
+        "date": "2025-09-17",
+        "display_date": "17 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Pdf to calendar",
+        "tool": "PDF to Calendar"
+      },
+      {
+        "date": "2025-09-16",
+        "display_date": "16 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Game sprites",
+        "tool": "God Mode AI"
+      },
+      {
+        "date": "2025-09-13",
+        "display_date": "13 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Outdoor cleaning robots",
+        "tool": "PUDU MT1 Max"
+      },
+      {
+        "date": "2025-09-12",
+        "display_date": "12 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Image to music",
+        "tool": "MusicMaker.im | Image to Music"
+      },
+      {
+        "date": "2025-09-12",
+        "display_date": "12 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Spreadsheet translation",
+        "tool": "AI Excel Translator"
+      },
+      {
+        "date": "2025-09-12",
+        "display_date": "12 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Workplace coaching",
+        "tool": "Docebo"
+      },
+      {
+        "date": "2025-09-10",
+        "display_date": "10 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "I ching readings",
+        "tool": "Ask Yi - I Ching Reading"
+      },
+      {
+        "date": "2025-09-10",
+        "display_date": "10 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Trading advice",
+        "tool": "Magia Trade"
+      },
+      {
+        "date": "2025-09-10",
+        "display_date": "10 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "E-commerce Catalogs",
+        "tool": "Publiq Studio"
+      },
+      {
+        "date": "2025-09-09",
+        "display_date": "9 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Gantt charts",
+        "tool": "Online Gantt"
+      },
+      {
+        "date": "2025-09-08",
+        "display_date": "8 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Strategic advice",
+        "tool": "Elite Strategy Enforcer"
+      },
+      {
+        "date": "2025-09-04",
+        "display_date": "4 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "UI testing",
+        "tool": "TAMI Studio by UI-licious"
+      },
+      {
+        "date": "2025-09-04",
+        "display_date": "4 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Novel translation",
+        "tool": "Novel Translator"
+      },
+      {
+        "date": "2025-09-02",
+        "display_date": "2 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Franchise research",
+        "tool": "Franchise.fyi"
+      },
+      {
+        "date": "2025-09-01",
+        "display_date": "1 Sep 2025",
+        "month": "Sep",
+        "year": 2025,
+        "capability": "Keyword monitoring",
+        "tool": "ThreadRadar"
+      }
+    ]
+  },
+  {
+    "key": "2025-08",
+    "month": "Aug",
+    "year": 2025,
+    "count": 15,
+    "entries": [
+      {
+        "date": "2025-08-26",
+        "display_date": "26 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "Talking baby videos",
+        "tool": "FluxProWeb | AI Talking Baby Generator"
+      },
+      {
+        "date": "2025-08-26",
+        "display_date": "26 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "ASMR videos",
+        "tool": "ASMR AI"
+      },
+      {
+        "date": "2025-08-25",
+        "display_date": "25 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "Uncensored chat",
+        "tool": "HackAIGC"
+      },
+      {
+        "date": "2025-08-19",
+        "display_date": "19 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "Gaming insights",
+        "tool": "Next Level Labs"
+      },
+      {
+        "date": "2025-08-18",
+        "display_date": "18 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "PR campaigns",
+        "tool": "PR.co"
+      },
+      {
+        "date": "2025-08-16",
+        "display_date": "16 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "Negotiation guidance",
+        "tool": "NegoWiz"
+      },
+      {
+        "date": "2025-08-14",
+        "display_date": "14 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "Fonts",
+        "tool": "Refont"
+      },
+      {
+        "date": "2025-08-13",
+        "display_date": "13 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "Mortgage analysis",
+        "tool": "ClosingWTF"
+      },
+      {
+        "date": "2025-08-12",
+        "display_date": "12 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "Etsy market analysis",
+        "tool": "Etshop"
+      },
+      {
+        "date": "2025-08-12",
+        "display_date": "12 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "Hate speech detection",
+        "tool": "Hate Speech Detector"
+      },
+      {
+        "date": "2025-08-10",
+        "display_date": "10 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "Chemistry",
+        "tool": "Socratic Lab"
+      },
+      {
+        "date": "2025-08-07",
+        "display_date": "7 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "LinkedIn translation",
+        "tool": "Ciela AI"
+      },
+      {
+        "date": "2025-08-06",
+        "display_date": "6 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "Concept simplification",
+        "tool": "CleverSchool"
+      },
+      {
+        "date": "2025-08-05",
+        "display_date": "5 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "Compliance management",
+        "tool": "Drata"
+      },
+      {
+        "date": "2025-08-05",
+        "display_date": "5 Aug 2025",
+        "month": "Aug",
+        "year": 2025,
+        "capability": "GRC",
+        "tool": "Drata AI"
+      }
+    ]
+  },
+  {
+    "key": "2025-07",
+    "month": "Jul",
+    "year": 2025,
+    "count": 13,
+    "entries": [
+      {
+        "date": "2025-07-29",
+        "display_date": "29 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "Mathematical proofs",
+        "tool": "Aristotle"
+      },
+      {
+        "date": "2025-07-28",
+        "display_date": "28 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "Game creation",
+        "tool": "GDevelop"
+      },
+      {
+        "date": "2025-07-27",
+        "display_date": "27 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "Montessori activities",
+        "tool": "Montessori Activities at Home"
+      },
+      {
+        "date": "2025-07-27",
+        "display_date": "27 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "Car valuations",
+        "tool": "Specd.ai"
+      },
+      {
+        "date": "2025-07-26",
+        "display_date": "26 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "Link shortening",
+        "tool": "tny.dev"
+      },
+      {
+        "date": "2025-07-23",
+        "display_date": "23 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "Image generation",
+        "tool": "SMMAI: Social Media Templates"
+      },
+      {
+        "date": "2025-07-20",
+        "display_date": "20 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "Tech advice",
+        "tool": "Compatibot"
+      },
+      {
+        "date": "2025-07-16",
+        "display_date": "16 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "UGC analytics",
+        "tool": "viral.app"
+      },
+      {
+        "date": "2025-07-15",
+        "display_date": "15 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "Photorealistic images",
+        "tool": "MagicPhotos"
+      },
+      {
+        "date": "2025-07-12",
+        "display_date": "12 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "Dog training",
+        "tool": "LunaDogAI"
+      },
+      {
+        "date": "2025-07-09",
+        "display_date": "9 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "Excel data analysis",
+        "tool": "RowSpeak"
+      },
+      {
+        "date": "2025-07-08",
+        "display_date": "8 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "Payroll",
+        "tool": "Deel"
+      },
+      {
+        "date": "2025-07-03",
+        "display_date": "3 Jul 2025",
+        "month": "Jul",
+        "year": 2025,
+        "capability": "Digital personas",
+        "tool": "Pantio"
+      }
+    ]
+  },
+  {
+    "key": "2025-06",
+    "month": "Jun",
+    "year": 2025,
+    "count": 16,
+    "entries": [
+      {
+        "date": "2025-06-28",
+        "display_date": "28 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "SME interviews",
+        "tool": "dbrief"
+      },
+      {
+        "date": "2025-06-27",
+        "display_date": "27 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "Dog portraits",
+        "tool": "furLana"
+      },
+      {
+        "date": "2025-06-26",
+        "display_date": "26 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "Crypto advice",
+        "tool": "Token Radar"
+      },
+      {
+        "date": "2025-06-24",
+        "display_date": "24 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "Caricatures",
+        "tool": "Caricature Maker"
+      },
+      {
+        "date": "2025-06-22",
+        "display_date": "22 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "Image to emoji",
+        "tool": "Bylo"
+      },
+      {
+        "date": "2025-06-19",
+        "display_date": "19 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "Character images",
+        "tool": "Facewow"
+      },
+      {
+        "date": "2025-06-19",
+        "display_date": "19 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "Artwork",
+        "tool": "Smart Palette"
+      },
+      {
+        "date": "2025-06-15",
+        "display_date": "15 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "Baseball",
+        "tool": "Precision Baseball Analytics"
+      },
+      {
+        "date": "2025-06-14",
+        "display_date": "14 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "Deepfakes",
+        "tool": "HeyGen AI Deepfake Maker"
+      },
+      {
+        "date": "2025-06-14",
+        "display_date": "14 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "TikTok",
+        "tool": "Trenz"
+      },
+      {
+        "date": "2025-06-13",
+        "display_date": "13 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "School lessons",
+        "tool": "RoboTeach"
+      },
+      {
+        "date": "2025-06-12",
+        "display_date": "12 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "Music videos",
+        "tool": "Plazmapunk"
+      },
+      {
+        "date": "2025-06-10",
+        "display_date": "10 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "City recommendations",
+        "tool": "bestcity.io"
+      },
+      {
+        "date": "2025-06-07",
+        "display_date": "7 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "Band names",
+        "tool": "Band Name Generator"
+      },
+      {
+        "date": "2025-06-03",
+        "display_date": "3 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "Dog training advice",
+        "tool": "Zigzag Puppy Training"
+      },
+      {
+        "date": "2025-06-03",
+        "display_date": "3 Jun 2025",
+        "month": "Jun",
+        "year": 2025,
+        "capability": "Data automation",
+        "tool": "Maia.ai"
+      }
+    ]
+  },
+  {
+    "key": "2025-05",
+    "month": "May",
+    "year": 2025,
+    "count": 16,
+    "entries": [
+      {
+        "date": "2025-05-29",
+        "display_date": "29 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Tinder profile search",
+        "tool": "CheatEye"
+      },
+      {
+        "date": "2025-05-24",
+        "display_date": "24 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Restaurant menus",
+        "tool": "AI Menu Photo"
+      },
+      {
+        "date": "2025-05-24",
+        "display_date": "24 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "AI cost management",
+        "tool": "AICosts.ai"
+      },
+      {
+        "date": "2025-05-23",
+        "display_date": "23 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Amazon data extraction",
+        "tool": "Canopy API"
+      },
+      {
+        "date": "2025-05-23",
+        "display_date": "23 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Dance videos",
+        "tool": "AI Dance Generator"
+      },
+      {
+        "date": "2025-05-22",
+        "display_date": "22 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Ui/UX Analysis",
+        "tool": "UX-Ray 1.0 by Baymard"
+      },
+      {
+        "date": "2025-05-21",
+        "display_date": "21 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Startup growth",
+        "tool": "Samwise"
+      },
+      {
+        "date": "2025-05-20",
+        "display_date": "20 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Facial symmetry analysis",
+        "tool": "Face Symmetry Test"
+      },
+      {
+        "date": "2025-05-19",
+        "display_date": "19 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Video To Audio",
+        "tool": "AudioX"
+      },
+      {
+        "date": "2025-05-17",
+        "display_date": "17 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Content calendar",
+        "tool": "Rebuzz AI"
+      },
+      {
+        "date": "2025-05-16",
+        "display_date": "16 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Call center training",
+        "tool": "Blobfish AI"
+      },
+      {
+        "date": "2025-05-15",
+        "display_date": "15 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Humanizing AI text",
+        "tool": "ACE ESSAY"
+      },
+      {
+        "date": "2025-05-13",
+        "display_date": "13 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Urban mobility",
+        "tool": "Switch - Street Witcher"
+      },
+      {
+        "date": "2025-05-13",
+        "display_date": "13 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Personalized songs",
+        "tool": "GiftSong"
+      },
+      {
+        "date": "2025-05-13",
+        "display_date": "13 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Fitness coaching",
+        "tool": "Hyperhuman"
+      },
+      {
+        "date": "2025-05-08",
+        "display_date": "8 May 2025",
+        "month": "May",
+        "year": 2025,
+        "capability": "Audio newsletters",
+        "tool": "tunyn"
+      }
+    ]
+  },
+  {
+    "key": "2025-04",
+    "month": "Apr",
+    "year": 2025,
+    "count": 11,
+    "entries": [
+      {
+        "date": "2025-04-27",
+        "display_date": "27 Apr 2025",
+        "month": "Apr",
+        "year": 2025,
+        "capability": "Outfit comparison",
+        "tool": "StylePal"
+      },
+      {
+        "date": "2025-04-27",
+        "display_date": "27 Apr 2025",
+        "month": "Apr",
+        "year": 2025,
+        "capability": "Agriculture",
+        "tool": "Ecorobotix ARA Sprayer"
+      },
+      {
+        "date": "2025-04-27",
+        "display_date": "27 Apr 2025",
+        "month": "Apr",
+        "year": 2025,
+        "capability": "Ai Visibility",
+        "tool": "Wellows"
+      },
+      {
+        "date": "2025-04-27",
+        "display_date": "27 Apr 2025",
+        "month": "Apr",
+        "year": 2025,
+        "capability": "Beauty",
+        "tool": "FaceAuraAI"
+      },
+      {
+        "date": "2025-04-26",
+        "display_date": "26 Apr 2025",
+        "month": "Apr",
+        "year": 2025,
+        "capability": "Crop harvesting",
+        "tool": "Harvest CROO Robotics"
+      },
+      {
+        "date": "2025-04-19",
+        "display_date": "19 Apr 2025",
+        "month": "Apr",
+        "year": 2025,
+        "capability": "Body ratings",
+        "tool": "Rate My Body"
+      },
+      {
+        "date": "2025-04-16",
+        "display_date": "16 Apr 2025",
+        "month": "Apr",
+        "year": 2025,
+        "capability": "Vocal isolation",
+        "tool": "AI Stem Splitter"
+      },
+      {
+        "date": "2025-04-15",
+        "display_date": "15 Apr 2025",
+        "month": "Apr",
+        "year": 2025,
+        "capability": "Website security",
+        "tool": "Datadome"
+      },
+      {
+        "date": "2025-04-13",
+        "display_date": "13 Apr 2025",
+        "month": "Apr",
+        "year": 2025,
+        "capability": "Memoirs writing",
+        "tool": "Memoir Maker"
+      },
+      {
+        "date": "2025-04-03",
+        "display_date": "3 Apr 2025",
+        "month": "Apr",
+        "year": 2025,
+        "capability": "Cognitive productivity",
+        "tool": "Cogmi"
+      },
+      {
+        "date": "2025-04-02",
+        "display_date": "2 Apr 2025",
+        "month": "Apr",
+        "year": 2025,
+        "capability": "Video to anime",
+        "tool": "Lanta AI"
+      }
+    ]
+  },
+  {
+    "key": "2025-03",
+    "month": "Mar",
+    "year": 2025,
+    "count": 13,
+    "entries": [
+      {
+        "date": "2025-03-26",
+        "display_date": "26 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "Claim verification",
+        "tool": "Verisquad"
+      },
+      {
+        "date": "2025-03-24",
+        "display_date": "24 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "Co-founder matching",
+        "tool": "IndieMerger"
+      },
+      {
+        "date": "2025-03-21",
+        "display_date": "21 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "Acronyms",
+        "tool": "Acronym Generator by Ahrefs"
+      },
+      {
+        "date": "2025-03-16",
+        "display_date": "16 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "Phone case designs",
+        "tool": "PhoneCaseAI"
+      },
+      {
+        "date": "2025-03-15",
+        "display_date": "15 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "Prediction markets",
+        "tool": "Tenki: AI picks for Kalshi traders"
+      },
+      {
+        "date": "2025-03-14",
+        "display_date": "14 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "SQL optimization",
+        "tool": "SQLFlash"
+      },
+      {
+        "date": "2025-03-13",
+        "display_date": "13 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "Gaslighting detection",
+        "tool": "Gaslighting Check"
+      },
+      {
+        "date": "2025-03-13",
+        "display_date": "13 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "Skincare advice",
+        "tool": "SkinGPT by SoniaGenix"
+      },
+      {
+        "date": "2025-03-13",
+        "display_date": "13 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "Social media strategies",
+        "tool": "V30"
+      },
+      {
+        "date": "2025-03-11",
+        "display_date": "11 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "Bug reports",
+        "tool": "Capture.dev"
+      },
+      {
+        "date": "2025-03-07",
+        "display_date": "7 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "Brand images",
+        "tool": "Illustrations AI"
+      },
+      {
+        "date": "2025-03-04",
+        "display_date": "4 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "Remote VS Code",
+        "tool": "AirCodum"
+      },
+      {
+        "date": "2025-03-04",
+        "display_date": "4 Mar 2025",
+        "month": "Mar",
+        "year": 2025,
+        "capability": "Identity protection",
+        "tool": "Oleria"
+      }
+    ]
+  },
+  {
+    "key": "2025-02",
+    "month": "Feb",
+    "year": 2025,
+    "count": 14,
+    "entries": [
+      {
+        "date": "2025-02-26",
+        "display_date": "26 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Full-body images",
+        "tool": "AI Human Generator"
+      },
+      {
+        "date": "2025-02-25",
+        "display_date": "25 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Blood test interpretation",
+        "tool": "Emmo"
+      },
+      {
+        "date": "2025-02-25",
+        "display_date": "25 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Ransomware vulnerability analysis",
+        "tool": "Halcyon"
+      },
+      {
+        "date": "2025-02-19",
+        "display_date": "19 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Text simplification",
+        "tool": "Rabbit Reader"
+      },
+      {
+        "date": "2025-02-14",
+        "display_date": "14 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Website compliance",
+        "tool": "PACT | Free Compliance Audit"
+      },
+      {
+        "date": "2025-02-14",
+        "display_date": "14 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Destiny analysis",
+        "tool": "BaziAI"
+      },
+      {
+        "date": "2025-02-14",
+        "display_date": "14 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Curiosity exploration",
+        "tool": "Rabbithole"
+      },
+      {
+        "date": "2025-02-13",
+        "display_date": "13 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Character videos",
+        "tool": "Pollo AI Consistent Character Video Generator"
+      },
+      {
+        "date": "2025-02-10",
+        "display_date": "10 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Work management",
+        "tool": "Monday.com"
+      },
+      {
+        "date": "2025-02-10",
+        "display_date": "10 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Restaurant recommendations",
+        "tool": "Reggi"
+      },
+      {
+        "date": "2025-02-09",
+        "display_date": "9 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Figma advice",
+        "tool": "Figma AI Assistant"
+      },
+      {
+        "date": "2025-02-09",
+        "display_date": "9 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Study schedules",
+        "tool": "Ocal AI"
+      },
+      {
+        "date": "2025-02-06",
+        "display_date": "6 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Lenormand readings",
+        "tool": "Lenormand"
+      },
+      {
+        "date": "2025-02-05",
+        "display_date": "5 Feb 2025",
+        "month": "Feb",
+        "year": 2025,
+        "capability": "Coding interviews",
+        "tool": "Interview Coder"
+      }
+    ]
+  },
+  {
+    "key": "2025-01",
+    "month": "Jan",
+    "year": 2025,
+    "count": 17,
+    "entries": [
+      {
+        "date": "2025-01-31",
+        "display_date": "31 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "App performance analysis",
+        "tool": "Insightly"
+      },
+      {
+        "date": "2025-01-28",
+        "display_date": "28 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Weight loss videos",
+        "tool": "Lose Fat With AI"
+      },
+      {
+        "date": "2025-01-28",
+        "display_date": "28 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Insurance analysis",
+        "tool": "K2G BOX"
+      },
+      {
+        "date": "2025-01-27",
+        "display_date": "27 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Study notes",
+        "tool": "Alicia: AI Lecture Assistant"
+      },
+      {
+        "date": "2025-01-27",
+        "display_date": "27 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Video voiceovers",
+        "tool": "Vidvoi AI Voiceover Generator"
+      },
+      {
+        "date": "2025-01-24",
+        "display_date": "24 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Lyric videos",
+        "tool": "Lyric Video Studio"
+      },
+      {
+        "date": "2025-01-23",
+        "display_date": "23 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Price analysis",
+        "tool": "ShoppingScraper"
+      },
+      {
+        "date": "2025-01-21",
+        "display_date": "21 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Menu translation",
+        "tool": "Menu Explain"
+      },
+      {
+        "date": "2025-01-20",
+        "display_date": "20 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Multilingual Blog Creation",
+        "tool": "AIGLOT"
+      },
+      {
+        "date": "2025-01-20",
+        "display_date": "20 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Coworking",
+        "tool": "Flexspace AI"
+      },
+      {
+        "date": "2025-01-19",
+        "display_date": "19 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Website videos",
+        "tool": "Tella Website Video Generator"
+      },
+      {
+        "date": "2025-01-17",
+        "display_date": "17 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Pigs health",
+        "tool": "Emble Pro Piggs.AI"
+      },
+      {
+        "date": "2025-01-17",
+        "display_date": "17 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "RPG summaries",
+        "tool": "RollSummary"
+      },
+      {
+        "date": "2025-01-12",
+        "display_date": "12 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "School subjects",
+        "tool": "Assessment Idea Generator from Blueye"
+      },
+      {
+        "date": "2025-01-11",
+        "display_date": "11 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Quantum images",
+        "tool": "Diffraqtion"
+      },
+      {
+        "date": "2025-01-08",
+        "display_date": "8 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Delivery optimization",
+        "tool": "Onfleet"
+      },
+      {
+        "date": "2025-01-08",
+        "display_date": "8 Jan 2025",
+        "month": "Jan",
+        "year": 2025,
+        "capability": "Agent management",
+        "tool": "Lucidic.AI"
+      }
+    ]
+  },
+  {
+    "key": "2024-12",
+    "month": "Dec",
+    "year": 2024,
+    "count": 14,
+    "entries": [
+      {
+        "date": "2024-12-31",
+        "display_date": "31 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Repository to podcast",
+        "tool": "GitPodcast"
+      },
+      {
+        "date": "2024-12-30",
+        "display_date": "30 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Sports",
+        "tool": "PlaySight"
+      },
+      {
+        "date": "2024-12-27",
+        "display_date": "27 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Food image enhancement",
+        "tool": "Food Image Enhancer"
+      },
+      {
+        "date": "2024-12-23",
+        "display_date": "23 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Interactive encyclopedia",
+        "tool": "Britannica AI Chatbot"
+      },
+      {
+        "date": "2024-12-17",
+        "display_date": "17 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Fusion images",
+        "tool": "Whisk"
+      },
+      {
+        "date": "2024-12-12",
+        "display_date": "12 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Interactive toys",
+        "tool": "Curio - AI Toys"
+      },
+      {
+        "date": "2024-12-11",
+        "display_date": "11 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Media planning",
+        "tool": "adpersonam Media Planner"
+      },
+      {
+        "date": "2024-12-09",
+        "display_date": "9 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Sourdough baking",
+        "tool": "Sourdough Baker AI"
+      },
+      {
+        "date": "2024-12-08",
+        "display_date": "8 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Apology letters",
+        "tool": "Apologify"
+      },
+      {
+        "date": "2024-12-06",
+        "display_date": "6 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Marketing audits",
+        "tool": "Marketing Auditor"
+      },
+      {
+        "date": "2024-12-05",
+        "display_date": "5 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Document editing",
+        "tool": "Pointer"
+      },
+      {
+        "date": "2024-12-04",
+        "display_date": "4 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Intro videos",
+        "tool": "Introhook"
+      },
+      {
+        "date": "2024-12-02",
+        "display_date": "2 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "Website interaction",
+        "tool": "Talk to the Site!"
+      },
+      {
+        "date": "2024-12-02",
+        "display_date": "2 Dec 2024",
+        "month": "Dec",
+        "year": 2024,
+        "capability": "MySQL optimization",
+        "tool": "Releem"
+      }
+    ]
+  },
+  {
+    "key": "2024-11",
+    "month": "Nov",
+    "year": 2024,
+    "count": 17,
+    "entries": [
+      {
+        "date": "2024-11-28",
+        "display_date": "28 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Conditional forms",
+        "tool": "Formester"
+      },
+      {
+        "date": "2024-11-27",
+        "display_date": "27 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Reels",
+        "tool": "Lueur Reels"
+      },
+      {
+        "date": "2024-11-26",
+        "display_date": "26 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Real estate investment",
+        "tool": "BetterDeal AI"
+      },
+      {
+        "date": "2024-11-24",
+        "display_date": "24 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Wikipedia enhancement",
+        "tool": "Wikiwand"
+      },
+      {
+        "date": "2024-11-21",
+        "display_date": "21 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Tender responses",
+        "tool": "Specgen"
+      },
+      {
+        "date": "2024-11-21",
+        "display_date": "21 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Animated memes",
+        "tool": "MemeGen AI"
+      },
+      {
+        "date": "2024-11-19",
+        "display_date": "19 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Air fryer recipes",
+        "tool": "AirFryBot"
+      },
+      {
+        "date": "2024-11-19",
+        "display_date": "19 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Personalized styling",
+        "tool": "Style.ai: Personal Stylist"
+      },
+      {
+        "date": "2024-11-18",
+        "display_date": "18 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "App ideas",
+        "tool": "Pick My Niche"
+      },
+      {
+        "date": "2024-11-12",
+        "display_date": "12 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Vision search",
+        "tool": "KEPL - Vision AI Search"
+      },
+      {
+        "date": "2024-11-09",
+        "display_date": "9 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Customer calls analysis",
+        "tool": "Retellio"
+      },
+      {
+        "date": "2024-11-07",
+        "display_date": "7 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Chat enhancement",
+        "tool": "Nous Chat"
+      },
+      {
+        "date": "2024-11-07",
+        "display_date": "7 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Speech to image",
+        "tool": "Speech Illustrator"
+      },
+      {
+        "date": "2024-11-04",
+        "display_date": "4 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Conversations with images",
+        "tool": "Roleplayr"
+      },
+      {
+        "date": "2024-11-03",
+        "display_date": "3 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Music practice",
+        "tool": "MusoLink"
+      },
+      {
+        "date": "2024-11-01",
+        "display_date": "1 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Video ideas",
+        "tool": "Spotter Studio"
+      },
+      {
+        "date": "2024-11-01",
+        "display_date": "1 Nov 2024",
+        "month": "Nov",
+        "year": 2024,
+        "capability": "Explainer videos",
+        "tool": "Explainium"
+      }
+    ]
+  },
+  {
+    "key": "2024-10",
+    "month": "Oct",
+    "year": 2024,
+    "count": 17,
+    "entries": [
+      {
+        "date": "2024-10-29",
+        "display_date": "29 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "AI inference",
+        "tool": "Nebius Token Factory"
+      },
+      {
+        "date": "2024-10-22",
+        "display_date": "22 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Financial compliance",
+        "tool": "ViCA - Virtual Compliance Assistant"
+      },
+      {
+        "date": "2024-10-17",
+        "display_date": "17 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Brand strategies",
+        "tool": "Stratify"
+      },
+      {
+        "date": "2024-10-16",
+        "display_date": "16 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Digital menus",
+        "tool": "Yumzi - Smart Menus"
+      },
+      {
+        "date": "2024-10-15",
+        "display_date": "15 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Linkedin headlines",
+        "tool": "Imagetoprompts LinkedIn Headline Generator"
+      },
+      {
+        "date": "2024-10-13",
+        "display_date": "13 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Car tuning",
+        "tool": "Tune: AI Car Tuning"
+      },
+      {
+        "date": "2024-10-09",
+        "display_date": "9 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Web development assistance",
+        "tool": "OCode"
+      },
+      {
+        "date": "2024-10-09",
+        "display_date": "9 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Code summaries",
+        "tool": "Git Digest"
+      },
+      {
+        "date": "2024-10-08",
+        "display_date": "8 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Link building",
+        "tool": "Pitchbox"
+      },
+      {
+        "date": "2024-10-08",
+        "display_date": "8 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Client intake forms",
+        "tool": "Formisoft"
+      },
+      {
+        "date": "2024-10-08",
+        "display_date": "8 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Veterinary transcription",
+        "tool": "ScribVet"
+      },
+      {
+        "date": "2024-10-08",
+        "display_date": "8 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Religious guidance",
+        "tool": "Holy Books AI Chat"
+      },
+      {
+        "date": "2024-10-05",
+        "display_date": "5 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Color palette analysis",
+        "tool": "Palette Hunt"
+      },
+      {
+        "date": "2024-10-05",
+        "display_date": "5 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Emoji storytelling",
+        "tool": "AIToolsFree Emoji Story Generator"
+      },
+      {
+        "date": "2024-10-03",
+        "display_date": "3 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Airbnb",
+        "tool": "Arold"
+      },
+      {
+        "date": "2024-10-01",
+        "display_date": "1 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Cambridge english preparation",
+        "tool": "Use of English AI"
+      },
+      {
+        "date": "2024-10-01",
+        "display_date": "1 Oct 2024",
+        "month": "Oct",
+        "year": 2024,
+        "capability": "Reddit replies",
+        "tool": "AI-Reply"
+      }
+    ]
+  },
+  {
+    "key": "2024-09",
+    "month": "Sep",
+    "year": 2024,
+    "count": 30,
+    "entries": [
+      {
+        "date": "2024-09-30",
+        "display_date": "30 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Reddit leads",
+        "tool": "Subtle"
+      },
+      {
+        "date": "2024-09-30",
+        "display_date": "30 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "People search engine",
+        "tool": "X-Ray Contact"
+      },
+      {
+        "date": "2024-09-24",
+        "display_date": "24 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Retail advertising",
+        "tool": "Footprints AI"
+      },
+      {
+        "date": "2024-09-23",
+        "display_date": "23 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Privacy policy drafting",
+        "tool": "PrivacyAI"
+      },
+      {
+        "date": "2024-09-21",
+        "display_date": "21 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Witty comebacks",
+        "tool": "SavageGPT"
+      },
+      {
+        "date": "2024-09-19",
+        "display_date": "19 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Prospect analysis",
+        "tool": "Prospectli"
+      },
+      {
+        "date": "2024-09-18",
+        "display_date": "18 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Lyrics to music",
+        "tool": "Lyrics Into Song AI"
+      },
+      {
+        "date": "2024-09-18",
+        "display_date": "18 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Investment portfolios",
+        "tool": "PortfolioGPT"
+      },
+      {
+        "date": "2024-09-16",
+        "display_date": "16 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Exam grading",
+        "tool": "GradeLab"
+      },
+      {
+        "date": "2024-09-15",
+        "display_date": "15 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Date planning",
+        "tool": "SoulPlan"
+      },
+      {
+        "date": "2024-09-13",
+        "display_date": "13 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Grocery lists",
+        "tool": "ShopEasy: Grocery Lists"
+      },
+      {
+        "date": "2024-09-13",
+        "display_date": "13 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Company values",
+        "tool": "Company Values Generator"
+      },
+      {
+        "date": "2024-09-12",
+        "display_date": "12 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Industrial automation",
+        "tool": "Honeywell Industrial Automation"
+      },
+      {
+        "date": "2024-09-12",
+        "display_date": "12 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Private search engine",
+        "tool": "Deepfind"
+      },
+      {
+        "date": "2024-09-12",
+        "display_date": "12 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Search intent optimization",
+        "tool": "TermSniper"
+      },
+      {
+        "date": "2024-09-12",
+        "display_date": "12 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Fire management training",
+        "tool": "FirePrep"
+      },
+      {
+        "date": "2024-09-10",
+        "display_date": "10 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Storybook illustrations",
+        "tool": "StoryArtAI"
+      },
+      {
+        "date": "2024-09-09",
+        "display_date": "9 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Legal documents drafting",
+        "tool": "RamenLegal"
+      },
+      {
+        "date": "2024-09-08",
+        "display_date": "8 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "News articles",
+        "tool": "Article Writer - Mavis AI"
+      },
+      {
+        "date": "2024-09-07",
+        "display_date": "7 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Presentations to videos",
+        "tool": "AI Slides to Videos"
+      },
+      {
+        "date": "2024-09-06",
+        "display_date": "6 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "T&C summaries",
+        "tool": "T&C Summarizer"
+      },
+      {
+        "date": "2024-09-06",
+        "display_date": "6 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Ceo trading insights",
+        "tool": "CEOBuySell"
+      },
+      {
+        "date": "2024-09-05",
+        "display_date": "5 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Information classification",
+        "tool": "Classify Anything"
+      },
+      {
+        "date": "2024-09-04",
+        "display_date": "4 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Notes Q&A",
+        "tool": "Mneme AI"
+      },
+      {
+        "date": "2024-09-04",
+        "display_date": "4 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Image to excel",
+        "tool": "Image to Excel"
+      },
+      {
+        "date": "2024-09-04",
+        "display_date": "4 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "CAD design",
+        "tool": "Hestus"
+      },
+      {
+        "date": "2024-09-04",
+        "display_date": "4 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Portrait animation",
+        "tool": "Live-Portrait.org"
+      },
+      {
+        "date": "2024-09-01",
+        "display_date": "1 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Text boxes",
+        "tool": "Akuri"
+      },
+      {
+        "date": "2024-09-01",
+        "display_date": "1 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "3D",
+        "tool": "Adobe Substance 3D"
+      },
+      {
+        "date": "2024-09-01",
+        "display_date": "1 Sep 2024",
+        "month": "Sep",
+        "year": 2024,
+        "capability": "Salesforce agents",
+        "tool": "Agentforce"
+      }
+    ]
+  },
+  {
+    "key": "2024-08",
+    "month": "Aug",
+    "year": 2024,
+    "count": 30,
+    "entries": [
+      {
+        "date": "2024-08-30",
+        "display_date": "30 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Elderly companionship",
+        "tool": "Meela"
+      },
+      {
+        "date": "2024-08-30",
+        "display_date": "30 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Application search",
+        "tool": "Selectric"
+      },
+      {
+        "date": "2024-08-30",
+        "display_date": "30 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "PDF templates",
+        "tool": "PDFgen"
+      },
+      {
+        "date": "2024-08-29",
+        "display_date": "29 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Contract risk analysis",
+        "tool": "OutRiskAI"
+      },
+      {
+        "date": "2024-08-29",
+        "display_date": "29 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Event scheduling",
+        "tool": "AI Event Scheduler"
+      },
+      {
+        "date": "2024-08-29",
+        "display_date": "29 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Record analysis",
+        "tool": "Brighterway"
+      },
+      {
+        "date": "2024-08-28",
+        "display_date": "28 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "API docs",
+        "tool": "Zudoku"
+      },
+      {
+        "date": "2024-08-26",
+        "display_date": "26 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Asset management",
+        "tool": "Blueberry AI"
+      },
+      {
+        "date": "2024-08-25",
+        "display_date": "25 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Illustrations",
+        "tool": "illustration.app"
+      },
+      {
+        "date": "2024-08-24",
+        "display_date": "24 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Life advice",
+        "tool": "Fix My Life AI"
+      },
+      {
+        "date": "2024-08-23",
+        "display_date": "23 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Ui design feedback",
+        "tool": "UI Copilot"
+      },
+      {
+        "date": "2024-08-22",
+        "display_date": "22 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "ERP",
+        "tool": "ERP.AI"
+      },
+      {
+        "date": "2024-08-21",
+        "display_date": "21 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Sports coaching",
+        "tool": "PocketCoach"
+      },
+      {
+        "date": "2024-08-20",
+        "display_date": "20 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "OCR",
+        "tool": "Note This Down"
+      },
+      {
+        "date": "2024-08-19",
+        "display_date": "19 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Document formatting",
+        "tool": "Format Magic"
+      },
+      {
+        "date": "2024-08-18",
+        "display_date": "18 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Dental practice receptionist",
+        "tool": "SmileDial"
+      },
+      {
+        "date": "2024-08-16",
+        "display_date": "16 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Content analysis",
+        "tool": "Shortimize"
+      },
+      {
+        "date": "2024-08-15",
+        "display_date": "15 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Car parts identification",
+        "tool": "Car Part Identifier"
+      },
+      {
+        "date": "2024-08-15",
+        "display_date": "15 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Image to recipe",
+        "tool": "Recipe Lens"
+      },
+      {
+        "date": "2024-08-13",
+        "display_date": "13 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Football",
+        "tool": "FootballGPT"
+      },
+      {
+        "date": "2024-08-11",
+        "display_date": "11 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "IP risk assessment",
+        "tool": "Trusted Clicks"
+      },
+      {
+        "date": "2024-08-10",
+        "display_date": "10 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Python apps",
+        "tool": "Lab2.dev"
+      },
+      {
+        "date": "2024-08-09",
+        "display_date": "9 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Pinterest content",
+        "tool": "Pin Generator"
+      },
+      {
+        "date": "2024-08-08",
+        "display_date": "8 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Technical translations",
+        "tool": "X-doc"
+      },
+      {
+        "date": "2024-08-08",
+        "display_date": "8 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Video testimonials",
+        "tool": "Vibeo"
+      },
+      {
+        "date": "2024-08-07",
+        "display_date": "7 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Bible study",
+        "tool": "Bible Chat"
+      },
+      {
+        "date": "2024-08-03",
+        "display_date": "3 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "PDF to videos",
+        "tool": "Shortd.io"
+      },
+      {
+        "date": "2024-08-03",
+        "display_date": "3 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Karaoke",
+        "tool": "MyKaraoke Video"
+      },
+      {
+        "date": "2024-08-01",
+        "display_date": "1 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "Chat roasts",
+        "tool": "Roast My Chat"
+      },
+      {
+        "date": "2024-08-01",
+        "display_date": "1 Aug 2024",
+        "month": "Aug",
+        "year": 2024,
+        "capability": "PDF summaries",
+        "tool": "AI PDF Summarizer"
+      }
+    ]
+  },
+  {
+    "key": "2024-07",
+    "month": "Jul",
+    "year": 2024,
+    "count": 27,
+    "entries": [
+      {
+        "date": "2024-07-31",
+        "display_date": "31 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Speeches",
+        "tool": "AI Speech Generator"
+      },
+      {
+        "date": "2024-07-30",
+        "display_date": "30 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "PDF redaction",
+        "tool": "AI PDF Redaction Tool"
+      },
+      {
+        "date": "2024-07-29",
+        "display_date": "29 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Reddit marketing",
+        "tool": "Idea-Hunt"
+      },
+      {
+        "date": "2024-07-28",
+        "display_date": "28 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Tinder account analysis",
+        "tool": "Cheaterbuster"
+      },
+      {
+        "date": "2024-07-26",
+        "display_date": "26 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Signature design",
+        "tool": "AI Signature Generator"
+      },
+      {
+        "date": "2024-07-26",
+        "display_date": "26 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "ICD10 Medical codes",
+        "tool": "ICD AI"
+      },
+      {
+        "date": "2024-07-23",
+        "display_date": "23 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Test cases",
+        "tool": "QAEverest"
+      },
+      {
+        "date": "2024-07-22",
+        "display_date": "22 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Voice",
+        "tool": "Animaker Voice Generator"
+      },
+      {
+        "date": "2024-07-21",
+        "display_date": "21 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Affiliate marketing compliance",
+        "tool": "Affil.ai"
+      },
+      {
+        "date": "2024-07-20",
+        "display_date": "20 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Virtual wingman",
+        "tool": "H3LLO"
+      },
+      {
+        "date": "2024-07-20",
+        "display_date": "20 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Space organization",
+        "tool": "Organz.ai"
+      },
+      {
+        "date": "2024-07-20",
+        "display_date": "20 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Quiz generation",
+        "tool": "Jotform AI Quiz Generator"
+      },
+      {
+        "date": "2024-07-19",
+        "display_date": "19 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Upwork proposals",
+        "tool": "Pitch Pilot"
+      },
+      {
+        "date": "2024-07-18",
+        "display_date": "18 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Reddit summaries",
+        "tool": "SticAI Glance"
+      },
+      {
+        "date": "2024-07-18",
+        "display_date": "18 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Instagram sales",
+        "tool": "Exie"
+      },
+      {
+        "date": "2024-07-15",
+        "display_date": "15 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Interview simulation",
+        "tool": "Invue AI"
+      },
+      {
+        "date": "2024-07-14",
+        "display_date": "14 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Prayers",
+        "tool": "PrayerAI"
+      },
+      {
+        "date": "2024-07-13",
+        "display_date": "13 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Code artifacts",
+        "tool": "Artifact Bin"
+      },
+      {
+        "date": "2024-07-12",
+        "display_date": "12 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Personal websites",
+        "tool": "Portflix"
+      },
+      {
+        "date": "2024-07-11",
+        "display_date": "11 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "3D logos",
+        "tool": "3D Logo AI"
+      },
+      {
+        "date": "2024-07-09",
+        "display_date": "9 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Financial planning",
+        "tool": "Runway FP&A"
+      },
+      {
+        "date": "2024-07-06",
+        "display_date": "6 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Strength training",
+        "tool": "Zenfit"
+      },
+      {
+        "date": "2024-07-05",
+        "display_date": "5 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Drum patterns",
+        "tool": "AI Drum Generator"
+      },
+      {
+        "date": "2024-07-03",
+        "display_date": "3 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Rental property guides",
+        "tool": "BnBuddy"
+      },
+      {
+        "date": "2024-07-02",
+        "display_date": "2 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Code search",
+        "tool": "Archivist"
+      },
+      {
+        "date": "2024-07-01",
+        "display_date": "1 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "Lyrics personalization",
+        "tool": "Lyric Changer: Personalize Any Song"
+      },
+      {
+        "date": "2024-07-01",
+        "display_date": "1 Jul 2024",
+        "month": "Jul",
+        "year": 2024,
+        "capability": "E-commerce image optimization",
+        "tool": "CleanerPro"
+      }
+    ]
+  },
+  {
+    "key": "2024-06",
+    "month": "Jun",
+    "year": 2024,
+    "count": 25,
+    "entries": [
+      {
+        "date": "2024-06-30",
+        "display_date": "30 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Consultant interview preparation",
+        "tool": "PrepBuddy"
+      },
+      {
+        "date": "2024-06-28",
+        "display_date": "28 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Video to documentation",
+        "tool": "MakeTheDocs"
+      },
+      {
+        "date": "2024-06-27",
+        "display_date": "27 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "LlaMA 3 on Mac",
+        "tool": "Fluid"
+      },
+      {
+        "date": "2024-06-26",
+        "display_date": "26 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Face liveness detection",
+        "tool": "MiniAiLive - Face Liveness Detection"
+      },
+      {
+        "date": "2024-06-26",
+        "display_date": "26 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Sketch to diagram",
+        "tool": "Sketch2scheme"
+      },
+      {
+        "date": "2024-06-24",
+        "display_date": "24 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Image to prompt",
+        "tool": "Imagetoprompts"
+      },
+      {
+        "date": "2024-06-23",
+        "display_date": "23 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Language flashcards",
+        "tool": "Flexi Cards"
+      },
+      {
+        "date": "2024-06-21",
+        "display_date": "21 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Lidar data classification",
+        "tool": "Flai"
+      },
+      {
+        "date": "2024-06-20",
+        "display_date": "20 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Website proofreading",
+        "tool": "FuturePerfect"
+      },
+      {
+        "date": "2024-06-20",
+        "display_date": "20 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Screen-based automation",
+        "tool": "screenpipe"
+      },
+      {
+        "date": "2024-06-20",
+        "display_date": "20 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Text editing",
+        "tool": "AI Editor"
+      },
+      {
+        "date": "2024-06-19",
+        "display_date": "19 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Podcast to article",
+        "tool": "ArticleX - Podcast to Article"
+      },
+      {
+        "date": "2024-06-17",
+        "display_date": "17 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Comment moderation",
+        "tool": "CommentGuard"
+      },
+      {
+        "date": "2024-06-17",
+        "display_date": "17 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Cybersecurity advice",
+        "tool": "SecAI"
+      },
+      {
+        "date": "2024-06-14",
+        "display_date": "14 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "City exploration",
+        "tool": "Waywise"
+      },
+      {
+        "date": "2024-06-12",
+        "display_date": "12 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Brand positioning",
+        "tool": "THEO"
+      },
+      {
+        "date": "2024-06-12",
+        "display_date": "12 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Interactive learning games",
+        "tool": "Amnesia"
+      },
+      {
+        "date": "2024-06-11",
+        "display_date": "11 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Backend development",
+        "tool": "Keel Studio"
+      },
+      {
+        "date": "2024-06-09",
+        "display_date": "9 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Network management",
+        "tool": "ITVA"
+      },
+      {
+        "date": "2024-06-08",
+        "display_date": "8 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Fantasy football",
+        "tool": "EasySBC"
+      },
+      {
+        "date": "2024-06-07",
+        "display_date": "7 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Viral videos",
+        "tool": "ViralBot"
+      },
+      {
+        "date": "2024-06-05",
+        "display_date": "5 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Interview answers generation",
+        "tool": "AI Interview Answers Generator"
+      },
+      {
+        "date": "2024-06-04",
+        "display_date": "4 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Website roasts",
+        "tool": "Roast My Website"
+      },
+      {
+        "date": "2024-06-01",
+        "display_date": "1 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Voice writing",
+        "tool": "Voice Writer"
+      },
+      {
+        "date": "2024-06-01",
+        "display_date": "1 Jun 2024",
+        "month": "Jun",
+        "year": 2024,
+        "capability": "Lecture summaries",
+        "tool": "AI Note Taker - Coconote"
+      }
+    ]
+  },
+  {
+    "key": "2024-05",
+    "month": "May",
+    "year": 2024,
+    "count": 26,
+    "entries": [
+      {
+        "date": "2024-05-31",
+        "display_date": "31 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "LinkedIn growth",
+        "tool": "Podify.io"
+      },
+      {
+        "date": "2024-05-29",
+        "display_date": "29 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "AI memory",
+        "tool": "MemoryPlugin"
+      },
+      {
+        "date": "2024-05-28",
+        "display_date": "28 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Social media growth",
+        "tool": "Super Comments AI"
+      },
+      {
+        "date": "2024-05-27",
+        "display_date": "27 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Japanese lessons",
+        "tool": "HayaiLearn"
+      },
+      {
+        "date": "2024-05-26",
+        "display_date": "26 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Roadtrip playlists",
+        "tool": "Trip Tunes"
+      },
+      {
+        "date": "2024-05-25",
+        "display_date": "25 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Technical Specifications",
+        "tool": "CoreStory"
+      },
+      {
+        "date": "2024-05-24",
+        "display_date": "24 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Profanity removal",
+        "tool": "Bleepify"
+      },
+      {
+        "date": "2024-05-23",
+        "display_date": "23 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Digital memory recall",
+        "tool": "ReMind"
+      },
+      {
+        "date": "2024-05-23",
+        "display_date": "23 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "SEO strategies",
+        "tool": "OnRanko"
+      },
+      {
+        "date": "2024-05-22",
+        "display_date": "22 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Biology lessons",
+        "tool": "bioloGPT"
+      },
+      {
+        "date": "2024-05-21",
+        "display_date": "21 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Visual brainstorming",
+        "tool": "Notaide"
+      },
+      {
+        "date": "2024-05-20",
+        "display_date": "20 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Brick-style portraits",
+        "tool": "Brick.Photos"
+      },
+      {
+        "date": "2024-05-18",
+        "display_date": "18 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Pet care",
+        "tool": "Petvise AI"
+      },
+      {
+        "date": "2024-05-15",
+        "display_date": "15 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Task gamification",
+        "tool": "World of Gami"
+      },
+      {
+        "date": "2024-05-13",
+        "display_date": "13 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Blog to Twitter posts",
+        "tool": "Blog2Buzz"
+      },
+      {
+        "date": "2024-05-12",
+        "display_date": "12 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Subtitle translation",
+        "tool": "Sub Translate AI"
+      },
+      {
+        "date": "2024-05-11",
+        "display_date": "11 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Ad strategies",
+        "tool": "Spread Out AI"
+      },
+      {
+        "date": "2024-05-09",
+        "display_date": "9 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Fundraising strategies",
+        "tool": "FundEze"
+      },
+      {
+        "date": "2024-05-09",
+        "display_date": "9 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "CSS animations",
+        "tool": "AI CSS Animations"
+      },
+      {
+        "date": "2024-05-08",
+        "display_date": "8 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Google Analytics",
+        "tool": "Litlyx"
+      },
+      {
+        "date": "2024-05-07",
+        "display_date": "7 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Combat sports guidance",
+        "tool": "Fight IQ"
+      },
+      {
+        "date": "2024-05-06",
+        "display_date": "6 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Vector indexes",
+        "tool": "Vectorize"
+      },
+      {
+        "date": "2024-05-03",
+        "display_date": "3 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Team productivity",
+        "tool": "SectorFlow"
+      },
+      {
+        "date": "2024-05-02",
+        "display_date": "2 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Mobile game marketing",
+        "tool": "Segwise"
+      },
+      {
+        "date": "2024-05-01",
+        "display_date": "1 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Tennis coaching",
+        "tool": "OffCourtz"
+      },
+      {
+        "date": "2024-05-01",
+        "display_date": "1 May 2024",
+        "month": "May",
+        "year": 2024,
+        "capability": "Smart contracts",
+        "tool": "Toolblox"
+      }
+    ]
+  },
+  {
+    "key": "2024-04",
+    "month": "Apr",
+    "year": 2024,
+    "count": 30,
+    "entries": [
+      {
+        "date": "2024-04-30",
+        "display_date": "30 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Real estate transactions",
+        "tool": "Burrow AI"
+      },
+      {
+        "date": "2024-04-29",
+        "display_date": "29 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Construction bids",
+        "tool": "Downtobid"
+      },
+      {
+        "date": "2024-04-28",
+        "display_date": "28 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Private conversations",
+        "tool": "AI on Device"
+      },
+      {
+        "date": "2024-04-27",
+        "display_date": "27 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Watch identification",
+        "tool": "watchID"
+      },
+      {
+        "date": "2024-04-26",
+        "display_date": "26 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Twitter Space summaries",
+        "tool": "XspaceGPT"
+      },
+      {
+        "date": "2024-04-24",
+        "display_date": "24 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Application monitoring",
+        "tool": "PerfAgents"
+      },
+      {
+        "date": "2024-04-22",
+        "display_date": "22 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Startups",
+        "tool": "StartKit"
+      },
+      {
+        "date": "2024-04-21",
+        "display_date": "21 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Children's audiobooks",
+        "tool": "Sound AiSleep"
+      },
+      {
+        "date": "2024-04-20",
+        "display_date": "20 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Genome data analysis",
+        "tool": "VarChat"
+      },
+      {
+        "date": "2024-04-19",
+        "display_date": "19 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Software security guidance",
+        "tool": "AppSec Assistant"
+      },
+      {
+        "date": "2024-04-18",
+        "display_date": "18 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Church content",
+        "tool": "Church Loom"
+      },
+      {
+        "date": "2024-04-18",
+        "display_date": "18 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Discord moderator",
+        "tool": "DigiCord"
+      },
+      {
+        "date": "2024-04-17",
+        "display_date": "17 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Transcription analysis",
+        "tool": "Sonix Analysis"
+      },
+      {
+        "date": "2024-04-16",
+        "display_date": "16 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Accent mastery",
+        "tool": "YourBestAccent"
+      },
+      {
+        "date": "2024-04-16",
+        "display_date": "16 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Children's learning stories",
+        "tool": "Nookly"
+      },
+      {
+        "date": "2024-04-15",
+        "display_date": "15 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Email automation",
+        "tool": "Skail"
+      },
+      {
+        "date": "2024-04-15",
+        "display_date": "15 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Data structuring",
+        "tool": "Trellis AI"
+      },
+      {
+        "date": "2024-04-14",
+        "display_date": "14 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Events",
+        "tool": "Grip"
+      },
+      {
+        "date": "2024-04-13",
+        "display_date": "13 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Academic transcription",
+        "tool": "Audiolizer"
+      },
+      {
+        "date": "2024-04-12",
+        "display_date": "12 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Trivia",
+        "tool": "TriviaMaker"
+      },
+      {
+        "date": "2024-04-10",
+        "display_date": "10 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Linkedin banners",
+        "tool": "AI LinkedIn Banners"
+      },
+      {
+        "date": "2024-04-09",
+        "display_date": "9 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Chess guidance",
+        "tool": "Noctie"
+      },
+      {
+        "date": "2024-04-08",
+        "display_date": "8 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Blur removal",
+        "tool": "Fix Blur"
+      },
+      {
+        "date": "2024-04-07",
+        "display_date": "7 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Interactive learning",
+        "tool": "FoloToy"
+      },
+      {
+        "date": "2024-04-05",
+        "display_date": "5 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Remote jobs",
+        "tool": "Jobsolv: Remote Job Board + AI Resume Tailoring"
+      },
+      {
+        "date": "2024-04-04",
+        "display_date": "4 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Meeting transcription",
+        "tool": "Notta Note Taker"
+      },
+      {
+        "date": "2024-04-03",
+        "display_date": "3 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Email templates",
+        "tool": "Potion"
+      },
+      {
+        "date": "2024-04-02",
+        "display_date": "2 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Childcare program development",
+        "tool": "LoveHeart"
+      },
+      {
+        "date": "2024-04-02",
+        "display_date": "2 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Workflow automation",
+        "tool": "n8n"
+      },
+      {
+        "date": "2024-04-01",
+        "display_date": "1 Apr 2024",
+        "month": "Apr",
+        "year": 2024,
+        "capability": "Agent identity verification",
+        "tool": "OASIS"
+      }
+    ]
+  },
+  {
+    "key": "2024-03",
+    "month": "Mar",
+    "year": 2024,
+    "count": 25,
+    "entries": [
+      {
+        "date": "2024-03-31",
+        "display_date": "31 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Wardrobe optimization",
+        "tool": "StylerAI"
+      },
+      {
+        "date": "2024-03-30",
+        "display_date": "30 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Italian lessons",
+        "tool": "JoJo"
+      },
+      {
+        "date": "2024-03-29",
+        "display_date": "29 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Smart home",
+        "tool": "Galaxy AI"
+      },
+      {
+        "date": "2024-03-28",
+        "display_date": "28 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Hair health analysis",
+        "tool": "MyHair.AI"
+      },
+      {
+        "date": "2024-03-27",
+        "display_date": "27 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Fusion recipes",
+        "tool": "Food Mood"
+      },
+      {
+        "date": "2024-03-26",
+        "display_date": "26 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Wordpress development assistance",
+        "tool": "WP Dev AI"
+      },
+      {
+        "date": "2024-03-25",
+        "display_date": "25 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Dictation",
+        "tool": "Aqua Voice"
+      },
+      {
+        "date": "2024-03-24",
+        "display_date": "24 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "SRE",
+        "tool": "Cleric"
+      },
+      {
+        "date": "2024-03-23",
+        "display_date": "23 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Accounts receivable",
+        "tool": "FinFloh"
+      },
+      {
+        "date": "2024-03-22",
+        "display_date": "22 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Travel recommendations",
+        "tool": "Dinibo"
+      },
+      {
+        "date": "2024-03-21",
+        "display_date": "21 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Code snippets",
+        "tool": "GS Copilot"
+      },
+      {
+        "date": "2024-03-20",
+        "display_date": "20 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Engineering automation",
+        "tool": "Quarter"
+      },
+      {
+        "date": "2024-03-19",
+        "display_date": "19 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Endpoint management",
+        "tool": "Swif"
+      },
+      {
+        "date": "2024-03-18",
+        "display_date": "18 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "3D videos",
+        "tool": "Stable Video 3D"
+      },
+      {
+        "date": "2024-03-17",
+        "display_date": "17 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Research papers summaries",
+        "tool": "AnswerThis"
+      },
+      {
+        "date": "2024-03-13",
+        "display_date": "13 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Streaming TV ads",
+        "tool": "Streamr"
+      },
+      {
+        "date": "2024-03-11",
+        "display_date": "11 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Fashion industry analysis",
+        "tool": "Woven Insights"
+      },
+      {
+        "date": "2024-03-10",
+        "display_date": "10 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Gpt customization",
+        "tool": "Prompteasy"
+      },
+      {
+        "date": "2024-03-09",
+        "display_date": "9 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Plant health diagnosis",
+        "tool": "Agent Crop"
+      },
+      {
+        "date": "2024-03-07",
+        "display_date": "7 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Real estate appraisal",
+        "tool": "C3 AI Property Appraisal"
+      },
+      {
+        "date": "2024-03-06",
+        "display_date": "6 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Landing page structures",
+        "tool": "LandingPage.fyi"
+      },
+      {
+        "date": "2024-03-05",
+        "display_date": "5 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Chinese grammar",
+        "tool": "Unscrambler"
+      },
+      {
+        "date": "2024-03-03",
+        "display_date": "3 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Personalized workouts",
+        "tool": "Kiwi Fitness"
+      },
+      {
+        "date": "2024-03-02",
+        "display_date": "2 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Interactive videos",
+        "tool": "Clixie"
+      },
+      {
+        "date": "2024-03-01",
+        "display_date": "1 Mar 2024",
+        "month": "Mar",
+        "year": 2024,
+        "capability": "Youtube scripts",
+        "tool": "Subscribr"
+      }
+    ]
+  },
+  {
+    "key": "2024-02",
+    "month": "Feb",
+    "year": 2024,
+    "count": 23,
+    "entries": [
+      {
+        "date": "2024-02-29",
+        "display_date": "29 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Calculations",
+        "tool": "Calcish"
+      },
+      {
+        "date": "2024-02-28",
+        "display_date": "28 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Therapy notes",
+        "tool": "Hippo Scribe"
+      },
+      {
+        "date": "2024-02-27",
+        "display_date": "27 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Cartoon characters",
+        "tool": "LightX"
+      },
+      {
+        "date": "2024-02-26",
+        "display_date": "26 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Makeup",
+        "tool": "Makeup Assistant by Estee Lauder"
+      },
+      {
+        "date": "2024-02-24",
+        "display_date": "24 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Fantasy worlds",
+        "tool": "Promethean | AI World Building"
+      },
+      {
+        "date": "2024-02-23",
+        "display_date": "23 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Industrial management",
+        "tool": "Tangle"
+      },
+      {
+        "date": "2024-02-22",
+        "display_date": "22 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Fortune telling",
+        "tool": "AI Teller"
+      },
+      {
+        "date": "2024-02-21",
+        "display_date": "21 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Form filling",
+        "tool": "Unifill AI"
+      },
+      {
+        "date": "2024-02-20",
+        "display_date": "20 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Student loans advice",
+        "tool": "MyLoans"
+      },
+      {
+        "date": "2024-02-19",
+        "display_date": "19 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Fleet management",
+        "tool": "Orbit | Boston Dynamics"
+      },
+      {
+        "date": "2024-02-18",
+        "display_date": "18 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Content curation",
+        "tool": "CurateIt"
+      },
+      {
+        "date": "2024-02-17",
+        "display_date": "17 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Tax filings",
+        "tool": "TaxGPT.com"
+      },
+      {
+        "date": "2024-02-16",
+        "display_date": "16 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Vehicle identification",
+        "tool": "Scout: Vehicle Identifier"
+      },
+      {
+        "date": "2024-02-15",
+        "display_date": "15 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Comment replies",
+        "tool": "Living Comments"
+      },
+      {
+        "date": "2024-02-12",
+        "display_date": "12 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Data recovery",
+        "tool": "Tinyfrom"
+      },
+      {
+        "date": "2024-02-11",
+        "display_date": "11 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Best man speeches",
+        "tool": "Best Man Pro"
+      },
+      {
+        "date": "2024-02-10",
+        "display_date": "10 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Pre-wedding photos",
+        "tool": "Dream Prewedding"
+      },
+      {
+        "date": "2024-02-09",
+        "display_date": "9 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Logistics automation",
+        "tool": "Reform"
+      },
+      {
+        "date": "2024-02-08",
+        "display_date": "8 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Augmented reality",
+        "tool": "Brilliant Labs"
+      },
+      {
+        "date": "2024-02-07",
+        "display_date": "7 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Figurative language enhancement",
+        "tool": "Figurative Checker"
+      },
+      {
+        "date": "2024-02-06",
+        "display_date": "6 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "AirForce publications Q&A",
+        "tool": "AFI Explorer"
+      },
+      {
+        "date": "2024-02-03",
+        "display_date": "3 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Website conversion",
+        "tool": "ConvertRocket"
+      },
+      {
+        "date": "2024-02-01",
+        "display_date": "1 Feb 2024",
+        "month": "Feb",
+        "year": 2024,
+        "capability": "Offline database Q&A",
+        "tool": "Dot App"
+      }
+    ]
+  },
+  {
+    "key": "2024-01",
+    "month": "Jan",
+    "year": 2024,
+    "count": 25,
+    "entries": [
+      {
+        "date": "2024-01-31",
+        "display_date": "31 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Reports",
+        "tool": "There"
+      },
+      {
+        "date": "2024-01-29",
+        "display_date": "29 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Virtual influencers",
+        "tool": "SynthLife"
+      },
+      {
+        "date": "2024-01-28",
+        "display_date": "28 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Stem problem solving",
+        "tool": "Mileto"
+      },
+      {
+        "date": "2024-01-27",
+        "display_date": "27 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "YouTube channel analysis",
+        "tool": "SimilarTube"
+      },
+      {
+        "date": "2024-01-26",
+        "display_date": "26 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Schedule management",
+        "tool": "Skej"
+      },
+      {
+        "date": "2024-01-25",
+        "display_date": "25 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Image querying",
+        "tool": "ShotSolve"
+      },
+      {
+        "date": "2024-01-24",
+        "display_date": "24 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "AI compliance",
+        "tool": "Privado AI"
+      },
+      {
+        "date": "2024-01-23",
+        "display_date": "23 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Dogs",
+        "tool": "Woofz"
+      },
+      {
+        "date": "2024-01-22",
+        "display_date": "22 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Home management",
+        "tool": "Ohai.ai"
+      },
+      {
+        "date": "2024-01-21",
+        "display_date": "21 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "WhatsApp customer engagement",
+        "tool": "Libromi Connect"
+      },
+      {
+        "date": "2024-01-19",
+        "display_date": "19 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Social media analysis",
+        "tool": "Brandwatch Iris AI"
+      },
+      {
+        "date": "2024-01-18",
+        "display_date": "18 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Developer search engine",
+        "tool": "Devv"
+      },
+      {
+        "date": "2024-01-17",
+        "display_date": "17 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Gift notes",
+        "tool": "Gift Note Writer"
+      },
+      {
+        "date": "2024-01-16",
+        "display_date": "16 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Linkedin prospecting",
+        "tool": "Letterdrop"
+      },
+      {
+        "date": "2024-01-13",
+        "display_date": "13 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Book translation",
+        "tool": "BookTranslator"
+      },
+      {
+        "date": "2024-01-12",
+        "display_date": "12 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Content management",
+        "tool": "Koolay"
+      },
+      {
+        "date": "2024-01-11",
+        "display_date": "11 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "E-commerce websites",
+        "tool": "Zegashop"
+      },
+      {
+        "date": "2024-01-09",
+        "display_date": "9 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Gesture recognition",
+        "tool": "Spatial Touch"
+      },
+      {
+        "date": "2024-01-08",
+        "display_date": "8 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Executive decision-making",
+        "tool": "Fora Day"
+      },
+      {
+        "date": "2024-01-07",
+        "display_date": "7 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Workspace optimization",
+        "tool": "Muddy"
+      },
+      {
+        "date": "2024-01-06",
+        "display_date": "6 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Twitter bios",
+        "tool": "Twitter Bio Generator"
+      },
+      {
+        "date": "2024-01-05",
+        "display_date": "5 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "NSFW images",
+        "tool": "ChatUp AI Girlfriend"
+      },
+      {
+        "date": "2024-01-03",
+        "display_date": "3 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Browser tabs management",
+        "tool": "Phew AI Tab"
+      },
+      {
+        "date": "2024-01-01",
+        "display_date": "1 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Investor outreach emails",
+        "tool": "Angel Match"
+      },
+      {
+        "date": "2024-01-01",
+        "display_date": "1 Jan 2024",
+        "month": "Jan",
+        "year": 2024,
+        "capability": "Property listings",
+        "tool": "Property Listings AI"
+      }
+    ]
+  },
+  {
+    "key": "2023-12",
+    "month": "Dec",
+    "year": 2023,
+    "count": 17,
+    "entries": [
+      {
+        "date": "2023-12-28",
+        "display_date": "28 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Music mixing",
+        "tool": "Algoriddim DJ"
+      },
+      {
+        "date": "2023-12-27",
+        "display_date": "27 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Event planning",
+        "tool": "Outside AI"
+      },
+      {
+        "date": "2023-12-26",
+        "display_date": "26 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Gaming assistance",
+        "tool": "HakkoAI"
+      },
+      {
+        "date": "2023-12-24",
+        "display_date": "24 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Video repair",
+        "tool": "Video Repair by Onerecovery"
+      },
+      {
+        "date": "2023-12-23",
+        "display_date": "23 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Sarcastic astrology",
+        "tool": "Rude Karma"
+      },
+      {
+        "date": "2023-12-22",
+        "display_date": "22 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Personal branding",
+        "tool": "Kleo"
+      },
+      {
+        "date": "2023-12-21",
+        "display_date": "21 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Psychotherapy notes",
+        "tool": "Mentalyc"
+      },
+      {
+        "date": "2023-12-21",
+        "display_date": "21 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Newsletter summaries",
+        "tool": "Jellypod"
+      },
+      {
+        "date": "2023-12-20",
+        "display_date": "20 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Video content indexing",
+        "tool": "AI Video Search Engine"
+      },
+      {
+        "date": "2023-12-18",
+        "display_date": "18 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Anki cards",
+        "tool": "FlashFlashCards"
+      },
+      {
+        "date": "2023-12-17",
+        "display_date": "17 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Sketches",
+        "tool": "Drawww"
+      },
+      {
+        "date": "2023-12-16",
+        "display_date": "16 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Therapeutic storytelling",
+        "tool": "DreamKid"
+      },
+      {
+        "date": "2023-12-15",
+        "display_date": "15 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Local SEO",
+        "tool": "Local Falcon"
+      },
+      {
+        "date": "2023-12-14",
+        "display_date": "14 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Lego avatars",
+        "tool": "BrickifyMe"
+      },
+      {
+        "date": "2023-12-14",
+        "display_date": "14 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Bulk images",
+        "tool": "ImagePipeline"
+      },
+      {
+        "date": "2023-12-11",
+        "display_date": "11 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "CLI productivity enhancement",
+        "tool": "Kel"
+      },
+      {
+        "date": "2023-12-11",
+        "display_date": "11 Dec 2023",
+        "month": "Dec",
+        "year": 2023,
+        "capability": "Travel",
+        "tool": "Ask Layla"
+      }
+    ]
+  }
+]

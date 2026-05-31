@@ -15,6 +15,7 @@ const navSections = [
     items: [
       { href: '/glossary', label: 'AI Glossary' },
       { href: '/abbreviations', label: 'Abbreviations' },
+      { href: '/timeline', label: 'AI Timeline' },
       { href: '/tech-basics', label: 'Tech Basics' },
     ],
   },
