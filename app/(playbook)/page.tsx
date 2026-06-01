@@ -1,61 +1,67 @@
 'use client'
 
 import Link from 'next/link'
-import { BookOpen, Zap, Play, Shield, ArrowRight } from 'lucide-react'
+import { Shield, Zap, MessageSquare, Users, Play, AlertTriangle, ArrowRight, BarChart2, GitBranch } from 'lucide-react'
 
-const bucketCards = [
+const primaryCards = [
   {
-    icon: BookOpen,
-    title: 'Understand AI',
-    description: 'Decode the language of AI. Glossary, abbreviations, and technical basics.',
-    count: '35 entries',
-    href: '/glossary',
-    color: '#533afd',
+    icon: Shield,
+    title: 'Operating Principles',
+    description: 'Rules for using AI at scale — where to automate, where to stay human, and how to set quality bars.',
+    href: '/dos-donts',
   },
   {
     icon: Zap,
-    title: 'Use AI',
-    description: 'Practical skills, tools, prompts, and workflows for your daily work.',
-    count: '30 skills · 19 tools',
-    href: '/skills',
-    color: '#533afd',
+    title: 'Workflow Library',
+    description: 'Senior-level workflows for product, design, research, ops, and brand — built around real Headout problems.',
+    href: '/workflows',
+  },
+  {
+    icon: MessageSquare,
+    title: 'Prompt Systems',
+    description: 'Deep prompt chains for PRD critique, research synthesis, design QA, localization review, and campaign production.',
+    href: '/prompts',
+  },
+  {
+    icon: Users,
+    title: 'AI by Team',
+    description: 'Leverage maps, repeatable workflows, and quality bars per team — not generic use case lists.',
+    href: '/by-team',
   },
   {
     icon: Play,
-    title: 'See AI in Action',
-    description: 'Real examples from Headout teams. What worked, what failed, and what you can reuse.',
-    count: '8 case studies',
+    title: 'Case Studies',
+    description: 'What actually happened when Headout teams used AI. What worked, what failed, what others can reuse.',
     href: '/case-studies',
-    color: '#533afd',
   },
   {
-    icon: Shield,
-    title: 'Use AI Responsibly',
-    description: "Do's, don'ts, limitations, hallucinations, and privacy guidelines.",
-    count: '12 guidelines',
-    href: '/dos-donts',
-    color: '#533afd',
+    icon: AlertTriangle,
+    title: 'Risk & Governance',
+    description: 'Risk by workflow type, not generic AI warnings. Controls, failure modes, and what humans must own.',
+    href: '/risks',
   },
 ]
 
-const startHereCards = [
-  { label: 'Learn the terms', href: '/glossary', description: 'AI glossary & abbreviations' },
-  { label: 'Try a workflow', href: '/workflows', description: 'Step-by-step AI workflows' },
-  { label: 'Find a tool', href: '/tools', description: 'Tool library with 19+ tools' },
+const foundationLinks = [
+  { label: 'AI Maturity Model', href: '/maturity', description: 'Where your team is and where to go next' },
+  { label: 'Tool Framework', href: '/tools', description: 'What to use, when to avoid it, and why' },
+  { label: 'Build vs Buy vs Automate', href: '/build-vs-buy', description: 'Decision framework for AI investment' },
 ]
 
 const allSections = [
-  { label: 'AI Glossary', href: '/glossary' },
-  { label: 'Abbreviations', href: '/abbreviations' },
-  { label: 'Tech Basics', href: '/tech-basics' },
-  { label: 'Skills Library', href: '/skills' },
-  { label: 'Tool Library', href: '/tools' },
-  { label: 'Prompt Library', href: '/prompts' },
+  { label: 'Operating Principles', href: '/dos-donts' },
+  { label: 'Maturity Model', href: '/maturity' },
+  { label: 'Build vs Buy', href: '/build-vs-buy' },
   { label: 'Workflows', href: '/workflows' },
+  { label: 'Prompt Systems', href: '/prompts' },
+  { label: 'Skills', href: '/skills' },
+  { label: 'Tools', href: '/tools' },
   { label: 'Case Studies', href: '/case-studies' },
-  { label: "By Team", href: '/by-team' },
-  { label: "Do's & Don'ts", href: '/dos-donts' },
-  { label: 'Risks & Limitations', href: '/risks' },
+  { label: 'AI by Team', href: '/by-team' },
+  { label: 'Risk & Governance', href: '/risks' },
+  { label: 'AI Shifts', href: '/timeline' },
+  { label: 'Impl. Basics', href: '/tech-basics' },
+  { label: 'AI Reference', href: '/glossary' },
 ]
 
 export default function HubPage() {
@@ -64,13 +70,9 @@ export default function HubPage() {
 
       {/* Hero */}
       <div className="mb-12 animate-fade-up delay-0">
-        {/* Pill */}
         <div
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6 text-xs font-semibold uppercase tracking-wide"
-          style={{
-            background: '#b9b9f9',
-            color: '#4434d4',
-          }}
+          style={{ background: '#b9b9f9', color: '#4434d4' }}
         >
           <span className="size-1.5 rounded-full" style={{ background: '#533afd' }} />
           Headout · AI Session 2026
@@ -80,40 +82,26 @@ export default function HubPage() {
           className="text-3xl sm:text-5xl leading-tight mb-4"
           style={{ color: '#0d253d', fontWeight: 300, letterSpacing: '-1.4px' }}
         >
-          Your AI Playbook
+          AI Leverage at Headout
         </h1>
-        <p className="text-base sm:text-lg leading-relaxed mb-8 max-w-2xl" style={{ color: '#64748d', fontWeight: 300 }}>
-          Everything you need to understand, use, and experiment with AI — built for Headout.
+        <p className="text-base sm:text-lg leading-relaxed mb-2 max-w-2xl" style={{ color: '#64748d', fontWeight: 300 }}>
+          Built for teams who already use AI — and want to use it consistently, at scale, and at a higher quality bar.
         </p>
-
-        {/* Stats row */}
-        <div className="flex flex-wrap gap-4">
-          {['35+ terms', '30 skills', '19 tools', '15 workflows'].map((stat) => (
-            <div
-              key={stat}
-              className="flex items-center gap-1.5 text-sm"
-              style={{ color: '#64748d' }}
-            >
-              <span
-                className="size-1 rounded-full"
-                style={{ background: '#533afd' }}
-              />
-              {stat}
-            </div>
-          ))}
-        </div>
+        <p className="text-sm leading-relaxed max-w-2xl" style={{ color: '#a8c3de', fontWeight: 300 }}>
+          Not a beginner guide. A senior operating reference.
+        </p>
       </div>
 
-      {/* 5 Bucket Cards */}
+      {/* Primary section cards */}
       <div className="mb-12">
         <h2
           className="text-xs font-semibold uppercase tracking-wider mb-4"
           style={{ color: '#64748d' }}
         >
-          Sections
+          Core sections
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 card-stagger">
-          {bucketCards.map((card) => {
+          {primaryCards.map((card) => {
             const Icon = card.icon
             return (
               <Link
@@ -137,26 +125,17 @@ export default function HubPage() {
                   e.currentTarget.style.boxShadow = 'rgba(0,55,112,0.08) 0 1px 3px'
                 }}
               >
-                {/* Icon */}
                 <div
                   className="size-9 rounded-lg flex items-center justify-center mb-4"
                   style={{ background: 'rgba(83,58,253,0.08)', color: '#533afd' }}
                 >
                   <Icon size={18} />
                 </div>
-
                 <h3 className="text-base font-semibold mb-1.5" style={{ color: '#0d253d' }}>{card.title}</h3>
                 <p className="text-sm leading-relaxed flex-1 mb-3" style={{ color: '#64748d' }}>
                   {card.description}
                 </p>
-
-                <div className="flex items-center justify-between">
-                  <span
-                    className="text-xs font-medium"
-                    style={{ color: '#533afd' }}
-                  >
-                    {card.count}
-                  </span>
+                <div className="flex items-center justify-end">
                   <ArrowRight
                     size={15}
                     className="group-hover:translate-x-1 transition-transform duration-200"
@@ -169,16 +148,16 @@ export default function HubPage() {
         </div>
       </div>
 
-      {/* Start Here */}
+      {/* Foundations quick links */}
       <div className="mb-12">
         <h2
           className="text-xs font-semibold uppercase tracking-wider mb-4"
           style={{ color: '#64748d' }}
         >
-          Start Here
+          Foundations
         </h2>
         <div className="flex flex-col gap-2">
-          {startHereCards.map((card) => (
+          {foundationLinks.map((card) => (
             <Link
               key={card.href}
               href={card.href}
@@ -199,23 +178,19 @@ export default function HubPage() {
             >
               <div>
                 <div className="text-sm font-semibold" style={{ color: '#0d253d' }}>{card.label}</div>
-                <div className="text-xs mt-0.5" style={{ color: '#64748d' }}>
-                  {card.description}
-                </div>
+                <div className="text-xs mt-0.5" style={{ color: '#64748d' }}>{card.description}</div>
               </div>
               <ArrowRight
                 size={16}
                 className="group-hover:translate-x-1 transition-transform duration-200 shrink-0"
                 style={{ color: '#a8c3de' }}
-                onMouseEnter={(e) => { (e.currentTarget as SVGElement).style.color = '#533afd' }}
-                onMouseLeave={(e) => { (e.currentTarget as SVGElement).style.color = '#a8c3de' }}
               />
             </Link>
           ))}
         </div>
       </div>
 
-      {/* Quick section links */}
+      {/* All sections */}
       <div>
         <h2
           className="text-xs font-semibold uppercase tracking-wider mb-4"

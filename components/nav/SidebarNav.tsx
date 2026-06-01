@@ -11,34 +11,46 @@ const navSections = [
     ],
   },
   {
-    label: 'Understand AI',
+    label: 'Foundations',
     items: [
-      { href: '/glossary', label: 'AI Glossary' },
-      { href: '/abbreviations', label: 'Abbreviations' },
-      { href: '/timeline', label: 'AI Timeline' },
-      { href: '/tech-basics', label: 'Tech Basics' },
+      { href: '/dos-donts', label: 'Operating Principles' },
+      { href: '/maturity', label: 'AI Maturity Model' },
+      { href: '/build-vs-buy', label: 'Build vs Buy' },
     ],
   },
   {
-    label: 'Use AI',
+    label: 'Workflow Systems',
     items: [
-      { href: '/skills', label: 'Skills Library' },
-      { href: '/tools', label: 'Tool Library' },
-      { href: '/prompts', label: 'Prompt Library' },
       { href: '/workflows', label: 'Workflows' },
+      { href: '/prompts', label: 'Prompt Systems' },
+      { href: '/skills', label: 'Skills' },
     ],
   },
   {
-    label: 'See AI in Action',
+    label: 'Tool Framework',
+    items: [
+      { href: '/tools', label: 'Tools' },
+    ],
+  },
+  {
+    label: 'Evidence',
     items: [
       { href: '/case-studies', label: 'Case Studies' },
+      { href: '/by-team', label: 'AI by Team' },
     ],
   },
   {
-    label: 'Use AI Responsibly',
+    label: 'Governance',
     items: [
-      { href: '/dos-donts', label: "Do's & Don'ts" },
-      { href: '/risks', label: 'Risks & Limitations' },
+      { href: '/risks', label: 'Risk & Governance' },
+    ],
+  },
+  {
+    label: 'Reference',
+    items: [
+      { href: '/timeline', label: 'AI Shifts' },
+      { href: '/glossary', label: 'AI Reference' },
+      { href: '/tech-basics', label: 'Impl. Basics' },
     ],
   },
 ]
