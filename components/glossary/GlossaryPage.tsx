@@ -3,7 +3,6 @@
 import { useState, useMemo } from 'react'
 import { GlossaryTerm } from '@/types'
 import { filterTerms } from '@/lib/utils/search'
-import SiteHeader from './SiteHeader'
 import SearchBar from './SearchBar'
 import GlossaryGrid from './GlossaryGrid'
 import EmptyState from './EmptyState'
@@ -47,26 +46,25 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SiteHeader showBack />
 
       <div className="flex-1 max-w-3xl mx-auto w-full">
 
         {/* Page title */}
         <div className="px-5 pt-7 pb-5 animate-fade-up delay-75">
-          <h1 className="text-xl font-bold text-white leading-tight">Glossary</h1>
-          <p className="text-sm text-white/30 mt-1">
+          <h1 className="text-xl leading-tight" style={{ color: '#0d253d', fontWeight: 300, letterSpacing: '-0.26px' }}>Glossary</h1>
+          <p className="text-sm mt-1" style={{ color: '#64748d' }}>
             {terms.length} terms · tap any card to expand
           </p>
         </div>
 
         {/* Sticky: search then tabs */}
         <div
-          className="sticky top-14 z-20 animate-fade-in delay-0"
+          className="sticky top-0 lg:top-0 z-20 animate-fade-in delay-0"
           style={{
-            background: 'rgba(7,7,14,0.92)',
+            background: 'rgba(255,255,255,0.94)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            borderBottom: '1px solid rgba(255,255,255,0.04)',
+            borderBottom: '1px solid #e3e8ee',
           }}
         >
           {/* Search */}
@@ -92,7 +90,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                 >
                   <span
                     className="transition-colors duration-200"
-                    style={{ color: isActive ? '#fff' : 'rgba(255,255,255,0.35)' }}
+                    style={{ color: isActive ? '#0d253d' : '#64748d' }}
                   >
                     {tab.label}
                   </span>
@@ -100,8 +98,8 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                     className="text-xs px-1.5 py-0.5 rounded-full font-medium transition-all duration-200"
                     style={
                       isActive
-                        ? { background: '#7c3aed', color: '#fff' }
-                        : { background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.3)' }
+                        ? { background: '#533afd', color: '#fff' }
+                        : { background: '#f6f9fc', color: '#64748d', border: '1px solid #e3e8ee' }
                     }
                   >
                     {count}
@@ -110,7 +108,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                   <span
                     className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full transition-all duration-250"
                     style={{
-                      background: '#8b5cf6',
+                      background: '#533afd',
                       opacity: isActive ? 1 : 0,
                       transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
                       transformOrigin: 'left',
@@ -129,7 +127,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
           ) : (
             <div key={activeTab} className="animate-tab-fade">
               {query && (
-                <p className="text-xs text-white/20 mb-4">
+                <p className="text-xs mb-4" style={{ color: '#64748d' }}>
                   {filtered.length} {filtered.length === 1 ? 'result' : 'results'} in{' '}
                   {TABS.find((t) => t.id === activeTab)?.label.toLowerCase()} for &ldquo;{query}&rdquo;
                 </p>

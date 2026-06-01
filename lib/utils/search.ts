@@ -10,6 +10,8 @@ export function filterTerms(terms: GlossaryTerm[], query: string): GlossaryTerm[
       t.short_definition?.toLowerCase().includes(q) ||
       t.detailed_explanation?.toLowerCase().includes(q) ||
       t.aliases.some((a) => a.toLowerCase().includes(q)) ||
-      t.tool_tags.some((tag) => tag.toLowerCase().includes(q))
+      t.tool_tags.some((tag) => tag.toLowerCase().includes(q)) ||
+      t.layman_explanation?.toLowerCase().includes(q) ||
+      t.where_used?.some((w) => w.toLowerCase().includes(q))
   )
 }

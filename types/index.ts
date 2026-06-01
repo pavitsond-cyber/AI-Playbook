@@ -17,6 +17,9 @@ export interface GlossaryTerm {
   updated_by: string | null
   created_at: string
   updated_at: string
+  layman_explanation?: string | null
+  where_used?: string[] | null
+  related_links?: Array<{ label: string; href: string }> | null
 }
 
 export interface GlossaryEdit {
@@ -51,9 +54,9 @@ export const CATEGORY_ORDER: Category[] = [
 ]
 
 export const CATEGORY_COLORS: Record<Category, string> = {
-  ai_basics: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
-  tools: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
-  coding: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
-  prompting: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
-  workflow: 'bg-pink-500/20 text-pink-300 border-pink-500/30',
+  ai_basics: 'bg-blue-50 text-blue-700 border-blue-200',
+  tools: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  coding: 'bg-orange-50 text-orange-700 border-orange-200',
+  prompting: 'bg-violet-50 text-violet-700 border-violet-200',
+  workflow: 'bg-pink-50 text-pink-700 border-pink-200',
 }

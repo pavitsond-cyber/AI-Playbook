@@ -1,93 +1,46 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 
-const geist = Geist({
-  variable: '--font-geist-sans',
+const inter = Inter({
   subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-inter',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'Headout AI Library',
-  description: 'A plain-English glossary of AI terms, abbreviations and tools — Headout AI Session 2026.',
+  title: 'Headout AI Playbook',
+  description: 'A practical AI learning hub — built for the Headout AI Session 2026.',
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-  themeColor: '#07070e',
+  themeColor: '#ffffff',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={geist.variable}>
-      <body className="min-h-screen" style={{ backgroundColor: '#07070e' }}>
-
-        {/* ── Ambient glow — Waitlister-style ── */}
-        <div aria-hidden className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-
-          {/* Central dominant orb — large, soft, purple */}
-          <div
-            className="animate-float"
-            style={{
-              position: 'absolute',
-              top: '5%',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '720px',
-              height: '520px',
-              borderRadius: '50%',
-              background: 'radial-gradient(ellipse at center, rgba(109,40,217,0.28) 0%, rgba(124,58,237,0.12) 45%, transparent 75%)',
-              filter: 'blur(48px)',
-            }}
-          />
-
-          {/* Inner bright core */}
-          <div
-            className="animate-float-slow"
-            style={{
-              position: 'absolute',
-              top: '8%',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '320px',
-              height: '260px',
-              borderRadius: '50%',
-              background: 'radial-gradient(ellipse at center, rgba(139,92,246,0.22) 0%, transparent 70%)',
-              filter: 'blur(32px)',
-            }}
-          />
-
-          {/* Bottom-right secondary orb */}
-          <div style={{
-            position: 'absolute',
-            bottom: '-80px',
-            right: '-60px',
-            width: '480px',
-            height: '380px',
-            borderRadius: '50%',
-            background: 'radial-gradient(ellipse at center, rgba(109,40,217,0.14) 0%, transparent 70%)',
-            filter: 'blur(80px)',
-          }} />
-
-          {/* Top-left accent */}
-          <div style={{
-            position: 'absolute',
-            top: '-60px',
-            left: '-80px',
-            width: '360px',
-            height: '280px',
-            borderRadius: '50%',
-            background: 'radial-gradient(ellipse at center, rgba(124,58,237,0.10) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-          }} />
-
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen" style={{ backgroundColor: '#ffffff' }}>
+        {/* Gradient mesh backdrop — Stripe-style */}
+        <div aria-hidden className="fixed inset-x-0 top-0 z-0 pointer-events-none overflow-hidden" style={{ height: '420px' }}>
+          {/* Cream blob — far left */}
+          <div style={{ position: 'absolute', top: '-60px', left: '-80px', width: '500px', height: '400px', borderRadius: '50%', background: 'rgba(245,233,212,0.9)', filter: 'blur(80px)' }} />
+          {/* Lemon/orange blob — left-center */}
+          <div style={{ position: 'absolute', top: '-40px', left: '15%', width: '420px', height: '360px', borderRadius: '50%', background: 'rgba(255,190,80,0.35)', filter: 'blur(90px)' }} />
+          {/* Lavender blob — center */}
+          <div style={{ position: 'absolute', top: '-80px', left: '38%', width: '480px', height: '420px', borderRadius: '50%', background: 'rgba(185,165,255,0.45)', filter: 'blur(80px)' }} />
+          {/* Indigo blob — right-center */}
+          <div style={{ position: 'absolute', top: '-60px', left: '58%', width: '440px', height: '380px', borderRadius: '50%', background: 'rgba(83,58,253,0.28)', filter: 'blur(85px)' }} />
+          {/* Ruby blob — far right */}
+          <div style={{ position: 'absolute', top: '-40px', right: '-60px', width: '380px', height: '320px', borderRadius: '50%', background: 'rgba(234,34,97,0.22)', filter: 'blur(80px)' }} />
+          {/* Fade-to-white at bottom */}
+          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '180px', background: 'linear-gradient(to bottom, transparent, #ffffff)' }} />
         </div>
-
-        {/* Content sits above grain (z-10) and grain sits above bg (z-1) */}
         <div className="relative z-10">{children}</div>
-
       </body>
     </html>
   )
