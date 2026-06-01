@@ -87,9 +87,7 @@ export default function HubPage() {
         <p className="text-base sm:text-lg leading-relaxed mb-2 max-w-2xl" style={{ color: '#64748d', fontWeight: 300 }}>
           Built for teams who already use AI — and want to use it consistently, at scale, and at a higher quality bar.
         </p>
-        <p className="text-sm leading-relaxed max-w-2xl" style={{ color: '#a8c3de', fontWeight: 300 }}>
-          Not a beginner guide. A senior operating reference.
-        </p>
+
       </div>
 
       {/* Primary section cards */}
