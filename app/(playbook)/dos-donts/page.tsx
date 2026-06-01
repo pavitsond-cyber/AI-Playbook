@@ -5,7 +5,7 @@ const dos = [
   { title: 'Give clear context', detail: 'The more specific you are in your prompt, the better the output. Include who the audience is, what format you need, and what the goal is.' },
   { title: 'Use AI as a first draft tool', detail: 'AI is excellent at generating starting points. Use its output as a scaffold, then apply your own knowledge and judgment.' },
   { title: 'Iterate and refine', detail: 'If the first output isn\'t right, don\'t start over — refine. Tell the AI what to change, improve, or adjust. Conversation-style prompting works well.' },
-  { title: 'Document what works', detail: 'When you find a prompt or workflow that gives great results, save it. Share it with your team in the Prompt Library or Contribute section.' },
+  { title: 'Document what works', detail: 'When you find a prompt or workflow that gives great results, save it and share it with your team via Slack or your shared docs.' },
   { title: 'Ask for multiple options', detail: 'Asking for 5 or 10 variants gives you choice. It\'s faster to pick from options than to generate one at a time.' },
   { title: 'Use AI for brainstorming', detail: 'AI is great at generating ideas rapidly. Even if the ideas aren\'t perfect, they can unlock new directions you wouldn\'t have thought of alone.' },
   { title: 'Keep sensitive data out', detail: 'Avoid pasting real user data, private company financials, or credentials into public AI tools. Use anonymized or synthetic data instead.' },
