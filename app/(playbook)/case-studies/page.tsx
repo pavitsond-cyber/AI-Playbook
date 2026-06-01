@@ -122,30 +122,6 @@ export default function CaseStudiesPage() {
       </div>
 
       {/* Contribute CTA */}
-      <div
-        className="mt-10 p-5 rounded-xl"
-        style={{
-          background: '#ffffff',
-          border: '1px solid rgba(83,58,253,0.2)',
-          boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
-        }}
-      >
-        <h3 className="text-sm font-semibold mb-1" style={{ color: '#0d253d' }}>Have a case study to share?</h3>
-        <p className="text-sm mb-4" style={{ color: '#64748d' }}>
-          Did AI save you time this week? Tell us what you did, what tool you used, and what the result was.
-        </p>
-        <a
-          href="/contribute"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-normal transition-colors duration-150"
-          style={{
-            background: '#533afd',
-            color: '#ffffff',
-            borderRadius: '9999px',
-          }}
-        >
-          Submit yours →
-        </a>
-      </div>
     </div>
   )
 }
