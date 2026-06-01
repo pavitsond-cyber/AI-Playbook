@@ -118,8 +118,8 @@ export default function TemplatesPage() {
     <div className="px-5 sm:px-8 py-8 max-w-5xl mx-auto">
       <PageHeader
         title="Templates"
-        description="Copy-ready templates for contributing to the playbook. Just fill in the brackets."
-        badge="Keep Improving It"
+        description="Copy-ready templates for common AI tasks. Just fill in the brackets and go."
+        badge="Use AI"
       />
 
       <div className="space-y-4">
@@ -172,20 +172,6 @@ export default function TemplatesPage() {
         ))}
       </div>
 
-      <div
-        className="mt-8 p-4 rounded-xl text-sm"
-        style={{
-          background: 'rgba(83,58,253,0.05)',
-          border: '1px solid rgba(83,58,253,0.15)',
-          color: '#64748d',
-        }}
-      >
-        After filling in a template, head to the{' '}
-        <a href="/contribute" className="underline" style={{ color: '#533afd' }}>
-          Contribute page
-        </a>{' '}
-        to submit it.
-      </div>
     </div>
   )
 }

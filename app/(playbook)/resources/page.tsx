@@ -59,7 +59,7 @@ export default function ResourcesPage() {
       <PageHeader
         title="Resources"
         description="Curated links to AI tools, documentation, learning resources, and ethical guidelines."
-        badge="Keep Improving It"
+        badge="Resources"
       />
 
       <div className="space-y-8">
