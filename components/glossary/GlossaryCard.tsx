@@ -1,10 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown, Wrench, BookOpen, Tag } from 'lucide-react'
-import { cn } from '@/lib/utils/cn'
+import { ChevronDown, BookOpen } from 'lucide-react'
 import { GlossaryTerm } from '@/types'
-import { CategoryBadge } from '@/components/ui/Badge'
 
 interface GlossaryCardProps {
   term: GlossaryTerm
@@ -13,6 +11,11 @@ interface GlossaryCardProps {
 export default function GlossaryCard({ term }: GlossaryCardProps) {
   const [expanded, setExpanded] = useState(false)
   const [hovered, setHovered] = useState(false)
+
+  // Filter related_links to only valid in-playbook destinations
+  const validLinks = (term.related_links ?? []).filter((l) =>
+    ['/skills', '/prompts', '/dos-donts', '/glossary'].some((p) => l.href.startsWith(p))
+  )
 
   return (
     <article
@@ -41,24 +44,20 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
       >
         <div className="flex-1 min-w-0">
           {/* Term + full form */}
-          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 mb-2">
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 mb-2.5">
             <span className="text-[17px] font-semibold leading-snug tracking-tight" style={{ color: '#0d253d' }}>
               {term.term}
             </span>
             {term.full_form && (
               <span className="text-sm font-normal" style={{ color: '#64748d' }}>
-                {term.full_form}
+                — {term.full_form}
               </span>
             )}
           </div>
 
-          <div className="mb-2.5">
-            <CategoryBadge category={term.category} />
-          </div>
-
           {term.short_definition && (
             <p
-              className={cn('text-sm leading-relaxed', !expanded && 'line-clamp-2')}
+              className={`text-sm leading-relaxed ${!expanded ? 'line-clamp-2' : ''}`}
               style={{ color: '#64748d' }}
             >
               {term.short_definition}
@@ -76,7 +75,7 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
         />
       </button>
 
-      {/* Expanded body with smooth reveal */}
+      {/* Expanded body */}
       <div
         className="overflow-hidden transition-all duration-300 ease-in-out"
         style={{ maxHeight: expanded ? '1200px' : '0px' }}
@@ -85,7 +84,7 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
           className="px-5 pb-5 space-y-4 animate-fade-in"
           style={{ borderTop: '1px solid #e3e8ee', paddingTop: '1rem' }}
         >
-          {/* Full explanation — only shown when it adds content beyond the short def */}
+          {/* Full explanation */}
           {term.detailed_explanation &&
             term.detailed_explanation.trim() !== term.short_definition?.trim() && (
             <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>
@@ -93,7 +92,7 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
             </p>
           )}
 
-          {/* In plain English — only when genuinely different from definition */}
+          {/* In plain English */}
           {term.layman_explanation &&
             term.layman_explanation.trim() !== term.short_definition?.trim() &&
             term.layman_explanation.trim() !== term.detailed_explanation?.trim() && (
@@ -122,7 +121,7 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
               <div className="flex items-center gap-1.5 mb-2">
                 <BookOpen size={11} style={{ color: '#533afd' }} />
                 <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#533afd' }}>
-                  Real-world example
+                  How it's used
                 </span>
               </div>
               <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>
@@ -131,82 +130,32 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
             </div>
           )}
 
-          {/* Where you'll see this */}
-          {term.where_used && term.where_used.length > 0 && (
-            <div>
-              <span className="text-[10px] font-semibold uppercase tracking-widest block mb-2" style={{ color: '#64748d' }}>
-                Where you&apos;ll see this
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {term.where_used.map((place) => (
-                  <span
-                    key={place}
-                    className="px-2.5 py-1 rounded-lg text-xs"
-                    style={{ background: '#f6f9fc', border: '1px solid #e3e8ee', color: '#64748d' }}
-                  >
-                    {place}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Related tools */}
-          {term.tool_tags.length > 0 && (
-            <div>
-              <div className="flex items-center gap-1.5 mb-2.5">
-                <Wrench size={11} style={{ color: '#64748d' }} />
-                <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#64748d' }}>
-                  Tools that use this
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {term.tool_tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2.5 py-1 rounded-lg text-xs"
-                    style={{ background: '#f0f4ff', border: '1px solid rgba(83,58,253,0.15)', color: '#4434d4' }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
           {/* Also known as */}
           {term.aliases.length > 0 && (
-            <div>
-              <div className="flex items-center gap-1.5 mb-2.5">
-                <Tag size={11} style={{ color: '#64748d' }} />
-                <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#64748d' }}>
-                  Also known as
+            <div className="flex flex-wrap gap-1.5">
+              <span className="text-xs self-center" style={{ color: '#a8c3de' }}>Also called:</span>
+              {term.aliases.map((alias) => (
+                <span
+                  key={alias}
+                  className="px-2.5 py-0.5 rounded-lg text-xs"
+                  style={{ background: '#b9b9f9', color: '#4434d4' }}
+                >
+                  {alias}
                 </span>
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {term.aliases.map((alias) => (
-                  <span
-                    key={alias}
-                    className="px-2.5 py-1 rounded-lg text-xs"
-                    style={{ background: '#b9b9f9', color: '#4434d4' }}
-                  >
-                    {alias}
-                  </span>
-                ))}
-              </div>
+              ))}
             </div>
           )}
 
-          {/* Quick links to related sections */}
-          {term.related_links && term.related_links.length > 0 && (
+          {/* Skills & prompts connections */}
+          {validLinks.length > 0 && (
             <div>
               <span className="text-[10px] font-semibold uppercase tracking-widest block mb-2" style={{ color: '#64748d' }}>
-                Explore further
+                Use in playbook
               </span>
               <div className="flex flex-wrap gap-2">
-                {term.related_links.map((link) => (
+                {validLinks.map((link) => (
                   <a
-                    key={link.href}
+                    key={link.href + link.label}
                     href={link.href}
                     className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium transition-all duration-150"
                     style={{
