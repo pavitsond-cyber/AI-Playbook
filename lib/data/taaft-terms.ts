@@ -253,8 +253,6 @@ export const taaftTerms: GlossaryTerm[] = taaftData.terms.map((t) => {
   const hasMoreDetail = detailedExp.length > shortDef.length + 5
 
   const exampleUsage = buildExample(t.term, t.definition, t.taaft_category)
-  const toolTags = buildToolTags(t.term, t.definition, t.taaft_category)
-  const whereUsed = buildWhereUsed(t.term, t.taaft_category, t.definition)
 
   return {
     id: t.id,
@@ -265,16 +263,16 @@ export const taaftTerms: GlossaryTerm[] = taaftData.terms.map((t) => {
     detailed_explanation: hasMoreDetail ? detailedExp : null,
     category,
     aliases: [],
-    tool_tags: toolTags,
+    tool_tags: [],
     example_usage: exampleUsage,
     session_relevance: null,
     status: 'published' as const,
     updated_by: null,
     created_at: '2026-01-01T00:00:00Z',
     updated_at: '2026-01-01T00:00:00Z',
-    layman_explanation: null, // Not set for TAAFT terms — no fake rephrasing
-    where_used: whereUsed,
-    related_links: buildRelatedLinks(t.term, t.taaft_category),
+    layman_explanation: null,
+    where_used: null,
+    related_links: [],
   }
 })
 

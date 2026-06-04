@@ -25,7 +25,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'AI covers any system that performs tasks previously requiring human intelligence: understanding language, generating images, writing code, making decisions. Modern AI is powered by large language models, diffusion models, and neural networks. You interact with it daily — through chat interfaces, image generators, and AI-assisted tools.',
     layman_explanation: 'Think of AI as a very fast, very well-read assistant. It has absorbed an enormous amount of human-created content and can help you write, reason, generate, and build. It doesn\'t think for itself — it predicts what would be most useful based on everything it learned during training.',
     example_usage: 'Upload a competitor\'s app screenshot to Claude: "What UX patterns are they using here? What\'s working and what isn\'t?" That\'s AI doing visual reasoning. Ask Midjourney to generate three creative directions for a campaign brief. That\'s AI doing visual generation. Both are AI — different modalities.',
-    where_used: ['Claude', 'ChatGPT', 'Midjourney', 'Cursor', 'Perplexity'],
+    where_used: null,
     aliases: ['Artificial Intelligence'],
     tool_tags: [],
     related_links: [
@@ -42,7 +42,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'An LLM is a neural network trained on hundreds of billions of words. It learns statistical patterns in language so well that it can write, summarise, translate, reason, and generate text with human-level fluency. Every time you send a prompt, the LLM generates a response token by token — predicting the most useful next word, then the next, until the response is complete.',
     layman_explanation: 'An LLM has read most of the internet. When you type a prompt, it doesn\'t search for an answer — it generates the most likely and useful continuation of your text. Think of it as very sophisticated autocomplete built on an enormous base of knowledge.',
     example_usage: 'When you write "Act as a senior UX writer, generate 8 options for this empty state — headline under 6 words, warm tone, no emoji" and get back 8 distinct, well-crafted options in seconds — that\'s an LLM at work.',
-    where_used: ['Claude', 'ChatGPT', 'Gemini', 'Cursor'],
+    where_used: null,
     aliases: ['Language model', 'Foundation model'],
     tool_tags: [],
     related_links: [
@@ -60,7 +60,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'GPT refers both to OpenAI\'s model series and to the Transformer architecture introduced by Google in 2017. Pre-training means the model learned from a massive dataset before you ever used it — it arrives already knowing how to write, reason, and code. GPT-4o is the current standard model in ChatGPT.',
     layman_explanation: '"Pre-trained" means it went through an extensive education before you spoke to it. Like hiring someone who has already read every book in every library — they arrive knowledgeable, you just direct them toward your specific task.',
     example_usage: 'When your team uses ChatGPT to draft a PRD, critique copy, or generate Midjourney prompts — they\'re using a GPT-4o model. The "generative" part means it creates new text rather than retrieving stored answers.',
-    where_used: ['ChatGPT', 'OpenAI API'],
+    where_used: null,
     aliases: ['GPT-4', 'GPT-4o', 'ChatGPT model'],
     tool_tags: [],
     related_links: [
@@ -76,7 +76,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'A standard LLM answers from its training data alone. RAG adds a retrieval step: before generating a response, the system searches a knowledge base (web pages, uploaded documents, a database) for relevant content, then feeds those results into the model as context. This makes answers more accurate, current, and verifiable.',
     layman_explanation: 'Imagine asking a consultant a question. Without RAG, they answer from memory. With RAG, they first search their reference library, pull the relevant pages, then answer with those sources in hand. The answer is grounded in actual documents, not just recall.',
     example_usage: 'Upload 12 interview transcripts to NotebookLM. Ask: "What are the three most common pain points across all interviews?" NotebookLM uses RAG to search across all 12 documents before generating its synthesis — the answer is grounded in quotes, not guesswork.',
-    where_used: ['Perplexity', 'NotebookLM', 'AI search tools'],
+    where_used: null,
     aliases: ['Retrieval augmentation', 'Search-augmented generation'],
     tool_tags: [],
     related_links: [
@@ -93,7 +93,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'MCP (developed by Anthropic) is an open standard that lets AI models connect to external data sources and tools through a consistent interface. Instead of building custom integrations for every tool, developers implement MCP once to connect AI to Slack, Google Drive, Notion, databases, and more.',
     layman_explanation: 'Before USB-C, every device needed a different cable. MCP creates one standard connector so AI can plug into any tool — your files, your calendar, your codebase — without custom wiring for each one.',
     example_usage: 'With MCP configured, Claude can read your Figma file to understand the current design, check Notion for the PRD, write updated copy, and mark the task complete — all in one conversation. No tab switching.',
-    where_used: ['Claude', 'Cursor', 'AI agents'],
+    where_used: null,
     aliases: ['Model Context Protocol'],
     tool_tags: [],
     related_links: [
@@ -109,7 +109,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'An API exposes a set of endpoints that accept structured requests and return structured responses. AI tools like Claude, ChatGPT, and Midjourney all have APIs. When you ask Cursor or Lovable to add an AI feature to your product, it writes code that calls these APIs. Understanding APIs helps you ask the right questions when AI integrations are being built.',
     layman_explanation: 'An API is like a restaurant menu. The kitchen can do many things, but the menu tells you exactly what\'s available and how to order. You don\'t walk into the kitchen — you make a request, wait, and get back exactly what the menu promised.',
     example_usage: 'A Lovable prototype that generates personalised content using Claude makes an API call every time a user asks a question. The call sends the user\'s input to Claude\'s API and gets back a response. No API = no AI in your product.',
-    where_used: ['All AI integrations', 'Vibe coding', 'AI product features'],
+    where_used: null,
     aliases: ['Endpoint', 'REST API'],
     tool_tags: [],
     related_links: [
@@ -125,7 +125,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'JSON is a lightweight text format using key-value pairs. When you ask an AI to return structured output — a list of issues with priorities, a table of data, a set of options with labels — it returns JSON. Every API response is JSON. Vibe coding relies on JSON constantly as the language AI and apps use to exchange data.',
     layman_explanation: 'Instead of a free-text paragraph, you get labelled boxes: { "title": "Fix empty state", "priority": "high", "effort": "small" }. Every system can read this format — your app, your database, your spreadsheet. JSON is how AI output becomes usable data.',
     example_usage: 'Prompt: "Return 5 UX improvements as a JSON array. Each item: { title, priority: high/medium/low, effort: small/medium/large, rationale }." You get clean structured data you can paste directly into your codebase or ticket management tool.',
-    where_used: ['AI structured outputs', 'APIs', 'Vibe coding', 'Data pipelines'],
+    where_used: null,
     aliases: ['Structured data', 'JSON object'],
     tool_tags: [],
     related_links: [
@@ -141,7 +141,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'NLP is the set of techniques that let computers parse, understand, and generate human language. All LLMs are NLP systems. NLP is why AI understands "make this warmer" in a copy context differently from "make this warmer" in a temperature context — it reads intent, not just words.',
     layman_explanation: 'Before NLP, search meant finding exact word matches. With NLP, a search for "budget options near the Eiffel Tower" understands "budget" = affordable, "near" = proximity, and "Eiffel Tower" = a specific location — not three unrelated words.',
     example_usage: 'When you write a prompt like "this copy feels stiff, loosen it up" and Claude understands you want a more conversational tone — not literally looser typography — that\'s NLP reading intent from context.',
-    where_used: ['Search engines', 'Chatbots', 'All LLMs'],
+    where_used: null,
     aliases: ['Natural language understanding'],
     tool_tags: [],
     related_links: [
@@ -158,7 +158,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Modern TTS systems use neural networks to synthesise speech nearly indistinguishable from human voice. You write the script, the AI reads it. You can clone specific voices, adjust tone and pacing, and generate in multiple languages — all without a recording studio.',
     layman_explanation: 'Like hiring a professional voice actor who works instantly, in any language, at any time. Write the script, choose a voice style, download the audio file. ElevenLabs can even clone a specific person\'s voice from a short recording.',
     example_usage: 'Write a 90-second audio guide script for an experience. Paste it into ElevenLabs. Generate a natural voiceover in English, Spanish, and French in under 5 minutes. Total cost: cents. Previous process: book a studio, hire voice actors, wait a week.',
-    where_used: ['Audio guides', 'Marketing videos', 'Accessibility', 'Content production'],
+    where_used: null,
     aliases: ['Voice synthesis', 'AI voiceover'],
     tool_tags: [],
     related_links: [
@@ -174,7 +174,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'STT processes audio and converts it to text with high accuracy. Modern systems handle multiple speakers, accents, technical vocabulary, and produce punctuated transcripts with speaker labels. Used for interview transcription, meeting notes, and any workflow where you need to move from spoken to written.',
     layman_explanation: 'Like having a very fast, very accurate transcriptionist on call 24/7. Upload a 60-minute recording and get a clean written transcript in under a minute — with speaker identification and punctuation.',
     example_usage: 'Record 10 user research interviews. Upload each to Otter or Whisper. Get clean transcripts with speaker labels in minutes. Paste the batch into the Research Synthesis prompt to extract patterns, frequency counts, and contradictions across all sessions.',
-    where_used: ['User research', 'Meeting notes', 'Content creation'],
+    where_used: null,
     aliases: ['Transcription', 'ASR'],
     tool_tags: [],
     related_links: [
@@ -191,7 +191,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'UI encompasses all visual and interactive elements: screens, components, copy, states. AI accelerates UI work through copy generation, state auditing, design QA, and converting Figma to code. The designer still makes every decision — AI expands the option space and catches systematic issues.',
     layman_explanation: 'The surface — what users see and touch. If the product was a car, the UI would be the dashboard and controls. AI helps design and write it faster — generating options, catching gaps, and iterating on copy without the back-and-forth.',
     example_usage: 'Export all copy from a Figma file into a text document. Paste into the Design QA Review prompt. Claude flags: 3 missing error states, 2 inconsistent CTA labels, and 4 copy strings that drift from the voice guide. Fix before handoff.',
-    where_used: ['Product design', 'Frontend', 'UX writing'],
+    where_used: null,
     aliases: ['Interface', 'Frontend'],
     tool_tags: [],
     related_links: [
@@ -208,7 +208,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'UX covers the entire user journey: how intuitive flows feel, whether copy is clear, whether users can accomplish their goals without friction. AI assists UX work through research synthesis, copy generation, flow critique, and QA — always with human design judgment in the lead.',
     layman_explanation: 'UI is what you see. UX is how it feels. A beautiful button that confuses users is bad UX. A plain button that always does exactly what users expect is great UX. AI helps you find the gaps faster through synthesis and critique.',
     example_usage: 'Paste 8 user interview transcripts: "Extract the top 5 friction points with frequency counts and representative quotes. Flag any contradictions." A 4-hour synthesis job becomes 20 minutes — leaving the researcher time to challenge the AI\'s clusters with their own judgment.',
-    where_used: ['Design', 'Product', 'Research'],
+    where_used: null,
     aliases: ['User experience design'],
     tool_tags: [],
     related_links: [
@@ -225,7 +225,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'A PRD aligns product, engineering, and design teams before build starts. It typically includes: problem statement, user stories, success metrics, edge cases, and open questions. AI is highly capable at producing first drafts and pressure-testing existing ones for assumptions, gaps, and weak metrics.',
     layman_explanation: 'A PRD is a shared brief — a script everyone agrees on before building. "We\'re building X, it solves Y, success looks like Z." AI can draft these from a short brief, and more usefully, can act as the world\'s most thorough critic when you run the PRD Pressure-Testing prompt.',
     example_usage: '"Act as a senior PM. I\'m building a wishlist feature for a travel app. Write a full PRD: problem statement, 5 user stories, 3 success metrics, 5 edge cases, open questions." Then run the PRD Pressure-Testing prompt on the draft to challenge every assumption before handoff.',
-    where_used: ['Product management', 'Sprint planning', 'Engineering alignment'],
+    where_used: null,
     aliases: ['Product spec', 'Feature brief', 'Spec doc'],
     tool_tags: [],
     related_links: [
@@ -242,7 +242,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'OCR uses computer vision to identify characters in images and transcribe them as text. Once text is extracted, AI can summarise, translate, structure, or analyse it. Essential for working with printed documents, handwritten notes, and scanned files.',
     layman_explanation: 'Photograph a whiteboard, scan a contract, snap a printed brief. OCR reads the image and gives you the text — like retyping a document automatically. Once it\'s text, AI can do anything with it.',
     example_usage: 'Photograph the rough brief written on a whiteboard after a brainstorm. OCR extracts the text. Paste into Claude: "Turn these rough notes into a structured brief with problem statement, goals, and constraints." Done in 3 minutes.',
-    where_used: ['Document processing', 'Research', 'Contract review'],
+    where_used: null,
     aliases: ['Text recognition', 'Document scanning'],
     tool_tags: [],
     related_links: [
@@ -260,7 +260,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'A prompt can be a simple question, a detailed instruction, or a multi-step brief. Good prompts include: a role ("Act as a senior UX writer"), context (the task, the audience), constraints (length, tone, format), and a clear goal. Specificity is the single biggest lever on output quality.',
     layman_explanation: 'A prompt is your order at the counter. "Give me something good" gets an unpredictable result. "Medium cappuccino, oat milk, no sugar, takeaway cup" gets exactly what you want. Prompts work the same way — the more specific, the better.',
     example_usage: '"Act as a senior UX writer. I\'m designing an empty state for the bookings screen — no upcoming bookings. Generate 8 copy options. Headline: under 6 words. Subtext: under 18 words. Tone: warm, specific, no generic phrases. No emoji."',
-    where_used: ['Every AI tool', 'Claude', 'ChatGPT', 'Midjourney'],
+    where_used: null,
     aliases: ['Input', 'Query', 'Instruction'],
     tool_tags: [],
     related_links: [
@@ -277,7 +277,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Prompt engineering involves defining role, context, constraints, output format, and examples in your prompt. Key techniques: assign a role ("Act as..."), give context (what is this for, who is it for), specify constraints (length, tone, format), add examples of good output (few-shot), and ask for step-by-step reasoning (chain of thought).',
     layman_explanation: 'Like being a good manager. A good manager doesn\'t say "fix the bug". They say: "Here\'s the bug, here\'s what we tried, here\'s the expected behaviour — fix it and explain your reasoning." Prompt engineering applies that same clarity to directing AI.',
     example_usage: 'Weak: "Write a PRD." Strong: "Act as a senior PM at a travel company. Write a PRD for [feature]. Include: problem statement (2 sentences), 5 user stories, 3 measurable success metrics, 5 edge cases, and 3 open questions. Use headers. Be concise — no padding."',
-    where_used: ['Claude', 'ChatGPT', 'All AI tools'],
+    where_used: null,
     aliases: ['Prompting', 'Prompt design', 'Context engineering'],
     tool_tags: [],
     related_links: [
@@ -294,7 +294,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Every model has a maximum context window measured in tokens. Claude\'s is ~200,000 tokens (~150,000 words). When context exceeds the limit, the model starts losing earlier parts of the conversation. Larger context windows let you work with entire research reports, codebases, and design documents in one session.',
     layman_explanation: 'Imagine a colleague who can hold 10 pages in their head at once. Give them a 50-page document and they\'ll have forgotten page 1 by page 50. That\'s the context window limit — beyond it, the AI starts dropping earlier content.',
     example_usage: 'Claude can process an entire 80-page brand guidelines document in a single conversation. You can paste all 12 interview transcripts at once and ask for synthesis — without breaking them into batches.',
-    where_used: ['Claude', 'ChatGPT', 'NotebookLM'],
+    where_used: null,
     aliases: ['Context length', 'Token limit'],
     tool_tags: [],
     related_links: [
@@ -310,7 +310,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Tokenisation breaks text into chunks the model processes. A token is roughly 4 characters or ¾ of a word. "Understanding" might tokenise as 3 tokens. API pricing is per 1,000 tokens (input + output). Most day-to-day prompting is so cheap per task that cost is rarely a concern — but it matters when designing high-volume automated systems.',
     layman_explanation: 'Tokens are the building blocks words are made of. "Cat" = 1 token. "International" might be 3 tokens. The more tokens in your conversation, the more it costs per API call — but at fractions of a cent per average prompt, it almost never matters for individual use.',
     example_usage: '1,000 tokens ≈ 750 words. A full PRD draft might use 3,000–5,000 tokens total (input + output). At typical API rates, that\'s less than $0.05 per draft.',
-    where_used: ['API pricing', 'Context limits'],
+    where_used: null,
     aliases: ['Token count'],
     tool_tags: [],
     related_links: [
@@ -326,7 +326,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'An AI agent combines an LLM with tools (web search, code execution, file access, external APIs) and a planning layer. It can break a complex goal into steps, execute each using the right tool, check results, and adjust. Cursor is an agent for coding; Claude with MCP can act as an agent across your tools.',
     layman_explanation: 'The difference between a smart assistant and an actual employee. A smart assistant answers questions. An agent actually does the work: reads the brief, searches for information, drafts the doc, reviews it, and delivers — without you managing every step.',
     example_usage: 'Cursor reads your entire codebase, identifies where a bug is happening, writes a fix, tests it, and explains what changed — all from "fix the login error on mobile". One instruction, multi-step autonomous execution.',
-    where_used: ['Cursor', 'Claude with MCP', 'Lovable'],
+    where_used: null,
     aliases: ['AI agent', 'Autonomous agent', 'Agentic AI'],
     tool_tags: [],
     related_links: [
@@ -343,7 +343,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'AI models predict the most statistically likely next token — they don\'t verify facts. When a model lacks information, it may generate plausible-sounding content that is simply incorrect, stated with the same confidence as accurate information. Hallucinations are more common with specific facts (names, dates, statistics) and less common with reasoning and synthesis tasks.',
     layman_explanation: 'Like asking someone to fill in a form from memory when they don\'t actually know the answers. They fill it in confidently with things that seem right. The result looks complete and plausible, but may be full of specific errors.',
     example_usage: 'Ask an AI "What did participant 7 say about the payment flow?" without providing the transcript. It will generate a plausible-sounding answer — confidently, specifically, and possibly entirely fabricated. Always provide the source material for factual work.',
-    where_used: ['All AI tools', 'Factual research', 'Data work'],
+    where_used: null,
     aliases: ['Confabulation', 'AI fabrication'],
     tool_tags: [],
     related_links: [
@@ -359,7 +359,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'A system prompt is set by the product or developer and is invisible to the end user. It shapes every response: the AI\'s persona, what topics it addresses, how it formats output, what constraints apply. When you build an AI-powered product feature, the system prompt is where you define how the AI behaves.',
     layman_explanation: '"You are a senior UX writer. Always respond in plain English under 80 words. Offer 5 alternatives. Never use emoji or exclamation marks." That\'s a system prompt — the user never sees it but it shapes every response they receive.',
     example_usage: 'A booking assistant\'s system prompt: "You assist users with travel booking queries. Keep responses under 100 words. Always confirm the city and date. If you don\'t know something, say so clearly — never guess." Every response follows these rules invisibly.',
-    where_used: ['AI product features', 'Claude', 'ChatGPT', 'Internal tools'],
+    where_used: null,
     aliases: ['System instruction', 'System message'],
     tool_tags: [],
     related_links: [
@@ -376,7 +376,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Structured output constrains the AI to return valid, parseable data. Essential when AI output needs to feed into another system, be stored in a database, or rendered in a UI component. You specify the schema in the prompt; the model fills it in.',
     layman_explanation: 'Instead of asking for a letter and getting a paragraph, you ask for a form and get labelled fields. The output is the same data, but structured so every system can read and use it automatically.',
     example_usage: '"Return as a JSON array: [{ title: string, priority: \"high\"|\"medium\"|\"low\", effort: \"small\"|\"medium\"|\"large\", rationale: string }]." You get machine-readable output that can go straight into Notion, a database, or your codebase.',
-    where_used: ['API integrations', 'Vibe coding', 'Data pipelines'],
+    where_used: null,
     aliases: ['JSON mode', 'Schema output'],
     tool_tags: [],
     related_links: [
@@ -392,7 +392,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Guardrails can be built into the model\'s safety training, applied in system prompts (topic restrictions, tone rules), or enforced programmatically (output filtering). For any AI-powered product feature, guardrails define what the AI must and must not do.',
     layman_explanation: 'Like a content policy that runs automatically. You define the rules once — "never recommend competitors, always confirm the city, keep responses under 100 words" — and every response follows them without you having to repeat them.',
     example_usage: 'System prompt guardrail: "Never make up booking availability. If you don\'t have the information, say \'I\'m not sure — please check the booking page directly\' and stop." This prevents the AI from hallucinating availability when integrated into a product.',
-    where_used: ['AI product features', 'Customer-facing AI', 'Internal tools'],
+    where_used: null,
     aliases: ['Safety constraints', 'Output filters', 'AI rules'],
     tool_tags: [],
     related_links: [
@@ -408,7 +408,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Early AI models were text-only. Multimodal models can process images, audio, and video alongside text. Claude can analyse a screenshot. GPT-4o can look at a diagram and reason about it. Runway generates video from text. Midjourney generates images from text descriptions.',
     layman_explanation: 'Like a colleague who can read your documents, look at your designs, listen to your voice notes, and watch recordings — not just read text messages. Multimodal AI processes your work in whatever format it exists.',
     example_usage: 'Upload a screenshot of a competitor\'s checkout flow: "What UX patterns are they using? What could we learn from this? What seems to be working and what might be friction?" Claude analyses the image and produces a structured critique.',
-    where_used: ['Claude', 'ChatGPT', 'Midjourney', 'Runway'],
+    where_used: null,
     aliases: ['Multi-modal', 'Vision model'],
     tool_tags: [],
     related_links: [
@@ -425,7 +425,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Vibe coding uses AI tools (Cursor, Lovable, v0, Claude) to generate, modify, and debug code from natural language descriptions. You describe the feature, the AI writes it. You describe what\'s wrong, the AI fixes it. The designer or PM stays in the driver\'s seat — directing outcomes rather than writing syntax.',
     layman_explanation: 'Instead of learning to code, you learn to describe. "Add a search bar that filters the list as you type" → AI writes the code. "Make it faster and add a clear button" → AI updates it. You stay focused on what the product should do, not how the computer achieves it.',
     example_usage: 'Open Lovable. Describe: "A single-page tool where you paste user research notes and click a button to generate a synthesis table with themes, frequency, and representative quotes." Lovable builds a working prototype in minutes. You iterate by describing what needs to change.',
-    where_used: ['Lovable', 'v0', 'Cursor', 'Claude'],
+    where_used: null,
     aliases: ['AI coding', 'No-code AI', 'Prompt-driven development'],
     tool_tags: [],
     related_links: [
@@ -442,7 +442,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Diffusion models learn to reverse a process of gradually adding noise to images. During generation, they start from pure noise and iteratively remove noise guided by the text prompt, until a clear image emerges. Midjourney, DALL·E, and Stable Diffusion all use diffusion models. The "steps" setting in generation tools controls how many denoising iterations happen.',
     layman_explanation: 'Imagine starting with TV static and gradually tuning the signal until a clear picture emerges — shaped by your description. That\'s what happens inside Midjourney every time you generate an image. The more denoising steps, the more refined the result.',
     example_usage: 'When you run the Brand Campaign Territory prompt and generate Midjourney prompts for each territory, you\'re directing a diffusion model to produce images that match a specific visual mood. The specificity of the prompt directly controls what the diffusion process converges toward.',
-    where_used: ['Midjourney', 'DALL·E', 'Stable Diffusion', 'Krea', 'Runway'],
+    where_used: null,
     aliases: ['Image generation', 'Text-to-image', 'Generative image model'],
     tool_tags: [],
     related_links: [
@@ -459,7 +459,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Chain of thought (CoT) prompting asks the model to show its reasoning before giving a final answer. "Think through this step by step" or "reason through each assumption before concluding" triggers more careful, accurate analysis. Especially valuable for pressure-testing, risk identification, and multi-variable decisions.',
     layman_explanation: 'Like asking someone to show their working on a maths problem. When AI is forced to reason step by step, it makes fewer errors — each step checks the previous one. Without it, the model jumps straight to a plausible-sounding conclusion that may skip important steps.',
     example_usage: 'Add to any pressure-testing prompt: "Think through each assumption step by step before rating it. Explain your reasoning for each risk assessment before moving to the next." The resulting analysis is significantly more thorough than without this instruction.',
-    where_used: ['Claude', 'ChatGPT', 'Complex analysis prompts'],
+    where_used: null,
     aliases: ['Step-by-step reasoning', 'CoT', 'Reasoning mode'],
     tool_tags: [],
     related_links: [
@@ -476,7 +476,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Temperature is a parameter (typically 0 to 1) that controls the randomness of token selection during generation. At temperature 0, the model always picks the most likely next token — deterministic and consistent. At temperature 1, it samples more broadly — more creative and varied but also less reliable. Most AI tools set a sensible default; understanding it helps you know when to ask for "more options" vs "more consistent output".',
     layman_explanation: 'Temperature 0 is like asking a very cautious person for advice — you get the safe, reliable answer every time. Temperature 1 is like brainstorming with someone willing to free-associate — more surprising, sometimes more creative, occasionally off the rails.',
     example_usage: 'For a QA prompt that checks copy consistency, you want low temperature — predictable, systematic output. For a Brand Campaign Territory prompt generating creative directions, you want higher temperature — more varied, surprising territory concepts.',
-    where_used: ['Claude', 'ChatGPT', 'API settings'],
+    where_used: null,
     aliases: ['Randomness', 'Creativity setting'],
     tool_tags: [],
     related_links: [
@@ -493,7 +493,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Few-shot prompting includes examples of good outputs in the prompt itself. The model learns the pattern from the examples and applies it to the new task. Zero-shot is asking without examples. One-shot is one example. Few-shot is 2–5. For brand voice, design copy, and any task with a specific quality bar, few-shot prompting is significantly more reliable than instructions alone.',
     layman_explanation: 'Instead of describing what you want in words, you show the model. "Here are 3 examples of the kind of microcopy we write. Now write 5 options for this new screen in the same style." Showing beats telling — every time.',
     example_usage: 'For the Design QA prompt, include 2 examples of good vs bad copy before asking for analysis: "Here\'s an example of copy that passes our brand voice check [example]. Here\'s one that fails [example]. Now review this screen using the same criteria." Output quality jumps significantly.',
-    where_used: ['Claude', 'ChatGPT', 'Any quality-sensitive task'],
+    where_used: null,
     aliases: ['Examples in prompt', 'In-context learning', 'Shot prompting'],
     tool_tags: [],
     related_links: [
@@ -510,7 +510,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'A base model is trained on general data. Fine-tuning continues training on a curated, domain-specific dataset — your tone of voice documents, your product catalogue, your internal terminology. The result is a model that defaults to your style and vocabulary. Rarely needed for most teams — excellent prompt engineering achieves 80% of the benefit without the infrastructure cost.',
     layman_explanation: 'Like hiring an experienced consultant and giving them a thorough onboarding. They arrive with general expertise; fine-tuning customises that expertise for your company\'s context and vocabulary. Most teams never need this — good prompts achieve most of the benefit.',
     example_usage: 'A content team fine-tunes a model on 5 years of their destination copy and brand voice guidelines. The model now defaults to their established tone without explicit instruction in every prompt — reducing the prompt complexity for every future use.',
-    where_used: ['Custom AI assistants', 'Brand voice models'],
+    where_used: null,
     aliases: ['Model fine-tuning', 'Custom training'],
     tool_tags: [],
     related_links: [
@@ -526,7 +526,7 @@ export const staticTerms: GlossaryTerm[] = [
     detailed_explanation: 'Embeddings convert text into high-dimensional vectors (lists of numbers). Similar concepts end up numerically close to each other. This powers semantic search (finding content by meaning, not exact keywords), RAG systems, and recommendation engines. When NotebookLM finds the relevant paragraph from your uploaded document, it uses embeddings to match meaning.',
     layman_explanation: 'Imagine giving every word GPS coordinates. Words with similar meanings end up geographically close: "book" and "reserve" are neighbours; "book" and "algorithm" are far apart. AI uses this map to find related content without needing exact keyword matches.',
     example_usage: 'When you search your uploaded research documents in NotebookLM for "user frustration with payment" and it finds a passage that says "participants felt blocked at checkout" — that\'s embeddings matching meaning rather than keywords.',
-    where_used: ['NotebookLM', 'Semantic search', 'RAG systems'],
+    where_used: null,
     aliases: ['Vector embeddings', 'Semantic vectors'],
     tool_tags: [],
     related_links: [
