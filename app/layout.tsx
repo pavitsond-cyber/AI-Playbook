@@ -10,8 +10,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Headout AI Playbook',
-  description: 'A practical AI learning hub — built for the Headout AI Session 2026.',
+  title: 'AI Playbook',
+  description: 'A practical AI reference for teams — operating principles, prompt systems, and skills.',
 }
 
 export const viewport: Viewport = {

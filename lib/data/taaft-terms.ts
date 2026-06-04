@@ -140,7 +140,7 @@ function buildExample(term: string, definition: string, taaftCategory: string): 
     'gan': 'Two networks competing — one generates fake product images, the other tries to detect them — until the fakes are indistinguishable.',
     'vector database': 'Storing tour descriptions as vectors so a search for "romantic beach sunset" finds semantically similar listings.',
     'a/b testing': 'Testing two AI-generated email subject lines with 10% of users each before sending the winner to everyone.',
-    'api': 'Using OpenAI\'s API to call GPT-4 directly from Headout\'s backend to auto-generate tour descriptions.',
+    'api': 'Using OpenAI\'s API to call GPT-4 directly from a product\'s backend to auto-generate listing descriptions at scale.',
     'mlops': 'The system that monitors whether your AI recommendation model\'s accuracy drops after a data update.',
     'mcp': 'Giving Claude access to your database so it can look up live booking data while answering team questions.',
     'model context protocol': 'Giving Claude access to your database so it can look up live booking data while answering team questions.',

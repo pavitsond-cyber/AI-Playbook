@@ -307,7 +307,7 @@ export const staticTerms: GlossaryTerm[] = [
   makeTerm({
     term: 'D2P',
     full_form: 'Data-to-Prototype',
-    category: 'workflow',
+    category: 'tools',
     short_definition: 'AI generates prototype suggestions from structured data — turning spreadsheets or data into design mockups. Faster ideation and prototyping.',
     detailed_explanation: 'D2P uses structured data inputs — user flows, feature specs, analytics, or content inventories — to generate prototype layouts or wireframe suggestions. AI interprets the data relationships and proposes how they could be visualised as UI, skipping the blank-canvas phase.',
     layman_explanation: 'Feed in user flow data and feature requirements. D2P produces wireframe options showing how that data could be structured as screens. Not production-ready, but rapid ideation from information — faster than starting from a blank canvas every time.',
@@ -323,7 +323,7 @@ export const staticTerms: GlossaryTerm[] = [
   makeTerm({
     term: 'DPE',
     full_form: 'Design Pattern Extraction',
-    category: 'workflow',
+    category: 'tools',
     short_definition: 'Using AI to detect patterns from multiple design or content samples — AI finds common design patterns for you. Speeds up discovery of reusable solutions.',
     detailed_explanation: 'DPE applies AI analysis across a set of design screens or content samples to surface recurring patterns, inconsistencies, and reusable structures. Particularly useful for auditing existing products, building design systems, or analysing competitor interfaces.',
     layman_explanation: 'Upload 20 screens from your product. Ask AI to "extract all recurring UI patterns." DPE returns: 7 distinct card types, 3 modal patterns, 4 navigation models — a full component audit in minutes that used to require a dedicated design sprint.',
@@ -340,7 +340,7 @@ export const staticTerms: GlossaryTerm[] = [
   makeTerm({
     term: 'VFE',
     full_form: 'Visual Feature Extraction',
-    category: 'workflow',
+    category: 'tools',
     short_definition: 'AI detects key visual elements from designs or images — AI finds and labels important parts of visuals. Improves insights from visual data.',
     detailed_explanation: 'VFE uses computer vision to identify and describe specific visual elements within an image or design: layout structure, typography, colour palette, component types, spacing patterns. Outputs structured descriptions that can then be analysed or compared.',
     layman_explanation: 'Run competitor app screens through Claude\'s vision: "List all visual elements and design decisions visible here." VFE returns a structured breakdown of what\'s there — competitive analysis without a single note taken manually.',
@@ -356,7 +356,7 @@ export const staticTerms: GlossaryTerm[] = [
   makeTerm({
     term: 'DEX-AI',
     full_form: 'Design Experience AI',
-    category: 'workflow',
+    category: 'tools',
     short_definition: 'AI analyzes design consistency and UX heuristics — AI audits designs and provides feedback. Automates design quality and consistency checks.',
     detailed_explanation: 'DEX-AI applies structured UX heuristics and consistency checks to design screens, flagging violations, inconsistencies, and missing states. Acts as a first-pass design reviewer that catches systematic issues before human review, so reviewers can focus on judgment calls rather than checklists.',
     layman_explanation: 'Before each sprint review, run screens through a DEX-AI prompt checking against your UX principles. It flags inconsistencies in spacing, label terminology, and interaction patterns that a manual review might miss.',
@@ -373,7 +373,7 @@ export const staticTerms: GlossaryTerm[] = [
   makeTerm({
     term: 'CLS',
     full_form: 'Contextual Label Suggestion',
-    category: 'workflow',
+    category: 'tools',
     short_definition: 'AI automatically labels flows, variants, or components — AI tags things intelligently based on context. Speeds up organisation and design workflows.',
     detailed_explanation: 'CLS uses AI to read the visual content and context of a design component and suggest meaningful, consistent labels — reducing the manual overhead of naming Figma layers, component variants, and design system elements. Results in more searchable, organised design files.',
     layman_explanation: 'A Figma component named "Frame 127" gets suggested as "Booking confirmation — success state, desktop" by CLS. AI reads what the component does and names it correctly — making design system search actually work and handoffs self-documenting.',
@@ -389,7 +389,7 @@ export const staticTerms: GlossaryTerm[] = [
   makeTerm({
     term: 'AI-POI',
     full_form: 'AI-Powered Observation & Insight',
-    category: 'workflow',
+    category: 'tools',
     short_definition: 'Analyzing user recordings or analytics for AI-driven insights — AI watches and understands user behavior. Accelerates UX research and understanding.',
     detailed_explanation: 'AI-POI applies AI analysis to qualitative user data — session recordings, heatmaps, survey responses, interview transcripts — to surface patterns, anomalies, and insights at a scale and speed impossible for human analysts alone.',
     layman_explanation: 'Feed session recordings into an AI tool with "what are users struggling with on the payment screen?" AI-POI synthesizes patterns across 50+ sessions in hours — behavioral research that would take days of manual watching, delivered as structured findings.',
@@ -406,7 +406,7 @@ export const staticTerms: GlossaryTerm[] = [
   makeTerm({
     term: 'POI-AI',
     full_form: 'Predictive Optimization for AI Insights',
-    category: 'workflow',
+    category: 'tools',
     short_definition: 'AI suggests the next best user action — AI predicts what a user will do next. Increases conversion, retention, and engagement.',
     detailed_explanation: 'POI-AI combines user behaviour data with AI prediction to recommend the most likely next action a user should be offered — before they search for it. Used in personalisation, recommendation engines, and proactive UI design.',
     layman_explanation: '"Based on this user\'s browsing and booking patterns, surface a guided tour rather than a solo activity." That prediction, used to personalize a home screen in real time, is POI-AI. Showing users what they\'ll want rather than what you have.',

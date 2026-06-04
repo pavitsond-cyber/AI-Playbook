@@ -5,6 +5,7 @@ import { GlossaryTerm } from '@/types'
 import { filterTerms } from '@/lib/utils/search'
 import SearchBar from './SearchBar'
 import GlossaryGrid from './GlossaryGrid'
+import GlossaryCard from './GlossaryCard'
 import EmptyState from './EmptyState'
 import SiteFooter from './SiteFooter'
 
@@ -13,6 +14,14 @@ type TabId = 'abbreviations' | 'terminologies'
 const TABS: { id: TabId; label: string }[] = [
   { id: 'abbreviations', label: 'Abbreviations' },
   { id: 'terminologies', label: 'Terminologies' },
+]
+
+// Category grouping for Abbreviations tab — matches /abbreviations page
+const ABBR_GROUPS = [
+  { category: 'ai_basics',  label: 'AI Concepts',    color: '#533afd', bg: 'rgba(83,58,253,0.06)' },
+  { category: 'prompting',  label: 'Prompting & Ops', color: '#0d7a5f', bg: 'rgba(13,122,95,0.06)' },
+  { category: 'tools',      label: 'Design & Vision', color: '#b45309', bg: 'rgba(180,83,9,0.06)' },
+  { category: 'workflow',   label: 'Workflow & Data', color: '#7c3aed', bg: 'rgba(124,58,237,0.06)' },
 ]
 
 interface GlossaryPageProps {
@@ -44,22 +53,32 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
     [tabTerms, query]
   )
 
+  // Group abbreviations by category
+  const abbrGroups = useMemo(() => {
+    if (activeTab !== 'abbreviations') return []
+    return ABBR_GROUPS.map(g => ({
+      ...g,
+      items: filtered.filter(t => t.category === g.category),
+    })).filter(g => g.items.length > 0)
+  }, [filtered, activeTab])
+
   return (
     <div className="min-h-screen flex flex-col">
-
       <div className="flex-1 max-w-3xl mx-auto w-full">
 
         {/* Page title */}
         <div className="px-5 pt-7 pb-5 animate-fade-up delay-75">
-          <h1 className="text-xl leading-tight" style={{ color: '#0d253d', fontWeight: 300, letterSpacing: '-0.26px' }}>Glossary</h1>
+          <h1 className="text-xl leading-tight" style={{ color: '#0d253d', fontWeight: 300, letterSpacing: '-0.26px' }}>
+            Reference
+          </h1>
           <p className="text-sm mt-1" style={{ color: '#64748d' }}>
             {terms.length} terms · tap any card to expand
           </p>
         </div>
 
-        {/* Sticky: search then tabs */}
+        {/* Sticky search + tabs */}
         <div
-          className="sticky top-0 lg:top-0 z-20 animate-fade-in delay-0"
+          className="sticky top-14 z-20 animate-fade-in delay-0"
           style={{
             background: 'rgba(255,255,255,0.94)',
             backdropFilter: 'blur(16px)',
@@ -67,16 +86,14 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
             borderBottom: '1px solid #e3e8ee',
           }}
         >
-          {/* Search */}
           <div className="px-5 pt-3 pb-2">
             <SearchBar
               value={query}
               onChange={setQuery}
-              placeholder="Search terms, abbreviations, tools…"
+              placeholder="Search terms, abbreviations…"
             />
           </div>
 
-          {/* Tabs */}
           <div className="flex px-5">
             {TABS.map((tab) => {
               const isActive = activeTab === tab.id
@@ -85,8 +102,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className="relative flex items-center gap-2 px-1 pb-3 pt-2 mr-6
-                    text-sm font-medium transition-all duration-200 focus-visible:outline-none"
+                  className="relative flex items-center gap-2 px-1 pb-3 pt-2 mr-6 text-sm font-medium transition-all duration-200 focus-visible:outline-none"
                 >
                   <span
                     className="transition-colors duration-200"
@@ -104,7 +120,6 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                   >
                     {count}
                   </span>
-                  {/* Animated underline */}
                   <span
                     className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full transition-all duration-250"
                     style={{
@@ -120,16 +135,66 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
           </div>
         </div>
 
-        {/* Results — key on activeTab triggers remount + re-animation */}
+        {/* Results */}
         <div className="px-5 pt-5 pb-8">
           {filtered.length === 0 ? (
             <EmptyState query={query} />
+          ) : activeTab === 'abbreviations' ? (
+            /* ── Grouped abbreviations (matches /abbreviations page) ── */
+            <div key="abbreviations" className="animate-tab-fade space-y-6">
+              {query && (
+                <p className="text-xs mb-2" style={{ color: '#64748d' }}>
+                  {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
+                </p>
+              )}
+              {abbrGroups.map(group => (
+                <div key={group.category}>
+                  {/* Group header */}
+                  <div
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg mb-2"
+                    style={{ background: group.bg }}
+                  >
+                    <span
+                      className="w-2 h-2 rounded-full shrink-0"
+                      style={{ background: group.color }}
+                    />
+                    <span
+                      className="text-xs font-semibold uppercase tracking-wider"
+                      style={{ color: group.color }}
+                    >
+                      {group.label}
+                    </span>
+                    <span
+                      className="ml-auto text-xs font-medium px-1.5 py-0.5 rounded-full"
+                      style={{ background: `${group.color}18`, color: group.color }}
+                    >
+                      {group.items.length}
+                    </span>
+                  </div>
+
+                  {/* Cards */}
+                  <div
+                    className="rounded-xl overflow-hidden"
+                    style={{ border: '1px solid #e3e8ee', boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px', background: '#ffffff' }}
+                  >
+                    {group.items.map((term, i) => (
+                      <div
+                        key={term.id}
+                        style={{ borderBottom: i === group.items.length - 1 ? 'none' : '1px solid #e3e8ee' }}
+                      >
+                        <GlossaryCard term={term} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : (
-            <div key={activeTab} className="animate-tab-fade">
+            /* ── Flat terminologies list ── */
+            <div key="terminologies" className="animate-tab-fade">
               {query && (
                 <p className="text-xs mb-4" style={{ color: '#64748d' }}>
-                  {filtered.length} {filtered.length === 1 ? 'result' : 'results'} in{' '}
-                  {TABS.find((t) => t.id === activeTab)?.label.toLowerCase()} for &ldquo;{query}&rdquo;
+                  {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
                 </p>
               )}
               <GlossaryGrid terms={filtered} />
@@ -138,7 +203,6 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
         </div>
 
       </div>
-
       <SiteFooter />
     </div>
   )
