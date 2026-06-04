@@ -6,7 +6,6 @@ import { taaftTerms } from '@/lib/data/taaft-terms'
 
 export const revalidate = 60
 
-// Merge static + TAAFT terms, deduplicating by normalized term (static takes precedence)
 function mergeTerms(base: GlossaryTerm[], extra: GlossaryTerm[]): GlossaryTerm[] {
   const seen = new Set(base.map((t) => t.normalized_term))
   const unique = extra.filter((t) => !seen.has(t.normalized_term))
@@ -14,8 +13,14 @@ function mergeTerms(base: GlossaryTerm[], extra: GlossaryTerm[]): GlossaryTerm[]
 }
 
 export default async function Page() {
-  // Start with all local data merged
-  let terms: GlossaryTerm[] = mergeTerms(staticTerms, taaftTerms)
+  // ── Abbreviations: ONLY the 30 curated static entries — no Supabase, no taaft extras ──
+  const staticAbbr = staticTerms.filter((t) => t.full_form && t.full_form.trim() !== '')
+
+  // ── Terminologies: merge from static + taaft (Supabase overrides if available) ──
+  const taaftTerminologiesOnly = taaftTerms.filter((t) => !t.full_form || t.full_form.trim() === '')
+  const staticTerminologiesOnly = staticTerms.filter((t) => !t.full_form || t.full_form.trim() === '')
+
+  let terminologies: GlossaryTerm[] = mergeTerms(staticTerminologiesOnly, taaftTerminologiesOnly)
 
   try {
     const supabase = await createClient()
@@ -26,12 +31,20 @@ export default async function Page() {
       .order('term', { ascending: true })
 
     if (data && data.length > 0) {
-      // If Supabase has data, merge it with TAAFT (Supabase takes precedence)
-      terms = mergeTerms(data as GlossaryTerm[], taaftTerms)
+      // Only pull terminologies from Supabase — never abbreviations
+      const supabaseTerminologies = (data as GlossaryTerm[]).filter(
+        (t) => !t.full_form || t.full_form.trim() === ''
+      )
+      terminologies = mergeTerms(supabaseTerminologies, taaftTerminologiesOnly)
     }
   } catch {
-    // Fall back to merged static + TAAFT data
+    // Fall back to static + taaft terminologies
   }
+
+  // Final terms: exactly 30 abbreviations + all terminologies
+  const terms = [...staticAbbr, ...terminologies].sort((a, b) =>
+    a.term.localeCompare(b.term)
+  )
 
   return <GlossaryPage terms={terms} />
 }
