@@ -78,7 +78,7 @@ For each dependency: name it, identify which team or system owns it, and flag wh
       'Engineering lead validates the dependency list',
       'PM owns the final PRD — AI challenges it, does not approve it',
     ],
-    headoutExample: 'Use before any checkout or booking-flow PRD. These have high edge-case density and assumption risk.',
+    whenToUse: 'Before any significant engineering handoff. Especially for high-edge-case-density features like checkout, onboarding, and permission flows.',
   },
   {
     id: 'research-synthesis',
@@ -132,7 +132,7 @@ Do not average the contradiction away. Contradictions are often the most valuabl
         label: 'Step 4 — Opportunity mapping',
         prompt: `Based on the themes and pains identified, write a product opportunity statement for each cluster:
 
-Format: "[User type] needs a way to [job to be done] without [main pain]. Current evidence: [frequency]. Headout's ability to address: [High/Medium/Low and why]."
+Format: "[User type] needs a way to [job to be done] without [main pain]. Current evidence: [frequency]. Team's ability to address: [High/Medium/Low and why]."
 
 Then rank the opportunities by: (frequency × severity) ÷ implementation complexity. Explain your scoring.
 
@@ -151,7 +151,7 @@ Then rank the opportunities by: (frequency × severity) ÷ implementation comple
       'PM challenges opportunity scoring with product context AI does not have',
       'Contradictions require investigative follow-up — AI identifies them, humans resolve them',
     ],
-    headoutExample: 'Run after any usability study or discovery round. Especially useful before a product planning cycle to generate a prioritised opportunity list.',
+    whenToUse: 'After any usability study or discovery round. Especially useful before a product planning cycle to generate a prioritised opportunity list.',
   },
   {
     id: 'design-qa',
@@ -194,7 +194,7 @@ List every inconsistency found. Format: Type → Inconsistency → Screens affec
       },
       {
         label: 'Step 3 — Brand voice check',
-        prompt: `Headout's copy voice: warm, direct, and specific. It avoids generic filler, passive voice, over-apology, and vague language.
+        prompt: `Our copy voice: warm, direct, and specific. Avoid generic filler, passive voice, over-apology, and vague language.
 
 Review this copy against that standard. Flag:
 1. Generic or placeholder-feeling copy ("Something went wrong. Please try again.")
@@ -220,7 +220,7 @@ For each flag: quote the copy → explain why it fails → suggest a sharper alt
       'Writer reviews all brand voice flags',
       'PM decides which missing states are in scope for this release',
     ],
-    headoutExample: 'Use before any checkout, onboarding, or high-traffic flow handoff. High copy density screens benefit most.',
+    whenToUse: 'Before any high-traffic flow engineering handoff. Especially effective on flows with high copy density.',
   },
   {
     id: 'landing-page-teardown',
@@ -285,7 +285,7 @@ Competitor 2: [PASTE OR DESCRIBE]`,
       'Brand and copy team reviews flagged copy — bold choices may be flagged incorrectly',
       'PM or marketing lead decides what to test vs implement directly',
     ],
-    headoutExample: 'Run quarterly on high-traffic experience pages. Also run before any major campaign where a landing page is the primary conversion surface.',
+    whenToUse: 'Before any major campaign where a landing page is the primary conversion surface. Also useful for quarterly audits of high-traffic pages.',
   },
   {
     id: 'localization-qa',
@@ -353,7 +353,7 @@ For any string at or over the limit:
       'Designer checks actual UI in the target language for visual truncation',
       'Final approval from market manager',
     ],
-    headoutExample: 'Run before every new market launch and whenever high-traffic experience pages are updated for international markets.',
+    whenToUse: 'Before every new market launch and whenever high-traffic pages are updated for international markets.',
   },
   {
     id: 'brand-campaign-territory',
@@ -399,7 +399,7 @@ Format: Territory Name → Prompt 1 → Prompt 2 → Prompt 3`,
 For each territory, rate 1–5 on:
 1. Brief alignment — does it deliver the core message?
 2. Audience fit — will it resonate with the target audience?
-3. Differentiation — does it stand out from Headout's typical visual language?
+3. Differentiation — does it stand out from the brand's typical visual language?
 4. Scalability — can it work across all required formats and markets?
 5. Brand safety — does it carry meaningful IP or cultural risk?
 
@@ -412,7 +412,7 @@ Territories: [PASTE TERRITORIES FROM STEP 1]`,
     outputFormat: '6 creative territories → Midjourney prompts per territory → scored shortlist with recommendation',
     qualityBar: 'Territories must be genuinely distinct from each other. Visual prompts must produce different-feeling imagery. Scoring must be tied to brief criteria, not generic quality.',
     failureModes: [
-      'AI may generate territories that are variations on the same "safe" idea',
+      "AI may generate territories that are variations on the same 'safe' idea",
       'Scoring can bias toward brief alignment over creative differentiation',
       'Midjourney prompts may not produce the exact visual feel described without iteration',
     ],
@@ -421,7 +421,7 @@ Territories: [PASTE TERRITORIES FROM STEP 1]`,
       'Art direction of final assets is fully human',
       'Brand review before any territory goes to production',
     ],
-    headoutExample: 'Use at the start of any campaign requiring multiple creative directions — LEGOLAND, seasonal campaigns, new market launches.',
+    whenToUse: 'At the start of any campaign requiring multiple creative directions. When the brief has more than one viable direction and the team needs to explore before committing.',
   },
   {
     id: 'experiment-design',
@@ -486,7 +486,7 @@ Experiment: [DESCRIBE EXPERIMENT]`,
       'PM confirms the hypothesis aligns with team goals',
       'Research lead or stats-aware team member reviews sample size and significance requirements',
     ],
-    headoutExample: 'Use before any significant product experiment — especially checkout flow tests, onboarding changes, and pricing experiments.',
+    whenToUse: 'Before any significant product experiment — especially for flows where errors are costly and results hard to reverse.',
   },
   {
     id: 'support-ticket-insights',
@@ -547,7 +547,7 @@ Score each opportunity: High / Medium / Low by (frequency × user impact) ÷ est
       'PM adds context AI cannot know: which patterns are already known? Already in the roadmap?',
       'Final prioritisation requires product judgment, not just frequency scoring',
     ],
-    headoutExample: 'Run monthly. Present the top 5 opportunities at the next product review. Required input for roadmap prioritisation cycles.',
+    whenToUse: 'Run monthly or quarterly. Present the top opportunities at product review. Required input for any roadmap prioritisation cycle.',
   },
 ]
 
@@ -559,8 +559,8 @@ export default function PromptSystemsPage() {
     <div className="px-5 sm:px-8 py-8 max-w-5xl mx-auto">
       <PageHeader
         title="Prompt Systems"
-        description="Multi-step prompt chains for high-stakes work — not single prompts, but structured workflows with quality bars, failure modes, and human review checklists."
-        badge="Workflow Systems"
+        description="Multi-step prompt chains for high-stakes work. Run them in sequence — each step feeds the next. Not single prompts."
+        badge="Prompt Systems"
       />
 
       <div
@@ -568,7 +568,7 @@ export default function PromptSystemsPage() {
         style={{ background: 'rgba(83,58,253,0.05)', border: '1px solid rgba(83,58,253,0.15)' }}
       >
         <strong style={{ color: '#273951' }}>How to use these:</strong>
-        <span style={{ color: '#64748d' }}> Each system is a chain of prompts designed to be run in sequence. Run Step 1, review the output, then feed it into Step 2. Do not skip steps or merge them — the structure is intentional. Every system includes what AI should not do and what humans must own.</span>
+        <span style={{ color: '#64748d' }}> Run Step 1, review the output, then feed it into Step 2. Do not skip steps or merge them — the structure is intentional. Every system includes what AI should not do and what humans must own.</span>
       </div>
 
       <div className="space-y-3">
@@ -706,10 +706,10 @@ export default function PromptSystemsPage() {
                       </div>
                     </div>
 
-                    {/* Headout example */}
+                    {/* When to use */}
                     <div className="p-3 rounded-lg" style={{ background: 'rgba(83,58,253,0.04)', border: '1px solid rgba(83,58,253,0.12)' }}>
-                      <div className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: '#533afd' }}>Headout use case</div>
-                      <p className="text-sm" style={{ color: '#273951' }}>{system.headoutExample}</p>
+                      <div className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: '#533afd' }}>When to use</div>
+                      <p className="text-sm" style={{ color: '#273951' }}>{system.whenToUse}</p>
                     </div>
 
                   </div>
