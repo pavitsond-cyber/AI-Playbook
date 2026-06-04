@@ -16,8 +16,8 @@ const navItems = [
 export default function TopNav() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
 
+  const isHome = pathname === '/'
   const isActive = (href: string) =>
     pathname === href || (href !== '/' && pathname.startsWith(href))
 
@@ -74,15 +74,17 @@ export default function TopNav() {
           })}
         </nav>
 
-        {/* Desktop inline search */}
-        <div className="hidden sm:block shrink-0" style={{ width: 220, position: 'relative' }}>
-          <InlineSearch
-            placeholder="Search…"
-            compact
-            alignRight
-            dropdownWidth={480}
-          />
-        </div>
+        {/* Desktop search — hidden on homepage (homepage has its own search bar) */}
+        {!isHome && (
+          <div className="hidden sm:block shrink-0" style={{ width: 220, position: 'relative' }}>
+            <InlineSearch
+              placeholder="Search…"
+              compact
+              alignRight
+              dropdownWidth={480}
+            />
+          </div>
+        )}
 
         {/* Mobile: hamburger */}
         <div className="sm:hidden flex items-center ml-auto">
@@ -102,10 +104,12 @@ export default function TopNav() {
           className="sm:hidden"
           style={{ background: '#ffffff', borderBottom: '1px solid #e3e8ee' }}
         >
-          {/* Mobile search */}
-          <div className="px-5 pt-3 pb-2">
-            <InlineSearch placeholder="Search everything…" compact />
-          </div>
+          {/* Mobile search — hidden on homepage */}
+          {!isHome && (
+            <div className="px-5 pt-3 pb-2">
+              <InlineSearch placeholder="Search everything…" compact />
+            </div>
+          )}
 
           <nav className="px-5 pb-3 flex flex-col gap-0.5">
             <Link

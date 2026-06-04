@@ -170,10 +170,7 @@ export default function InlineSearch({
   const offsets: Partial<Record<SearchItemType, number>> = {}
   for (const t of ORDER) { offsets[t] = run; run += grouped[t]?.length ?? 0 }
 
-  // ─── Input ring ───────────────────────────────────────────────────────
-  const ring = open
-    ? { borderColor: 'rgba(83,58,253,0.4)', boxShadow: '0 0 0 3px rgba(83,58,253,0.08)' }
-    : { borderColor: '#e3e8ee', boxShadow: 'rgba(0,55,112,0.06) 0 1px 3px' }
+  const borderCol = open ? 'rgba(83,58,253,0.38)' : '#e3e8ee'
 
   return (
     <div ref={wrapRef} style={{ position: 'relative', ...wrapperStyle }}>
@@ -184,11 +181,15 @@ export default function InlineSearch({
           display: 'flex', alignItems: 'center', gap: 10,
           padding: compact ? '7px 12px' : '11px 16px',
           background: '#fff',
-          border: `1px solid ${ring.borderColor}`,
+          // When dropdown is open: share border with dropdown (no bottom border)
+          borderTop: `1px solid ${borderCol}`,
+          borderLeft: `1px solid ${borderCol}`,
+          borderRight: `1px solid ${borderCol}`,
+          borderBottom: showDropdown ? '1px solid rgba(83,58,253,0.08)' : `1px solid ${borderCol}`,
           borderRadius: showDropdown ? '12px 12px 0 0' : '12px',
           cursor: 'text',
-          transition: 'border-color 150ms, box-shadow 150ms, border-radius 200ms',
-          boxShadow: showDropdown ? 'none' : ring.boxShadow,
+          transition: 'border-color 150ms, border-radius 150ms',
+          boxShadow: showDropdown ? 'none' : (open ? '0 0 0 3px rgba(83,58,253,0.07)' : 'rgba(0,55,112,0.06) 0 1px 3px'),
           ...inputStyle,
         }}
         onClick={() => { inputRef.current?.focus(); setOpen(true) }}
@@ -238,24 +239,27 @@ export default function InlineSearch({
           ref={listRef}
           style={{
             position: 'absolute',
-            top: 'calc(100% - 1px)',
+            top: '100%',   // starts exactly where input ends — no gap, no overlap
             ...(alignRight ? { right: 0 } : { left: 0, right: 0 }),
             ...(dropdownWidth ? { width: dropdownWidth, left: 'auto' } : {}),
             background: '#fff',
-            border: `1px solid rgba(83,58,253,0.3)`,
-            borderTop: '1px solid #eeeef8',
-            borderRadius: '0 0 16px 16px',
-            boxShadow: '0 20px 48px rgba(0,55,112,0.13), 0 4px 14px rgba(0,55,112,0.07)',
-            zIndex: 9999,
+            // Share the same border color as input, no top border (input bottom IS the divider)
+            borderTop: 'none',
+            borderLeft: `1px solid rgba(83,58,253,0.38)`,
+            borderRight: `1px solid rgba(83,58,253,0.38)`,
+            borderBottom: `1px solid rgba(83,58,253,0.38)`,
+            borderRadius: '0 0 12px 12px',
+            // Light, grounded shadow — not floating/modal-like
+            boxShadow: '0 6px 20px rgba(0,55,112,0.08), 0 2px 6px rgba(0,55,112,0.04)',
+            zIndex: 200,
             maxHeight: 460,
             overflowY: 'auto',
             overflowX: 'hidden',
             scrollbarWidth: 'none',
-            // Entrance animation
+            // Subtle fade + slide — no scale (scale = popup feel)
             opacity: mounted ? 1 : 0,
-            transform: mounted ? 'translateY(0) scaleY(1)' : 'translateY(-6px) scaleY(0.97)',
-            transformOrigin: 'top center',
-            transition: 'opacity 180ms cubic-bezier(0.16,1,0.3,1), transform 180ms cubic-bezier(0.16,1,0.3,1)',
+            transform: mounted ? 'translateY(0)' : 'translateY(-4px)',
+            transition: 'opacity 160ms ease, transform 160ms ease',
           } as React.CSSProperties}
         >
 
