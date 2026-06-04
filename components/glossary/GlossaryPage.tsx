@@ -193,47 +193,8 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
             <EmptyState query={query} />
 
           ) : activeTab === 'abbreviations' ? (
-            /* ── Abbreviations — same layout as terminologies ──────────── */
-            <div key="abbreviations" className="animate-tab-fade" style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
-
-              {/* Category sidebar — mirrors the A-Z sidebar */}
-              <div
-                className="hidden sm:flex flex-col shrink-0"
-                style={{ position: 'sticky', top: 172, gap: 5, paddingTop: 4 }}
-              >
-                {abbrGroups.map(group => {
-                  const isActive = activeCategory === group.category
-                  return (
-                    <button
-                      key={group.category}
-                      onClick={() => scrollToCategory(group.category)}
-                      style={{
-                        ...sidebarBtn(isActive, true, group.color),
-                        background: isActive ? group.color : `${group.color}18`,
-                        color: isActive ? '#fff' : group.color,
-                        fontSize: 10,
-                        letterSpacing: '0.04em',
-                      }}
-                      onMouseEnter={e => {
-                        if (!isActive) {
-                          e.currentTarget.style.background = `${group.color}30`
-                          e.currentTarget.style.transform = 'scale(1.08)'
-                        }
-                      }}
-                      onMouseLeave={e => {
-                        if (!isActive) {
-                          e.currentTarget.style.background = `${group.color}18`
-                          e.currentTarget.style.transform = 'scale(1)'
-                        }
-                      }}
-                    >
-                      {group.short}
-                    </button>
-                  )
-                })}
-              </div>
-
-              {/* Cards by category */}
+            /* ── Abbreviations — single column, no sidebar ─────────────── */
+            <div key="abbreviations" className="animate-tab-fade">
               <div style={{ flex: 1, minWidth: 0 }}>
                 {query && (
                   <p className="text-xs mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>

@@ -54,54 +54,60 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
           onClick={() => setExpanded(p => !p)}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          className="w-full text-left px-4 py-3.5 flex items-center gap-3 transition-colors duration-100"
+          className="w-full text-left px-5 py-5 flex items-start gap-4 transition-colors duration-100"
           style={{
             background: hovered && !expanded
-              ? 'rgba(155,63,255,0.05)'
-              : expanded ? 'rgba(155,63,255,0.07)' : 'transparent',
+              ? 'rgba(155,63,255,0.03)'
+              : expanded ? 'rgba(155,63,255,0.05)' : 'transparent',
           }}
         >
-          {/* Abbr badge */}
-          <span
-            className="shrink-0 px-2 py-0.5 rounded-md text-xs font-bold font-mono text-center"
-            style={{
-              background: `${badgeColor}1A`,
-              color: badgeColor,
-              border: `1px solid ${badgeColor}30`,
-              minWidth: 52,
-            }}
-          >
-            {term.term}
-          </span>
-
-          {/* Full name + meaning */}
+          {/* Full name + inline abbreviation tag + definition — same style as terminology */}
           <div className="flex-1 min-w-0 text-left">
-            <span
-              className="block"
-              style={{
-                color: 'rgba(255,255,255,0.9)',
-                fontFamily: 'var(--font-display)',
-                fontWeight: 700,
-                fontSize: 15,
-              }}
-            >
-              {term.full_form}
-            </span>
-            {!expanded && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '8px 10px', marginBottom: 8 }}>
               <span
-                className="text-xs truncate block"
-                style={{ color: 'rgba(255,255,255,0.4)' }}
+                style={{
+                  color: '#ffffff',
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 700,
+                  fontSize: 18,
+                  lineHeight: 1.25,
+                }}
+              >
+                {term.full_form}
+              </span>
+              {/* Small inline abbreviation tag */}
+              <span
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: badgeColor,
+                  background: `${badgeColor}15`,
+                  border: `1px solid ${badgeColor}28`,
+                  borderRadius: 100,
+                  padding: '2px 8px',
+                  letterSpacing: '0.04em',
+                  flexShrink: 0,
+                }}
+              >
+                {term.term}
+              </span>
+            </div>
+            {!expanded && (
+              <p
+                className="line-clamp-2"
+                style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.6 }}
               >
                 {term.short_definition}
-              </span>
+              </p>
             )}
           </div>
 
           <ChevronDown
-            size={14}
-            className="shrink-0 transition-transform duration-200"
+            size={16}
+            className="shrink-0 mt-1.5 transition-transform duration-200"
             style={{
-              color: expanded ? badgeColor : 'rgba(255,255,255,0.25)',
+              color: expanded ? '#C27FFF' : 'rgba(255,255,255,0.25)',
               transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
             }}
           />
