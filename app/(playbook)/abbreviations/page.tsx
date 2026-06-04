@@ -36,10 +36,10 @@ const abbreviations: AbbreviationEntry[] = [
   },
   {
     abbr: 'MCP',
-    full: 'Model-Centric Prompting',
-    meaning: 'Designing prompts tailored to the AI model\'s specific strengths and context — understanding how the model processes information to get more reliable, accurate outputs.',
-    example: 'Instead of writing generic prompts, you adapt your structure to what the model actually does well. For complex analysis: add "think step by step before answering." For structured data: specify exact output format. MCP means your prompts work with the model\'s capabilities, not against them. Improves output relevance and accuracy.',
-    links: [{ label: 'Prompt Systems', href: '/prompts' }, { label: 'Context Engineering skill', href: '/skills' }],
+    full: 'Model Context Protocol',
+    meaning: 'A standard that lets AI models connect to external tools, files, and data — like USB-C for AI. Designing prompts tailored to the AI\'s strengths and context to improve output relevance and accuracy.',
+    example: 'With MCP configured, Claude can read your Figma file, check Notion for the PRD, write updated copy, and mark the task complete — all in one conversation. No tab switching. It\'s what turns a chatbot into an actual workflow tool.',
+    links: [{ label: 'AI Workflow Design skill', href: '/skills' }],
     category: 'ai_concepts',
   },
   {
