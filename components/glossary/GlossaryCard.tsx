@@ -6,11 +6,11 @@ import { GlossaryTerm } from '@/types'
 
 // Group colors for abbreviation badge — keyed by GlossaryTerm.category
 const ABBR_COLORS: Partial<Record<string, string>> = {
-  ai_basics:  '#533afd',
-  prompting:  '#0d7a5f',
-  tools:      '#b45309',
-  workflow:   '#7c3aed',
-  coding:     '#7c3aed',
+  ai_basics:  '#9B3FFF',
+  prompting:  '#00CCA8',
+  tools:      '#FF69DB',
+  workflow:   '#C27FFF',
+  coding:     '#C27FFF',
 }
 
 interface GlossaryCardProps {
@@ -22,7 +22,7 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
   const [hovered, setHovered] = useState(false)
 
   const isAbbrev = !!term.full_form
-  const badgeColor = ABBR_COLORS[term.category] ?? '#533afd'
+  const badgeColor = ABBR_COLORS[term.category] ?? '#9B3FFF'
 
   const validLinks = (term.related_links ?? []).filter((l) =>
     ['/skills', '/prompts', '/dos-donts', '/glossary'].some((p) => l.href.startsWith(p))
@@ -33,10 +33,9 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
     return (
       <div
         style={{
-          background: '#ffffff',
+          background: 'rgba(255,255,255,0.03)',
+          border: '1px solid rgba(255,255,255,0.07)',
           borderRadius: 12,
-          border: '1px solid #e3e8ee',
-          boxShadow: 'rgba(0,55,112,0.06) 0 1px 3px',
           overflow: 'hidden',
           marginBottom: 2,
         }}
@@ -50,17 +49,17 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
           className="w-full text-left px-4 py-3.5 flex items-center gap-3 transition-colors duration-100"
           style={{
             background: hovered && !expanded
-              ? 'rgba(83,58,253,0.02)'
-              : expanded ? 'rgba(83,58,253,0.03)' : '#ffffff',
+              ? 'rgba(155,63,255,0.05)'
+              : expanded ? 'rgba(155,63,255,0.07)' : 'transparent',
           }}
         >
           {/* Abbr badge */}
           <span
             className="shrink-0 px-2 py-0.5 rounded-md text-xs font-bold font-mono text-center"
             style={{
-              background: `${badgeColor}14`,
+              background: `${badgeColor}1A`,
               color: badgeColor,
-              border: `1px solid ${badgeColor}28`,
+              border: `1px solid ${badgeColor}30`,
               minWidth: 52,
             }}
           >
@@ -69,11 +68,22 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
 
           {/* Full name + meaning */}
           <div className="flex-1 min-w-0 text-left">
-            <span className="text-sm font-medium block" style={{ color: '#273951' }}>
+            <span
+              className="block"
+              style={{
+                color: 'rgba(255,255,255,0.9)',
+                fontFamily: 'var(--font-display)',
+                fontWeight: 700,
+                fontSize: 15,
+              }}
+            >
               {term.full_form}
             </span>
             {!expanded && (
-              <span className="text-xs truncate block" style={{ color: '#64748d' }}>
+              <span
+                className="text-xs truncate block"
+                style={{ color: 'rgba(255,255,255,0.4)' }}
+              >
                 {term.short_definition}
               </span>
             )}
@@ -83,7 +93,7 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
             size={14}
             className="shrink-0 transition-transform duration-200"
             style={{
-              color: expanded ? badgeColor : '#a8c3de',
+              color: expanded ? badgeColor : 'rgba(255,255,255,0.25)',
               transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
             }}
           />
@@ -95,22 +105,28 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
           style={{ maxHeight: expanded ? '560px' : '0px' }}
         >
           <div className="px-4 pb-4 space-y-3" style={{ paddingTop: '2px' }}>
-            <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>
+            <p
+              className="text-sm leading-relaxed"
+              style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.6)' }}
+            >
               {term.short_definition}
             </p>
 
             {term.example_usage && (
               <div
                 className="rounded-xl px-4 py-3"
-                style={{ background: 'rgba(83,58,253,0.04)', border: '1px solid rgba(83,58,253,0.12)' }}
+                style={{ background: 'rgba(155,63,255,0.07)', border: '1px solid rgba(155,63,255,0.15)', borderRadius: 10 }}
               >
                 <div
-                  className="text-[10px] font-semibold uppercase tracking-widest mb-1.5"
-                  style={{ color: '#533afd' }}
+                  className="mb-1.5"
+                  style={{ color: '#C27FFF', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}
                 >
                   How it&apos;s used
                 </div>
-                <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--font-body)' }}
+                >
                   {term.example_usage}
                 </p>
               </div>
@@ -122,22 +138,23 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
                   <a
                     key={link.href + link.label}
                     href={link.href}
-                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium transition-all duration-150"
+                    className="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium transition-all duration-150"
                     style={{
-                      background: 'rgba(83,58,253,0.07)',
-                      border: '1px solid rgba(83,58,253,0.18)',
-                      color: '#4434d4',
+                      background: 'rgba(155,63,255,0.1)',
+                      border: '1px solid rgba(155,63,255,0.2)',
+                      color: '#C27FFF',
+                      borderRadius: 100,
                       textDecoration: 'none',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#533afd'
+                      e.currentTarget.style.background = '#9B3FFF'
                       e.currentTarget.style.color = '#fff'
-                      e.currentTarget.style.borderColor = '#533afd'
+                      e.currentTarget.style.borderColor = '#9B3FFF'
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'rgba(83,58,253,0.07)'
-                      e.currentTarget.style.color = '#4434d4'
-                      e.currentTarget.style.borderColor = 'rgba(83,58,253,0.18)'
+                      e.currentTarget.style.background = 'rgba(155,63,255,0.1)'
+                      e.currentTarget.style.color = '#C27FFF'
+                      e.currentTarget.style.borderColor = 'rgba(155,63,255,0.2)'
                     }}
                   >
                     <span>→</span> {link.label}
@@ -158,17 +175,17 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
       onMouseLeave={() => setHovered(false)}
       className="rounded-2xl overflow-hidden transition-all duration-200"
       style={{
-        background: '#ffffff',
+        background: 'rgba(255,255,255,0.03)',
         border: expanded
-          ? '1px solid rgba(83,58,253,0.3)'
+          ? '1px solid rgba(155,63,255,0.25)'
           : hovered
-          ? '1px solid rgba(83,58,253,0.2)'
-          : '1px solid #e3e8ee',
+          ? '1px solid rgba(155,63,255,0.15)'
+          : '1px solid rgba(255,255,255,0.07)',
         boxShadow: expanded
-          ? 'rgba(0,55,112,0.08) 0 8px 24px, rgba(0,55,112,0.04) 0 2px 6px'
+          ? '0 0 0 1px rgba(155,63,255,0.1), rgba(0,0,0,0.3) 0 8px 24px'
           : hovered
-          ? 'rgba(0,55,112,0.08) 0 4px 12px'
-          : 'rgba(0,55,112,0.08) 0 1px 3px',
+          ? 'rgba(0,0,0,0.2) 0 4px 12px'
+          : 'none',
         transform: hovered && !expanded ? 'translateY(-1px)' : 'translateY(0)',
       }}
     >
@@ -178,14 +195,22 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
       >
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 mb-2.5">
-            <span className="text-[17px] font-semibold leading-snug tracking-tight" style={{ color: '#0d253d' }}>
+            <span
+              className="leading-snug"
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 18,
+                fontWeight: 700,
+                color: '#ffffff',
+              }}
+            >
               {term.term}
             </span>
           </div>
           {term.short_definition && (
             <p
               className={`text-sm leading-relaxed ${!expanded ? 'line-clamp-2' : ''}`}
-              style={{ color: '#64748d' }}
+              style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-body)' }}
             >
               {term.short_definition}
             </p>
@@ -195,7 +220,7 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
           size={16}
           className="flex-shrink-0 mt-1.5 transition-all duration-300"
           style={{
-            color: expanded ? '#533afd' : '#a8c3de',
+            color: expanded ? '#C27FFF' : 'rgba(255,255,255,0.25)',
             transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
           }}
         />
@@ -207,11 +232,14 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
       >
         <div
           className="px-5 pb-5 space-y-4 animate-fade-in"
-          style={{ borderTop: '1px solid #e3e8ee', paddingTop: '1rem' }}
+          style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '1rem' }}
         >
           {term.detailed_explanation &&
             term.detailed_explanation.trim() !== term.short_definition?.trim() && (
-            <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'var(--font-body)' }}
+            >
               {term.detailed_explanation}
             </p>
           )}
@@ -220,15 +248,20 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
             term.layman_explanation.trim() !== term.short_definition?.trim() && (
             <div
               className="rounded-xl px-4 py-3.5"
-              style={{ background: '#fdf8f0', border: '1px solid rgba(155,104,41,0.15)' }}
+              style={{ background: 'rgba(232,200,64,0.06)', border: '1px solid rgba(232,200,64,0.15)', borderRadius: 12 }}
             >
               <div className="flex items-center gap-1.5 mb-2">
                 <span style={{ fontSize: '11px' }}>💡</span>
-                <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#9b6829' }}>
+                <span
+                  style={{ color: '#E8C840', fontWeight: 700, textTransform: 'uppercase' as const, fontSize: 10, letterSpacing: '0.1em' }}
+                >
                   In plain English
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: '#5c3d1a' }}>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: 'rgba(232,200,64,0.75)', fontFamily: 'var(--font-body)' }}
+              >
                 {term.layman_explanation}
               </p>
             </div>
@@ -237,15 +270,21 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
           {term.example_usage && (
             <div
               className="rounded-xl px-4 py-3.5"
-              style={{ background: 'rgba(83,58,253,0.05)', border: '1px solid rgba(83,58,253,0.12)' }}
+              style={{ background: 'rgba(155,63,255,0.06)', border: '1px solid rgba(155,63,255,0.12)' }}
             >
               <div className="flex items-center gap-1.5 mb-2">
-                <BookOpen size={11} style={{ color: '#533afd' }} />
-                <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#533afd' }}>
+                <BookOpen size={11} style={{ color: '#C27FFF' }} />
+                <span
+                  className="text-[10px] font-semibold uppercase tracking-widest"
+                  style={{ color: '#C27FFF' }}
+                >
                   How it&apos;s used
                 </span>
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--font-body)' }}
+              >
                 {term.example_usage}
               </p>
             </div>
@@ -253,12 +292,11 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
 
           {term.aliases.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
-              <span className="text-xs self-center" style={{ color: '#a8c3de' }}>Also called:</span>
+              <span className="text-xs self-center" style={{ color: 'rgba(255,255,255,0.2)' }}>Also called:</span>
               {term.aliases.map((alias) => (
                 <span
                   key={alias}
-                  className="px-2.5 py-0.5 rounded-lg text-xs"
-                  style={{ background: '#b9b9f9', color: '#4434d4' }}
+                  style={{ background: 'rgba(155,63,255,0.12)', color: '#C27FFF', borderRadius: 8, padding: '3px 8px', fontSize: 12 }}
                 >
                   {alias}
                 </span>
@@ -268,7 +306,10 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
 
           {validLinks.length > 0 && (
             <div>
-              <span className="text-[10px] font-semibold uppercase tracking-widest block mb-2" style={{ color: '#64748d' }}>
+              <span
+                className="block mb-2"
+                style={{ color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase' as const, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'var(--font-body)' }}
+              >
                 Use in playbook
               </span>
               <div className="flex flex-wrap gap-2">
@@ -276,22 +317,23 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
                   <a
                     key={link.href + link.label}
                     href={link.href}
-                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium transition-all duration-150"
+                    className="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium transition-all duration-150"
                     style={{
-                      background: 'rgba(83,58,253,0.07)',
-                      border: '1px solid rgba(83,58,253,0.18)',
-                      color: '#4434d4',
+                      background: 'rgba(155,63,255,0.1)',
+                      border: '1px solid rgba(155,63,255,0.2)',
+                      color: '#C27FFF',
+                      borderRadius: 100,
                       textDecoration: 'none',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#533afd'
+                      e.currentTarget.style.background = '#9B3FFF'
                       e.currentTarget.style.color = '#ffffff'
-                      e.currentTarget.style.borderColor = '#533afd'
+                      e.currentTarget.style.borderColor = '#9B3FFF'
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'rgba(83,58,253,0.07)'
-                      e.currentTarget.style.color = '#4434d4'
-                      e.currentTarget.style.borderColor = 'rgba(83,58,253,0.18)'
+                      e.currentTarget.style.background = 'rgba(155,63,255,0.1)'
+                      e.currentTarget.style.color = '#C27FFF'
+                      e.currentTarget.style.borderColor = 'rgba(155,63,255,0.2)'
                     }}
                   >
                     <span>→</span>

@@ -5,26 +5,38 @@ interface PageHeaderProps {
 }
 
 export default function PageHeader({ title, description, badge }: PageHeaderProps) {
+  const words = title.split(' ')
+  const first = words[0]
+  const rest = words.slice(1).join(' ')
   return (
-    <div className="mb-8">
+    <div style={{ marginBottom: 48 }}>
       {badge && (
-        <div
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-3 text-xs font-semibold uppercase tracking-wider"
-          style={{
-            background: '#b9b9f9',
-            color: '#4434d4',
-          }}
-        >
-          <span
-            className="size-1.5 rounded-full"
-            style={{ background: '#533afd' }}
-          />
+        <div className="eyebrow-tag" style={{ marginBottom: 20 }}>
+          <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg,#FF00CC,#9B3FFF)', display: 'inline-block', flexShrink: 0 }} />
           {badge}
         </div>
       )}
-      <h1 className="text-2xl sm:text-3xl leading-tight mb-2" style={{ color: '#0d253d', fontWeight: 300, letterSpacing: '-0.64px' }}>{title}</h1>
+      <h1 style={{
+        fontFamily: 'var(--font-display)',
+        fontSize: 'clamp(36px,4vw,64px)',
+        fontWeight: 800,
+        lineHeight: 1.1,
+        letterSpacing: '-0.02em',
+        color: '#ffffff',
+        marginBottom: description ? 14 : 0,
+      }}>
+        <span className="gradient-text">{first}</span>
+        {rest && <span style={{ color: '#ffffff' }}>{' '}{rest}</span>}
+      </h1>
       {description && (
-        <p className="text-base leading-relaxed" style={{ color: '#64748d', fontWeight: 300 }}>
+        <p style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: 17,
+          fontWeight: 300,
+          lineHeight: 1.7,
+          color: 'rgba(255,255,255,0.5)',
+          maxWidth: 600,
+        }}>
           {description}
         </p>
       )}

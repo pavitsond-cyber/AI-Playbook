@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 import CopyButton from '@/components/playbook/CopyButton'
+import BlobLayer from '@/components/ui/BlobLayer'
 
 const systems = [
   {
@@ -556,108 +557,246 @@ export default function PromptSystemsPage() {
   const [openStepId, setOpenStepId] = useState<string | null>(null)
 
   return (
-    <div className="px-5 sm:px-8 py-8 max-w-5xl mx-auto">
-      <PageHeader
-        title="Prompt Systems"
-        description="Multi-step prompt chains for high-stakes work. Run them in sequence — each step feeds the next. Not single prompts."
-        badge="Prompt Systems"
-      />
-
+    <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
+      <BlobLayer />
       <div
-        className="mb-8 p-4 rounded-xl text-sm"
-        style={{ background: 'rgba(83,58,253,0.05)', border: '1px solid rgba(83,58,253,0.15)' }}
+        style={{
+          position: 'relative',
+          zIndex: 1,
+          padding: 'clamp(60px,6vw,100px) clamp(16px,4vw,48px)',
+          maxWidth: 960,
+          margin: '0 auto',
+        }}
       >
-        <strong style={{ color: '#273951' }}>How to use these:</strong>
-        <span style={{ color: '#64748d' }}> Run Step 1, review the output, then feed it into Step 2. Do not skip steps or merge them — the structure is intentional. Every system includes what AI should not do and what humans must own.</span>
-      </div>
+        <PageHeader
+          title="Prompt Systems"
+          description="Multi-step prompt chains for high-stakes work. Run them in sequence — each step feeds the next. Not single prompts."
+          badge="Prompt Systems"
+        />
 
-      <div className="space-y-3">
-        {systems.map((system) => {
-          const isOpen = openId === system.id
-          return (
-            <div
-              key={system.id}
-              className="rounded-xl overflow-hidden transition-all duration-150"
-              style={{
-                background: '#ffffff',
-                border: `1px solid ${isOpen ? 'rgba(83,58,253,0.25)' : '#e3e8ee'}`,
-                borderRadius: '12px',
-                boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px',
-              }}
-            >
-              <button
-                onClick={() => setOpenId(isOpen ? null : system.id)}
-                className="w-full flex items-center justify-between px-5 py-4 text-left"
+        <div
+          style={{
+            background: 'rgba(155,63,255,0.06)',
+            border: '1px solid rgba(155,63,255,0.12)',
+            borderRadius: 14,
+            padding: '14px 18px',
+            marginBottom: 32,
+          }}
+        >
+          <strong style={{ fontFamily: 'var(--font-display)', fontWeight: 700, color: '#C27FFF' }}>How to use these:</strong>
+          <span style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.45)', fontSize: 14 }}> Run Step 1, review the output, then feed it into Step 2. Do not skip steps or merge them — the structure is intentional. Every system includes what AI should not do and what humans must own.</span>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {systems.map((system) => {
+            const isOpen = openId === system.id
+            return (
+              <div
+                key={system.id}
+                style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  border: isOpen ? '1px solid rgba(155,63,255,0.25)' : '1px solid rgba(255,255,255,0.07)',
+                  borderRadius: 14,
+                  overflow: 'hidden',
+                  transition: 'border-color 0.2s',
+                }}
               >
-                <div className="flex-1">
-                  <div className="text-sm font-semibold mb-1" style={{ color: '#0d253d' }}>{system.title}</div>
-                  <div className="flex flex-wrap gap-2 text-xs" style={{ color: '#64748d' }}>
-                    <span>{system.team}</span>
-                    <span>·</span>
-                    <span>{system.chain.length} prompts in chain</span>
+                <button
+                  onClick={() => setOpenId(isOpen ? null : system.id)}
+                  style={{
+                    width: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '16px 20px',
+                    textAlign: 'left',
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <div style={{ flex: 1 }}>
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: 17,
+                        fontWeight: 700,
+                        color: '#ffffff',
+                        marginBottom: 4,
+                      }}
+                    >
+                      {system.title}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        fontSize: 13,
+                        color: 'rgba(255,255,255,0.35)',
+                        display: 'flex',
+                        flexWrap: 'wrap' as const,
+                        gap: 6,
+                      }}
+                    >
+                      <span>{system.team}</span>
+                      <span>·</span>
+                      <span>{system.chain.length} prompts in chain</span>
+                    </div>
                   </div>
-                </div>
-                <ChevronDown
-                  size={16}
-                  className="shrink-0 ml-4 transition-transform duration-200"
-                  style={{ color: '#64748d', transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
-                />
-              </button>
+                  <ChevronDown
+                    size={16}
+                    style={{
+                      flexShrink: 0,
+                      marginLeft: 16,
+                      color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.3)',
+                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: 'transform 0.2s, color 0.2s',
+                    }}
+                  />
+                </button>
 
-              {isOpen && (
-                <div style={{ borderTop: '1px solid #e3e8ee', background: '#f6f9fc' }}>
-                  <div className="px-5 pt-5 pb-6 space-y-6">
-
+                {isOpen && (
+                  <div
+                    style={{
+                      background: 'rgba(255,255,255,0.02)',
+                      borderTop: '1px solid rgba(255,255,255,0.06)',
+                      padding: '20px 20px 24px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 20,
+                    }}
+                  >
                     {/* Meta */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
                       <div>
-                        <div className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: '#64748d' }}>Use case</div>
-                        <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>{system.useCase}</p>
+                        <div
+                          style={{
+                            fontFamily: 'var(--font-body)',
+                            fontSize: 11,
+                            fontWeight: 500,
+                            textTransform: 'uppercase' as const,
+                            letterSpacing: '0.1em',
+                            color: 'rgba(255,255,255,0.3)',
+                            marginBottom: 4,
+                          }}
+                        >
+                          Use case
+                        </div>
+                        <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, margin: 0 }}>{system.useCase}</p>
                       </div>
                       <div>
-                        <div className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: '#64748d' }}>Required input</div>
-                        <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>{system.input}</p>
+                        <div
+                          style={{
+                            fontFamily: 'var(--font-body)',
+                            fontSize: 11,
+                            fontWeight: 500,
+                            textTransform: 'uppercase' as const,
+                            letterSpacing: '0.1em',
+                            color: 'rgba(255,255,255,0.3)',
+                            marginBottom: 4,
+                          }}
+                        >
+                          Required input
+                        </div>
+                        <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, margin: 0 }}>{system.input}</p>
                       </div>
                     </div>
 
                     {/* Prompt chain */}
                     <div>
-                      <div className="text-[10px] font-semibold uppercase tracking-wider mb-3" style={{ color: '#533afd' }}>Prompt chain</div>
-                      <div className="space-y-2">
+                      <div
+                        style={{
+                          fontFamily: 'var(--font-body)',
+                          color: '#C27FFF',
+                          fontSize: 11,
+                          fontWeight: 700,
+                          textTransform: 'uppercase' as const,
+                          letterSpacing: '0.1em',
+                          marginBottom: 12,
+                        }}
+                      >
+                        Prompt chain
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                         {system.chain.map((step, idx) => {
                           const stepKey = `${system.id}-${idx}`
                           const isStepOpen = openStepId === stepKey
                           return (
                             <div
                               key={idx}
-                              className="rounded-lg overflow-hidden"
-                              style={{ border: '1px solid #e3e8ee', background: '#ffffff' }}
+                              style={{
+                                border: '1px solid rgba(255,255,255,0.07)',
+                                background: 'rgba(255,255,255,0.03)',
+                                borderRadius: 10,
+                                overflow: 'hidden',
+                              }}
                             >
                               <button
                                 onClick={() => setOpenStepId(isStepOpen ? null : stepKey)}
-                                className="w-full flex items-center justify-between px-4 py-3 text-left"
+                                style={{
+                                  padding: '10px 14px',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'space-between',
+                                  width: '100%',
+                                  background: 'transparent',
+                                  border: 'none',
+                                  cursor: 'pointer',
+                                  textAlign: 'left' as const,
+                                }}
                               >
-                                <div className="flex items-center gap-3">
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                                   <span
-                                    className="size-5 rounded-full text-[10px] font-bold flex items-center justify-center shrink-0"
-                                    style={{ background: 'rgba(83,58,253,0.1)', color: '#533afd' }}
+                                    style={{
+                                      width: 20,
+                                      height: 20,
+                                      borderRadius: '50%',
+                                      fontSize: 10,
+                                      fontWeight: 700,
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                      flexShrink: 0,
+                                      background: 'rgba(155,63,255,0.15)',
+                                      color: '#C27FFF',
+                                    }}
                                   >
                                     {idx + 1}
                                   </span>
-                                  <span className="text-xs font-semibold" style={{ color: '#0d253d' }}>{step.label}</span>
+                                  <span
+                                    style={{
+                                      fontFamily: 'var(--font-body)',
+                                      fontSize: 13,
+                                      fontWeight: 500,
+                                      color: 'rgba(255,255,255,0.8)',
+                                    }}
+                                  >
+                                    {step.label}
+                                  </span>
                                 </div>
-                                <div className="flex items-center gap-2">
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                                   <CopyButton text={step.prompt} />
                                   <ChevronDown
                                     size={14}
-                                    style={{ color: '#64748d', transform: isStepOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}
+                                    style={{
+                                      color: 'rgba(255,255,255,0.3)',
+                                      transform: isStepOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                                      transition: 'transform 0.2s',
+                                    }}
                                   />
                                 </div>
                               </button>
                               {isStepOpen && (
                                 <div
-                                  className="px-4 pb-4 text-xs font-mono leading-relaxed whitespace-pre-wrap"
-                                  style={{ background: '#f6f9fc', borderTop: '1px solid #e3e8ee', color: '#273951' }}
+                                  style={{
+                                    background: 'rgba(0,0,0,0.4)',
+                                    borderTop: '1px solid rgba(255,255,255,0.05)',
+                                    color: 'rgba(255,255,255,0.65)',
+                                    fontFamily: 'monospace',
+                                    fontSize: 12,
+                                    lineHeight: 1.7,
+                                    padding: '14px 16px',
+                                    whiteSpace: 'pre-wrap' as const,
+                                  }}
                                 >
                                   {step.prompt}
                                 </div>
@@ -669,36 +808,116 @@ export default function PromptSystemsPage() {
                     </div>
 
                     {/* Output + Quality */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="p-3 rounded-lg" style={{ background: '#ffffff', border: '1px solid #e3e8ee' }}>
-                        <div className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#64748d' }}>Output format</div>
-                        <p className="text-xs leading-relaxed" style={{ color: '#273951' }}>{system.outputFormat}</p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
+                      <div
+                        style={{
+                          background: 'rgba(255,255,255,0.03)',
+                          border: '1px solid rgba(255,255,255,0.07)',
+                          borderRadius: 10,
+                          padding: '12px 14px',
+                        }}
+                      >
+                        <div
+                          style={{
+                            color: 'rgba(255,255,255,0.3)',
+                            textTransform: 'uppercase' as const,
+                            letterSpacing: '0.08em',
+                            fontSize: 11,
+                            fontWeight: 500,
+                            marginBottom: 8,
+                          }}
+                        >
+                          Output format
+                        </div>
+                        <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, margin: 0 }}>{system.outputFormat}</p>
                       </div>
-                      <div className="p-3 rounded-lg" style={{ background: 'rgba(34,197,94,0.05)', border: '1px solid rgba(34,197,94,0.15)' }}>
-                        <div className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#16a34a' }}>Quality bar</div>
-                        <p className="text-xs leading-relaxed" style={{ color: '#273951' }}>{system.qualityBar}</p>
+                      <div
+                        style={{
+                          background: 'rgba(0,204,168,0.06)',
+                          border: '1px solid rgba(0,204,168,0.15)',
+                          borderRadius: 10,
+                          padding: '12px 14px',
+                        }}
+                      >
+                        <div
+                          style={{
+                            color: '#00CCA8',
+                            textTransform: 'uppercase' as const,
+                            letterSpacing: '0.08em',
+                            fontSize: 11,
+                            fontWeight: 500,
+                            marginBottom: 8,
+                          }}
+                        >
+                          Quality bar
+                        </div>
+                        <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, margin: 0 }}>{system.qualityBar}</p>
                       </div>
                     </div>
 
                     {/* Failure modes + Human review */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
                       <div>
-                        <div className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#dc2626' }}>Common failure modes</div>
-                        <ul className="space-y-1.5">
+                        <div
+                          style={{
+                            fontFamily: 'var(--font-body)',
+                            fontSize: 11,
+                            fontWeight: 500,
+                            textTransform: 'uppercase' as const,
+                            letterSpacing: '0.1em',
+                            color: '#FF69DB',
+                            marginBottom: 8,
+                          }}
+                        >
+                          Common failure modes
+                        </div>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
                           {system.failureModes.map((f, i) => (
-                            <li key={i} className="flex items-start gap-2 text-xs" style={{ color: '#273951' }}>
-                              <span className="shrink-0 mt-1.5 size-1 rounded-full" style={{ background: '#dc2626' }} />
+                            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>
+                              <span
+                                style={{
+                                  flexShrink: 0,
+                                  marginTop: 6,
+                                  width: 4,
+                                  height: 4,
+                                  borderRadius: '50%',
+                                  background: '#FF69DB',
+                                  display: 'inline-block',
+                                }}
+                              />
                               {f}
                             </li>
                           ))}
                         </ul>
                       </div>
                       <div>
-                        <div className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#b45309' }}>Human review required</div>
-                        <ul className="space-y-1.5">
+                        <div
+                          style={{
+                            fontFamily: 'var(--font-body)',
+                            fontSize: 11,
+                            fontWeight: 500,
+                            textTransform: 'uppercase' as const,
+                            letterSpacing: '0.1em',
+                            color: '#E8C840',
+                            marginBottom: 8,
+                          }}
+                        >
+                          Human review required
+                        </div>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
                           {system.humanReview.map((h, i) => (
-                            <li key={i} className="flex items-start gap-2 text-xs" style={{ color: '#273951' }}>
-                              <span className="shrink-0 mt-1.5 size-1 rounded-full" style={{ background: '#b45309' }} />
+                            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>
+                              <span
+                                style={{
+                                  flexShrink: 0,
+                                  marginTop: 6,
+                                  width: 4,
+                                  height: 4,
+                                  borderRadius: '50%',
+                                  background: '#E8C840',
+                                  display: 'inline-block',
+                                }}
+                              />
                               {h}
                             </li>
                           ))}
@@ -707,17 +926,36 @@ export default function PromptSystemsPage() {
                     </div>
 
                     {/* When to use */}
-                    <div className="p-3 rounded-lg" style={{ background: 'rgba(83,58,253,0.04)', border: '1px solid rgba(83,58,253,0.12)' }}>
-                      <div className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: '#533afd' }}>When to use</div>
-                      <p className="text-sm" style={{ color: '#273951' }}>{system.whenToUse}</p>
+                    <div
+                      style={{
+                        background: 'rgba(155,63,255,0.06)',
+                        border: '1px solid rgba(155,63,255,0.15)',
+                        borderRadius: 10,
+                        padding: '12px 14px',
+                      }}
+                    >
+                      <div
+                        style={{
+                          color: '#C27FFF',
+                          fontSize: 11,
+                          fontWeight: 700,
+                          textTransform: 'uppercase' as const,
+                          letterSpacing: '0.1em',
+                          fontFamily: 'var(--font-body)',
+                          marginBottom: 6,
+                        }}
+                      >
+                        When to use
+                      </div>
+                      <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, fontFamily: 'var(--font-body)', lineHeight: 1.6, margin: 0 }}>{system.whenToUse}</p>
                     </div>
 
                   </div>
-                </div>
-              )}
-            </div>
-          )
-        })}
+                )}
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )

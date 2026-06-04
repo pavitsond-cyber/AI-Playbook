@@ -1,4 +1,5 @@
 import PageHeader from '@/components/playbook/PageHeader'
+import BlobLayer from '@/components/ui/BlobLayer'
 
 const principles = [
   {
@@ -89,49 +90,46 @@ const principles = [
 
 export default function OperatingPrinciplesPage() {
   return (
-    <div className="px-5 sm:px-8 py-8 max-w-5xl mx-auto">
-      <PageHeader
-        title="Operating Principles"
-        description="How we use AI as a team. Not guidelines about AI in general — specific rules for how we operate."
-        badge="Principles"
-      />
+    <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
+      <BlobLayer />
+      <div style={{ position: 'relative', zIndex: 1, padding: 'clamp(60px,6vw,100px) clamp(16px,4vw,48px)', maxWidth: 960, margin: '0 auto' }}>
+        <PageHeader
+          title="Operating Principles"
+          description="How we use AI as a team. Not guidelines about AI in general — specific rules for how we operate."
+          badge="Principles"
+        />
 
-      <div className="space-y-8">
-        {principles.map((group) => (
-          <div key={group.theme}>
-            <div className="mb-4">
-              <h2 className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#64748d' }}>
-                {group.theme}
-              </h2>
-              <p className="text-xs mt-0.5" style={{ color: '#a8c3de' }}>{group.themeDesc}</p>
-            </div>
+        <div className="space-y-8">
+          {principles.map((group) => (
+            <div key={group.theme}>
+              <div className="mb-4">
+                <h2 style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#C27FFF', marginBottom: 2 }}>
+                  {group.theme}
+                </h2>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>{group.themeDesc}</p>
+              </div>
 
-            <div className="space-y-3">
-              {group.items.map((item, i) => (
-                <div
-                  key={i}
-                  className="p-5 rounded-xl"
-                  style={{
-                    background: '#ffffff',
-                    border: '1px solid #e3e8ee',
-                    borderRadius: '12px',
-                    boxShadow: 'rgba(0,55,112,0.04) 0 1px 3px',
-                  }}
-                >
-                  <h3 className="text-sm font-semibold mb-2" style={{ color: '#0d253d' }}>{item.title}</h3>
-                  <p className="text-sm leading-relaxed mb-3" style={{ color: '#273951' }}>{item.detail}</p>
+              <div className="space-y-3" style={{ marginBottom: 32 }}>
+                {group.items.map((item, i) => (
                   <div
-                    className="px-3 py-2.5 rounded-lg text-xs leading-relaxed"
-                    style={{ background: 'rgba(83,58,253,0.05)', border: '1px solid rgba(83,58,253,0.12)', color: '#4434d4' }}
+                    key={i}
+                    className="dark-card"
+                    style={{ padding: '24px', borderRadius: 16 }}
                   >
-                    <span className="font-semibold">In practice: </span>
-                    <span style={{ color: '#273951' }}>{item.practice}</span>
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 700, color: '#ffffff', marginBottom: 10 }}>{item.title}</h3>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.55)', marginBottom: 14 }}>{item.detail}</p>
+                    <div
+                      style={{ background: 'rgba(155,63,255,0.08)', border: '1px solid rgba(155,63,255,0.18)', borderRadius: 10, padding: '10px 14px' }}
+                    >
+                      <span style={{ fontFamily: 'var(--font-body)', color: '#C27FFF', fontWeight: 600 }}>In practice: </span>
+                      <span style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.55)', fontSize: 14 }}>{item.practice}</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )

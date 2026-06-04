@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react'
 import { ChevronDown } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
+import BlobLayer from '@/components/ui/BlobLayer'
 
 type Category = 'ai_concepts' | 'prompting_ops' | 'design_vision' | 'workflow_data'
 
@@ -16,10 +17,10 @@ interface AbbreviationEntry {
 }
 
 const GROUPS: { id: Category; label: string; color: string; bg: string }[] = [
-  { id: 'ai_concepts',   label: 'AI Concepts',    color: '#533afd', bg: 'rgba(83,58,253,0.06)' },
-  { id: 'prompting_ops', label: 'Prompting & Ops', color: '#0d7a5f', bg: 'rgba(13,122,95,0.06)' },
-  { id: 'design_vision', label: 'Design & Vision', color: '#b45309', bg: 'rgba(180,83,9,0.06)' },
-  { id: 'workflow_data', label: 'Workflow & Data', color: '#7c3aed', bg: 'rgba(124,58,237,0.06)' },
+  { id: 'ai_concepts',   label: 'AI Concepts',    color: '#9B3FFF',  bg: 'rgba(155,63,255,0.06)' },
+  { id: 'prompting_ops', label: 'Prompting & Ops', color: '#00CCA8',  bg: 'rgba(0,204,168,0.06)' },
+  { id: 'design_vision', label: 'Design & Vision', color: '#FF69DB',  bg: 'rgba(255,105,219,0.06)' },
+  { id: 'workflow_data', label: 'Workflow & Data', color: '#C27FFF',  bg: 'rgba(194,127,255,0.06)' },
 ]
 
 const abbreviations: AbbreviationEntry[] = [
@@ -286,30 +287,30 @@ function AbbreviationCard({ item, groupColor, isLast }: CardProps) {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <div style={{ borderBottom: isLast ? 'none' : '1px solid #e3e8ee' }}>
+    <div style={{ borderBottom: isLast ? 'none' : '1px solid rgba(255,255,255,0.05)' }}>
       <button
         onClick={() => setExpanded(p => !p)}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         className="w-full text-left px-4 py-3.5 flex items-center gap-3 transition-colors duration-100"
-        style={{ background: hovered && !expanded ? 'rgba(83,58,253,0.02)' : expanded ? 'rgba(83,58,253,0.03)' : '#ffffff' }}
+        style={{ background: hovered && !expanded ? 'rgba(155,63,255,0.05)' : expanded ? 'rgba(155,63,255,0.07)' : 'transparent' }}
       >
         <span
           className="shrink-0 px-2 py-0.5 rounded-md text-xs font-bold font-mono text-center"
-          style={{ background: `${groupColor}14`, color: groupColor, border: `1px solid ${groupColor}28`, minWidth: '60px' }}
+          style={{ background: `${groupColor}1A`, color: groupColor, border: `1px solid ${groupColor}30`, minWidth: '60px' }}
         >
           {item.abbr}
         </span>
         <div className="flex-1 min-w-0 text-left">
-          <span className="text-sm font-medium block" style={{ color: '#273951' }}>{item.full}</span>
+          <span className="text-sm font-medium block" style={{ color: 'rgba(255,255,255,0.9)', fontFamily: 'var(--font-display)', fontWeight: 700 }}>{item.full}</span>
           {!expanded && (
-            <span className="text-xs truncate block" style={{ color: '#64748d' }}>{item.meaning}</span>
+            <span className="text-xs truncate block" style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)' }}>{item.meaning}</span>
           )}
         </div>
         <ChevronDown
           size={14}
           className="shrink-0 transition-transform duration-200"
-          style={{ color: expanded ? groupColor : '#a8c3de', transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
+          style={{ color: expanded ? groupColor : 'rgba(255,255,255,0.25)', transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
         />
       </button>
 
@@ -318,25 +319,24 @@ function AbbreviationCard({ item, groupColor, isLast }: CardProps) {
         style={{ maxHeight: expanded ? '560px' : '0px' }}
       >
         <div className="px-4 pb-4 space-y-3" style={{ paddingTop: '2px' }}>
-          <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>{item.meaning}</p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{item.meaning}</p>
           <div
-            className="rounded-xl px-4 py-3"
-            style={{ background: 'rgba(83,58,253,0.04)', border: '1px solid rgba(83,58,253,0.12)' }}
+            style={{ background: 'rgba(155,63,255,0.07)', border: '1px solid rgba(155,63,255,0.15)', borderRadius: 10, padding: '12px 14px' }}
           >
-            <div className="text-[10px] font-semibold uppercase tracking-widest mb-1.5" style={{ color: '#533afd' }}>
+            <div style={{ color: '#C27FFF', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: 'var(--font-body)', marginBottom: 6 }}>
               How it&apos;s used
             </div>
-            <p className="text-sm leading-relaxed" style={{ color: '#273951' }}>{item.example}</p>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, fontFamily: 'var(--font-body)', lineHeight: 1.6 }}>{item.example}</p>
           </div>
           {item.links.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {item.links.map(link => (
                 <a
                   key={link.href + link.label} href={link.href}
-                  className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium transition-all duration-150"
-                  style={{ background: 'rgba(83,58,253,0.07)', border: '1px solid rgba(83,58,253,0.18)', color: '#4434d4', textDecoration: 'none' }}
-                  onMouseEnter={e => { e.currentTarget.style.background = '#533afd'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#533afd' }}
-                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(83,58,253,0.07)'; e.currentTarget.style.color = '#4434d4'; e.currentTarget.style.borderColor = 'rgba(83,58,253,0.18)' }}
+                  className="inline-flex items-center gap-1 text-xs font-medium transition-all duration-150"
+                  style={{ background: 'rgba(155,63,255,0.1)', border: '1px solid rgba(155,63,255,0.2)', color: '#C27FFF', borderRadius: 100, padding: '4px 12px', textDecoration: 'none' }}
+                  onMouseEnter={e => { e.currentTarget.style.background = '#9B3FFF'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = '#9B3FFF' }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(155,63,255,0.1)'; e.currentTarget.style.color = '#C27FFF'; e.currentTarget.style.borderColor = 'rgba(155,63,255,0.2)' }}
                 >
                   <span>→</span> {link.label}
                 </a>
@@ -371,69 +371,66 @@ export default function AbbreviationsPage() {
   )
 
   return (
-    <div className="px-5 sm:px-8 py-8 max-w-3xl mx-auto">
-      <PageHeader
-        title="Abbreviations"
-        description={`${abbreviations.length} advanced AI abbreviations for designers — expand any to see how it's used in real work.`}
-        badge="Reference"
-      />
+    <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
+      <BlobLayer />
+      <div className="px-5 sm:px-8 py-8 max-w-3xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
+        <PageHeader title="Abbreviations" description="30 advanced AI abbreviations for designers — expand any to see how it's used in real work." badge="Reference" />
 
-      <div className="mb-6">
-        <div
-          className="flex items-center gap-2 px-4 py-3 rounded-xl"
-          style={{ background: '#f6f9fc', border: '1px solid #e3e8ee' }}
-        >
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="shrink-0" style={{ color: '#a8c3de' }}>
-            <path d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464C13.0488 12.3417 13.0488 12.6583 12.8536 12.8536C12.6583 13.0488 12.3417 13.0488 12.1464 12.8536L9.30884 10.0159Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search abbreviations…"
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-            className="flex-1 bg-transparent text-sm outline-none"
-            style={{ color: '#0d253d' }}
-          />
-          {query && (
-            <button onClick={() => setQuery('')} className="text-xs px-2 py-0.5 rounded" style={{ color: '#64748d', background: '#e3e8ee' }}>
-              Clear
-            </button>
-          )}
+        <div className="mb-6">
+          <div
+            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', marginBottom: 24 }}
+          >
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="shrink-0" style={{ color: 'rgba(255,255,255,0.3)' }}>
+              <path d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464C13.0488 12.3417 13.0488 12.6583 12.8536 12.8536C12.6583 13.0488 12.3417 13.0488 12.1464 12.8536L9.30884 10.0159Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search abbreviations…"
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              style={{ flex: 1, background: 'transparent', outline: 'none', fontSize: 14, fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.88)', border: 'none' }}
+            />
+            {query && (
+              <button onClick={() => setQuery('')} style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, color: 'rgba(255,255,255,0.45)', fontSize: 11, padding: '2px 8px', cursor: 'pointer' }}>
+                Clear
+              </button>
+            )}
+          </div>
         </div>
-      </div>
 
-      {query && (
-        <p className="text-xs mb-4" style={{ color: '#64748d' }}>
-          {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
+        {query && (
+          <p className="text-xs mb-4" style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)' }}>
+            {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
+          </p>
+        )}
+
+        {filteredByGroup.length === 0 ? (
+          <div className="py-12 text-center"><p className="text-sm" style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)' }}>No results for &ldquo;{query}&rdquo;</p></div>
+        ) : (
+          <div className="space-y-6">
+            {filteredByGroup.map(group => (
+              <div key={group.id}>
+                <div style={{ background: group.bg, borderRadius: 8, padding: '6px 12px', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span className="w-2 h-2 rounded-full shrink-0" style={{ background: group.color }} />
+                  <span style={{ color: group.color, fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{group.label}</span>
+                  <span className="ml-auto text-xs font-medium px-1.5 py-0.5 rounded-full" style={{ background: `${group.color}20`, color: group.color }}>
+                    {group.items.length}
+                  </span>
+                </div>
+                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, overflow: 'hidden' }}>
+                  {group.items.map((item, i) => (
+                    <AbbreviationCard key={item.abbr} item={item} groupColor={group.color} isLast={i === group.items.length - 1} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <p className="text-xs mt-6" style={{ color: 'rgba(255,255,255,0.2)', fontFamily: 'var(--font-body)' }}>
+          {abbreviations.length} abbreviations across 4 categories.
         </p>
-      )}
-
-      {filteredByGroup.length === 0 ? (
-        <div className="py-12 text-center"><p className="text-sm" style={{ color: '#64748d' }}>No results for &ldquo;{query}&rdquo;</p></div>
-      ) : (
-        <div className="space-y-6">
-          {filteredByGroup.map(group => (
-            <div key={group.id}>
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg mb-2" style={{ background: group.bg }}>
-                <span className="w-2 h-2 rounded-full shrink-0" style={{ background: group.color }} />
-                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: group.color }}>{group.label}</span>
-                <span className="ml-auto text-xs font-medium px-1.5 py-0.5 rounded-full" style={{ background: `${group.color}18`, color: group.color }}>
-                  {group.items.length}
-                </span>
-              </div>
-              <div className="rounded-xl overflow-hidden" style={{ border: '1px solid #e3e8ee', boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px', background: '#ffffff' }}>
-                {group.items.map((item, i) => (
-                  <AbbreviationCard key={item.abbr} item={item} groupColor={group.color} isLast={i === group.items.length - 1} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <p className="text-xs mt-6" style={{ color: '#a8c3de' }}>
-        {abbreviations.length} abbreviations across 4 categories.
-      </p>
+      </div>
     </div>
   )
 }

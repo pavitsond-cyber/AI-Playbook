@@ -1,7 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { Download } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
+import BlobLayer from '@/components/ui/BlobLayer'
 
 interface Skill {
   name: string
@@ -135,87 +137,117 @@ function downloadSkill(skill: Skill) {
   URL.revokeObjectURL(url)
 }
 
+function SkillCard({ skill }: { skill: Skill }) {
+  const [btnHovered, setBtnHovered] = useState(false)
+
+  return (
+    <div
+      className="dark-card skill-card"
+      style={{ padding: '24px', display: 'flex', flexDirection: 'column', cursor: 'default' }}
+    >
+      {/* Header row */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, marginBottom: 10 }}>
+        <span style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 700, color: '#ffffff', flex: 1 }}>
+          {skill.name}
+        </span>
+        <button
+          onClick={() => downloadSkill(skill)}
+          title="Download as .md"
+          onMouseEnter={() => setBtnHovered(true)}
+          onMouseLeave={() => setBtnHovered(false)}
+          style={{
+            flexShrink: 0,
+            background: btnHovered ? 'rgba(155,63,255,0.12)' : 'rgba(255,255,255,0.06)',
+            border: `1px solid ${btnHovered ? 'rgba(155,63,255,0.25)' : 'rgba(255,255,255,0.08)'}`,
+            borderRadius: 8,
+            color: btnHovered ? '#C27FFF' : 'rgba(255,255,255,0.4)',
+            padding: '4px 10px',
+            fontSize: 11,
+            fontFamily: 'var(--font-body)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 4,
+            cursor: 'pointer',
+            transition: 'all 0.15s ease',
+          }}
+        >
+          <Download size={11} />
+          .md
+        </button>
+      </div>
+
+      {/* What */}
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.45)', marginBottom: 16, flex: 1 }}>
+        {skill.what}
+      </p>
+
+      {/* Use when + Quality bar */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 0, fontSize: 13 }}>
+        <div>
+          <span style={{ fontFamily: 'var(--font-body)', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>Use when: </span>
+          <span style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)', fontSize: 13 }}>{skill.whenToUse}</span>
+        </div>
+        <div>
+          <span style={{ fontFamily: 'var(--font-body)', fontWeight: 500, color: '#00CCA8' }}>Quality bar: </span>
+          <span style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)', fontSize: 13 }}>{skill.qualityBar}</span>
+        </div>
+      </div>
+
+      {/* Footer: tools + teams */}
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 14, marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+        {skill.tools.map((tool) => (
+          <span
+            key={tool}
+            style={{
+              background: 'rgba(155,63,255,0.12)',
+              border: '1px solid rgba(155,63,255,0.2)',
+              color: '#C27FFF',
+              borderRadius: 100,
+              padding: '3px 10px',
+              fontSize: 11,
+              fontFamily: 'var(--font-body)',
+            }}
+          >
+            {tool}
+          </span>
+        ))}
+        {skill.teams.map((team) => (
+          <span
+            key={team}
+            style={{
+              background: 'rgba(255,255,255,0.05)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              color: 'rgba(255,255,255,0.4)',
+              borderRadius: 100,
+              padding: '3px 10px',
+              fontSize: 11,
+              fontFamily: 'var(--font-body)',
+            }}
+          >
+            {team}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function SkillsPage() {
   return (
-    <div className="px-5 sm:px-8 py-8 max-w-5xl mx-auto">
-      <PageHeader
-        title="Skills"
-        description="Senior-level AI skills with quality bars. Each skill is downloadable as a Markdown template."
-        badge="Skills"
-      />
+    <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
+      <BlobLayer />
+      <div style={{ position: 'relative', zIndex: 1, padding: 'clamp(60px,6vw,100px) clamp(16px,4vw,48px)', maxWidth: 1100, margin: '0 auto' }}>
+        <PageHeader
+          title="Skills"
+          description="Senior-level AI skills with quality bars. Each skill is downloadable as a Markdown template."
+          badge="Skills"
+        />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {skills.map((skill) => (
-          <div
-            key={skill.name}
-            className="flex flex-col p-5 rounded-xl transition-all duration-150"
-            style={{
-              background: '#ffffff',
-              border: '1px solid #e3e8ee',
-              borderRadius: '12px',
-              boxShadow: 'rgba(0,55,112,0.06) 0 1px 3px',
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(83,58,253,0.3)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#e3e8ee' }}
-          >
-            <div className="flex items-start justify-between gap-3 mb-2">
-              <h3 className="text-sm font-semibold" style={{ color: '#0d253d' }}>{skill.name}</h3>
-              <button
-                onClick={() => downloadSkill(skill)}
-                className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-medium transition-colors"
-                style={{ background: '#f6f9fc', color: '#64748d', border: '1px solid #e3e8ee' }}
-                title="Download as .md"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(83,58,253,0.08)'
-                  e.currentTarget.style.color = '#533afd'
-                  e.currentTarget.style.borderColor = 'rgba(83,58,253,0.2)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#f6f9fc'
-                  e.currentTarget.style.color = '#64748d'
-                  e.currentTarget.style.borderColor = '#e3e8ee'
-                }}
-              >
-                <Download size={11} />
-                .md
-              </button>
-            </div>
-
-            <p className="text-xs leading-relaxed mb-3 flex-1" style={{ color: '#64748d' }}>{skill.what}</p>
-
-            <div className="space-y-2 text-xs mb-3">
-              <div>
-                <span className="font-semibold" style={{ color: '#0d253d' }}>Use when: </span>
-                <span style={{ color: '#64748d' }}>{skill.whenToUse}</span>
-              </div>
-              <div>
-                <span className="font-semibold" style={{ color: '#16a34a' }}>Quality bar: </span>
-                <span style={{ color: '#64748d' }}>{skill.qualityBar}</span>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-1.5 pt-3" style={{ borderTop: '1px solid #e3e8ee' }}>
-              {skill.tools.map((tool) => (
-                <span
-                  key={tool}
-                  className="text-[10px] px-2 py-0.5 rounded-md"
-                  style={{ background: 'rgba(83,58,253,0.08)', color: '#4434d4' }}
-                >
-                  {tool}
-                </span>
-              ))}
-              {skill.teams.map((team) => (
-                <span
-                  key={team}
-                  className="text-[10px] px-2 py-0.5 rounded-md"
-                  style={{ background: '#f6f9fc', color: '#64748d', border: '1px solid #e3e8ee' }}
-                >
-                  {team}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(300px,1fr))', gap: 16 }}>
+          {skills.map((skill) => (
+            <SkillCard key={skill.name} skill={skill} />
+          ))}
+        </div>
       </div>
     </div>
   )

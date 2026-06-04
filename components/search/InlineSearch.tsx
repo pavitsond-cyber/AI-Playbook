@@ -170,7 +170,7 @@ export default function InlineSearch({
   const offsets: Partial<Record<SearchItemType, number>> = {}
   for (const t of ORDER) { offsets[t] = run; run += grouped[t]?.length ?? 0 }
 
-  const borderCol = open ? 'rgba(83,58,253,0.38)' : '#e3e8ee'
+  const borderCol = open ? 'rgba(155,63,255,0.45)' : 'rgba(255,255,255,0.1)'
 
   return (
     <div ref={wrapRef} style={{ position: 'relative', ...wrapperStyle }}>
@@ -180,23 +180,23 @@ export default function InlineSearch({
         style={{
           display: 'flex', alignItems: 'center', gap: 10,
           padding: compact ? '7px 12px' : '11px 16px',
-          background: '#fff',
+          background: '#0A0010',
           // When dropdown is open: share border with dropdown (no bottom border)
           borderTop: `1px solid ${borderCol}`,
           borderLeft: `1px solid ${borderCol}`,
           borderRight: `1px solid ${borderCol}`,
-          borderBottom: showDropdown ? '1px solid rgba(83,58,253,0.08)' : `1px solid ${borderCol}`,
+          borderBottom: showDropdown ? '1px solid rgba(155,63,255,0.1)' : `1px solid ${borderCol}`,
           borderRadius: showDropdown ? '12px 12px 0 0' : '12px',
           cursor: 'text',
           transition: 'border-color 150ms, border-radius 150ms',
-          boxShadow: showDropdown ? 'none' : (open ? '0 0 0 3px rgba(83,58,253,0.07)' : 'rgba(0,55,112,0.06) 0 1px 3px'),
+          boxShadow: showDropdown ? 'none' : (open ? '0 0 0 2px rgba(155,63,255,0.2)' : 'rgba(0,0,0,0.3) 0 1px 3px'),
           ...inputStyle,
         }}
         onClick={() => { inputRef.current?.focus(); setOpen(true) }}
       >
         <Search
           size={compact ? 14 : 15}
-          style={{ color: open ? '#533afd' : '#a8c3de', flexShrink: 0, transition: 'color 150ms' }}
+          style={{ color: open ? '#C27FFF' : 'rgba(255,255,255,0.3)', flexShrink: 0, transition: 'color 150ms' }}
         />
         <input
           ref={inputRef}
@@ -208,7 +208,7 @@ export default function InlineSearch({
           onKeyDown={handleKey}
           style={{
             flex: 1, border: 'none', outline: 'none', background: 'transparent',
-            fontSize: compact ? 13 : 14, color: '#0d253d',
+            fontSize: compact ? 13 : 14, color: 'rgba(255,255,255,0.88)',
           }}
         />
         {q ? (
@@ -217,17 +217,17 @@ export default function InlineSearch({
             onClick={() => { setQ(''); inputRef.current?.focus() }}
             style={{
               width: 18, height: 18, borderRadius: 5,
-              background: '#f0f4f8', border: '1px solid #e3e8ee',
+              background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               cursor: 'pointer', flexShrink: 0,
             }}
           >
-            <X size={10} color="#64748d" />
+            <X size={10} color="rgba(255,255,255,0.5)" />
           </button>
         ) : shortcut ? (
           <kbd style={{
             fontSize: 10, padding: '2px 6px', borderRadius: 5,
-            background: '#f6f9fc', border: '1px solid #e3e8ee', color: '#a8c3de',
+            background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.3)',
             flexShrink: 0, lineHeight: 1.4,
           }}>⌘K</kbd>
         ) : null}
@@ -242,15 +242,15 @@ export default function InlineSearch({
             top: '100%',   // starts exactly where input ends — no gap, no overlap
             ...(alignRight ? { right: 0 } : { left: 0, right: 0 }),
             ...(dropdownWidth ? { width: dropdownWidth, left: 'auto' } : {}),
-            background: '#fff',
+            background: '#0E0018',
             // Share the same border color as input, no top border (input bottom IS the divider)
             borderTop: 'none',
-            borderLeft: `1px solid rgba(83,58,253,0.38)`,
-            borderRight: `1px solid rgba(83,58,253,0.38)`,
-            borderBottom: `1px solid rgba(83,58,253,0.38)`,
-            borderRadius: '0 0 12px 12px',
+            borderLeft: `1px solid rgba(155,63,255,0.4)`,
+            borderRight: `1px solid rgba(155,63,255,0.4)`,
+            borderBottom: `1px solid rgba(155,63,255,0.4)`,
+            borderRadius: '0 0 14px 14px',
             // Light, grounded shadow — not floating/modal-like
-            boxShadow: '0 6px 20px rgba(0,55,112,0.08), 0 2px 6px rgba(0,55,112,0.04)',
+            boxShadow: '0 24px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(155,63,255,0.1)',
             zIndex: 200,
             maxHeight: 460,
             overflowY: 'auto',
@@ -268,7 +268,7 @@ export default function InlineSearch({
             <div style={{ padding: '14px 14px 16px' }}>
               <p style={{
                 fontSize: 10, fontWeight: 700, textTransform: 'uppercase',
-                letterSpacing: '0.07em', color: '#a8c3de', marginBottom: 10,
+                letterSpacing: '0.07em', color: 'rgba(255,255,255,0.3)', marginBottom: 10,
               }}>
                 Quick navigate
               </p>
@@ -301,7 +301,7 @@ export default function InlineSearch({
                   )
                 })}
               </div>
-              <p style={{ fontSize: 11, color: '#c8d4e0', marginTop: 12, lineHeight: 1.5 }}>
+              <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginTop: 12, lineHeight: 1.5 }}>
                 Start typing to search across all skills, prompts, terms, and principles.
               </p>
             </div>
@@ -310,10 +310,10 @@ export default function InlineSearch({
           {/* ── No results ────────────────────────────────────────────── */}
           {hasQ && total === 0 && (
             <div style={{ padding: '28px 16px', textAlign: 'center' }}>
-              <p style={{ fontSize: 14, color: '#273951', marginBottom: 4 }}>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', marginBottom: 4 }}>
                 Nothing found for &ldquo;<strong>{q}</strong>&rdquo;
               </p>
-              <p style={{ fontSize: 12, color: '#a8c3de' }}>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)' }}>
                 Try a skill name, AI term, or prompt topic.
               </p>
             </div>
@@ -334,7 +334,8 @@ export default function InlineSearch({
                 <div style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   padding: '10px 16px 4px',
-                  borderTop: '1px solid #f3f4f8',
+                  borderTop: '1px solid rgba(255,255,255,0.04)',
+                  background: 'rgba(255,255,255,0.02)',
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                     <div style={{
@@ -374,20 +375,20 @@ export default function InlineSearch({
                         margin: '1px 6px',
                         borderRadius: 10,
                         cursor: 'pointer',
-                        background: isFocused ? `rgba(83,58,253,0.04)` : 'transparent',
-                        border: isFocused ? `1px solid rgba(83,58,253,0.1)` : '1px solid transparent',
+                        background: isFocused ? `rgba(155,63,255,0.08)` : 'transparent',
+                        border: isFocused ? `1px solid rgba(155,63,255,0.15)` : '1px solid transparent',
                         transition: 'background 100ms, border-color 100ms',
                       }}
                     >
                       {/* Type icon */}
                       <div style={{
                         width: 28, height: 28, borderRadius: 8,
-                        background: isFocused ? c.bg : '#f6f9fc',
+                        background: isFocused ? c.bg : 'rgba(255,255,255,0.05)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         flexShrink: 0, marginTop: 1,
                         transition: 'background 100ms',
                       }}>
-                        <Icon size={13} color={isFocused ? c.color : '#a8c3de'} />
+                        <Icon size={13} color={isFocused ? c.color : 'rgba(255,255,255,0.3)'} />
                       </div>
 
                       {/* Content */}
@@ -396,12 +397,12 @@ export default function InlineSearch({
                           display: 'flex', alignItems: 'baseline',
                           gap: 6, marginBottom: 2, flexWrap: 'wrap',
                         }}>
-                          <span style={{ fontSize: 13, fontWeight: 500, color: '#0d253d', lineHeight: 1.3 }}>
+                          <span style={{ fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.9)', lineHeight: 1.3 }}>
                             <Hi text={item.title} q={q} />
                           </span>
                           {item.subtitle && (
                             <span style={{
-                              fontSize: 11, color: '#a8c3de',
+                              fontSize: 11, color: 'rgba(255,255,255,0.3)',
                               overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                               maxWidth: 160,
                             }}>
@@ -410,7 +411,7 @@ export default function InlineSearch({
                           )}
                         </div>
                         <p style={{
-                          fontSize: 11, color: '#64748d', lineHeight: 1.45, margin: 0,
+                          fontSize: 11, color: 'rgba(255,255,255,0.4)', lineHeight: 1.45, margin: 0,
                           overflow: 'hidden',
                           display: '-webkit-box',
                           WebkitLineClamp: 1,
@@ -430,7 +431,7 @@ export default function InlineSearch({
                       }}>
                         <ArrowUpRight
                           size={12}
-                          color={isFocused ? c.color : '#d0d8e4'}
+                          color={isFocused ? c.color : 'rgba(255,255,255,0.2)'}
                           style={{ transition: 'color 100ms' }}
                         />
                       </div>
@@ -446,12 +447,13 @@ export default function InlineSearch({
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               padding: '8px 16px 10px',
-              borderTop: '1px solid #f3f4f8',
+              borderTop: '1px solid rgba(255,255,255,0.04)',
+              background: 'rgba(255,255,255,0.02)',
             }}>
-              <span style={{ fontSize: 10, color: '#c0cad6' }}>
+              <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.2)' }}>
                 {total} result{total !== 1 ? 's' : ''}
               </span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 10, color: '#c0cad6' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 10, color: 'rgba(255,255,255,0.2)' }}>
                 <span>↑↓ move</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
                   <CornerDownLeft size={10} />

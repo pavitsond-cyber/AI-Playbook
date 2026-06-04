@@ -24,7 +24,7 @@ export default function SearchBar({
       <Search
         size={15}
         className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
-        style={{ color: '#a8c3de' }}
+        style={{ color: 'rgba(255,255,255,0.3)' }}
       />
       <input
         ref={inputRef}
@@ -34,19 +34,20 @@ export default function SearchBar({
         placeholder={placeholder}
         className="w-full pl-10 pr-10 py-3 rounded-xl text-sm outline-none transition-all duration-200"
         style={{
-          background: '#f6f9fc',
-          border: '1px solid #e3e8ee',
-          color: '#0d253d',
+          background: 'rgba(255,255,255,0.04)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: 12,
+          color: 'rgba(255,255,255,0.88)',
           boxShadow: 'none',
         }}
         onFocus={(e) => {
-          e.currentTarget.style.border = '1px solid #533afd'
-          e.currentTarget.style.background = '#ffffff'
-          e.currentTarget.style.boxShadow = '0 0 0 3px rgba(83,58,253,0.1)'
+          e.currentTarget.style.border = '1px solid rgba(155,63,255,0.5)'
+          e.currentTarget.style.background = 'rgba(255,255,255,0.06)'
+          e.currentTarget.style.boxShadow = '0 0 0 3px rgba(155,63,255,0.1)'
         }}
         onBlur={(e) => {
-          e.currentTarget.style.border = '1px solid #e3e8ee'
-          e.currentTarget.style.background = '#f6f9fc'
+          e.currentTarget.style.border = '1px solid rgba(255,255,255,0.08)'
+          e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
           e.currentTarget.style.boxShadow = 'none'
         }}
       />
@@ -54,9 +55,9 @@ export default function SearchBar({
         <button
           onClick={() => { onChange(''); inputRef.current?.focus() }}
           className="absolute right-3.5 top-1/2 -translate-y-1/2 transition-colors duration-150"
-          style={{ color: '#64748d' }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = '#0d253d')}
-          onMouseLeave={(e) => (e.currentTarget.style.color = '#64748d')}
+          style={{ color: 'rgba(255,255,255,0.3)' }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.7)')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.3)')}
         >
           <X size={13} />
         </button>

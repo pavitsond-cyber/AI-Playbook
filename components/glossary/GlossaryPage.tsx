@@ -8,6 +8,7 @@ import GlossaryGrid from './GlossaryGrid'
 import GlossaryCard from './GlossaryCard'
 import EmptyState from './EmptyState'
 import SiteFooter from './SiteFooter'
+import BlobLayer from '@/components/ui/BlobLayer'
 
 type TabId = 'abbreviations' | 'terminologies'
 
@@ -20,10 +21,10 @@ const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
 // Category grouping for Abbreviations tab
 const ABBR_GROUPS = [
-  { category: 'ai_basics',  label: 'AI Concepts',    color: '#533afd', bg: 'rgba(83,58,253,0.06)' },
-  { category: 'prompting',  label: 'Prompting & Ops', color: '#0d7a5f', bg: 'rgba(13,122,95,0.06)' },
-  { category: 'tools',      label: 'Design & Vision', color: '#b45309', bg: 'rgba(180,83,9,0.06)' },
-  { category: 'workflow',   label: 'Workflow & Data', color: '#7c3aed', bg: 'rgba(124,58,237,0.06)' },
+  { category: 'ai_basics',  label: 'AI Concepts',    color: '#9B3FFF',  bg: 'rgba(155,63,255,0.06)' },
+  { category: 'prompting',  label: 'Prompting & Ops', color: '#00CCA8',  bg: 'rgba(0,204,168,0.06)' },
+  { category: 'tools',      label: 'Design & Vision', color: '#FF69DB',  bg: 'rgba(255,105,219,0.06)' },
+  { category: 'workflow',   label: 'Workflow & Data', color: '#C27FFF',  bg: 'rgba(194,127,255,0.06)' },
 ]
 
 interface GlossaryPageProps {
@@ -94,15 +95,22 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
   }, [activeLetters])
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className="flex-1 max-w-3xl mx-auto w-full">
+    <div style={{ position: 'relative', minHeight: '100vh', background: '#0A0010', overflow: 'hidden' }}>
+      <BlobLayer />
+      <div className="flex-1 max-w-3xl mx-auto w-full" style={{ position: 'relative', zIndex: 1 }}>
 
         {/* Page title */}
         <div className="px-5 pt-7 pb-5 animate-fade-up delay-75">
-          <h1 className="text-xl leading-tight" style={{ color: '#0d253d', fontWeight: 300, letterSpacing: '-0.26px' }}>
+          <h1
+            className="leading-tight"
+            style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em' }}
+          >
             Reference
           </h1>
-          <p className="text-sm mt-1" style={{ color: '#64748d' }}>
+          <p
+            className="mt-1"
+            style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.3)' }}
+          >
             {terms.length} terms · tap any card to expand
           </p>
         </div>
@@ -111,10 +119,10 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
         <div
           className="sticky top-14 z-20"
           style={{
-            background: 'rgba(255,255,255,0.94)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            borderBottom: '1px solid #e3e8ee',
+            background: 'rgba(10,0,16,0.88)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            borderBottom: '1px solid rgba(255,255,255,0.06)',
           }}
         >
           <div className="px-5 pt-3 pb-2">
@@ -134,21 +142,21 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                   onClick={() => setActiveTab(tab.id)}
                   className="relative flex items-center gap-2 px-1 pb-3 pt-2 mr-6 text-sm font-medium transition-all duration-200 focus-visible:outline-none"
                 >
-                  <span className="transition-colors duration-200" style={{ color: isActive ? '#0d253d' : '#64748d' }}>
+                  <span className="transition-colors duration-200" style={{ color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)' }}>
                     {tab.label}
                   </span>
                   <span
                     className="text-xs px-1.5 py-0.5 rounded-full font-medium transition-all duration-200"
                     style={isActive
-                      ? { background: '#533afd', color: '#fff' }
-                      : { background: '#f6f9fc', color: '#64748d', border: '1px solid #e3e8ee' }}
+                      ? { background: '#9B3FFF', color: '#fff' }
+                      : { background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.35)', border: '1px solid rgba(255,255,255,0.08)' }}
                   >
                     {count}
                   </span>
                   <span
                     className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full transition-all duration-250"
                     style={{
-                      background: '#533afd',
+                      background: '#9B3FFF',
                       opacity: isActive ? 1 : 0,
                       transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
                       transformOrigin: 'left',
@@ -169,7 +177,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
             /* ── Grouped abbreviations ─────────────────────────────────── */
             <div key="abbreviations" className="animate-tab-fade space-y-6">
               {query && (
-                <p className="text-xs mb-2" style={{ color: '#64748d' }}>
+                <p className="text-xs mb-2" style={{ color: 'rgba(255,255,255,0.3)' }}>
                   {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
                 </p>
               )}
@@ -177,16 +185,22 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                 <div key={group.category}>
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg mb-2" style={{ background: group.bg }}>
                     <span className="w-2 h-2 rounded-full shrink-0" style={{ background: group.color }} />
-                    <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: group.color }}>
+                    <span
+                      className="text-xs font-semibold uppercase tracking-wider"
+                      style={{ fontFamily: 'var(--font-body)', color: group.color }}
+                    >
                       {group.label}
                     </span>
                     <span className="ml-auto text-xs font-medium px-1.5 py-0.5 rounded-full" style={{ background: `${group.color}18`, color: group.color }}>
                       {group.items.length}
                     </span>
                   </div>
-                  <div className="rounded-xl overflow-hidden" style={{ border: '1px solid #e3e8ee', boxShadow: 'rgba(0,55,112,0.08) 0 1px 3px', background: '#ffffff' }}>
+                  <div
+                    className="rounded-xl overflow-hidden"
+                    style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14 }}
+                  >
                     {group.items.map((term, i) => (
-                      <div key={term.id} style={{ borderBottom: i === group.items.length - 1 ? 'none' : '1px solid #e3e8ee' }}>
+                      <div key={term.id} style={{ borderBottom: i === group.items.length - 1 ? 'none' : '1px solid rgba(255,255,255,0.05)' }}>
                         <GlossaryCard term={term} />
                       </div>
                     ))}
@@ -231,19 +245,19 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                         padding: 0,
                         cursor: has ? 'pointer' : 'default',
                         transition: 'background 120ms, color 120ms, transform 80ms',
-                        color:      isActive ? '#ffffff' : has ? '#533afd' : '#d0dae6',
-                        background: isActive ? '#533afd' : has ? 'rgba(83,58,253,0.08)' : 'transparent',
+                        color:      isActive ? '#fff' : has ? '#C27FFF' : 'rgba(255,255,255,0.15)',
+                        background: isActive ? '#9B3FFF' : has ? 'rgba(155,63,255,0.1)' : 'transparent',
                         transform:  'scale(1)',
                       }}
                       onMouseEnter={e => {
                         if (has && !isActive) {
-                          e.currentTarget.style.background = 'rgba(83,58,253,0.16)'
+                          e.currentTarget.style.background = 'rgba(155,63,255,0.2)'
                           e.currentTarget.style.transform = 'scale(1.1)'
                         }
                       }}
                       onMouseLeave={e => {
                         if (has && !isActive) {
-                          e.currentTarget.style.background = 'rgba(83,58,253,0.08)'
+                          e.currentTarget.style.background = 'rgba(155,63,255,0.1)'
                           e.currentTarget.style.transform = 'scale(1)'
                         }
                       }}
@@ -257,7 +271,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
               {/* ── Terms grouped by letter ── */}
               <div style={{ flex: 1, minWidth: 0 }}>
                 {query && (
-                  <p className="text-xs mb-4" style={{ color: '#64748d' }}>
+                  <p className="text-xs mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>
                     {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
                   </p>
                 )}
@@ -265,7 +279,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                 {/* Mobile A-Z strip (shown only on small screens) */}
                 <div
                   className="sm:hidden flex flex-wrap gap-1 mb-5 p-3 rounded-xl"
-                  style={{ background: '#f6f9fc', border: '1px solid #e3e8ee' }}
+                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}
                 >
                   {ALPHABET.map(letter => {
                     const has = activeLetters.has(letter)
@@ -280,8 +294,8 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                           fontSize: 10, fontWeight: 700,
                           borderRadius: 5, border: 'none', padding: 0,
                           cursor: has ? 'pointer' : 'default',
-                          color:      isActive ? '#ffffff' : has ? '#533afd' : '#c8d4e0',
-                          background: isActive ? '#533afd' : has ? 'rgba(83,58,253,0.1)' : 'transparent',
+                          color:      isActive ? '#ffffff' : has ? '#C27FFF' : 'rgba(255,255,255,0.15)',
+                          background: isActive ? '#9B3FFF' : has ? 'rgba(155,63,255,0.1)' : 'transparent',
                         }}
                       >
                         {letter}
@@ -301,8 +315,8 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                           style={{
                             width: 32, height: 32,
                             borderRadius: 8,
-                            background: 'rgba(83,58,253,0.1)',
-                            color: '#533afd',
+                            background: 'rgba(155,63,255,0.12)',
+                            color: '#C27FFF',
                             fontSize: 14, fontWeight: 700,
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                             flexShrink: 0,
@@ -310,10 +324,10 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                         >
                           {letter}
                         </div>
-                        <span className="text-xs" style={{ color: '#a8c3de' }}>
+                        <span className="text-xs" style={{ color: 'rgba(255,255,255,0.2)' }}>
                           {groupTerms.length} {groupTerms.length === 1 ? 'term' : 'terms'}
                         </span>
-                        <div style={{ flex: 1, height: 1, background: '#e3e8ee' }} />
+                        <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.07)' }} />
                       </div>
 
                       <GlossaryGrid terms={groupTerms} />

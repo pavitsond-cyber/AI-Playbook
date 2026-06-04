@@ -2,9 +2,9 @@ import TopNav from '@/components/nav/TopNav'
 
 export default function PlaybookLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen" style={{ background: '#f6f9fc' }}>
+    <div style={{ minHeight: '100vh', background: '#0A0010' }}>
       <TopNav />
-      <main>{children}</main>
+      <main style={{ paddingTop: 64 }}>{children}</main>
     </div>
   )
 }
