@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { Shield, MessageSquare, Lightbulb, BookOpen, ArrowRight, Search } from 'lucide-react'
-import { useSearch } from '@/lib/context/search-context'
+import { Shield, MessageSquare, Lightbulb, BookOpen, ArrowRight } from 'lucide-react'
+import InlineSearch from '@/components/search/InlineSearch'
 
 const sections = [
   {
@@ -36,8 +36,6 @@ const sections = [
 ]
 
 export default function HubPage() {
-  const { open: openSearch } = useSearch()
-
   return (
     <div className="px-5 sm:px-8 py-10 max-w-5xl mx-auto">
 
@@ -54,35 +52,14 @@ export default function HubPage() {
         </p>
       </div>
 
-      {/* Global search — main entry point */}
-      <button
-        onClick={openSearch}
-        className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl mb-10 text-left transition-all duration-200"
-        style={{
-          background: '#ffffff',
-          border: '1px solid #e3e8ee',
-          boxShadow: 'rgba(0,55,112,0.06) 0 1px 3px',
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = 'rgba(83,58,253,0.3)'
-          e.currentTarget.style.boxShadow = 'rgba(0,55,112,0.08) 0 4px 12px'
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = '#e3e8ee'
-          e.currentTarget.style.boxShadow = 'rgba(0,55,112,0.06) 0 1px 3px'
-        }}
-      >
-        <Search size={16} style={{ color: '#a8c3de', flexShrink: 0 }} />
-        <span className="flex-1 text-sm" style={{ color: '#a8c3de' }}>
-          Search skills, prompts, terms, principles…
-        </span>
-        <kbd
-          className="hidden sm:flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-medium shrink-0"
-          style={{ background: '#f6f9fc', border: '1px solid #e3e8ee', color: '#a8c3de' }}
-        >
-          ⌘K
-        </kbd>
-      </button>
+      {/* Universal search */}
+      <div className="mb-10">
+        <InlineSearch
+          placeholder="Search skills, prompts, terms, principles…"
+          shortcut
+          wrapperStyle={{ width: '100%', maxWidth: '640px' }}
+        />
+      </div>
 
       {/* Section cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
