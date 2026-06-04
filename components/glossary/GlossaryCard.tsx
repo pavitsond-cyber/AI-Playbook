@@ -35,12 +35,20 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
         style={{
           background: 'rgba(255,255,255,0.03)',
           border: '1px solid rgba(255,255,255,0.07)',
-          borderRadius: 12,
+          borderRadius: 16,
           overflow: 'hidden',
-          marginBottom: 2,
+          transition: 'border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease',
         }}
-        onMouseEnter={() => {}}
-        onMouseLeave={() => {}}
+        onMouseEnter={e => {
+          e.currentTarget.style.borderColor = 'rgba(155,63,255,0.3)'
+          e.currentTarget.style.boxShadow = '0 0 0 1px rgba(155,63,255,0.1)'
+          e.currentTarget.style.transform = 'translateY(-2px)'
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'
+          e.currentTarget.style.boxShadow = 'none'
+          e.currentTarget.style.transform = 'translateY(0)'
+        }}
       >
         <button
           onClick={() => setExpanded(p => !p)}

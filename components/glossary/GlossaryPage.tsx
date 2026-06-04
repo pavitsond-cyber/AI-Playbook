@@ -19,26 +19,24 @@ const TABS: { id: TabId; label: string }[] = [
 
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
-// Category grouping for Abbreviations tab
 const ABBR_GROUPS = [
-  { category: 'ai_basics',  label: 'AI Concepts',    color: '#9B3FFF',  bg: 'rgba(155,63,255,0.06)' },
-  { category: 'prompting',  label: 'Prompting & Ops', color: '#00CCA8',  bg: 'rgba(0,204,168,0.06)' },
-  { category: 'tools',      label: 'Design & Vision', color: '#FF69DB',  bg: 'rgba(255,105,219,0.06)' },
-  { category: 'workflow',   label: 'Workflow & Data', color: '#C27FFF',  bg: 'rgba(194,127,255,0.06)' },
+  { category: 'ai_basics',  label: 'AI Concepts',    color: '#9B3FFF', bg: 'rgba(155,63,255,0.06)',  short: 'AI' },
+  { category: 'prompting',  label: 'Prompting',       color: '#00CCA8', bg: 'rgba(0,204,168,0.06)',   short: 'PR' },
+  { category: 'tools',      label: 'Design',          color: '#FF69DB', bg: 'rgba(255,105,219,0.06)', short: 'DS' },
+  { category: 'workflow',   label: 'Workflow',         color: '#C27FFF', bg: 'rgba(194,127,255,0.06)', short: 'WF' },
 ]
 
-interface GlossaryPageProps {
-  terms: GlossaryTerm[]
-}
+interface GlossaryPageProps { terms: GlossaryTerm[] }
 
 export default function GlossaryPage({ terms }: GlossaryPageProps) {
-  const [activeTab, setActiveTab]     = useState<TabId>('abbreviations')
-  const [query, setQuery]             = useState('')
-  const [activeAlpha, setActiveAlpha] = useState<string | null>(null)
+  const [activeTab, setActiveTab]         = useState<TabId>('abbreviations')
+  const [query, setQuery]                 = useState('')
+  const [activeAlpha, setActiveAlpha]     = useState<string | null>(null)
+  const [activeCategory, setActiveCategory] = useState<string | null>(null)
 
   const tabTerms = useMemo(() => ({
-    abbreviations: terms.filter((t) => t.full_form && t.full_form.trim() !== ''),
-    terminologies: terms.filter((t) => !t.full_form || t.full_form.trim() === ''),
+    abbreviations: terms.filter(t => t.full_form && t.full_form.trim() !== ''),
+    terminologies: terms.filter(t => !t.full_form || t.full_form.trim() === ''),
   }), [terms])
 
   const filtered = useMemo(
@@ -79,20 +77,50 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
     [letterGroups]
   )
 
-  // Reset active letter when switching tabs or changing query
-  useEffect(() => { setActiveAlpha(null) }, [activeTab, query])
+  useEffect(() => {
+    setActiveAlpha(null)
+    setActiveCategory(null)
+  }, [activeTab, query])
 
+  // Scroll to a letter section (terminologies)
   const scrollToLetter = useCallback((letter: string) => {
     if (!activeLetters.has(letter)) return
     const el = document.getElementById(`alpha-section-${letter}`)
     if (el) {
-      // Offset for sticky nav (56px) + sticky search+tabs (~106px) + small gap
-      const offset = 172
-      const y = el.getBoundingClientRect().top + window.scrollY - offset
+      const y = el.getBoundingClientRect().top + window.scrollY - 172
       window.scrollTo({ top: y, behavior: 'smooth' })
       setActiveAlpha(letter)
     }
   }, [activeLetters])
+
+  // Scroll to a category section (abbreviations)
+  const scrollToCategory = useCallback((category: string) => {
+    const el = document.getElementById(`abbr-group-${category}`)
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - 172
+      window.scrollTo({ top: y, behavior: 'smooth' })
+      setActiveCategory(category)
+    }
+  }, [])
+
+  // ── Shared sidebar button style ────────────────────────────────────────
+  const sidebarBtn = (isActive: boolean, has: boolean, color = '#C27FFF') => ({
+    width: 32,
+    height: 28,
+    display: 'flex' as const,
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+    fontSize: 12,
+    fontWeight: 700 as const,
+    lineHeight: 1,
+    borderRadius: 8,
+    border: 'none' as const,
+    padding: 0,
+    cursor: has ? 'pointer' : 'default',
+    transition: 'background 120ms, color 120ms, transform 80ms',
+    color:      isActive ? '#fff' : has ? color : 'rgba(255,255,255,0.15)',
+    background: isActive ? '#9B3FFF' : has ? 'rgba(155,63,255,0.1)' : 'transparent',
+  })
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', background: '#0A0010', overflow: 'hidden' }}>
@@ -101,16 +129,10 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
 
         {/* Page title */}
         <div className="px-5 pt-7 pb-5 animate-fade-up delay-75">
-          <h1
-            className="leading-tight"
-            style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em' }}
-          >
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em' }}>
             Reference
           </h1>
-          <p
-            className="mt-1"
-            style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.3)' }}
-          >
+          <p className="mt-1" style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.3)' }}>
             {terms.length} terms · tap any card to expand
           </p>
         </div>
@@ -126,14 +148,10 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
           }}
         >
           <div className="px-5 pt-3 pb-2">
-            <SearchBar
-              value={query}
-              onChange={setQuery}
-              placeholder="Search terms, abbreviations…"
-            />
+            <SearchBar value={query} onChange={setQuery} placeholder="Search terms, abbreviations…" />
           </div>
           <div className="flex px-5">
-            {TABS.map((tab) => {
+            {TABS.map(tab => {
               const isActive = activeTab === tab.id
               const count = query ? matchCounts[tab.id] : tabTerms[tab.id].length
               return (
@@ -154,12 +172,13 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                     {count}
                   </span>
                   <span
-                    className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full transition-all duration-250"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
                     style={{
                       background: '#9B3FFF',
                       opacity: isActive ? 1 : 0,
                       transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
                       transformOrigin: 'left',
+                      transition: 'opacity 0.2s, transform 0.2s',
                     }}
                   />
                 </button>
@@ -174,54 +193,99 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
             <EmptyState query={query} />
 
           ) : activeTab === 'abbreviations' ? (
-            /* ── Grouped abbreviations ─────────────────────────────────── */
-            <div key="abbreviations" className="animate-tab-fade space-y-6">
-              {query && (
-                <p className="text-xs mb-2" style={{ color: 'rgba(255,255,255,0.3)' }}>
-                  {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
-                </p>
-              )}
-              {abbrGroups.map(group => (
-                <div key={group.category}>
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg mb-2" style={{ background: group.bg }}>
-                    <span className="w-2 h-2 rounded-full shrink-0" style={{ background: group.color }} />
-                    <span
-                      className="text-xs font-semibold uppercase tracking-wider"
-                      style={{ fontFamily: 'var(--font-body)', color: group.color }}
+            /* ── Abbreviations — same layout as terminologies ──────────── */
+            <div key="abbreviations" className="animate-tab-fade" style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
+
+              {/* Category sidebar — mirrors the A-Z sidebar */}
+              <div
+                className="hidden sm:flex flex-col shrink-0"
+                style={{ position: 'sticky', top: 172, gap: 5, paddingTop: 4 }}
+              >
+                {abbrGroups.map(group => {
+                  const isActive = activeCategory === group.category
+                  return (
+                    <button
+                      key={group.category}
+                      onClick={() => scrollToCategory(group.category)}
+                      style={{
+                        ...sidebarBtn(isActive, true, group.color),
+                        background: isActive ? group.color : `${group.color}18`,
+                        color: isActive ? '#fff' : group.color,
+                        fontSize: 10,
+                        letterSpacing: '0.04em',
+                      }}
+                      onMouseEnter={e => {
+                        if (!isActive) {
+                          e.currentTarget.style.background = `${group.color}30`
+                          e.currentTarget.style.transform = 'scale(1.08)'
+                        }
+                      }}
+                      onMouseLeave={e => {
+                        if (!isActive) {
+                          e.currentTarget.style.background = `${group.color}18`
+                          e.currentTarget.style.transform = 'scale(1)'
+                        }
+                      }}
                     >
-                      {group.label}
-                    </span>
-                    <span className="ml-auto text-xs font-medium px-1.5 py-0.5 rounded-full" style={{ background: `${group.color}18`, color: group.color }}>
-                      {group.items.length}
-                    </span>
-                  </div>
-                  <div
-                    className="rounded-xl overflow-hidden"
-                    style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14 }}
-                  >
-                    {group.items.map((term, i) => (
-                      <div key={term.id} style={{ borderBottom: i === group.items.length - 1 ? 'none' : '1px solid rgba(255,255,255,0.05)' }}>
-                        <GlossaryCard term={term} />
+                      {group.short}
+                    </button>
+                  )
+                })}
+              </div>
+
+              {/* Cards by category */}
+              <div style={{ flex: 1, minWidth: 0 }}>
+                {query && (
+                  <p className="text-xs mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                    {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
+                  </p>
+                )}
+
+                <div className="space-y-8">
+                  {abbrGroups.map(group => (
+                    <div key={group.category} id={`abbr-group-${group.category}`}>
+                      {/* Category header — mirrors letter badge */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                        <div style={{
+                          display: 'flex', alignItems: 'center', gap: 7,
+                          padding: '5px 12px', borderRadius: 100,
+                          background: group.bg, border: `1px solid ${group.color}25`,
+                          flexShrink: 0,
+                        }}>
+                          <span style={{ width: 6, height: 6, borderRadius: '50%', background: group.color, flexShrink: 0 }} />
+                          <span style={{
+                            fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 700,
+                            textTransform: 'uppercase', letterSpacing: '0.1em', color: group.color,
+                          }}>
+                            {group.label}
+                          </span>
+                        </div>
+                        <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.2)' }}>
+                          {group.items.length} {group.items.length === 1 ? 'term' : 'terms'}
+                        </span>
+                        <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.07)' }} />
                       </div>
-                    ))}
-                  </div>
+
+                      {/* Individual floating cards — same as terminology cards */}
+                      <div className="space-y-2.5">
+                        {group.items.map(term => (
+                          <GlossaryCard key={term.id} term={term} />
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
 
           ) : (
             /* ── Terminologies with A-Z sidebar ────────────────────────── */
             <div key="terminologies" className="animate-tab-fade" style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
 
-              {/* ── A-Z sidebar ── */}
+              {/* A-Z sidebar — sticky, bigger, more spaced */}
               <div
                 className="hidden sm:flex flex-col shrink-0"
-                style={{
-                  position: 'sticky',
-                  top: 172,
-                  gap: 2,
-                  paddingTop: 4,
-                }}
+                style={{ position: 'sticky', top: 172, gap: 5, paddingTop: 4 }}
               >
                 {ALPHABET.map(letter => {
                   const has = activeLetters.has(letter)
@@ -232,27 +296,13 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                       onClick={() => scrollToLetter(letter)}
                       disabled={!has}
                       style={{
-                        width: 22,
-                        height: 20,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: 10,
-                        fontWeight: 700,
-                        lineHeight: 1,
-                        borderRadius: 5,
-                        border: 'none',
-                        padding: 0,
-                        cursor: has ? 'pointer' : 'default',
-                        transition: 'background 120ms, color 120ms, transform 80ms',
-                        color:      isActive ? '#fff' : has ? '#C27FFF' : 'rgba(255,255,255,0.15)',
-                        background: isActive ? '#9B3FFF' : has ? 'rgba(155,63,255,0.1)' : 'transparent',
-                        transform:  'scale(1)',
+                        ...sidebarBtn(isActive, has),
+                        fontFamily: 'var(--font-body)',
                       }}
                       onMouseEnter={e => {
                         if (has && !isActive) {
                           e.currentTarget.style.background = 'rgba(155,63,255,0.2)'
-                          e.currentTarget.style.transform = 'scale(1.1)'
+                          e.currentTarget.style.transform = 'scale(1.08)'
                         }
                       }}
                       onMouseLeave={e => {
@@ -268,7 +318,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                 })}
               </div>
 
-              {/* ── Terms grouped by letter ── */}
+              {/* Terms grouped by letter */}
               <div style={{ flex: 1, minWidth: 0 }}>
                 {query && (
                   <p className="text-xs mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>
@@ -276,7 +326,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                   </p>
                 )}
 
-                {/* Mobile A-Z strip (shown only on small screens) */}
+                {/* Mobile A-Z strip */}
                 <div
                   className="sm:hidden flex flex-wrap gap-1 mb-5 p-3 rounded-xl"
                   style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}
@@ -290,11 +340,10 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                         onClick={() => scrollToLetter(letter)}
                         disabled={!has}
                         style={{
-                          width: 24, height: 24,
-                          fontSize: 10, fontWeight: 700,
-                          borderRadius: 5, border: 'none', padding: 0,
+                          width: 28, height: 26, fontSize: 12, fontWeight: 700,
+                          borderRadius: 7, border: 'none', padding: 0,
                           cursor: has ? 'pointer' : 'default',
-                          color:      isActive ? '#ffffff' : has ? '#C27FFF' : 'rgba(255,255,255,0.15)',
+                          color:      isActive ? '#fff' : has ? '#C27FFF' : 'rgba(255,255,255,0.15)',
                           background: isActive ? '#9B3FFF' : has ? 'rgba(155,63,255,0.1)' : 'transparent',
                         }}
                       >
@@ -307,24 +356,19 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                 <div className="space-y-8">
                   {letterGroups.map(({ letter, terms: groupTerms }) => (
                     <div key={letter} id={`alpha-section-${letter}`}>
-                      {/* Letter badge */}
-                      <div
-                        className="flex items-center gap-3 mb-3"
-                      >
-                        <div
-                          style={{
-                            width: 32, height: 32,
-                            borderRadius: 8,
-                            background: 'rgba(155,63,255,0.12)',
-                            color: '#C27FFF',
-                            fontSize: 14, fontWeight: 700,
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            flexShrink: 0,
-                          }}
-                        >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                        <div style={{
+                          width: 34, height: 34, borderRadius: 9,
+                          background: 'rgba(155,63,255,0.12)',
+                          color: '#C27FFF',
+                          fontFamily: 'var(--font-display)',
+                          fontSize: 15, fontWeight: 800,
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          flexShrink: 0,
+                        }}>
                           {letter}
                         </div>
-                        <span className="text-xs" style={{ color: 'rgba(255,255,255,0.2)' }}>
+                        <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.2)' }}>
                           {groupTerms.length} {groupTerms.length === 1 ? 'term' : 'terms'}
                         </span>
                         <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.07)' }} />
