@@ -33,6 +33,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
   const [query, setQuery]                 = useState('')
   const [activeAlpha, setActiveAlpha]     = useState<string | null>(null)
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
+  const [openCardId, setOpenCardId]       = useState<string | null>(null)
 
   const tabTerms = useMemo(() => ({
     abbreviations: terms.filter(t => t.full_form && t.full_form.trim() !== ''),
@@ -80,6 +81,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
   useEffect(() => {
     setActiveAlpha(null)
     setActiveCategory(null)
+    setOpenCardId(null)
   }, [activeTab, query])
 
   // Scroll to a letter section (terminologies)
@@ -230,7 +232,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                       {/* Individual floating cards — same as terminology cards */}
                       <div className="space-y-2.5">
                         {group.items.map(term => (
-                          <GlossaryCard key={term.id} term={term} />
+                          <GlossaryCard key={term.id} term={term} openId={openCardId} onOpen={setOpenCardId} />
                         ))}
                       </div>
                     </div>
@@ -335,7 +337,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                         <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.07)' }} />
                       </div>
 
-                      <GlossaryGrid terms={groupTerms} />
+                      <GlossaryGrid terms={groupTerms} openId={openCardId} onOpen={setOpenCardId} />
                     </div>
                   ))}
                 </div>

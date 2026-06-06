@@ -15,11 +15,26 @@ const ABBR_COLORS: Partial<Record<string, string>> = {
 
 interface GlossaryCardProps {
   term: GlossaryTerm
+  // Accordion control — when provided, this card is controlled by the parent
+  openId?: string | null
+  onOpen?: (id: string | null) => void
 }
 
-export default function GlossaryCard({ term }: GlossaryCardProps) {
-  const [expanded, setExpanded] = useState(false)
+export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps) {
+  const [localExpanded, setLocalExpanded] = useState(false)
   const [hovered, setHovered] = useState(false)
+
+  // Controlled mode (accordion) when parent passes openId; else local state
+  const isControlled = openId !== undefined
+  const expanded = isControlled ? openId === term.id : localExpanded
+
+  const toggle = () => {
+    if (isControlled) {
+      onOpen?.(expanded ? null : term.id)
+    } else {
+      setLocalExpanded(p => !p)
+    }
+  }
 
   const isAbbrev = !!term.full_form
   const badgeColor = ABBR_COLORS[term.category] ?? '#9B3FFF'
@@ -51,7 +66,7 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
         }}
       >
         <button
-          onClick={() => setExpanded(p => !p)}
+          onClick={toggle}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           className="w-full text-left px-5 py-5 flex items-start gap-4 transition-colors duration-100"
@@ -204,7 +219,7 @@ export default function GlossaryCard({ term }: GlossaryCardProps) {
       }}
     >
       <button
-        onClick={() => setExpanded((p) => !p)}
+        onClick={toggle}
         className="w-full text-left px-5 py-5 flex items-start gap-4 transition-all duration-150"
       >
         <div className="flex-1 min-w-0">
