@@ -28,7 +28,7 @@ const sections = [
   },
   {
     icon: BookOpen,
-    title: 'Reference',
+    title: 'Glossary',
     description: 'Everyday terms we use, defined for you.',
     href: '/glossary',
     count: 'Terms & abbreviations',
@@ -53,12 +53,6 @@ export default function HubPage() {
     <div style={{ minHeight: '100vh', background: '#0A0010', position: 'relative', overflow: 'hidden' }}>
       <BlobLayer />
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 1200, margin: '0 auto', padding: 'clamp(80px,8vw,130px) clamp(20px,4vw,48px) clamp(60px,6vw,100px)' }}>
-
-        {/* Eyebrow */}
-        <div className="eyebrow-tag animate-fade-up delay-0" style={{ marginBottom: 28 }}>
-          <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg,#FF00CC,#9B3FFF)', display: 'inline-block' }} />
-          AI Session 2026
-        </div>
 
         {/* Headline */}
         <h1 className="animate-fade-up delay-75" style={{
