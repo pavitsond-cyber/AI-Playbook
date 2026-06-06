@@ -132,7 +132,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
         {/* Page title */}
         <div className="animate-fade-up delay-75" style={{ padding: "clamp(64px,6vw,100px) clamp(20px,4vw,48px) 20px" }}>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px,4vw,64px)', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 8 }}>
-            Reference
+            Glossary
           </h1>
           <p className="mt-1" style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.3)' }}>
             {terms.length} terms · tap any card to expand
