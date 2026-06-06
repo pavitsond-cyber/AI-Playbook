@@ -127,11 +127,11 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
   return (
     <div style={{ position: 'relative', minHeight: '100vh', background: '#0A0010', overflow: 'hidden' }}>
       <BlobLayer />
-      <div className="flex-1 max-w-3xl mx-auto w-full" style={{ position: 'relative', zIndex: 1 }}>
+      <div style={{ position: "relative", zIndex: 1, maxWidth: 960, margin: "0 auto", width: "100%" }}>
 
         {/* Page title */}
-        <div className="px-5 pt-7 pb-5 animate-fade-up delay-75">
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em' }}>
+        <div className="animate-fade-up delay-75" style={{ padding: "clamp(64px,6vw,100px) clamp(20px,4vw,48px) 20px" }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px,4vw,64px)', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 8 }}>
             Reference
           </h1>
           <p className="mt-1" style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.3)' }}>
@@ -149,10 +149,10 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
             borderBottom: '1px solid rgba(255,255,255,0.06)',
           }}
         >
-          <div className="px-5 pt-3 pb-2">
+          <div style={{ padding: "10px clamp(20px,4vw,48px) 8px" }}>
             <SearchBar value={query} onChange={setQuery} placeholder="Search terms, abbreviations…" />
           </div>
-          <div className="flex px-5">
+          <div style={{ display: "flex", padding: "0 clamp(20px,4vw,48px)" }}>
             {TABS.map(tab => {
               const isActive = activeTab === tab.id
               const count = query ? matchCounts[tab.id] : tabTerms[tab.id].length
@@ -190,7 +190,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
         </div>
 
         {/* Results */}
-        <div className="px-5 pt-5 pb-8">
+        <div style={{ padding: "20px clamp(20px,4vw,48px) clamp(40px,4vw,64px)" }}>
           {filtered.length === 0 ? (
             <EmptyState query={query} />
 

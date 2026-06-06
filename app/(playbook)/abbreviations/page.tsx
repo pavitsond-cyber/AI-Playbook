@@ -373,7 +373,7 @@ export default function AbbreviationsPage() {
   return (
     <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
       <BlobLayer />
-      <div className="px-5 sm:px-8 py-8 max-w-3xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
+      <div style={{ position: "relative", zIndex: 1, padding: "clamp(64px,6vw,100px) clamp(20px,4vw,48px)", maxWidth: 960, margin: "0 auto" }}>
         <PageHeader title="Abbreviations" description="30 advanced AI abbreviations for designers — expand any to see how it's used in real work." />
 
         <div className="mb-6">

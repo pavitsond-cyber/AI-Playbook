@@ -563,7 +563,7 @@ export default function PromptSystemsPage() {
         style={{
           position: 'relative',
           zIndex: 1,
-          padding: 'clamp(60px,6vw,100px) clamp(16px,4vw,48px)',
+          padding: 'clamp(64px,6vw,100px) clamp(20px,4vw,48px)',
           maxWidth: 960,
           margin: '0 auto',
         }}

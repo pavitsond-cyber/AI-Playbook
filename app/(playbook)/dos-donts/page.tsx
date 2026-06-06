@@ -74,7 +74,7 @@ export default function OperatingPrinciplesPage() {
   return (
     <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
       <BlobLayer />
-      <div style={{ position: 'relative', zIndex: 1, padding: 'clamp(60px,6vw,100px) clamp(16px,4vw,48px)', maxWidth: 900, margin: '0 auto' }}>
+      <div style={{ position: 'relative', zIndex: 1, padding: 'clamp(64px,6vw,100px) clamp(20px,4vw,48px)', maxWidth: 960, margin: '0 auto' }}>
         <PageHeader
           title="Operating Principles"
          
