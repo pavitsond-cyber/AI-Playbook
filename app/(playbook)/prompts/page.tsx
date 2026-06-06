@@ -574,19 +574,6 @@ export default function PromptSystemsPage() {
          
         />
 
-        <div
-          style={{
-            background: 'rgba(155,63,255,0.06)',
-            border: '1px solid rgba(155,63,255,0.12)',
-            borderRadius: 14,
-            padding: '14px 18px',
-            marginBottom: 32,
-          }}
-        >
-          <strong style={{ fontFamily: 'var(--font-display)', fontWeight: 700, color: '#C27FFF' }}>How to use these:</strong>
-          <span style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.45)', fontSize: 14 }}> Run Step 1, review the output, then feed it into Step 2. Do not skip steps or merge them — the structure is intentional. Every system includes what AI should not do and what humans must own.</span>
-        </div>
-
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {systems.map((system) => {
             const isOpen = openId === system.id
