@@ -789,23 +789,6 @@ export const staticTerms: GlossaryTerm[] = [
   }),
 
   makeTerm({
-    term: 'Text-to-Image / Text-to-Video',
-    full_form: null,
-    category: 'tools',
-    short_definition: 'Generative AI converting text prompts into visual or video content — write a description, receive a finished asset.',
-    detailed_explanation: 'Text-to-image (Midjourney, DALL·E, Stable Diffusion) and text-to-video (Runway, Sora) models generate visual content from natural language descriptions. Quality of output depends heavily on prompt specificity — visual vocabulary, style references, composition direction, and technical parameters. These tools have shifted visual creative work from execution to direction.',
-    layman_explanation: 'You describe the image or video you want in words, and the AI renders it. "Overhead flat-lay of travel items on warm terracotta, natural light, editorial style" → Midjourney generates it. The creative work is in the description, not the production.',
-    example_usage: 'Generating a promotional video from a product description. Marketing teams creating social media assets from AI-generated visuals — 12 creative directions in the time it used to take to brief one shoot.',
-    where_used: null,
-    aliases: ['T2I', 'T2V', 'Image generation', 'Video generation'],
-    tool_tags: [],
-    related_links: [
-      { label: 'Brand Campaign Territory prompt', href: '/prompts' },
-      { label: 'AI Creative Direction Systems skill', href: '/skills' },
-    ],
-  }),
-
-  makeTerm({
     term: 'Transformers',
     full_form: null,
     category: 'ai_basics',
