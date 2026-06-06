@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Shield, MessageSquare, Lightbulb, BookOpen, ArrowUpRight } from 'lucide-react'
 import BlobLayer from '@/components/ui/BlobLayer'
