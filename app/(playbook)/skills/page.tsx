@@ -172,12 +172,12 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           </div>
           <p style={{
             fontFamily: 'var(--font-body)',
-            fontSize: 13,
+            fontSize: 14,
             color: 'rgba(255,255,255,0.45)',
             lineHeight: 1.5,
             margin: 0,
             overflow: 'hidden',
-            fontSize: 14, display: '-webkit-box',
+            display: '-webkit-box',
             WebkitLineClamp: 1,
             WebkitBoxOrient: 'vertical',
           } as React.CSSProperties}>
