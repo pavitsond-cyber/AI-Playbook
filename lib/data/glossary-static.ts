@@ -837,4 +837,108 @@ export const staticTerms: GlossaryTerm[] = [
       { label: 'Prompt Systems', href: '/prompts' },
     ],
   }),
+
+  // ─── AI Prompt Design Terms ───────────────────────────────────────────────
+
+  makeTerm({
+    term: 'Anchoring',
+    full_form: null,
+    category: 'prompting',
+    short_definition: 'Relying too heavily on the first piece of information in a prompt, which can constrain or bias subsequent AI outputs.',
+    detailed_explanation: 'Anchoring is a cognitive bias that also affects AI — when an early example or framing is too specific, the model latches onto it and struggles to explore genuinely different territory. In prompting, this means your first example, tone choice, or format can narrow the entire response space. Recognising and deliberately countering anchoring is a senior prompting skill.',
+    layman_explanation: 'If you start a prompt with "write something like this [very specific example]," the AI will likely copy that example\'s structure, tone, and style instead of exploring fresh ideas. The first anchor shapes everything that follows — sometimes helpfully, often not.',
+    example_usage: 'When giving AI a reference example, frame it broadly to avoid constraining creativity: "Provide three alternative design ideas for a homepage — do not replicate the style or structure of the example provided."',
+    where_used: null,
+    aliases: ['Anchoring bias', 'Prompt anchoring'],
+    tool_tags: [],
+    related_links: [
+      { label: 'Context Engineering skill', href: '/skills' },
+      { label: 'Prompt Systems', href: '/prompts' },
+    ],
+  }),
+
+  makeTerm({
+    term: 'Priming',
+    full_form: null,
+    category: 'prompting',
+    short_definition: 'Preparing the AI with upfront context — role, expertise, or framing — to shape the style and quality of its response.',
+    detailed_explanation: 'Priming is how you set the AI\'s "mode" before the actual task. Assigning a role ("You are a senior UX designer"), establishing stakes ("This will be presented to the CEO"), or providing background context all prime the model to respond from a specific perspective and quality bar. Priming is one of the highest-leverage prompting techniques — it shapes the entire response without needing detailed instructions for every element.',
+    layman_explanation: 'Like briefing someone before they start work. "You\'re presenting to the board, here\'s the context" changes how they prepare entirely. Same task, very different output depending on how you prime them.',
+    example_usage: '"You are an expert UX designer. Generate three layout options that follow WCAG accessibility guidelines." The role assignment in the first sentence primes the model to apply design expertise and accessibility knowledge throughout.',
+    where_used: null,
+    aliases: ['Role priming', 'Context priming', 'Role assignment'],
+    tool_tags: [],
+    related_links: [
+      { label: 'Context Engineering skill', href: '/skills' },
+      { label: 'Prompt Systems', href: '/prompts' },
+    ],
+  }),
+
+  makeTerm({
+    term: 'Negative Priming',
+    full_form: null,
+    category: 'prompting',
+    short_definition: 'Explicitly telling AI what to avoid — defining the output space by its boundaries as well as its content.',
+    detailed_explanation: 'Negative priming complements positive instructions by eliminating specific failure modes. Telling AI "do not use passive voice," "avoid clichés," or "do not include logos or text in the illustration" shapes the output as effectively as positive direction — sometimes more so. Well-placed exclusions prevent the AI from taking the path of least resistance toward generic, template-like outputs.',
+    layman_explanation: 'Just as useful as telling someone what to do is telling them what not to do. "Don\'t use jargon, don\'t open with a question, don\'t make it sound like a press release" — these constraints shape the output as much as the positive brief.',
+    example_usage: '"Create a minimal dashboard layout. Do not use the colour red. Avoid default UI templates. Suggest unconventional element placement instead of standard grid layouts."',
+    where_used: null,
+    aliases: ['Exclusion prompting', 'Constraint prompting', 'Negative constraints'],
+    tool_tags: [],
+    related_links: [
+      { label: 'Context Engineering skill', href: '/skills' },
+      { label: 'Prompt Systems', href: '/prompts' },
+    ],
+  }),
+
+  makeTerm({
+    term: 'Contrast Prompting',
+    full_form: null,
+    category: 'prompting',
+    short_definition: 'Asking AI to generate comparative alternatives — two or more distinct versions — to surface trade-offs and produce higher-quality decisions.',
+    detailed_explanation: 'Contrast prompting forces the AI to hold multiple distinct approaches simultaneously rather than converging on a single answer. By asking for a minimalist vs bold version, a conservative vs experimental direction, or a version for different audiences, you get a richer option space and often reveal trade-offs that a single-output prompt would miss. It mirrors how good design critique works.',
+    layman_explanation: 'Instead of "make a homepage," ask for "two homepage versions — one minimal, one bold." The contrast forces the AI to think about what makes each approach distinct, and gives you a real choice to make rather than a single default answer.',
+    example_usage: '"Generate two homepage variants: one optimised for speed and minimal cognitive load, one for rich visual engagement. For each, highlight the key design trade-offs for desktop users."',
+    where_used: null,
+    aliases: ['Comparative prompting', 'Dual output prompting'],
+    tool_tags: [],
+    related_links: [
+      { label: 'Prompt Systems', href: '/prompts' },
+      { label: 'Brand Campaign Territory prompt', href: '/prompts' },
+    ],
+  }),
+
+  makeTerm({
+    term: 'Prompt Chaining',
+    full_form: null,
+    category: 'prompting',
+    short_definition: 'Linking multiple prompts in sequence where each output becomes the input for the next — the structure behind every reliable AI workflow.',
+    detailed_explanation: 'Prompt chaining turns a complex task into a pipeline of focused steps. Each prompt handles one part of the work — extract, then cluster, then evaluate, then format — and passes its output to the next. This mirrors how skilled humans work on complex problems: one stage at a time, with review between steps. Prompt chaining is the core technique behind all multi-step prompt systems.',
+    layman_explanation: 'Instead of asking AI to do everything at once, you ask it to do one thing, review the result, then ask the next thing using that result. "Step 1: extract quotes. Step 2: group quotes into themes. Step 3: score each theme by frequency." Each step is simple and reviewable.',
+    example_usage: '"Step 1: Generate a layout for the main dashboard. Step 2: Based on that layout, suggest UI copy for each section. Step 3: Propose a colour palette that complements the layout and copy tone."',
+    where_used: null,
+    aliases: ['Sequential prompting', 'Prompt pipeline', 'Chain of thought'],
+    tool_tags: [],
+    related_links: [
+      { label: 'Prompt Systems', href: '/prompts' },
+      { label: 'AI Workflow Design skill', href: '/skills' },
+    ],
+  }),
+
+  makeTerm({
+    term: 'Style Priming',
+    full_form: null,
+    category: 'prompting',
+    short_definition: 'Guiding AI outputs to match a specific visual or textual style by naming the style reference explicitly in the prompt.',
+    detailed_explanation: 'Style priming is a form of priming focused specifically on aesthetic or tonal direction. For visual work, it names artistic movements, visual designers, or aesthetic vocabularies ("Bauhaus," "Swiss editorial," "brutalist web design"). For text, it names tonal registers ("dry and precise," "warm and direct," "academic but accessible"). Style priming is how you move AI output from generic toward intentional.',
+    layman_explanation: 'Without style direction, AI defaults to its average — which is competent but generic. "In the style of Bauhaus" or "write like a product brief, not a blog post" shifts the entire output. Style priming is how you apply creative direction to AI work.',
+    example_usage: '"Produce three UI mockups in Bauhaus style, with strong emphasis on geometric iconography and typographic hierarchy. Each mockup should feel distinctly Bauhaus, not merely minimalist."',
+    where_used: null,
+    aliases: ['Style guidance', 'Aesthetic priming', 'Visual priming'],
+    tool_tags: [],
+    related_links: [
+      { label: 'Context Engineering skill', href: '/skills' },
+      { label: 'Brand Campaign Territory prompt', href: '/prompts' },
+    ],
+  }),
 ]
