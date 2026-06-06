@@ -153,7 +153,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
             <span style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: 700,
               color: '#ffffff',
               lineHeight: 1.3,
@@ -177,7 +177,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
             lineHeight: 1.5,
             margin: 0,
             overflow: 'hidden',
-            display: '-webkit-box',
+            fontSize: 14, display: '-webkit-box',
             WebkitLineClamp: 1,
             WebkitBoxOrient: 'vertical',
           } as React.CSSProperties}>
