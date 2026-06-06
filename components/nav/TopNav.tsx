@@ -9,7 +9,7 @@ import InlineSearch from '@/components/search/InlineSearch'
 const navItems = [
   { href: '/prompts',   label: 'Prompts' },
   { href: '/skills',    label: 'Skills' },
-  { href: '/glossary',  label: 'Reference' },
+  { href: '/glossary',  label: 'Glossary' },
   { href: '/dos-donts', label: 'Principles' },
 ]
 
