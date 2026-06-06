@@ -43,16 +43,16 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
     const STICKY = 172 // topnav + search bar + tabs
     const GAP = 16     // breathing room above the card
 
-    // Small delay lets the expansion animation begin before measuring
+    // Wait one frame so the previous card has collapsed (instant) and
+    // the new card's position in the DOM is stable before measuring
     const id = setTimeout(() => {
       if (!cardRef.current) return
       const rect = cardRef.current.getBoundingClientRect()
-      // Only scroll if the card top is hidden behind the sticky header
       if (rect.top < STICKY + GAP) {
         const y = rect.top + window.scrollY - STICKY - GAP
         window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
       }
-    }, 60)
+    }, 16)
 
     return () => clearTimeout(id)
   }, [expanded])
@@ -150,10 +150,13 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
           />
         </button>
 
-        {/* Expanded body */}
+        {/* Expanded body — opens with animation, closes instantly to avoid layout conflict */}
         <div
-          className="overflow-hidden transition-all duration-300 ease-in-out"
-          style={{ maxHeight: expanded ? '560px' : '0px' }}
+          className="overflow-hidden"
+          style={{
+            maxHeight: expanded ? '600px' : '0px',
+            transition: expanded ? 'max-height 0.32s cubic-bezier(0.4,0,0.2,1)' : 'none',
+          }}
         >
           <div className="px-4 pb-4 space-y-3" style={{ paddingTop: '2px' }}>
             <p
@@ -279,8 +282,11 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
       </button>
 
       <div
-        className="overflow-hidden transition-all duration-300 ease-in-out"
-        style={{ maxHeight: expanded ? '1200px' : '0px' }}
+        className="overflow-hidden"
+        style={{
+          maxHeight: expanded ? '1200px' : '0px',
+          transition: expanded ? 'max-height 0.32s cubic-bezier(0.4,0,0.2,1)' : 'none',
+        }}
       >
         <div
           className="px-5 pb-5 space-y-4 animate-fade-in"
