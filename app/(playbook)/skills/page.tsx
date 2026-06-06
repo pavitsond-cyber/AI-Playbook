@@ -240,7 +240,7 @@ export default function SkillsPage() {
         <PageHeader
           title="Skills"
           description="Senior-level AI skills with quality bars. Each skill is downloadable as a Markdown template."
-          badge="Skills"
+         
         />
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(300px,1fr))', gap: 16 }}>

@@ -374,7 +374,7 @@ export default function AbbreviationsPage() {
     <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
       <BlobLayer />
       <div className="px-5 sm:px-8 py-8 max-w-3xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
-        <PageHeader title="Abbreviations" description="30 advanced AI abbreviations for designers — expand any to see how it's used in real work." badge="Reference" />
+        <PageHeader title="Abbreviations" description="30 advanced AI abbreviations for designers — expand any to see how it's used in real work." />
 
         <div className="mb-6">
           <div

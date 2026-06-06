@@ -571,7 +571,7 @@ export default function PromptSystemsPage() {
         <PageHeader
           title="Prompt Systems"
           description="Multi-step prompt chains for high-stakes work. Run them in sequence — each step feeds the next. Not single prompts."
-          badge="Prompt Systems"
+         
         />
 
         <div
