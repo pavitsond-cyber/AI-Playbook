@@ -5,8 +5,6 @@ import { Shield, MessageSquare, Lightbulb, BookOpen, ArrowUpRight } from 'lucide
 import BlobLayer from '@/components/ui/BlobLayer'
 import InlineSearch from '@/components/search/InlineSearch'
 
-export const dynamic = 'force-dynamic'
-
 const sections = [
   {
     icon: MessageSquare,
