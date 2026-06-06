@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ChevronDown, BookOpen } from 'lucide-react'
 import { GlossaryTerm } from '@/types'
 
@@ -23,6 +23,7 @@ interface GlossaryCardProps {
 export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps) {
   const [localExpanded, setLocalExpanded] = useState(false)
   const [hovered, setHovered] = useState(false)
+  const cardRef = useRef<HTMLElement>(null)
 
   // Controlled mode (accordion) when parent passes openId; else local state
   const isControlled = openId !== undefined
@@ -36,6 +37,26 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
     }
   }
 
+  // Scroll opened card into view, clearing the sticky header (nav 64px + search/tabs ~108px)
+  useEffect(() => {
+    if (!expanded || !cardRef.current) return
+    const STICKY = 172 // topnav + search bar + tabs
+    const GAP = 16     // breathing room above the card
+
+    // Small delay lets the expansion animation begin before measuring
+    const id = setTimeout(() => {
+      if (!cardRef.current) return
+      const rect = cardRef.current.getBoundingClientRect()
+      // Only scroll if the card top is hidden behind the sticky header
+      if (rect.top < STICKY + GAP) {
+        const y = rect.top + window.scrollY - STICKY - GAP
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
+      }
+    }, 60)
+
+    return () => clearTimeout(id)
+  }, [expanded])
+
   const isAbbrev = !!term.full_form
   const badgeColor = ABBR_COLORS[term.category] ?? '#9B3FFF'
 
@@ -47,6 +68,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
   if (isAbbrev) {
     return (
       <div
+        ref={cardRef as React.RefObject<HTMLDivElement>}
         style={{
           background: 'rgba(255,255,255,0.03)',
           border: '1px solid rgba(255,255,255,0.07)',
@@ -200,6 +222,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
   // ── Terminology card (original style) ───────────────────────────────────
   return (
     <article
+      ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="rounded-2xl overflow-hidden transition-all duration-200"
