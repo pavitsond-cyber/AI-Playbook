@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Download } from 'lucide-react'
+import { ChevronDown, Download } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 import BlobLayer from '@/components/ui/BlobLayer'
 
@@ -106,23 +106,7 @@ const skills: Skill[] = [
 ]
 
 function buildMarkdown(skill: Skill): string {
-  return `# ${skill.name}
-
-## What this skill is
-${skill.what}
-
-## When to use
-${skill.whenToUse}
-
-## Quality bar
-${skill.qualityBar}
-
-## Tools
-${skill.tools.join(', ')}
-
-## Teams
-${skill.teams.join(', ')}
-`
+  return `# ${skill.name}\n\n## What this skill is\n${skill.what}\n\n## When to use\n${skill.whenToUse}\n\n## Quality bar\n${skill.qualityBar}\n\n## Tools\n${skill.tools.join(', ')}\n\n## Teams\n${skill.teams.join(', ')}\n`
 }
 
 function downloadSkill(skill: Skill) {
@@ -137,102 +121,165 @@ function downloadSkill(skill: Skill) {
   URL.revokeObjectURL(url)
 }
 
-function SkillCard({ skill }: { skill: Skill }) {
-  const [btnHovered, setBtnHovered] = useState(false)
-
+function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; onToggle: () => void }) {
   return (
     <div
-      className="dark-card skill-card"
-      style={{ padding: '24px', display: 'flex', flexDirection: 'column', cursor: 'default' }}
+      style={{
+        background: 'rgba(255,255,255,0.03)',
+        border: isOpen ? '1px solid rgba(155,63,255,0.25)' : '1px solid rgba(255,255,255,0.07)',
+        borderRadius: 14,
+        overflow: 'hidden',
+        transition: 'border-color 0.2s ease',
+      }}
     >
-      {/* Header row */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, marginBottom: 10 }}>
-        <span style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 700, color: '#ffffff', flex: 1 }}>
-          {skill.name}
-        </span>
+      {/* ── Collapsed row ─────────────────────────────────────────────── */}
+      <button
+        onClick={onToggle}
+        style={{
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 16,
+          padding: '18px 20px',
+          background: isOpen ? 'rgba(155,63,255,0.04)' : 'transparent',
+          border: 'none',
+          cursor: 'pointer',
+          textAlign: 'left',
+          transition: 'background 0.15s ease',
+        }}
+      >
+        {/* Name + description */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+            <span style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 16,
+              fontWeight: 700,
+              color: '#ffffff',
+              lineHeight: 1.3,
+            }}>
+              {skill.name}
+            </span>
+            <ChevronDown
+              size={15}
+              style={{
+                color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.25)',
+                transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.2s ease, color 0.2s ease',
+                flexShrink: 0,
+              }}
+            />
+          </div>
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: 13,
+            color: 'rgba(255,255,255,0.45)',
+            lineHeight: 1.5,
+            margin: 0,
+            overflow: 'hidden',
+            display: '-webkit-box',
+            WebkitLineClamp: 1,
+            WebkitBoxOrient: 'vertical',
+          } as React.CSSProperties}>
+            {skill.what}
+          </p>
+        </div>
+
+        {/* Download button */}
         <button
-          onClick={() => downloadSkill(skill)}
+          onClick={e => { e.stopPropagation(); downloadSkill(skill) }}
           title="Download as .md"
-          onMouseEnter={() => setBtnHovered(true)}
-          onMouseLeave={() => setBtnHovered(false)}
           style={{
             flexShrink: 0,
-            background: btnHovered ? 'rgba(155,63,255,0.12)' : 'rgba(255,255,255,0.06)',
-            border: `1px solid ${btnHovered ? 'rgba(155,63,255,0.25)' : 'rgba(255,255,255,0.08)'}`,
-            borderRadius: 8,
-            color: btnHovered ? '#C27FFF' : 'rgba(255,255,255,0.4)',
-            padding: '4px 10px',
-            fontSize: 11,
-            fontFamily: 'var(--font-body)',
             display: 'flex',
             alignItems: 'center',
-            gap: 4,
+            gap: 5,
+            padding: '6px 12px',
+            background: 'rgba(255,255,255,0.05)',
+            border: '1px solid rgba(255,255,255,0.09)',
+            borderRadius: 8,
+            color: 'rgba(255,255,255,0.4)',
+            fontSize: 11,
+            fontFamily: 'var(--font-body)',
+            fontWeight: 500,
             cursor: 'pointer',
             transition: 'all 0.15s ease',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = 'rgba(155,63,255,0.12)'
+            e.currentTarget.style.borderColor = 'rgba(155,63,255,0.25)'
+            e.currentTarget.style.color = '#C27FFF'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)'
+            e.currentTarget.style.color = 'rgba(255,255,255,0.4)'
           }}
         >
           <Download size={11} />
           .md
         </button>
-      </div>
+      </button>
 
-      {/* What */}
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.45)', marginBottom: 16, flex: 1 }}>
-        {skill.what}
-      </p>
+      {/* ── Expanded dropdown ─────────────────────────────────────────── */}
+      <div style={{
+        maxHeight: isOpen ? '500px' : '0px',
+        overflow: 'hidden',
+        transition: isOpen ? 'max-height 0.32s cubic-bezier(0.4,0,0.2,1)' : 'none',
+      }}>
+        <div style={{
+          padding: '16px 20px 20px',
+          borderTop: '1px solid rgba(255,255,255,0.06)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 14,
+        }}>
 
-      {/* Use when + Quality bar */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 0, fontSize: 13 }}>
-        <div>
-          <span style={{ fontFamily: 'var(--font-body)', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>Use when: </span>
-          <span style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)', fontSize: 13 }}>{skill.whenToUse}</span>
+          {/* Use when */}
+          <div>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.3)' }}>
+              Use when
+            </span>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.6, color: 'rgba(255,255,255,0.55)', margin: '5px 0 0' }}>
+              {skill.whenToUse}
+            </p>
+          </div>
+
+          {/* Quality bar */}
+          <div style={{ background: 'rgba(0,204,168,0.06)', border: '1px solid rgba(0,204,168,0.12)', borderRadius: 10, padding: '10px 14px' }}>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#00CCA8' }}>
+              Quality bar
+            </span>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.6, color: 'rgba(255,255,255,0.55)', margin: '5px 0 0' }}>
+              {skill.qualityBar}
+            </p>
+          </div>
+
+          {/* Tools + Teams */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, paddingTop: 2 }}>
+            {skill.tools.map(tool => (
+              <span key={tool} style={{ background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', color: '#C27FFF', borderRadius: 100, padding: '3px 10px', fontSize: 11, fontFamily: 'var(--font-body)' }}>
+                {tool}
+              </span>
+            ))}
+            {skill.teams.map(team => (
+              <span key={team} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.4)', borderRadius: 100, padding: '3px 10px', fontSize: 11, fontFamily: 'var(--font-body)' }}>
+                {team}
+              </span>
+            ))}
+          </div>
+
         </div>
-        <div>
-          <span style={{ fontFamily: 'var(--font-body)', fontWeight: 500, color: '#00CCA8' }}>Quality bar: </span>
-          <span style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)', fontSize: 13 }}>{skill.qualityBar}</span>
-        </div>
-      </div>
-
-      {/* Footer: tools + teams */}
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 14, marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-        {skill.tools.map((tool) => (
-          <span
-            key={tool}
-            style={{
-              background: 'rgba(155,63,255,0.12)',
-              border: '1px solid rgba(155,63,255,0.2)',
-              color: '#C27FFF',
-              borderRadius: 100,
-              padding: '3px 10px',
-              fontSize: 11,
-              fontFamily: 'var(--font-body)',
-            }}
-          >
-            {tool}
-          </span>
-        ))}
-        {skill.teams.map((team) => (
-          <span
-            key={team}
-            style={{
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              color: 'rgba(255,255,255,0.4)',
-              borderRadius: 100,
-              padding: '3px 10px',
-              fontSize: 11,
-              fontFamily: 'var(--font-body)',
-            }}
-          >
-            {team}
-          </span>
-        ))}
       </div>
     </div>
   )
 }
 
 export default function SkillsPage() {
+  const [openName, setOpenName] = useState<string | null>(null)
+
+  const toggle = (name: string) => setOpenName(prev => prev === name ? null : name)
+
   return (
     <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
       <BlobLayer />
@@ -240,12 +287,16 @@ export default function SkillsPage() {
         <PageHeader
           title="Skills"
           description="Senior-level AI skills with quality bars. Each skill is downloadable as a Markdown template."
-         
         />
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(300px,1fr))', gap: 16 }}>
-          {skills.map((skill) => (
-            <SkillCard key={skill.name} skill={skill} />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {skills.map(skill => (
+            <SkillRow
+              key={skill.name}
+              skill={skill}
+              isOpen={openName === skill.name}
+              onToggle={() => toggle(skill.name)}
+            />
           ))}
         </div>
       </div>
