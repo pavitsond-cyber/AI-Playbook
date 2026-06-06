@@ -7,10 +7,10 @@ import { Menu, X } from 'lucide-react'
 import InlineSearch from '@/components/search/InlineSearch'
 
 const navItems = [
-  { href: '/dos-donts', label: 'Principles' },
   { href: '/prompts',   label: 'Prompts' },
   { href: '/skills',    label: 'Skills' },
   { href: '/glossary',  label: 'Reference' },
+  { href: '/dos-donts', label: 'Principles' },
 ]
 
 export default function TopNav() {

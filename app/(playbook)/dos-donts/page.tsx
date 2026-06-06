@@ -77,7 +77,6 @@ export default function OperatingPrinciplesPage() {
       <div style={{ position: 'relative', zIndex: 1, padding: 'clamp(60px,6vw,100px) clamp(16px,4vw,48px)', maxWidth: 900, margin: '0 auto' }}>
         <PageHeader
           title="Operating Principles"
-          description="How we use AI as a team."
           badge="Principles"
         />
 

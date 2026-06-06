@@ -6,10 +6,10 @@ import BlobLayer from '@/components/ui/BlobLayer'
 import InlineSearch from '@/components/search/InlineSearch'
 
 const sections = [
-  { icon: Shield,        title: 'Operating Principles', description: 'How we use AI as a team — quality bars, human ownership, and when not to automate.',               href: '/dos-donts', count: '12 principles',        color: '#C27FFF' },
-  { icon: MessageSquare, title: 'Prompt Systems',       description: 'Multi-step prompt chains for high-stakes work: PRD review, research synthesis, design QA.',        href: '/prompts',   count: '8 systems',            color: '#FF69DB' },
-  { icon: Lightbulb,     title: 'Skills',               description: 'Senior-level AI skills with quality bars and downloadable templates.',                              href: '/skills',    count: '11 skills',            color: '#00CCA8' },
-  { icon: BookOpen,      title: 'Reference',            description: 'Glossary of AI terms and abbreviations used in day-to-day work.',                                   href: '/glossary',  count: 'Terms & abbreviations', color: '#E8C840' },
+  { icon: MessageSquare, title: 'Prompt Systems',       description: 'The prompts that do the heavy lifting. Built for the work with real stakes.',                       href: '/prompts',   count: '8 systems',            color: '#FF69DB' },
+  { icon: Lightbulb,     title: 'Skills',               description: 'AI skills with a bar. Not a starter kit — an operating standard.',                                  href: '/skills',    count: '11 skills',            color: '#00CCA8' },
+  { icon: BookOpen,      title: 'Reference',            description: 'One place. Every term. No ambiguity.',                                                              href: '/glossary',  count: 'Terms & abbreviations', color: '#E8C840' },
+  { icon: Shield,        title: 'Operating Principles', description: 'The standards we don\'t compromise on. How we use AI well, and where we don\'t let it decide.',    href: '/dos-donts', count: '10 principles',        color: '#C27FFF' },
 ]
 
 export default function HubPage() {
@@ -39,21 +39,8 @@ export default function HubPage() {
           <span>at Scale.</span>
         </h1>
 
-        {/* Subtitle */}
-        <p className="animate-fade-up delay-150" style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: 17,
-          fontWeight: 300,
-          lineHeight: 1.7,
-          color: 'rgba(255,255,255,0.5)',
-          maxWidth: 500,
-          marginBottom: 44,
-        }}>
-          A working reference for teams using AI — operating principles, reusable prompt systems, and practical skills.
-        </p>
-
         {/* Search */}
-        <div className="animate-fade-up delay-250" style={{ maxWidth: 560, marginBottom: 72 }}>
+        <div className="animate-fade-up delay-150" style={{ maxWidth: 560, marginBottom: 64, marginTop: 8 }}>
           <InlineSearch placeholder="Search skills, prompts, terms, principles…" shortcut wrapperStyle={{ width: '100%' }} />
         </div>
 
