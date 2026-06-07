@@ -356,49 +356,6 @@ For any string at or over the limit:
     ],
     whenToUse: 'Before every new market launch and whenever high-traffic pages are updated for international markets.',
   },
-      {
-        label: 'Step 2 — Midjourney prompt generation',
-        prompt: `For each of the 6 territories above, write 3 Midjourney image generation prompts that would capture the visual feel of that territory.
-
-Requirements:
-- Each prompt should produce a distinct image, not variations
-- Include: subject, mood, lighting, colour direction, composition style, photographic or illustrative style
-- Add technical parameters: --ar 16:9 --q 2
-- Do NOT reference specific artists, brands, or copyrighted styles
-
-Format: Territory Name → Prompt 1 → Prompt 2 → Prompt 3`,
-      },
-      {
-        label: 'Step 3 — Territory scoring against brief',
-        prompt: `Score these 6 territories against the campaign brief.
-
-For each territory, rate 1–5 on:
-1. Brief alignment — does it deliver the core message?
-2. Audience fit — will it resonate with the target audience?
-3. Differentiation — does it stand out from the brand's typical visual language?
-4. Scalability — can it work across all required formats and markets?
-5. Brand safety — does it carry meaningful IP or cultural risk?
-
-Produce a ranked list with your top 2 recommendations and a one-line rationale for each.
-
-Brief: [PASTE BRIEF]
-Territories: [PASTE TERRITORIES FROM STEP 1]`,
-      },
-    ],
-    outputFormat: '6 creative territories → Midjourney prompts per territory → scored shortlist with recommendation',
-    qualityBar: 'Territories must be genuinely distinct from each other. Visual prompts must produce different-feeling imagery. Scoring must be tied to brief criteria, not generic quality.',
-    failureModes: [
-      "AI may generate territories that are variations on the same 'safe' idea",
-      'Scoring can bias toward brief alignment over creative differentiation',
-      'Midjourney prompts may not produce the exact visual feel described without iteration',
-    ],
-    humanReview: [
-      'Creative director selects the final territory — AI shortlist is a starting point',
-      'Art direction of final assets is fully human',
-      'Brand review before any territory goes to production',
-    ],
-    whenToUse: 'At the start of any campaign requiring multiple creative directions. When the brief has more than one viable direction and the team needs to explore before committing.',
-  },
   {
     id: 'experiment-design',
     title: 'Experiment Design System',
@@ -463,46 +420,6 @@ Experiment: [DESCRIBE EXPERIMENT]`,
       'Research lead or stats-aware team member reviews sample size and significance requirements',
     ],
     whenToUse: 'Before any significant product experiment — especially for flows where errors are costly and results hard to reverse.',
-  },
-      {
-        label: 'Step 2 — Friction pattern extraction',
-        prompt: `From the "broken experience", "missing feature", and "confusion" tickets, identify the top 10 recurring friction patterns.
-
-For each pattern:
-- Pattern name (describe the friction, not the feature)
-- Frequency (how many tickets mention this pattern)
-- 3 representative verbatim quotes
-- Product area affected
-- Whether this is likely a known issue or a new signal
-
-[PASTE CLASSIFIED TICKETS FROM STEP 1]`,
-      },
-      {
-        label: 'Step 3 — Opportunity and churn signal mapping',
-        prompt: `Convert the top friction patterns into product opportunities. For each:
-
-Opportunity statement: "[User type] is repeatedly blocked by [friction]. This generates [frequency] support contacts and suggests [product gap]. Opportunity: [one-line direction]."
-
-Also flag the churn signals separately: for each churn-signal ticket, extract the explicit frustration and what would have to change to prevent it.
-
-Score each opportunity: High / Medium / Low by (frequency × user impact) ÷ estimated fix complexity.
-
-[PASTE PATTERNS FROM STEP 2]`,
-      },
-    ],
-    outputFormat: 'Classification breakdown → friction patterns with frequency and quotes → ranked opportunity map → churn signal report',
-    qualityBar: 'Every opportunity is backed by minimum 10 ticket quotes. Frequency is a real count. Churn signals are quoted verbatim.',
-    failureModes: [
-      'Loud complainers can skew frequency — high volume does not always mean high impact',
-      'Classification may drift for ambiguous tickets — spot-check 10%',
-      '"Other" category hides signal — review it manually',
-    ],
-    humanReview: [
-      'Ops or product team validates classification on a random sample',
-      'PM adds context AI cannot know: which patterns are already known? Already in the roadmap?',
-      'Final prioritisation requires product judgment, not just frequency scoring',
-    ],
-    whenToUse: 'Run monthly or quarterly. Present the top opportunities at product review. Required input for any roadmap prioritisation cycle.',
   },
 ]
 
