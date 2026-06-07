@@ -356,31 +356,6 @@ For any string at or over the limit:
     ],
     whenToUse: 'Before every new market launch and whenever high-traffic pages are updated for international markets.',
   },
-  {
-    id: 'brand-campaign-territory',
-    title: 'Brand Campaign Territory System',
-    team: 'Brand Design · Marketing',
-    useCase: 'Generate and evaluate multiple visual and creative territories from a campaign brief before committing to one direction.',
-    input: 'Campaign brief: objective, audience, key message, markets, formats, brand constraints, reference examples',
-    chain: [
-      {
-        label: 'Step 1 — Territory generation',
-        prompt: `You are a creative strategist helping explore campaign territory options.
-
-Based on this brief, generate 6 distinct visual and creative territory concepts. Make them meaningfully different from each other — not variations on the same idea.
-
-For each territory:
-- Territory name (2–3 words, evocative)
-- Creative idea in one sentence
-- Emotional tone (what the viewer should feel)
-- Visual language direction (3–4 descriptive words: colour feel, texture, spatial mood)
-- Copy direction (what kind of language, structure, voice)
-- Who this territory will resonate with most
-- Potential risk or weakness
-
-Brief:
-[PASTE BRIEF]`,
-      },
       {
         label: 'Step 2 — Midjourney prompt generation',
         prompt: `For each of the 6 territories above, write 3 Midjourney image generation prompts that would capture the visual feel of that territory.
@@ -489,27 +464,6 @@ Experiment: [DESCRIBE EXPERIMENT]`,
     ],
     whenToUse: 'Before any significant product experiment — especially for flows where errors are costly and results hard to reverse.',
   },
-  {
-    id: 'support-ticket-insights',
-    title: 'Support Ticket Insight System',
-    team: 'Product · Ops',
-    useCase: 'Extract product opportunities, friction patterns, and churn signals from a batch of support tickets.',
-    input: 'Exported ticket data: minimum 100 tickets with text and category. Monthly or quarterly batch.',
-    chain: [
-      {
-        label: 'Step 1 — Classification',
-        prompt: `Classify each of these support tickets into one of the following categories:
-1. Broken experience (bug, error, failed action)
-2. Missing feature (user expected something that does not exist)
-3. Confusion (user did not understand how something works)
-4. Policy or pricing complaint (not a product bug, but a policy frustration)
-5. Churn signal (user expressing intent to stop using the product)
-6. Other
-
-Return: total count per category, and list of 5 representative tickets per category.
-
-[PASTE TICKETS]`,
-      },
       {
         label: 'Step 2 — Friction pattern extraction',
         prompt: `From the "broken experience", "missing feature", and "confusion" tickets, identify the top 10 recurring friction patterns.
