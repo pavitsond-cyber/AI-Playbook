@@ -24,38 +24,10 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  {
-    name: 'AI workflow design',
-    what: 'Design a reusable AI-assisted workflow for a recurring team task. Includes: input spec, prompt chain, review step, output format, and quality bar.',
-    whenToUse: 'When a task recurs frequently enough to be worth systematising. When output quality is inconsistent across team members doing the same task.',
-    qualityBar: 'Every workflow has an owner, a review step, a defined output format, and a quality rubric. If any of these are missing, it is not a workflow — it is a one-off.',
-    tools: ['Claude', 'Notion'],
-    teams: ['Product', 'Design', 'Research', 'Ops', 'Brand'],
-  },
-  {
-    name: 'AI output evaluation',
-    what: 'Build rubrics and checklists to evaluate AI output quality for a specific task type. Define what passing looks like and what failure looks like before the workflow runs.',
-    whenToUse: 'Before scaling any AI workflow to the full team. When AI output quality is inconsistent and the team cannot agree on what "good" looks like.',
-    qualityBar: 'The rubric should be specific enough that two people using it independently would rate the same output consistently. If it is open to interpretation, it is not finished.',
-    tools: ['Claude'],
-    teams: ['Research', 'Design', 'Product', 'Brand', 'Content'],
-  },
-  {
-    name: 'Context engineering',
-    what: 'Write prompts that give AI the specific product, user, or task context needed to produce high-quality output. The difference between generic AI output and useful output is almost always context.',
-    whenToUse: 'Any time AI output feels generic or off-target. When a prompt works once but fails on similar inputs.',
-    qualityBar: 'A well-engineered prompt should produce consistently useful output across similar inputs, not just occasionally. If it works 3 out of 10 times, the context is not sufficient.',
-    tools: ['Claude', 'ChatGPT'],
-    teams: ['Everyone'],
-  },
-  {
-    name: 'AI-assisted research synthesis with evidence grading',
-    what: 'Extract themes, frequency counts, and contradictions from research data. Assign confidence levels to each insight based on evidence quality and frequency.',
-    whenToUse: 'After any research round with 5+ interviews or a significant dataset. Before any product planning or prioritisation cycle.',
-    qualityBar: 'Every insight must have: a source quote with participant ID, a frequency count, and a confidence level. Insights without evidence are hypotheses, not findings.',
-    tools: ['Claude', 'NotebookLM'],
-    teams: ['Research', 'Product', 'Design'],
-  },
+
+
+
+
   {
     name: 'Research Synthesis',
     domain: 'Research & Analysis',
@@ -369,14 +341,7 @@ const skills: Skill[] = [
       'Map findings to business goals — a hierarchy issue that does not affect conversion is low priority',
     ],
   },
-  {
-    name: 'AI-assisted product critique',
-    what: 'Use a structured prompt chain to pressure-test a PRD, product decision, or feature spec for unvalidated assumptions, missing edge cases, and weak success metrics.',
-    whenToUse: 'Before engineering handoff on any significant feature. As a pre-review step before the PM presents to leadership.',
-    qualityBar: 'Every assumption is either validated or explicitly listed as a known risk. Every success metric is measurable and attributable. All critical dependencies are named.',
-    tools: ['Claude'],
-    teams: ['Product'],
-  },
+
   {
     name: 'Localization QA Agent',
     domain: 'Product / Content',
