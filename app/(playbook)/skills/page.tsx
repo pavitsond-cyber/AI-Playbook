@@ -7,11 +7,20 @@ import BlobLayer from '@/components/ui/BlobLayer'
 
 interface Skill {
   name: string
-  what: string
-  whenToUse: string
-  qualityBar: string
+  what: string           // one-line collapsed description
+  whenToUse: string      // "What you provide" rows
+  qualityBar: string     // "What you'll get back" description
   tools: string[]
   teams: string[]
+  domain?: string        // e.g. "Design"
+  // Rich content for expanded skills
+  inputs?: { label: string; required: boolean }[]
+  outputFields?: string[]
+  auditCategories?: { name: string; desc: string }[]
+  methodology?: { title: string; points: string[] }[]
+  edgeCases?: string[]
+  bestPractices?: string[]
+  mdFile?: string        // path in /public — direct file download
 }
 
 const skills: Skill[] = [
@@ -48,12 +57,53 @@ const skills: Skill[] = [
     teams: ['Research', 'Product', 'Design'],
   },
   {
-    name: 'AI-powered design QA',
-    what: 'Use AI to systematically review a design for missing states, copy inconsistencies, brand voice issues, and edge cases before engineering handoff.',
-    whenToUse: 'Before every significant engineering handoff. Especially on flows with high copy density or many edge case states.',
-    qualityBar: 'Every AI flag is reviewed by the designer. Each finding is either fixed or explicitly accepted with a reason. Zero unexplored flags.',
-    tools: ['Claude'],
-    teams: ['Product Design', 'UX Writing'],
+    name: 'UI Audit Reporter',
+    domain: 'Design',
+    what: 'Audit screens for visual consistency, spacing, and design system compliance at a senior or lead level.',
+    whenToUse: 'Before every significant engineering handoff. When screens need to be validated against the design system before launch.',
+    qualityBar: 'Each finding must include: element, current state, expected state, location reference, design token reference, and recommendation. Prioritise as Critical / Major / Minor and group related issues to reduce redundancy.',
+    tools: ['Figma', 'Design System'],
+    teams: ['Product Design', 'Design Engineering'],
+    mdFile: '/skills/ui-audit-reporter.md',
+    inputs: [
+      { label: 'Screen URL or Figma link to audit', required: true },
+      { label: 'Design system reference — tokens, components, guidelines', required: true },
+      { label: 'Audit scope: full screen, specific component, or specific category', required: true },
+      { label: 'Platform: web desktop, web mobile, iOS, Android', required: false },
+      { label: 'Previous audit findings for comparison', required: false },
+      { label: 'Known design exceptions to exclude from findings', required: false },
+    ],
+    outputFields: ['Finding ID', 'Category', 'Severity', 'Element', 'Current State', 'Expected State', 'Location', 'Design Token Reference', 'Recommendation'],
+    auditCategories: [
+      { name: 'Consistency', desc: 'Components look and behave identically across screens' },
+      { name: 'Spacing', desc: 'All spacing follows the design system scale' },
+      { name: 'Typography', desc: 'Font sizes, weights, line heights match the type scale' },
+      { name: 'Color', desc: 'Semantic colors used correctly; sufficient contrast' },
+      { name: 'Components', desc: 'Standard components used; avoid custom one-offs' },
+      { name: 'Accessibility', desc: 'Touch targets ≥44px; contrast ≥4.5:1; focus indicators visible' },
+    ],
+    methodology: [
+      { title: 'Analyze Against Design System', points: ['Compare screens against tokens for color, spacing, typography, border radius, shadows', 'Flag undocumented or one-off components'] },
+      { title: 'Visual Consistency Check', points: ['Ensure similar elements behave and appear identically across screens', 'Verify interaction patterns are consistent'] },
+      { title: 'Spacing & Alignment', points: ['Check padding, margins, and gaps against the design system scale (4, 8, 12, 16, 24, 32, 48px)'] },
+      { title: 'Typography', points: ['Confirm headings, body text, labels, captions follow the correct font size, weight, and line height'] },
+      { title: 'Color Usage', points: ['Validate semantic colors (primary, destructive, muted)', 'Ensure sufficient contrast ratios for accessibility'] },
+      { title: 'Responsive Behavior', points: ['Assess screen adaptation across breakpoints and platforms'] },
+    ],
+    edgeCases: [
+      'Component not yet in design system → flag as undocumented rather than a violation',
+      'Screen built on an outdated design system version → note which version the screen is built against',
+      'Dark mode may have different issues than light mode → audit both and separate findings',
+      'Campaign-specific deviations → verify the exceptions are documented',
+      'Accessibility contrast failures caused by background images → recommend overlay solutions rather than only flagging the issue',
+    ],
+    bestPractices: [
+      'Focus on measurable and high-impact issues rather than subjective preferences',
+      'Verify consistency across multiple screens before marking a finding',
+      'Include references to design tokens and system guidelines for each recommendation',
+      'Always consider accessibility and responsiveness in audits',
+      'Use grouped reporting to reduce redundancy and improve clarity for engineering teams',
+    ],
   },
   {
     name: 'AI-assisted product critique',
@@ -110,6 +160,15 @@ function buildMarkdown(skill: Skill): string {
 }
 
 function downloadSkill(skill: Skill) {
+  // If a pre-built MD file exists in /public, download it directly
+  if (skill.mdFile) {
+    const a = document.createElement('a')
+    a.href = skill.mdFile
+    a.download = skill.mdFile.split('/').pop() ?? 'skill.md'
+    a.click()
+    return
+  }
+  // Otherwise generate from data
   const content = buildMarkdown(skill)
   const filename = skill.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '.md'
   const blob = new Blob([content], { type: 'text/markdown' })
@@ -150,7 +209,12 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
       >
         {/* Name + description */}
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4, flexWrap: 'wrap' as const }}>
+            {skill.domain && (
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, color: '#FF69DB', background: 'rgba(255,105,219,0.1)', border: '1px solid rgba(255,105,219,0.2)', borderRadius: 100, padding: '2px 8px', textTransform: 'uppercase' as const, letterSpacing: '0.08em', flexShrink: 0 }}>
+                {skill.domain}
+              </span>
+            )}
             <span style={{
               fontFamily: 'var(--font-display)',
               fontSize: 17,
@@ -221,85 +285,93 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
         </button>
       </button>
 
-      {/* ── Expanded dropdown — mirrors headout-agent-skills layout ──── */}
+      {/* ── Expanded dropdown ─────────────────────────────────────────── */}
       <div style={{
-        maxHeight: isOpen ? '800px' : '0px',
+        maxHeight: isOpen ? '2400px' : '0px',
         overflow: 'hidden',
-        transition: isOpen ? 'max-height 0.35s cubic-bezier(0.4,0,0.2,1)' : 'none',
+        transition: isOpen ? 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)' : 'none',
       }}>
-        <div style={{
-          padding: '20px 20px 24px',
-          borderTop: '1px solid rgba(255,255,255,0.06)',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 24,
-        }}>
+        <div style={{ padding: '20px 20px 28px', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', gap: 28 }}>
 
           {/* ── What you provide ───────────────────────────────────────── */}
           <div>
-            <p style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>
-              What you provide
-            </p>
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>What you provide</p>
             <div style={{ display: 'flex', flexDirection: 'column', borderRadius: 10, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
-              {skill.whenToUse
-                .split(/(?<=\.)\s+/)
-                .map(s => s.trim())
-                .filter(Boolean)
-                .map((item, i, arr) => (
-                  <div key={i} style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '12px 16px',
-                    borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
-                    background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
-                  }}>
-                    <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.5 }}>
-                      {item}
-                    </span>
-                    {i < 2 && (
-                      <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 500, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '2px 9px', flexShrink: 0, marginLeft: 12 }}>
-                        Key input
-                      </span>
-                    )}
-                  </div>
-                ))}
+              {(skill.inputs ?? skill.whenToUse.split(/(?<=\.)\s+/).map((s, i) => ({ label: s.trim(), required: i < 2 })).filter(x => x.label)).map((inp, i, arr) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>
+                    {typeof inp === 'string' ? inp : inp.label}
+                  </span>
+                  {(typeof inp === 'object' ? inp.required : i < 2) && (
+                    <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 500, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '2px 9px', flexShrink: 0, marginLeft: 12 }}>Required</span>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
           {/* ── What you'll get back ───────────────────────────────────── */}
           <div>
-            <p style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>
-              What you&apos;ll get back
-            </p>
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>What you&apos;ll get back</p>
             <div style={{ border: '1px solid rgba(255,255,255,0.08)', borderRadius: 10, overflow: 'hidden' }}>
-              {/* Output label */}
               <div style={{ padding: '12px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)' }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.9)' }}>
-                  {skill.name}
-                </span>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.9)' }}>{skill.name}</span>
               </div>
-              {/* Quality bar as field description */}
               <div style={{ padding: '14px 16px' }}>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.65, color: 'rgba(255,255,255,0.55)', margin: '0 0 12px' }}>
-                  {skill.qualityBar}
-                </p>
-                {/* Output fields as chips — mirrors the column header chips on the reference */}
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.65, color: 'rgba(255,255,255,0.55)', margin: '0 0 12px' }}>{skill.qualityBar}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                  {skill.tools.map(tool => (
-                    <span key={tool} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '3px 10px' }}>
-                      {tool}
-                    </span>
+                  {(skill.outputFields ?? skill.tools).map(f => (
+                    <span key={f} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '3px 10px' }}>{f}</span>
                   ))}
-                  {skill.teams.map(team => (
-                    <span key={team} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '3px 10px' }}>
-                      {team}
-                    </span>
+                  {!skill.outputFields && skill.teams.map(t => (
+                    <span key={t} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '3px 10px' }}>{t}</span>
                   ))}
                 </div>
               </div>
             </div>
           </div>
+
+          {/* ── Audit Categories (rich skills only) ────────────────────── */}
+          {skill.auditCategories && (
+            <div>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Audit categories</p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
+                {skill.auditCategories.map(cat => (
+                  <div key={cat.name} style={{ padding: '10px 14px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 9 }}>
+                    <p style={{ fontFamily: 'var(--font-display)', fontSize: 12, fontWeight: 700, color: '#C27FFF', margin: '0 0 4px' }}>{cat.name}</p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.5, margin: 0 }}>{cat.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* ── Good to know / Edge cases (rich skills only) ───────────── */}
+          {skill.edgeCases && (
+            <div>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Good to know</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                {skill.edgeCases.map((ec, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '10px 14px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 9 }}>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(155,63,255,0.5)', flexShrink: 0, marginTop: 6 }} />
+                    <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.55 }}>{ec}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* ── Tools + Teams (fallback for non-rich skills) ───────────── */}
+          {!skill.outputFields && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+              {skill.tools.map(t => (
+                <span key={t} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '3px 10px' }}>{t}</span>
+              ))}
+              {skill.teams.map(t => (
+                <span key={t} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '3px 10px' }}>{t}</span>
+              ))}
+            </div>
+          )}
 
         </div>
       </div>
