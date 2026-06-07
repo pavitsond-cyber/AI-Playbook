@@ -343,38 +343,6 @@ const skills: Skill[] = [
       'Never treat AI review as a substitute for native speaker sign-off on final production content',
     ],
   },
-  {
-    name: 'AI creative direction systems',
-    what: 'Use AI to rapidly explore and evaluate multiple visual or creative territories from a brief before committing to one direction. AI expands the option space; humans make the creative decisions.',
-    whenToUse: 'At the start of any campaign requiring creative direction. When a brief has multiple viable directions and the team needs to explore before committing.',
-    qualityBar: "Territories must be genuinely distinct. AI scoring is a starting point — the creative director's judgment is the final call. No territory goes to production without art direction review.",
-    tools: ['Claude', 'Midjourney', 'Krea'],
-    teams: ['Brand Design', 'Marketing'],
-  },
-  {
-    name: 'AI governance for product teams',
-    what: 'Define the quality bars, review processes, data handling rules, and ownership structure for AI use across a team. A governance model answers: who owns what, what can be automated, and what requires human sign-off.',
-    whenToUse: 'When a team is moving from individual AI use to team-level workflows. Before any AI output reaches a customer-facing surface.',
-    qualityBar: 'A complete governance model names: the workflow owner, the reviewer, the quality bar, the failure mode, and the escalation path for each workflow type.',
-    tools: ['Claude'],
-    teams: ['Product', 'Design', 'Research', 'Ops'],
-  },
-  {
-    name: 'AI-assisted experimentation planning',
-    what: 'Use AI to sharpen hypotheses, define complete metric sets with guardrails, and identify experiment risks before a test runs.',
-    whenToUse: 'Before any A/B test or significant product experiment. Especially for experiments where errors are costly.',
-    qualityBar: 'The hypothesis is falsifiable and mechanistic. The primary metric is attributable. All guardrail metrics are defined before launch.',
-    tools: ['Claude'],
-    teams: ['Product', 'Research'],
-  },
-  {
-    name: 'AI adoption strategy',
-    what: 'Build a plan for moving a team from individual prompting to quality-controlled systems. Includes: identifying high-value use cases, building shared workflows, defining quality bars, and establishing review processes.',
-    whenToUse: 'When a team lead or director wants to move from ad-hoc AI use to a systematic operating model.',
-    qualityBar: 'An adoption strategy is not a training plan. It is a workflow plan — specific workflows, named owners, quality bars, and a timeline. Training follows workflow design, not the other way around.',
-    tools: ['Claude'],
-    teams: ['Leads', 'Directors'],
-  },
 ]
 
 function buildMarkdown(skill: Skill): string {
@@ -560,7 +528,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
                 {skill.auditCategories.map(cat => (
                   <div key={cat.name} style={{ padding: '10px 14px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 9 }}>
-                    <p style={{ fontFamily: 'var(--font-display)', fontSize: 12, fontWeight: 700, color: '#C27FFF', margin: '0 0 4px' }}>{cat.name}</p>
+                    <p style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 700, color: '#C27FFF', margin: '0 0 5px' }}>{cat.name}</p>
                     <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.5, margin: 0 }}>{cat.desc}</p>
                   </div>
                 ))}
