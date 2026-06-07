@@ -221,52 +221,84 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
         </button>
       </button>
 
-      {/* ── Expanded dropdown ─────────────────────────────────────────── */}
+      {/* ── Expanded dropdown — mirrors headout-agent-skills layout ──── */}
       <div style={{
-        maxHeight: isOpen ? '500px' : '0px',
+        maxHeight: isOpen ? '800px' : '0px',
         overflow: 'hidden',
-        transition: isOpen ? 'max-height 0.32s cubic-bezier(0.4,0,0.2,1)' : 'none',
+        transition: isOpen ? 'max-height 0.35s cubic-bezier(0.4,0,0.2,1)' : 'none',
       }}>
         <div style={{
-          padding: '16px 20px 20px',
+          padding: '20px 20px 24px',
           borderTop: '1px solid rgba(255,255,255,0.06)',
           display: 'flex',
           flexDirection: 'column',
-          gap: 14,
+          gap: 24,
         }}>
 
-          {/* Use when */}
+          {/* ── What you provide ───────────────────────────────────────── */}
           <div>
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.3)' }}>
-              Use when
-            </span>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.6, color: 'rgba(255,255,255,0.55)', margin: '5px 0 0' }}>
-              {skill.whenToUse}
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>
+              What you provide
             </p>
+            <div style={{ display: 'flex', flexDirection: 'column', borderRadius: 10, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
+              {skill.whenToUse
+                .split(/(?<=\.)\s+/)
+                .map(s => s.trim())
+                .filter(Boolean)
+                .map((item, i, arr) => (
+                  <div key={i} style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '12px 16px',
+                    borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                    background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
+                  }}>
+                    <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.5 }}>
+                      {item}
+                    </span>
+                    {i < 2 && (
+                      <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 500, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '2px 9px', flexShrink: 0, marginLeft: 12 }}>
+                        Key input
+                      </span>
+                    )}
+                  </div>
+                ))}
+            </div>
           </div>
 
-          {/* Quality bar */}
-          <div style={{ background: 'rgba(0,204,168,0.06)', border: '1px solid rgba(0,204,168,0.12)', borderRadius: 10, padding: '10px 14px' }}>
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#00CCA8' }}>
-              Quality bar
-            </span>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.6, color: 'rgba(255,255,255,0.55)', margin: '5px 0 0' }}>
-              {skill.qualityBar}
+          {/* ── What you'll get back ───────────────────────────────────── */}
+          <div>
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>
+              What you&apos;ll get back
             </p>
-          </div>
-
-          {/* Tools + Teams */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, paddingTop: 2 }}>
-            {skill.tools.map(tool => (
-              <span key={tool} style={{ background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', color: '#C27FFF', borderRadius: 100, padding: '3px 10px', fontSize: 11, fontFamily: 'var(--font-body)' }}>
-                {tool}
-              </span>
-            ))}
-            {skill.teams.map(team => (
-              <span key={team} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.4)', borderRadius: 100, padding: '3px 10px', fontSize: 11, fontFamily: 'var(--font-body)' }}>
-                {team}
-              </span>
-            ))}
+            <div style={{ border: '1px solid rgba(255,255,255,0.08)', borderRadius: 10, overflow: 'hidden' }}>
+              {/* Output label */}
+              <div style={{ padding: '12px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)' }}>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.9)' }}>
+                  {skill.name}
+                </span>
+              </div>
+              {/* Quality bar as field description */}
+              <div style={{ padding: '14px 16px' }}>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.65, color: 'rgba(255,255,255,0.55)', margin: '0 0 12px' }}>
+                  {skill.qualityBar}
+                </p>
+                {/* Output fields as chips — mirrors the column header chips on the reference */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {skill.tools.map(tool => (
+                    <span key={tool} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '3px 10px' }}>
+                      {tool}
+                    </span>
+                  ))}
+                  {skill.teams.map(team => (
+                    <span key={team} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '3px 10px' }}>
+                      {team}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
