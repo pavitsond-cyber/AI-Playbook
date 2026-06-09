@@ -21,12 +21,13 @@ export default function CopyButton({ text, className = '' }: CopyButtonProps) {
     <button
       onClick={handleCopy}
       aria-label="Copy to clipboard"
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 ${className}`}
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium ${className}`}
       style={{
         background: copied ? '#0d2b1a' : '#f6f9fc',
         color: copied ? '#4ade80' : '#64748d',
         border: '1px solid',
         borderColor: copied ? '#166534' : '#e3e8ee',
+        transition: 'background 0.18s ease, border-color 0.18s ease, color 0.18s ease',
       }}
       onMouseEnter={(e) => {
         if (!copied) {

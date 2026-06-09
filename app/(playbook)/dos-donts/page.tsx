@@ -232,7 +232,7 @@ export default function OperatingPrinciplesPage() {
                         background: 'rgba(8,0,18,0.85)',
                         border: `1px solid rgba(255,255,255,0.07)`,
                         borderTop: `1px solid rgba(255,255,255,0.1)`,
-                        transition: 'border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease',
+                        transition: 'border-color 0.18s ease, box-shadow 0.18s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1)',
                         cursor: 'default',
                       }}
                       onMouseEnter={e => {

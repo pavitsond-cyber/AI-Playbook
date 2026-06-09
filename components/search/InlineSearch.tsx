@@ -188,7 +188,7 @@ export default function InlineSearch({
           borderBottom: showDropdown ? '1px solid rgba(155,63,255,0.1)' : `1px solid ${borderCol}`,
           borderRadius: showDropdown ? '12px 12px 0 0' : '12px',
           cursor: 'text',
-          transition: 'border-color 150ms, border-radius 150ms',
+          transition: 'border-color 0.18s ease, border-radius 0.18s ease',
           boxShadow: showDropdown ? 'none' : (open ? '0 0 0 2px rgba(155,63,255,0.2)' : 'rgba(0,0,0,0.25) 0 1px 3px'),
           ...inputStyle,
         }}
@@ -196,7 +196,7 @@ export default function InlineSearch({
       >
         <Search
           size={compact ? 14 : 15}
-          style={{ color: open ? '#C27FFF' : 'rgba(255,255,255,0.3)', flexShrink: 0, transition: 'color 150ms' }}
+          style={{ color: open ? '#C27FFF' : 'rgba(255,255,255,0.3)', flexShrink: 0, transition: 'color 0.18s ease' }}
         />
         <input
           ref={inputRef}
@@ -255,7 +255,7 @@ export default function InlineSearch({
             scrollbarWidth: 'none',
             opacity: mounted ? 1 : 0,
             transform: mounted ? 'translateY(0)' : 'translateY(-4px)',
-            transition: 'opacity 160ms ease, transform 160ms ease',
+            transition: 'opacity 0.25s ease-out, transform 0.25s ease-out',
           } as React.CSSProperties}
         >
 
@@ -282,7 +282,7 @@ export default function InlineSearch({
                         background: c.bg, border: `1px solid ${c.border}`,
                         color: c.color, fontSize: 13, fontWeight: 500, cursor: 'pointer',
                         fontFamily: 'var(--font-body)',
-                        transition: 'transform 120ms, box-shadow 120ms',
+                        transition: 'transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease',
                       }}
                       onMouseEnter={e => {
                         e.currentTarget.style.transform = 'translateY(-1px)'
@@ -377,7 +377,7 @@ export default function InlineSearch({
                         cursor: 'pointer',
                         background: isFocused ? `rgba(155,63,255,0.08)` : 'transparent',
                         border: isFocused ? `1px solid rgba(155,63,255,0.15)` : '1px solid transparent',
-                        transition: 'background 100ms, border-color 100ms',
+                        transition: 'background 0.18s ease, border-color 0.18s ease',
                       }}
                     >
                       {/* Type icon */}
@@ -386,7 +386,7 @@ export default function InlineSearch({
                         background: isFocused ? c.bg : 'rgba(255,255,255,0.06)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         flexShrink: 0, marginTop: 1,
-                        transition: 'background 100ms',
+                        transition: 'background 0.18s ease',
                       }}>
                         <Icon size={14} color={isFocused ? c.color : 'rgba(255,255,255,0.4)'} />
                       </div>
@@ -430,12 +430,12 @@ export default function InlineSearch({
                         background: isFocused ? c.bg : 'transparent',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         flexShrink: 0, alignSelf: 'center',
-                        transition: 'background 100ms',
+                        transition: 'background 0.18s ease',
                       }}>
                         <ArrowUpRight
                           size={13}
                           color={isFocused ? c.color : 'rgba(255,255,255,0.3)'}
-                          style={{ transition: 'color 100ms' }}
+                          style={{ transition: 'color 0.18s ease' }}
                         />
                       </div>
                     </div>

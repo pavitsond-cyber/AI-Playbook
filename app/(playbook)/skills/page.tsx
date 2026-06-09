@@ -795,7 +795,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
         border: isOpen ? '1px solid rgba(155,63,255,0.25)' : '1px solid rgba(255,255,255,0.07)',
         borderRadius: 14,
         overflow: 'hidden',
-        transition: 'border-color 0.2s ease',
+        transition: 'border-color 0.18s ease',
       }}
     >
       {/* ── Download button — top right, outside the toggle button ────── */}
@@ -819,7 +819,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           fontFamily: 'var(--font-body)',
           fontWeight: 500,
           cursor: 'pointer',
-          transition: 'all 0.15s ease',
+          transition: 'background 0.18s ease, border-color 0.18s ease, color 0.18s ease',
         }}
         onMouseEnter={e => {
           if (!downloaded) {
@@ -855,7 +855,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           border: 'none',
           cursor: 'pointer',
           textAlign: 'left',
-          transition: 'background 0.15s ease',
+          transition: 'background 0.18s ease',
         }}
       >
         {/* Name + description */}
@@ -886,7 +886,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
                 style={{
                   color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.25)',
                   transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                  transition: 'transform 0.2s ease, color 0.2s ease',
+                  transition: 'transform 0.22s ease, color 0.18s ease',
                   flexShrink: 0,
                 }}
               />
@@ -909,7 +909,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
       <div style={{
         maxHeight: isOpen ? '2400px' : '0px',
         overflow: 'hidden',
-        transition: isOpen ? 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)' : 'none',
+        transition: isOpen ? 'max-height 0.4s cubic-bezier(0.4,0,0.2,1)' : 'max-height 0.22s ease-in',
       }}>
         <div style={{ padding: '20px 20px 28px', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', gap: 28 }}>
 

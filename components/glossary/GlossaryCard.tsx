@@ -74,7 +74,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
           border: '1px solid rgba(255,255,255,0.07)',
           borderRadius: 16,
           overflow: 'hidden',
-          transition: 'border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease',
+          transition: 'border-color 0.18s ease, box-shadow 0.18s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1)',
         }}
         onMouseEnter={e => {
           e.currentTarget.style.borderColor = 'rgba(155,63,255,0.3)'
@@ -91,9 +91,10 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
           onClick={toggle}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          className="w-full text-left px-5 py-5 flex items-start gap-4 transition-colors duration-100"
+          className="w-full text-left px-5 py-5 flex items-start gap-4"
           style={{
             background: hovered && !expanded ? 'rgba(155,63,255,0.03)' : 'transparent',
+            transition: 'background 0.18s ease',
           }}
         >
           {/* Abbreviation tag first, then full name */}
@@ -143,10 +144,11 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
 
           <ChevronDown
             size={16}
-            className="shrink-0 mt-1.5 transition-transform duration-200"
+            className="shrink-0 mt-1.5"
             style={{
               color: expanded ? '#C27FFF' : 'rgba(255,255,255,0.25)',
               transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
+              transition: 'transform 0.22s ease, color 0.18s ease',
             }}
           />
         </button>
@@ -156,7 +158,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
           className="overflow-hidden"
           style={{
             maxHeight: expanded ? '600px' : '0px',
-            transition: expanded ? 'max-height 0.32s cubic-bezier(0.4,0,0.2,1)' : 'none',
+            transition: expanded ? 'max-height 0.32s cubic-bezier(0.4,0,0.2,1)' : 'max-height 0.22s ease-in',
           }}
         >
           <div className="px-4 pb-4 space-y-3" style={{ paddingTop: '2px' }}>
@@ -198,7 +200,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="rounded-2xl overflow-hidden transition-all duration-200"
+      className="rounded-2xl overflow-hidden"
       style={{
         background: 'rgba(255,255,255,0.03)',
         border: expanded
@@ -208,11 +210,12 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
           : '1px solid rgba(255,255,255,0.07)',
         boxShadow: hovered && !expanded ? 'rgba(0,0,0,0.2) 0 4px 12px' : 'none',
         transform: hovered && !expanded ? 'translateY(-1px)' : 'translateY(0)',
+        transition: 'border-color 0.18s ease, box-shadow 0.18s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1)',
       }}
     >
       <button
         onClick={toggle}
-        className="w-full text-left px-5 py-5 flex items-start gap-4 transition-all duration-150"
+        className="w-full text-left px-5 py-5 flex items-start gap-4"
       >
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 mb-2.5">
@@ -239,10 +242,11 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
         </div>
         <ChevronDown
           size={16}
-          className="flex-shrink-0 mt-1.5 transition-all duration-300"
+          className="flex-shrink-0 mt-1.5"
           style={{
             color: expanded ? '#C27FFF' : 'rgba(255,255,255,0.25)',
             transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.22s ease, color 0.18s ease',
           }}
         />
       </button>
@@ -251,7 +255,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
         className="overflow-hidden"
         style={{
           maxHeight: expanded ? '1200px' : '0px',
-          transition: expanded ? 'max-height 0.32s cubic-bezier(0.4,0,0.2,1)' : 'none',
+          transition: expanded ? 'max-height 0.32s cubic-bezier(0.4,0,0.2,1)' : 'max-height 0.22s ease-in',
         }}
       >
         <div

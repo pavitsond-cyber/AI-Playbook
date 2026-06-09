@@ -62,7 +62,7 @@ export default function TopNav() {
                 fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 400,
                 color: active ? '#ffffff' : 'rgba(255,255,255,0.45)',
                 background: active ? 'rgba(255,255,255,0.08)' : 'transparent',
-                textDecoration: 'none', transition: 'all 0.2s ease', whiteSpace: 'nowrap',
+                textDecoration: 'none', transition: 'color 0.18s ease, background 0.18s ease', whiteSpace: 'nowrap',
               }}
               onMouseEnter={e => { if (!active) { e.currentTarget.style.color = 'rgba(255,255,255,0.75)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}}
               onMouseLeave={e => { if (!active) { e.currentTarget.style.color = 'rgba(255,255,255,0.45)'; e.currentTarget.style.background = 'transparent' }}}>
@@ -167,7 +167,7 @@ export default function TopNav() {
                   color: isActive(item.href) ? '#ffffff' : 'rgba(255,255,255,0.55)',
                   background: isActive(item.href) ? 'rgba(255,255,255,0.08)' : 'transparent',
                   textDecoration: 'none',
-                  transition: 'color 0.15s ease, background 0.15s ease',
+                  transition: 'color 0.18s ease, background 0.18s ease',
                 }}
               >
                 {item.label}

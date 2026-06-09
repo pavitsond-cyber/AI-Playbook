@@ -34,7 +34,7 @@ function DesktopCard({ s }: { s: typeof sections[0] }) {
         backdropFilter: hovered ? 'blur(20px) saturate(180%)' : 'blur(12px)',
         WebkitBackdropFilter: hovered ? 'blur(20px) saturate(180%)' : 'blur(12px)',
         boxShadow: hovered ? '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15)' : '0 2px 12px rgba(0,0,0,0.15)',
-        transition: 'background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, backdrop-filter 0.28s ease',
+        transition: 'background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, backdrop-filter 0.18s ease',
         cursor: 'pointer',
       }}
     >
@@ -42,11 +42,11 @@ function DesktopCard({ s }: { s: typeof sections[0] }) {
         {s.num}
       </span>
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', width: '100%' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 7, transform: hovered ? 'scale(1.04)' : 'scale(1)', transformOrigin: 'bottom left', transition: 'transform 0.28s cubic-bezier(0.34,1.56,0.64,1)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 7, transform: hovered ? 'scale(1.04)' : 'scale(1)', transformOrigin: 'bottom left', transition: 'transform 0.22s cubic-bezier(0.34,1.56,0.64,1)' }}>
           <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 'clamp(18px,1.95vw,28px)', fontWeight: 400, letterSpacing: '-0.02em', color: '#ffffff', lineHeight: 1 }}>{s.title}</span>
           <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 'clamp(11px,0.97vw,14px)', fontWeight: 400, letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.5)', lineHeight: 1 }}>{s.sub}</span>
         </div>
-        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: hovered ? 1 : 0.5, transform: hovered ? 'translateX(3px) translateY(-3px)' : 'translateX(0)', transition: 'opacity 0.25s ease, transform 0.28s cubic-bezier(0.34,1.56,0.64,1)' }}>
+        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: hovered ? 1 : 0.5, transform: hovered ? 'translateX(3px) translateY(-3px)' : 'translateX(0)', transition: 'opacity 0.18s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1)' }}>
           <ArrowUpRight size={24} color="#ffffff" />
         </div>
       </div>
@@ -78,7 +78,7 @@ function MobileCard({ s }: { s: typeof sections[0] }) {
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         boxShadow: hovered ? '0 4px 20px rgba(0,0,0,0.3)' : 'none',
-        transition: 'background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease',
+        transition: 'background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease',
         cursor: 'pointer',
       }}
     >

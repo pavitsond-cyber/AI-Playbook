@@ -117,7 +117,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
     borderRadius: 8,
     padding: 0,
     cursor: has ? 'pointer' : 'default',
-    transition: 'background 120ms, color 120ms, transform 80ms, border-color 120ms',
+    transition: 'background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1)',
     color:      isActive ? '#fff' : has ? '#C27FFF' : 'rgba(255,255,255,0.12)',
     background: isActive ? '#9B3FFF' : has ? 'rgba(155,63,255,0.12)' : 'transparent',
     border:     isActive

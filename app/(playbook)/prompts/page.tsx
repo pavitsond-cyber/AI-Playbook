@@ -681,7 +681,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
       border: isOpen ? '1px solid rgba(155,63,255,0.25)' : '1px solid rgba(255,255,255,0.07)',
       borderRadius: 14,
       overflow: 'hidden',
-      transition: 'border-color 0.2s ease',
+      transition: 'border-color 0.18s ease',
     }}>
       {/* ── Header row: title + chevron (left) + Copy button (right) ─ */}
       {/* Copy button is INLINE so description below fills full width  */}
