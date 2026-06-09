@@ -35,9 +35,6 @@ export default function PageHeader({ title, description, badge }: PageHeaderProp
           fontWeight: 300,
           lineHeight: 1.7,
           color: 'rgba(255,255,255,0.5)',
-          whiteSpace: 'nowrap',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
         }}>
           {description}
         </p>

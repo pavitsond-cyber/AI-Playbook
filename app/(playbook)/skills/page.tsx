@@ -781,6 +781,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
   return (
     <div
       style={{
+        position: 'relative',
         background: 'rgba(255,255,255,0.03)',
         border: isOpen ? '1px solid rgba(155,63,255,0.25)' : '1px solid rgba(255,255,255,0.07)',
         borderRadius: 14,
@@ -788,16 +789,54 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
         transition: 'border-color 0.2s ease',
       }}
     >
+      {/* ── Download button — top right, outside the toggle button ────── */}
+      <button
+        onClick={e => { e.stopPropagation(); downloadSkill(skill) }}
+        title="Download as .md"
+        style={{
+          position: 'absolute',
+          top: 16,
+          right: 18,
+          zIndex: 2,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 5,
+          padding: '5px 11px',
+          background: 'rgba(255,255,255,0.05)',
+          border: '1px solid rgba(255,255,255,0.09)',
+          borderRadius: 8,
+          color: 'rgba(255,255,255,0.4)',
+          fontSize: 11,
+          fontFamily: 'var(--font-body)',
+          fontWeight: 500,
+          cursor: 'pointer',
+          transition: 'all 0.15s ease',
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.background = 'rgba(155,63,255,0.12)'
+          e.currentTarget.style.borderColor = 'rgba(155,63,255,0.25)'
+          e.currentTarget.style.color = '#C27FFF'
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)'
+          e.currentTarget.style.color = 'rgba(255,255,255,0.4)'
+        }}
+      >
+        <Download size={11} />
+        .md
+      </button>
+
       {/* ── Collapsed row ─────────────────────────────────────────────── */}
       <button
         onClick={onToggle}
         style={{
           width: '100%',
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           gap: 16,
-          padding: '18px 20px',
-          background: isOpen ? 'rgba(155,63,255,0.04)' : 'transparent',
+          padding: '18px 84px 18px 20px',
+          background: 'transparent',
           border: 'none',
           cursor: 'pointer',
           textAlign: 'left',
@@ -806,30 +845,33 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
       >
         {/* Name + description */}
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4, flexWrap: 'wrap' as const }}>
+          {/* Mobile: stacked (badge top, name below); Desktop: inline row */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap" style={{ gap: '4px 10px', marginBottom: 6 }}>
             {skill.domain && (
-              <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, color: '#FF69DB', background: 'rgba(255,105,219,0.1)', border: '1px solid rgba(255,105,219,0.2)', borderRadius: 100, padding: '2px 8px', textTransform: 'uppercase' as const, letterSpacing: '0.08em', flexShrink: 0 }}>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, color: '#FF69DB', background: 'rgba(255,105,219,0.1)', border: '1px solid rgba(255,105,219,0.2)', borderRadius: 100, padding: '2px 8px', textTransform: 'uppercase' as const, letterSpacing: '0.08em', flexShrink: 0, alignSelf: 'flex-start' }}>
                 {skill.domain}
               </span>
             )}
-            <span style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 17,
-              fontWeight: 700,
-              color: '#ffffff',
-              lineHeight: 1.3,
-            }}>
-              {skill.name}
-            </span>
-            <ChevronDown
-              size={15}
-              style={{
-                color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.25)',
-                transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                transition: 'transform 0.2s ease, color 0.2s ease',
-                flexShrink: 0,
-              }}
-            />
+            <div className="flex items-center" style={{ gap: 8 }}>
+              <span style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 17,
+                fontWeight: 700,
+                color: '#ffffff',
+                lineHeight: 1.3,
+              }}>
+                {skill.name}
+              </span>
+              <ChevronDown
+                size={15}
+                style={{
+                  color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.25)',
+                  transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                  transition: 'transform 0.2s ease, color 0.2s ease',
+                  flexShrink: 0,
+                }}
+              />
+            </div>
           </div>
           <p style={{
             fontFamily: 'var(--font-body)',
@@ -841,41 +883,6 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
             {skill.what}
           </p>
         </div>
-
-        {/* Download button */}
-        <button
-          onClick={e => { e.stopPropagation(); downloadSkill(skill) }}
-          title="Download as .md"
-          style={{
-            flexShrink: 0,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 5,
-            padding: '6px 12px',
-            background: 'rgba(255,255,255,0.05)',
-            border: '1px solid rgba(255,255,255,0.09)',
-            borderRadius: 8,
-            color: 'rgba(255,255,255,0.4)',
-            fontSize: 11,
-            fontFamily: 'var(--font-body)',
-            fontWeight: 500,
-            cursor: 'pointer',
-            transition: 'all 0.15s ease',
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.background = 'rgba(155,63,255,0.12)'
-            e.currentTarget.style.borderColor = 'rgba(155,63,255,0.25)'
-            e.currentTarget.style.color = '#C27FFF'
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)'
-            e.currentTarget.style.color = 'rgba(255,255,255,0.4)'
-          }}
-        >
-          <Download size={11} />
-          .md
-        </button>
       </button>
 
       {/* ── Expanded dropdown ─────────────────────────────────────────── */}

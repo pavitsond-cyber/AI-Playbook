@@ -687,58 +687,59 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
         onClick={onToggle}
         style={{
           width: '100%',
-          display: 'flex',
-          alignItems: 'flex-start',
-          gap: 16,
           padding: '18px 20px',
-          background: isOpen ? 'rgba(155,63,255,0.04)' : 'transparent',
+          background: 'transparent',
           border: 'none',
           cursor: 'pointer',
           textAlign: 'left',
           transition: 'background 0.15s ease',
         }}
       >
-        {/* Number badge */}
-        <span style={{
-          fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-          fontSize: 13,
-          fontWeight: 500,
-          color: '#c18dff',
-          flexShrink: 0,
-          paddingTop: 2,
-          minWidth: 28,
-        }}>
-          {String(index + 1).padStart(2, '0')}
-        </span>
-
-        {/* Title + description */}
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-            <span style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 17,
-              fontWeight: 700,
-              color: '#ffffff',
-              lineHeight: 1.3,
-            }}>
-              {prompt.title}
-            </span>
-            <ChevronDown size={15} style={{
-              color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.25)',
-              transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-              transition: 'transform 0.2s ease, color 0.2s ease',
-              flexShrink: 0,
-            }} />
-          </div>
-          <p style={{
+        {/* Mobile: number on top, content below; Desktop: side by side */}
+        <div className="flex flex-col sm:flex-row sm:items-start" style={{ gap: '6px 16px' }}>
+          {/* Number badge */}
+          <span style={{
             fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-            fontSize: 14,
-            color: 'rgba(255,255,255,0.45)',
-            lineHeight: 1.6,
-            margin: 0,
+            fontSize: 13,
+            fontWeight: 500,
+            color: '#c18dff',
+            flexShrink: 0,
+            paddingTop: 2,
+            minWidth: 28,
+            alignSelf: 'flex-start',
           }}>
-            {prompt.description}
-          </p>
+            {String(index + 1).padStart(2, '0')}
+          </span>
+
+          {/* Title + description */}
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+              <span style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 17,
+                fontWeight: 700,
+                color: '#ffffff',
+                lineHeight: 1.3,
+              }}>
+                {prompt.title}
+              </span>
+              <ChevronDown size={15} style={{
+                color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.25)',
+                transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.2s ease, color 0.2s ease',
+                flexShrink: 0,
+              }} />
+            </div>
+            <p style={{
+              fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
+              fontSize: 14,
+              color: 'rgba(255,255,255,0.45)',
+              lineHeight: 1.6,
+              margin: 0,
+            }}>
+              {prompt.description}
+            </p>
+          </div>
         </div>
       </button>
 

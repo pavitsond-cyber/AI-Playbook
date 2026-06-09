@@ -93,14 +93,12 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
           onMouseLeave={() => setHovered(false)}
           className="w-full text-left px-5 py-5 flex items-start gap-4 transition-colors duration-100"
           style={{
-            background: hovered && !expanded
-              ? 'rgba(155,63,255,0.03)'
-              : expanded ? 'rgba(155,63,255,0.05)' : 'transparent',
+            background: hovered && !expanded ? 'rgba(155,63,255,0.03)' : 'transparent',
           }}
         >
           {/* Abbreviation tag first, then full name */}
           <div className="flex-1 min-w-0 text-left">
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '8px 10px', marginBottom: 8 }}>
+            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline" style={{ gap: '6px 10px', marginBottom: 8 }}>
               {/* Abbreviation badge — comes first */}
               <span
                 style={{
@@ -206,11 +204,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
           : hovered
           ? '1px solid rgba(155,63,255,0.15)'
           : '1px solid rgba(255,255,255,0.07)',
-        boxShadow: expanded
-          ? '0 0 0 1px rgba(155,63,255,0.1), rgba(0,0,0,0.3) 0 8px 24px'
-          : hovered
-          ? 'rgba(0,0,0,0.2) 0 4px 12px'
-          : 'none',
+        boxShadow: hovered && !expanded ? 'rgba(0,0,0,0.2) 0 4px 12px' : 'none',
         transform: hovered && !expanded ? 'translateY(-1px)' : 'translateY(0)',
       }}
     >
