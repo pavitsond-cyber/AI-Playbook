@@ -9,6 +9,9 @@ const sections = [
   { num: '04', title: 'Principles', sub: '4 guidelines',  href: '/dos-donts' },
 ]
 
+/* Shared horizontal margin so logo and headline always share the same left edge */
+const H_PAD = 'clamp(20px, 5.1vw, 74px)'
+
 export default function LandingPage() {
   return (
     <div style={{
@@ -19,7 +22,7 @@ export default function LandingPage() {
       fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
     }}>
 
-      {/* ── Video background ──────────────────────────────── */}
+      {/* ── Video background ─────────────────────────────── */}
       <video
         autoPlay
         muted
@@ -37,7 +40,7 @@ export default function LandingPage() {
         <source src="/videos/landing-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* ── Dark overlay to darken the video slightly ────── */}
+      {/* ── Dark overlay ─────────────────────────────────── */}
       <div style={{
         position: 'absolute',
         inset: 0,
@@ -46,39 +49,39 @@ export default function LandingPage() {
         pointerEvents: 'none',
       }} />
 
-      {/* ── Top nav ───────────────────────────────────────── */}
+      {/* ── Top nav — logo left-aligned at H_PAD ─────────── */}
       <div style={{
         position: 'absolute',
         top: 32,
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '90%',
-        maxWidth: 1292,
+        left: 0,
+        right: 0,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        paddingLeft: H_PAD,
+        paddingRight: H_PAD,
         zIndex: 10,
       }}>
-        {/* Headout logo — correct proportions, no stretch */}
+        {/* Headout logo — same left edge as headline */}
         <img
           src="/images/headout-logo.svg"
           alt="headout"
           style={{
             height: 16,
-            width: 109,   /* exact SVG viewBox ratio */
+            width: 109,
             display: 'block',
             flexShrink: 0,
           }}
         />
 
-        {/* "THE RESOURCE LIBRARY" — reduced contrast */}
+        {/* "THE RESOURCE LIBRARY" — low contrast */}
         <p style={{
           fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-          fontSize: 14,
+          fontSize: 13,
           fontWeight: 400,
           letterSpacing: '0.43em',
           textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.25)',   /* low contrast */
+          color: 'rgba(255,255,255,0.22)',
           margin: 0,
           whiteSpace: 'nowrap',
         }}>
@@ -86,24 +89,24 @@ export default function LandingPage() {
         </p>
       </div>
 
-      {/* ── Main content ──────────────────────────────────── */}
+      {/* ── Main content — same left edge as logo ────────── */}
       <div style={{
         position: 'absolute',
-        left: 74,
-        top: '50%',
+        left: H_PAD,
+        top: '42%',           /* slightly above centre — diver sits in the right half */
         transform: 'translateY(-50%)',
         display: 'flex',
         flexDirection: 'column',
-        gap: 60,
+        gap: 52,
         zIndex: 10,
+        maxWidth: '55vw',     /* keep text away from the diver on wide screens */
       }}>
 
         {/* Headline + subtitle */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
-          {/* Headline — solid white, no clipping gradient */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <h1 style={{
             fontFamily: "'Halyard Display', Georgia, serif",
-            fontSize: 'clamp(64px, 9vw, 130px)',
+            fontSize: 'clamp(52px, 8.5vw, 122px)',
             fontWeight: 400,
             lineHeight: 1,
             letterSpacing: '-0.02em',
@@ -114,22 +117,20 @@ export default function LandingPage() {
             AI Playbook
           </h1>
 
-          {/* Subtitle — solid white */}
           <p style={{
             fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-            fontSize: 'clamp(18px, 2.1vw, 30px)',
+            fontSize: 'clamp(16px, 2vw, 28px)',
             fontWeight: 300,
-            letterSpacing: '-0.02em',
+            letterSpacing: '-0.01em',
             margin: 0,
             color: '#ffffff',
-            maxWidth: 520,
           }}>
             A repository for everything in AI
           </p>
         </div>
 
-        {/* Section links — bounce scale on hover, no color change */}
-        <div style={{ display: 'flex', gap: 63, alignItems: 'flex-end', flexWrap: 'wrap' }}>
+        {/* Section links */}
+        <div style={{ display: 'flex', gap: 'clamp(32px, 4.4vw, 63px)', alignItems: 'flex-end', flexWrap: 'wrap' }}>
           {sections.map(s => (
             <Link
               key={s.href}
@@ -139,26 +140,25 @@ export default function LandingPage() {
                 textDecoration: 'none',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 22,
-                width: 195,
+                gap: 18,
+                minWidth: 0,
               }}
             >
               <span style={{
                 fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-                fontSize: 'clamp(20px, 2.1vw, 30px)',
+                fontSize: 'clamp(18px, 1.9vw, 28px)',
                 fontWeight: 400,
-                letterSpacing: '-0.02em',
+                letterSpacing: '-0.01em',
                 color: '#c18dff',
               }}>
                 {s.num}
               </span>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                {/* Title — bouncy scale on hover via CSS class */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 <span
                   className="landing-section-title"
                   style={{
                     fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-                    fontSize: 'clamp(26px, 2.8vw, 40px)',
+                    fontSize: 'clamp(22px, 2.6vw, 38px)',
                     fontWeight: 400,
                     letterSpacing: '-0.02em',
                     color: '#ffffff',
@@ -168,9 +168,9 @@ export default function LandingPage() {
                 </span>
                 <span style={{
                   fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-                  fontSize: 'clamp(14px, 1.4vw, 20px)',
+                  fontSize: 'clamp(13px, 1.3vw, 18px)',
                   fontWeight: 300,
-                  letterSpacing: '-0.02em',
+                  letterSpacing: '-0.01em',
                   color: 'rgba(255,255,255,0.5)',
                 }}>
                   {s.sub}
