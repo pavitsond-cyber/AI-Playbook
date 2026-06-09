@@ -703,21 +703,21 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
       >
         {/* Title + description */}
         <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+            {/* Chevron sits immediately next to the title, not pushed to far right */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
               <span style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 17,
                 fontWeight: 700,
                 color: '#ffffff',
                 lineHeight: 1.3,
-                flex: 1,
               }}>
                 {prompt.title}
               </span>
               <ChevronDown size={15} style={{
-                color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.25)',
+                color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.3)',
                 transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                transition: 'transform 0.2s ease, color 0.2s ease',
+                transition: 'transform 0.22s ease, color 0.2s ease',
                 flexShrink: 0,
               }} />
             </div>
