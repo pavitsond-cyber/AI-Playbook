@@ -703,8 +703,8 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
       >
         {/* Title + description */}
         <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
-            {/* Title row — right clearance only here to avoid Copy button */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 6, paddingRight: 72 }}>
+            {/* Title row — right clearance to avoid Copy button */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 6, paddingRight: 104 }}>
               <span style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 17,
@@ -727,7 +727,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
               color: 'rgba(255,255,255,0.45)',
               lineHeight: 1.6,
               margin: 0,
-              paddingRight: 72,   /* match title row clearance from Copy button */
+              paddingRight: 104,  /* Copy button ~85px + 18px right offset + gap */
             }}>
               {prompt.description}
             </p>
