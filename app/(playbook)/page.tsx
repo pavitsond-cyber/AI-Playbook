@@ -174,8 +174,8 @@ export default function LandingPage() {
           Title: 60px stacked, cards: 2×2 grid, gap: 7.6px
       ══════════════════════════════════════════════════════════════════ */}
       <div
-        className="sm:hidden absolute"
-        style={{ top: 80, left: 30, right: 30, zIndex: 10, display: 'flex', flexDirection: 'column', gap: 25 }}
+        className="sm:hidden absolute flex flex-col"
+        style={{ top: 80, left: 30, right: 30, zIndex: 10, gap: 25 }}
       >
         {/* Title + subtitle stacked */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -221,13 +221,12 @@ export default function LandingPage() {
           Content: left:74px, top:244px, title+subtitle side-by-side, cards in single row
       ══════════════════════════════════════════════════════════════════ */}
       <div
-        className="hidden sm:flex absolute"
+        className="hidden sm:flex flex-col absolute"
         style={{
           top: 'clamp(120px, 30vh, 244px)',
           left: 'clamp(20px, 5.15vw, 80px)',
           right: 'clamp(20px, 5.15vw, 80px)',
           zIndex: 10,
-          flexDirection: 'column',
           gap: 'clamp(28px, 4.3vw, 62px)',
         }}
       >
