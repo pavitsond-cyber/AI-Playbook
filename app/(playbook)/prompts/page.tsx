@@ -84,7 +84,7 @@ Opportunity → User problem → Evidence → Possible direction → Validation 
   },
   {
     id: 'idea-framing-alignment-approval',
-    title: 'Idea framing, alignment, and approval',
+    title: 'Idea to Stakeholder Pitch',
     description: 'Use this to shape, pitch, align, or get approval for an idea before it moves into design, build, or experimentation.',
     template: `Act like a product partner helping turn an idea into a clear, approval-ready direction.
 
