@@ -28,9 +28,16 @@ export default function SearchBar({
       />
       <input
         ref={inputRef}
-        type="search"
+        type="text"
+        inputMode="search"
+        enterKeyHint="search"
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck={false}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        onClick={() => inputRef.current?.focus()}
         placeholder={placeholder}
         className="w-full pl-10 pr-10 py-3 rounded-xl text-sm outline-none transition-all duration-200"
         style={{

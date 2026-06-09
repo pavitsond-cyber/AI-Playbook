@@ -72,31 +72,89 @@ export default function TopNav() {
 
         {/* Mobile hamburger */}
         <div className="sm:hidden" style={{ marginLeft: 'auto' }}>
-          <button onClick={() => setMobileOpen(!mobileOpen)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.7)', padding: 6 }}>
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.7)', padding: 6, position: 'relative', width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          >
+            {/* Menu icon — fades out when open */}
+            <span style={{
+              position: 'absolute',
+              opacity: mobileOpen ? 0 : 1,
+              transform: mobileOpen ? 'rotate(45deg) scale(0.7)' : 'rotate(0deg) scale(1)',
+              transition: 'opacity 0.22s ease-out, transform 0.25s ease-out',
+              display: 'flex',
+            }}>
+              <Menu size={20} />
+            </span>
+            {/* X icon — fades in when open */}
+            <span style={{
+              position: 'absolute',
+              opacity: mobileOpen ? 1 : 0,
+              transform: mobileOpen ? 'rotate(0deg) scale(1)' : 'rotate(-45deg) scale(0.7)',
+              transition: 'opacity 0.22s ease-out, transform 0.25s ease-out',
+              display: 'flex',
+            }}>
+              <X size={20} />
+            </span>
           </button>
         </div>
       </div>
 
-      {/* Mobile dropdown */}
-      {mobileOpen && (
-        <div className="sm:hidden" style={{
+      {/* Mobile dropdown — always mounted, animates in/out with opacity + maxHeight */}
+      <div
+        className="sm:hidden"
+        style={{
           position: 'absolute', top: 64, left: 0, right: 0,
-          background: 'rgba(10,0,16,0.96)', backdropFilter: 'blur(24px)',
-          borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '12px 20px 16px',
-        }}>
+          background: 'rgba(10,0,16,0.96)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          borderBottom: mobileOpen ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+          overflow: 'hidden',
+          maxHeight: mobileOpen ? '500px' : '0px',
+          opacity: mobileOpen ? 1 : 0,
+          transition: mobileOpen
+            ? 'max-height 0.35s ease-out, opacity 0.25s ease-out, border-color 0.25s ease-out'
+            : 'max-height 0.28s ease-in, opacity 0.2s ease-in, border-color 0.2s ease-in',
+          pointerEvents: mobileOpen ? 'auto' : 'none',
+        }}
+      >
+        <div style={{ padding: '12px 20px 16px' }}>
           {!isHome && <div style={{ marginBottom: 10 }}><InlineSearch placeholder="Search everything…" compact /></div>}
           <nav style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Link href="/" onClick={() => setMobileOpen(false)} style={{ padding: '10px 12px', borderRadius: 8, fontFamily: 'var(--font-body)', fontSize: 14, color: pathname === '/' ? '#ffffff' : 'rgba(255,255,255,0.55)', background: pathname === '/' ? 'rgba(255,255,255,0.08)' : 'transparent', textDecoration: 'none' }}>Home</Link>
+            <Link
+              href="/"
+              onClick={() => setMobileOpen(false)}
+              style={{
+                padding: '10px 12px', borderRadius: 8,
+                fontFamily: 'var(--font-body)', fontSize: 14,
+                color: pathname === '/' ? '#ffffff' : 'rgba(255,255,255,0.55)',
+                background: pathname === '/' ? 'rgba(255,255,255,0.08)' : 'transparent',
+                textDecoration: 'none',
+                transition: 'color 0.15s ease, background 0.15s ease',
+              }}
+            >
+              Home
+            </Link>
             {navItems.map(item => (
-              <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)} style={{ padding: '10px 12px', borderRadius: 8, fontFamily: 'var(--font-body)', fontSize: 14, color: isActive(item.href) ? '#ffffff' : 'rgba(255,255,255,0.55)', background: isActive(item.href) ? 'rgba(255,255,255,0.08)' : 'transparent', textDecoration: 'none' }}>
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                style={{
+                  padding: '10px 12px', borderRadius: 8,
+                  fontFamily: 'var(--font-body)', fontSize: 14,
+                  color: isActive(item.href) ? '#ffffff' : 'rgba(255,255,255,0.55)',
+                  background: isActive(item.href) ? 'rgba(255,255,255,0.08)' : 'transparent',
+                  textDecoration: 'none',
+                  transition: 'color 0.15s ease, background 0.15s ease',
+                }}
+              >
                 {item.label}
               </Link>
             ))}
           </nav>
         </div>
-      )}
+      </div>
     </header>
   )
 }

@@ -289,33 +289,6 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                   </p>
                 )}
 
-                {/* Mobile A-Z strip */}
-                <div
-                  className="sm:hidden flex flex-wrap gap-1 mb-5 p-3 rounded-xl"
-                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}
-                >
-                  {ALPHABET.map(letter => {
-                    const has = activeLetters.has(letter)
-                    const isActive = activeAlpha === letter
-                    return (
-                      <button
-                        key={letter}
-                        onClick={() => scrollToLetter(letter)}
-                        disabled={!has}
-                        style={{
-                          width: 28, height: 26, fontSize: 12, fontWeight: 700,
-                          borderRadius: 7, border: 'none', padding: 0,
-                          cursor: has ? 'pointer' : 'default',
-                          color:      isActive ? '#fff' : has ? '#C27FFF' : 'rgba(255,255,255,0.15)',
-                          background: isActive ? '#9B3FFF' : has ? 'rgba(155,63,255,0.1)' : 'transparent',
-                        }}
-                      >
-                        {letter}
-                      </button>
-                    )
-                  })}
-                </div>
-
                 <div className="space-y-8">
                   {letterGroups.map(({ letter, terms: groupTerms }) => (
                     <div key={letter} id={`alpha-section-${letter}`}>
