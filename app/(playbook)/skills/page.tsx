@@ -749,35 +749,6 @@ const skills: Skill[] = [
       'Scroll-linked animations that break on iOS Safari rubber-band overscroll',
     ],
   },
-  {
-    name: 'Overdrive',
-    domain: 'Performance',
-    what: 'Build advanced animations, shaders, and ambitious interaction systems — for interfaces that push beyond conventional motion design.',
-    whenToUse: 'When standard CSS/JS animation is not sufficient. For WebGL effects, canvas-based systems, complex scroll orchestration, and physics simulations.',
-    qualityBar: 'Ambitious animations must degrade gracefully on lower-end hardware. Performance budget defined before building. Every ambitious animation has a reduced-motion alternative. Progressive enhancement fallback built first.',
-    tools: ['Three.js', 'WebGL', 'GSAP', 'Framer Motion', 'Canvas 2D'],
-    teams: ['Design Engineering', 'Frontend'],
-    mdFile: '/skills/overdrive.md',
-    inputs: [
-      { label: 'Ambitious interaction concept or visual reference', required: true },
-      { label: 'Technical constraints: browser support, device targets', required: true },
-      { label: 'Performance budget: target fps on what device', required: false },
-    ],
-    outputFields: ['Implementation Architecture', 'Technology Choice & Rationale', 'Performance Strategy', 'Progressive Enhancement Approach', 'Reduced Motion Alternative'],
-    auditCategories: [
-      { name: 'Technology Selection', desc: 'WebGL/Three.js, Canvas 2D, GSAP, Houdini, Web Animations API — matched to the goal' },
-      { name: 'Performance Budget', desc: 'Define target fps on target device before building — not after profiling' },
-      { name: 'Progressive Enhancement', desc: 'Fallback built first; ambitious version layered on top — not the other way' },
-      { name: 'Accessibility', desc: 'prefers-reduced-motion alternative required; canvas content needs ARIA fallback' },
-    ],
-    edgeCases: [
-      'WebGL shaders that are GPU-intensive on mobile — profile on real mid-range device before shipping',
-      'Complex scroll orchestration that breaks on iOS Safari rubber-band and elastic scroll',
-      'Canvas animations that are invisible to the accessibility tree — aria-label and fallback required',
-      'WebGL not supported in enterprise browser environments — graceful degradation needed',
-      'Ambitious effects that conflict with prefers-reduced-motion — the fallback must still be good',
-    ],
-  },
 
 ]
 
