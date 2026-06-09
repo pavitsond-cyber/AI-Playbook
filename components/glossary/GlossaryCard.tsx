@@ -186,35 +186,6 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
               </div>
             )}
 
-            {validLinks.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {validLinks.map((link) => (
-                  <a
-                    key={link.href + link.label}
-                    href={link.href}
-                    className="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium transition-all duration-150"
-                    style={{
-                      background: 'rgba(155,63,255,0.1)',
-                      border: '1px solid rgba(155,63,255,0.2)',
-                      color: '#C27FFF',
-                      borderRadius: 100,
-                      textDecoration: 'none',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#9B3FFF'
-                      e.currentTarget.style.color = '#fff'
-                      e.currentTarget.style.borderColor = '#9B3FFF'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'rgba(155,63,255,0.1)'
-                      e.currentTarget.style.color = '#C27FFF'
-                      e.currentTarget.style.borderColor = 'rgba(155,63,255,0.2)'
-                    }}
-                  >
-                    <span>→</span> {link.label}
-                  </a>
-                ))}
-              </div>
             )}
           </div>
         </div>
@@ -362,45 +333,6 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
             </div>
           )}
 
-          {validLinks.length > 0 && (
-            <div>
-              <span
-                className="block mb-2"
-                style={{ color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase' as const, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'var(--font-body)' }}
-              >
-                Use in playbook
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {validLinks.map((link) => (
-                  <a
-                    key={link.href + link.label}
-                    href={link.href}
-                    className="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium transition-all duration-150"
-                    style={{
-                      background: 'rgba(155,63,255,0.1)',
-                      border: '1px solid rgba(155,63,255,0.2)',
-                      color: '#C27FFF',
-                      borderRadius: 100,
-                      textDecoration: 'none',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#9B3FFF'
-                      e.currentTarget.style.color = '#ffffff'
-                      e.currentTarget.style.borderColor = '#9B3FFF'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'rgba(155,63,255,0.1)'
-                      e.currentTarget.style.color = '#C27FFF'
-                      e.currentTarget.style.borderColor = 'rgba(155,63,255,0.2)'
-                    }}
-                  >
-                    <span>→</span>
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </article>
