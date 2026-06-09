@@ -185,8 +185,6 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
                 </p>
               </div>
             )}
-
-            )}
           </div>
         </div>
       </div>
