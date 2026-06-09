@@ -140,11 +140,18 @@ const ARTWORKS: Record<string, { bg: string; overlay?: string }> = {
   },
 }
 
-const ART_KEYS = [
-  'define', 'fast', 'test',
-  'human', 'verify',
-  'leverage', 'context',
-  'repeat', 'singular', 'sharpen',
+// Actual photo images, one per card in order
+const CARD_IMAGES = [
+  '/images/principles/p1.png',
+  '/images/principles/p2.png',
+  '/images/principles/p3.png',
+  '/images/principles/p4.png',
+  '/images/principles/p5.png',
+  '/images/principles/p6.png',
+  '/images/principles/p7.png',
+  '/images/principles/p8.png',
+  '/images/principles/p9.png',
+  '/images/principles/p10.png',
 ]
 
 const principles = [
@@ -215,8 +222,7 @@ export default function OperatingPrinciplesPage() {
                 style={{ gap: 12 }}
               >
                 {group.items.map((item) => {
-                  const artKey = ART_KEYS[idx++]
-                  const art = ARTWORKS[artKey]
+                  const imgSrc = CARD_IMAGES[idx++]
                   return (
                     <div
                       key={item.title}
@@ -242,34 +248,25 @@ export default function OperatingPrinciplesPage() {
                         e.currentTarget.style.boxShadow = 'none'
                       }}
                     >
-                      {/* ── Artwork — full width top ─────────────── */}
-                      <div
-                        style={{
-                          position: 'relative',
-                          height: 200,
-                          background: art.bg,
-                          overflow: 'hidden',
-                        }}
-                      >
-                        {/* SVG overlay (silhouette figures) */}
-                        {art.overlay && (
-                          <div
-                            style={{ position: 'absolute', inset: 0 }}
-                            dangerouslySetInnerHTML={{ __html: art.overlay }}
-                          />
-                        )}
+                      {/* ── Photo image — full width top ─────────── */}
+                      <div style={{ position: 'relative', height: 200, overflow: 'hidden' }}>
+                        {/* Actual photo */}
+                        <img
+                          src={imgSrc}
+                          alt=""
+                          style={{
+                            position: 'absolute', inset: 0,
+                            width: '100%', height: '100%',
+                            objectFit: 'cover',
+                            objectPosition: 'center',
+                          }}
+                        />
 
-                        {/* Seamless bottom fade into card bg */}
+                        {/* Seamless gradient fade to card bg — no visible line */}
                         <div style={{
-                          position: 'absolute', left: 0, right: 0, bottom: 0, height: 120,
-                          background: 'linear-gradient(to bottom, transparent 0%, rgba(8,0,18,0.7) 55%, rgba(8,0,18,0.85) 100%)',
+                          position: 'absolute', left: 0, right: 0, bottom: 0, height: 130,
+                          background: 'linear-gradient(to bottom, transparent 0%, rgba(8,0,18,0.65) 50%, rgba(8,0,18,0.95) 80%, rgba(8,0,18,1) 100%)',
                           pointerEvents: 'none',
-                        }} />
-
-                        {/* Subtle section-color tint at bottom edge */}
-                        <div style={{
-                          position: 'absolute', left: 0, right: 0, bottom: 0, height: 3,
-                          background: `linear-gradient(to right, transparent, ${group.color}30, transparent)`,
                         }} />
                       </div>
 
