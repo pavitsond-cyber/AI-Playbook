@@ -55,13 +55,11 @@ export default function LandingPage() {
         <img src="/images/headout-logo.svg" alt="headout"
           style={{ height: 16, width: 109, display: 'block', flexShrink: 0 }} />
 
-        {/* Search bar — replaces "THE RESOURCE LIBRARY" */}
-        <div style={{ width: 'clamp(200px, 22vw, 320px)' }}>
+        {/* Search bar */}
+        <div style={{ width: 'clamp(320px, 42vw, 560px)' }}>
           <InlineSearch
             placeholder="Search…"
             compact
-            alignRight
-            dropdownWidth={400}
           />
         </div>
       </div>
