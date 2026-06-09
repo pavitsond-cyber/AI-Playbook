@@ -116,12 +116,16 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
     fontWeight: 700 as const,
     lineHeight: 1,
     borderRadius: 8,
-    border: 'none' as const,
     padding: 0,
     cursor: has ? 'pointer' : 'default',
-    transition: 'background 120ms, color 120ms, transform 80ms',
-    color:      isActive ? '#fff' : has ? color : 'rgba(255,255,255,0.15)',
-    background: isActive ? '#9B3FFF' : has ? 'rgba(155,63,255,0.1)' : 'transparent',
+    transition: 'background 120ms, color 120ms, transform 80ms, border-color 120ms',
+    color:      isActive ? '#fff' : has ? '#C27FFF' : 'rgba(255,255,255,0.12)',
+    background: isActive ? '#9B3FFF' : has ? 'rgba(155,63,255,0.12)' : 'transparent',
+    border:     isActive
+      ? '1px solid #9B3FFF'
+      : has
+      ? '1px solid rgba(155,63,255,0.28)'
+      : '1px solid transparent',
   })
 
   return (

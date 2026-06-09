@@ -846,7 +846,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
         {/* Name + description */}
         <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
           {/* Mobile: stacked (badge top, name below); Desktop: inline row */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap" style={{ gap: '4px 10px', marginBottom: 6 }}>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap" style={{ gap: '10px 10px', marginBottom: 6 }}>
             {skill.domain && (
               <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, color: '#FF69DB', background: 'rgba(255,105,219,0.1)', border: '1px solid rgba(255,105,219,0.2)', borderRadius: 100, padding: '2px 8px', textTransform: 'uppercase' as const, letterSpacing: '0.08em', flexShrink: 0, alignSelf: 'flex-start' }}>
                 {skill.domain}
