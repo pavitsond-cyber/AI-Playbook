@@ -693,7 +693,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
         onClick={onToggle}
         style={{
           width: '100%',
-          padding: '18px 84px 18px 20px',
+          padding: '18px 20px',   /* equal sides — Copy button is absolute */
           background: 'transparent',
           border: 'none',
           cursor: 'pointer',
@@ -703,8 +703,8 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
       >
         {/* Title + description */}
         <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
-            {/* Chevron sits immediately next to the title, not pushed to far right */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+            {/* Title row — right clearance only here to avoid Copy button */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 6, paddingRight: 72 }}>
               <span style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 17,
