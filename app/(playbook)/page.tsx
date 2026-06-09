@@ -6,10 +6,9 @@ import { ArrowUpRight } from 'lucide-react'
 import InlineSearch from '@/components/search/InlineSearch'
 
 const sections = [
-  { num: '01', title: 'Skills',     sub: '21 resources',   href: '/skills'    },
-  { num: '02', title: 'Prompts',    sub: '15 templates',   href: '/prompts'   },
-  { num: '03', title: 'Glossary',   sub: '54 terms',       href: '/glossary'  },
-  { num: '04', title: 'Principles', sub: '10 principles',  href: '/dos-donts' },
+  { num: '01', title: 'Skills',   sub: '21 resources',  href: '/skills'   },
+  { num: '02', title: 'Prompts',  sub: '15 templates',  href: '/prompts'  },
+  { num: '03', title: 'Glossary', sub: '54 terms',      href: '/glossary' },
 ]
 
 /*
@@ -100,18 +99,15 @@ function SectionCard({ s }: { s: typeof sections[0] }) {
           </span>
         </div>
 
-        {/* Arrow */}
+        {/* Arrow — no circle, bare icon */}
         <div style={{
-          width: 26, height: 26,
-          borderRadius: '50%',
-          background: hovered ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.08)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
           flexShrink: 0,
-          opacity: hovered ? 1 : 0.55,
-          transform: hovered ? 'translateX(2px) translateY(-2px)' : 'translateX(0)',
-          transition: 'opacity 0.25s ease, transform 0.28s cubic-bezier(0.34,1.56,0.64,1), background 0.25s ease',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          opacity: hovered ? 1 : 0.5,
+          transform: hovered ? 'translateX(3px) translateY(-3px)' : 'translateX(0)',
+          transition: 'opacity 0.25s ease, transform 0.28s cubic-bezier(0.34,1.56,0.64,1)',
         }}>
-          <ArrowUpRight size={13} color="#ffffff" />
+          <ArrowUpRight size={24} color="#ffffff" />
         </div>
       </div>
     </Link>

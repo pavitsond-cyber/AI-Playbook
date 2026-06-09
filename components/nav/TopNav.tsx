@@ -8,10 +8,9 @@ import InlineSearch from '@/components/search/InlineSearch'
 import MobileSearchSheet from '@/components/search/MobileSearchSheet'
 
 const navItems = [
-  { href: '/prompts',   label: 'Prompts' },
-  { href: '/skills',    label: 'Skills' },
-  { href: '/glossary',  label: 'Glossary' },
-  { href: '/dos-donts', label: 'Principles' },
+  { href: '/prompts',  label: 'Prompts' },
+  { href: '/skills',   label: 'Skills' },
+  { href: '/glossary', label: 'Glossary' },
 ]
 
 export default function TopNav() {

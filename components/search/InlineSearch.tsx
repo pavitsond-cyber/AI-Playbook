@@ -23,13 +23,12 @@ const TYPE_CFG: Record<SearchItemType, {
   principle:    { label: 'Principles',      color: '#be185d', bg: 'rgba(190,24,93,0.07)',  border: 'rgba(190,24,93,0.15)',  icon: Shield },
 }
 
-const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt', 'principle']
+const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt']
 
 const QUICK = [
-  { label: 'Operating Principles', href: '/dos-donts', type: 'principle' as SearchItemType },
-  { label: 'Prompt Systems',       href: '/prompts',   type: 'prompt'    as SearchItemType },
-  { label: 'Skills',               href: '/skills',    type: 'skill'     as SearchItemType },
-  { label: 'Reference',            href: '/glossary',  type: 'term'      as SearchItemType },
+  { label: 'Prompt Systems', href: '/prompts',  type: 'prompt' as SearchItemType },
+  { label: 'Skills',         href: '/skills',   type: 'skill'  as SearchItemType },
+  { label: 'Glossary',       href: '/glossary', type: 'term'   as SearchItemType },
 ]
 
 // ─── Highlight helper ─────────────────────────────────────────────────────
@@ -302,7 +301,7 @@ export default function InlineSearch({
                 fontSize: 13, color: 'rgba(255,255,255,0.35)', marginTop: 14, lineHeight: 1.5,
                 fontFamily: 'var(--font-body)',
               }}>
-                Start typing to search across all skills, prompts, terms, and principles.
+                Start typing to search across all skills, prompts, and terms.
               </p>
             </div>
           )}
