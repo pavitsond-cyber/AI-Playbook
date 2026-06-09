@@ -10,7 +10,10 @@ export default function PlaybookLayout({ children }: { children: React.ReactNode
   return (
     <div style={{ minHeight: '100vh', background: '#0A0010' }}>
       {!isHome && <TopNav />}
-      <main style={{ paddingTop: isHome ? 0 : 64 }}>{children}</main>
+      {/* key forces remount on route change, triggering the entry animation */}
+      <main key={pathname} className="page-enter" style={{ paddingTop: isHome ? 0 : 64 }}>
+        {children}
+      </main>
     </div>
   )
 }

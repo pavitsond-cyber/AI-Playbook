@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import InlineSearch from '@/components/search/InlineSearch'
 
 const sections = [
   { num: '01', title: 'Skills',     sub: '21 resources',  href: '/skills'    },
@@ -9,7 +10,7 @@ const sections = [
   { num: '04', title: 'Principles', sub: '4 guidelines',  href: '/dos-donts' },
 ]
 
-/* Shared horizontal margin so logo and headline always share the same left edge */
+/* Shared edge padding — logo and content share the same horizontal margin */
 const H_PAD = 'clamp(20px, 5.1vw, 74px)'
 
 export default function LandingPage() {
@@ -22,114 +23,65 @@ export default function LandingPage() {
       fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
     }}>
 
-      {/* ── Video background ─────────────────────────────── */}
+      {/* ── Video background ──────────────────────────────── */}
       <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          zIndex: 0,
-        }}
+        autoPlay muted loop playsInline
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
       >
         <source src="/videos/landing-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* ── Dark overlay ─────────────────────────────────── */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: 'rgba(10,0,20,0.35)',
-        zIndex: 1,
-        pointerEvents: 'none',
-      }} />
+      {/* ── Dark overlay ──────────────────────────────────── */}
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,0,20,0.35)', zIndex: 1, pointerEvents: 'none' }} />
 
-      {/* ── Blue/pink gradient overlay from Figma ────────── */}
-      {/* Flipped vertically per Figma: dark at top, blue in middle, pink at bottom */}
-      {/* mix-blend-mode: screen blends naturally with the video beneath */}
+      {/* ── Figma gradient overlay (flipped: dark top → blue mid → pink bot) */}
       <div style={{
-        position: 'absolute',
-        top: '-60%',
-        left: '-15%',
-        width: '130%',
-        height: '260%',
-        zIndex: 2,
-        pointerEvents: 'none',
-        transform: 'scaleY(-1)',        /* mirrors the -scale-y-100 from Figma */
-        opacity: 0.55,
-        mixBlendMode: 'screen',
+        position: 'absolute', top: '-60%', left: '-15%',
+        width: '130%', height: '260%',
+        zIndex: 2, pointerEvents: 'none',
+        transform: 'scaleY(-1)', opacity: 0.55, mixBlendMode: 'screen',
       }}>
-        <img
-          src="/images/landing-gradient.svg"
-          alt=""
-          style={{ width: '100%', height: '100%', display: 'block' }}
-        />
+        <img src="/images/landing-gradient.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
       </div>
 
-      {/* ── Top nav — logo left-aligned at H_PAD ─────────── */}
+      {/* ── Top nav ───────────────────────────────────────── */}
       <div style={{
-        position: 'absolute',
-        top: 32,
-        left: 0,
-        right: 0,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingLeft: H_PAD,
-        paddingRight: H_PAD,
+        position: 'absolute', top: 28, left: 0, right: 0,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        paddingLeft: H_PAD, paddingRight: H_PAD,
         zIndex: 10,
       }}>
-        {/* Headout logo — same left edge as headline */}
-        <img
-          src="/images/headout-logo.svg"
-          alt="headout"
-          style={{
-            height: 16,
-            width: 109,
-            display: 'block',
-            flexShrink: 0,
-          }}
-        />
+        {/* Headout logo */}
+        <img src="/images/headout-logo.svg" alt="headout"
+          style={{ height: 16, width: 109, display: 'block', flexShrink: 0 }} />
 
-        {/* "THE RESOURCE LIBRARY" — low contrast */}
-        <p style={{
-          fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-          fontSize: 13,
-          fontWeight: 400,
-          letterSpacing: '0.43em',
-          textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.22)',
-          margin: 0,
-          whiteSpace: 'nowrap',
-        }}>
-          The resource library
-        </p>
+        {/* Search bar — replaces "THE RESOURCE LIBRARY" */}
+        <div style={{ width: 'clamp(200px, 22vw, 320px)' }}>
+          <InlineSearch
+            placeholder="Search…"
+            compact
+            alignRight
+            dropdownWidth={400}
+          />
+        </div>
       </div>
 
-      {/* ── Main content — centred horizontally ──────────── */}
+      {/* ── Main content ─────────────────────────────────── */}
+      {/* Horizontally centred container with LEFT-ALIGNED text inside */}
       <div style={{
         position: 'absolute',
-        left: 0,
-        right: 0,
-        top: '42%',
-        transform: 'translateY(-50%)',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -46%)',
+        zIndex: 10,
+        width: 'min(90vw, 960px)',   /* centred fixed-width block */
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
         gap: 52,
-        zIndex: 10,
-        padding: `0 ${H_PAD}`,
-        textAlign: 'center',
       }}>
 
-        {/* Headline + subtitle */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20, alignItems: 'center' }}>
-          {/* Headline — gradient from Figma: white → transparent, 169° */}
+        {/* Headline + subtitle — TEXT LEFT-ALIGNED */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           <h1 style={{
             fontFamily: "'Halyard Display', Georgia, serif",
             fontSize: 'clamp(52px, 8.5vw, 122px)',
@@ -137,11 +89,14 @@ export default function LandingPage() {
             lineHeight: 1,
             letterSpacing: '-0.02em',
             margin: 0,
-            whiteSpace: 'nowrap',
-            background: 'linear-gradient(169.38deg, #ffffff 41%, rgba(255,255,255,0) 113%)',
+            /* Figma gradient: white → transparent at 169° */
+            background: 'linear-gradient(169.38deg, #ffffff 41%, rgba(255,255,255,0.15) 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
+            /* overflow: visible so nothing clips */
+            overflow: 'visible',
+            paddingRight: '0.06em',   /* tiny buffer so k descender never clips */
           }}>
             AI Playbook
           </h1>
@@ -158,20 +113,19 @@ export default function LandingPage() {
           </p>
         </div>
 
-        {/* Section links */}
-        <div style={{ display: 'flex', gap: 'clamp(32px, 4.4vw, 63px)', alignItems: 'flex-end', flexWrap: 'wrap', justifyContent: 'center' }}>
+        {/* Section links — left-aligned row */}
+        <div style={{
+          display: 'flex',
+          gap: 'clamp(32px, 5vw, 80px)',
+          alignItems: 'flex-start',
+          flexWrap: 'wrap',
+        }}>
           {sections.map(s => (
             <Link
               key={s.href}
               href={s.href}
               className="landing-section-link"
-              style={{
-                textDecoration: 'none',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 18,
-                minWidth: 0,
-              }}
+              style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: 18, minWidth: 0 }}
             >
               <span style={{
                 fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
@@ -183,16 +137,13 @@ export default function LandingPage() {
                 {s.num}
               </span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <span
-                  className="landing-section-title"
-                  style={{
-                    fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-                    fontSize: 'clamp(22px, 2.6vw, 38px)',
-                    fontWeight: 400,
-                    letterSpacing: '-0.02em',
-                    color: '#ffffff',
-                  }}
-                >
+                <span className="landing-section-title" style={{
+                  fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
+                  fontSize: 'clamp(22px, 2.6vw, 38px)',
+                  fontWeight: 400,
+                  letterSpacing: '-0.02em',
+                  color: '#ffffff',
+                }}>
                   {s.title}
                 </span>
                 <span style={{

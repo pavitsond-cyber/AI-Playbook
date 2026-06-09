@@ -34,12 +34,13 @@ export default function TopNav() {
         padding: '0 clamp(16px,3vw,40px)',
         display: 'flex', alignItems: 'center', gap: 12,
       }}>
-        {/* Logo */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', flexShrink: 0 }}>
-          <div style={{ width: 7, height: 7, borderRadius: '50%', background: 'linear-gradient(135deg,#FF00CC,#9B3FFF)', flexShrink: 0 }} />
-          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 15, color: '#ffffff', letterSpacing: '-0.01em' }}>
-            AI Playbook
-          </span>
+        {/* Headout logo */}
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
+          <img
+            src="/images/headout-logo.svg"
+            alt="headout"
+            style={{ height: 16, width: 109, display: 'block' }}
+          />
         </Link>
 
         {/* Desktop nav */}
