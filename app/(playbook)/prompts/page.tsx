@@ -536,7 +536,7 @@ For each idea, include:
   },
   {
     id: 'prd',
-    title: 'PRD',
+    title: 'Generate PRD',
     description: 'Use this to convert a feature or initiative into a structured product requirements document with goals, non-goals, requirements, edge cases, dependencies, metrics, risks, and rollout plan.',
     template: `Act like a product partner turning a feature idea into a clear PRD.
 
@@ -702,7 +702,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
         }}
       >
         {/* Title + description */}
-        <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
               <span style={{
                 fontFamily: 'var(--font-display)',
@@ -710,6 +710,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
                 fontWeight: 700,
                 color: '#ffffff',
                 lineHeight: 1.3,
+                flex: 1,
               }}>
                 {prompt.title}
               </span>
@@ -726,6 +727,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
               color: 'rgba(255,255,255,0.45)',
               lineHeight: 1.6,
               margin: 0,
+              width: '100%',
             }}>
               {prompt.description}
             </p>

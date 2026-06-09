@@ -4,11 +4,11 @@ import { useState, useEffect, useRef } from 'react'
 import { ChevronDown, BookOpen } from 'lucide-react'
 import { GlossaryTerm } from '@/types'
 
-// Uniform purple palette for all abbreviation badges (matching A-Z sidebar tokens)
+// Each category uses its section's color — matches ABBR_GROUPS in GlossaryPage
 const ABBR_COLORS: Partial<Record<string, string>> = {
-  ai_basics:  '#C27FFF',
-  prompting:  '#C27FFF',
-  tools:      '#C27FFF',
+  ai_basics:  '#9B3FFF',
+  prompting:  '#00CCA8',
+  tools:      '#FF69DB',
   workflow:   '#C27FFF',
   coding:     '#C27FFF',
 }
@@ -105,9 +105,9 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
                   fontFamily: 'var(--font-body)',
                   fontSize: 11,
                   fontWeight: 600,
-                  color: '#C27FFF',
-                  background: 'rgba(155,63,255,0.12)',
-                  border: '1px solid rgba(155,63,255,0.28)',
+                  color: badgeColor,
+                  background: `${badgeColor}1F`,
+                  border: `1px solid ${badgeColor}45`,
                   borderRadius: 100,
                   padding: '2px 8px',
                   letterSpacing: '0.04em',

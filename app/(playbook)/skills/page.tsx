@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown, Download } from 'lucide-react'
+import { ChevronDown, Download, Check } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 import BlobLayer from '@/components/ui/BlobLayer'
 
@@ -836,7 +836,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           }
         }}
       >
-        <Download size={11} />
+        {downloaded ? <Check size={11} /> : <Download size={11} />}
         {downloaded ? 'Saved' : '.md'}
       </button>
 

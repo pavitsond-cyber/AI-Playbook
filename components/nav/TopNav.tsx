@@ -23,7 +23,8 @@ export default function TopNav() {
 
   return (
     <>
-    <header style={{
+    {/* On homepage: only show on mobile (sm:hidden hides on desktop, homepage has its own nav) */}
+    <header className={isHome ? 'sm:hidden' : ''} style={{
       position: 'fixed', top: 0, left: 0, right: 0, height: 64,
       background: 'rgba(10,0,16,0.65)',
       backdropFilter: 'blur(24px) saturate(180%)',
