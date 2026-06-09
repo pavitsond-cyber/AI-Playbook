@@ -715,9 +715,9 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
             <span style={{
-              fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
+              fontFamily: 'var(--font-display)',
               fontSize: 17,
-              fontWeight: 500,
+              fontWeight: 700,
               color: '#ffffff',
               lineHeight: 1.3,
             }}>
