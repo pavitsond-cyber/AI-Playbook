@@ -106,7 +106,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
                   color: '#ffffff',
                   fontFamily: 'var(--font-display)',
                   fontWeight: 700,
-                  fontSize: 20,
+                  fontSize: 22,
                   lineHeight: 1.25,
                 }}
               >
@@ -116,7 +116,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
               <span
                 style={{
                   fontFamily: 'var(--font-body)',
-                  fontSize: 16,
+                  fontSize: 22,
                   fontWeight: 600,
                   color: badgeColor,
                   background: `${badgeColor}15`,
@@ -133,7 +133,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
             {!expanded && (
               <p
                 className="line-clamp-2"
-                style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-body)', fontSize: 16, lineHeight: 1.6 }}
+                style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-body)', fontSize: 22, lineHeight: 1.6 }}
               >
                 {term.short_definition}
               </p>
@@ -161,7 +161,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
           <div className="px-4 pb-4 space-y-3" style={{ paddingTop: '2px' }}>
             <p
               className="text-sm leading-relaxed"
-              style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.6)' }}
+              style={{ fontFamily: 'var(--font-body)', fontSize: 22, color: 'rgba(255,255,255,0.6)' }}
             >
               {term.short_definition}
             </p>
@@ -173,7 +173,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
               >
                 <div
                   className="mb-1.5"
-                  style={{ color: '#C27FFF', fontSize: 16, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}
+                  style={{ color: '#C27FFF', fontSize: 22, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}
                 >
                   How it&apos;s used
                 </div>
@@ -223,7 +223,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
               className="leading-snug"
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 20,
+                fontSize: 22,
                 fontWeight: 700,
                 color: '#ffffff',
               }}
@@ -280,7 +280,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
               <div className="flex items-center gap-1.5 mb-2">
                 <span style={{ fontSize: '11px' }}>💡</span>
                 <span
-                  style={{ color: '#E8C840', fontWeight: 700, textTransform: 'uppercase' as const, fontSize: 16, letterSpacing: '0.1em' }}
+                  style={{ color: '#E8C840', fontWeight: 700, textTransform: 'uppercase' as const, fontSize: 22, letterSpacing: '0.1em' }}
                 >
                   In plain English
                 </span>
@@ -323,7 +323,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
               {term.aliases.map((alias) => (
                 <span
                   key={alias}
-                  style={{ background: 'rgba(155,63,255,0.12)', color: '#C27FFF', borderRadius: 8, padding: '3px 8px', fontSize: 16 }}
+                  style={{ background: 'rgba(155,63,255,0.12)', color: '#C27FFF', borderRadius: 8, padding: '3px 8px', fontSize: 22 }}
                 >
                   {alias}
                 </span>

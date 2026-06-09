@@ -319,14 +319,14 @@ function AbbreviationCard({ item, groupColor, isLast }: CardProps) {
         style={{ maxHeight: expanded ? '560px' : '0px' }}
       >
         <div className="px-4 pb-4 space-y-3" style={{ paddingTop: '2px' }}>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{item.meaning}</p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 22, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{item.meaning}</p>
           <div
             style={{ background: 'rgba(155,63,255,0.07)', border: '1px solid rgba(155,63,255,0.15)', borderRadius: 10, padding: '12px 14px' }}
           >
-            <div style={{ color: '#C27FFF', fontSize: 16, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: 'var(--font-body)', marginBottom: 6 }}>
+            <div style={{ color: '#C27FFF', fontSize: 22, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: 'var(--font-body)', marginBottom: 6 }}>
               How it&apos;s used
             </div>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, fontFamily: 'var(--font-body)', lineHeight: 1.6 }}>{item.example}</p>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 22, fontFamily: 'var(--font-body)', lineHeight: 1.6 }}>{item.example}</p>
           </div>
           {item.links.length > 0 && (
             <div className="flex flex-wrap gap-2">
@@ -388,10 +388,10 @@ export default function AbbreviationsPage() {
               placeholder="Search abbreviations…"
               value={query}
               onChange={e => setQuery(e.target.value)}
-              style={{ flex: 1, background: 'transparent', outline: 'none', fontSize: 16, fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.88)', border: 'none' }}
+              style={{ flex: 1, background: 'transparent', outline: 'none', fontSize: 22, fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.88)', border: 'none' }}
             />
             {query && (
-              <button onClick={() => setQuery('')} style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, color: 'rgba(255,255,255,0.45)', fontSize: 16, padding: '2px 8px', cursor: 'pointer' }}>
+              <button onClick={() => setQuery('')} style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, color: 'rgba(255,255,255,0.45)', fontSize: 22, padding: '2px 8px', cursor: 'pointer' }}>
                 Clear
               </button>
             )}
@@ -412,7 +412,7 @@ export default function AbbreviationsPage() {
               <div key={group.id}>
                 <div style={{ background: group.bg, borderRadius: 8, padding: '6px 12px', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span className="w-2 h-2 rounded-full shrink-0" style={{ background: group.color }} />
-                  <span style={{ color: group.color, fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 16, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{group.label}</span>
+                  <span style={{ color: group.color, fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 22, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{group.label}</span>
                   <span className="ml-auto text-xs font-medium px-1.5 py-0.5 rounded-full" style={{ background: `${group.color}20`, color: group.color }}>
                     {group.items.length}
                   </span>

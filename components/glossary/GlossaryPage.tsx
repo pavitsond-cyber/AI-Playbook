@@ -112,7 +112,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
     display: 'flex' as const,
     alignItems: 'center' as const,
     justifyContent: 'center' as const,
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: 700 as const,
     lineHeight: 1,
     borderRadius: 8,
@@ -134,7 +134,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px,4vw,64px)', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 8 }}>
             Glossary
           </h1>
-          <p className="mt-1" style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.3)' }}>
+          <p className="mt-1" style={{ fontFamily: 'var(--font-body)', fontSize: 22, color: 'rgba(255,255,255,0.3)' }}>
             {terms.length} terms · tap any card to expand
           </p>
         </div>
@@ -217,13 +217,13 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                         }}>
                           <span style={{ width: 6, height: 6, borderRadius: '50%', background: group.color, flexShrink: 0 }} />
                           <span style={{
-                            fontFamily: 'var(--font-body)', fontSize: 16, fontWeight: 700,
+                            fontFamily: 'var(--font-body)', fontSize: 22, fontWeight: 700,
                             textTransform: 'uppercase', letterSpacing: '0.1em', color: group.color,
                           }}>
                             {group.label}
                           </span>
                         </div>
-                        <span style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.2)' }}>
+                        <span style={{ fontFamily: 'var(--font-body)', fontSize: 22, color: 'rgba(255,255,255,0.2)' }}>
                           {group.items.length} {group.items.length === 1 ? 'term' : 'terms'}
                         </span>
                         <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.07)' }} />
@@ -303,7 +303,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                         onClick={() => scrollToLetter(letter)}
                         disabled={!has}
                         style={{
-                          width: 28, height: 26, fontSize: 16, fontWeight: 700,
+                          width: 28, height: 26, fontSize: 22, fontWeight: 700,
                           borderRadius: 7, border: 'none', padding: 0,
                           cursor: has ? 'pointer' : 'default',
                           color:      isActive ? '#fff' : has ? '#C27FFF' : 'rgba(255,255,255,0.15)',
@@ -325,13 +325,13 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                           background: 'rgba(155,63,255,0.12)',
                           color: '#C27FFF',
                           fontFamily: 'var(--font-display)',
-                          fontSize: 16, fontWeight: 800,
+                          fontSize: 22, fontWeight: 800,
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           flexShrink: 0,
                         }}>
                           {letter}
                         </div>
-                        <span style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.2)' }}>
+                        <span style={{ fontFamily: 'var(--font-body)', fontSize: 22, color: 'rgba(255,255,255,0.2)' }}>
                           {groupTerms.length} {groupTerms.length === 1 ? 'term' : 'terms'}
                         </span>
                         <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.07)' }} />

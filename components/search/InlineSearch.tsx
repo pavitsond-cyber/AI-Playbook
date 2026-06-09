@@ -226,7 +226,7 @@ export default function InlineSearch({
           </button>
         ) : shortcut ? (
           <kbd style={{
-            fontSize: 16, padding: '2px 6px', borderRadius: 5,
+            fontSize: 22, padding: '2px 6px', borderRadius: 5,
             background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.3)',
             flexShrink: 0, lineHeight: 1.4,
           }}>⌘K</kbd>
@@ -267,7 +267,7 @@ export default function InlineSearch({
           {!hasQ && (
             <div style={{ padding: '14px 14px 16px' }}>
               <p style={{
-                fontSize: 16, fontWeight: 700, textTransform: 'uppercase',
+                fontSize: 22, fontWeight: 700, textTransform: 'uppercase',
                 letterSpacing: '0.07em', color: 'rgba(255,255,255,0.3)', marginBottom: 10,
               }}>
                 Quick navigate
@@ -284,7 +284,7 @@ export default function InlineSearch({
                         display: 'flex', alignItems: 'center', gap: 6,
                         padding: '6px 11px', borderRadius: 20,
                         background: c.bg, border: `1px solid ${c.border}`,
-                        color: c.color, fontSize: 16, fontWeight: 500, cursor: 'pointer',
+                        color: c.color, fontSize: 22, fontWeight: 500, cursor: 'pointer',
                         transition: 'transform 120ms, box-shadow 120ms',
                       }}
                       onMouseEnter={e => {
@@ -301,7 +301,7 @@ export default function InlineSearch({
                   )
                 })}
               </div>
-              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.2)', marginTop: 12, lineHeight: 1.5 }}>
+              <p style={{ fontSize: 22, color: 'rgba(255,255,255,0.2)', marginTop: 12, lineHeight: 1.5 }}>
                 Start typing to search across all skills, prompts, terms, and principles.
               </p>
             </div>
@@ -310,10 +310,10 @@ export default function InlineSearch({
           {/* ── No results ────────────────────────────────────────────── */}
           {hasQ && total === 0 && (
             <div style={{ padding: '28px 16px', textAlign: 'center' }}>
-              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', marginBottom: 4 }}>
+              <p style={{ fontSize: 22, color: 'rgba(255,255,255,0.7)', marginBottom: 4 }}>
                 Nothing found for &ldquo;<strong>{q}</strong>&rdquo;
               </p>
-              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.3)' }}>
+              <p style={{ fontSize: 22, color: 'rgba(255,255,255,0.3)' }}>
                 Try a skill name, AI term, or prompt topic.
               </p>
             </div>
@@ -345,14 +345,14 @@ export default function InlineSearch({
                       <Icon size={10} color={c.color} />
                     </div>
                     <span style={{
-                      fontSize: 16, fontWeight: 700, textTransform: 'uppercase',
+                      fontSize: 22, fontWeight: 700, textTransform: 'uppercase',
                       letterSpacing: '0.08em', color: c.color,
                     }}>
                       {c.label}
                     </span>
                   </div>
                   <span style={{
-                    fontSize: 16, fontWeight: 600, padding: '1px 7px',
+                    fontSize: 22, fontWeight: 600, padding: '1px 7px',
                     borderRadius: 10, background: c.bg, color: c.color,
                   }}>
                     {items.length}
@@ -397,12 +397,12 @@ export default function InlineSearch({
                           display: 'flex', alignItems: 'baseline',
                           gap: 6, marginBottom: 2, flexWrap: 'wrap',
                         }}>
-                          <span style={{ fontSize: 16, fontWeight: 500, color: 'rgba(255,255,255,0.9)', lineHeight: 1.3 }}>
+                          <span style={{ fontSize: 22, fontWeight: 500, color: 'rgba(255,255,255,0.9)', lineHeight: 1.3 }}>
                             <Hi text={item.title} q={q} />
                           </span>
                           {item.subtitle && (
                             <span style={{
-                              fontSize: 16, color: 'rgba(255,255,255,0.3)',
+                              fontSize: 22, color: 'rgba(255,255,255,0.3)',
                               overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                               maxWidth: 160,
                             }}>
@@ -411,7 +411,7 @@ export default function InlineSearch({
                           )}
                         </div>
                         <p style={{
-                          fontSize: 16, color: 'rgba(255,255,255,0.4)', lineHeight: 1.45, margin: 0,
+                          fontSize: 22, color: 'rgba(255,255,255,0.4)', lineHeight: 1.45, margin: 0,
                           overflow: 'hidden',
                           display: '-webkit-box',
                           WebkitLineClamp: 1,
@@ -450,10 +450,10 @@ export default function InlineSearch({
               borderTop: '1px solid rgba(255,255,255,0.04)',
               background: 'rgba(255,255,255,0.02)',
             }}>
-              <span style={{ fontSize: 16, color: 'rgba(255,255,255,0.2)' }}>
+              <span style={{ fontSize: 22, color: 'rgba(255,255,255,0.2)' }}>
                 {total} result{total !== 1 ? 's' : ''}
               </span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 16, color: 'rgba(255,255,255,0.2)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 22, color: 'rgba(255,255,255,0.2)' }}>
                 <span>↑↓ move</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
                   <CornerDownLeft size={10} />
