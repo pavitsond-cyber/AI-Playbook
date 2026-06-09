@@ -265,3 +265,13 @@ body {
 input::placeholder { color: rgba(255,255,255,0.3); }
 input { caret-color: #C27FFF; }
 mark { background: rgba(155,63,255,0.2) !important; color: #C27FFF !important; border-radius: 2px; font-style: normal; }
+
+/* ── Landing page section bounce ─────────────────────── */
+.landing-section-title {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: left center;
+}
+.landing-section-link:hover .landing-section-title {
+  transform: scale(1.08);
+}

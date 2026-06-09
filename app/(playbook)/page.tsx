@@ -3,10 +3,10 @@
 import Link from 'next/link'
 
 const sections = [
-  { num: '01', title: 'Skills',      sub: '21 resources',   href: '/skills'    },
-  { num: '02', title: 'Prompts',     sub: '5 resources',    href: '/prompts'   },
-  { num: '03', title: 'Glossary',    sub: '50+ resources',  href: '/glossary'  },
-  { num: '04', title: 'Principles',  sub: '4 guidelines',   href: '/dos-donts' },
+  { num: '01', title: 'Skills',     sub: '21 resources',  href: '/skills'    },
+  { num: '02', title: 'Prompts',    sub: '5 resources',   href: '/prompts'   },
+  { num: '03', title: 'Glossary',   sub: '50+ resources', href: '/glossary'  },
+  { num: '04', title: 'Principles', sub: '4 guidelines',  href: '/dos-donts' },
 ]
 
 export default function LandingPage() {
@@ -19,7 +19,7 @@ export default function LandingPage() {
       fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
     }}>
 
-      {/* ── Video background ──────────────────────────────────── */}
+      {/* ── Video background ──────────────────────────────── */}
       <video
         autoPlay
         muted
@@ -34,28 +34,19 @@ export default function LandingPage() {
           zIndex: 0,
         }}
       >
-        {/* Drop video src here e.g. <source src="/video/bg.mp4" type="video/mp4" /> */}
+        <source src="/videos/landing-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* ── Background gradient SVG (purple/blue ellipses) ────── */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 1, overflow: 'hidden' }}>
-        <img
-          src="/images/landing-bg.svg"
-          alt=""
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 1 }}
-        />
-      </div>
-
-      {/* ── Extra deep violet vignette on right ───────────────── */}
+      {/* ── Dark overlay to darken the video slightly ────── */}
       <div style={{
         position: 'absolute',
         inset: 0,
-        zIndex: 2,
-        background: 'radial-gradient(ellipse 80% 90% at 80% 50%, rgba(60,20,100,0.45) 0%, transparent 70%)',
+        background: 'rgba(10,0,20,0.35)',
+        zIndex: 1,
         pointerEvents: 'none',
       }} />
 
-      {/* ── Top nav ───────────────────────────────────────────── */}
+      {/* ── Top nav ───────────────────────────────────────── */}
       <div style={{
         position: 'absolute',
         top: 32,
@@ -68,24 +59,26 @@ export default function LandingPage() {
         justifyContent: 'space-between',
         zIndex: 10,
       }}>
-        {/* Headout logo */}
+        {/* Headout logo — correct proportions, no stretch */}
         <img
           src="/images/headout-logo.svg"
           alt="headout"
-          style={{ height: 16, width: 'auto', display: 'block' }}
+          style={{
+            height: 16,
+            width: 109,   /* exact SVG viewBox ratio */
+            display: 'block',
+            flexShrink: 0,
+          }}
         />
 
-        {/* "THE RESOURCE LIBRARY" */}
+        {/* "THE RESOURCE LIBRARY" — reduced contrast */}
         <p style={{
           fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: 400,
-          letterSpacing: '0.38em',
+          letterSpacing: '0.43em',
           textTransform: 'uppercase',
-          background: 'linear-gradient(175.7deg, #ffffff 41%, rgba(255,255,255,0) 113%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
+          color: 'rgba(255,255,255,0.25)',   /* low contrast */
           margin: 0,
           whiteSpace: 'nowrap',
         }}>
@@ -93,7 +86,7 @@ export default function LandingPage() {
         </p>
       </div>
 
-      {/* ── Main content ──────────────────────────────────────── */}
+      {/* ── Main content ──────────────────────────────────── */}
       <div style={{
         position: 'absolute',
         left: 74,
@@ -107,6 +100,7 @@ export default function LandingPage() {
 
         {/* Headline + subtitle */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+          {/* Headline — solid white, no clipping gradient */}
           <h1 style={{
             fontFamily: "'Halyard Display', Georgia, serif",
             fontSize: 'clamp(64px, 9vw, 130px)',
@@ -114,41 +108,40 @@ export default function LandingPage() {
             lineHeight: 1,
             letterSpacing: '-0.02em',
             margin: 0,
-            background: 'linear-gradient(169.4deg, #ffffff 41%, rgba(255,255,255,0) 113%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            color: '#ffffff',
+            whiteSpace: 'nowrap',
           }}>
             AI Playbook
           </h1>
+
+          {/* Subtitle — solid white */}
           <p style={{
             fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
             fontSize: 'clamp(18px, 2.1vw, 30px)',
             fontWeight: 300,
             letterSpacing: '-0.02em',
             margin: 0,
-            background: 'linear-gradient(177.5deg, #ffffff 41%, rgba(255,255,255,0) 113%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            color: '#ffffff',
             maxWidth: 520,
           }}>
             A repository for everything in AI
           </p>
         </div>
 
-        {/* Section links */}
-        <div style={{
-          display: 'flex',
-          gap: 63,
-          alignItems: 'flex-end',
-          flexWrap: 'wrap',
-        }}>
+        {/* Section links — bounce scale on hover, no color change */}
+        <div style={{ display: 'flex', gap: 63, alignItems: 'flex-end', flexWrap: 'wrap' }}>
           {sections.map(s => (
             <Link
               key={s.href}
               href={s.href}
-              style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: 22, width: 195 }}
+              className="landing-section-link"
+              style={{
+                textDecoration: 'none',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 22,
+                width: 195,
+              }}
             >
               <span style={{
                 fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
@@ -160,16 +153,16 @@ export default function LandingPage() {
                 {s.num}
               </span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                <span style={{
-                  fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-                  fontSize: 'clamp(26px, 2.8vw, 40px)',
-                  fontWeight: 400,
-                  letterSpacing: '-0.02em',
-                  color: '#ffffff',
-                  transition: 'color 0.2s ease',
-                }}
-                onMouseEnter={e => e.currentTarget.style.color = '#c18dff'}
-                onMouseLeave={e => e.currentTarget.style.color = '#ffffff'}
+                {/* Title — bouncy scale on hover via CSS class */}
+                <span
+                  className="landing-section-title"
+                  style={{
+                    fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
+                    fontSize: 'clamp(26px, 2.8vw, 40px)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.02em',
+                    color: '#ffffff',
+                  }}
                 >
                   {s.title}
                 </span>
@@ -186,8 +179,8 @@ export default function LandingPage() {
             </Link>
           ))}
         </div>
-      </div>
 
+      </div>
     </div>
   )
 }
