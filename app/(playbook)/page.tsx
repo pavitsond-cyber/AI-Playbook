@@ -44,10 +44,10 @@ export default function LandingPage() {
         <img src="/images/landing-gradient.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
       </div>
 
-      {/* ── Top nav ───────────────────────────────────────── */}
-      <div style={{
+      {/* ── Top nav — desktop only; mobile uses TopNav from layout ── */}
+      <div className="hidden sm:flex" style={{
         position: 'absolute', top: 28, left: 0, right: 0,
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        alignItems: 'center', justifyContent: 'space-between',
         paddingLeft: H_PAD, paddingRight: H_PAD,
         zIndex: 10,
       }}>

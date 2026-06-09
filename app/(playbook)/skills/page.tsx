@@ -778,6 +778,15 @@ function downloadSkill(skill: Skill) {
 }
 
 function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; onToggle: () => void }) {
+  const [downloaded, setDownloaded] = useState(false)
+
+  const handleDownload = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    downloadSkill(skill)
+    setDownloaded(true)
+    setTimeout(() => setDownloaded(false), 2000)
+  }
+
   return (
     <div
       style={{
@@ -791,7 +800,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
     >
       {/* ── Download button — top right, outside the toggle button ────── */}
       <button
-        onClick={e => { e.stopPropagation(); downloadSkill(skill) }}
+        onClick={handleDownload}
         title="Download as .md"
         style={{
           position: 'absolute',
@@ -802,10 +811,10 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           alignItems: 'center',
           gap: 5,
           padding: '5px 11px',
-          background: 'rgba(255,255,255,0.05)',
-          border: '1px solid rgba(255,255,255,0.09)',
+          background: downloaded ? '#0d2b1a' : 'rgba(255,255,255,0.05)',
+          border: `1px solid ${downloaded ? '#166534' : 'rgba(255,255,255,0.09)'}`,
           borderRadius: 8,
-          color: 'rgba(255,255,255,0.4)',
+          color: downloaded ? '#4ade80' : 'rgba(255,255,255,0.4)',
           fontSize: 11,
           fontFamily: 'var(--font-body)',
           fontWeight: 500,
@@ -813,18 +822,22 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           transition: 'all 0.15s ease',
         }}
         onMouseEnter={e => {
-          e.currentTarget.style.background = 'rgba(155,63,255,0.12)'
-          e.currentTarget.style.borderColor = 'rgba(155,63,255,0.25)'
-          e.currentTarget.style.color = '#C27FFF'
+          if (!downloaded) {
+            e.currentTarget.style.background = 'rgba(155,63,255,0.12)'
+            e.currentTarget.style.borderColor = 'rgba(155,63,255,0.25)'
+            e.currentTarget.style.color = '#C27FFF'
+          }
         }}
         onMouseLeave={e => {
-          e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)'
-          e.currentTarget.style.color = 'rgba(255,255,255,0.4)'
+          if (!downloaded) {
+            e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)'
+            e.currentTarget.style.color = 'rgba(255,255,255,0.4)'
+          }
         }}
       >
         <Download size={11} />
-        .md
+        {downloaded ? 'Saved' : '.md'}
       </button>
 
       {/* ── Collapsed row ─────────────────────────────────────────────── */}
