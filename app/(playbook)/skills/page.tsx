@@ -940,7 +940,16 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.9)' }}>{skill.name}</span>
               </div>
               <div style={{ padding: '14px 16px' }}>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.65, color: 'rgba(255,255,255,0.55)', margin: '0 0 12px' }}>{skill.qualityBar}</p>
+                <ul style={{ margin: '0 0 12px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  {skill.qualityBar.split(/\.\s+/).filter(Boolean).map((point, i) => (
+                    <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#C27FFF', flexShrink: 0, marginTop: 5 }} />
+                      <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.6, color: 'rgba(255,255,255,0.6)' }}>
+                        {point.endsWith('.') ? point : point + '.'}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                   {(skill.outputFields ?? skill.tools).map(f => (
                     <span key={f} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '3px 10px' }}>{f}</span>
