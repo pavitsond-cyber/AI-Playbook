@@ -3,8 +3,9 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Search } from 'lucide-react'
 import InlineSearch from '@/components/search/InlineSearch'
+import MobileSearchSheet from '@/components/search/MobileSearchSheet'
 
 const navItems = [
   { href: '/prompts',   label: 'Prompts' },
@@ -16,10 +17,12 @@ const navItems = [
 export default function TopNav() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
   const isHome = pathname === '/'
   const isActive = (href: string) => pathname === href || (href !== '/' && pathname.startsWith(href))
 
   return (
+    <>
     <header style={{
       position: 'fixed', top: 0, left: 0, right: 0, height: 64,
       background: 'rgba(10,0,16,0.65)',
@@ -70,8 +73,18 @@ export default function TopNav() {
           </div>
         )}
 
-        {/* Mobile hamburger */}
-        <div className="sm:hidden" style={{ marginLeft: 'auto' }}>
+        {/* Mobile: search icon + hamburger */}
+        <div className="sm:hidden" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 4 }}>
+          {/* Search icon */}
+          <button
+            onClick={() => { setMobileOpen(false); setSearchOpen(true) }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.65)', padding: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}
+            aria-label="Search"
+          >
+            <Search size={19} />
+          </button>
+
+          {/* Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.7)', padding: 6, position: 'relative', width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
@@ -119,7 +132,6 @@ export default function TopNav() {
         }}
       >
         <div style={{ padding: '12px 20px 16px' }}>
-          {!isHome && <div style={{ marginBottom: 10 }}><InlineSearch placeholder="Search everything…" compact /></div>}
           <nav style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <Link
               href="/"
@@ -156,5 +168,9 @@ export default function TopNav() {
         </div>
       </div>
     </header>
+
+    {/* Full-screen mobile search sheet */}
+    <MobileSearchSheet open={searchOpen} onClose={() => setSearchOpen(false)} />
+    </>
   )
 }

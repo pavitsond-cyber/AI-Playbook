@@ -112,6 +112,8 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
                   padding: '2px 8px',
                   letterSpacing: '0.04em',
                   flexShrink: 0,
+                  alignSelf: 'flex-start',
+                  display: 'inline-block',
                 }}
               >
                 {term.term}
