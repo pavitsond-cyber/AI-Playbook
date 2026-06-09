@@ -125,22 +125,22 @@ export default function LandingPage() {
       fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
     }}>
 
-      {/* ── Video — right side desktop, full-screen mobile ────────────── */}
-      {/* Figma: video occupies the right ~58% of the viewport            */}
+      {/* ── Video — full screen, diver shown on the right via objectPosition */}
       <video
         autoPlay muted loop playsInline
-        className="absolute top-0 bottom-0 right-0 h-full w-full sm:w-[58%]"
-        style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
+        className="absolute inset-0 w-full h-full"
+        style={{ objectFit: 'cover', objectPosition: '72% center', zIndex: 0 }}
       >
         <source src="/videos/landing-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* ── Gradient — left-to-right horizontal mask ─────────────────── */}
+      {/* ── Gradient mask — solid dark left fading to transparent right   */}
+      {/* No seam: video is full-width, gradient hides the left portion   */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           zIndex: 1,
-          background: 'linear-gradient(to right, #0D0B1E 0%, #0D0B1E 35%, rgba(13,11,30,0.92) 48%, rgba(13,11,30,0.55) 62%, rgba(13,11,30,0.15) 78%, transparent 100%)',
+          background: 'linear-gradient(to right, #0D0B1E 0%, #0D0B1E 30%, rgba(13,11,30,0.96) 42%, rgba(13,11,30,0.75) 54%, rgba(13,11,30,0.3) 70%, rgba(13,11,30,0.05) 85%, transparent 100%)',
         }}
       />
 
