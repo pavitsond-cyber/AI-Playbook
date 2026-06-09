@@ -727,7 +727,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
               color: 'rgba(255,255,255,0.45)',
               lineHeight: 1.6,
               margin: 0,
-              width: '100%',
+              paddingRight: 72,   /* match title row clearance from Copy button */
             }}>
               {prompt.description}
             </p>
