@@ -1011,13 +1011,9 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
             fontFamily: 'var(--font-body)',
             fontSize: 14,
             color: 'rgba(255,255,255,0.45)',
-            lineHeight: 1.5,
+            lineHeight: 1.6,
             margin: 0,
-            overflow: 'hidden',
-            display: '-webkit-box',
-            WebkitLineClamp: 1,
-            WebkitBoxOrient: 'vertical',
-          } as React.CSSProperties}>
+          }}>
             {skill.what}
           </p>
         </div>
@@ -1119,20 +1115,6 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
             </div>
           )}
 
-          {/* ── Good to know / Edge cases (rich skills only) ───────────── */}
-          {skill.edgeCases && (
-            <div>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Good to know</p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                {skill.edgeCases.map((ec, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '10px 14px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 9 }}>
-                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(155,63,255,0.5)', flexShrink: 0, marginTop: 6 }} />
-                    <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.55 }}>{ec}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* ── Tools + Teams (fallback for non-rich skills) ───────────── */}
           {!skill.outputFields && (
