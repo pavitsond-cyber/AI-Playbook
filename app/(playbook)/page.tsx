@@ -104,22 +104,31 @@ export default function LandingPage() {
     <div style={{ position: 'fixed', inset: 0, background: '#0D0B1E', overflow: 'hidden' }}>
 
       {/* ── Video ─────────────────────────────────────────────────────── */}
-      {/* Mobile: full-screen (Figma shows diver full portrait)           */}
-      {/* Desktop: right 58% of screen                                   */}
+      {/* Figma node 111:1954: full-width, bottom-anchored, diver right  */}
+      {/* object-position places the diver at ~80% from left (right side) */}
       <video
         autoPlay muted loop playsInline
-        className="absolute top-0 bottom-0 right-0 h-full w-full sm:w-[58%]"
-        style={{ objectFit: 'cover', objectPosition: '72% center', zIndex: 0 }}
+        className="absolute"
+        style={{
+          bottom: 0, left: 0,
+          width: '100%', height: '100%',
+          objectFit: 'cover',
+          /* 80% from left crops to show diver on right, light rays upper-right */
+          objectPosition: '80% 50%',
+          zIndex: 0,
+          opacity: 0.9,
+        }}
       >
         <source src="/videos/landing-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* ── Desktop gradient mask ─────────────────────────────────────── */}
+      {/* ── Desktop gradient mask — left stays dark, right reveals diver  */}
       <div
         className="hidden sm:block absolute inset-0 pointer-events-none"
         style={{
           zIndex: 1,
-          background: 'linear-gradient(to right, #0D0B1E 0%, #0D0B1E 30%, rgba(13,11,30,0.96) 42%, rgba(13,11,30,0.75) 54%, rgba(13,11,30,0.3) 70%, rgba(13,11,30,0.05) 85%, transparent 100%)',
+          /* Matches Figma: left half solid dark, sweeps to near-transparent */
+          background: 'linear-gradient(to right, #0D0B1E 0%, #0D0B1E 28%, rgba(13,11,30,0.92) 40%, rgba(13,11,30,0.6) 55%, rgba(13,11,30,0.2) 72%, rgba(13,11,30,0.05) 88%, transparent 100%)',
         }}
       />
 
