@@ -676,18 +676,24 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
 }) {
   return (
     <div style={{
+      position: 'relative',
       background: 'rgba(255,255,255,0.03)',
       border: isOpen ? '1px solid rgba(155,63,255,0.25)' : '1px solid rgba(255,255,255,0.07)',
       borderRadius: 14,
       overflow: 'hidden',
       transition: 'border-color 0.2s ease',
     }}>
+      {/* ── Copy button — absolute top-right, always visible ──── */}
+      <div style={{ position: 'absolute', top: 16, right: 18, zIndex: 2 }}>
+        <CopyButton text={prompt.template} />
+      </div>
+
       {/* ── Collapsed row ─────────────────────────────────────── */}
       <button
         onClick={onToggle}
         style={{
           width: '100%',
-          padding: '18px 20px',
+          padding: '18px 84px 18px 20px',
           background: 'transparent',
           border: 'none',
           cursor: 'pointer',
@@ -743,7 +749,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
         </div>
       </button>
 
-      {/* ── Expanded: template + copy ─────────────────────────── */}
+      {/* ── Expanded: template ────────────────────────────────── */}
       <div style={{
         overflow: 'hidden',
         maxHeight: isOpen ? '3000px' : '0px',
@@ -757,30 +763,18 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
         }}>
           {/* Template block */}
           <div style={{
-            position: 'relative',
             background: 'rgba(0,0,0,0.4)',
             border: '1px solid rgba(255,255,255,0.07)',
             borderRadius: 10,
             overflow: 'hidden',
           }}>
-            {/* Copy button top-right */}
-            <div style={{
-              position: 'absolute',
-              top: 12,
-              right: 12,
-              zIndex: 1,
-            }}>
-              <CopyButton text={prompt.template} />
-            </div>
-
-            {/* Template text */}
             <pre style={{
               fontFamily: "'Courier New', Courier, monospace",
               fontSize: 12.5,
               lineHeight: 1.75,
               color: 'rgba(255,255,255,0.72)',
               margin: 0,
-              padding: '20px 48px 20px 20px',
+              padding: '20px',
               whiteSpace: 'pre-wrap',
               wordBreak: 'break-word',
               overflowX: 'auto',
