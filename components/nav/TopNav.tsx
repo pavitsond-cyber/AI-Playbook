@@ -50,7 +50,7 @@ export default function TopNav() {
             return (
               <Link key={item.href} href={item.href} style={{
                 padding: '6px 14px', borderRadius: 100,
-                fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 400,
+                fontFamily: 'var(--font-body)', fontSize: 16, fontWeight: 400,
                 color: active ? '#ffffff' : 'rgba(255,255,255,0.45)',
                 background: active ? 'rgba(255,255,255,0.08)' : 'transparent',
                 textDecoration: 'none', transition: 'all 0.2s ease', whiteSpace: 'nowrap',
@@ -88,9 +88,9 @@ export default function TopNav() {
         }}>
           {!isHome && <div style={{ marginBottom: 10 }}><InlineSearch placeholder="Search everything…" compact /></div>}
           <nav style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Link href="/" onClick={() => setMobileOpen(false)} style={{ padding: '10px 12px', borderRadius: 8, fontFamily: 'var(--font-body)', fontSize: 14, color: pathname === '/' ? '#ffffff' : 'rgba(255,255,255,0.55)', background: pathname === '/' ? 'rgba(255,255,255,0.08)' : 'transparent', textDecoration: 'none' }}>Home</Link>
+            <Link href="/" onClick={() => setMobileOpen(false)} style={{ padding: '10px 12px', borderRadius: 8, fontFamily: 'var(--font-body)', fontSize: 16, color: pathname === '/' ? '#ffffff' : 'rgba(255,255,255,0.55)', background: pathname === '/' ? 'rgba(255,255,255,0.08)' : 'transparent', textDecoration: 'none' }}>Home</Link>
             {navItems.map(item => (
-              <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)} style={{ padding: '10px 12px', borderRadius: 8, fontFamily: 'var(--font-body)', fontSize: 14, color: isActive(item.href) ? '#ffffff' : 'rgba(255,255,255,0.55)', background: isActive(item.href) ? 'rgba(255,255,255,0.08)' : 'transparent', textDecoration: 'none' }}>
+              <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)} style={{ padding: '10px 12px', borderRadius: 8, fontFamily: 'var(--font-body)', fontSize: 16, color: isActive(item.href) ? '#ffffff' : 'rgba(255,255,255,0.55)', background: isActive(item.href) ? 'rgba(255,255,255,0.08)' : 'transparent', textDecoration: 'none' }}>
                 {item.label}
               </Link>
             ))}
