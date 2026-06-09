@@ -848,7 +848,9 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           display: 'flex',
           alignItems: 'flex-start',
           gap: 16,
-          padding: '18px 84px 18px 20px',
+          /* Equal horizontal padding — download button is absolute so
+             only the header row (badge/title) needs right clearance  */
+          padding: '18px 20px',
           background: 'transparent',
           border: 'none',
           cursor: 'pointer',
@@ -858,8 +860,12 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
       >
         {/* Name + description */}
         <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
-          {/* Mobile: stacked (badge top, name below); Desktop: inline row */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap" style={{ gap: '10px 10px', marginBottom: 6 }}>
+          {/* Badge + title row — add right padding here only to avoid
+              overlapping the absolutely-positioned download button     */}
+          <div
+            className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap"
+            style={{ gap: '10px 10px', marginBottom: 6, paddingRight: 72 }}
+          >
             {skill.domain && (
               <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, color: '#FF69DB', background: 'rgba(255,105,219,0.1)', border: '1px solid rgba(255,105,219,0.2)', borderRadius: 100, padding: '2px 8px', textTransform: 'uppercase' as const, letterSpacing: '0.08em', flexShrink: 0, alignSelf: 'flex-start' }}>
                 {skill.domain}
