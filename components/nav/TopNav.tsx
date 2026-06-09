@@ -75,7 +75,7 @@ export default function TopNav() {
         )}
 
         {/* Mobile: search icon + hamburger */}
-        <div className="sm:hidden" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 4 }}>
+        <div className="sm:hidden flex items-center" style={{ marginLeft: 'auto', gap: 4 }}>
           {/* Search icon */}
           <button
             onClick={() => { setMobileOpen(false); setSearchOpen(true) }}
