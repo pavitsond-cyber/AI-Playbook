@@ -125,7 +125,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
   })
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', background: '#0A0010', overflow: 'hidden' }}>
+    <div style={{ position: 'relative', minHeight: '100vh', background: '#0A0010', overflow: 'clip' }}>
       <BlobLayer />
       <div style={{ position: "relative", zIndex: 1, maxWidth: 960, margin: "0 auto", width: "100%" }}>
 
@@ -248,7 +248,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
               {/* A-Z sidebar — sticky, bigger, more spaced */}
               <div
                 className="hidden sm:flex flex-col shrink-0"
-                style={{ position: 'sticky', top: 172, gap: 5, paddingTop: 4 }}
+                style={{ position: 'sticky', top: 180, alignSelf: 'flex-start', gap: 5, paddingTop: 4 }}
               >
                 {ALPHABET.map(letter => {
                   const has = activeLetters.has(letter)
