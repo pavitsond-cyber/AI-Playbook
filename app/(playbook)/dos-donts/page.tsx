@@ -6,54 +6,55 @@ import BlobLayer from '@/components/ui/BlobLayer'
 /* ── Cinematic gradient artworks — designed for landscape card-top format ── */
 const ARTWORKS: Record<string, { bg: string; overlay?: string }> = {
 
-  // 1. Precise amber horizon — defining clarity from dark
+  // 1. Orange-red beam converging to a sharp point (ref 2 style)
   'define': {
     bg: [
-      'radial-gradient(ellipse 80% 4px at 50% 58%, #FFA040 0%, rgba(255,110,0,0.6) 35%, transparent 100%)',
-      'radial-gradient(ellipse 60% 35% at 50% 58%, rgba(255,120,0,0.1) 0%, transparent 100%)',
-      'radial-gradient(ellipse 100% 60% at 50% 100%, rgba(0,0,30,0.8) 0%, transparent 70%)',
-      'linear-gradient(180deg, #010810 0%, #000C22 70%, #010208 100%)',
+      'radial-gradient(ellipse 8% 90% at 50% 50%, rgba(255,240,200,0.95) 0%, rgba(255,160,20,0.8) 12%, rgba(255,80,0,0.6) 30%, rgba(180,30,0,0.3) 55%, transparent 80%)',
+      'radial-gradient(ellipse 35% 100% at 50% 50%, rgba(255,100,20,0.4) 0%, rgba(200,40,0,0.2) 45%, transparent 75%)',
+      'radial-gradient(ellipse 70% 100% at 50% 50%, rgba(255,60,0,0.12) 0%, transparent 65%)',
+      'linear-gradient(180deg, #020005 0%, #030008 100%)',
     ].join(','),
   },
 
-  // 2. Diverging warm/cool trails — speed vs discipline
+  // 2. Two diverging light trails — warm orange-red + cool blue (ref 3 style)
   'fast': {
     bg: [
-      'radial-gradient(ellipse 55% 70% at 18% 80%, rgba(255,100,20,0.45) 0%, rgba(255,60,0,0.2) 40%, transparent 80%)',
-      'radial-gradient(ellipse 55% 70% at 82% 20%, rgba(60,150,255,0.35) 0%, rgba(30,100,220,0.15) 40%, transparent 80%)',
-      'linear-gradient(145deg, rgba(255,80,0,0.12) 0%, transparent 50%)',
-      'linear-gradient(35deg,  rgba(60,150,255,0.1) 0%, transparent 50%)',
-      'linear-gradient(180deg, #040008 0%, #05000F 100%)',
+      'radial-gradient(ellipse 40% 55% at 18% 22%, rgba(255,140,30,0.75) 0%, rgba(255,80,0,0.5) 25%, rgba(200,50,0,0.2) 55%, transparent 80%)',
+      'radial-gradient(ellipse 40% 55% at 82% 78%, rgba(50,150,255,0.65) 0%, rgba(20,90,220,0.4) 25%, rgba(10,50,180,0.15) 55%, transparent 80%)',
+      'linear-gradient(135deg, rgba(255,100,20,0.15) 0%, transparent 45%)',
+      'linear-gradient(315deg, rgba(50,130,255,0.12) 0%, transparent 45%)',
+      'linear-gradient(180deg, #020005 0%, #030010 100%)',
     ].join(','),
   },
 
-  // 3. Verification node grid — structure and pattern
+  // 3. Dark starfield with scattered glowing dots in purple/red/orange/blue (ref 5)
   'test': {
     bg: [
-      'radial-gradient(circle 3px at 17% 30%, rgba(155,63,255,0.9) 0%, transparent 100%)',
-      'radial-gradient(circle 3px at 34% 30%, rgba(155,63,255,0.55) 0%, transparent 100%)',
-      'radial-gradient(circle 3px at 51% 30%, rgba(155,63,255,0.75) 0%, transparent 100%)',
-      'radial-gradient(circle 3px at 68% 30%, rgba(155,63,255,0.45) 0%, transparent 100%)',
-      'radial-gradient(circle 3px at 85% 30%, rgba(155,63,255,0.65) 0%, transparent 100%)',
-      'radial-gradient(circle 3px at 17% 57%, rgba(155,63,255,0.45) 0%, transparent 100%)',
-      'radial-gradient(circle 4px at 34% 57%, rgba(194,127,255,1.0) 0%, transparent 100%)',
-      'radial-gradient(circle 3px at 51% 57%, rgba(155,63,255,0.6) 0%, transparent 100%)',
-      'radial-gradient(circle 4px at 68% 57%, rgba(194,127,255,0.95) 0%, transparent 100%)',
-      'radial-gradient(circle 3px at 85% 57%, rgba(155,63,255,0.5) 0%, transparent 100%)',
-      'radial-gradient(circle 3px at 17% 80%, rgba(155,63,255,0.3) 0%, transparent 100%)',
-      'radial-gradient(circle 3px at 51% 80%, rgba(155,63,255,0.7) 0%, transparent 100%)',
-      'radial-gradient(circle 4px at 68% 80%, rgba(194,127,255,1.0) 0%, transparent 100%)',
-      'radial-gradient(ellipse 70% 55% at 55% 65%, rgba(100,40,180,0.09) 0%, transparent 100%)',
-      'linear-gradient(180deg, #040010 0%, #070016 100%)',
+      'radial-gradient(circle 2px at 12% 18%, rgba(200,80,255,0.95) 0%, transparent 100%)',
+      'radial-gradient(circle 3px at 28% 42%, rgba(255,80,30,0.9) 0%, transparent 100%)',
+      'radial-gradient(circle 2px at 45% 22%, rgba(80,160,255,0.85) 0%, transparent 100%)',
+      'radial-gradient(circle 3px at 63% 55%, rgba(200,50,255,0.9) 0%, transparent 100%)',
+      'radial-gradient(circle 2px at 79% 30%, rgba(255,120,40,0.85) 0%, transparent 100%)',
+      'radial-gradient(circle 2px at 91% 68%, rgba(80,140,255,0.8) 0%, transparent 100%)',
+      'radial-gradient(circle 3px at 35% 72%, rgba(255,60,20,0.9) 0%, transparent 100%)',
+      'radial-gradient(circle 2px at 55% 85%, rgba(180,50,255,0.85) 0%, transparent 100%)',
+      'radial-gradient(circle 2px at 72% 15%, rgba(80,180,255,0.75) 0%, transparent 100%)',
+      'radial-gradient(circle 3px at 8% 60%, rgba(255,100,30,0.85) 0%, transparent 100%)',
+      'radial-gradient(circle 2px at 50% 48%, rgba(220,80,255,0.9) 0%, transparent 100%)',
+      'radial-gradient(circle 2px at 88% 45%, rgba(255,140,60,0.8) 0%, transparent 100%)',
+      'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(80,20,120,0.12) 0%, transparent 100%)',
+      'linear-gradient(180deg, #020005 0%, #030010 100%)',
     ].join(','),
   },
 
-  // 4. Warm arch — human threshold (ref 1 energy), central glow
+  // 4. Massive red/orange/purple converging light curtains, tiny figure silhouette (ref 4)
   'human': {
     bg: [
-      'radial-gradient(ellipse 80% 65% at 50% 105%, rgba(255,145,30,0.65) 0%, rgba(255,80,0,0.35) 30%, rgba(100,140,255,0.12) 58%, transparent 100%)',
-      'radial-gradient(ellipse 35% 22% at 50% 105%, rgba(255,220,100,0.6) 0%, transparent 100%)',
-      'linear-gradient(180deg, #030006 0%, #0B0618 60%, #020008 100%)',
+      'radial-gradient(ellipse 120% 80% at 50% 115%, rgba(255,100,20,0.7) 0%, rgba(255,50,0,0.5) 20%, rgba(180,20,80,0.35) 40%, rgba(100,20,200,0.2) 60%, transparent 80%)',
+      'radial-gradient(ellipse 60% 80% at 20% 110%, rgba(255,80,0,0.5) 0%, rgba(200,30,100,0.3) 35%, rgba(80,0,180,0.15) 65%, transparent 85%)',
+      'radial-gradient(ellipse 60% 80% at 80% 110%, rgba(255,80,0,0.5) 0%, rgba(200,30,100,0.3) 35%, rgba(80,0,180,0.15) 65%, transparent 85%)',
+      'radial-gradient(ellipse 30% 25% at 50% 115%, rgba(255,200,80,0.65) 0%, transparent 100%)',
+      'linear-gradient(180deg, #020005 0%, #060010 60%, #020005 100%)',
     ].join(','),
     overlay: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" style="position:absolute;inset:0;width:100%;height:100%">
       <ellipse cx="300" cy="225" rx="155" ry="110" fill="none" stroke="rgba(255,140,40,0.15)" stroke-width="1.2"/>
@@ -69,55 +70,54 @@ const ARTWORKS: Record<string, { bg: string; overlay?: string }> = {
     </svg>`,
   },
 
-  // 5. Verification beam — purple path confirmed
+  // 5. Focused blue-white beam through dark center (ref 2 variation, cooler)
   'verify': {
     bg: [
-      'radial-gradient(ellipse 12% 100% at 50% 50%, rgba(155,63,255,0.65) 0%, rgba(155,63,255,0.15) 45%, transparent 100%)',
-      'radial-gradient(ellipse 45% 60% at 50% 50%, rgba(120,40,220,0.07) 0%, transparent 100%)',
-      'linear-gradient(90deg, transparent 0%, rgba(155,63,255,0.05) 45%, rgba(155,63,255,0.1) 50%, rgba(155,63,255,0.05) 55%, transparent 100%)',
-      'linear-gradient(180deg, #040010 0%, #06001A 100%)',
+      'radial-gradient(ellipse 6% 85% at 50% 50%, rgba(220,240,255,0.9) 0%, rgba(100,180,255,0.75) 15%, rgba(50,150,255,0.55) 35%, rgba(20,80,220,0.25) 60%, transparent 82%)',
+      'radial-gradient(ellipse 25% 100% at 50% 50%, rgba(50,130,255,0.35) 0%, rgba(20,70,200,0.15) 50%, transparent 75%)',
+      'radial-gradient(ellipse 60% 100% at 50% 50%, rgba(30,100,255,0.1) 0%, transparent 65%)',
+      'linear-gradient(180deg, #020005 0%, #030010 100%)',
     ].join(','),
   },
 
-  // 6. Expanding golden rings — leverage multiplying
+  // 6. Orange sphere center with swirling blue/purple rings expanding outward (ref 1)
   'leverage': {
     bg: [
-      'radial-gradient(circle at 50% 48%, rgba(255,200,50,0.95) 0%, rgba(255,130,0,0.65) 6%, rgba(200,80,255,0.22) 18%, rgba(80,130,255,0.12) 32%, transparent 50%)',
-      'radial-gradient(circle at 50% 48%, transparent 7%, rgba(255,120,0,0.2) 11%, transparent 16%)',
-      'radial-gradient(circle at 50% 48%, transparent 19%, rgba(180,60,255,0.12) 23%, transparent 30%)',
-      'radial-gradient(circle at 50% 48%, transparent 34%, rgba(80,120,255,0.08) 38%, transparent 46%)',
-      'linear-gradient(180deg, #030006 0%, #050010 100%)',
+      'radial-gradient(circle at 50% 48%, rgba(255,220,100,0.98) 0%, rgba(255,140,20,0.85) 5%, rgba(255,80,0,0.65) 10%, rgba(200,50,255,0.35) 22%, rgba(80,130,255,0.2) 38%, rgba(50,80,200,0.08) 55%, transparent 70%)',
+      'radial-gradient(ellipse 90% 50% at 50% 48%, rgba(180,50,255,0.18) 20%, rgba(180,50,255,0.12) 28%, transparent 35%)',
+      'radial-gradient(ellipse 130% 70% at 50% 48%, rgba(60,100,255,0.12) 35%, rgba(60,100,255,0.08) 45%, transparent 52%)',
+      'linear-gradient(180deg, #020005 0%, #050010 100%)',
     ].join(','),
   },
 
-  // 7. Deep converging horizon — context as vast field
+  // 7. Deep perspective with warm horizon glow at base, blue-purple overhead (ref 4 variation)
   'context': {
     bg: [
-      'linear-gradient(180deg, rgba(80,120,220,0.0) 0%, rgba(80,120,220,0.14) 50%, rgba(255,120,30,0.35) 85%, rgba(255,90,0,0.55) 100%)',
-      'radial-gradient(ellipse 100% 7% at 50% 100%, rgba(255,170,50,0.6) 0%, transparent 100%)',
-      'radial-gradient(ellipse 4% 4% at 50% 62%, rgba(255,230,130,0.45) 0%, transparent 100%)',
-      'linear-gradient(180deg, #030010 0%, #050018 100%)',
+      'linear-gradient(180deg, rgba(60,80,200,0.0) 0%, rgba(80,60,180,0.2) 35%, rgba(160,40,120,0.35) 60%, rgba(255,100,20,0.55) 85%, rgba(255,150,30,0.7) 100%)',
+      'radial-gradient(ellipse 100% 8% at 50% 100%, rgba(255,180,50,0.65) 0%, transparent 100%)',
+      'radial-gradient(ellipse 50% 40% at 50% 100%, rgba(255,80,0,0.3) 0%, transparent 100%)',
+      'radial-gradient(ellipse 3% 3% at 50% 58%, rgba(255,220,120,0.5) 0%, transparent 100%)',
+      'linear-gradient(180deg, #020005 0%, #030010 100%)',
     ].join(','),
   },
 
-  // 8. Rhythmic teal arcs — repeating pattern
+  // 8. Swirling nebula arcs of blue/purple radiating from center (ref 1 variation)
   'repeat': {
     bg: [
-      'radial-gradient(ellipse 95% 14% at 50% 42%, rgba(0,200,170,0.25) 0%, transparent 100%)',
-      'radial-gradient(ellipse 72% 10% at 50% 56%, rgba(0,200,170,0.2) 0%, transparent 100%)',
-      'radial-gradient(ellipse 50% 7%  at 50% 68%, rgba(0,200,170,0.18) 0%, transparent 100%)',
-      'radial-gradient(ellipse 30% 5%  at 50% 77%, rgba(0,200,170,0.2) 0%, transparent 100%)',
-      'radial-gradient(ellipse 10% 3%  at 50% 84%, rgba(0,220,190,0.55) 0%, transparent 100%)',
-      'linear-gradient(180deg, #010010 0%, #030012 100%)',
+      'radial-gradient(circle at 50% 50%, rgba(255,160,40,0.7) 0%, rgba(255,80,0,0.5) 5%, rgba(180,40,255,0.35) 14%, rgba(80,120,255,0.2) 26%, transparent 42%)',
+      'radial-gradient(ellipse 110% 40% at 50% 50%, rgba(160,40,255,0.2) 18%, rgba(160,40,255,0.12) 26%, transparent 34%)',
+      'radial-gradient(ellipse 40% 110% at 50% 50%, rgba(80,100,255,0.15) 22%, rgba(80,100,255,0.08) 32%, transparent 42%)',
+      'radial-gradient(ellipse 140% 60% at 50% 50%, rgba(120,50,255,0.1) 30%, rgba(60,80,200,0.06) 42%, transparent 52%)',
+      'linear-gradient(180deg, #020005 0%, #030010 100%)',
     ].join(','),
   },
 
-  // 9. Single ember — solitary judgment (ref 2 meditation)
+  // 9. Single warm orange-gold ember in pure black — small but intense (ref 1 sphere only)
   'singular': {
     bg: [
-      'radial-gradient(circle at 50% 50%, rgba(255,200,50,0.98) 0%, rgba(255,120,0,0.75) 5%, rgba(255,50,0,0.35) 16%, rgba(200,0,80,0.18) 32%, rgba(100,0,50,0.07) 50%, transparent 65%)',
-      'radial-gradient(ellipse 75% 20% at 50% 65%, rgba(160,0,60,0.14) 0%, transparent 100%)',
-      'linear-gradient(180deg, #020002 0%, #060004 60%, #020002 100%)',
+      'radial-gradient(circle at 50% 48%, rgba(255,230,120,0.98) 0%, rgba(255,160,20,0.85) 3%, rgba(255,100,0,0.7) 7%, rgba(200,50,0,0.45) 14%, rgba(120,20,0,0.2) 26%, rgba(60,5,0,0.08) 40%, transparent 56%)',
+      'radial-gradient(ellipse 60% 18% at 50% 62%, rgba(150,20,0,0.15) 0%, transparent 100%)',
+      'linear-gradient(180deg, #020005 0%, #050003 60%, #020005 100%)',
     ].join(','),
     overlay: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" style="position:absolute;inset:0;width:100%;height:100%">
       <g transform="translate(282,120)" fill="rgba(5,0,2,0.97)">
@@ -128,13 +128,14 @@ const ARTWORKS: Record<string, { bg: string; overlay?: string }> = {
     </svg>`,
   },
 
-  // 10. Two overlapping lenses — sharpening together
+  // 10. Orange comet upper-left + blue comet lower-right, two distinct lights (ref 3 exact)
   'sharpen': {
     bg: [
-      'radial-gradient(circle at 33% 50%, rgba(155,63,255,0.4) 0%, rgba(120,40,200,0.14) 32%, transparent 55%)',
-      'radial-gradient(circle at 67% 50%, rgba(255,110,30,0.35) 0%, rgba(220,80,0,0.12) 32%, transparent 55%)',
-      'radial-gradient(ellipse 22% 38% at 50% 50%, rgba(255,248,230,0.16) 0%, transparent 100%)',
-      'linear-gradient(180deg, #040008 0%, #07000E 100%)',
+      'radial-gradient(circle at 18% 22%, rgba(255,160,40,0.9) 0%, rgba(255,100,20,0.7) 4%, rgba(255,60,0,0.4) 10%, rgba(180,30,0,0.15) 22%, transparent 38%)',
+      'radial-gradient(circle at 82% 78%, rgba(60,160,255,0.85) 0%, rgba(30,110,230,0.65) 4%, rgba(20,70,200,0.35) 10%, rgba(10,40,150,0.12) 22%, transparent 38%)',
+      'linear-gradient(135deg, rgba(255,120,20,0.12) 0%, transparent 35%)',
+      'linear-gradient(315deg, rgba(40,120,255,0.1) 0%, transparent 35%)',
+      'linear-gradient(180deg, #020005 0%, #030010 100%)',
     ].join(','),
   },
 }
@@ -260,8 +261,8 @@ export default function OperatingPrinciplesPage() {
 
                         {/* Seamless bottom fade into card bg */}
                         <div style={{
-                          position: 'absolute', left: 0, right: 0, bottom: 0, height: 90,
-                          background: 'linear-gradient(to bottom, transparent 0%, rgba(8,0,18,0.7) 55%, rgba(8,0,18,0.97) 100%)',
+                          position: 'absolute', left: 0, right: 0, bottom: 0, height: 120,
+                          background: 'linear-gradient(to bottom, transparent 0%, rgba(8,0,18,0.7) 55%, rgba(8,0,18,0.85) 100%)',
                           pointerEvents: 'none',
                         }} />
 
@@ -273,7 +274,7 @@ export default function OperatingPrinciplesPage() {
                       </div>
 
                       {/* ── Text ──────────────────────────────────── */}
-                      <div style={{ padding: '2px 22px 26px' }}>
+                      <div style={{ padding: '0 22px 26px' }}>
                         <h3 style={{
                           fontFamily: 'var(--font-display)',
                           fontSize: 17,
