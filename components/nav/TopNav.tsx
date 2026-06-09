@@ -29,10 +29,12 @@ export default function TopNav() {
       className={`${isHome ? 'sm:hidden' : ''} flex items-center`}
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, height: 64,
-        background: 'rgba(10,0,16,0.65)',
-        backdropFilter: 'blur(24px) saturate(180%)',
-        WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        /* Homepage mobile: transparent (video shows through, matches Figma 111:2009)
+           All other states: frosted glass                                           */
+        background: isHome ? 'transparent' : 'rgba(10,0,16,0.65)',
+        backdropFilter: isHome ? 'none' : 'blur(24px) saturate(180%)',
+        WebkitBackdropFilter: isHome ? 'none' : 'blur(24px) saturate(180%)',
+        borderBottom: isHome ? 'none' : '1px solid rgba(255,255,255,0.06)',
         zIndex: 100,
       }}
     >

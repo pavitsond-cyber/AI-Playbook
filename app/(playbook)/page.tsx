@@ -104,17 +104,15 @@ export default function LandingPage() {
     <div style={{ position: 'fixed', inset: 0, background: '#0D0B1E', overflow: 'hidden' }}>
 
       {/* ── Video ─────────────────────────────────────────────────────── */}
-      {/* Figma node 111:1954: full-width, bottom-anchored, diver right  */}
-      {/* object-position places the diver at ~80% from left (right side) */}
+      {/* Mobile  (Figma 111:2009): diver centered, light from upper-left → object-position 60% 45%
+          Desktop (Figma 111:1954): diver right-of-center, light rays upper-right → 80% 50%  */}
       <video
         autoPlay muted loop playsInline
-        className="absolute"
+        className="absolute object-[60%_45%] sm:object-[80%_50%]"
         style={{
           bottom: 0, left: 0,
           width: '100%', height: '100%',
           objectFit: 'cover',
-          /* 80% from left crops to show diver on right, light rays upper-right */
-          objectPosition: '80% 50%',
           zIndex: 0,
           opacity: 0.9,
         }}
