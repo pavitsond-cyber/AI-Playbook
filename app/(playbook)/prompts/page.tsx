@@ -683,55 +683,62 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
       overflow: 'hidden',
       transition: 'border-color 0.2s ease',
     }}>
-      {/* ── Copy button — absolute top-right, always visible ──── */}
-      <div style={{ position: 'absolute', top: 16, right: 18, zIndex: 2 }}>
-        <CopyButton text={prompt.template} />
+      {/* ── Header row: title + chevron (left) + Copy button (right) ─ */}
+      {/* Copy button is INLINE so description below fills full width  */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 12,
+          padding: '18px 18px 10px 20px',
+        }}
+      >
+        {/* Clickable title + chevron */}
+        <button
+          onClick={onToggle}
+          style={{
+            flex: 1, minWidth: 0, display: 'inline-flex', alignItems: 'center',
+            gap: 8, background: 'none', border: 'none', cursor: 'pointer',
+            padding: 0, textAlign: 'left',
+          }}
+        >
+          <span style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 17, fontWeight: 700, color: '#ffffff', lineHeight: 1.3,
+          }}>
+            {prompt.title}
+          </span>
+          <ChevronDown size={15} style={{
+            color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.3)',
+            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.22s ease, color 0.2s ease',
+            flexShrink: 0,
+          }} />
+        </button>
+
+        {/* Copy — stops click propagation so it doesn't toggle the card */}
+        <div onClick={e => e.stopPropagation()} style={{ flexShrink: 0 }}>
+          <CopyButton text={prompt.template} />
+        </div>
       </div>
 
-      {/* ── Collapsed row ─────────────────────────────────────── */}
+      {/* ── Description — full width, equal margins ───────────────── */}
       <button
         onClick={onToggle}
         style={{
-          width: '100%',
-          padding: '18px 20px',   /* equal sides — Copy button is absolute */
-          background: 'transparent',
-          border: 'none',
-          cursor: 'pointer',
-          textAlign: 'left',
-          transition: 'background 0.15s ease',
+          width: '100%', padding: '0 20px 18px',
+          background: 'transparent', border: 'none',
+          cursor: 'pointer', textAlign: 'left',
         }}
       >
-        {/* Title + description */}
-        <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
-            {/* Title row — right clearance to avoid Copy button */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 6, paddingRight: 104 }}>
-              <span style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 17,
-                fontWeight: 700,
-                color: '#ffffff',
-                lineHeight: 1.3,
-              }}>
-                {prompt.title}
-              </span>
-              <ChevronDown size={15} style={{
-                color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.3)',
-                transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                transition: 'transform 0.22s ease, color 0.2s ease',
-                flexShrink: 0,
-              }} />
-            </div>
-            <p style={{
-              fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-              fontSize: 14,
-              color: 'rgba(255,255,255,0.45)',
-              lineHeight: 1.6,
-              margin: 0,
-              paddingRight: 104,  /* Copy button ~85px + 18px right offset + gap */
-            }}>
-              {prompt.description}
-            </p>
-        </div>
+        <p style={{
+          fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
+          fontSize: 14, color: 'rgba(255,255,255,0.45)',
+          lineHeight: 1.6, margin: 0, width: '100%',
+        }}>
+          {prompt.description}
+        </p>
       </button>
 
       {/* ── Expanded: template ────────────────────────────────── */}
