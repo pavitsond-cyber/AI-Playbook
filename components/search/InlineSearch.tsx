@@ -233,46 +233,42 @@ export default function InlineSearch({
         ) : null}
       </div>
 
-      {/* ── Dropdown ──────────────────────────────────────────────────── */}
+      {/* ── Dropdown — same width as input wrapper ──────────────────────── */}
       {showDropdown && (
         <div
           ref={listRef}
           style={{
             position: 'absolute',
-            top: '100%',   // starts exactly where input ends — no gap, no overlap
-            ...(alignRight ? { right: 0 } : { left: 0, right: 0 }),
-            ...(dropdownWidth ? { width: dropdownWidth, left: 'auto' } : {}),
+            top: '100%',
+            left: 0, right: 0,          // always stretches to wrapper edges = same width as input
             background: '#0E0018',
-            // Share the same border color as input, no top border (input bottom IS the divider)
             borderTop: 'none',
             borderLeft: `1px solid rgba(155,63,255,0.4)`,
             borderRight: `1px solid rgba(155,63,255,0.4)`,
             borderBottom: `1px solid rgba(155,63,255,0.4)`,
             borderRadius: '0 0 14px 14px',
-            // Light, grounded shadow — not floating/modal-like
-            boxShadow: '0 24px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(155,63,255,0.1)',
+            boxShadow: '0 24px 60px rgba(0,0,0,0.75)',
             zIndex: 200,
             maxHeight: 460,
             overflowY: 'auto',
             overflowX: 'hidden',
             scrollbarWidth: 'none',
-            // Subtle fade + slide — no scale (scale = popup feel)
             opacity: mounted ? 1 : 0,
             transform: mounted ? 'translateY(0)' : 'translateY(-4px)',
             transition: 'opacity 160ms ease, transform 160ms ease',
           } as React.CSSProperties}
         >
 
-          {/* ── Empty state (focused, no query) ───────────────────────── */}
+          {/* ── Empty state ─────────────────────────────────────────────── */}
           {!hasQ && (
-            <div style={{ padding: '14px 14px 16px' }}>
+            <div style={{ padding: '16px' }}>
               <p style={{
-                fontSize: 10, fontWeight: 700, textTransform: 'uppercase',
-                letterSpacing: '0.07em', color: 'rgba(255,255,255,0.3)', marginBottom: 10,
+                fontSize: 13, fontWeight: 700, textTransform: 'uppercase',
+                letterSpacing: '0.07em', color: 'rgba(255,255,255,0.45)', marginBottom: 12,
               }}>
                 Quick navigate
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {QUICK.map(link => {
                   const c = TYPE_CFG[link.type]
                   const Icon = c.icon
@@ -282,9 +278,10 @@ export default function InlineSearch({
                       onClick={() => go(link.href)}
                       style={{
                         display: 'flex', alignItems: 'center', gap: 6,
-                        padding: '6px 11px', borderRadius: 20,
+                        padding: '7px 13px', borderRadius: 20,
                         background: c.bg, border: `1px solid ${c.border}`,
-                        color: c.color, fontSize: 12, fontWeight: 500, cursor: 'pointer',
+                        color: c.color, fontSize: 13, fontWeight: 500, cursor: 'pointer',
+                        fontFamily: 'var(--font-body)',
                         transition: 'transform 120ms, box-shadow 120ms',
                       }}
                       onMouseEnter={e => {
@@ -296,30 +293,33 @@ export default function InlineSearch({
                         e.currentTarget.style.boxShadow = ''
                       }}
                     >
-                      <Icon size={11} /> {link.label}
+                      <Icon size={12} /> {link.label}
                     </button>
                   )
                 })}
               </div>
-              <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginTop: 12, lineHeight: 1.5 }}>
+              <p style={{
+                fontSize: 13, color: 'rgba(255,255,255,0.35)', marginTop: 14, lineHeight: 1.5,
+                fontFamily: 'var(--font-body)',
+              }}>
                 Start typing to search across all skills, prompts, terms, and principles.
               </p>
             </div>
           )}
 
-          {/* ── No results ────────────────────────────────────────────── */}
+          {/* ── No results ─────────────────────────────────────────────── */}
           {hasQ && total === 0 && (
             <div style={{ padding: '28px 16px', textAlign: 'center' }}>
-              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', marginBottom: 4 }}>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', marginBottom: 4, fontFamily: 'var(--font-body)' }}>
                 Nothing found for &ldquo;<strong>{q}</strong>&rdquo;
               </p>
-              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)' }}>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)' }}>
                 Try a skill name, AI term, or prompt topic.
               </p>
             </div>
           )}
 
-          {/* ── Grouped results ───────────────────────────────────────── */}
+          {/* ── Grouped results ────────────────────────────────────────── */}
           {hasQ && total > 0 && ORDER.map(type => {
             const items = grouped[type] ?? []
             if (!items.length) return null
@@ -333,27 +333,27 @@ export default function InlineSearch({
                 {/* Group header */}
                 <div style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                  padding: '10px 16px 4px',
-                  borderTop: '1px solid rgba(255,255,255,0.04)',
+                  padding: '10px 16px 5px',
+                  borderTop: '1px solid rgba(255,255,255,0.05)',
                   background: 'rgba(255,255,255,0.02)',
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
                     <div style={{
-                      width: 18, height: 18, borderRadius: 5,
+                      width: 20, height: 20, borderRadius: 5,
                       background: c.bg, display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
-                      <Icon size={10} color={c.color} />
+                      <Icon size={11} color={c.color} />
                     </div>
                     <span style={{
-                      fontSize: 10, fontWeight: 700, textTransform: 'uppercase',
-                      letterSpacing: '0.08em', color: c.color,
+                      fontSize: 13, fontWeight: 700, textTransform: 'uppercase',
+                      letterSpacing: '0.07em', color: c.color, fontFamily: 'var(--font-body)',
                     }}>
                       {c.label}
                     </span>
                   </div>
                   <span style={{
-                    fontSize: 10, fontWeight: 600, padding: '1px 7px',
-                    borderRadius: 10, background: c.bg, color: c.color,
+                    fontSize: 13, fontWeight: 600, padding: '2px 8px',
+                    borderRadius: 10, background: c.bg, color: c.color, fontFamily: 'var(--font-body)',
                   }}>
                     {items.length}
                   </span>
@@ -371,7 +371,7 @@ export default function InlineSearch({
                       onMouseEnter={() => setFocused(idx)}
                       style={{
                         display: 'flex', alignItems: 'flex-start', gap: 10,
-                        padding: '9px 12px',
+                        padding: '10px 12px',
                         margin: '1px 6px',
                         borderRadius: 10,
                         cursor: 'pointer',
@@ -382,40 +382,43 @@ export default function InlineSearch({
                     >
                       {/* Type icon */}
                       <div style={{
-                        width: 28, height: 28, borderRadius: 8,
-                        background: isFocused ? c.bg : 'rgba(255,255,255,0.05)',
+                        width: 30, height: 30, borderRadius: 8,
+                        background: isFocused ? c.bg : 'rgba(255,255,255,0.06)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         flexShrink: 0, marginTop: 1,
                         transition: 'background 100ms',
                       }}>
-                        <Icon size={13} color={isFocused ? c.color : 'rgba(255,255,255,0.3)'} />
+                        <Icon size={14} color={isFocused ? c.color : 'rgba(255,255,255,0.4)'} />
                       </div>
 
                       {/* Content */}
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{
-                          display: 'flex', alignItems: 'baseline',
-                          gap: 6, marginBottom: 2, flexWrap: 'wrap',
-                        }}>
-                          <span style={{ fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.9)', lineHeight: 1.3 }}>
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 3, flexWrap: 'wrap' }}>
+                          <span style={{
+                            fontSize: 13, fontWeight: 500,
+                            color: 'rgba(255,255,255,0.92)', lineHeight: 1.3,
+                            fontFamily: 'var(--font-body)',
+                          }}>
                             <Hi text={item.title} q={q} />
                           </span>
                           {item.subtitle && (
                             <span style={{
-                              fontSize: 11, color: 'rgba(255,255,255,0.3)',
+                              fontSize: 13, color: 'rgba(255,255,255,0.4)',
                               overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-                              maxWidth: 160,
+                              fontFamily: 'var(--font-body)',
                             }}>
                               {item.subtitle}
                             </span>
                           )}
                         </div>
                         <p style={{
-                          fontSize: 11, color: 'rgba(255,255,255,0.4)', lineHeight: 1.45, margin: 0,
+                          fontSize: 13, color: 'rgba(255,255,255,0.45)',
+                          lineHeight: 1.45, margin: 0,
                           overflow: 'hidden',
                           display: '-webkit-box',
                           WebkitLineClamp: 1,
                           WebkitBoxOrient: 'vertical',
+                          fontFamily: 'var(--font-body)',
                         } as React.CSSProperties}>
                           <Hi text={item.snippet} q={q} />
                         </p>
@@ -430,8 +433,8 @@ export default function InlineSearch({
                         transition: 'background 100ms',
                       }}>
                         <ArrowUpRight
-                          size={12}
-                          color={isFocused ? c.color : 'rgba(255,255,255,0.2)'}
+                          size={13}
+                          color={isFocused ? c.color : 'rgba(255,255,255,0.3)'}
                           style={{ transition: 'color 100ms' }}
                         />
                       </div>
@@ -442,21 +445,24 @@ export default function InlineSearch({
             )
           })}
 
-          {/* ── Footer ────────────────────────────────────────────────── */}
+          {/* ── Footer ─────────────────────────────────────────────────── */}
           {hasQ && total > 0 && (
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               padding: '8px 16px 10px',
-              borderTop: '1px solid rgba(255,255,255,0.04)',
+              borderTop: '1px solid rgba(255,255,255,0.05)',
               background: 'rgba(255,255,255,0.02)',
             }}>
-              <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.2)' }}>
+              <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-body)' }}>
                 {total} result{total !== 1 ? 's' : ''}
               </span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 10, color: 'rgba(255,255,255,0.2)' }}>
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 10,
+                fontSize: 13, color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-body)',
+              }}>
                 <span>↑↓ move</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-                  <CornerDownLeft size={10} />
+                  <CornerDownLeft size={11} />
                   <span>open</span>
                 </div>
                 <span>esc close</span>

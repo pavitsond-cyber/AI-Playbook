@@ -69,8 +69,8 @@ export default function TopNav() {
 
         {/* Desktop search */}
         {!isHome && (
-          <div className="hidden sm:block shrink-0" style={{ width: 200 }}>
-            <InlineSearch placeholder="Search…" compact alignRight dropdownWidth={460} />
+          <div className="hidden sm:block shrink-0" style={{ width: 300 }}>
+            <InlineSearch placeholder="Search…" compact />
           </div>
         )}
 
