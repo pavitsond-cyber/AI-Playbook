@@ -179,8 +179,9 @@ export default function InlineSearch({
         style={{
           display: 'flex', alignItems: 'center', gap: 10,
           padding: compact ? '7px 12px' : '11px 16px',
-          background: '#0A0010',
-          // When dropdown is open: share border with dropdown (no bottom border)
+          background: 'rgba(10,0,22,0.45)',
+          backdropFilter: 'blur(16px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(16px) saturate(180%)',
           borderTop: `1px solid ${borderCol}`,
           borderLeft: `1px solid ${borderCol}`,
           borderRight: `1px solid ${borderCol}`,
@@ -188,7 +189,7 @@ export default function InlineSearch({
           borderRadius: showDropdown ? '12px 12px 0 0' : '12px',
           cursor: 'text',
           transition: 'border-color 150ms, border-radius 150ms',
-          boxShadow: showDropdown ? 'none' : (open ? '0 0 0 2px rgba(155,63,255,0.2)' : 'rgba(0,0,0,0.3) 0 1px 3px'),
+          boxShadow: showDropdown ? 'none' : (open ? '0 0 0 2px rgba(155,63,255,0.2)' : 'rgba(0,0,0,0.25) 0 1px 3px'),
           ...inputStyle,
         }}
         onClick={() => { inputRef.current?.focus(); setOpen(true) }}
