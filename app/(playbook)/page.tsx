@@ -67,17 +67,18 @@ export default function LandingPage() {
       </div>
 
       {/* ── Main content ─────────────────────────────────── */}
-      {/* Horizontally centred container with LEFT-ALIGNED text inside */}
+      {/* Left-aligned at same edge as the logo */}
       <div style={{
         position: 'absolute',
-        left: '50%',
+        left: H_PAD,
+        right: H_PAD,
         top: '50%',
-        transform: 'translate(-50%, -46%)',
+        transform: 'translateY(-46%)',
         zIndex: 10,
-        width: 'min(90vw, 960px)',   /* centred fixed-width block */
         display: 'flex',
         flexDirection: 'column',
         gap: 52,
+        maxWidth: 900,
       }}>
 
         {/* Headline + subtitle — TEXT LEFT-ALIGNED */}
