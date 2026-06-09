@@ -8,7 +8,6 @@ import GlossaryGrid from './GlossaryGrid'
 import GlossaryCard from './GlossaryCard'
 import EmptyState from './EmptyState'
 import SiteFooter from './SiteFooter'
-import BlobLayer from '@/components/ui/BlobLayer'
 
 type TabId = 'abbreviations' | 'terminologies'
 
@@ -129,9 +128,8 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
   })
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', background: '#0A0010', overflow: 'clip' }}>
-      <BlobLayer />
-      <div style={{ position: "relative", zIndex: 1, maxWidth: 960, margin: "0 auto", width: "100%" }}>
+    <div style={{ minHeight: '100vh', background: '#0A0010' }}>
+      <div style={{ maxWidth: 960, margin: "0 auto", width: "100%" }}>
 
         {/* Page title */}
         <div className="animate-fade-up delay-75" style={{ padding: "clamp(64px,6vw,100px) clamp(20px,4vw,48px) 20px" }}>
