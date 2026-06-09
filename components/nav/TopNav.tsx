@@ -115,21 +115,26 @@ export default function TopNav() {
         </div>
       </div>
 
-      {/* Mobile dropdown — always mounted, animates in/out with opacity + maxHeight */}
+      {/* Mobile dropdown — slides from ABOVE the nav (position:fixed, zIndex below header)
+          On open : slides down from behind nav bar (translateY -100%→0), ease-out
+          On close: slides back up and disappears above the nav bar, ease-in          */}
       <div
         className="sm:hidden"
         style={{
-          position: 'absolute', top: 64, left: 0, right: 0,
-          background: 'rgba(10,0,16,0.96)',
+          position: 'fixed',
+          top: 64,
+          left: 0,
+          right: 0,
+          background: 'rgba(10,0,16,0.97)',
           backdropFilter: 'blur(24px)',
           WebkitBackdropFilter: 'blur(24px)',
-          borderBottom: mobileOpen ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
-          overflow: 'hidden',
-          maxHeight: mobileOpen ? '500px' : '0px',
+          borderBottom: '1px solid rgba(255,255,255,0.06)',
+          zIndex: 98,   /* below header (100) so it emerges from underneath */
+          transform: mobileOpen ? 'translateY(0)' : 'translateY(-110%)',
           opacity: mobileOpen ? 1 : 0,
           transition: mobileOpen
-            ? 'max-height 0.35s ease-out, opacity 0.25s ease-out, border-color 0.25s ease-out'
-            : 'max-height 0.28s ease-in, opacity 0.2s ease-in, border-color 0.2s ease-in',
+            ? 'transform 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.22s ease-out'
+            : 'transform 0.26s cubic-bezier(0.55, 0, 1, 0.45), opacity 0.18s ease-in',
           pointerEvents: mobileOpen ? 'auto' : 'none',
         }}
       >
