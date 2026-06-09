@@ -167,8 +167,8 @@ export default function LandingPage() {
         className="hidden sm:flex absolute items-center justify-between"
         style={{
           top: NAV_TOP,
-          left: 'clamp(16px, 3vw, 74px)',
-          right: 'clamp(16px, 3vw, 74px)',
+          left: 'clamp(20px, 5.15vw, 80px)',
+          right: 'clamp(20px, 5.15vw, 80px)',
           zIndex: 20,
         }}
       >
@@ -184,13 +184,13 @@ export default function LandingPage() {
       </div>
 
       {/* ── Main content ─────────────────────────────────────────────── */}
-      {/* Left edge = clamp(16px,3vw,74px) mirrors TopNav's own padding  */}
+      {/* Left = clamp(20px, 5.15vw, 80px) — same as homepage nav above  */}
       <div
         style={{
           position: 'absolute',
           zIndex: 10,
-          left: 'clamp(16px, 3vw, 74px)',
-          right: 'clamp(16px, 3vw, 74px)',
+          left: 'clamp(20px, 5.15vw, 80px)',
+          right: 'clamp(20px, 5.15vw, 80px)',
           top: `clamp(100px, ${CONTENT_TOP / 8}vh, ${CONTENT_TOP}px)`,
           display: 'flex',
           flexDirection: 'column',
