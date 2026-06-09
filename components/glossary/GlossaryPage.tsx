@@ -217,8 +217,8 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                         }}>
                           <span style={{ width: 6, height: 6, borderRadius: '50%', background: group.color, flexShrink: 0 }} />
                           <span style={{
-                            fontFamily: 'var(--font-body)', fontSize: 22, fontWeight: 700,
-                            textTransform: 'uppercase', letterSpacing: '0.1em', color: group.color,
+                            fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 700,
+                            textTransform: 'uppercase', letterSpacing: '0.06em', color: group.color,
                           }}>
                             {group.label}
                           </span>

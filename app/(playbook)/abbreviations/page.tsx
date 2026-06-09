@@ -412,7 +412,7 @@ export default function AbbreviationsPage() {
               <div key={group.id}>
                 <div style={{ background: group.bg, borderRadius: 8, padding: '6px 12px', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span className="w-2 h-2 rounded-full shrink-0" style={{ background: group.color }} />
-                  <span style={{ color: group.color, fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 22, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{group.label}</span>
+                  <span style={{ color: group.color, fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{group.label}</span>
                   <span className="ml-auto text-xs font-medium px-1.5 py-0.5 rounded-full" style={{ background: `${group.color}20`, color: group.color }}>
                     {group.items.length}
                   </span>
