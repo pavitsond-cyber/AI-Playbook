@@ -23,8 +23,7 @@ export default function TopNav() {
 
   return (
     <>
-    {/* On homepage: only show on mobile (sm:hidden hides on desktop, homepage has its own nav) */}
-    <header className={isHome ? 'sm:hidden' : ''} style={{
+    <header style={{
       position: 'fixed', top: 0, left: 0, right: 0, height: 64,
       background: 'rgba(10,0,16,0.65)',
       backdropFilter: 'blur(24px) saturate(180%)',
@@ -67,12 +66,10 @@ export default function TopNav() {
           })}
         </nav>
 
-        {/* Desktop search */}
-        {!isHome && (
-          <div className="hidden sm:block shrink-0" style={{ width: 'clamp(280px, 30vw, 420px)' }}>
-            <InlineSearch placeholder="Search…" compact />
-          </div>
-        )}
+        {/* Desktop search — shown on all pages including home */}
+        <div className="hidden sm:block shrink-0" style={{ width: 'clamp(280px, 30vw, 420px)' }}>
+          <InlineSearch placeholder="Search…" compact />
+        </div>
 
         {/* Mobile: search icon + hamburger */}
         <div className="sm:hidden flex items-center" style={{ marginLeft: 'auto', gap: 4 }}>
