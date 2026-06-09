@@ -246,10 +246,45 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
             </div>
 
           ) : (
-            /* ── Terminologies with A-Z sidebar ────────────────────────── */
+            /* ── Terminologies with A-Z sidebar on the RIGHT ───────────── */
             <div key="terminologies" className="animate-tab-fade" style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
 
-              {/* A-Z sidebar — sticky, bigger, more spaced */}
+              {/* Terms grouped by letter — comes first (left) */}
+              <div style={{ flex: 1, minWidth: 0 }}>
+                {query && (
+                  <p className="text-xs mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                    {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
+                  </p>
+                )}
+
+                <div className="space-y-8">
+                  {letterGroups.map(({ letter, terms: groupTerms }) => (
+                    <div key={letter} id={`alpha-section-${letter}`}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                        <div style={{
+                          width: 34, height: 34, borderRadius: 9,
+                          background: 'rgba(155,63,255,0.12)',
+                          color: '#C27FFF',
+                          fontFamily: 'var(--font-display)',
+                          fontSize: 15, fontWeight: 800,
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          flexShrink: 0,
+                        }}>
+                          {letter}
+                        </div>
+                        <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.2)' }}>
+                          {groupTerms.length} {groupTerms.length === 1 ? 'term' : 'terms'}
+                        </span>
+                        <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.07)' }} />
+                      </div>
+
+                      <GlossaryGrid terms={groupTerms} openId={openCardId} onOpen={setOpenCardId} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* A-Z sidebar — sticky, RIGHT side */}
               <div
                 className="hidden sm:flex flex-col shrink-0"
                 style={{ position: 'sticky', top: 180, alignSelf: 'flex-start', gap: 5, paddingTop: 4 }}
@@ -283,41 +318,6 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                     </button>
                   )
                 })}
-              </div>
-
-              {/* Terms grouped by letter */}
-              <div style={{ flex: 1, minWidth: 0 }}>
-                {query && (
-                  <p className="text-xs mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>
-                    {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
-                  </p>
-                )}
-
-                <div className="space-y-8">
-                  {letterGroups.map(({ letter, terms: groupTerms }) => (
-                    <div key={letter} id={`alpha-section-${letter}`}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                        <div style={{
-                          width: 34, height: 34, borderRadius: 9,
-                          background: 'rgba(155,63,255,0.12)',
-                          color: '#C27FFF',
-                          fontFamily: 'var(--font-display)',
-                          fontSize: 15, fontWeight: 800,
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          flexShrink: 0,
-                        }}>
-                          {letter}
-                        </div>
-                        <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.2)' }}>
-                          {groupTerms.length} {groupTerms.length === 1 ? 'term' : 'terms'}
-                        </span>
-                        <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.07)' }} />
-                      </div>
-
-                      <GlossaryGrid terms={groupTerms} openId={openCardId} onOpen={setOpenCardId} />
-                    </div>
-                  ))}
-                </div>
               </div>
 
             </div>
