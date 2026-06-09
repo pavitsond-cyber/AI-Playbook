@@ -98,21 +98,10 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
               : expanded ? 'rgba(155,63,255,0.05)' : 'transparent',
           }}
         >
-          {/* Full name + inline abbreviation tag + definition — same style as terminology */}
+          {/* Abbreviation tag first, then full name */}
           <div className="flex-1 min-w-0 text-left">
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '8px 10px', marginBottom: 8 }}>
-              <span
-                style={{
-                  color: '#ffffff',
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: 700,
-                  fontSize: 18,
-                  lineHeight: 1.25,
-                }}
-              >
-                {term.full_form}
-              </span>
-              {/* Small inline abbreviation tag */}
+              {/* Abbreviation badge — comes first */}
               <span
                 style={{
                   fontFamily: 'var(--font-body)',
@@ -128,6 +117,18 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
                 }}
               >
                 {term.term}
+              </span>
+              {/* Full name — comes after */}
+              <span
+                style={{
+                  color: '#ffffff',
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 700,
+                  fontSize: 18,
+                  lineHeight: 1.25,
+                }}
+              >
+                {term.full_form}
               </span>
             </div>
             {!expanded && (
