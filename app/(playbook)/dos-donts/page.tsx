@@ -94,7 +94,7 @@ export default function OperatingPrinciplesPage() {
                 }} />
                 <h2 style={{
                   fontFamily: 'var(--font-body)',
-                  fontSize: 19,
+                  fontSize: 11,
                   fontWeight: 700,
                   textTransform: 'uppercase' as const,
                   letterSpacing: '0.14em',
@@ -139,7 +139,7 @@ export default function OperatingPrinciplesPage() {
                     </h3>
                     <p style={{
                       fontFamily: 'var(--font-body)',
-                      fontSize: 19,
+                      fontSize: 15,
                       lineHeight: 1.65,
                       color: 'rgba(255,255,255,0.5)',
                       margin: 0,

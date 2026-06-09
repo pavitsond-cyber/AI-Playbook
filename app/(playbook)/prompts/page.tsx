@@ -701,7 +701,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
         {/* Number badge */}
         <span style={{
           fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-          fontSize: 19,
+          fontSize: 13,
           fontWeight: 500,
           color: '#c18dff',
           flexShrink: 0,
@@ -715,9 +715,9 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
             <span style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 19,
-              fontWeight: 700,
+              fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
+              fontSize: 17,
+              fontWeight: 500,
               color: '#ffffff',
               lineHeight: 1.3,
             }}>
@@ -732,7 +732,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
           </div>
           <p style={{
             fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-            fontSize: 19,
+            fontSize: 14,
             color: 'rgba(255,255,255,0.45)',
             lineHeight: 1.6,
             margin: 0,
@@ -775,7 +775,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
             {/* Template text */}
             <pre style={{
               fontFamily: "'Courier New', Courier, monospace",
-              fontSize: 19,
+              fontSize: 12.5,
               lineHeight: 1.75,
               color: 'rgba(255,255,255,0.72)',
               margin: 0,

@@ -808,13 +808,13 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4, flexWrap: 'wrap' as const }}>
             {skill.domain && (
-              <span style={{ fontFamily: 'var(--font-body)', fontSize: 19, fontWeight: 600, color: '#FF69DB', background: 'rgba(255,105,219,0.1)', border: '1px solid rgba(255,105,219,0.2)', borderRadius: 100, padding: '2px 8px', textTransform: 'uppercase' as const, letterSpacing: '0.08em', flexShrink: 0 }}>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, color: '#FF69DB', background: 'rgba(255,105,219,0.1)', border: '1px solid rgba(255,105,219,0.2)', borderRadius: 100, padding: '2px 8px', textTransform: 'uppercase' as const, letterSpacing: '0.08em', flexShrink: 0 }}>
                 {skill.domain}
               </span>
             )}
             <span style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 19,
+              fontSize: 17,
               fontWeight: 700,
               color: '#ffffff',
               lineHeight: 1.3,
@@ -833,7 +833,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           </div>
           <p style={{
             fontFamily: 'var(--font-body)',
-            fontSize: 19,
+            fontSize: 14,
             color: 'rgba(255,255,255,0.45)',
             lineHeight: 1.6,
             margin: 0,
@@ -856,7 +856,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
             border: '1px solid rgba(255,255,255,0.09)',
             borderRadius: 8,
             color: 'rgba(255,255,255,0.4)',
-            fontSize: 19,
+            fontSize: 11,
             fontFamily: 'var(--font-body)',
             fontWeight: 500,
             cursor: 'pointer',
@@ -888,15 +888,15 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
 
           {/* ── What you provide ───────────────────────────────────────── */}
           <div>
-            <p style={{ fontFamily: 'var(--font-display)', fontSize: 19, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>What you provide</p>
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>What you provide</p>
             <div style={{ display: 'flex', flexDirection: 'column', borderRadius: 10, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
               {(skill.inputs ?? skill.whenToUse.split(/(?<=\.)\s+/).map((s, i) => ({ label: s.trim(), required: i < 2 })).filter(x => x.label)).map((inp, i, arr) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 19, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>
                     {typeof inp === 'string' ? inp : inp.label}
                   </span>
                   {(typeof inp === 'object' ? inp.required : i < 2) && (
-                    <span style={{ fontFamily: 'var(--font-body)', fontSize: 19, fontWeight: 500, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '2px 9px', flexShrink: 0, marginLeft: 12 }}>Required</span>
+                    <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 500, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '2px 9px', flexShrink: 0, marginLeft: 12 }}>Required</span>
                   )}
                 </div>
               ))}
@@ -905,17 +905,17 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
 
           {/* ── What you'll get back ───────────────────────────────────── */}
           <div>
-            <p style={{ fontFamily: 'var(--font-display)', fontSize: 19, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>What you&apos;ll get back</p>
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>What you&apos;ll get back</p>
             <div style={{ border: '1px solid rgba(255,255,255,0.08)', borderRadius: 10, overflow: 'hidden' }}>
               <div style={{ padding: '12px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)' }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: 19, fontWeight: 700, color: 'rgba(255,255,255,0.9)' }}>{skill.name}</span>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.9)' }}>{skill.name}</span>
               </div>
               <div style={{ padding: '14px 16px' }}>
                 <ul style={{ margin: '0 0 12px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
                   {skill.qualityBar.split(/\.\s+/).filter(Boolean).map((point, i) => (
                     <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                       <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#C27FFF', flexShrink: 0, marginTop: 5 }} />
-                      <span style={{ fontFamily: 'var(--font-body)', fontSize: 19, lineHeight: 1.6, color: 'rgba(255,255,255,0.6)' }}>
+                      <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.6, color: 'rgba(255,255,255,0.6)' }}>
                         {point.endsWith('.') ? point : point + '.'}
                       </span>
                     </li>
@@ -923,10 +923,10 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
                 </ul>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                   {(skill.outputFields ?? skill.tools).map(f => (
-                    <span key={f} style={{ fontFamily: 'var(--font-body)', fontSize: 19, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '3px 10px' }}>{f}</span>
+                    <span key={f} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '3px 10px' }}>{f}</span>
                   ))}
                   {!skill.outputFields && skill.teams.map(t => (
-                    <span key={t} style={{ fontFamily: 'var(--font-body)', fontSize: 19, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '3px 10px' }}>{t}</span>
+                    <span key={t} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '3px 10px' }}>{t}</span>
                   ))}
                 </div>
               </div>
@@ -936,12 +936,12 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           {/* ── Audit Categories (rich skills only) ────────────────────── */}
           {skill.auditCategories && (
             <div>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: 19, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Audit categories</p>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Audit categories</p>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
                 {skill.auditCategories.map(cat => (
                   <div key={cat.name} style={{ padding: '10px 14px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 9 }}>
-                    <p style={{ fontFamily: 'var(--font-display)', fontSize: 19, fontWeight: 700, color: '#C27FFF', margin: '0 0 5px' }}>{cat.name}</p>
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 19, color: 'rgba(255,255,255,0.45)', lineHeight: 1.5, margin: 0 }}>{cat.desc}</p>
+                    <p style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 700, color: '#C27FFF', margin: '0 0 5px' }}>{cat.name}</p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.5, margin: 0 }}>{cat.desc}</p>
                   </div>
                 ))}
               </div>
@@ -953,10 +953,10 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           {!skill.outputFields && (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
               {skill.tools.map(t => (
-                <span key={t} style={{ fontFamily: 'var(--font-body)', fontSize: 19, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '3px 10px' }}>{t}</span>
+                <span key={t} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: '#C27FFF', background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 100, padding: '3px 10px' }}>{t}</span>
               ))}
               {skill.teams.map(t => (
-                <span key={t} style={{ fontFamily: 'var(--font-body)', fontSize: 19, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '3px 10px' }}>{t}</span>
+                <span key={t} style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '3px 10px' }}>{t}</span>
               ))}
             </div>
           )}
