@@ -31,7 +31,7 @@ export default function PageHeader({ title, description, badge }: PageHeaderProp
       {description && (
         <p style={{
           fontFamily: 'var(--font-body)',
-          fontSize: 22,
+          fontSize: 19,
           fontWeight: 300,
           lineHeight: 1.7,
           color: 'rgba(255,255,255,0.5)',
