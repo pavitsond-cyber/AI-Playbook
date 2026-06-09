@@ -6,821 +6,816 @@ import PageHeader from '@/components/playbook/PageHeader'
 import CopyButton from '@/components/playbook/CopyButton'
 import BlobLayer from '@/components/ui/BlobLayer'
 
-const systems = [
+interface PromptTemplate {
+  id: string
+  title: string
+  description: string
+  template: string
+}
+
+const prompts: PromptTemplate[] = [
   {
-    id: 'prd-pressure-test',
-    title: 'PRD Pressure-Testing System',
-    team: 'Product',
-    useCase: 'Challenge a draft PRD for assumptions, missing edge cases, and weak success metrics before engineering handoff.',
-    input: 'Draft PRD (any format)',
-    chain: [
-      {
-        label: 'Step 1: Assumption extraction',
-        prompt: `You are reviewing a PRD before engineering handoff. Your job is to pressure-test it, not polish it.
+    id: 'problem-framing',
+    title: 'Problem framing',
+    description: 'Use this to clarify a vague, stakeholder-led, or solution-first problem into a clear problem statement, scope, assumptions, risks, and next step.',
+    template: `Act like a product strategist helping frame a problem before solutioning.
 
-Read this PRD carefully. Extract every assumption it makes, both explicit and implicit. For each assumption:
-- State the assumption clearly
-- Rate it: (A) Validated with user research or data, (B) Team consensus only, (C) Unstated but implied
-- Explain the risk if the assumption is wrong
+Context:
+[Describe the product, workflow, audience, user journey, or business area]
 
-Format as a table: Assumption | Validation Status | Risk if Wrong
+Raw problem:
+[Paste the current problem statement, rough notes, stakeholder ask, or unclear brief]
 
-[PASTE PRD HERE]`,
-      },
-      {
-        label: 'Step 2: Edge case mapping',
-        prompt: `Walk through every user flow described in this PRD. For each flow, identify edge cases that are not addressed:
-- Error states (what happens when something fails?)
-- Empty states (what does the user see when there is no content?)
-- Concurrent actions (what if two things happen at once?)
-- Boundary conditions (min/max values, time limits, rate limits)
-- Permission states (what if the user does not have access?)
-- Unexpected inputs (what if the user does something unexpected?)
+Known signals:
+- [Data point / research signal / user behaviour / stakeholder input]
+- [Data point / research signal / user behaviour / stakeholder input]
+- [Data point / research signal / user behaviour / stakeholder input]
 
-List each missing edge case with: Flow → Edge Case → Why it matters → Severity (P0/P1/P2)
+Task:
+Turn this into a clear problem framing.
 
-[PASTE PRD HERE]`,
-      },
-      {
-        label: 'Step 3: Success metric challenge',
-        prompt: `Review the success metrics in this PRD. For each metric, answer:
-1. Is it measurable right now with existing instrumentation?
-2. Is it attributable to this feature specifically, or could other factors move it?
-3. Does it measure what actually matters (user value) or just what is easy to track?
-4. Is the target number justified, or picked arbitrarily?
+Return:
+1. Refined problem statement
+2. Who is affected
+3. Why this matters now
+4. What behaviour or outcome needs to change
+5. What is in scope
+6. What is out of scope
+7. Assumptions
+8. Risks if we solve the wrong problem
+9. Open questions
+10. Suggested next step
 
-For any metric that fails these tests, suggest a sharper alternative.
-
-[PASTE PRD HERE]`,
-      },
-      {
-        label: 'Step 4: Dependency audit',
-        prompt: `What dependencies are implied by this PRD but not explicitly listed? Include:
-- Technical dependencies (APIs, services, infrastructure)
-- Design dependencies (components, patterns, assets)
-- Data dependencies (analytics events, data models, migrations)
-- Cross-team dependencies (other squads, external vendors)
-- Timeline dependencies (things that must happen before this can launch)
-
-For each dependency: name it, identify which team or system owns it, and flag whether it is on the critical path.
-
-[PASTE PRD HERE]`,
-      },
-    ],
-    outputFormat: 'Annotated PRD with: assumption table, edge case log, metric review, dependency list',
-    qualityBar: 'Every assumption is either validated or explicitly listed as an accepted risk. Every success metric is measurable and attributable.',
-    failureModes: [
-      'AI raises challenges that are irrelevant to your specific context: filter aggressively',
-      'Edge cases listed may be out of scope: not everything it flags needs solving in this release',
-      'AI cannot challenge assumptions it does not know are assumptions',
-    ],
-    humanReview: [
-      'PM decides which edge cases are in-scope for this release vs deferred',
-      'Engineering lead validates the dependency list',
-      'PM owns the final PRD: AI challenges it, does not approve it',
-    ],
-    whenToUse: 'Before any significant engineering handoff. Especially for high-edge-case-density features like checkout, onboarding, and permission flows.',
+Avoid:
+- Jumping directly to solutions
+- Generic problem statements
+- Overstating impact without evidence`,
   },
   {
-    id: 'research-synthesis',
-    title: 'UX Research Synthesis System',
-    team: 'Research · Product',
-    useCase: 'Extract themes, evidence, contradictions, and opportunity signals from interview transcripts or survey data.',
-    input: '5–15 labelled interview transcripts or survey verbatims (P1, P2... format preferred)',
-    chain: [
-      {
-        label: 'Step 1: Pain extraction with frequency',
-        prompt: `Read these research transcripts carefully. Your job is synthesis with evidence, not storytelling.
+    id: 'opportunity-mapping',
+    title: 'Opportunity mapping',
+    description: 'Use this to identify meaningful opportunity areas from scattered notes, research signals, ideas, complaints, or stakeholder inputs.',
+    template: `Act like a product thinker mapping opportunities from messy context.
 
-Extract every pain statement as a near-direct quote. Then:
-- Group identical or very similar pains together
-- Count how many distinct participants mentioned each pain (frequency)
-- Rate severity: High (blocks task), Medium (creates friction), Low (annoyance)
+Context:
+[Paste project context, user research, product area, business goal, or stakeholder notes]
 
-Format: Pain Statement | Representative Quote | Frequency (n=X) | Severity | Participant IDs
+Goal:
+[What outcome are we trying to influence?]
 
-Do not interpret yet. Only extract and group.
+Input:
+[Paste raw notes, observations, ideas, complaints, data points, or comments]
 
-[PASTE TRANSCRIPTS HERE]`,
-      },
-      {
-        label: 'Step 2: Theme clustering by JTBD',
-        prompt: `Group the pain statements from the previous step by the underlying job the user is trying to do, not by product area or feature.
+Task:
+Identify meaningful opportunity areas.
 
-For each cluster:
-- Name the job to be done (verb-noun format: "book a ticket without uncertainty")
-- List the pains within it
-- Provide 2 representative quotes
-- Note whether this job is currently met, partially met, or unmet by the product
+Return:
+1. Opportunity areas
+2. User problem behind each opportunity
+3. Business relevance
+4. Evidence or signal supporting it
+5. Possible solution directions
+6. Fastest experiment to validate it
+7. Risks or dependencies
+8. Recommended priority
 
-[PASTE PAIN TABLE FROM STEP 1]`,
-      },
-      {
-        label: 'Step 3: Contradiction surfacing',
-        prompt: `Review these transcripts for contradictions: places where participants had meaningfully different experiences, needs, or opinions.
-
-For each contradiction:
-- State what the contradiction is
-- Quote both sides (with participant IDs)
-- Note what might explain the difference (user segment, context, experience level)
-- Flag whether this contradiction needs resolving before a design decision can be made
-
-Do not average the contradiction away. Contradictions are often the most valuable signal.
-
-[PASTE TRANSCRIPTS HERE]`,
-      },
-      {
-        label: 'Step 4: Opportunity mapping',
-        prompt: `Based on the themes and pains identified, write a product opportunity statement for each cluster:
-
-Format: "[User type] needs a way to [job to be done] without [main pain]. Current evidence: [frequency]. Team's ability to address: [High/Medium/Low and why]."
-
-Then rank the opportunities by: (frequency × severity) ÷ implementation complexity. Explain your scoring.
-
-[PASTE THEME CLUSTERS FROM STEP 2]`,
-      },
-    ],
-    outputFormat: 'Pain table with evidence → theme clusters → contradiction log → ranked opportunity map',
-    qualityBar: 'Every insight has a source quote with participant ID and frequency count. No insight exists without evidence. Contradictions are named, not smoothed over.',
-    failureModes: [
-      'AI over-clusters similar themes, losing the nuance between distinct user needs',
-      'Frequency counts can be wrong if transcript labels are inconsistent',
-      'Opportunity scoring uses assumed implementation complexity: always challenge this',
-    ],
-    humanReview: [
-      'Research lead validates cluster labels against their own reading of the transcripts',
-      'PM challenges opportunity scoring with product context AI does not have',
-      'Contradictions require investigative follow-up: AI identifies them, humans resolve them',
-    ],
-    whenToUse: 'After any usability study or discovery round. Especially useful before a product planning cycle to generate a prioritised opportunity list.',
+Format:
+Opportunity → User problem → Evidence → Possible direction → Validation method → Priority`,
   },
   {
-    id: 'design-qa',
-    title: 'Design QA Review System',
-    team: 'Product Design · UX Writing',
-    useCase: 'Systematically review all copy, states, and consistency in a design before engineering handoff.',
-    input: 'Exported screen copy inventory (screen name, state, copy text, character limit if known) + feature description',
-    chain: [
-      {
-        label: 'Step 1: State completeness check',
-        prompt: `You are reviewing a design for completeness before engineering handoff.
+    id: 'idea-framing-alignment-approval',
+    title: 'Idea framing, alignment, and approval',
+    description: 'Use this to shape, pitch, align, or get approval for an idea before it moves into design, build, or experimentation.',
+    template: `Act like a product partner helping turn an idea into a clear, approval-ready direction.
 
-For each screen listed, check whether the following states are covered:
-- Default (the standard view)
-- Loading (while data is fetching)
-- Empty (no content available)
-- Error (something went wrong: network, input, or system)
-- Success (a task completed)
-- Edge case states specific to this feature
+Context:
+[Describe the product area, current flow, user journey, business area, or project]
 
-List every missing state. For each: screen name → missing state → why it matters → severity (P0 = blocks launch / P1 = important / P2 = nice to have).
+Idea or proposed direction:
+[Describe the idea, design direction, feature, or change]
 
-Feature description: [DESCRIBE FEATURE]
+Current problem:
+[What is not working today? Include user friction, business friction, operational friction, or strategic gap]
 
-Screen copy inventory:
-[PASTE COPY INVENTORY]`,
-      },
-      {
-        label: 'Step 2: Copy consistency audit',
-        prompt: `Review this copy set for internal consistency:
+Audience or users affected:
+[Who is affected by this problem or idea?]
 
-1. Terminology consistency: is the same feature, action, or object named the same way throughout?
-2. Tone consistency: does the register stay consistent across states? (Not formal in some, casual in others)
-3. Tense and voice: consistently active and present-tense, or does it drift?
-4. CTA patterns: are CTAs phrased consistently? ("Save" vs "Save changes" vs "Update" for the same action)
+Current behaviour:
+[What do users, teams, or systems do today?]
 
-List every inconsistency found. Format: Type → Inconsistency → Screens affected → Suggested fix.
+Goal:
+[What should improve if this idea works?]
 
-[PASTE COPY INVENTORY]`,
-      },
-      {
-        label: 'Step 3: Brand voice check',
-        prompt: `Our copy voice: warm, direct, and specific. Avoid generic filler, passive voice, over-apology, and vague language.
+Evidence:
+[Add data, user research, user quotes, session observations, support tickets, stakeholder input, competitor references, or internal signals]
 
-Review this copy against that standard. Flag:
-1. Generic or placeholder-feeling copy ("Something went wrong. Please try again.")
-2. Passive constructions ("Your booking has been cancelled by the system")
-3. Over-apologetic error messages ("We're so sorry, but unfortunately...")
-4. Vague CTAs ("Continue", "Okay", "Submit")
-5. Unnecessarily long copy where a shorter version would be clearer
+Stakeholders involved:
+- [Stakeholder / team 1]
+- [Stakeholder / team 2]
+- [Stakeholder / team 3]
 
-For each flag: quote the copy → explain why it fails → suggest a sharper alternative.
+Known concerns:
+- [Concern around scope, effort, risk, timeline, metrics, dependency, adoption, or confidence]
+- [Concern around scope, effort, risk, timeline, metrics, dependency, adoption, or confidence]
 
-[PASTE COPY INVENTORY]`,
-      },
-    ],
-    outputFormat: 'Missing states list with severity → consistency issues log → brand voice flags with suggested rewrites',
-    qualityBar: 'Every flag is actioned: either fixed, or explicitly marked "accepted" with a reason.',
-    failureModes: [
-      'AI flags intentional creative choices as inconsistencies: review every flag, do not bulk-accept',
-      'Character limit violations may be based on estimates if limits are not specified',
-      'Brand voice flags may be over-conservative on bold copy choices',
-    ],
-    humanReview: [
-      'Designer validates every flag: AI helps focus attention, not replace judgment',
-      'Writer reviews all brand voice flags',
-      'PM decides which missing states are in scope for this release',
-    ],
-    whenToUse: 'Before any high-traffic flow engineering handoff. Especially effective on flows with high copy density.',
+Task:
+Shape this into a clear direction that can be discussed, aligned, and approved.
+
+Return:
+1. One-line summary
+2. Problem framing
+3. Proposed direction
+4. User value
+5. Business value
+6. Evidence supporting the idea
+7. Points of stakeholder agreement
+8. Points of tension or disagreement
+9. Trade-offs
+10. Risks and mitigations
+11. Suggested MVP scope
+12. Non-goals
+13. Success metrics
+14. What can be tested quickly
+15. Decisions needed
+16. Open questions
+17. Conversation script for presenting this idea
+18. One-line approval ask
+
+Tone:
+Clear, confident, collaborative, practical, and outcome-focused.
+
+Avoid:
+- Making it sound like a personal preference
+- Over-selling without evidence
+- Hiding unresolved tensions
+- Ignoring effort or dependencies
+- Using vague language like "better UX" without explaining the outcome
+- Framing stakeholders as blockers`,
   },
   {
-    id: 'landing-page-teardown',
-    title: 'Landing Page Teardown System',
-    team: 'Product · Marketing · Brand',
-    useCase: 'Audit a landing page for structural weaknesses, copy quality, and competitive positioning gaps.',
-    input: 'Page copy (pasted) or URL + page goal (conversion/trust/information) + target audience description',
-    chain: [
-      {
-        label: 'Step 1: Value proposition clarity check',
-        prompt: `You are auditing a landing page. Start with the most critical question: does the hero communicate what this product does and why it matters within 6 seconds?
+    id: 'product-critique',
+    title: 'Product critique',
+    description: 'Use this to evaluate a flow, screen, or journey before moving ahead, especially when you need to identify clarity gaps, friction, risks, missing states, and practical improvements.',
+    template: `Act like a product reviewer evaluating a flow before it moves ahead.
 
-Review the hero section (headline, subheadline, and first visual area). Evaluate:
-1. Is the core value proposition immediately clear (what the user gets, not what we built)?
-2. Who is the intended user: is it obvious from the copy?
-3. What action is the user meant to take: is the next step clear and compelling?
-4. What objections does a first-time visitor likely have: does the hero address any of them?
+Context:
+[Describe the product surface, journey, or flow]
 
-For each weakness: quote the element → explain the problem → suggest a specific fix.
+User goal:
+[What is the user trying to do?]
 
-Page goal: [DESCRIBE GOAL]
-Target audience: [DESCRIBE AUDIENCE]
+Business goal:
+[What outcome does the product need?]
 
-[PASTE PAGE COPY]`,
-      },
-      {
-        label: 'Step 2: Full page structural audit',
-        prompt: `Audit the full page structure. For each section of the page:
-1. Does this section move the user closer to the goal, or is it just filling space?
-2. Is the hierarchy of information logical: does earlier content make later content land better?
-3. Where is trust established? Where is it missing?
-4. Where might a user drop off and why?
+Current flow:
+[Paste flow / describe screens / add notes]
 
-Give me a section-by-section verdict: Keep as-is / Improve / Remove. For each "Improve" or "Remove", explain why.
+Task:
+Review the flow across:
+1. Clarity
+2. User confidence
+3. Information hierarchy
+4. Friction
+5. Decision points
+6. Edge cases
+7. Copy quality
+8. Conversion risk
+9. Implementation complexity
 
-[PASTE PAGE COPY]`,
-      },
-      {
-        label: 'Step 3: Competitive positioning gap',
-        prompt: `Here are 2–3 competitor pages for comparison. Compare this page's positioning:
+Return:
+- What is working
+- What may confuse users
+- What feels unnecessary
+- What is missing
+- Highest-risk moments
+- Suggested improvements
+- Quick wins
+- Larger changes worth exploring
+- Final recommendation
 
-1. What is our page saying that competitors are not? (Potential differentiation)
-2. What are competitors saying that we are not? (Potential gap)
-3. Where is our copy weaker: more vague, less specific, or less credible?
-4. What proof points, trust signals, or specifics are competitors using that we are missing?
-
-Be direct. Do not soften findings.
-
-Our page: [PASTE OUR COPY]
-Competitor 1: [PASTE OR DESCRIBE]
-Competitor 2: [PASTE OR DESCRIBE]`,
-      },
-    ],
-    outputFormat: 'Hero assessment → section-by-section verdict → competitive gap analysis → prioritised fix list',
-    qualityBar: 'Every finding ties to the page goal. "It sounds better" is not a reason. Every recommendation has a specific fix.',
-    failureModes: [
-      'AI audit uses heuristics, not your actual user behaviour data: always cross-reference with analytics',
-      'Competitive findings depend on the quality of competitor copy you provide',
-    ],
-    humanReview: [
-      'Validate structural findings with real scroll and drop-off data if available',
-      'Brand and copy team reviews flagged copy: bold choices may be flagged incorrectly',
-      'PM or marketing lead decides what to test vs implement directly',
-    ],
-    whenToUse: 'Before any major campaign where a landing page is the primary conversion surface. Also useful for quarterly audits of high-traffic pages.',
+Avoid:
+- Generic UX advice
+- Purely aesthetic feedback
+- Recommendations without explaining impact`,
   },
   {
-    id: 'localization-qa',
-    title: 'Localization QA System',
-    team: 'UX Writing · Content · Ops',
-    useCase: 'Catch cultural mismatches, truncation risks, and translation quality issues before market launch.',
-    input: 'Source English copy + translated copy + target language/market + UI screenshots (if available)',
-    chain: [
-      {
-        label: 'Step 1: Source copy risk scan',
-        prompt: `Before translation is reviewed, scan the English source copy for localization risk.
+    id: 'ux-copy',
+    title: 'UX copy',
+    description: 'Use this to write clear product copy for states like empty, error, success, confirmation, warning, onboarding, or decision points.',
+    template: `Act like a UX writer shaping copy for a product state.
 
-Flag any phrases that are:
-1. Idiomatic or English-specific (cannot be translated literally)
-2. Culturally specific to an English-speaking market
-3. Wordplay, puns, or rhymes that will break in translation
-4. Informal register that may not carry over in [TARGET LANGUAGE]
-5. Length-sensitive: likely to become significantly longer in translation
-6. Legally or culturally sensitive in [TARGET MARKET]
+Context:
+[Describe the product surface]
 
-For each flag: quote the phrase → explain the risk → suggest a safer alternative.
+User state:
+[What is the user trying to do? What do they know? What may they be unsure about?]
 
-Target language: [LANGUAGE]
-Target market: [MARKET]
+System state:
+[What is happening in the product?]
 
-[PASTE SOURCE COPY]`,
-      },
-      {
-        label: 'Step 2: Translation quality review',
-        prompt: `Review this translated copy for [TARGET LANGUAGE/MARKET].
+Goal:
+[What should the copy help the user understand or do?]
 
-Check:
-1. Accuracy: does it convey the same meaning as the source?
-2. Naturalness: does it sound like how a native speaker would write it for a consumer product?
-3. Register: is the formality level appropriate for this market?
-4. Cultural fit: are there phrases that may be confusing, off, or inappropriate in this market?
-5. Length: are any translated strings significantly longer than the source (truncation risk)?
+Task:
+Write clear UX copy for this state.
 
-Format: String → Issue Type → Severity → Suggested fix (or "Needs native review")
+Required copy:
+- Title
+- Description
+- Primary CTA
+- Secondary CTA, if needed
+- Error state, if relevant
+- Empty state, if relevant
+- Success state, if relevant
 
-Source: [PASTE SOURCE]
-Translation: [PASTE TRANSLATION]`,
-      },
-      {
-        label: 'Step 3: UI truncation check',
-        prompt: `Given these character limits, identify which translated strings are at risk of truncation.
+Constraints:
+- Keep it clear and short
+- Do not overpromise
+- Do not introduce new information
+- Avoid generic marketing language
+- Make the next action obvious
+- Use simple language
 
-For any string at or over the limit:
-- Flag it with the character count vs limit
-- Suggest a shortened alternative that preserves core meaning
-- Note if the meaning is significantly impacted by the shortening
-
-[PASTE STRINGS WITH CHARACTER LIMITS AND TRANSLATIONS]`,
-      },
-    ],
-    outputFormat: 'Source risk report → translation quality flags → truncation risk list → native review checklist',
-    qualityBar: 'Every flagged item is reviewed by a native speaker or local market manager before launch.',
-    failureModes: [
-      'AI cannot assess tonal nuance fully: formal/informal address requires native judgment',
-      'Cultural sensitivity flags may be over-cautious or miss specific market context',
-      'Character limit accuracy depends on precise limits being provided',
-    ],
-    humanReview: [
-      'Native speaker or local market manager reviews all flagged items',
-      'Designer checks actual UI in the target language for visual truncation',
-      'Final approval from market manager',
-    ],
-    whenToUse: 'Before every new market launch and whenever high-traffic pages are updated for international markets.',
+Return:
+1. Recommended version
+2. Shorter version
+3. Warmer version
+4. More direct version
+5. Notes on ambiguity or risk`,
   },
   {
-    id: 'experiment-design',
-    title: 'Experiment Design System',
-    team: 'Product · Research',
-    useCase: 'Design a rigorous A/B test or experiment with a clear hypothesis, metrics, and edge cases before running it.',
-    input: 'The change being tested, why you believe it will improve a metric, current baseline data if available',
-    chain: [
-      {
-        label: 'Step 1: Hypothesis sharpening',
-        prompt: `Sharpen this experiment hypothesis into a testable, falsifiable statement.
+    id: 'research-synthesis-insight',
+    title: 'Research synthesis and insight',
+    description: 'Use this to turn raw research inputs into themes, insight statements, evidence, implications, opportunities, and possible next actions.',
+    template: `Act like a researcher turning raw input into decision-ready insights.
 
-A good hypothesis format: "We believe that [change] will cause [measurable outcome] because [reasoning]. We will know this is true if [specific metric moves by X% in Y direction] within [timeframe]."
+Research context:
+[Describe the study, product area, audience, or question]
 
-Current hypothesis: [PASTE YOUR HYPOTHESIS]
+Input:
+[Paste interview notes, survey responses, observations, transcripts, session notes, or user comments]
 
-Evaluate the hypothesis:
-1. Is it falsifiable: can a negative result clearly disprove it?
-2. Is the metric specific and attributable to this change?
-3. Is the reasoning mechanistic: does it explain HOW the change causes the outcome?
-4. Is the timeframe long enough to reach statistical significance?
+Task:
+Synthesize the input into patterns, insights, and implications.
 
-Rewrite the hypothesis to fix any weaknesses.`,
-      },
-      {
-        label: 'Step 2: Metric selection and guardrails',
-        prompt: `For this experiment, help me define the full metric set:
+Return:
+1. Key themes
+2. Repeated behaviours
+3. User motivations
+4. User anxieties
+5. Confusing moments
+6. Contradictions
+7. Strong signals
+8. Weak signals
+9. Insight statements
+10. Supporting evidence
+11. Possible root causes
+12. Product or design implications
+13. Opportunities
+14. Suggested experiments
+15. Open questions
+16. Confidence level for each major insight
 
-1. Primary metric: the one that defines success or failure
-2. Secondary metrics: directional signals to monitor
-3. Guardrail metrics: metrics that should NOT move negatively (if they do, the experiment may need to be stopped)
-4. Counter-metrics: things we would not want to trade off even for primary metric improvement
+Format:
+Theme → Evidence → Interpretation → Insight → Why it matters → Possible action
 
-For each metric: what it is, how it is measured, what constitutes a meaningful change, and the risk of it moving in the wrong direction.
+Rules:
+- Separate observation from interpretation
+- Do not overgeneralize from one comment
+- Mark assumptions clearly
+- Prioritize insights that can influence decisions
+- Avoid rephrasing observations as insights`,
+  },
+  {
+    id: 'user-interview-guide',
+    title: 'User interview guide',
+    description: 'Use this to prepare an interview guide that reveals real behaviour, decision-making, motivations, pain points, and useful follow-up probes.',
+    template: `Act like a researcher designing an interview guide.
 
-Experiment: [DESCRIBE WHAT YOU ARE TESTING]`,
-      },
-      {
-        label: 'Step 3: Experiment risk and edge cases',
-        prompt: `Identify risks and edge cases in this experiment design:
+Research goal:
+[What do we need to learn?]
 
-1. Sample contamination: could users see both variants?
-2. Novelty effect: could early positive results be driven by newness, not real value?
-3. Network effects: could one variant affect users who are not in that variant?
-4. Segmentation issues: are there user segments that should be excluded?
-5. Instrumentation risk: are all metrics currently tracked correctly?
-6. External factors: are there external events during the test window that could skew results?
+Target participant:
+[Who are we interviewing?]
 
-For each risk: describe it, rate its likelihood (High/Medium/Low), and suggest a mitigation.
+Context:
+[What product, behaviour, or decision is this related to?]
 
-Experiment: [DESCRIBE EXPERIMENT]`,
-      },
-    ],
-    outputFormat: 'Sharpened hypothesis → metric set with guardrails → risk and edge case log',
-    qualityBar: 'Hypothesis is falsifiable and mechanistic. Primary metric is attributable. All guardrail metrics are defined before the test runs.',
-    failureModes: [
-      'AI sharpening may over-specify what is still an exploratory test',
-      'Risk lists can be exhaustive but not all risks are equally likely: use judgment',
-    ],
-    humanReview: [
-      'Data analyst validates instrumentation before experiment launches',
-      'PM confirms the hypothesis aligns with team goals',
-      'Research lead or stats-aware team member reviews sample size and significance requirements',
-    ],
-    whenToUse: 'Before any significant product experiment, especially for flows where errors are costly and results hard to reverse.',
+Known assumptions:
+- [Assumption 1]
+- [Assumption 2]
+- [Assumption 3]
+
+Task:
+Create an interview guide that helps validate or challenge these assumptions.
+
+Return:
+1. Interview objective
+2. Participant criteria
+3. Warm-up questions
+4. Behaviour-based questions
+5. Decision-making questions
+6. Pain-point questions
+7. Follow-up probes
+8. Task-based prompts, if useful
+9. Closing questions
+10. What to listen for
+
+Rules:
+- Avoid leading questions
+- Ask about past behaviour
+- Avoid asking users to design the solution
+- Include follow-up probes for vague answers`,
+  },
+  {
+    id: 'survey-design',
+    title: 'Survey design',
+    description: 'Use this to create a survey that is easy to answer, easy to analyse, and structured to avoid weak or misleading response data.',
+    template: `Act like a researcher designing a focused survey.
+
+Research goal:
+[What do we need to learn?]
+
+Audience:
+[Who will answer this?]
+
+Context:
+[Why are we running this survey?]
+
+Task:
+Create a survey that captures useful, decision-ready data.
+
+Return:
+1. Survey objective
+2. Screening questions
+3. Core questions
+4. Multiple-choice options
+5. Rating scale questions, if useful
+6. Open-ended questions
+7. Questions to avoid
+8. How to interpret responses
+
+Rules:
+- Avoid leading questions
+- Keep options mutually exclusive where possible
+- Avoid double-barrelled questions
+- Make answers easy to analyze
+- Keep wording simple`,
+  },
+  {
+    id: 'edge-case-finder',
+    title: 'Edge case finder',
+    description: 'Use this to stress-test a feature or flow before design handoff or implementation across broken states, confusing states, policy gaps, system failures, and platform differences.',
+    template: `Act like a product designer stress-testing a feature.
+
+Feature:
+[Describe feature]
+
+Flow:
+[Describe user flow]
+
+User types:
+[List user types]
+
+System rules:
+[List rules, dependencies, policies, or logic]
+
+Task:
+Find edge cases that could break clarity, trust, or usability.
+
+Explore:
+1. Missing data
+2. Delayed system response
+3. Conflicting states
+4. User misunderstanding
+5. Policy mismatch
+6. Permission issues
+7. Error handling
+8. Empty states
+9. Repeated actions
+10. Device or platform differences
+
+Return:
+- Edge case
+- Trigger
+- User impact
+- Product risk
+- Recommended handling
+- Priority`,
+  },
+  {
+    id: 'experiment-and-measurement',
+    title: 'Experiment and measurement',
+    description: 'Use this to design an experiment and define how success, failure, guardrails, segments, and decision criteria should be measured.',
+    template: `Act like a product experimenter and analyst designing a test and measurement framework.
+
+Context:
+[Describe product area, feature, flow, or initiative]
+
+Problem:
+[What are we trying to improve?]
+
+Hypothesis:
+[What do we believe will happen?]
+
+Audience:
+[Who will be exposed to this?]
+
+User behaviour we want to influence:
+[Describe the behaviour change expected]
+
+Business outcome:
+[Describe the business result expected]
+
+Known constraints:
+[Add tracking, data, timeline, audience, platform, engineering, or rollout constraints]
+
+Task:
+Design the experiment and define how success should be measured.
+
+Return:
+1. Hypothesis
+2. Control
+3. Treatment
+4. Primary metric
+5. Secondary metrics
+6. Guardrail metrics
+7. Leading indicators
+8. Lagging indicators
+9. Segments to track
+10. Events or data needed
+11. Sample or duration considerations
+12. Risks
+13. What success looks like
+14. What failure looks like
+15. What would make us ship, iterate, or kill the idea
+16. Metrics to avoid and why
+
+Avoid:
+- Vanity metrics
+- Unclear success criteria
+- Testing too many changes at once
+- Measuring too many things
+- Confusing activity with impact`,
+  },
+  {
+    id: 'trade-off-analysis',
+    title: 'Trade-off analysis',
+    description: 'Use this to compare multiple directions and make a clearer recommendation across user value, business value, effort, risk, speed, reversibility, and learning value.',
+    template: `Act like a decision partner evaluating multiple options.
+
+Decision:
+[Describe the decision]
+
+Options:
+1. [Option 1]
+2. [Option 2]
+3. [Option 3]
+
+Context:
+[Why this decision matters]
+
+Constraints:
+- [Constraint 1]
+- [Constraint 2]
+- [Constraint 3]
+
+Compare across:
+- User value
+- Business value
+- Effort
+- Risk
+- Speed
+- Scalability
+- Reversibility
+- Learning value
+
+Return:
+1. Comparison table
+2. Recommendation
+3. Why this option is strongest
+4. What we lose by choosing it
+5. Risks to manage
+6. What to validate before committing`,
+  },
+  {
+    id: 'prioritisation',
+    title: 'Prioritisation',
+    description: 'Use this to order ideas, bugs, experiments, or features by impact, confidence, effort, risk, learning value, and strategic relevance.',
+    template: `Act like a product lead prioritising a set of ideas.
+
+Ideas:
+[Paste ideas]
+
+Goal:
+[What outcome are we prioritising for?]
+
+Constraints:
+[Time / team / tech / business / launch constraints]
+
+Prioritise using:
+1. User impact
+2. Business impact
+3. Confidence
+4. Effort
+5. Risk
+6. Speed to learn
+7. Strategic relevance
+
+Return:
+- Must do
+- Should do
+- Could do
+- Do later
+- Do not do now
+
+For each idea, include:
+- Reason
+- Risk
+- Suggested next step`,
+  },
+  {
+    id: 'prd',
+    title: 'PRD',
+    description: 'Use this to convert a feature or initiative into a structured product requirements document with goals, non-goals, requirements, edge cases, dependencies, metrics, risks, and rollout plan.',
+    template: `Act like a product partner turning a feature idea into a clear PRD.
+
+Context:
+[Describe product area and current state]
+
+Problem:
+[What problem are we solving?]
+
+Audience:
+[Who is this for?]
+
+Goal:
+[What should this improve?]
+
+Known decisions:
+[Paste existing decisions]
+
+Open questions:
+[Paste unknowns]
+
+Task:
+Create a PRD.
+
+Return:
+1. Overview
+2. Problem statement
+3. Goals
+4. Non-goals
+5. User stories
+6. Functional requirements
+7. Edge cases
+8. Dependencies
+9. Analytics and success metrics
+10. Rollout plan
+11. Risks
+12. Open questions
+
+Rules:
+- Keep requirements testable
+- Separate decisions from assumptions
+- Avoid bloated scope`,
+  },
+  {
+    id: 'implementation',
+    title: 'Implementation',
+    description: 'Use this to hand off a design or product change to an AI coding tool or engineer with clear scope, constraints, acceptance criteria, and boundaries.',
+    template: `You are working inside this codebase as a careful design engineer.
+
+Goal:
+[Describe the change]
+
+Context:
+[Why this change is needed]
+
+Scope:
+Only update:
+- [Files / components / pages]
+
+Do not change:
+- Routing
+- Global styles
+- Unrelated components
+- Existing behaviour outside this scope
+
+Instructions:
+1. [Specific change]
+2. [Specific change]
+3. [Specific change]
+
+Acceptance criteria:
+- [Criteria 1]
+- [Criteria 2]
+- [Criteria 3]
+
+Check for:
+- Broken states
+- Responsive issues
+- Accessibility gaps
+- Console errors
+- Data or state assumptions
+
+After implementation, return:
+1. Files changed
+2. Summary of changes
+3. Anything that needs manual review`,
+  },
+  {
+    id: 'launch-readiness',
+    title: 'Launch readiness',
+    description: 'Use this to check whether a feature, experiment, or product change is ready to go live across product, design, engineering, analytics, support, communication, risk, and rollout.',
+    template: `Act like a launch owner checking whether a product change is ready to go live.
+
+Context:
+[Describe the feature, experiment, or product change]
+
+What is launching:
+[Describe the final scope]
+
+Audience:
+[Who will experience this change?]
+
+Rollout plan:
+[Describe release plan, experiment setup, or phased rollout]
+
+Known risks:
+[Paste known risks or unresolved concerns]
+
+Task:
+Create a launch readiness checklist.
+
+Return:
+1. Product readiness
+2. Design readiness
+3. Engineering readiness
+4. Analytics readiness
+5. Edge cases to verify
+6. Support or ops readiness
+7. Communication needed
+8. Rollback plan
+9. Final blockers
+10. Go / no-go recommendation
+
+Avoid:
+- Treating launch as only an engineering release
+- Ignoring measurement
+- Ignoring support impact
+- Skipping rollback or failure handling`,
   },
 ]
 
-export default function PromptSystemsPage() {
+function PromptRow({ prompt, index, isOpen, onToggle }: {
+  prompt: PromptTemplate
+  index: number
+  isOpen: boolean
+  onToggle: () => void
+}) {
+  return (
+    <div style={{
+      background: 'rgba(255,255,255,0.03)',
+      border: isOpen ? '1px solid rgba(155,63,255,0.25)' : '1px solid rgba(255,255,255,0.07)',
+      borderRadius: 14,
+      overflow: 'hidden',
+      transition: 'border-color 0.2s ease',
+    }}>
+      {/* ── Collapsed row ─────────────────────────────────────── */}
+      <button
+        onClick={onToggle}
+        style={{
+          width: '100%',
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: 16,
+          padding: '18px 20px',
+          background: isOpen ? 'rgba(155,63,255,0.04)' : 'transparent',
+          border: 'none',
+          cursor: 'pointer',
+          textAlign: 'left',
+          transition: 'background 0.15s ease',
+        }}
+      >
+        {/* Number badge */}
+        <span style={{
+          fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
+          fontSize: 13,
+          fontWeight: 500,
+          color: '#c18dff',
+          flexShrink: 0,
+          paddingTop: 2,
+          minWidth: 28,
+        }}>
+          {String(index + 1).padStart(2, '0')}
+        </span>
+
+        {/* Title + description */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+            <span style={{
+              fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
+              fontSize: 17,
+              fontWeight: 500,
+              color: '#ffffff',
+              lineHeight: 1.3,
+            }}>
+              {prompt.title}
+            </span>
+            <ChevronDown size={15} style={{
+              color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.25)',
+              transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+              transition: 'transform 0.2s ease, color 0.2s ease',
+              flexShrink: 0,
+            }} />
+          </div>
+          <p style={{
+            fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
+            fontSize: 14,
+            color: 'rgba(255,255,255,0.45)',
+            lineHeight: 1.6,
+            margin: 0,
+          }}>
+            {prompt.description}
+          </p>
+        </div>
+      </button>
+
+      {/* ── Expanded: template + copy ─────────────────────────── */}
+      <div style={{
+        overflow: 'hidden',
+        maxHeight: isOpen ? '3000px' : '0px',
+        transition: isOpen
+          ? 'max-height 0.38s cubic-bezier(0.4,0,0.2,1)'
+          : 'max-height 0.18s ease-in',
+      }}>
+        <div style={{
+          borderTop: '1px solid rgba(255,255,255,0.06)',
+          padding: '20px 20px 24px',
+        }}>
+          {/* Template block */}
+          <div style={{
+            position: 'relative',
+            background: 'rgba(0,0,0,0.4)',
+            border: '1px solid rgba(255,255,255,0.07)',
+            borderRadius: 10,
+            overflow: 'hidden',
+          }}>
+            {/* Copy button top-right */}
+            <div style={{
+              position: 'absolute',
+              top: 12,
+              right: 12,
+              zIndex: 1,
+            }}>
+              <CopyButton text={prompt.template} />
+            </div>
+
+            {/* Template text */}
+            <pre style={{
+              fontFamily: "'Courier New', Courier, monospace",
+              fontSize: 12.5,
+              lineHeight: 1.75,
+              color: 'rgba(255,255,255,0.72)',
+              margin: 0,
+              padding: '20px 48px 20px 20px',
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word',
+              overflowX: 'auto',
+            }}>
+              {prompt.template}
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function PromptsPage() {
   const [openId, setOpenId] = useState<string | null>(null)
-  const [openStepId, setOpenStepId] = useState<string | null>(null)
+  const toggle = (id: string) => setOpenId(prev => prev === id ? null : id)
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
       <BlobLayer />
-      <div
-        style={{
-          position: 'relative',
-          zIndex: 1,
-          padding: 'clamp(64px,6vw,100px) clamp(20px,4vw,48px)',
-          maxWidth: 960,
-          margin: '0 auto',
-        }}
-      >
+      <div style={{ position: 'relative', zIndex: 1, padding: 'clamp(64px,6vw,100px) clamp(20px,4vw,48px)', maxWidth: 960, margin: '0 auto' }}>
         <PageHeader
           title="Prompt Systems"
-          description="Multi-step prompt chains for high-stakes work. Run them in sequence: each step feeds the next. Not single prompts."
-         
+          description="15 reusable prompt templates for product thinking, UX writing, research, strategy, and decision-making."
         />
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          {systems.map((system) => {
-            const isOpen = openId === system.id
-            return (
-              <div
-                key={system.id}
-                style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  border: isOpen ? '1px solid rgba(155,63,255,0.25)' : '1px solid rgba(255,255,255,0.07)',
-                  borderRadius: 14,
-                  overflow: 'hidden',
-                  transition: 'border-color 0.2s',
-                }}
-              >
-                <button
-                  onClick={() => setOpenId(isOpen ? null : system.id)}
-                  style={{
-                    width: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '16px 20px',
-                    textAlign: 'left',
-                    background: 'transparent',
-                    border: 'none',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <div style={{ flex: 1 }}>
-                    <div
-                      style={{
-                        fontFamily: 'var(--font-display)',
-                        fontSize: 17,
-                        fontWeight: 700,
-                        color: '#ffffff',
-                        marginBottom: 4,
-                      }}
-                    >
-                      {system.title}
-                    </div>
-                    <div
-                      style={{
-                        fontFamily: 'var(--font-body)',
-                        fontSize: 13,
-                        color: 'rgba(255,255,255,0.35)',
-                        display: 'flex',
-                        flexWrap: 'wrap' as const,
-                        gap: 6,
-                      }}
-                    >
-                      <span>{system.team}</span>
-                      <span>·</span>
-                      <span>{system.chain.length} prompts in chain</span>
-                    </div>
-                  </div>
-                  <ChevronDown
-                    size={16}
-                    style={{
-                      flexShrink: 0,
-                      marginLeft: 16,
-                      color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.3)',
-                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                      transition: 'transform 0.2s, color 0.2s',
-                    }}
-                  />
-                </button>
-
-                <div
-                    style={{
-                      overflow: 'hidden',
-                      maxHeight: isOpen ? '3000px' : '0px',
-                      transition: isOpen
-                        ? 'max-height 0.38s cubic-bezier(0.4,0,0.2,1)'
-                        : 'max-height 0.18s ease-in',
-                    }}
-                  >
-                  <div
-                    style={{
-                      background: 'rgba(255,255,255,0.02)',
-                      borderTop: '1px solid rgba(255,255,255,0.06)',
-                      padding: '20px 20px 24px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: 20,
-                    }}
-                  >
-                    {/* Meta */}
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
-                      <div>
-                        <div
-                          style={{
-                            fontFamily: 'var(--font-body)',
-                            fontSize: 11,
-                            fontWeight: 500,
-                            textTransform: 'uppercase' as const,
-                            letterSpacing: '0.1em',
-                            color: 'rgba(255,255,255,0.3)',
-                            marginBottom: 4,
-                          }}
-                        >
-                          Use case
-                        </div>
-                        <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, margin: 0 }}>{system.useCase}</p>
-                      </div>
-                      <div>
-                        <div
-                          style={{
-                            fontFamily: 'var(--font-body)',
-                            fontSize: 11,
-                            fontWeight: 500,
-                            textTransform: 'uppercase' as const,
-                            letterSpacing: '0.1em',
-                            color: 'rgba(255,255,255,0.3)',
-                            marginBottom: 4,
-                          }}
-                        >
-                          Required input
-                        </div>
-                        <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, margin: 0 }}>{system.input}</p>
-                      </div>
-                    </div>
-
-                    {/* Prompt chain */}
-                    <div>
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-body)',
-                          color: '#C27FFF',
-                          fontSize: 11,
-                          fontWeight: 700,
-                          textTransform: 'uppercase' as const,
-                          letterSpacing: '0.1em',
-                          marginBottom: 12,
-                        }}
-                      >
-                        Prompt chain
-                      </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                        {system.chain.map((step, idx) => {
-                          const stepKey = `${system.id}-${idx}`
-                          const isStepOpen = openStepId === stepKey
-                          return (
-                            <div
-                              key={idx}
-                              style={{
-                                border: '1px solid rgba(255,255,255,0.07)',
-                                background: 'rgba(255,255,255,0.03)',
-                                borderRadius: 10,
-                                overflow: 'hidden',
-                              }}
-                            >
-                              <button
-                                onClick={() => setOpenStepId(isStepOpen ? null : stepKey)}
-                                style={{
-                                  padding: '10px 14px',
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  justifyContent: 'space-between',
-                                  width: '100%',
-                                  background: 'transparent',
-                                  border: 'none',
-                                  cursor: 'pointer',
-                                  textAlign: 'left' as const,
-                                }}
-                              >
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                                  <span
-                                    style={{
-                                      width: 20,
-                                      height: 20,
-                                      borderRadius: '50%',
-                                      fontSize: 10,
-                                      fontWeight: 700,
-                                      display: 'flex',
-                                      alignItems: 'center',
-                                      justifyContent: 'center',
-                                      flexShrink: 0,
-                                      background: 'rgba(155,63,255,0.15)',
-                                      color: '#C27FFF',
-                                    }}
-                                  >
-                                    {idx + 1}
-                                  </span>
-                                  <span
-                                    style={{
-                                      fontFamily: 'var(--font-body)',
-                                      fontSize: 13,
-                                      fontWeight: 500,
-                                      color: 'rgba(255,255,255,0.8)',
-                                    }}
-                                  >
-                                    {step.label}
-                                  </span>
-                                </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                                  <CopyButton text={step.prompt} />
-                                  <ChevronDown
-                                    size={14}
-                                    style={{
-                                      color: 'rgba(255,255,255,0.3)',
-                                      transform: isStepOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                                      transition: 'transform 0.2s',
-                                    }}
-                                  />
-                                </div>
-                              </button>
-                              {isStepOpen && (
-                                <div
-                                  style={{
-                                    background: 'rgba(0,0,0,0.4)',
-                                    borderTop: '1px solid rgba(255,255,255,0.05)',
-                                    color: 'rgba(255,255,255,0.65)',
-                                    fontFamily: 'monospace',
-                                    fontSize: 12,
-                                    lineHeight: 1.7,
-                                    padding: '14px 16px',
-                                    whiteSpace: 'pre-wrap' as const,
-                                  }}
-                                >
-                                  {step.prompt}
-                                </div>
-                              )}
-                            </div>
-                          )
-                        })}
-                      </div>
-                    </div>
-
-                    {/* Output + Quality */}
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
-                      <div
-                        style={{
-                          background: 'rgba(255,255,255,0.03)',
-                          border: '1px solid rgba(255,255,255,0.07)',
-                          borderRadius: 10,
-                          padding: '12px 14px',
-                        }}
-                      >
-                        <div
-                          style={{
-                            color: 'rgba(255,255,255,0.3)',
-                            textTransform: 'uppercase' as const,
-                            letterSpacing: '0.08em',
-                            fontSize: 11,
-                            fontWeight: 500,
-                            marginBottom: 8,
-                          }}
-                        >
-                          Output format
-                        </div>
-                        <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, margin: 0 }}>{system.outputFormat}</p>
-                      </div>
-                      <div
-                        style={{
-                          background: 'rgba(0,204,168,0.06)',
-                          border: '1px solid rgba(0,204,168,0.15)',
-                          borderRadius: 10,
-                          padding: '12px 14px',
-                        }}
-                      >
-                        <div
-                          style={{
-                            color: '#00CCA8',
-                            textTransform: 'uppercase' as const,
-                            letterSpacing: '0.08em',
-                            fontSize: 11,
-                            fontWeight: 500,
-                            marginBottom: 8,
-                          }}
-                        >
-                          Quality bar
-                        </div>
-                        <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, margin: 0 }}>{system.qualityBar}</p>
-                      </div>
-                    </div>
-
-                    {/* Failure modes + Human review */}
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
-                      <div>
-                        <div
-                          style={{
-                            fontFamily: 'var(--font-body)',
-                            fontSize: 11,
-                            fontWeight: 500,
-                            textTransform: 'uppercase' as const,
-                            letterSpacing: '0.1em',
-                            color: '#FF69DB',
-                            marginBottom: 8,
-                          }}
-                        >
-                          Common failure modes
-                        </div>
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                          {system.failureModes.map((f, i) => (
-                            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>
-                              <span
-                                style={{
-                                  flexShrink: 0,
-                                  marginTop: 6,
-                                  width: 4,
-                                  height: 4,
-                                  borderRadius: '50%',
-                                  background: '#FF69DB',
-                                  display: 'inline-block',
-                                }}
-                              />
-                              {f}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <div
-                          style={{
-                            fontFamily: 'var(--font-body)',
-                            fontSize: 11,
-                            fontWeight: 500,
-                            textTransform: 'uppercase' as const,
-                            letterSpacing: '0.1em',
-                            color: '#E8C840',
-                            marginBottom: 8,
-                          }}
-                        >
-                          Human review required
-                        </div>
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                          {system.humanReview.map((h, i) => (
-                            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>
-                              <span
-                                style={{
-                                  flexShrink: 0,
-                                  marginTop: 6,
-                                  width: 4,
-                                  height: 4,
-                                  borderRadius: '50%',
-                                  background: '#E8C840',
-                                  display: 'inline-block',
-                                }}
-                              />
-                              {h}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    {/* When to use */}
-                    <div
-                      style={{
-                        background: 'rgba(155,63,255,0.06)',
-                        border: '1px solid rgba(155,63,255,0.15)',
-                        borderRadius: 10,
-                        padding: '12px 14px',
-                      }}
-                    >
-                      <div
-                        style={{
-                          color: '#C27FFF',
-                          fontSize: 11,
-                          fontWeight: 700,
-                          textTransform: 'uppercase' as const,
-                          letterSpacing: '0.1em',
-                          fontFamily: 'var(--font-body)',
-                          marginBottom: 6,
-                        }}
-                      >
-                        When to use
-                      </div>
-                      <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, fontFamily: 'var(--font-body)', lineHeight: 1.6, margin: 0 }}>{system.whenToUse}</p>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            )
-          })}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {prompts.map((prompt, i) => (
+            <PromptRow
+              key={prompt.id}
+              prompt={prompt}
+              index={i}
+              isOpen={openId === prompt.id}
+              onToggle={() => toggle(prompt.id)}
+            />
+          ))}
         </div>
       </div>
     </div>
