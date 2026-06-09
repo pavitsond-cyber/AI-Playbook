@@ -111,21 +111,25 @@ export default function LandingPage() {
         </p>
       </div>
 
-      {/* ── Main content — same left edge as logo ────────── */}
+      {/* ── Main content — centred horizontally ──────────── */}
       <div style={{
         position: 'absolute',
-        left: H_PAD,
-        top: '42%',           /* slightly above centre — diver sits in the right half */
+        left: 0,
+        right: 0,
+        top: '42%',
         transform: 'translateY(-50%)',
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'center',
         gap: 52,
         zIndex: 10,
-        maxWidth: '55vw',     /* keep text away from the diver on wide screens */
+        padding: `0 ${H_PAD}`,
+        textAlign: 'center',
       }}>
 
         {/* Headline + subtitle */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20, alignItems: 'center' }}>
+          {/* Headline — gradient from Figma: white → transparent, 169° */}
           <h1 style={{
             fontFamily: "'Halyard Display', Georgia, serif",
             fontSize: 'clamp(52px, 8.5vw, 122px)',
@@ -133,8 +137,11 @@ export default function LandingPage() {
             lineHeight: 1,
             letterSpacing: '-0.02em',
             margin: 0,
-            color: '#ffffff',
             whiteSpace: 'nowrap',
+            background: 'linear-gradient(169.38deg, #ffffff 41%, rgba(255,255,255,0) 113%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
           }}>
             AI Playbook
           </h1>
@@ -152,7 +159,7 @@ export default function LandingPage() {
         </div>
 
         {/* Section links */}
-        <div style={{ display: 'flex', gap: 'clamp(32px, 4.4vw, 63px)', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: 'clamp(32px, 4.4vw, 63px)', alignItems: 'flex-end', flexWrap: 'wrap', justifyContent: 'center' }}>
           {sections.map(s => (
             <Link
               key={s.href}
