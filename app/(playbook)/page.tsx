@@ -167,8 +167,8 @@ export default function LandingPage() {
         className="hidden sm:flex absolute items-center justify-between"
         style={{
           top: NAV_TOP,
-          left: LEFT,
-          right: LEFT,
+          left: 'clamp(16px, 3vw, 74px)',
+          right: 'clamp(16px, 3vw, 74px)',
           zIndex: 20,
         }}
       >
@@ -183,52 +183,57 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* ── Main content — left: 74px, top: 244px (matches Figma exactly) */}
+      {/* ── Main content ─────────────────────────────────────────────── */}
+      {/* Left edge = clamp(16px,3vw,74px) mirrors TopNav's own padding  */}
       <div
         style={{
           position: 'absolute',
           zIndex: 10,
-          /* Desktop: fixed position matching Figma spec */
-          left: `clamp(20px, ${LEFT / 14.4}vw, ${LEFT}px)`,   /* 74/1440 ≈ 5.14vw */
-          top: `clamp(120px, ${CONTENT_TOP / 8}vh, ${CONTENT_TOP}px)`, /* scales with viewport height */
+          left: 'clamp(16px, 3vw, 74px)',
+          right: 'clamp(16px, 3vw, 74px)',
+          top: `clamp(100px, ${CONTENT_TOP / 8}vh, ${CONTENT_TOP}px)`,
           display: 'flex',
           flexDirection: 'column',
-          gap: 'clamp(32px, 4.3vw, 62px)',
+          gap: 'clamp(28px, 4.3vw, 62px)',
         }}
       >
 
-        {/* ── Title + subtitle — side by side (Figma: gap 32px) ──────── */}
+        {/* ── Title + subtitle ───────────────────────────────────────── */}
+        {/* Mobile: stacked; Desktop (sm+): side by side                 */}
         <div
           className="flex flex-col sm:flex-row sm:items-center"
-          style={{ gap: 'clamp(14px, 2.2vw, 32px)' }}
+          style={{ gap: 'clamp(12px, 2.2vw, 32px)' }}
         >
-          <h1 style={{
-            fontFamily: "'Halyard Display', Georgia, serif",
-            fontSize: 'clamp(44px, 6.25vw, 90px)',
-            fontWeight: 400,
-            lineHeight: 1.15,
-            letterSpacing: '-0.02em',
-            margin: 0,
-            whiteSpace: 'nowrap',
-            flexShrink: 0,
-            /* Extra padding so background-clip doesn't cut y descenders or k */
-            paddingBottom: '0.06em',
-            paddingRight: '0.04em',
-            background: 'linear-gradient(163.1deg, #ffffff 41.19%, rgba(255,255,255,0) 112.51%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          }}>
+          <h1
+            className="whitespace-nowrap sm:whitespace-nowrap"
+            style={{
+              fontFamily: "'Halyard Display', Georgia, serif",
+              /* Mobile: scale with vw so it never overflows;
+                 min 28px so it's legible on 320px screens             */
+              fontSize: 'clamp(28px, 8.5vw, 90px)',
+              fontWeight: 400,
+              lineHeight: 1.15,
+              letterSpacing: '-0.02em',
+              margin: 0,
+              flexShrink: 0,
+              paddingBottom: '0.06em',
+              paddingRight: '0.04em',
+              background: 'linear-gradient(163.1deg, #ffffff 41.19%, rgba(255,255,255,0) 112.51%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
             AI Playbook
           </h1>
 
           <p style={{
             fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-            fontSize: 'clamp(14px, 1.67vw, 24px)',
+            fontSize: 'clamp(13px, 1.67vw, 24px)',
             fontWeight: 400,
             lineHeight: 1.5,
             letterSpacing: '-0.02em',
-            width: 'clamp(200px, 23.4vw, 337px)',
+            maxWidth: 337,
             margin: 0,
             flexShrink: 0,
             background: 'linear-gradient(163.4deg, #ffffff 41.19%, rgba(255,255,255,0) 112.51%)',

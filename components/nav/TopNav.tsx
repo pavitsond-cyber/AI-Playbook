@@ -22,16 +22,20 @@ export default function TopNav() {
 
   return (
     <>
-    {/* On homepage desktop: hidden — homepage has its own nav at 74px left */}
-    <header className={isHome ? 'sm:hidden' : ''} style={{
-      position: 'fixed', top: 0, left: 0, right: 0, height: 64,
-      background: 'rgba(10,0,16,0.65)',
-      backdropFilter: 'blur(24px) saturate(180%)',
-      WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-      borderBottom: '1px solid rgba(255,255,255,0.06)',
-      zIndex: 100,
-      display: 'flex', alignItems: 'center',
-    }}>
+    {/* On homepage desktop: hidden — homepage has its own nav at 74px left.
+        IMPORTANT: display:flex lives in className, NOT inline style, so
+        sm:hidden (display:none) can actually override it. */}
+    <header
+      className={`${isHome ? 'sm:hidden' : ''} flex items-center`}
+      style={{
+        position: 'fixed', top: 0, left: 0, right: 0, height: 64,
+        background: 'rgba(10,0,16,0.65)',
+        backdropFilter: 'blur(24px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        zIndex: 100,
+      }}
+    >
       <div style={{
         maxWidth: 1200, margin: '0 auto', width: '100%',
         padding: '0 clamp(16px,3vw,40px)',
