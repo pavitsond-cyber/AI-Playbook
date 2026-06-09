@@ -49,6 +49,28 @@ export default function LandingPage() {
         pointerEvents: 'none',
       }} />
 
+      {/* ── Blue/pink gradient overlay from Figma ────────── */}
+      {/* Flipped vertically per Figma: dark at top, blue in middle, pink at bottom */}
+      {/* mix-blend-mode: screen blends naturally with the video beneath */}
+      <div style={{
+        position: 'absolute',
+        top: '-60%',
+        left: '-15%',
+        width: '130%',
+        height: '260%',
+        zIndex: 2,
+        pointerEvents: 'none',
+        transform: 'scaleY(-1)',        /* mirrors the -scale-y-100 from Figma */
+        opacity: 0.55,
+        mixBlendMode: 'screen',
+      }}>
+        <img
+          src="/images/landing-gradient.svg"
+          alt=""
+          style={{ width: '100%', height: '100%', display: 'block' }}
+        />
+      </div>
+
       {/* ── Top nav — logo left-aligned at H_PAD ─────────── */}
       <div style={{
         position: 'absolute',
@@ -125,7 +147,7 @@ export default function LandingPage() {
             margin: 0,
             color: '#ffffff',
           }}>
-            A repository for everything in AI
+            Headout team&apos;s repository for everything in AI
           </p>
         </div>
 
