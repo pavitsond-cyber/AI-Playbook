@@ -15,10 +15,10 @@ const systems = [
     input: 'Draft PRD (any format)',
     chain: [
       {
-        label: 'Step 1 — Assumption extraction',
+        label: 'Step 1: Assumption extraction',
         prompt: `You are reviewing a PRD before engineering handoff. Your job is to pressure-test it, not polish it.
 
-Read this PRD carefully. Extract every assumption it makes — explicit and implicit. For each assumption:
+Read this PRD carefully. Extract every assumption it makes, both explicit and implicit. For each assumption:
 - State the assumption clearly
 - Rate it: (A) Validated with user research or data, (B) Team consensus only, (C) Unstated but implied
 - Explain the risk if the assumption is wrong
@@ -28,7 +28,7 @@ Format as a table: Assumption | Validation Status | Risk if Wrong
 [PASTE PRD HERE]`,
       },
       {
-        label: 'Step 2 — Edge case mapping',
+        label: 'Step 2: Edge case mapping',
         prompt: `Walk through every user flow described in this PRD. For each flow, identify edge cases that are not addressed:
 - Error states (what happens when something fails?)
 - Empty states (what does the user see when there is no content?)
@@ -42,11 +42,11 @@ List each missing edge case with: Flow → Edge Case → Why it matters → Seve
 [PASTE PRD HERE]`,
       },
       {
-        label: 'Step 3 — Success metric challenge',
+        label: 'Step 3: Success metric challenge',
         prompt: `Review the success metrics in this PRD. For each metric, answer:
 1. Is it measurable right now with existing instrumentation?
 2. Is it attributable to this feature specifically, or could other factors move it?
-3. Does it measure what actually matters — user value — or just what is easy to track?
+3. Does it measure what actually matters (user value) or just what is easy to track?
 4. Is the target number justified, or picked arbitrarily?
 
 For any metric that fails these tests, suggest a sharper alternative.
@@ -54,7 +54,7 @@ For any metric that fails these tests, suggest a sharper alternative.
 [PASTE PRD HERE]`,
       },
       {
-        label: 'Step 4 — Dependency audit',
+        label: 'Step 4: Dependency audit',
         prompt: `What dependencies are implied by this PRD but not explicitly listed? Include:
 - Technical dependencies (APIs, services, infrastructure)
 - Design dependencies (components, patterns, assets)
@@ -70,14 +70,14 @@ For each dependency: name it, identify which team or system owns it, and flag wh
     outputFormat: 'Annotated PRD with: assumption table, edge case log, metric review, dependency list',
     qualityBar: 'Every assumption is either validated or explicitly listed as an accepted risk. Every success metric is measurable and attributable.',
     failureModes: [
-      'AI raises challenges that are irrelevant to your specific context — filter aggressively',
-      'Edge cases listed may be out of scope — not everything it flags needs solving in this release',
+      'AI raises challenges that are irrelevant to your specific context: filter aggressively',
+      'Edge cases listed may be out of scope: not everything it flags needs solving in this release',
       'AI cannot challenge assumptions it does not know are assumptions',
     ],
     humanReview: [
       'PM decides which edge cases are in-scope for this release vs deferred',
       'Engineering lead validates the dependency list',
-      'PM owns the final PRD — AI challenges it, does not approve it',
+      'PM owns the final PRD: AI challenges it, does not approve it',
     ],
     whenToUse: 'Before any significant engineering handoff. Especially for high-edge-case-density features like checkout, onboarding, and permission flows.',
   },
@@ -89,8 +89,8 @@ For each dependency: name it, identify which team or system owns it, and flag wh
     input: '5–15 labelled interview transcripts or survey verbatims (P1, P2... format preferred)',
     chain: [
       {
-        label: 'Step 1 — Pain extraction with frequency',
-        prompt: `Read these research transcripts carefully. Your job is synthesis with evidence — not storytelling.
+        label: 'Step 1: Pain extraction with frequency',
+        prompt: `Read these research transcripts carefully. Your job is synthesis with evidence, not storytelling.
 
 Extract every pain statement as a near-direct quote. Then:
 - Group identical or very similar pains together
@@ -104,8 +104,8 @@ Do not interpret yet. Only extract and group.
 [PASTE TRANSCRIPTS HERE]`,
       },
       {
-        label: 'Step 2 — Theme clustering by JTBD',
-        prompt: `Group the pain statements from the previous step by the underlying job the user is trying to do — not by product area or feature.
+        label: 'Step 2: Theme clustering by JTBD',
+        prompt: `Group the pain statements from the previous step by the underlying job the user is trying to do, not by product area or feature.
 
 For each cluster:
 - Name the job to be done (verb-noun format: "book a ticket without uncertainty")
@@ -116,8 +116,8 @@ For each cluster:
 [PASTE PAIN TABLE FROM STEP 1]`,
       },
       {
-        label: 'Step 3 — Contradiction surfacing',
-        prompt: `Review these transcripts for contradictions — places where participants had meaningfully different experiences, needs, or opinions.
+        label: 'Step 3: Contradiction surfacing',
+        prompt: `Review these transcripts for contradictions: places where participants had meaningfully different experiences, needs, or opinions.
 
 For each contradiction:
 - State what the contradiction is
@@ -130,7 +130,7 @@ Do not average the contradiction away. Contradictions are often the most valuabl
 [PASTE TRANSCRIPTS HERE]`,
       },
       {
-        label: 'Step 4 — Opportunity mapping',
+        label: 'Step 4: Opportunity mapping',
         prompt: `Based on the themes and pains identified, write a product opportunity statement for each cluster:
 
 Format: "[User type] needs a way to [job to be done] without [main pain]. Current evidence: [frequency]. Team's ability to address: [High/Medium/Low and why]."
@@ -145,12 +145,12 @@ Then rank the opportunities by: (frequency × severity) ÷ implementation comple
     failureModes: [
       'AI over-clusters similar themes, losing the nuance between distinct user needs',
       'Frequency counts can be wrong if transcript labels are inconsistent',
-      'Opportunity scoring uses assumed implementation complexity — always challenge this',
+      'Opportunity scoring uses assumed implementation complexity: always challenge this',
     ],
     humanReview: [
       'Research lead validates cluster labels against their own reading of the transcripts',
       'PM challenges opportunity scoring with product context AI does not have',
-      'Contradictions require investigative follow-up — AI identifies them, humans resolve them',
+      'Contradictions require investigative follow-up: AI identifies them, humans resolve them',
     ],
     whenToUse: 'After any usability study or discovery round. Especially useful before a product planning cycle to generate a prioritised opportunity list.',
   },
@@ -162,14 +162,14 @@ Then rank the opportunities by: (frequency × severity) ÷ implementation comple
     input: 'Exported screen copy inventory (screen name, state, copy text, character limit if known) + feature description',
     chain: [
       {
-        label: 'Step 1 — State completeness check',
+        label: 'Step 1: State completeness check',
         prompt: `You are reviewing a design for completeness before engineering handoff.
 
 For each screen listed, check whether the following states are covered:
 - Default (the standard view)
 - Loading (while data is fetching)
 - Empty (no content available)
-- Error (something went wrong — network, input, or system)
+- Error (something went wrong: network, input, or system)
 - Success (a task completed)
 - Edge case states specific to this feature
 
@@ -181,20 +181,20 @@ Screen copy inventory:
 [PASTE COPY INVENTORY]`,
       },
       {
-        label: 'Step 2 — Copy consistency audit',
+        label: 'Step 2: Copy consistency audit',
         prompt: `Review this copy set for internal consistency:
 
-1. Terminology consistency — is the same feature, action, or object named the same way throughout?
-2. Tone consistency — does the register stay consistent across states? (Not formal in some, casual in others)
-3. Tense and voice — consistently active and present-tense, or does it drift?
-4. CTA patterns — are CTAs phrased consistently? ("Save" vs "Save changes" vs "Update" for the same action)
+1. Terminology consistency: is the same feature, action, or object named the same way throughout?
+2. Tone consistency: does the register stay consistent across states? (Not formal in some, casual in others)
+3. Tense and voice: consistently active and present-tense, or does it drift?
+4. CTA patterns: are CTAs phrased consistently? ("Save" vs "Save changes" vs "Update" for the same action)
 
 List every inconsistency found. Format: Type → Inconsistency → Screens affected → Suggested fix.
 
 [PASTE COPY INVENTORY]`,
       },
       {
-        label: 'Step 3 — Brand voice check',
+        label: 'Step 3: Brand voice check',
         prompt: `Our copy voice: warm, direct, and specific. Avoid generic filler, passive voice, over-apology, and vague language.
 
 Review this copy against that standard. Flag:
@@ -212,12 +212,12 @@ For each flag: quote the copy → explain why it fails → suggest a sharper alt
     outputFormat: 'Missing states list with severity → consistency issues log → brand voice flags with suggested rewrites',
     qualityBar: 'Every flag is actioned: either fixed, or explicitly marked "accepted" with a reason.',
     failureModes: [
-      'AI flags intentional creative choices as inconsistencies — review every flag, do not bulk-accept',
+      'AI flags intentional creative choices as inconsistencies: review every flag, do not bulk-accept',
       'Character limit violations may be based on estimates if limits are not specified',
       'Brand voice flags may be over-conservative on bold copy choices',
     ],
     humanReview: [
-      'Designer validates every flag — AI helps focus attention, not replace judgment',
+      'Designer validates every flag: AI helps focus attention, not replace judgment',
       'Writer reviews all brand voice flags',
       'PM decides which missing states are in scope for this release',
     ],
@@ -231,14 +231,14 @@ For each flag: quote the copy → explain why it fails → suggest a sharper alt
     input: 'Page copy (pasted) or URL + page goal (conversion/trust/information) + target audience description',
     chain: [
       {
-        label: 'Step 1 — Value proposition clarity check',
+        label: 'Step 1: Value proposition clarity check',
         prompt: `You are auditing a landing page. Start with the most critical question: does the hero communicate what this product does and why it matters within 6 seconds?
 
 Review the hero section (headline, subheadline, and first visual area). Evaluate:
-1. Is the core value proposition immediately clear — what the user gets, not what we built?
-2. Who is the intended user — is it obvious from the copy?
-3. What action is the user meant to take — is the next step clear and compelling?
-4. What objections does a first-time visitor likely have — does the hero address any of them?
+1. Is the core value proposition immediately clear (what the user gets, not what we built)?
+2. Who is the intended user: is it obvious from the copy?
+3. What action is the user meant to take: is the next step clear and compelling?
+4. What objections does a first-time visitor likely have: does the hero address any of them?
 
 For each weakness: quote the element → explain the problem → suggest a specific fix.
 
@@ -248,10 +248,10 @@ Target audience: [DESCRIBE AUDIENCE]
 [PASTE PAGE COPY]`,
       },
       {
-        label: 'Step 2 — Full page structural audit',
+        label: 'Step 2: Full page structural audit',
         prompt: `Audit the full page structure. For each section of the page:
 1. Does this section move the user closer to the goal, or is it just filling space?
-2. Is the hierarchy of information logical — does earlier content make later content land better?
+2. Is the hierarchy of information logical: does earlier content make later content land better?
 3. Where is trust established? Where is it missing?
 4. Where might a user drop off and why?
 
@@ -260,12 +260,12 @@ Give me a section-by-section verdict: Keep as-is / Improve / Remove. For each "I
 [PASTE PAGE COPY]`,
       },
       {
-        label: 'Step 3 — Competitive positioning gap',
+        label: 'Step 3: Competitive positioning gap',
         prompt: `Here are 2–3 competitor pages for comparison. Compare this page's positioning:
 
 1. What is our page saying that competitors are not? (Potential differentiation)
 2. What are competitors saying that we are not? (Potential gap)
-3. Where is our copy weaker — more vague, less specific, or less credible?
+3. Where is our copy weaker: more vague, less specific, or less credible?
 4. What proof points, trust signals, or specifics are competitors using that we are missing?
 
 Be direct. Do not soften findings.
@@ -278,12 +278,12 @@ Competitor 2: [PASTE OR DESCRIBE]`,
     outputFormat: 'Hero assessment → section-by-section verdict → competitive gap analysis → prioritised fix list',
     qualityBar: 'Every finding ties to the page goal. "It sounds better" is not a reason. Every recommendation has a specific fix.',
     failureModes: [
-      'AI audit uses heuristics, not your actual user behaviour data — always cross-reference with analytics',
+      'AI audit uses heuristics, not your actual user behaviour data: always cross-reference with analytics',
       'Competitive findings depend on the quality of competitor copy you provide',
     ],
     humanReview: [
       'Validate structural findings with real scroll and drop-off data if available',
-      'Brand and copy team reviews flagged copy — bold choices may be flagged incorrectly',
+      'Brand and copy team reviews flagged copy: bold choices may be flagged incorrectly',
       'PM or marketing lead decides what to test vs implement directly',
     ],
     whenToUse: 'Before any major campaign where a landing page is the primary conversion surface. Also useful for quarterly audits of high-traffic pages.',
@@ -296,7 +296,7 @@ Competitor 2: [PASTE OR DESCRIBE]`,
     input: 'Source English copy + translated copy + target language/market + UI screenshots (if available)',
     chain: [
       {
-        label: 'Step 1 — Source copy risk scan',
+        label: 'Step 1: Source copy risk scan',
         prompt: `Before translation is reviewed, scan the English source copy for localization risk.
 
 Flag any phrases that are:
@@ -304,7 +304,7 @@ Flag any phrases that are:
 2. Culturally specific to an English-speaking market
 3. Wordplay, puns, or rhymes that will break in translation
 4. Informal register that may not carry over in [TARGET LANGUAGE]
-5. Length-sensitive — likely to become significantly longer in translation
+5. Length-sensitive: likely to become significantly longer in translation
 6. Legally or culturally sensitive in [TARGET MARKET]
 
 For each flag: quote the phrase → explain the risk → suggest a safer alternative.
@@ -315,15 +315,15 @@ Target market: [MARKET]
 [PASTE SOURCE COPY]`,
       },
       {
-        label: 'Step 2 — Translation quality review',
+        label: 'Step 2: Translation quality review',
         prompt: `Review this translated copy for [TARGET LANGUAGE/MARKET].
 
 Check:
-1. Accuracy — does it convey the same meaning as the source?
-2. Naturalness — does it sound like how a native speaker would write it for a consumer product?
-3. Register — is the formality level appropriate for this market?
-4. Cultural fit — are there phrases that may be confusing, off, or inappropriate in this market?
-5. Length — are any translated strings significantly longer than the source (truncation risk)?
+1. Accuracy: does it convey the same meaning as the source?
+2. Naturalness: does it sound like how a native speaker would write it for a consumer product?
+3. Register: is the formality level appropriate for this market?
+4. Cultural fit: are there phrases that may be confusing, off, or inappropriate in this market?
+5. Length: are any translated strings significantly longer than the source (truncation risk)?
 
 Format: String → Issue Type → Severity → Suggested fix (or "Needs native review")
 
@@ -331,7 +331,7 @@ Source: [PASTE SOURCE]
 Translation: [PASTE TRANSLATION]`,
       },
       {
-        label: 'Step 3 — UI truncation check',
+        label: 'Step 3: UI truncation check',
         prompt: `Given these character limits, identify which translated strings are at risk of truncation.
 
 For any string at or over the limit:
@@ -345,7 +345,7 @@ For any string at or over the limit:
     outputFormat: 'Source risk report → translation quality flags → truncation risk list → native review checklist',
     qualityBar: 'Every flagged item is reviewed by a native speaker or local market manager before launch.',
     failureModes: [
-      'AI cannot assess tonal nuance fully — formal/informal address requires native judgment',
+      'AI cannot assess tonal nuance fully: formal/informal address requires native judgment',
       'Cultural sensitivity flags may be over-cautious or miss specific market context',
       'Character limit accuracy depends on precise limits being provided',
     ],
@@ -364,7 +364,7 @@ For any string at or over the limit:
     input: 'The change being tested, why you believe it will improve a metric, current baseline data if available',
     chain: [
       {
-        label: 'Step 1 — Hypothesis sharpening',
+        label: 'Step 1: Hypothesis sharpening',
         prompt: `Sharpen this experiment hypothesis into a testable, falsifiable statement.
 
 A good hypothesis format: "We believe that [change] will cause [measurable outcome] because [reasoning]. We will know this is true if [specific metric moves by X% in Y direction] within [timeframe]."
@@ -372,36 +372,36 @@ A good hypothesis format: "We believe that [change] will cause [measurable outco
 Current hypothesis: [PASTE YOUR HYPOTHESIS]
 
 Evaluate the hypothesis:
-1. Is it falsifiable — can a negative result clearly disprove it?
+1. Is it falsifiable: can a negative result clearly disprove it?
 2. Is the metric specific and attributable to this change?
-3. Is the reasoning mechanistic — does it explain HOW the change causes the outcome?
+3. Is the reasoning mechanistic: does it explain HOW the change causes the outcome?
 4. Is the timeframe long enough to reach statistical significance?
 
 Rewrite the hypothesis to fix any weaknesses.`,
       },
       {
-        label: 'Step 2 — Metric selection and guardrails',
+        label: 'Step 2: Metric selection and guardrails',
         prompt: `For this experiment, help me define the full metric set:
 
-1. Primary metric — the one that defines success or failure
-2. Secondary metrics — directional signals to monitor
-3. Guardrail metrics — metrics that should NOT move negatively (if they do, the experiment may need to be stopped)
-4. Counter-metrics — things we would not want to trade off even for primary metric improvement
+1. Primary metric: the one that defines success or failure
+2. Secondary metrics: directional signals to monitor
+3. Guardrail metrics: metrics that should NOT move negatively (if they do, the experiment may need to be stopped)
+4. Counter-metrics: things we would not want to trade off even for primary metric improvement
 
 For each metric: what it is, how it is measured, what constitutes a meaningful change, and the risk of it moving in the wrong direction.
 
 Experiment: [DESCRIBE WHAT YOU ARE TESTING]`,
       },
       {
-        label: 'Step 3 — Experiment risk and edge cases',
+        label: 'Step 3: Experiment risk and edge cases',
         prompt: `Identify risks and edge cases in this experiment design:
 
-1. Sample contamination — could users see both variants?
-2. Novelty effect — could early positive results be driven by newness, not real value?
-3. Network effects — could one variant affect users who are not in that variant?
-4. Segmentation issues — are there user segments that should be excluded?
-5. Instrumentation risk — are all metrics currently tracked correctly?
-6. External factors — are there external events during the test window that could skew results?
+1. Sample contamination: could users see both variants?
+2. Novelty effect: could early positive results be driven by newness, not real value?
+3. Network effects: could one variant affect users who are not in that variant?
+4. Segmentation issues: are there user segments that should be excluded?
+5. Instrumentation risk: are all metrics currently tracked correctly?
+6. External factors: are there external events during the test window that could skew results?
 
 For each risk: describe it, rate its likelihood (High/Medium/Low), and suggest a mitigation.
 
@@ -412,14 +412,14 @@ Experiment: [DESCRIBE EXPERIMENT]`,
     qualityBar: 'Hypothesis is falsifiable and mechanistic. Primary metric is attributable. All guardrail metrics are defined before the test runs.',
     failureModes: [
       'AI sharpening may over-specify what is still an exploratory test',
-      'Risk lists can be exhaustive but not all risks are equally likely — use judgment',
+      'Risk lists can be exhaustive but not all risks are equally likely: use judgment',
     ],
     humanReview: [
       'Data analyst validates instrumentation before experiment launches',
       'PM confirms the hypothesis aligns with team goals',
       'Research lead or stats-aware team member reviews sample size and significance requirements',
     ],
-    whenToUse: 'Before any significant product experiment — especially for flows where errors are costly and results hard to reverse.',
+    whenToUse: 'Before any significant product experiment, especially for flows where errors are costly and results hard to reverse.',
   },
 ]
 
@@ -441,7 +441,7 @@ export default function PromptSystemsPage() {
       >
         <PageHeader
           title="Prompt Systems"
-          description="Multi-step prompt chains for high-stakes work. Run them in sequence — each step feeds the next. Not single prompts."
+          description="Multi-step prompt chains for high-stakes work. Run them in sequence: each step feeds the next. Not single prompts."
          
         />
 
@@ -512,7 +512,15 @@ export default function PromptSystemsPage() {
                   />
                 </button>
 
-                {isOpen && (
+                <div
+                    style={{
+                      overflow: 'hidden',
+                      maxHeight: isOpen ? '3000px' : '0px',
+                      transition: isOpen
+                        ? 'max-height 0.38s cubic-bezier(0.4,0,0.2,1)'
+                        : 'max-height 0.18s ease-in',
+                    }}
+                  >
                   <div
                     style={{
                       background: 'rgba(255,255,255,0.02)',
@@ -809,7 +817,7 @@ export default function PromptSystemsPage() {
                     </div>
 
                   </div>
-                )}
+                </div>
               </div>
             )
           })}
