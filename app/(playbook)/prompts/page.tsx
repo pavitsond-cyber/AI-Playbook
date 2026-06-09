@@ -701,24 +701,8 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
           transition: 'background 0.15s ease',
         }}
       >
-        {/* Mobile: number on top, content below; Desktop: side by side */}
-        <div className="flex flex-col sm:flex-row sm:items-start" style={{ gap: '6px 16px' }}>
-          {/* Number badge */}
-          <span style={{
-            fontFamily: "'halyard-text', 'DM Sans', system-ui, sans-serif",
-            fontSize: 13,
-            fontWeight: 500,
-            color: '#c18dff',
-            flexShrink: 0,
-            paddingTop: 2,
-            minWidth: 28,
-            alignSelf: 'flex-start',
-          }}>
-            {String(index + 1).padStart(2, '0')}
-          </span>
-
-          {/* Title + description */}
-          <div style={{ flex: 1, minWidth: 0 }}>
+        {/* Title + description */}
+        <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
               <span style={{
                 fontFamily: 'var(--font-display)',
@@ -745,7 +729,6 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
             }}>
               {prompt.description}
             </p>
-          </div>
         </div>
       </button>
 
