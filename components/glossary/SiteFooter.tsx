@@ -1,13 +1,8 @@
 export default function SiteFooter() {
   return (
     <footer style={{
-      position: 'sticky',
-      bottom: 0,
       borderTop: '1px solid rgba(255,255,255,0.06)',
       background: 'rgba(10,0,16,0.85)',
-      backdropFilter: 'blur(20px)',
-      WebkitBackdropFilter: 'blur(20px)',
-      zIndex: 10,
       marginTop: 64,
     }}>
       <div style={{ maxWidth: 768, margin: '0 auto', padding: '28px 20px', display: 'flex', flexDirection: 'column' as const, gap: 6, alignItems: 'center' }}>

@@ -908,13 +908,14 @@ export default function PromptsPage() {
             : 'opacity 0.26s ease-out, transform 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         }}>
           {filteredPrompts.map((prompt, i) => (
-            <PromptRow
-              key={prompt.id}
-              prompt={prompt}
-              index={i}
-              isOpen={openId === prompt.id}
-              onToggle={() => toggle(prompt.id)}
-            />
+            <div key={prompt.id} className="animate-fade-up" style={{ animationDelay: `${Math.min(i * 35, 280)}ms` }}>
+              <PromptRow
+                prompt={prompt}
+                index={i}
+                isOpen={openId === prompt.id}
+                onToggle={() => toggle(prompt.id)}
+              />
+            </div>
           ))}
         </div>
       </div>

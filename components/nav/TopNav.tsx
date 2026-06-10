@@ -33,16 +33,12 @@ export default function TopNav() {
            Other pages: frosted glass. Hamburger open: always solid. */
         background: mobileOpen
           ? 'rgba(10,0,16,0.97)'
-          : isHome ? 'transparent' : 'rgba(10,0,16,0.45)',
-        backdropFilter: mobileOpen
-          ? 'blur(24px)'
-          : isHome ? 'none' : 'blur(28px) saturate(180%)',
-        WebkitBackdropFilter: mobileOpen
-          ? 'blur(24px)'
-          : isHome ? 'none' : 'blur(28px) saturate(180%)',
+          : 'rgba(10,0,16,0.45)',
+        backdropFilter: mobileOpen ? 'blur(24px)' : 'blur(28px) saturate(180%)',
+        WebkitBackdropFilter: mobileOpen ? 'blur(24px)' : 'blur(28px) saturate(180%)',
         borderBottom: mobileOpen
           ? '1px solid rgba(255,255,255,0.08)'
-          : isHome ? 'none' : '1px solid rgba(255,255,255,0.06)',
+          : '1px solid rgba(255,255,255,0.06)',
         zIndex: 100,
         transition: 'background 0.28s ease, backdrop-filter 0.28s ease, border-color 0.28s ease',
       }}
@@ -86,7 +82,7 @@ export default function TopNav() {
           <InlineSearch placeholder="Search" compact />
         </div>
 
-        {/* Mobile: search icon + hamburger */}
+        {/* Mobile: search icon + hamburger (hamburger hidden on home) */}
         <div className="sm:hidden flex items-center" style={{ marginLeft: 'auto', gap: 4 }}>
           {/* Search icon */}
           <button
@@ -97,10 +93,10 @@ export default function TopNav() {
             <Search size={19} />
           </button>
 
-          {/* Hamburger */}
+          {/* Hamburger — hidden on homepage */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ffffff', padding: 6, position: 'relative', width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ffffff', padding: 6, position: 'relative', width: 32, height: 32, display: isHome ? 'none' : 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             {/* Menu icon — fades out when open */}
             <span style={{

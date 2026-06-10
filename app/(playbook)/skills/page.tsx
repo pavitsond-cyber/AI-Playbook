@@ -1123,14 +1123,15 @@ export default function SkillsPage() {
             ? 'opacity 0.16s ease-in, transform 0.16s ease-in'
             : 'opacity 0.26s ease-out, transform 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         }}>
-          {filtered.map(skill => (
-            <SkillRow
-              key={skill.name}
-              skill={skill}
-              isOpen={openName === skill.name}
-              onToggle={() => toggle(skill.name)}
-              showTag={activeTab === 'All'}
-            />
+          {filtered.map((skill, i) => (
+            <div key={skill.name} className="animate-fade-up" style={{ animationDelay: `${Math.min(i * 35, 280)}ms` }}>
+              <SkillRow
+                skill={skill}
+                isOpen={openName === skill.name}
+                onToggle={() => toggle(skill.name)}
+                showTag={activeTab === 'All'}
+              />
+            </div>
           ))}
         </div>
       </div>

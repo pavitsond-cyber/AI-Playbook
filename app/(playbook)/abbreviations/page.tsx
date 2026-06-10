@@ -60,7 +60,7 @@ const abbreviations: AbbreviationEntry[] = [
     category: 'ai_concepts',
   },
   {
-    abbr: 'NLP-AI',
+    abbr: 'NLP',
     full: 'Natural Language Processing AI',
     meaning: 'AI systems that understand and generate human-like text, enabling natural conversations, copy generation, and content automation. AI reads and writes text like humans.',
     example: 'When a support bot reads "my booking is messed up, I need help asap" and correctly classifies it as urgent + booking issue + escalation needed, without any keywords, that\'s NLP-AI interpreting tone, urgency, and topic simultaneously. Enables natural interfaces and automation.',
@@ -68,7 +68,7 @@ const abbreviations: AbbreviationEntry[] = [
     category: 'ai_concepts',
   },
   {
-    abbr: 'CV-AI',
+    abbr: 'CV',
     full: 'Computer Vision AI',
     meaning: 'AI that analyzes visual content, detecting elements, objects, or scenes: helps AI "see" images and understand them. Enables AR/VR, accessibility, and automation.',
     example: 'Run competitor app screens through Claude\'s vision: "List all UI patterns and design decisions visible here." CV-AI returns a structured breakdown of card types, navigation models, interaction patterns: a full visual audit in minutes that would take hours manually.',
@@ -194,7 +194,7 @@ const abbreviations: AbbreviationEntry[] = [
     category: 'design_vision',
   },
   {
-    abbr: 'DEX-AI',
+    abbr: 'DEX',
     full: 'Design Experience AI',
     meaning: 'AI analyzes design consistency and UX heuristics: AI audits designs and provides feedback. Automates design quality and consistency checks.',
     example: 'Before each sprint review, run screens through a DEX-AI prompt checking against your UX principles. It flags inconsistencies in spacing, label terminology, and interaction patterns that a manual review might miss. Design quality review that scales with your output.',
@@ -218,7 +218,7 @@ const abbreviations: AbbreviationEntry[] = [
     category: 'design_vision',
   },
   {
-    abbr: 'POI-AI',
+    abbr: 'POI',
     full: 'Predictive Optimization for AI Insights',
     meaning: 'AI suggests the next best user action: AI predicts what a user will do next. Increases conversion, retention, and engagement.',
     example: '"Based on this user\'s browsing and booking patterns, surface a guided tour rather than solo activity." That prediction, used to personalize a home screen in real time, is POI-AI. The difference between showing users what you have and showing users what they\'ll want.',
@@ -229,7 +229,7 @@ const abbreviations: AbbreviationEntry[] = [
   // ─── Workflow & Data (6) ──────────────────────────────────────────────────
 
   {
-    abbr: 'E2E AI',
+    abbr: 'E2E',
     full: 'End-to-End AI Workflow',
     meaning: 'Integrating AI from ideation to deployment in a seamless pipeline, from start to finish. Streamlines complex AI-driven processes.',
     example: 'Research brief → AI synthesises research (RAG) → AI generates visual concepts (T2I) → AI writes copy (LLM) → AI QAs output (AIQ) → deploy. When AI connects every step in a continuous workflow rather than isolated tasks, that\'s E2E AI delivering compound leverage.',
@@ -253,7 +253,7 @@ const abbreviations: AbbreviationEntry[] = [
     category: 'workflow_data',
   },
   {
-    abbr: 'UGC-AI',
+    abbr: 'UGC',
     full: 'AI for User-Generated Content',
     meaning: 'Summarizing, tagging, or cleaning user content at scale with AI: let AI handle mass user reviews, photos, or moderation. Enhances moderation and user engagement.',
     example: '50,000 user reviews across your product. UGC-AI classifies them by sentiment, product area, and specific feedback type, in hours not months. Your team acts on structured insights rather than a raw firehose. The data was always there; AI makes it usable.',
@@ -269,7 +269,7 @@ const abbreviations: AbbreviationEntry[] = [
     category: 'workflow_data',
   },
   {
-    abbr: 'OCR-AI',
+    abbr: 'OCR',
     full: 'Optical Character Recognition AI',
     meaning: 'Extracting text from images or screenshots for automation: let AI read pictures for text. Saves manual typing and speeds up tasks.',
     example: 'Screenshot a competitor\'s pricing page or photograph a whiteboard brief. OCR-AI extracts all the text cleanly, preserving structure. Paste into a prompt for analysis, comparison, or restructuring. No manual retyping, no data loss, straight to AI processing.',
@@ -315,8 +315,13 @@ function AbbreviationCard({ item, groupColor, isLast }: CardProps) {
       </button>
 
       <div
-        className="overflow-hidden transition-all duration-300 ease-in-out"
-        style={{ maxHeight: expanded ? '560px' : '0px' }}
+        className="overflow-hidden"
+        style={{
+          maxHeight: expanded ? '560px' : '0px',
+          transition: expanded
+            ? 'max-height 0.32s cubic-bezier(0.4,0,0.2,1)'
+            : 'max-height 0.22s ease-in',
+        }}
       >
         <div className="px-4 pb-4 space-y-3" style={{ paddingTop: '2px' }}>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{item.meaning}</p>
