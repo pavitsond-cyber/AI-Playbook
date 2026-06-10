@@ -378,8 +378,8 @@ export default function ContributePage() {
               {errors.attachment && <p style={err}>{errors.attachment}</p>}
             </div>
 
-            {/* Submit row */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 10 }}>
+            {/* Submit row — right-aligned on desktop, full-width on mobile */}
+            <div className="submit-row" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 10 }}>
               {errors.submit && (
                 <p style={{ ...err, alignSelf: 'stretch', padding: '12px 16px', background: 'rgba(155,63,255,0.08)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 10, margin: 0 }}>
                   {errors.submit}
@@ -428,6 +428,13 @@ export default function ContributePage() {
             border-radius: 0 !important;
             box-shadow: none !important;
             padding: 0 20px !important;
+          }
+          .submit-row {
+            align-items: stretch !important;
+          }
+          .submit-row button[type="submit"] {
+            width: 100% !important;
+            min-width: unset !important;
           }
         }
       `}</style>
