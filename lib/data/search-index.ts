@@ -1,6 +1,6 @@
 import { staticTerms } from './glossary-static'
 
-export type SearchItemType = 'abbreviation' | 'term' | 'skill' | 'prompt' | 'principle'
+export type SearchItemType = 'abbreviation' | 'term' | 'skill' | 'prompt' | 'principle' | 'tool'
 
 export interface SearchItem {
   id: string
@@ -20,7 +20,7 @@ const glossaryItems: SearchItem[] = staticTerms.map((t) => ({
   title: t.term,
   subtitle: t.full_form ?? undefined,
   snippet: t.short_definition ?? '',
-  href: '/glossary',
+  href: '/glossary#' + t.id,
   keywords: [
     t.term,
     t.full_form,
@@ -44,7 +44,7 @@ const skillItems: SearchItem[] = [
     title: 'AI workflow design',
     subtitle: 'Product · Design · Research · Ops · Brand',
     snippet: 'Design a reusable AI-assisted workflow for a recurring team task — input spec, prompt chain, review step, output format, quality bar.',
-    href: '/skills',
+    href: '/skills#' + encodeURIComponent('AI workflow design'),
     keywords: 'ai workflow design reusable recurring team task input spec prompt chain review step output format quality bar systematise owner',
   },
   {
@@ -53,7 +53,7 @@ const skillItems: SearchItem[] = [
     title: 'AI output evaluation',
     subtitle: 'Research · Design · Product · Brand · Content',
     snippet: 'Build rubrics and checklists to evaluate AI output quality before scaling any workflow to the full team.',
-    href: '/skills',
+    href: '/skills#' + encodeURIComponent('AI output evaluation'),
     keywords: 'ai output evaluation rubric checklist quality assessment scaling team pass fail criteria consistent rating',
   },
   {
@@ -62,7 +62,7 @@ const skillItems: SearchItem[] = [
     title: 'Context engineering',
     subtitle: 'Everyone',
     snippet: 'Write prompts that give AI the specific product, user, or task context needed to produce high-quality output. The difference between generic and useful output is almost always context.',
-    href: '/skills',
+    href: '/skills#' + encodeURIComponent('Context engineering'),
     keywords: 'context engineering prompt writing specific product user task context generic useful output off-target consistent inputs',
   },
   {
@@ -71,7 +71,7 @@ const skillItems: SearchItem[] = [
     title: 'AI-assisted research synthesis',
     subtitle: 'Research · Product · Design',
     snippet: 'Extract themes, frequency counts, and contradictions from research data. Assign confidence levels to each insight based on evidence quality.',
-    href: '/skills',
+    href: '/skills#' + encodeURIComponent('AI-assisted research synthesis'),
     keywords: 'research synthesis themes frequency contradictions evidence confidence insights interviews transcripts grading qualitative',
   },
   {
@@ -80,7 +80,7 @@ const skillItems: SearchItem[] = [
     title: 'AI-powered design QA',
     subtitle: 'Product Design · UX Writing',
     snippet: 'Use AI to systematically review a design for missing states, copy inconsistencies, brand voice issues, and edge cases before engineering handoff.',
-    href: '/skills',
+    href: '/skills#' + encodeURIComponent('AI-powered design QA'),
     keywords: 'design qa quality assurance review missing states copy inconsistencies brand voice edge cases handoff figma screens',
   },
   {
@@ -89,7 +89,7 @@ const skillItems: SearchItem[] = [
     title: 'AI-assisted product critique',
     subtitle: 'Product',
     snippet: 'Pressure-test a PRD, product decision, or feature spec for unvalidated assumptions, missing edge cases, and weak success metrics.',
-    href: '/skills',
+    href: '/skills#' + encodeURIComponent('AI-assisted product critique'),
     keywords: 'product critique prd pressure test assumptions edge cases success metrics feature spec review pm',
   },
   {
@@ -98,7 +98,7 @@ const skillItems: SearchItem[] = [
     title: 'AI for localization at scale',
     subtitle: 'UX Writing · Content · Ops',
     snippet: 'Build a QA system for translated copy that catches cultural mismatches, truncation risks, and translation quality issues before market launch.',
-    href: '/skills',
+    href: '/skills#' + encodeURIComponent('AI for localization at scale'),
     keywords: 'localization qa translation copy cultural mismatches truncation market launch language international',
   },
   {
@@ -107,7 +107,7 @@ const skillItems: SearchItem[] = [
     title: 'AI creative direction systems',
     subtitle: 'Brand Design · Marketing',
     snippet: 'Use AI to rapidly explore and evaluate multiple visual or creative territories from a brief before committing to one direction.',
-    href: '/skills',
+    href: '/skills#' + encodeURIComponent('AI creative direction systems'),
     keywords: 'creative direction territories brand campaign visual midjourney image generation brief art direction explore options',
   },
   {
@@ -116,7 +116,7 @@ const skillItems: SearchItem[] = [
     title: 'AI governance for product teams',
     subtitle: 'Product · Design · Research · Ops',
     snippet: 'Define quality bars, review processes, data handling rules, and ownership structure for AI use across a team.',
-    href: '/skills',
+    href: '/skills#' + encodeURIComponent('AI governance for product teams'),
     keywords: 'governance quality bars review processes data handling ownership structure automation sign-off team scale',
   },
   {
@@ -125,7 +125,7 @@ const skillItems: SearchItem[] = [
     title: 'AI-assisted experimentation planning',
     subtitle: 'Product · Research',
     snippet: 'Sharpen hypotheses, define complete metric sets with guardrails, and identify experiment risks before a test runs.',
-    href: '/skills',
+    href: '/skills#' + encodeURIComponent('AI-assisted experimentation planning'),
     keywords: 'experimentation ab test hypothesis metrics guardrails risks planning experiment design falsifiable',
   },
   {
@@ -134,7 +134,7 @@ const skillItems: SearchItem[] = [
     title: 'AI adoption strategy',
     subtitle: 'Leads · Directors',
     snippet: 'Build a plan for moving a team from individual prompting to quality-controlled systems. Workflows, owners, quality bars, timeline.',
-    href: '/skills',
+    href: '/skills#' + encodeURIComponent('AI adoption strategy'),
     keywords: 'adoption strategy team plan workflows owners quality bars timeline scale ad-hoc systematic operating model',
   },
 ]
@@ -148,7 +148,7 @@ const promptItems: SearchItem[] = [
     title: 'PRD Pressure-Testing System',
     subtitle: 'Product · 4 prompts',
     snippet: 'Challenge a draft PRD for assumptions, missing edge cases, and weak success metrics before engineering handoff.',
-    href: '/prompts',
+    href: '/prompts#prompt-prd',
     keywords: 'prd product requirements document pressure test assumptions edge cases success metrics dependencies engineering handoff pm',
   },
   {
@@ -157,7 +157,7 @@ const promptItems: SearchItem[] = [
     title: 'UX Research Synthesis System',
     subtitle: 'Research · Product · 4 prompts',
     snippet: 'Extract themes, evidence, contradictions, and opportunity signals from interview transcripts or survey data.',
-    href: '/prompts',
+    href: '/prompts#prompt-research',
     keywords: 'ux research synthesis themes evidence contradictions opportunities interviews survey transcripts pain points frequency clustering jtbd',
   },
   {
@@ -166,7 +166,7 @@ const promptItems: SearchItem[] = [
     title: 'Design QA Review System',
     subtitle: 'Product Design · UX Writing · 3 prompts',
     snippet: 'Systematically review all copy, states, and consistency in a design before engineering handoff.',
-    href: '/prompts',
+    href: '/prompts#prompt-design-qa',
     keywords: 'design qa review copy states consistency missing empty error loading success brand voice figma handoff',
   },
   {
@@ -175,7 +175,7 @@ const promptItems: SearchItem[] = [
     title: 'Landing Page Teardown System',
     subtitle: 'Product · Marketing · Brand · 3 prompts',
     snippet: 'Audit a landing page for structural weaknesses, copy quality, and competitive positioning gaps.',
-    href: '/prompts',
+    href: '/prompts#prompt-landing-page',
     keywords: 'landing page teardown audit copy quality competitive positioning hero value proposition structure conversion',
   },
   {
@@ -184,7 +184,7 @@ const promptItems: SearchItem[] = [
     title: 'Localization QA System',
     subtitle: 'UX Writing · Content · Ops · 3 prompts',
     snippet: 'Catch cultural mismatches, truncation risks, and translation quality issues before market launch.',
-    href: '/prompts',
+    href: '/prompts#prompt-localization',
     keywords: 'localization qa translation cultural mismatches truncation market launch language international copy',
   },
   {
@@ -193,7 +193,7 @@ const promptItems: SearchItem[] = [
     title: 'Brand Campaign Territory System',
     subtitle: 'Brand Design · Marketing · 3 prompts',
     snippet: 'Generate and evaluate multiple visual and creative territories from a campaign brief before committing to one direction.',
-    href: '/prompts',
+    href: '/prompts#prompt-campaign',
     keywords: 'brand campaign territory creative direction midjourney image visual brief scoring marketing brand design',
   },
   {
@@ -202,7 +202,7 @@ const promptItems: SearchItem[] = [
     title: 'Experiment Design System',
     subtitle: 'Product · Research · 3 prompts',
     snippet: 'Design a rigorous A/B test with a clear hypothesis, metrics, guardrails, and edge cases before running it.',
-    href: '/prompts',
+    href: '/prompts#prompt-experiment',
     keywords: 'experiment design ab test hypothesis metrics guardrails risks falsifiable primary secondary attribution',
   },
   {
@@ -211,7 +211,7 @@ const promptItems: SearchItem[] = [
     title: 'Support Ticket Insight System',
     subtitle: 'Product · Ops · 3 prompts',
     snippet: 'Extract product opportunities, friction patterns, and churn signals from a batch of support tickets.',
-    href: '/prompts',
+    href: '/prompts#prompt-support',
     keywords: 'support tickets insights opportunities friction patterns churn signals classification product ops',
   },
 ]
@@ -329,6 +329,25 @@ const principleItems: SearchItem[] = [
   },
 ]
 
+// ─── Tools ────────────────────────────────────────────────────────────────
+
+const toolItems: SearchItem[] = [
+  { id: 'tool-claude',     type: 'tool', title: 'Claude',          subtitle: 'Writing & Thinking', snippet: 'Long-form thinking, document analysis, structured reasoning.',       href: '/tools', keywords: 'claude anthropic ai assistant reasoning document analysis brief prd writing thinking' },
+  { id: 'tool-chatgpt',    type: 'tool', title: 'ChatGPT',         subtitle: 'Writing & Thinking', snippet: 'Quick answers, brainstorming, drafting.',                              href: '/tools', keywords: 'chatgpt openai gpt4 gpt writing drafting brainstorming ideas' },
+  { id: 'tool-perplexity', type: 'tool', title: 'Perplexity',      subtitle: 'Writing & Thinking', snippet: 'Real-time research with citations.',                                   href: '/tools', keywords: 'perplexity search research citations sources live web' },
+  { id: 'tool-notion',     type: 'tool', title: 'Notion AI',       subtitle: 'Writing & Thinking', snippet: 'Drafting and editing inside Notion docs.',                             href: '/tools', keywords: 'notion ai drafting editing notes summarise meeting docs' },
+  { id: 'tool-mj',         type: 'tool', title: 'Midjourney',      subtitle: 'Design & Image',     snippet: 'Cinematic image generation for concepts and moodboards.',               href: '/tools', keywords: 'midjourney image generation art moodboard visual concept cinematic' },
+  { id: 'tool-dalle',      type: 'tool', title: 'DALL-E 3',        subtitle: 'Design & Image',     snippet: 'Quick image generation via ChatGPT.',                                  href: '/tools', keywords: 'dalle dall-e image generation openai illustration' },
+  { id: 'tool-firefly',    type: 'tool', title: 'Adobe Firefly',   subtitle: 'Design & Image',     snippet: 'Brand-safe generative fill and image editing.',                         href: '/tools', keywords: 'adobe firefly generative fill image editing photoshop licensed' },
+  { id: 'tool-v0',         type: 'tool', title: 'v0',              subtitle: 'Design & Image',     snippet: 'UI generation from text prompts.',                                      href: '/tools', keywords: 'v0 vercel ui generation react tailwind component design frontend' },
+  { id: 'tool-cursor',     type: 'tool', title: 'Cursor',          subtitle: 'Code & Build',       snippet: 'AI-native code editor for product teams.',                              href: '/tools', keywords: 'cursor ai code editor vscode autocomplete codebase engineering' },
+  { id: 'tool-cc',         type: 'tool', title: 'Claude Code',     subtitle: 'Code & Build',       snippet: 'Agentic coding from the terminal.',                                     href: '/tools', keywords: 'claude code agentic coding terminal cli refactor implement' },
+  { id: 'tool-copilot',    type: 'tool', title: 'GitHub Copilot',  subtitle: 'Code & Build',       snippet: 'Inline code suggestions in any editor.',                                href: '/tools', keywords: 'github copilot code suggestions vscode jetbrains inline' },
+  { id: 'tool-runway',     type: 'tool', title: 'Runway',          subtitle: 'Video & Motion',     snippet: 'Video generation and editing.',                                         href: '/tools', keywords: 'runway video generation editing motion background removal clips' },
+  { id: 'tool-pika',       type: 'tool', title: 'Pika',            subtitle: 'Video & Motion',     snippet: 'Fast short video generation from images.',                              href: '/tools', keywords: 'pika video animation short clips social content motion' },
+  { id: 'tool-elevenlabs', type: 'tool', title: 'ElevenLabs',      subtitle: 'Video & Motion',     snippet: 'Voice synthesis and audio generation.',                                 href: '/tools', keywords: 'elevenlabs voice synthesis tts text to speech audio voiceover' },
+]
+
 // ─── Combined index ────────────────────────────────────────────────────────
 
 export const searchIndex: SearchItem[] = [
@@ -336,6 +355,7 @@ export const searchIndex: SearchItem[] = [
   ...skillItems,
   ...promptItems,
   ...principleItems,
+  ...toolItems,
 ]
 
 // ─── Search function ───────────────────────────────────────────────────────
@@ -349,6 +369,7 @@ export function searchAll(query: string): Record<SearchItemType, SearchItem[]> {
     skill: [],
     prompt: [],
     principle: [],
+    tool: [],
   }
 
   if (q.length < 2) return empty

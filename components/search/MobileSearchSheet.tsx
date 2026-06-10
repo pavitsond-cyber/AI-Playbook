@@ -126,6 +126,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
         height: '100dvh',
         zIndex: 999,
         background: '#0A0010',
+        willChange: 'transform',
         // Slide in from right
         transform: animate ? 'translateX(0)' : 'translateX(100%)',
         transition: animate
@@ -190,7 +191,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
               onClick={() => { setQ(''); inputRef.current?.focus() }}
               style={{
                 width: 20, height: 20, borderRadius: 6,
-                background: 'rgba(255,255,255,0.1)',
+                background: 'none',
                 border: 'none', display: 'flex', alignItems: 'center',
                 justifyContent: 'center', cursor: 'pointer', flexShrink: 0,
               }}

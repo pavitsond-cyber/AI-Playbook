@@ -68,6 +68,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
   if (isAbbrev) {
     return (
       <div
+        id={term.id}
         ref={cardRef as React.RefObject<HTMLDivElement>}
         style={{
           background: 'rgba(255,255,255,0.03)',
@@ -197,6 +198,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
   // ── Terminology card (original style) ───────────────────────────────────
   return (
     <article
+      id={term.id}
       ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

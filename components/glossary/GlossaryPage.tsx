@@ -83,6 +83,17 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
     setOpenCardId(null)
   }, [activeTab, query])
 
+  // Deep-link handler: open the card whose id matches the URL hash
+  useEffect(() => {
+    const hash = window.location.hash.slice(1)
+    if (!hash) return
+    setOpenCardId(hash)
+    setTimeout(() => {
+      const el = document.getElementById(hash)
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 150)
+  }, [])
+
   // Scroll to a letter section (terminologies)
   const scrollToLetter = useCallback((letter: string) => {
     if (!activeLetters.has(letter)) return

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronDown } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 import CopyButton from '@/components/playbook/CopyButton'
@@ -676,14 +676,16 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
   onToggle: () => void
 }) {
   return (
-    <div style={{
-      position: 'relative',
-      background: 'rgba(255,255,255,0.03)',
-      border: isOpen ? '1px solid rgba(155,63,255,0.25)' : '1px solid rgba(255,255,255,0.07)',
-      borderRadius: 14,
-      overflow: 'hidden',
-      transition: 'border-color 0.18s ease',
-    }}>
+    <div
+      id={'prompt-' + prompt.id}
+      style={{
+        position: 'relative',
+        background: 'rgba(255,255,255,0.03)',
+        border: isOpen ? '1px solid rgba(155,63,255,0.25)' : '1px solid rgba(255,255,255,0.07)',
+        borderRadius: 14,
+        overflow: 'hidden',
+        transition: 'border-color 0.18s ease',
+      }}>
       {/* ── Header row: title + chevron (left) + Copy button (right) ─ */}
       {/* Copy button is INLINE so description below fills full width  */}
       <div
@@ -781,9 +783,64 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
   )
 }
 
+const PROMPT_TABS = ['All', 'Strategy', 'Research', 'Writing', 'Execution']
+
+const PROMPT_TO_TAB: Record<string, string> = {
+  'problem-framing': 'Strategy',
+  'opportunity-mapping': 'Strategy',
+  'idea-framing-alignment-approval': 'Strategy',
+  'trade-off-analysis': 'Strategy',
+  'prioritisation': 'Strategy',
+  'product-critique': 'Research',
+  'research-synthesis-insight': 'Research',
+  'user-interview-guide': 'Research',
+  'survey-design': 'Research',
+  'ux-copy': 'Writing',
+  'prd': 'Execution',
+  'experiment-and-measurement': 'Execution',
+  'edge-case-finder': 'Execution',
+  'implementation': 'Execution',
+  'launch-readiness': 'Execution',
+}
+
 export default function PromptsPage() {
   const [openId, setOpenId] = useState<string | null>(null)
+  const [activePromptTab, setActivePromptTab] = useState<string>('All')
+  const [displayPromptTab, setDisplayPromptTab] = useState<string>('All')
+  const [fading, setFading] = useState(false)
+
   const toggle = (id: string) => setOpenId(prev => prev === id ? null : id)
+
+  const switchPromptTab = (tab: string) => {
+    if (tab === activePromptTab) return
+    setFading(true)
+    setTimeout(() => {
+      setDisplayPromptTab(tab)
+      setActivePromptTab(tab)
+      setOpenId(null)
+      setFading(false)
+    }, 160)
+  }
+
+  // Deep-link handler: open the prompt whose id matches the URL hash
+  useEffect(() => {
+    const hash = window.location.hash.slice(1)
+    if (!hash) return
+    // hash is like "prompt-prd" but prompt ids are like "prd" — handle both forms
+    const rawId = hash.startsWith('prompt-') ? hash.slice('prompt-'.length) : hash
+    const match = prompts.find(p => p.id === rawId || 'prompt-' + p.id === hash)
+    if (match) {
+      setOpenId(match.id)
+      setTimeout(() => {
+        const el = document.getElementById('prompt-' + match.id)
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 120)
+    }
+  }, [])
+
+  const filteredPrompts = displayPromptTab === 'All'
+    ? prompts
+    : prompts.filter(p => PROMPT_TO_TAB[p.id] === displayPromptTab)
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
@@ -794,8 +851,66 @@ export default function PromptsPage() {
           description="15 reusable prompt templates for product thinking, UX writing, research, strategy, and decision-making."
         />
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          {prompts.map((prompt, i) => (
+        {/* ── Glossary-style underline tabs ────────────────────────────── */}
+        <div style={{
+          display: 'flex',
+          gap: 0,
+          overflowX: 'auto', scrollbarWidth: 'none',
+          WebkitOverflowScrolling: 'touch' as any,
+          flexWrap: 'nowrap',
+          marginBottom: 24,
+          marginLeft: 'calc(-1 * clamp(20px,4vw,48px))',
+          marginRight: 'calc(-1 * clamp(20px,4vw,48px))',
+          paddingLeft: 'clamp(20px,4vw,48px)',
+          paddingRight: 'clamp(20px,4vw,48px)',
+          borderBottom: '1px solid rgba(255,255,255,0.07)',
+        } as React.CSSProperties}>
+          {PROMPT_TABS.map(tab => {
+            const isActive = activePromptTab === tab
+            const count = tab === 'All' ? prompts.length : prompts.filter(p => PROMPT_TO_TAB[p.id] === tab).length
+            return (
+              <button
+                key={tab}
+                onClick={() => switchPromptTab(tab)}
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 14, fontWeight: isActive ? 600 : 400,
+                  padding: '10px 16px',
+                  background: 'none', border: 'none',
+                  borderBottom: isActive ? '2px solid #9B3FFF' : '2px solid transparent',
+                  marginBottom: -1,
+                  color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)',
+                  cursor: 'pointer', flexShrink: 0,
+                  transition: 'color 0.18s ease, border-color 0.18s ease',
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  WebkitTapHighlightColor: 'transparent',
+                }}
+              >
+                {tab}
+                <span style={{
+                  fontSize: 12, fontWeight: 600,
+                  padding: '1px 7px', borderRadius: 20,
+                  background: isActive ? '#9B3FFF' : 'rgba(255,255,255,0.08)',
+                  color: isActive ? '#fff' : 'rgba(255,255,255,0.4)',
+                  transition: 'background 0.18s ease, color 0.18s ease',
+                  minWidth: 24, textAlign: 'center' as const,
+                }}>
+                  {count}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+
+        <div style={{
+          display: 'flex', flexDirection: 'column', gap: 16,
+          opacity: fading ? 0 : 1,
+          transform: fading ? 'translateY(6px)' : 'translateY(0px)',
+          transition: fading
+            ? 'opacity 0.16s ease-in, transform 0.16s ease-in'
+            : 'opacity 0.26s ease-out, transform 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        }}>
+          {filteredPrompts.map((prompt, i) => (
             <PromptRow
               key={prompt.id}
               prompt={prompt}

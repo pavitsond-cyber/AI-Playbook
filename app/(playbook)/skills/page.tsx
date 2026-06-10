@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronDown, Download, Check } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 import BlobLayer from '@/components/ui/BlobLayer'
@@ -790,6 +790,7 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
 
   return (
     <div
+      id={'skill-' + skill.name.replace(/\s+/g, '-').toLowerCase()}
       style={{
         position: 'relative',
         background: 'rgba(255,255,255,0.03)',
@@ -1032,6 +1033,21 @@ export default function SkillsPage() {
     }, 160)
   }
 
+  // Deep-link handler: open the skill named in the URL hash
+  useEffect(() => {
+    const hash = decodeURIComponent(window.location.hash.slice(1))
+    if (!hash) return
+    const match = skills.find(s => s.name.toLowerCase() === hash.toLowerCase())
+    if (match) {
+      setOpenName(match.name)
+      setActiveTab('All')
+      setTimeout(() => {
+        const el = document.getElementById('skill-' + match.name.replace(/\s+/g, '-').toLowerCase())
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 120)
+    }
+  }, [])
+
   const filtered = displayTab === 'All'
     ? skills
     : skills.filter(s => DOMAIN_TO_TAB[s.domain ?? ''] === displayTab)
@@ -1045,49 +1061,52 @@ export default function SkillsPage() {
           description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
         />
 
-        {/* ── 5-tab filter — full-bleed horizontal scroll ──────────────── */}
-        {/* Negative margin trick: extends to screen edges, items never cut */}
+        {/* ── Glossary-style underline tabs ────────────────────────────── */}
         <div style={{
-          display: 'flex', gap: 8,
+          display: 'flex',
+          gap: 0,
           overflowX: 'auto', scrollbarWidth: 'none',
           WebkitOverflowScrolling: 'touch' as any,
           flexWrap: 'nowrap',
-          marginBottom: 32,
+          marginBottom: 24,
           marginLeft: 'calc(-1 * clamp(20px,4vw,48px))',
           marginRight: 'calc(-1 * clamp(20px,4vw,48px))',
           paddingLeft: 'clamp(20px,4vw,48px)',
           paddingRight: 'clamp(20px,4vw,48px)',
-          paddingBottom: 4,
+          borderBottom: '1px solid rgba(255,255,255,0.07)',
         } as React.CSSProperties}>
           {TABS.map(tab => {
             const isActive = activeTab === tab
+            const count = tab === 'All' ? skills.length : skills.filter(s => DOMAIN_TO_TAB[s.domain ?? ''] === tab).length
             return (
               <button
                 key={tab}
                 onClick={() => switchTab(tab)}
                 style={{
                   fontFamily: 'var(--font-body)',
-                  fontSize: 13, fontWeight: isActive ? 600 : 400,
-                  padding: '7px 18px', borderRadius: 100,
-                  border: isActive ? '1px solid rgba(255,105,219,0.5)' : '1px solid rgba(255,255,255,0.1)',
-                  background: isActive ? 'rgba(255,105,219,0.12)' : 'rgba(255,255,255,0.04)',
-                  color: isActive ? '#FF69DB' : 'rgba(255,255,255,0.5)',
+                  fontSize: 14, fontWeight: isActive ? 600 : 400,
+                  padding: '10px 16px',
+                  background: 'none', border: 'none',
+                  borderBottom: isActive ? '2px solid #9B3FFF' : '2px solid transparent',
+                  marginBottom: -1,
+                  color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)',
                   cursor: 'pointer', flexShrink: 0,
-                  transition: 'background 0.18s ease, border-color 0.18s ease, color 0.18s ease',
-                  whiteSpace: 'nowrap',
+                  transition: 'color 0.18s ease, border-color 0.18s ease',
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  WebkitTapHighlightColor: 'transparent',
                 }}
-                onMouseEnter={e => { if (!isActive) {
-                  e.currentTarget.style.background = 'rgba(255,105,219,0.07)'
-                  e.currentTarget.style.borderColor = 'rgba(255,105,219,0.25)'
-                  e.currentTarget.style.color = 'rgba(255,255,255,0.75)'
-                }}}
-                onMouseLeave={e => { if (!isActive) {
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
-                  e.currentTarget.style.color = 'rgba(255,255,255,0.5)'
-                }}}
               >
                 {tab}
+                <span style={{
+                  fontSize: 12, fontWeight: 600,
+                  padding: '1px 7px', borderRadius: 20,
+                  background: isActive ? '#9B3FFF' : 'rgba(255,255,255,0.08)',
+                  color: isActive ? '#fff' : 'rgba(255,255,255,0.4)',
+                  transition: 'background 0.18s ease, color 0.18s ease',
+                  minWidth: 24, textAlign: 'center' as const,
+                }}>
+                  {count}
+                </span>
               </button>
             )
           })}
