@@ -110,17 +110,34 @@ export default function LandingPage() {
   return (
     <div style={{ position: 'fixed', inset: 0, background: '#0D0B1E', overflow: 'hidden' }}>
 
-      {/* ── Video — single element, different objectPosition per breakpoint ── */}
-      {/* Mobile  (Figma 118:2057): portrait crop, diver centered, light upper-left
-          Desktop (Figma 111:1954): landscape crop, diver right-of-center         */}
+      {/* ── DESKTOP video (Figma 111:1954) — hidden on mobile ──────────── */}
+      {/* Spec: bottom:0 left:0 w:1440 h:800, opacity:60%
+          Diver at ~75% from left, light rays upper-right                    */}
       <video
         autoPlay muted loop playsInline
-        className="absolute object-[70%_48%] sm:object-[80%_50%]"
+        className="hidden sm:block absolute"
         style={{
-          /* Anchored to bottom per Figma spec (bottom:0, left:0, w:100%, h:100%) */
           bottom: 0, left: 0,
           width: '100%', height: '100%',
           objectFit: 'cover',
+          objectPosition: '75% 45%',
+          zIndex: 0,
+          opacity: 0.65,           /* Figma opacity: 60% */
+        }}
+      >
+        <source src="/videos/landing-bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* ── MOBILE video (Figma 118:2057) — hidden on desktop ───────────── */}
+      {/* Spec: bottom:0 left:0 w:390 h:844, diver centered-right of frame  */}
+      <video
+        autoPlay muted loop playsInline
+        className="sm:hidden absolute"
+        style={{
+          bottom: 0, left: 0,
+          width: '100%', height: '100%',
+          objectFit: 'cover',
+          objectPosition: '70% 48%',
           zIndex: 0,
           opacity: 0.85,
         }}
