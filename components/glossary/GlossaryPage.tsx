@@ -83,16 +83,28 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
     setOpenCardId(null)
   }, [activeTab, query])
 
-  // Deep-link handler: open the card whose id matches the URL hash
+  // Deep-link handler: switch to correct tab, open card, scroll to exact position
   useEffect(() => {
     const hash = window.location.hash.slice(1)
     if (!hash) return
+
+    // Determine which tab contains this term so we switch before trying to scroll
+    const isAbbrev = tabTerms.abbreviations.some(t => t.id === hash)
+    const isTerm   = tabTerms.terminologies.some(t => t.id === hash)
+    if (!isAbbrev && !isTerm) return
+
+    setActiveTab(isAbbrev ? 'abbreviations' : 'terminologies')
     setOpenCardId(hash)
+
+    // Wait for tab content to render, then scroll — offset for sticky nav + search/tabs bar
     setTimeout(() => {
       const el = document.getElementById(hash)
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 150)
-  }, [])
+      if (!el) return
+      const NAV_OFFSET = 180 // topnav 64px + search bar ~50px + tabs ~44px + gap
+      const y = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
+    }, 300)
+  }, [tabTerms])
 
   // Scroll to a letter section (terminologies)
   const scrollToLetter = useCallback((letter: string) => {
@@ -139,7 +151,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
   })
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0A0010' }}>
+    <div>
       <div style={{ maxWidth: 960, margin: "0 auto", width: "100%" }}>
 
         {/* Page title */}

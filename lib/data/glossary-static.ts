@@ -20,23 +20,6 @@ export const staticTerms: GlossaryTerm[] = [
 
   // AI Concepts
   makeTerm({
-    term: 'LLM',
-    full_form: 'Large Language Model',
-    category: 'ai_basics',
-    short_definition: 'The AI engine inside Claude, ChatGPT, and Gemini, trained on massive text to understand and generate language. Powers content creation, ideation, and analysis.',
-    detailed_explanation: 'An LLM is a neural network trained on hundreds of billions of words. It learns statistical patterns in language so well that it can write, summarise, translate, reason, and generate text with human-level fluency. Every time you send a prompt, the LLM generates a response token by token, predicting the most useful next word, then the next, until the response is complete.',
-    layman_explanation: 'An LLM has read most of the internet. When you type a prompt, it doesn\'t search for an answer: it generates the most likely continuation of your text. Very sophisticated autocomplete built on an enormous base of knowledge.',
-    example_usage: 'Write "Act as a senior UX writer, generate 8 empty-state copy options (headline under 6 words, warm tone, no emoji)" and get 8 distinct options in seconds. That\'s an LLM predicting the most useful continuation of your prompt.',
-    where_used: null,
-    aliases: ['Language model', 'Foundation model'],
-    tool_tags: [],
-    related_links: [
-      { label: 'Prompt Systems', href: '/prompts' },
-      { label: 'Context Engineering skill', href: '/skills' },
-    ],
-  }),
-
-  makeTerm({
     term: 'MCP',
     full_form: 'Model Context Protocol',
     category: 'workflow',
@@ -305,22 +288,6 @@ export const staticTerms: GlossaryTerm[] = [
   }),
 
   makeTerm({
-    term: 'D2P',
-    full_form: 'Data-to-Prototype',
-    category: 'tools',
-    short_definition: 'AI generates prototype suggestions from structured data: turning spreadsheets or data into design mockups. Faster ideation and prototyping.',
-    detailed_explanation: 'D2P uses structured data inputs (user flows, feature specs, analytics, or content inventories) to generate prototype layouts or wireframe suggestions. AI interprets the data relationships and proposes how they could be visualised as UI, skipping the blank-canvas phase.',
-    layman_explanation: 'Feed in user flow data and feature requirements. D2P produces wireframe options showing how that data could be structured as screens. Not production-ready, but rapid ideation from information, faster than starting from a blank canvas every time.',
-    example_usage: 'You have a spreadsheet of 12 content types and their relationships. D2P generates 3 dashboard layout options for visualising them. Designer picks the strongest structure and refines, saving the "how do we even start?" phase entirely.',
-    where_used: null,
-    aliases: ['Data to prototype', 'AI wireframing'],
-    tool_tags: [],
-    related_links: [
-      { label: 'AI Workflow Design skill', href: '/skills' },
-    ],
-  }),
-
-  makeTerm({
     term: 'DPE',
     full_form: 'Design Pattern Extraction',
     category: 'tools',
@@ -349,23 +316,6 @@ export const staticTerms: GlossaryTerm[] = [
     aliases: ['Visual extraction', 'Visual analysis AI'],
     tool_tags: [],
     related_links: [
-      { label: 'AI-powered design QA skill', href: '/skills' },
-    ],
-  }),
-
-  makeTerm({
-    term: 'DEX-AI',
-    full_form: 'Design Experience AI',
-    category: 'tools',
-    short_definition: 'AI analyzes design consistency and UX heuristics: AI audits designs and provides feedback. Automates design quality and consistency checks.',
-    detailed_explanation: 'DEX-AI applies structured UX heuristics and consistency checks to design screens, flagging violations, inconsistencies, and missing states. Acts as a first-pass design reviewer that catches systematic issues before human review, so reviewers can focus on judgment calls rather than checklists.',
-    layman_explanation: 'Before each sprint review, run screens through a DEX-AI prompt checking against your UX principles. It flags inconsistencies in spacing, label terminology, and interaction patterns that a manual review might miss.',
-    example_usage: 'DEX-AI runs on every Figma export before the design review meeting. In 5 minutes, it flags 3 inconsistent CTA labels, 2 missing loading states, and 1 accessibility contrast issue, leaving the design review time for strategic discussion.',
-    where_used: null,
-    aliases: ['Design AI', 'AI design audit', 'UX AI'],
-    tool_tags: [],
-    related_links: [
-      { label: 'Design QA Review prompt', href: '/prompts' },
       { label: 'AI-powered design QA skill', href: '/skills' },
     ],
   }),

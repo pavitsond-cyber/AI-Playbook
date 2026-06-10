@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { ChevronDown } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 import CopyButton from '@/components/playbook/CopyButton'
-import BlobLayer from '@/components/ui/BlobLayer'
+
 import SiteFooter from '@/components/glossary/SiteFooter'
 
 interface PromptTemplate {
@@ -834,15 +834,20 @@ export default function PromptsPage() {
   useEffect(() => {
     const hash = window.location.hash.slice(1)
     if (!hash) return
-    // hash is like "prompt-prd" but prompt ids are like "prd" — handle both forms
     const rawId = hash.startsWith('prompt-') ? hash.slice('prompt-'.length) : hash
     const match = prompts.find(p => p.id === rawId || 'prompt-' + p.id === hash)
     if (match) {
+      // Switch to the correct tab so the prompt is visible before we scroll
+      const tab = PROMPT_TO_TAB[match.id]
+      if (tab) { setActivePromptTab(tab); setDisplayPromptTab(tab) }
       setOpenId(match.id)
       setTimeout(() => {
         const el = document.getElementById('prompt-' + match.id)
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 120)
+        if (!el) return
+        const NAV_OFFSET = 130
+        const y = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
+      }, 180)
     }
   }, [])
 
@@ -851,9 +856,8 @@ export default function PromptsPage() {
     : prompts.filter(p => PROMPT_TO_TAB[p.id] === displayPromptTab)
 
   return (
-    <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <BlobLayer />
-      <div style={{ position: 'relative', zIndex: 1, flex: 1, padding: '24px clamp(20px,4vw,48px) 16px', maxWidth: 960, margin: '0 auto', width: '100%' }}>
+    <div>
+      <div style={{ padding: '24px clamp(20px,4vw,48px) 48px', maxWidth: 960, margin: '0 auto' }}>
         <PageHeader
           title="Prompt Systems"
           description="15 reusable prompt templates for product thinking, UX writing, research, strategy, and decision-making."
@@ -862,9 +866,8 @@ export default function PromptsPage() {
         {/* ── Filter tabs — exact glossary style ───────────────────────── */}
         <div style={{
           display: 'flex',
-          overflowX: 'auto', scrollbarWidth: 'none',
-          WebkitOverflowScrolling: 'touch' as any,
           flexWrap: 'nowrap',
+          gap: 'clamp(16px,3vw,36px)',
           marginBottom: 24,
           marginLeft: 'calc(-1 * clamp(20px,4vw,48px))',
           marginRight: 'calc(-1 * clamp(20px,4vw,48px))',
@@ -878,8 +881,8 @@ export default function PromptsPage() {
               <button
                 key={tab}
                 onClick={() => switchPromptTab(tab)}
-                className="relative flex items-center px-1 pb-3 pt-2 mr-6 text-sm font-medium transition-all duration-200 focus-visible:outline-none"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0, minWidth: 80, WebkitTapHighlightColor: 'transparent', fontFamily: 'var(--font-body)' }}
+                className="relative flex items-center text-sm font-medium focus-visible:outline-none"
+                style={{ background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0, WebkitTapHighlightColor: 'transparent', fontFamily: 'var(--font-body)', padding: '8px 0 12px' }}
               >
                 <span className="transition-colors duration-200" style={{ color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)' }}>
                   {tab}

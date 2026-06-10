@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react'
 import { ChevronDown } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
-import BlobLayer from '@/components/ui/BlobLayer'
+
 
 type Category = 'ai_concepts' | 'prompting_ops' | 'design_vision' | 'workflow_data'
 
@@ -352,9 +352,8 @@ export default function AbbreviationsPage() {
   )
 
   return (
-    <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <BlobLayer />
-      <div style={{ position: "relative", zIndex: 1, flex: 1, padding: "24px clamp(20px,4vw,48px) 16px", maxWidth: 960, margin: "0 auto", width: '100%' }}>
+    <div>
+      <div style={{ padding: "24px clamp(20px,4vw,48px) 48px", maxWidth: 960, margin: "0 auto" }}>
         <PageHeader title="Abbreviations" description="30 advanced AI abbreviations for designers: expand any to see how it's used in real work." />
 
         <div className="mb-6">

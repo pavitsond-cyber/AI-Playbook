@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { ChevronDown, Download, Check } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
-import BlobLayer from '@/components/ui/BlobLayer'
+
 import SiteFooter from '@/components/glossary/SiteFooter'
 
 interface Skill {
@@ -721,14 +721,14 @@ const skills: Skill[] = [
 
   // ─── Performance ───────────────────────────────────────────────────────────
   {
-    name: 'Fixing Motion Performance',
+    name: 'Motion Performance',
     domain: 'Performance',
     what: 'Fix compositor property issues, layout thrashing, and scroll-linked motion: the CPU-heavy animation problems senior engineers own.',
     whenToUse: 'When animations jank, scroll feels sluggish, or DevTools shows frame drops. When shipping motion-heavy features to users on mid-range hardware.',
     qualityBar: 'Target 60fps (16.7ms per frame) for all visible animations. Scroll-linked animations use IntersectionObserver or CSS scroll-timeline. No layout or paint triggers in animation loops. Only transform and opacity animated on GPU.',
     tools: ['Chrome DevTools', 'CSS', 'React', 'Framer Motion'],
     teams: ['Design Engineering', 'Frontend'],
-    mdFile: '/skills/fixing-motion-performance.md',
+    mdFile: '/skills/motion-performance.md',
     inputs: [
       { label: 'Animation or scroll interaction with performance issues', required: true },
       { label: 'Chrome DevTools performance trace or frame rate reading', required: true },
@@ -1054,8 +1054,12 @@ export default function SkillsPage() {
       setActiveTab('All')
       setTimeout(() => {
         const el = document.getElementById('skill-' + match.name.replace(/\s+/g, '-').toLowerCase())
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 120)
+        if (!el) return
+        // Offset by sticky nav (64px) + filter tabs (~52px) + breathing room
+        const NAV_OFFSET = 130
+        const y = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
+      }, 160)
     }
   }, [])
 
@@ -1064,9 +1068,8 @@ export default function SkillsPage() {
     : skills.filter(s => DOMAIN_TO_TAB[s.domain ?? ''] === displayTab)
 
   return (
-    <div style={{ position: 'relative', overflow: 'clip', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <BlobLayer />
-      <div style={{ position: 'relative', zIndex: 1, flex: 1, padding: '24px clamp(20px,4vw,48px) 16px', maxWidth: 960, margin: '0 auto', width: '100%' }}>
+    <div>
+      <div style={{ padding: '24px clamp(20px,4vw,48px) 48px', maxWidth: 960, margin: '0 auto' }}>
         <PageHeader
           title="Skills"
           description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
@@ -1075,9 +1078,8 @@ export default function SkillsPage() {
         {/* ── Filter tabs — exact glossary style ───────────────────────── */}
         <div style={{
           display: 'flex',
-          overflowX: 'auto', scrollbarWidth: 'none',
-          WebkitOverflowScrolling: 'touch' as any,
           flexWrap: 'nowrap',
+          gap: 'clamp(16px,3vw,36px)',
           marginBottom: 24,
           marginLeft: 'calc(-1 * clamp(20px,4vw,48px))',
           marginRight: 'calc(-1 * clamp(20px,4vw,48px))',
@@ -1091,8 +1093,8 @@ export default function SkillsPage() {
               <button
                 key={tab}
                 onClick={() => switchTab(tab)}
-                className="relative flex items-center px-1 pb-3 pt-2 mr-6 text-sm font-medium transition-all duration-200 focus-visible:outline-none"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0, minWidth: 80, WebkitTapHighlightColor: 'transparent', fontFamily: 'var(--font-body)' }}
+                className="relative flex items-center text-sm font-medium focus-visible:outline-none"
+                style={{ background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0, WebkitTapHighlightColor: 'transparent', fontFamily: 'var(--font-body)', padding: '8px 0 12px' }}
               >
                 <span className="transition-colors duration-200" style={{ color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)' }}>
                   {tab}
