@@ -30,13 +30,22 @@ export default function TopNav() {
       className={`${isHome ? 'sm:hidden' : ''} flex items-center`}
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, height: 64,
-        /* Homepage mobile: transparent (video shows through, matches Figma 111:2009)
-           All other states: frosted glass                                           */
-        background: isHome ? 'transparent' : 'rgba(10,0,16,0.65)',
-        backdropFilter: isHome ? 'none' : 'blur(24px) saturate(180%)',
-        WebkitBackdropFilter: isHome ? 'none' : 'blur(24px) saturate(180%)',
-        borderBottom: isHome ? 'none' : '1px solid rgba(255,255,255,0.06)',
+        /* Transparent on homepage unless hamburger is open — then solidify.
+           Smooth transition so it doesn't snap when the menu opens.              */
+        background: mobileOpen
+          ? 'rgba(10,0,16,0.97)'
+          : isHome ? 'transparent' : 'rgba(10,0,16,0.65)',
+        backdropFilter: mobileOpen
+          ? 'blur(24px)'
+          : isHome ? 'none' : 'blur(24px) saturate(180%)',
+        WebkitBackdropFilter: mobileOpen
+          ? 'blur(24px)'
+          : isHome ? 'none' : 'blur(24px) saturate(180%)',
+        borderBottom: mobileOpen
+          ? '1px solid rgba(255,255,255,0.08)'
+          : isHome ? 'none' : '1px solid rgba(255,255,255,0.06)',
         zIndex: 100,
+        transition: 'background 0.28s ease, backdrop-filter 0.28s ease, border-color 0.28s ease',
       }}
     >
       <div style={{
@@ -118,9 +127,10 @@ export default function TopNav() {
         </div>
       </div>
 
-      {/* Mobile dropdown — slides from ABOVE the nav (position:fixed, zIndex below header)
-          On open : slides down from behind nav bar (translateY -100%→0), ease-out
-          On close: slides back up and disappears above the nav bar, ease-in          */}
+      {/* Mobile dropdown — clips open downward from beneath the nav bar.
+          A maxHeight clip wrapper (overflow:hidden) reveals the content
+          top-to-bottom so the menu appears to flow out from under the nav.
+          No translateY — nothing moves through the header.                    */}
       <div
         className="sm:hidden"
         style={{
@@ -128,19 +138,24 @@ export default function TopNav() {
           top: 64,
           left: 0,
           right: 0,
-          background: 'rgba(10,0,16,0.97)',
-          backdropFilter: 'blur(24px)',
-          WebkitBackdropFilter: 'blur(24px)',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
-          zIndex: 98,   /* below header (100) so it emerges from underneath */
-          transform: mobileOpen ? 'translateY(0)' : 'translateY(-110%)',
-          opacity: mobileOpen ? 1 : 0,
+          zIndex: 99,
+          overflow: 'hidden',
+          /* Clip: maxHeight 0→auto simulates content dropping down */
+          maxHeight: mobileOpen ? '480px' : '0px',
           transition: mobileOpen
-            ? 'transform 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.22s ease-out'
-            : 'transform 0.26s cubic-bezier(0.55, 0, 1, 0.45), opacity 0.18s ease-in',
+            ? 'max-height 0.36s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            : 'max-height 0.24s cubic-bezier(0.55, 0, 1, 0.45)',
           pointerEvents: mobileOpen ? 'auto' : 'none',
         }}
       >
+        {/* Inner panel — full opacity always; the clip wrapper handles visibility */}
+        <div style={{
+          background: 'rgba(10,0,16,0.97)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          borderBottom: '1px solid rgba(255,255,255,0.08)',
+        }}
+        >
         <div style={{ padding: '12px 20px 16px' }}>
           <nav style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <Link
@@ -176,6 +191,7 @@ export default function TopNav() {
             ))}
           </nav>
         </div>
+        </div> {/* end inner panel */}
       </div>
     </header>
 
