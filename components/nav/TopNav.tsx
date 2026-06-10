@@ -45,7 +45,7 @@ export default function TopNav() {
     >
       <div style={{
         maxWidth: 1440, margin: '0 auto', width: '100%',
-        padding: '0 clamp(20px,5.15vw,80px)',
+        padding: '0 clamp(24px, 8.33vw, 120px)',
         display: 'flex', alignItems: 'center', gap: 12,
       }}>
         {/* Headout logo */}

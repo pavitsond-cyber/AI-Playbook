@@ -15,6 +15,7 @@ interface Tool {
   href?: string
   accentColor: string
   logoDomain?: string
+  localLogo?: string
 }
 
 interface ToolGroup {
@@ -42,7 +43,7 @@ const groups: ToolGroup[] = [
     theme: 'Whiteboarding, Flows & Thinking', tab: 'Capture', color: '#4FC3F7',
     tools: [
       { name: 'Excalidraw', initial: 'Ex', logoDomain: 'excalidraw.com',   accentColor: '#7C3AED', use: 'Create rough flows, product logic diagrams, workshop sketches, and wireframes.',        href: 'https://excalidraw.com' },
-      { name: 'Mermaid',    initial: 'Mm', logoDomain: 'mermaidchart.com', accentColor: '#10B981', use: 'Turn written flows into diagrams using simple text syntax.',                            href: 'https://mermaid.js.org' },
+      { name: 'Mermaid',    initial: 'Mm', logoDomain: 'mermaidchart.com', localLogo: '/images/tools/mermaid.png', accentColor: '#10B981', use: 'Turn written flows into diagrams using simple text syntax.',                            href: 'https://mermaid.js.org' },
       { name: 'tldraw',     initial: 'tl', logoDomain: 'tldraw.com',       accentColor: '#0EA5E9', use: 'Sketch flows, map journeys, create quick diagrams, and explain system logic visually.', href: 'https://tldraw.com' },
     ],
   },
@@ -68,6 +69,7 @@ const groups: ToolGroup[] = [
       { name: 'Paper',        initial: 'Pa', logoDomain: 'paper.design',    accentColor: '#D97706', use: 'Quickly create HTML-like UI concepts and editable layouts without heavy setup.',                       href: 'https://paper.design' },
       { name: 'Replit Agent', initial: 'Re', logoDomain: 'replit.com',      accentColor: '#F97316', use: 'Build small tools, forms, dashboards, and interactive prototypes.',                                    href: 'https://replit.com' },
       { name: 'Super Design', initial: 'SD', logoDomain: 'superdesign.dev', accentColor: '#4F46E5', use: 'Generate UI mockups, components, and layouts inside coding tools like Cursor or VS Code.',            href: 'https://superdesign.dev' },
+      { name: 'Tome', initial: 'To', localLogo: '/images/tools/tome.jpg', accentColor: '#FF4DFF', use: 'Create AI-powered presentations and visual narratives.', href: 'https://tome.app' },
     ],
   },
   {
@@ -162,7 +164,19 @@ function ToolCard({ tool }: { tool: Tool }) {
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
 
         {/* Logo */}
-        {logoSrc ? (
+        {tool.localLogo ? (
+          <div style={{
+            width: 56, height: 56, borderRadius: 14,
+            background: '#ffffff',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            overflow: 'hidden',
+            boxShadow: '0 2px 12px rgba(0,0,0,0.3)',
+            position: 'relative', zIndex: 1,
+            flexShrink: 0,
+          }}>
+            <img src={tool.localLogo} alt={tool.name} style={{ width: 44, height: 44, objectFit: 'contain', borderRadius: 8 }} />
+          </div>
+        ) : logoSrc ? (
           <div style={{
             width: 38, height: 38, borderRadius: 10,
             background: 'rgba(255,255,255,0.95)',
@@ -181,8 +195,7 @@ function ToolCard({ tool }: { tool: Tool }) {
         ) : (
           <div style={{
             width: 38, height: 38, borderRadius: 10,
-            background: `${tool.accentColor}22`,
-            border: `1px solid ${tool.accentColor}40`,
+            background: 'rgba(255,255,255,0.95)',
             display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
           }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: tool.accentColor, fontFamily: 'var(--font-display)' }}>
@@ -268,7 +281,7 @@ export default function ToolsPage() {
 
   return (
     <div>
-      <div style={{ padding: '24px clamp(20px,4vw,48px) 48px', maxWidth: 1040, margin: '0 auto' }}>
+      <div style={{ padding: '24px 48px 48px', maxWidth: 1440, margin: '0 auto' }}>
         <PageHeader
           title="Tools"
           description="Daily AI tool stack for vibe-coding designers — 37 tools across 5 categories."

@@ -3,7 +3,6 @@
 import { useState, useMemo, useEffect, useCallback } from 'react'
 import { GlossaryTerm } from '@/types'
 import { filterTerms } from '@/lib/utils/search'
-import SearchBar from './SearchBar'
 import GlossaryGrid from './GlossaryGrid'
 import GlossaryCard from './GlossaryCard'
 import EmptyState from './EmptyState'
@@ -164,19 +163,14 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
           </p>
         </div>
 
-        {/* Sticky search + tabs */}
+        {/* Sticky tabs */}
         <div
           className="sticky top-14 z-20"
           style={{
-            background: 'rgba(10,0,16,0.88)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
+            background: 'transparent',
             borderBottom: '1px solid rgba(255,255,255,0.06)',
           }}
         >
-          <div style={{ padding: "10px clamp(20px,4vw,48px) 8px" }}>
-            <SearchBar value={query} onChange={setQuery} placeholder="Search terms, abbreviations…" />
-          </div>
           <div style={{ display: "flex", padding: "0 clamp(20px,4vw,48px)" }}>
             {TABS.map(tab => {
               const isActive = activeTab === tab.id

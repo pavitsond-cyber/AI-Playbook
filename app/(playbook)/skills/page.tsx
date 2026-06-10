@@ -1117,7 +1117,7 @@ export default function SkillsPage() {
         {/* ── Skill list — fade + subtle rise on tab enter ─────────────── */}
         {/* Fade out: opacity→0, drifts down 6px (ease-in, 160ms)          */}
         {/* Fade in:  opacity→1, rises from 6px to 0 (ease-out, 260ms)     */}
-        <div style={{
+        <div className={!fading ? 'animate-tab-fade' : ''} style={{
           display: 'flex', flexDirection: 'column', gap: 16,
           opacity: fading ? 0 : 1,
           transform: fading ? 'translateY(6px)' : 'translateY(0px)',

@@ -902,7 +902,7 @@ export default function PromptsPage() {
           })}
         </div>
 
-        <div style={{
+        <div className={!fading ? 'animate-tab-fade' : ''} style={{
           display: 'flex', flexDirection: 'column', gap: 16,
           opacity: fading ? 0 : 1,
           transform: fading ? 'translateY(6px)' : 'translateY(0px)',
