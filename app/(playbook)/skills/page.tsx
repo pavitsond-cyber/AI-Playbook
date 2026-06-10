@@ -815,7 +815,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           background: downloaded ? '#0d2b1a' : 'rgba(255,255,255,0.05)',
           border: `1px solid ${downloaded ? '#166534' : 'rgba(255,255,255,0.09)'}`,
           borderRadius: 8,
-          color: downloaded ? '#4ade80' : 'rgba(255,255,255,0.4)',
+          color: downloaded ? '#4ade80' : '#ffffff',
           fontSize: 11,
           fontFamily: 'var(--font-body)',
           fontWeight: 500,
@@ -833,7 +833,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
           if (!downloaded) {
             e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
             e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)'
-            e.currentTarget.style.color = 'rgba(255,255,255,0.4)'
+            e.currentTarget.style.color = '#ffffff'
           }
         }}
       >

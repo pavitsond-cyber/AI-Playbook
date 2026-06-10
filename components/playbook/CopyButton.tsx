@@ -25,7 +25,7 @@ export default function CopyButton({ text, className = '' }: CopyButtonProps) {
       style={{
         /* Default: matches .md button dark style */
         background: copied ? '#0d2b1a' : 'rgba(255,255,255,0.05)',
-        color: copied ? '#4ade80' : 'rgba(255,255,255,0.4)',
+        color: copied ? '#4ade80' : '#ffffff',
         border: '1px solid',
         borderColor: copied ? '#166534' : 'rgba(255,255,255,0.09)',
         transition: 'background 0.18s ease, border-color 0.18s ease, color 0.18s ease',
@@ -40,7 +40,7 @@ export default function CopyButton({ text, className = '' }: CopyButtonProps) {
       onMouseLeave={(e) => {
         if (!copied) {
           e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-          e.currentTarget.style.color = 'rgba(255,255,255,0.4)'
+          e.currentTarget.style.color = '#ffffff'
           e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)'
         }
       }}
