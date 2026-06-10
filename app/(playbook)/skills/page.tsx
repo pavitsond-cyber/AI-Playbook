@@ -860,11 +860,10 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
       >
         {/* Name + description */}
         <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
-          {/* Badge + title row — add right padding here only to avoid
-              overlapping the absolutely-positioned download button     */}
+          {/* Badge always above title — stacked layout everywhere */}
           <div
-            className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap"
-            style={{ gap: '10px 10px', marginBottom: 6, paddingRight: 72 }}
+            className="flex flex-col"
+            style={{ gap: 8, marginBottom: 6, paddingRight: 72 }}
           >
             {skill.domain && (
               <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, color: '#FF69DB', background: 'rgba(255,105,219,0.1)', border: '1px solid rgba(255,105,219,0.2)', borderRadius: 100, padding: '2px 8px', textTransform: 'uppercase' as const, letterSpacing: '0.08em', flexShrink: 0, alignSelf: 'flex-start' }}>
@@ -994,10 +993,18 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
   )
 }
 
+/* Unique domains in display order */
+const DOMAINS = ['All', ...Array.from(new Set(skills.map(s => s.domain).filter(Boolean)))] as string[]
+
 export default function SkillsPage() {
-  const [openName, setOpenName] = useState<string | null>(null)
+  const [openName, setOpenName]       = useState<string | null>(null)
+  const [activeFilter, setActiveFilter] = useState<string>('All')
 
   const toggle = (name: string) => setOpenName(prev => prev === name ? null : name)
+
+  const filtered = activeFilter === 'All'
+    ? skills
+    : skills.filter(s => s.domain === activeFilter)
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
@@ -1008,8 +1015,56 @@ export default function SkillsPage() {
           description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
         />
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {skills.map(skill => (
+        {/* ── Domain filter bar ────────────────────────────────────────── */}
+        <div style={{
+          display: 'flex', flexWrap: 'wrap', gap: 8,
+          marginBottom: 28,
+        }}>
+          {DOMAINS.map(domain => {
+            const isActive = activeFilter === domain
+            return (
+              <button
+                key={domain}
+                onClick={() => { setActiveFilter(domain); setOpenName(null) }}
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 13, fontWeight: isActive ? 600 : 400,
+                  padding: '6px 14px', borderRadius: 100,
+                  border: isActive
+                    ? '1px solid rgba(255,105,219,0.5)'
+                    : '1px solid rgba(255,255,255,0.1)',
+                  background: isActive
+                    ? 'rgba(255,105,219,0.12)'
+                    : 'rgba(255,255,255,0.04)',
+                  color: isActive ? '#FF69DB' : 'rgba(255,255,255,0.5)',
+                  cursor: 'pointer',
+                  transition: 'background 0.18s ease, border-color 0.18s ease, color 0.18s ease',
+                  whiteSpace: 'nowrap' as const,
+                }}
+                onMouseEnter={e => {
+                  if (!isActive) {
+                    e.currentTarget.style.background = 'rgba(255,105,219,0.07)'
+                    e.currentTarget.style.borderColor = 'rgba(255,105,219,0.25)'
+                    e.currentTarget.style.color = 'rgba(255,255,255,0.75)'
+                  }
+                }}
+                onMouseLeave={e => {
+                  if (!isActive) {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
+                    e.currentTarget.style.color = 'rgba(255,255,255,0.5)'
+                  }
+                }}
+              >
+                {domain}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* ── Skill list — 16px gap ─────────────────────────────────────── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          {filtered.map(skill => (
             <SkillRow
               key={skill.name}
               skill={skill}
