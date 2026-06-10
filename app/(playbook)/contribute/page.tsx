@@ -214,7 +214,7 @@ export default function ContributePage() {
   }
   const lbl: React.CSSProperties = { display: 'block', fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 500, color: 'rgba(255,255,255,0.8)', marginBottom: 8 }
   const err: React.CSSProperties = { fontFamily: 'var(--font-body)', fontSize: 13, color: '#C27FFF', marginTop: 6 }
-  const req = <span style={{ color: '#9B3FFF', marginLeft: 2 }}>*</span>
+  const req = <span style={{ color: '#ffffff', marginLeft: 2 }}>*</span>
 
   /* ── Success ─────────────────────────────────────────────────────────── */
   if (submitted) {
@@ -276,12 +276,6 @@ export default function ContributePage() {
 
         {/* Hero */}
         <div className="animate-fade-up delay-75" style={{ padding: '48px clamp(20px,4vw,48px) 32px', maxWidth: 840, margin: '0 auto' }}>
-          <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.35)', textDecoration: 'none', marginBottom: 32, transition: 'color 0.18s ease' }}
-            onMouseEnter={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.65)' }}
-            onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.35)' }}
-          >
-            <ArrowLeft size={14} /> Back to playbook
-          </Link>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px,4vw,52px)', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 12 }}>
             Contribute to the AI Playbook
           </h1>
