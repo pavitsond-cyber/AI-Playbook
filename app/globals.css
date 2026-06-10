@@ -89,6 +89,12 @@ body {
 
 * { box-sizing: border-box; }
 
+/* Remove dark tap flash on ALL interactive elements across the site */
+a, button, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  outline-color: transparent;
+}
+
 /* ── Scrollbar ───────────────────────────────────────── */
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
@@ -278,9 +284,9 @@ mark { background: rgba(155,63,255,0.2) !important; color: #C27FFF !important; b
 
 /* ── Page transition ─────────────────────────────────── */
 @keyframes page-enter {
-  from { opacity: 0; transform: translateY(16px) scale(0.99); }
-  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
 }
 .page-enter {
-  animation: page-enter 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: page-enter 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }

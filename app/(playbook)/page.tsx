@@ -57,30 +57,36 @@ function DesktopCard({ s }: { s: typeof sections[0] }) {
 
 /* ── Mobile card (2-col grid, Figma spec) ──────────────────────────────── */
 function MobileCard({ s }: { s: typeof sections[0] }) {
-  const [hovered, setHovered] = useState(false)
+  const [active, setActive] = useState(false)
   return (
     <Link
       href={s.href}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}
+      onTouchStart={() => setActive(true)}
+      onTouchEnd={() => setTimeout(() => setActive(false), 180)}
+      onTouchCancel={() => setActive(false)}
       style={{
         textDecoration: 'none',
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-        /* 2 columns with 7.6px gap: calc(50% - gap/2) */
         width: 'calc(50% - 3.8px)',
         height: 121,
         padding: 9,
         borderRadius: 4,
         flexShrink: 0,
-        background: hovered
-          ? 'linear-gradient(109deg, rgba(255,255,255,0.22) 3.87%, rgba(255,255,255,0.04) 101%)'
+        /* Tap = desktop hover: glass solidifies, inset highlight, shadow */
+        background: active
+          ? 'linear-gradient(109deg, rgba(255,255,255,0.22) 3.87%, rgba(255,255,255,0.06) 101%)'
           : 'linear-gradient(109deg, rgba(255,255,255,0.12) 3.87%, rgba(255,255,255,0.00) 101%)',
-        border: hovered ? '1px solid rgba(255,255,255,0.18)' : '1px solid rgba(255,255,255,0.07)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        boxShadow: hovered ? '0 4px 20px rgba(0,0,0,0.3)' : 'none',
-        transition: 'background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease',
+        border: active ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(255,255,255,0.07)',
+        backdropFilter: active ? 'blur(20px) saturate(180%)' : 'blur(12px)',
+        WebkitBackdropFilter: active ? 'blur(20px) saturate(180%)' : 'blur(12px)',
+        boxShadow: active ? '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15)' : 'none',
+        transition: 'background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, backdrop-filter 0.18s ease',
         cursor: 'pointer',
+        /* Kills the browser default dark tap flash entirely */
+        WebkitTapHighlightColor: 'transparent',
+        outline: 'none',
       }}
     >
       {/* Number */}
@@ -93,7 +99,7 @@ function MobileCard({ s }: { s: typeof sections[0] }) {
           <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 20, fontWeight: 400, letterSpacing: '-0.02em', color: '#ffffff', lineHeight: 1 }}>{s.title}</span>
           <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 12, fontWeight: 400, letterSpacing: '-0.015em', color: 'rgba(255,255,255,0.5)', lineHeight: 1 }}>{s.sub}</span>
         </div>
-        <ArrowUpRight size={20} color="rgba(255,255,255,0.7)" style={{ flexShrink: 0 }} />
+        <ArrowUpRight size={20} color={active ? '#ffffff' : 'rgba(255,255,255,0.7)'} style={{ flexShrink: 0, transition: 'color 0.18s ease' }} />
       </div>
     </Link>
   )
