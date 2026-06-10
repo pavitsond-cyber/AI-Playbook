@@ -242,13 +242,6 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
                 </button>
               ))}
             </div>
-            <p style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 13, color: 'rgba(255,255,255,0.2)',
-              marginTop: 24, lineHeight: 1.6,
-            }}>
-              Start typing to search across all skills, prompts, and terms.
-            </p>
           </div>
         )}
 
