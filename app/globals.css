@@ -89,6 +89,14 @@ body {
 
 * { box-sizing: border-box; }
 
+/* Tool cards: redirect icon always visible on mobile (no hover on touch) */
+@media (max-width: 639px) {
+  .tool-redirect-icon {
+    opacity: 1 !important;
+    background: rgba(255,255,255,0.06) !important;
+  }
+}
+
 /* Remove dark tap flash on ALL interactive elements across the site */
 a, button, [role="button"] {
   -webkit-tap-highlight-color: transparent;

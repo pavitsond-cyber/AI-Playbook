@@ -204,18 +204,21 @@ function ToolCard({ tool }: { tool: Tool }) {
           </div>
         )}
 
-        {/* Redirect icon
-            — always visible at 0.45 opacity (works on mobile/touch)
-            — brightens to 1 on desktop hover                          */}
-        <div style={{
-          opacity: hovered ? 1 : 0,
-          transition: 'opacity 0.18s ease',
-          width: 26, height: 26, borderRadius: 7,
-          background: hovered ? 'rgba(255,255,255,0.10)' : 'rgba(255,255,255,0.05)',
-          border: '1px solid rgba(255,255,255,0.10)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-        }}>
-          <ExternalLink size={12} color="rgba(255,255,255,0.7)" />
+        {/* Redirect icon:
+            mobile  — always visible (no hover on touch)
+            desktop — hidden until hover                  */}
+        <div
+          className="tool-redirect-icon"
+          style={{
+            opacity: hovered ? 1 : 0,      /* desktop: hidden until hover */
+            transition: 'opacity 0.18s ease, background 0.18s ease',
+            width: 26, height: 26, borderRadius: 7,
+            background: hovered ? 'rgba(255,255,255,0.10)' : 'rgba(255,255,255,0.05)',
+            border: '1px solid rgba(255,255,255,0.12)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+          }}
+        >
+          <ExternalLink size={12} color="rgba(255,255,255,0.75)" />
         </div>
       </div>
 
