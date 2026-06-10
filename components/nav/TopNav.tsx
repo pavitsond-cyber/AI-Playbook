@@ -78,10 +78,12 @@ export default function TopNav() {
           })}
         </nav>
 
-        {/* Desktop search — shown on all pages including home */}
-        <div className="hidden sm:block shrink-0" style={{ width: 'clamp(300px, 34vw, 480px)' }}>
-          <InlineSearch placeholder="Search" compact />
-        </div>
+        {/* Desktop search — hidden on contribute page */}
+        {pathname !== '/contribute' && (
+          <div className="hidden sm:block shrink-0" style={{ width: 'clamp(300px, 34vw, 480px)' }}>
+            <InlineSearch placeholder="Search" compact />
+          </div>
+        )}
 
         {/* Mobile: search icon + hamburger (hamburger hidden on home) */}
         <div className="sm:hidden flex items-center" style={{ marginLeft: 'auto', gap: 4 }}>
