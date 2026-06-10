@@ -26,7 +26,7 @@ function DesktopCard({ s }: { s: typeof sections[0] }) {
         width: 'clamp(140px, 14.8vw, 213px)',
         height: 'clamp(120px, 11vw, 159px)',
         padding: 'clamp(10px, 0.84vw, 12px)',
-        borderRadius: 5,
+        borderRadius: 14,
         flexShrink: 0,
         background: hovered
           ? 'linear-gradient(109deg, rgba(255,255,255,0.22) 3.87%, rgba(255,255,255,0.06) 101%)'
@@ -72,7 +72,7 @@ function MobileCard({ s }: { s: typeof sections[0] }) {
         width: 'calc(50% - 3.8px)',
         height: 121,
         padding: 9,
-        borderRadius: 4,
+        borderRadius: 14,
         flexShrink: 0,
         /* Tap = desktop hover: glass solidifies, inset highlight, shadow */
         background: active
