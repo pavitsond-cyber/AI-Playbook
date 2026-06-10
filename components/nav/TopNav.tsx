@@ -12,7 +12,7 @@ const navItems = [
   { href: '/skills',     label: 'Skills' },
   { href: '/glossary',   label: 'Glossary' },
   { href: '/tools',      label: 'Tools' },
-  { href: '/contribute', label: 'Contribute' },
+  { href: '/contribute', label: 'Contribute', mobileLabel: 'Contribute to playbook' },
 ]
 
 export default function TopNav() {
@@ -179,7 +179,7 @@ export default function TopNav() {
                   transition: 'color 0.18s ease, background 0.18s ease',
                 }}
               >
-                {item.label}
+                {(item as any).mobileLabel ?? item.label}
               </Link>
             ))}
           </nav>
