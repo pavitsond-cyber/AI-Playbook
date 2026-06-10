@@ -1,9 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  experimental: {
-    instrumentationHook: true,   // enables instrumentation.ts → runs downloadLogos on startup
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
