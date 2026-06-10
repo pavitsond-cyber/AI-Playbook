@@ -9,6 +9,7 @@ const sections = [
   { num: '01', title: 'Skills',   sub: '21 resources',  href: '/skills'   },
   { num: '02', title: 'Prompts',  sub: '15 templates',  href: '/prompts'  },
   { num: '03', title: 'Glossary', sub: '54 terms',      href: '/glossary' },
+  { num: '04', title: 'Tools',    sub: '18 tools',      href: '/tools'    },
 ]
 
 /* ── Desktop card (single row, larger) ──────────────────────────────────── */
