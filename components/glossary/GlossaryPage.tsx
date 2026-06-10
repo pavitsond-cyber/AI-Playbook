@@ -222,20 +222,15 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                     <div key={group.category} id={`abbr-group-${group.category}`} className="animate-fade-up" style={{ animationDelay: `${gi * 40}ms` }}>
                       {/* Category header — mirrors letter badge */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                        <div style={{
-                          display: 'flex', alignItems: 'center', gap: 7,
-                          padding: '5px 12px', borderRadius: 100,
-                          background: group.bg, border: `1px solid ${group.color}25`,
+                        <span style={{
+                          fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 500,
+                          color: group.color, background: `${group.color}18`,
+                          border: `1px solid ${group.color}30`, borderRadius: 100,
+                          padding: '3px 10px', textTransform: 'uppercase', letterSpacing: '0.1em',
                           flexShrink: 0,
                         }}>
-                          <span style={{ width: 6, height: 6, borderRadius: '50%', background: group.color, flexShrink: 0 }} />
-                          <span style={{
-                            fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 700,
-                            textTransform: 'uppercase', letterSpacing: '0.1em', color: group.color,
-                          }}>
-                            {group.label}
-                          </span>
-                        </div>
+                          {group.label}
+                        </span>
                         <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.2)' }}>
                           {group.items.length} {group.items.length === 1 ? 'term' : 'terms'}
                         </span>

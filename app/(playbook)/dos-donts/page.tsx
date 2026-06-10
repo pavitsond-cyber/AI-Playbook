@@ -196,9 +196,9 @@ export default function OperatingPrinciplesPage() {
   let idx = 0
 
   return (
-    <div style={{ position: 'relative', overflow: 'clip', minHeight: '100vh' }}>
+    <div style={{ position: 'relative', overflow: 'clip', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <BlobLayer />
-      <div style={{ position: 'relative', zIndex: 1, padding: '24px clamp(20px,4vw,48px) 16px', maxWidth: 1060, margin: '0 auto' }}>
+      <div style={{ position: 'relative', zIndex: 1, flex: 1, padding: '24px clamp(20px,4vw,48px) 16px', maxWidth: 1060, margin: '0 auto', width: '100%' }}>
         <PageHeader title="Operating Principles" />
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 52 }}>
@@ -207,13 +207,14 @@ export default function OperatingPrinciplesPage() {
 
               {/* Section label */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: group.color, flexShrink: 0 }} />
-                <h2 style={{
-                  fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 700,
-                  textTransform: 'uppercase' as const, letterSpacing: '0.14em', color: group.color,
+                <span style={{
+                  fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 500,
+                  color: group.color, background: `${group.color}18`,
+                  border: `1px solid ${group.color}30`, borderRadius: 100,
+                  padding: '3px 10px', textTransform: 'uppercase' as const, letterSpacing: '0.1em',
                 }}>
                   {group.theme}
-                </h2>
+                </span>
                 <div style={{ flex: 1, height: 1, background: `${group.color}20` }} />
               </div>
 

@@ -851,9 +851,9 @@ export default function PromptsPage() {
     : prompts.filter(p => PROMPT_TO_TAB[p.id] === displayPromptTab)
 
   return (
-    <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
+    <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <BlobLayer />
-      <div style={{ position: 'relative', zIndex: 1, padding: '24px clamp(20px,4vw,48px) 16px', maxWidth: 960, margin: '0 auto' }}>
+      <div style={{ position: 'relative', zIndex: 1, flex: 1, padding: '24px clamp(20px,4vw,48px) 16px', maxWidth: 960, margin: '0 auto', width: '100%' }}>
         <PageHeader
           title="Prompt Systems"
           description="15 reusable prompt templates for product thinking, UX writing, research, strategy, and decision-making."

@@ -28,14 +28,6 @@ const abbreviations: AbbreviationEntry[] = [
   // ─── AI Concepts (8) ──────────────────────────────────────────────────────
 
   {
-    abbr: 'LLM',
-    full: 'Large Language Model',
-    meaning: 'The AI engine inside Claude, ChatGPT, and Gemini, trained on massive text to understand and generate language. Powers content creation, ideation, and analysis.',
-    example: 'Write "Act as a senior UX writer, generate 8 empty-state copy options (headline under 6 words, warm tone, no emoji)" and get 8 distinct options in seconds. That\'s an LLM predicting the most useful continuation of your prompt from everything it was trained on.',
-    links: [{ label: 'Prompt Systems', href: '/prompts' }, { label: 'Context Engineering skill', href: '/skills' }],
-    category: 'ai_concepts',
-  },
-  {
     abbr: 'MCP',
     full: 'Model Context Protocol',
     meaning: 'A standard that lets AI models connect to external tools, files, and data, like USB-C for AI. Designing prompts tailored to the AI\'s strengths and context to improve output relevance and accuracy.',
@@ -170,14 +162,6 @@ const abbreviations: AbbreviationEntry[] = [
     category: 'design_vision',
   },
   {
-    abbr: 'D2P',
-    full: 'Data-to-Prototype',
-    meaning: 'AI generates prototype suggestions from structured data: turning spreadsheets or data into design mockups. Enables faster ideation and prototyping.',
-    example: 'Feed in user flow data and feature requirements. D2P produces wireframe options showing how that data could be structured as screens. Not production-ready, but rapid ideation from information, faster than starting from a blank canvas every time.',
-    links: [{ label: 'AI Workflow Design skill', href: '/skills' }],
-    category: 'design_vision',
-  },
-  {
     abbr: 'DPE',
     full: 'Design Pattern Extraction',
     meaning: 'Using AI to detect patterns from multiple design or content samples: lets AI find common design patterns for you. Speeds up discovery of reusable solutions.',
@@ -191,14 +175,6 @@ const abbreviations: AbbreviationEntry[] = [
     meaning: 'AI detects key visual elements from designs or images: AI finds important parts of visuals. Improves insights from visual data.',
     example: 'Run competitor app screens through Claude\'s vision: "List all visual elements and design decisions visible here." VFE returns a structured breakdown of layout, hierarchy, components, and color use: competitive analysis without a single note taken manually.',
     links: [{ label: 'AI-powered design QA skill', href: '/skills' }],
-    category: 'design_vision',
-  },
-  {
-    abbr: 'DEX',
-    full: 'Design Experience AI',
-    meaning: 'AI analyzes design consistency and UX heuristics: AI audits designs and provides feedback. Automates design quality and consistency checks.',
-    example: 'Before each sprint review, run screens through a DEX-AI prompt checking against your UX principles. It flags inconsistencies in spacing, label terminology, and interaction patterns that a manual review might miss. Design quality review that scales with your output.',
-    links: [{ label: 'Design QA Review prompt', href: '/prompts' }, { label: 'AI-powered design QA skill', href: '/skills' }],
     category: 'design_vision',
   },
   {
@@ -376,9 +352,9 @@ export default function AbbreviationsPage() {
   )
 
   return (
-    <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
+    <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <BlobLayer />
-      <div style={{ position: "relative", zIndex: 1, padding: "24px clamp(20px,4vw,48px) 16px", maxWidth: 960, margin: "0 auto" }}>
+      <div style={{ position: "relative", zIndex: 1, flex: 1, padding: "24px clamp(20px,4vw,48px) 16px", maxWidth: 960, margin: "0 auto", width: '100%' }}>
         <PageHeader title="Abbreviations" description="30 advanced AI abbreviations for designers: expand any to see how it's used in real work." />
 
         <div className="mb-6">
@@ -415,12 +391,19 @@ export default function AbbreviationsPage() {
           <div className="space-y-6">
             {filteredByGroup.map(group => (
               <div key={group.id}>
-                <div style={{ background: group.bg, borderRadius: 8, padding: '6px 12px', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <span className="w-2 h-2 rounded-full shrink-0" style={{ background: group.color }} />
-                  <span style={{ color: group.color, fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{group.label}</span>
-                  <span className="ml-auto text-xs font-medium px-1.5 py-0.5 rounded-full" style={{ background: `${group.color}20`, color: group.color }}>
-                    {group.items.length}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+                  <span style={{
+                    fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 500,
+                    color: group.color, background: `${group.color}18`,
+                    border: `1px solid ${group.color}30`, borderRadius: 100,
+                    padding: '3px 10px', textTransform: 'uppercase', letterSpacing: '0.1em',
+                  }}>
+                    {group.label}
                   </span>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.2)' }}>
+                    {group.items.length} {group.items.length === 1 ? 'term' : 'terms'}
+                  </span>
+                  <div style={{ flex: 1, height: 1, background: `${group.color}20` }} />
                 </div>
                 <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, overflow: 'hidden' }}>
                   {group.items.map((item, i) => (

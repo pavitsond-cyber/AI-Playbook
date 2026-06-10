@@ -1064,9 +1064,9 @@ export default function SkillsPage() {
     : skills.filter(s => DOMAIN_TO_TAB[s.domain ?? ''] === displayTab)
 
   return (
-    <div style={{ position: 'relative', overflow: 'clip', minHeight: '100vh' }}>
+    <div style={{ position: 'relative', overflow: 'clip', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <BlobLayer />
-      <div style={{ position: 'relative', zIndex: 1, padding: '24px clamp(20px,4vw,48px) 16px', maxWidth: 960, margin: '0 auto' }}>
+      <div style={{ position: 'relative', zIndex: 1, flex: 1, padding: '24px clamp(20px,4vw,48px) 16px', maxWidth: 960, margin: '0 auto', width: '100%' }}>
         <PageHeader
           title="Skills"
           description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."

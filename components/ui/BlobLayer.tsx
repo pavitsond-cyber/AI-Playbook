@@ -1,18 +1,28 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 export default function BlobLayer() {
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
     <div
       aria-hidden
       style={{
-        position: 'fixed',   /* stays in place while content scrolls over it */
+        position: 'fixed',
         inset: 0,
         overflow: 'hidden',
         pointerEvents: 'none',
         zIndex: 0,
       }}
     >
-      {/* Blob A — top right, pink→purple, 18s */}
+      {/* Blob A — top right, moves slowest */}
       <div style={{
         position: 'absolute',
         top: '-20%', right: '-20%',
@@ -22,8 +32,11 @@ export default function BlobLayer() {
         filter: 'blur(120px)',
         opacity: 0.35,
         animation: 'blob-float-a 18s ease-in-out infinite',
+        transform: `translateY(${scrollY * 0.06}px)`,
+        willChange: 'transform',
       }} />
-      {/* Blob B — bottom left, bright purple, 22s reverse */}
+
+      {/* Blob B — bottom left, moves medium speed */}
       <div style={{
         position: 'absolute',
         bottom: '-10%', left: '-10%',
@@ -33,8 +46,11 @@ export default function BlobLayer() {
         filter: 'blur(90px)',
         opacity: 0.30,
         animation: 'blob-float-b 22s ease-in-out infinite reverse',
+        transform: `translateY(${scrollY * -0.10}px)`,
+        willChange: 'transform',
       }} />
-      {/* Blob C — mid right, pale pink, 15s + 3s delay */}
+
+      {/* Blob C — mid right, moves faster */}
       <div style={{
         position: 'absolute',
         top: '40%', right: '15%',
@@ -44,8 +60,11 @@ export default function BlobLayer() {
         filter: 'blur(80px)',
         opacity: 0.20,
         animation: 'blob-float-c 15s ease-in-out 3s infinite',
+        transform: `translateY(${scrollY * -0.14}px)`,
+        willChange: 'transform',
       }} />
-      {/* Blob D — centre, hot pink, 20s + 6s delay */}
+
+      {/* Blob D — centre, fastest parallax */}
       <div style={{
         position: 'absolute',
         top: '20%', left: '40%',
@@ -55,6 +74,8 @@ export default function BlobLayer() {
         filter: 'blur(100px)',
         opacity: 0.25,
         animation: 'blob-float-d 20s ease-in-out 6s infinite',
+        transform: `translateY(${scrollY * 0.18}px)`,
+        willChange: 'transform',
       }} />
     </div>
   )
