@@ -213,41 +213,26 @@ export default function LandingPage() {
         className="sm:hidden absolute flex flex-col"
         style={{ top: 80, left: 30, right: 30, zIndex: 10, gap: 25 }}
       >
-        {/* Title + subtitle stacked */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <h1 style={{
-            fontFamily: "'Halyard Display', Georgia, serif",
-            fontSize: 60,
-            fontWeight: 400,
-            lineHeight: 1,
-            letterSpacing: '-0.02em',
-            margin: 0,
-            paddingBottom: '0.06em',
-            color: '#ffffff',
-            
-            
-            
-          }}>
-            AI Playbook
-          </h1>
-          <p style={{
-            fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
-            fontSize: 16,
-            fontWeight: 400,
-            lineHeight: 1.5,
-            letterSpacing: '-0.02em',
-            margin: 0,
-            color: '#ffffff',
-            
-            
-            
-          }}>
-            Headout team&apos;s repository for everything in design and beyond
-          </p>
-        </div>
+        {/* Title — slides in from left */}
+        <h1 className="animate-slide-right delay-75" style={{
+          fontFamily: "'Halyard Display', Georgia, serif",
+          fontSize: 60, fontWeight: 400, lineHeight: 1,
+          letterSpacing: '-0.02em', margin: 0, paddingBottom: '0.06em', color: '#ffffff',
+        }}>
+          AI Playbook
+        </h1>
 
-        {/* 2×2 card grid — flex-wrap with 7.6px gap */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7.6 }}>
+        {/* Subtitle — fades up slightly after title */}
+        <p className="animate-fade-up delay-150" style={{
+          fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
+          fontSize: 16, fontWeight: 400, lineHeight: 1.5,
+          letterSpacing: '-0.02em', margin: 0, color: '#ffffff',
+        }}>
+          Headout team&apos;s repository for everything in design and beyond
+        </p>
+
+        {/* 2×2 card grid — each card pops in with stagger */}
+        <div className="card-stagger" style={{ display: 'flex', flexWrap: 'wrap', gap: 7.6 }}>
           {sections.map(s => <MobileCard key={s.href} s={s} />)}
         </div>
       </div>
@@ -266,8 +251,8 @@ export default function LandingPage() {
           gap: 'clamp(28px, 4.3vw, 62px)',
         }}
       >
-        {/* Title + subtitle side by side */}
-        <div className="flex flex-row items-center" style={{ gap: 'clamp(12px, 2.2vw, 32px)' }}>
+        {/* Title + subtitle side by side — slide in from left */}
+        <div className="flex flex-row items-center animate-slide-right delay-100" style={{ gap: 'clamp(12px, 2.2vw, 32px)' }}>
           <h1 style={{
             fontFamily: "'Halyard Display', Georgia, serif",
             fontSize: 'clamp(44px, 6.25vw, 90px)',
@@ -304,8 +289,8 @@ export default function LandingPage() {
           </p>
         </div>
 
-        {/* Single-row cards */}
-        <div style={{ display: 'flex', gap: 'clamp(8px, 1.6vw, 23px)', flexWrap: 'nowrap', overflowX: 'auto', scrollbarWidth: 'none', paddingBottom: 4 }}>
+        {/* Single-row cards — pop in with stagger */}
+        <div className="card-stagger" style={{ display: 'flex', gap: 'clamp(8px, 1.6vw, 23px)', flexWrap: 'nowrap', overflowX: 'auto', scrollbarWidth: 'none', paddingBottom: 4 }}>
           {sections.map(s => <DesktopCard key={s.href} s={s} />)}
         </div>
       </div>

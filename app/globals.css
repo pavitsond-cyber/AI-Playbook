@@ -212,13 +212,56 @@ a, button, [role="button"] {
 .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
 
 /* ── Keyframes ───────────────────────────────────────── */
+
+/* Fade — pure opacity, no movement */
+@keyframes fade-in {
+  from { opacity: 0; } to { opacity: 1; }
+}
+
+/* Fade-up — opacity + rises from below */
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes fade-in {
-  from { opacity: 0; } to { opacity: 1; }
+
+/* Scale-in — grows from 95% + fades */
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
 }
+
+/* Pop-in — overshoots slightly (spring feel) */
+@keyframes pop-in {
+  0%   { opacity: 0; transform: scale(0.88) translateY(12px); }
+  60%  { opacity: 1; transform: scale(1.03) translateY(-2px); }
+  100% { opacity: 1; transform: scale(1)    translateY(0); }
+}
+
+/* Slide-in-right — enters from right edge */
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Slide-in-up — enters from below (more travel than fade-up) */
+@keyframes slide-in-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Reveal — uncovers top-to-bottom via clip-path */
+@keyframes reveal-down {
+  from { clip-path: inset(0 0 100% 0); opacity: 0; }
+  to   { clip-path: inset(0 0 0% 0);   opacity: 1; }
+}
+
+/* Page enter — combination: fade + rise + slight scale (pop-in feel) */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* Tab content swap */
 @keyframes tab-fade {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -245,22 +288,43 @@ a, button, [role="button"] {
 }
 
 /* ── Animation utilities ─────────────────────────────── */
-.animate-fade-up  { animation: fade-up  0.5s cubic-bezier(0.16,1,0.3,1) both; }
-.animate-fade-in  { animation: fade-in  0.4s ease both; }
-.animate-tab-fade { animation: tab-fade 0.35s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fade-in    { animation: fade-in        0.35s ease both; }
+.animate-fade-up    { animation: fade-up        0.5s  cubic-bezier(0.16,1,0.3,1) both; }
+.animate-scale-in   { animation: scale-in       0.4s  cubic-bezier(0.16,1,0.3,1) both; }
+.animate-pop-in     { animation: pop-in         0.5s  cubic-bezier(0.34,1.56,0.64,1) both; }
+.animate-slide-up   { animation: slide-in-up    0.5s  cubic-bezier(0.16,1,0.3,1) both; }
+.animate-slide-right{ animation: slide-in-right 0.4s  cubic-bezier(0.16,1,0.3,1) both; }
+.animate-reveal     { animation: reveal-down    0.45s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+.animate-tab-fade   { animation: tab-fade       0.35s cubic-bezier(0.16,1,0.3,1) both; }
 
+/* Delay tokens */
 .delay-0   { animation-delay:   0ms; }
 .delay-75  { animation-delay:  75ms; }
+.delay-100 { animation-delay: 100ms; }
 .delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
 .delay-250 { animation-delay: 250ms; }
+.delay-300 { animation-delay: 300ms; }
 .delay-350 { animation-delay: 350ms; }
 .delay-450 { animation-delay: 450ms; }
 
+/* Card stagger — each child pops in 60ms after the previous */
+.card-stagger > * { animation: pop-in 0.45s cubic-bezier(0.34,1.56,0.64,1) both; }
 .card-stagger > *:nth-child(1) { animation-delay:  40ms; }
-.card-stagger > *:nth-child(2) { animation-delay:  80ms; }
-.card-stagger > *:nth-child(3) { animation-delay: 120ms; }
-.card-stagger > *:nth-child(4) { animation-delay: 160ms; }
-.card-stagger > *:nth-child(5) { animation-delay: 200ms; }
+.card-stagger > *:nth-child(2) { animation-delay: 100ms; }
+.card-stagger > *:nth-child(3) { animation-delay: 160ms; }
+.card-stagger > *:nth-child(4) { animation-delay: 220ms; }
+.card-stagger > *:nth-child(5) { animation-delay: 280ms; }
+
+/* Every page root remounts on navigation → triggers enter animation */
+main > * {
+  animation: page-enter 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+/* Inner content sections — stagger slightly after the page enters */
+.page-section-1 { animation: slide-in-up 0.5s cubic-bezier(0.16,1,0.3,1) 60ms  both; }
+.page-section-2 { animation: slide-in-up 0.5s cubic-bezier(0.16,1,0.3,1) 140ms both; }
+.page-section-3 { animation: slide-in-up 0.5s cubic-bezier(0.16,1,0.3,1) 220ms both; }
 .card-stagger > *:nth-child(6) { animation-delay: 240ms; }
 .card-stagger > *:nth-child(7) { animation-delay: 280ms; }
 .card-stagger > *:nth-child(8) { animation-delay: 320ms; }
