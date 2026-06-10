@@ -284,9 +284,11 @@ export default function ContributePage() {
           </p>
         </div>
 
-        {/* Form card */}
-        <div style={{ maxWidth: 840, margin: '0 auto', padding: '0 clamp(20px,4vw,48px) 80px' }}>
-          <form onSubmit={handleSubmit} noValidate style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 'clamp(24px,4vw,48px)', boxShadow: '0 24px 64px rgba(0,0,0,0.3)' }}>
+        {/* Form card — bordered on desktop, edge-to-edge on mobile */}
+        <div style={{ maxWidth: 840, margin: '0 auto', padding: '0 0 80px' }}>
+          <form onSubmit={handleSubmit} noValidate
+            className="contribute-form"
+            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 'clamp(24px,4vw,48px)', boxShadow: '0 24px 64px rgba(0,0,0,0.3)' }}>
 
             {/* Name + Email */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 24, marginBottom: 24 }}>
@@ -418,6 +420,16 @@ export default function ContributePage() {
         select option { background: #0E0018; }
         input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
         input:focus, textarea:focus { outline: none; }
+        /* Mobile: no card — full-width, no border, no shadow, no radius */
+        @media (max-width: 639px) {
+          .contribute-form {
+            background: transparent !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            padding: 0 20px !important;
+          }
+        }
       `}</style>
     </div>
   )
