@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { ChevronDown, Download, Check } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 import BlobLayer from '@/components/ui/BlobLayer'
+import SiteFooter from '@/components/glossary/SiteFooter'
 
 interface Skill {
   name: string
@@ -1020,7 +1021,7 @@ export default function SkillsPage() {
     : skills.filter(s => DOMAIN_TO_TAB[s.domain ?? ''] === activeTab)
 
   return (
-    <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
+    <div style={{ position: 'relative', overflow: 'clip', minHeight: '100vh' }}>
       <BlobLayer />
       <div style={{ position: 'relative', zIndex: 1, padding: 'clamp(64px,6vw,100px) clamp(20px,4vw,48px)', maxWidth: 960, margin: '0 auto' }}>
         <PageHeader
@@ -1028,14 +1029,19 @@ export default function SkillsPage() {
           description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
         />
 
-        {/* ── 5-tab filter — horizontally scrollable ───────────────────── */}
+        {/* ── 5-tab filter — full-bleed horizontal scroll ──────────────── */}
+        {/* Negative margin trick: extends to screen edges, items never cut */}
         <div style={{
           display: 'flex', gap: 8,
           overflowX: 'auto', scrollbarWidth: 'none',
           WebkitOverflowScrolling: 'touch' as any,
           flexWrap: 'nowrap',
-          marginBottom: 28,
-          paddingBottom: 2,
+          marginBottom: 32,
+          marginLeft: 'calc(-1 * clamp(20px,4vw,48px))',
+          marginRight: 'calc(-1 * clamp(20px,4vw,48px))',
+          paddingLeft: 'clamp(20px,4vw,48px)',
+          paddingRight: 'clamp(20px,4vw,48px)',
+          paddingBottom: 4,
         } as React.CSSProperties}>
           {TABS.map(tab => {
             const isActive = activeTab === tab
@@ -1083,6 +1089,7 @@ export default function SkillsPage() {
           ))}
         </div>
       </div>
+      <SiteFooter />
     </div>
   )
 }

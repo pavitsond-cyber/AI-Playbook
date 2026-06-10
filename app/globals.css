@@ -284,15 +284,14 @@ mark { background: rgba(155,63,255,0.2) !important; color: #C27FFF !important; b
 
 /* ── Page transition ─────────────────────────────────── */
 @keyframes page-enter {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0);    }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 .page-enter {
-  animation: page-enter 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: page-enter 0.28s ease-out both;
 }
 
-/* Each page's root div remounts on navigation — animate it automatically.
-   This is safer than manipulating animation on a persistent layout element. */
+/* Pure opacity fade — no translateY to avoid layout shift/glitch on nav */
 main > * {
-  animation: page-enter 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: page-enter 0.28s ease-out both;
 }
