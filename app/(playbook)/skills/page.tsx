@@ -1011,14 +1011,28 @@ const DOMAIN_TO_TAB: Record<string, string> = {
 const TABS = ['All', 'Research', 'Design', 'Motion & Craft', 'Systems']
 
 export default function SkillsPage() {
-  const [openName, setOpenName]       = useState<string | null>(null)
-  const [activeTab, setActiveTab]     = useState<string>('All')
+  const [openName, setOpenName]         = useState<string | null>(null)
+  const [activeTab, setActiveTab]       = useState<string>('All')
+  const [displayTab, setDisplayTab]     = useState<string>('All')
+  const [fading, setFading]             = useState(false)
 
   const toggle = (name: string) => setOpenName(prev => prev === name ? null : name)
 
-  const filtered = activeTab === 'All'
+  /* Smooth tab switch: fade out → swap content → fade in */
+  const switchTab = (tab: string) => {
+    if (tab === activeTab) return
+    setFading(true)                         // start fade-out (160ms)
+    setTimeout(() => {
+      setDisplayTab(tab)
+      setActiveTab(tab)
+      setOpenName(null)
+      setFading(false)                      // trigger fade-in
+    }, 160)
+  }
+
+  const filtered = displayTab === 'All'
     ? skills
-    : skills.filter(s => DOMAIN_TO_TAB[s.domain ?? ''] === activeTab)
+    : skills.filter(s => DOMAIN_TO_TAB[s.domain ?? ''] === displayTab)
 
   return (
     <div style={{ position: 'relative', overflow: 'clip', minHeight: '100vh' }}>
@@ -1048,7 +1062,7 @@ export default function SkillsPage() {
             return (
               <button
                 key={tab}
-                onClick={() => { setActiveTab(tab); setOpenName(null) }}
+                onClick={() => switchTab(tab)}
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 13, fontWeight: isActive ? 600 : 400,
@@ -1077,8 +1091,14 @@ export default function SkillsPage() {
           })}
         </div>
 
-        {/* ── Skill list ───────────────────────────────────────────────── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        {/* ── Skill list — fades on tab switch ─────────────────────────── */}
+        <div style={{
+          display: 'flex', flexDirection: 'column', gap: 16,
+          opacity: fading ? 0 : 1,
+          transition: fading
+            ? 'opacity 0.16s ease-in'        /* fade out */
+            : 'opacity 0.22s ease-out',      /* fade in */
+        }}>
           {filtered.map(skill => (
             <SkillRow
               key={skill.name}
