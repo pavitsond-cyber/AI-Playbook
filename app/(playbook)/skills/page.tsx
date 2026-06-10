@@ -1061,10 +1061,9 @@ export default function SkillsPage() {
           description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
         />
 
-        {/* ── Glossary-style underline tabs ────────────────────────────── */}
+        {/* ── Filter tabs — exact glossary style ───────────────────────── */}
         <div style={{
           display: 'flex',
-          gap: 0,
           overflowX: 'auto', scrollbarWidth: 'none',
           WebkitOverflowScrolling: 'touch' as any,
           flexWrap: 'nowrap',
@@ -1082,31 +1081,30 @@ export default function SkillsPage() {
               <button
                 key={tab}
                 onClick={() => switchTab(tab)}
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: 14, fontWeight: isActive ? 600 : 400,
-                  padding: '10px 16px',
-                  background: 'none', border: 'none',
-                  borderBottom: isActive ? '2px solid #9B3FFF' : '2px solid transparent',
-                  marginBottom: -1,
-                  color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)',
-                  cursor: 'pointer', flexShrink: 0,
-                  transition: 'color 0.18s ease, border-color 0.18s ease',
-                  display: 'flex', alignItems: 'center', gap: 8,
-                  WebkitTapHighlightColor: 'transparent',
-                }}
+                className="relative flex items-center gap-2 px-1 pb-3 pt-2 mr-6 text-sm font-medium transition-all duration-200 focus-visible:outline-none"
+                style={{ background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0, WebkitTapHighlightColor: 'transparent', fontFamily: 'var(--font-body)' }}
               >
-                {tab}
-                <span style={{
-                  fontSize: 12, fontWeight: 600,
-                  padding: '1px 7px', borderRadius: 20,
-                  background: isActive ? '#9B3FFF' : 'rgba(255,255,255,0.08)',
-                  color: isActive ? '#fff' : 'rgba(255,255,255,0.4)',
-                  transition: 'background 0.18s ease, color 0.18s ease',
-                  minWidth: 24, textAlign: 'center' as const,
-                }}>
+                <span className="transition-colors duration-200" style={{ color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)' }}>
+                  {tab}
+                </span>
+                <span
+                  className="text-xs px-1.5 py-0.5 rounded-full font-medium transition-all duration-200"
+                  style={isActive
+                    ? { background: '#9B3FFF', color: '#fff' }
+                    : { background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.35)', border: '1px solid rgba(255,255,255,0.08)' }}
+                >
                   {count}
                 </span>
+                <span
+                  className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
+                  style={{
+                    background: '#9B3FFF',
+                    opacity: isActive ? 1 : 0,
+                    transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
+                    transformOrigin: 'left',
+                    transition: 'opacity 0.2s, transform 0.2s',
+                  }}
+                />
               </button>
             )
           })}
