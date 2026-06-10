@@ -347,7 +347,7 @@ export default function ToolsPage() {
       <BlobLayer />
       <div style={{
         position: 'relative', zIndex: 1,
-        padding: 'clamp(64px,6vw,100px) clamp(20px,4vw,48px)',
+        padding: '24px clamp(20px,4vw,48px) 16px',
         maxWidth: 1040, margin: '0 auto',
       }}>
         <PageHeader

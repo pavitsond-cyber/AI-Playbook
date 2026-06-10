@@ -132,7 +132,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
       <div style={{ maxWidth: 960, margin: "0 auto", width: "100%" }}>
 
         {/* Page title */}
-        <div className="animate-fade-up delay-75" style={{ padding: "clamp(64px,6vw,100px) clamp(20px,4vw,48px) 20px" }}>
+        <div className="animate-fade-up delay-75" style={{ padding: "24px clamp(20px,4vw,48px) 16px" }}>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px,4vw,64px)', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 8 }}>
             Glossary
           </h1>
