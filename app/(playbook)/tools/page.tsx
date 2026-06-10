@@ -121,20 +121,21 @@ const groups: ToolGroup[] = [
 ]
 
 /* ────────────────────────────────────────────────────────────────────────────
-   Logo loading — 3 levels: local file → Clearbit → initials
+   Logo loading — 2 levels: Clearbit → Google favicon → initials
+   No local files required — loads directly from CDN on every page view.
 ──────────────────────────────────────────────────────────────────────────── */
-type LogoState = 'local' | 'clearbit' | 'initials'
+type LogoState = 'clearbit' | 'favicon' | 'initials'
 
 /* ────────────────────────────────────────────────────────────────────────────
    Tool card
 ──────────────────────────────────────────────────────────────────────────── */
 function ToolCard({ tool }: { tool: Tool }) {
-  const [logoState, setLogoState] = useState<LogoState>('local')
+  const [logoState, setLogoState] = useState<LogoState>('clearbit')
   const [hovered, setHovered]     = useState(false)
 
-  const localPath   = tool.logoDomain ? `/logos/${tool.logoDomain.replace(/\./g, '-')}.png` : null
   const clearbitUrl = tool.logoDomain ? `https://logo.clearbit.com/${tool.logoDomain}` : null
-  const logoSrc     = logoState === 'local' ? localPath : logoState === 'clearbit' ? clearbitUrl : null
+  const faviconUrl  = tool.logoDomain ? `https://www.google.com/s2/favicons?domain=${tool.logoDomain}&sz=64` : null
+  const logoSrc     = logoState === 'clearbit' ? clearbitUrl : logoState === 'favicon' ? faviconUrl : null
 
   const cardInner = (
     <div
@@ -173,7 +174,7 @@ function ToolCard({ tool }: { tool: Tool }) {
               width={26} height={26} alt={tool.name}
               style={{ objectFit: 'contain', display: 'block' }}
               onError={() =>
-                setLogoState(prev => prev === 'local' ? 'clearbit' : 'initials')
+                setLogoState(prev => prev === 'clearbit' ? 'favicon' : 'initials')
               }
             />
           </div>
