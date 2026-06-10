@@ -5,7 +5,7 @@ export default function BlobLayer() {
     <div
       aria-hidden
       style={{
-        position: 'absolute',
+        position: 'fixed',   /* stays in place while content scrolls over it */
         inset: 0,
         overflow: 'hidden',
         pointerEvents: 'none',

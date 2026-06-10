@@ -218,8 +218,8 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                 )}
 
                 <div className="space-y-8">
-                  {abbrGroups.map(group => (
-                    <div key={group.category} id={`abbr-group-${group.category}`}>
+                  {abbrGroups.map((group, gi) => (
+                    <div key={group.category} id={`abbr-group-${group.category}`} className="animate-fade-up" style={{ animationDelay: `${gi * 40}ms` }}>
                       {/* Category header — mirrors letter badge */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
                         <div style={{
@@ -267,8 +267,8 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                 )}
 
                 <div className="space-y-8">
-                  {letterGroups.map(({ letter, terms: groupTerms }) => (
-                    <div key={letter} id={`alpha-section-${letter}`}>
+                  {letterGroups.map(({ letter, terms: groupTerms }, gi) => (
+                    <div key={letter} id={`alpha-section-${letter}`} className="animate-fade-up" style={{ animationDelay: `${gi * 40}ms` }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
                         <div style={{
                           width: 34, height: 34, borderRadius: 9,
