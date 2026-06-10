@@ -9,7 +9,7 @@ export default function PageHeader({ title, description, badge }: PageHeaderProp
   const first = words[0]
   const rest = words.slice(1).join(' ')
   return (
-    <div style={{ marginBottom: 48 }}>
+    <div style={{ marginBottom: 20 }}>
       {badge && (
         <div className="eyebrow-tag" style={{ marginBottom: 20 }}>
           <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg,#FF00CC,#9B3FFF)', display: 'inline-block', flexShrink: 0 }} />

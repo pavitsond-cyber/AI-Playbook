@@ -867,7 +867,7 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
             style={{ gap: 8, marginBottom: 6, paddingRight: 72 }}
           >
             {skill.domain && showTag && (
-              <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, color: '#FF69DB', background: 'rgba(255,105,219,0.1)', border: '1px solid rgba(255,105,219,0.2)', borderRadius: 100, padding: '2px 8px', textTransform: 'uppercase' as const, letterSpacing: '0.08em', flexShrink: 0, alignSelf: 'flex-start' }}>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 400, color: '#FF69DB', background: 'rgba(255,105,219,0.1)', border: '1px solid rgba(255,105,219,0.2)', borderRadius: 100, padding: '2px 8px', textTransform: 'uppercase' as const, letterSpacing: '0.08em', flexShrink: 0, alignSelf: 'flex-start' }}>
                 {skill.domain}
               </span>
             )}

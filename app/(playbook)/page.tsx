@@ -90,7 +90,7 @@ function MobileCard({ s }: { s: typeof sections[0] }) {
       }}
     >
       {/* Number */}
-      <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 22, fontWeight: 400, letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.4)', lineHeight: 1 }}>
+      <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 15, fontWeight: 400, letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.4)', lineHeight: 1 }}>
         {s.num}
       </span>
       {/* Title + sub + arrow */}
