@@ -194,7 +194,7 @@ function ToolCard({ tool }: { tool: Tool }) {
             — always visible at 0.45 opacity (works on mobile/touch)
             — brightens to 1 on desktop hover                          */}
         <div style={{
-          opacity: hovered ? 1 : 0.45,
+          opacity: hovered ? 1 : 0,
           transition: 'opacity 0.18s ease',
           width: 26, height: 26, borderRadius: 7,
           background: hovered ? 'rgba(255,255,255,0.10)' : 'rgba(255,255,255,0.05)',
@@ -328,7 +328,7 @@ export default function ToolsPage() {
             : 'opacity 0.26s ease-out, transform 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         }}>
           {/* grid-cols-1 mobile → 2 sm → 3 lg (max 3 cols) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: 12 }}>
+          <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: 12 }}>
             {flatTools.map((tool, i) => (
               <div
                 key={tool.name}
