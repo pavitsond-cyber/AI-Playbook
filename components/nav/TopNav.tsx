@@ -148,10 +148,10 @@ export default function TopNav() {
           pointerEvents: mobileOpen ? 'auto' : 'none',
         }}
       >
-        {/* Inner panel — full opacity always; the clip wrapper handles visibility */}
+        {/* Inner panel — fully opaque so homepage content never shows through */}
         <div style={{
-          background: 'rgba(10,0,16,0.97)',
-          backdropFilter: 'blur(24px)',
+          background: '#08000F',
+          backdropFilter: 'none',
           WebkitBackdropFilter: 'blur(24px)',
           borderBottom: '1px solid rgba(255,255,255,0.08)',
         }}
