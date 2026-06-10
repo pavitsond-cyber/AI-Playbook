@@ -127,10 +127,10 @@ export default function TopNav() {
         </div>
       </div>
 
-      {/* Mobile dropdown — clips open downward from beneath the nav bar.
-          A maxHeight clip wrapper (overflow:hidden) reveals the content
-          top-to-bottom so the menu appears to flow out from under the nav.
-          No translateY — nothing moves through the header.                    */}
+      {/* Mobile dropdown — GPU-composited clip-path reveal (no layout recalc).
+          clip-path: inset(0 0 100% 0) = fully clipped from bottom (hidden)
+          clip-path: inset(0 0 0% 0)   = fully visible
+          No maxHeight, no overflow:hidden on fixed — eliminates iOS jank.   */}
       <div
         className="sm:hidden"
         style={{
@@ -139,20 +139,15 @@ export default function TopNav() {
           left: 0,
           right: 0,
           zIndex: 99,
-          overflow: 'hidden',
-          /* Clip: maxHeight 0→auto simulates content dropping down */
-          maxHeight: mobileOpen ? '480px' : '0px',
+          clipPath: mobileOpen ? 'inset(0 0 0% 0)' : 'inset(0 0 100% 0)',
           transition: mobileOpen
-            ? 'max-height 0.36s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-            : 'max-height 0.24s cubic-bezier(0.55, 0, 1, 0.45)',
+            ? 'clip-path 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            : 'clip-path 0.22s cubic-bezier(0.55, 0, 1, 0.45)',
           pointerEvents: mobileOpen ? 'auto' : 'none',
         }}
       >
-        {/* Inner panel — fully opaque so homepage content never shows through */}
         <div style={{
           background: '#08000F',
-          backdropFilter: 'none',
-          WebkitBackdropFilter: 'blur(24px)',
           borderBottom: '1px solid rgba(255,255,255,0.08)',
         }}
         >
