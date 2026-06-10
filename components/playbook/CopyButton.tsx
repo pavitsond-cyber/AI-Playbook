@@ -31,9 +31,9 @@ export default function CopyButton({ text, className = '' }: CopyButtonProps) {
       }}
       onMouseEnter={(e) => {
         if (!copied) {
-          e.currentTarget.style.background = '#eeeeee'
-          e.currentTarget.style.color = '#64748d'
-          e.currentTarget.style.borderColor = '#d8d8d8'
+          e.currentTarget.style.background = 'rgba(155,63,255,0.12)'
+          e.currentTarget.style.color = '#C27FFF'
+          e.currentTarget.style.borderColor = 'rgba(155,63,255,0.25)'
         }
       }}
       onMouseLeave={(e) => {
