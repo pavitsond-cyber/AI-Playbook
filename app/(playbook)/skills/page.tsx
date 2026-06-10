@@ -874,7 +874,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
             <div className="flex items-center" style={{ gap: 8 }}>
               <span style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 17,
+                fontSize: 20,
                 fontWeight: 700,
                 color: '#ffffff',
                 lineHeight: 1.3,

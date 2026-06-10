@@ -706,7 +706,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
         >
           <span style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 17, fontWeight: 700, color: '#ffffff', lineHeight: 1.3,
+            fontSize: 20, fontWeight: 700, color: '#ffffff', lineHeight: 1.3,
           }}>
             {prompt.title}
           </span>
@@ -763,9 +763,9 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
           }}>
             <pre style={{
               fontFamily: "'Courier New', Courier, monospace",
-              fontSize: 12.5,
+              fontSize: 13,
               lineHeight: 1.75,
-              color: 'rgba(255,255,255,0.72)',
+              color: '#ffffff',
               margin: 0,
               padding: '20px',
               whiteSpace: 'pre-wrap',
