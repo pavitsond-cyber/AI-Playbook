@@ -110,46 +110,58 @@ export default function LandingPage() {
   return (
     <div style={{ position: 'fixed', inset: 0, background: '#0D0B1E', overflow: 'hidden' }}>
 
-      {/* ── Video ─────────────────────────────────────────────────────── */}
-      {/* Mobile  (Figma 118:2057): diver centered-left, purple atmosphere, light upper-left → 52% 38%
-          Desktop (Figma 111:1954): diver right-of-center, light rays upper-right → 80% 50%       */}
+      {/* ── Video — single element, different objectPosition per breakpoint ── */}
+      {/* Mobile  (Figma 118:2057): portrait crop, diver centered, light upper-left
+          Desktop (Figma 111:1954): landscape crop, diver right-of-center         */}
       <video
         autoPlay muted loop playsInline
-        className="absolute object-[52%_38%] sm:object-[80%_50%]"
+        className="absolute object-[50%_50%] sm:object-[80%_50%]"
         style={{
+          /* Anchored to bottom per Figma spec (bottom:0, left:0, w:100%, h:100%) */
           bottom: 0, left: 0,
           width: '100%', height: '100%',
           objectFit: 'cover',
           zIndex: 0,
-          opacity: 0.9,
+          opacity: 0.85,
         }}
       >
         <source src="/videos/landing-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* ── Desktop gradient mask — left stays dark, right reveals diver  */}
+      {/* ── Desktop gradient mask — left solid dark → transparent right ── */}
       <div
         className="hidden sm:block absolute inset-0 pointer-events-none"
         style={{
           zIndex: 1,
-          /* Matches Figma: left half solid dark, sweeps to near-transparent */
           background: 'linear-gradient(to right, #0D0B1E 0%, #0D0B1E 28%, rgba(13,11,30,0.92) 40%, rgba(13,11,30,0.6) 55%, rgba(13,11,30,0.2) 72%, rgba(13,11,30,0.05) 88%, transparent 100%)',
         }}
       />
 
-      {/* ── Mobile gradient — dark top fade matching Figma ────────────── */}
+      {/* ── Mobile: top gradient — exact Figma 118:2057 spec ─────────── */}
+      {/* from-[#0e1439] height:239px, positioned to bleed beyond screen edges */}
       <div
         className="sm:hidden absolute pointer-events-none"
         style={{
-          top: -3, left: -14, width: 445, height: 239,
-          zIndex: 1,
-          background: 'linear-gradient(to bottom, #0e1439, rgba(14,20,57,0))',
+          top: 0, left: 0, right: 0, height: 239,
+          zIndex: 2,
+          background: 'linear-gradient(to bottom, #0e1439 0%, rgba(14,20,57,0.85) 40%, rgba(14,20,57,0) 100%)',
         }}
       />
-      {/* Mobile: subtle dark overall tint for readability */}
+
+      {/* ── Mobile: bottom gradient — fades diver into dark ──────────── */}
+      <div
+        className="sm:hidden absolute pointer-events-none"
+        style={{
+          bottom: 0, left: 0, right: 0, height: 280,
+          zIndex: 2,
+          background: 'linear-gradient(to top, #0D0B1E 0%, rgba(13,11,30,0.8) 40%, rgba(13,11,30,0) 100%)',
+        }}
+      />
+
+      {/* ── Mobile: subtle mid-tint so content over video stays readable ─ */}
       <div
         className="sm:hidden absolute inset-0 pointer-events-none"
-        style={{ zIndex: 1, background: 'rgba(13,11,30,0.35)' }}
+        style={{ zIndex: 1, background: 'rgba(13,11,30,0.25)' }}
       />
 
       {/* ── Purple/pink atmosphere ─────────────────────────────────────── */}
