@@ -102,18 +102,16 @@ a, button, [role="button"] {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(155,63,255,0.25); border-radius: 2px; }
 
-/* ── Gradient text ───────────────────────────────────── */
+/* ── Gradient text → solid white ───────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #FF69DB 0%, #C27FFF 50%, #9B3FFF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
+  background: none;
+  -webkit-text-fill-color: #ffffff;
 }
 .gradient-text-dark {
-  background: linear-gradient(135deg, #CC00AA, #6B00CC);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
+  background: none;
+  -webkit-text-fill-color: #ffffff;
 }
 
 /* ── Section divider ─────────────────────────────────── */

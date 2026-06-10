@@ -783,7 +783,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
   )
 }
 
-const PROMPT_TABS = ['All', 'Strategy', 'Research', 'Writing', 'Execution']
+const PROMPT_TABS = ['All', 'Strategy', 'Research', 'Content', 'Execution']
 
 const PROMPT_TO_TAB: Record<string, string> = {
   'problem-framing': 'Strategy',
@@ -795,7 +795,7 @@ const PROMPT_TO_TAB: Record<string, string> = {
   'research-synthesis-insight': 'Research',
   'user-interview-guide': 'Research',
   'survey-design': 'Research',
-  'ux-copy': 'Writing',
+  'ux-copy': 'Content',
   'prd': 'Execution',
   'experiment-and-measurement': 'Execution',
   'edge-case-finder': 'Execution',

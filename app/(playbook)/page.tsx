@@ -223,10 +223,10 @@ export default function LandingPage() {
             letterSpacing: '-0.02em',
             margin: 0,
             paddingBottom: '0.06em',
-            background: 'linear-gradient(163.1deg, #ffffff 41.19%, rgba(255,255,255,0) 112.51%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            color: '#ffffff',
+            
+            
+            
           }}>
             AI Playbook
           </h1>
@@ -237,10 +237,10 @@ export default function LandingPage() {
             lineHeight: 1.5,
             letterSpacing: '-0.02em',
             margin: 0,
-            background: 'linear-gradient(168.5deg, #ffffff 41.19%, rgba(255,255,255,0) 112.51%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            color: '#ffffff',
+            
+            
+            
           }}>
             Headout team&apos;s repository for everything in design and beyond
           </p>
@@ -279,10 +279,10 @@ export default function LandingPage() {
             flexShrink: 0,
             paddingBottom: '0.06em',
             paddingRight: '0.04em',
-            background: 'linear-gradient(163.1deg, #ffffff 41.19%, rgba(255,255,255,0) 112.51%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            color: '#ffffff',
+            
+            
+            
           }}>
             AI Playbook
           </h1>
@@ -295,10 +295,10 @@ export default function LandingPage() {
             maxWidth: 337,
             margin: 0,
             flexShrink: 0,
-            background: 'linear-gradient(163.4deg, #ffffff 41.19%, rgba(255,255,255,0) 112.51%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            color: '#ffffff',
+            
+            
+            
           }}>
             Headout team&apos;s repository for everything in design and beyond
           </p>
