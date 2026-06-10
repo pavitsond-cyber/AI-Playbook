@@ -793,7 +793,7 @@ export default function PromptsPage() {
           description="15 reusable prompt templates for product thinking, UX writing, research, strategy, and decision-making."
         />
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           {prompts.map((prompt, i) => (
             <PromptRow
               key={prompt.id}

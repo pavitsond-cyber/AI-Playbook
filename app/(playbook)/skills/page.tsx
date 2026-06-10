@@ -993,18 +993,31 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
   )
 }
 
-/* Unique domains in display order */
-const DOMAINS = ['All', ...Array.from(new Set(skills.map(s => s.domain).filter(Boolean)))] as string[]
+/* ── 5 consolidated tabs ──────────────────────────────────────────────────
+   Many fine-grained domains → 4 buckets + "All"                           */
+const DOMAIN_TO_TAB: Record<string, string> = {
+  'Research & Analysis': 'Research',
+  'Product / Content':   'Research',
+  'Design':              'Design',
+  'Design / Frontend':   'Design',
+  'Frontend Design':     'Design',
+  'Craft & Taste':       'Motion & Craft',
+  'Motion & Interaction':'Motion & Craft',
+  'Systems & Quality':   'Systems',
+  'Performance':         'Systems',
+  'Accessibility':       'Systems',
+}
+const TABS = ['All', 'Research', 'Design', 'Motion & Craft', 'Systems']
 
 export default function SkillsPage() {
   const [openName, setOpenName]       = useState<string | null>(null)
-  const [activeFilter, setActiveFilter] = useState<string>('All')
+  const [activeTab, setActiveTab]     = useState<string>('All')
 
   const toggle = (name: string) => setOpenName(prev => prev === name ? null : name)
 
-  const filtered = activeFilter === 'All'
+  const filtered = activeTab === 'All'
     ? skills
-    : skills.filter(s => s.domain === activeFilter)
+    : skills.filter(s => DOMAIN_TO_TAB[s.domain ?? ''] === activeTab)
 
   return (
     <div style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
@@ -1015,54 +1028,50 @@ export default function SkillsPage() {
           description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
         />
 
-        {/* ── Domain filter bar ────────────────────────────────────────── */}
+        {/* ── 5-tab filter — horizontally scrollable ───────────────────── */}
         <div style={{
-          display: 'flex', flexWrap: 'wrap', gap: 8,
+          display: 'flex', gap: 8,
+          overflowX: 'auto', scrollbarWidth: 'none',
+          WebkitOverflowScrolling: 'touch' as any,
+          flexWrap: 'nowrap',
           marginBottom: 28,
-        }}>
-          {DOMAINS.map(domain => {
-            const isActive = activeFilter === domain
+          paddingBottom: 2,
+        } as React.CSSProperties}>
+          {TABS.map(tab => {
+            const isActive = activeTab === tab
             return (
               <button
-                key={domain}
-                onClick={() => { setActiveFilter(domain); setOpenName(null) }}
+                key={tab}
+                onClick={() => { setActiveTab(tab); setOpenName(null) }}
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 13, fontWeight: isActive ? 600 : 400,
-                  padding: '6px 14px', borderRadius: 100,
-                  border: isActive
-                    ? '1px solid rgba(255,105,219,0.5)'
-                    : '1px solid rgba(255,255,255,0.1)',
-                  background: isActive
-                    ? 'rgba(255,105,219,0.12)'
-                    : 'rgba(255,255,255,0.04)',
+                  padding: '7px 18px', borderRadius: 100,
+                  border: isActive ? '1px solid rgba(255,105,219,0.5)' : '1px solid rgba(255,255,255,0.1)',
+                  background: isActive ? 'rgba(255,105,219,0.12)' : 'rgba(255,255,255,0.04)',
                   color: isActive ? '#FF69DB' : 'rgba(255,255,255,0.5)',
-                  cursor: 'pointer',
+                  cursor: 'pointer', flexShrink: 0,
                   transition: 'background 0.18s ease, border-color 0.18s ease, color 0.18s ease',
-                  whiteSpace: 'nowrap' as const,
+                  whiteSpace: 'nowrap',
                 }}
-                onMouseEnter={e => {
-                  if (!isActive) {
-                    e.currentTarget.style.background = 'rgba(255,105,219,0.07)'
-                    e.currentTarget.style.borderColor = 'rgba(255,105,219,0.25)'
-                    e.currentTarget.style.color = 'rgba(255,255,255,0.75)'
-                  }
-                }}
-                onMouseLeave={e => {
-                  if (!isActive) {
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
-                    e.currentTarget.style.color = 'rgba(255,255,255,0.5)'
-                  }
-                }}
+                onMouseEnter={e => { if (!isActive) {
+                  e.currentTarget.style.background = 'rgba(255,105,219,0.07)'
+                  e.currentTarget.style.borderColor = 'rgba(255,105,219,0.25)'
+                  e.currentTarget.style.color = 'rgba(255,255,255,0.75)'
+                }}}
+                onMouseLeave={e => { if (!isActive) {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
+                  e.currentTarget.style.color = 'rgba(255,255,255,0.5)'
+                }}}
               >
-                {domain}
+                {tab}
               </button>
             )
           })}
         </div>
 
-        {/* ── Skill list — 16px gap ─────────────────────────────────────── */}
+        {/* ── Skill list ───────────────────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           {filtered.map(skill => (
             <SkillRow

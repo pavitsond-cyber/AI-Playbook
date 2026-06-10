@@ -219,7 +219,7 @@ export default function OperatingPrinciplesPage() {
               {/* Card grid */}
               <div
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-                style={{ gap: 12 }}
+                style={{ gap: 16 }}
               >
                 {group.items.map((item) => {
                   const imgSrc = CARD_IMAGES[idx++]

@@ -232,7 +232,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                       </div>
 
                       {/* Individual floating cards — same as terminology cards */}
-                      <div className="space-y-2.5">
+                      <div className="space-y-4">
                         {group.items.map(term => (
                           <GlossaryCard key={term.id} term={term} openId={openCardId} onOpen={setOpenCardId} />
                         ))}
