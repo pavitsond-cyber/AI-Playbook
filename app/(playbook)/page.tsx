@@ -115,7 +115,7 @@ export default function LandingPage() {
           Desktop (Figma 111:1954): landscape crop, diver right-of-center         */}
       <video
         autoPlay muted loop playsInline
-        className="absolute object-[50%_50%] sm:object-[80%_50%]"
+        className="absolute object-[70%_48%] sm:object-[80%_50%]"
         style={{
           /* Anchored to bottom per Figma spec (bottom:0, left:0, w:100%, h:100%) */
           bottom: 0, left: 0,
