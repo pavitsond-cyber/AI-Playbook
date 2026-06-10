@@ -29,11 +29,17 @@ export default function TopNav() {
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, height: 64,
         /* Translucent glass — same on all pages. Solidifies when hamburger opens. */
+        /* Homepage: transparent (video visible through nav).
+           Other pages: frosted glass. Hamburger open: always solid. */
         background: mobileOpen
           ? 'rgba(10,0,16,0.97)'
-          : 'rgba(10,0,16,0.45)',
-        backdropFilter: mobileOpen ? 'blur(24px)' : 'blur(28px) saturate(180%)',
-        WebkitBackdropFilter: mobileOpen ? 'blur(24px)' : 'blur(28px) saturate(180%)',
+          : isHome ? 'transparent' : 'rgba(10,0,16,0.45)',
+        backdropFilter: mobileOpen
+          ? 'blur(24px)'
+          : isHome ? 'none' : 'blur(28px) saturate(180%)',
+        WebkitBackdropFilter: mobileOpen
+          ? 'blur(24px)'
+          : isHome ? 'none' : 'blur(28px) saturate(180%)',
         borderBottom: mobileOpen
           ? '1px solid rgba(255,255,255,0.08)'
           : isHome ? 'none' : '1px solid rgba(255,255,255,0.06)',

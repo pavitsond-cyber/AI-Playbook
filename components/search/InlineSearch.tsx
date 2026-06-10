@@ -16,7 +16,7 @@ const TYPE_CFG: Record<SearchItemType, {
   label: string; color: string; bg: string; border: string
   icon: React.ElementType
 }> = {
-  abbreviation: { label: 'Abbreviations',  color: '#533afd', bg: 'rgba(83,58,253,0.07)',  border: 'rgba(83,58,253,0.15)',  icon: Hash },
+  abbreviation: { label: 'Abbreviations',  color: '#E8C840', bg: 'rgba(232,200,64,0.07)', border: 'rgba(232,200,64,0.15)', icon: Hash },
   term:         { label: 'Terms',           color: '#0d7a5f', bg: 'rgba(13,122,95,0.07)',  border: 'rgba(13,122,95,0.15)',  icon: BookOpen },
   skill:        { label: 'Skills',          color: '#b45309', bg: 'rgba(180,83,9,0.07)',   border: 'rgba(180,83,9,0.15)',   icon: Lightbulb },
   prompt:       { label: 'Prompt Systems',  color: '#7c3aed', bg: 'rgba(124,58,237,0.07)', border: 'rgba(124,58,237,0.15)', icon: MessageSquare },
@@ -303,12 +303,6 @@ export default function InlineSearch({
                   background: 'rgba(255,255,255,0.02)',
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                    <div style={{
-                      width: 20, height: 20, borderRadius: 5,
-                      background: c.bg, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    }}>
-                      <Icon size={11} color={c.color} />
-                    </div>
                     <span style={{
                       fontSize: 13, fontWeight: 700, textTransform: 'uppercase',
                       letterSpacing: '0.07em', color: c.color, fontFamily: 'var(--font-body)',

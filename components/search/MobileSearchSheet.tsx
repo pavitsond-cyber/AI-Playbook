@@ -14,7 +14,7 @@ const TYPE_CFG: Record<SearchItemType, {
   label: string; color: string; bg: string; border: string
   icon: React.ElementType
 }> = {
-  abbreviation: { label: 'Abbreviations',  color: '#533afd', bg: 'rgba(83,58,253,0.07)',  border: 'rgba(83,58,253,0.15)',  icon: Hash },
+  abbreviation: { label: 'Abbreviations',  color: '#E8C840', bg: 'rgba(232,200,64,0.07)', border: 'rgba(232,200,64,0.15)', icon: Hash },
   term:         { label: 'Terms',           color: '#0d7a5f', bg: 'rgba(13,122,95,0.07)',  border: 'rgba(13,122,95,0.15)',  icon: BookOpen },
   skill:        { label: 'Skills',          color: '#b45309', bg: 'rgba(180,83,9,0.07)',   border: 'rgba(180,83,9,0.15)',   icon: Lightbulb },
   prompt:       { label: 'Prompt Systems',  color: '#7c3aed', bg: 'rgba(124,58,237,0.07)', border: 'rgba(124,58,237,0.15)', icon: MessageSquare },
