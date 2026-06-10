@@ -19,9 +19,10 @@ const TYPE_CFG: Record<SearchItemType, {
   skill:        { label: 'Skills',          color: '#b45309', bg: 'rgba(180,83,9,0.07)',   border: 'rgba(180,83,9,0.15)',   icon: Lightbulb },
   prompt:       { label: 'Prompt Systems',  color: '#7c3aed', bg: 'rgba(124,58,237,0.07)', border: 'rgba(124,58,237,0.15)', icon: MessageSquare },
   principle:    { label: 'Principles',      color: '#be185d', bg: 'rgba(190,24,93,0.07)',  border: 'rgba(190,24,93,0.15)',  icon: Shield },
+  tool:         { label: 'Tools',           color: '#E8C840', bg: 'rgba(232,200,64,0.07)', border: 'rgba(232,200,64,0.15)', icon: Lightbulb },
 }
 
-const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt']
+const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt', 'tool']
 
 const QUICK = [
   { label: 'PROMPTS',  href: '/prompts',  color: '#9B3FFF', bg: 'rgba(155,63,255,0.1)',  border: 'rgba(155,63,255,0.2)'  },
@@ -72,7 +73,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
       requestAnimationFrame(() =>
         requestAnimationFrame(() => {
           setAnimate(true)
-          setTimeout(() => inputRef.current?.focus(), 60)
+          setTimeout(() => inputRef.current?.focus(), 20)
         })
       )
     } else {
@@ -94,9 +95,20 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
 
   // Lock body scroll
   useEffect(() => {
-    if (open) document.body.style.overflow = 'hidden'
-    else document.body.style.overflow = ''
-    return () => { document.body.style.overflow = '' }
+    if (open) {
+      document.body.style.overflow = 'hidden'
+      document.body.style.position = 'fixed'
+      document.body.style.width = '100%'
+    } else {
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
+    }
   }, [open])
 
   const go = useCallback((href: string) => {
@@ -111,6 +123,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
       style={{
         position: 'fixed',
         inset: 0,
+        height: '100dvh',
         zIndex: 999,
         background: '#0A0010',
         // Slide in from right
@@ -151,6 +164,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
           <Search size={15} style={{ color: '#C27FFF', flexShrink: 0 }} />
           <input
             ref={inputRef}
+            autoFocus
             type="text"
             inputMode="search"
             enterKeyHint="search"
@@ -212,6 +226,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
         overflowY: 'auto',
         overflowX: 'hidden',
         scrollbarWidth: 'none',
+        overscrollBehavior: 'contain',
       }}>
 
         {/* Quick nav */}
@@ -219,7 +234,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
           <div style={{ padding: '24px 16px' }}>
             <p style={{
               fontFamily: 'var(--font-body)',
-              fontSize: 10, fontWeight: 700,
+              fontSize: 12, fontWeight: 700,
               textTransform: 'uppercase', letterSpacing: '0.08em',
               color: 'rgba(255,255,255,0.3)', marginBottom: 14,
             }}>
@@ -233,7 +248,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
                   style={{
                     padding: '9px 16px', borderRadius: 100,
                     background: link.bg, border: `1px solid ${link.border}`,
-                    color: link.color, fontSize: 11, fontWeight: 700,
+                    color: link.color, fontSize: 12, fontWeight: 700,
                     letterSpacing: '0.08em',
                     fontFamily: 'var(--font-body)', cursor: 'pointer',
                   }}
@@ -283,13 +298,13 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
                 </div>
                 <span style={{
                   fontFamily: 'var(--font-body)',
-                  fontSize: 10, fontWeight: 700,
+                  fontSize: 12, fontWeight: 700,
                   textTransform: 'uppercase', letterSpacing: '0.08em', color: c.color,
                 }}>
                   {c.label}
                 </span>
                 <span style={{
-                  fontSize: 10, fontWeight: 600,
+                  fontSize: 12, fontWeight: 600,
                   padding: '1px 7px', borderRadius: 10,
                   background: c.bg, color: c.color, fontFamily: 'var(--font-body)',
                 }}>
@@ -312,13 +327,6 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
                   onTouchStart={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(155,63,255,0.07)' }}
                   onTouchEnd={e => { setTimeout(() => { (e.currentTarget as HTMLElement).style.background = '' }, 150) }}
                 >
-                  <div style={{
-                    width: 36, height: 36, borderRadius: 10,
-                    background: c.bg, border: `1px solid ${c.border}`,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                  }}>
-                    <Icon size={15} color={c.color} />
-                  </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <p style={{
                       fontFamily: 'var(--font-body)',
