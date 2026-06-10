@@ -92,7 +92,7 @@ export default function TopNav() {
           {/* Search icon */}
           <button
             onClick={() => { setMobileOpen(false); setSearchOpen(true) }}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.65)', padding: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ffffff', padding: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}
             aria-label="Search"
           >
             <Search size={19} />
@@ -101,7 +101,7 @@ export default function TopNav() {
           {/* Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.7)', padding: 6, position: 'relative', width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ffffff', padding: 6, position: 'relative', width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             {/* Menu icon — fades out when open */}
             <span style={{

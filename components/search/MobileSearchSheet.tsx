@@ -222,9 +222,10 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
       </div>
 
       {/* ── Results ─────────────────────────────────────────── */}
+      {/* Scroll only when results are present; locked in empty state */}
       <div style={{
         flex: 1,
-        overflowY: 'auto',
+        overflowY: hasQ ? 'auto' : 'hidden',
         overflowX: 'hidden',
         scrollbarWidth: 'none',
         overscrollBehavior: 'contain',
@@ -291,12 +292,6 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
                 padding: '12px 16px 6px',
                 borderTop: '1px solid rgba(255,255,255,0.04)',
               }}>
-                <div style={{
-                  width: 18, height: 18, borderRadius: 5,
-                  background: c.bg, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <Icon size={10} color={c.color} />
-                </div>
                 <span style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 12, fontWeight: 700,

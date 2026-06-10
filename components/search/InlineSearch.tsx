@@ -21,9 +21,10 @@ const TYPE_CFG: Record<SearchItemType, {
   skill:        { label: 'Skills',          color: '#b45309', bg: 'rgba(180,83,9,0.07)',   border: 'rgba(180,83,9,0.15)',   icon: Lightbulb },
   prompt:       { label: 'Prompt Systems',  color: '#7c3aed', bg: 'rgba(124,58,237,0.07)', border: 'rgba(124,58,237,0.15)', icon: MessageSquare },
   principle:    { label: 'Principles',      color: '#be185d', bg: 'rgba(190,24,93,0.07)',  border: 'rgba(190,24,93,0.15)',  icon: Shield },
+  tool:         { label: 'Tools',           color: '#E8C840', bg: 'rgba(232,200,64,0.07)', border: 'rgba(232,200,64,0.15)', icon: Lightbulb },
 }
 
-const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt']
+const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt', 'tool']
 
 const QUICK = [
   { label: 'PROMPTS',  href: '/prompts',  color: '#9B3FFF', bg: 'rgba(155,63,255,0.1)',  border: 'rgba(155,63,255,0.2)'  },
@@ -377,18 +378,7 @@ export default function InlineSearch({
                         transition: 'background 0.18s ease, border-color 0.18s ease',
                       }}
                     >
-                      {/* Type icon */}
-                      <div style={{
-                        width: 30, height: 30, borderRadius: 8,
-                        background: isFocused ? c.bg : 'rgba(255,255,255,0.06)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        flexShrink: 0, marginTop: 1,
-                        transition: 'background 0.18s ease',
-                      }}>
-                        <Icon size={14} color={isFocused ? c.color : 'rgba(255,255,255,0.4)'} />
-                      </div>
-
-                      {/* Content */}
+                      {/* Content — no icon prefix */}
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 3, flexWrap: 'wrap' }}>
                           <span style={{
