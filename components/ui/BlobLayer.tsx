@@ -24,7 +24,7 @@ export default function BlobLayer() {
     <div
       aria-hidden
       style={{
-        position: 'fixed',
+        position: 'absolute',
         inset: 0,
         overflow: 'hidden',
         pointerEvents: 'none',
