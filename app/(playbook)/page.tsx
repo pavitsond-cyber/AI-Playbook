@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
-import InlineSearch from '@/components/search/InlineSearch'
 
 const sections = [
   { num: '01', title: 'Skills',   sub: '21 resources',  href: '/skills'   },
@@ -192,17 +191,8 @@ export default function LandingPage() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════
-          DESKTOP NAV (hidden on mobile — TopNav handles mobile)
+          TopNav (always visible) handles desktop logo+search on homepage
       ══════════════════════════════════════════════════════════════════ */}
-      <div
-        className="hidden sm:flex absolute items-center justify-between"
-        style={{ top: 32, left: 'clamp(20px, 5.15vw, 80px)', right: 'clamp(20px, 5.15vw, 80px)', zIndex: 20 }}
-      >
-        <img src="/images/headout-logo.svg" alt="Headout" style={{ height: 16, width: 109, display: 'block', flexShrink: 0 }} />
-        <div style={{ width: 'clamp(240px, 28vw, 400px)' }}>
-          <InlineSearch placeholder="Search" compact />
-        </div>
-      </div>
 
       {/* ══════════════════════════════════════════════════════════════════
           MOBILE LAYOUT  — Figma node 110:1842

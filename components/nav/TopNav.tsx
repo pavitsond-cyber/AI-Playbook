@@ -23,24 +23,17 @@ export default function TopNav() {
 
   return (
     <>
-    {/* On homepage desktop: hidden — homepage has its own nav at 74px left.
-        IMPORTANT: display:flex lives in className, NOT inline style, so
-        sm:hidden (display:none) can actually override it. */}
+    {/* Always visible — on homepage desktop hides nav links but keeps logo+search */}
     <header
-      className={`${isHome ? 'sm:hidden' : ''} flex items-center`}
+      className="flex items-center"
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, height: 64,
-        /* Transparent on homepage unless hamburger is open — then solidify.
-           Smooth transition so it doesn't snap when the menu opens.              */
+        /* Translucent glass — same on all pages. Solidifies when hamburger opens. */
         background: mobileOpen
           ? 'rgba(10,0,16,0.97)'
-          : isHome ? 'transparent' : 'rgba(10,0,16,0.65)',
-        backdropFilter: mobileOpen
-          ? 'blur(24px)'
-          : isHome ? 'none' : 'blur(24px) saturate(180%)',
-        WebkitBackdropFilter: mobileOpen
-          ? 'blur(24px)'
-          : isHome ? 'none' : 'blur(24px) saturate(180%)',
+          : 'rgba(10,0,16,0.45)',
+        backdropFilter: mobileOpen ? 'blur(24px)' : 'blur(28px) saturate(180%)',
+        WebkitBackdropFilter: mobileOpen ? 'blur(24px)' : 'blur(28px) saturate(180%)',
         borderBottom: mobileOpen
           ? '1px solid rgba(255,255,255,0.08)'
           : isHome ? 'none' : '1px solid rgba(255,255,255,0.06)',
@@ -62,8 +55,8 @@ export default function TopNav() {
           />
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden sm:flex" style={{ flex: 1, alignItems: 'center', gap: 2, paddingLeft: 8 }}>
+        {/* Desktop nav — hidden on homepage (no links needed there) */}
+        <nav className={`${isHome ? 'hidden' : 'hidden sm:flex'}`} style={{ flex: 1, alignItems: 'center', gap: 2, paddingLeft: 8 }}>
           {navItems.map(item => {
             const active = isActive(item.href)
             return (

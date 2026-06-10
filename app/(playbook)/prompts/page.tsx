@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ChevronDown } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 import CopyButton from '@/components/playbook/CopyButton'
@@ -675,8 +675,16 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
   isOpen: boolean
   onToggle: () => void
 }) {
+  const rowRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (isOpen && rowRef.current) {
+      setTimeout(() => rowRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80)
+    }
+  }, [isOpen])
+
   return (
     <div
+      ref={rowRef}
       id={'prompt-' + prompt.id}
       style={{
         position: 'relative',
@@ -749,7 +757,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
         overflow: 'hidden',
         maxHeight: isOpen ? '3000px' : '0px',
         transition: isOpen
-          ? 'max-height 0.38s cubic-bezier(0.4,0,0.2,1)'
+          ? 'max-height 0.38s cubic-bezier(0,0,0.2,1)'
           : 'max-height 0.18s ease-in',
       }}>
         <div style={{
@@ -866,24 +874,15 @@ export default function PromptsPage() {
         } as React.CSSProperties}>
           {PROMPT_TABS.map(tab => {
             const isActive = activePromptTab === tab
-            const count = tab === 'All' ? prompts.length : prompts.filter(p => PROMPT_TO_TAB[p.id] === tab).length
             return (
               <button
                 key={tab}
                 onClick={() => switchPromptTab(tab)}
-                className="relative flex items-center gap-2 px-1 pb-3 pt-2 mr-6 text-sm font-medium transition-all duration-200 focus-visible:outline-none"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0, WebkitTapHighlightColor: 'transparent', fontFamily: 'var(--font-body)' }}
+                className="relative flex items-center px-1 pb-3 pt-2 mr-6 text-sm font-medium transition-all duration-200 focus-visible:outline-none"
+                style={{ background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0, minWidth: 80, WebkitTapHighlightColor: 'transparent', fontFamily: 'var(--font-body)' }}
               >
                 <span className="transition-colors duration-200" style={{ color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)' }}>
                   {tab}
-                </span>
-                <span
-                  className="text-xs px-1.5 py-0.5 rounded-full font-medium transition-all duration-200"
-                  style={isActive
-                    ? { background: '#9B3FFF', color: '#fff' }
-                    : { background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.35)', border: '1px solid rgba(255,255,255,0.08)' }}
-                >
-                  {count}
                 </span>
                 <span
                   className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"

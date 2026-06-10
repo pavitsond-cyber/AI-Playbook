@@ -263,44 +263,11 @@ export default function InlineSearch({
           } as React.CSSProperties}
         >
 
-          {/* ── Empty state ─────────────────────────────────────────────── */}
+          {/* ── Empty state — no quick navigate, just show the open state ─ */}
           {!hasQ && (
-            <div style={{ padding: '16px' }}>
-              <p style={{
-                fontSize: 13, fontWeight: 700, textTransform: 'uppercase',
-                letterSpacing: '0.07em', color: 'rgba(255,255,255,0.45)', marginBottom: 12,
-                fontFamily: 'var(--font-body)',
-              }}>
-                Quick navigate
-              </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                {QUICK.map(link => (
-                  <button
-                    key={link.href}
-                    onClick={() => go(link.href)}
-                    style={{
-                      padding: '7px 14px', borderRadius: 20,
-                      background: link.bg, border: `1px solid ${link.border}`,
-                      color: link.color, fontSize: 11, fontWeight: 700,
-                      letterSpacing: '0.08em',
-                      cursor: 'pointer', fontFamily: 'var(--font-body)',
-                      transition: 'transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease',
-                    }}
-                    onMouseEnter={e => {
-                      e.currentTarget.style.transform = 'translateY(-1px)'
-                      e.currentTarget.style.boxShadow = `0 4px 10px ${link.color}25`
-                    }}
-                    onMouseLeave={e => {
-                      e.currentTarget.style.transform = ''
-                      e.currentTarget.style.boxShadow = ''
-                    }}
-                  >
-                    {link.label}
-                  </button>
-                ))}
-              </div>
-              <p style={{ display: 'none' }}>
-                Start typing to search across all skills, prompts, and terms.
+            <div style={{ padding: '12px 16px' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.25)', lineHeight: 1.5 }}>
+                Start typing to search…
               </p>
             </div>
           )}
