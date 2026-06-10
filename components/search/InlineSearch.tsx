@@ -29,6 +29,7 @@ const QUICK = [
   { label: 'Prompt Systems', href: '/prompts',  type: 'prompt' as SearchItemType },
   { label: 'Skills',         href: '/skills',   type: 'skill'  as SearchItemType },
   { label: 'Glossary',       href: '/glossary', type: 'term'   as SearchItemType },
+  { label: 'Tools',          href: '/tools',    type: 'skill'  as SearchItemType },
 ]
 
 // ─── Highlight helper ─────────────────────────────────────────────────────
@@ -178,17 +179,19 @@ export default function InlineSearch({
       <div
         style={{
           display: 'flex', alignItems: 'center', gap: 10,
-          padding: compact ? '7px 12px' : '11px 16px',
-          background: 'rgba(10,0,22,0.45)',
-          backdropFilter: 'blur(16px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+          /* Taller: 12px vertical padding compact, 14px full */
+          padding: compact ? '10px 14px' : '14px 18px',
+          /* Black background when open, translucent when idle */
+          background: open ? 'rgba(0,0,0,0.92)' : 'rgba(10,0,22,0.45)',
+          backdropFilter: open ? 'none' : 'blur(16px) saturate(180%)',
+          WebkitBackdropFilter: open ? 'none' : 'blur(16px) saturate(180%)',
           borderTop: `1px solid ${borderCol}`,
           borderLeft: `1px solid ${borderCol}`,
           borderRight: `1px solid ${borderCol}`,
           borderBottom: showDropdown ? '1px solid rgba(155,63,255,0.1)' : `1px solid ${borderCol}`,
           borderRadius: showDropdown ? '12px 12px 0 0' : '12px',
           cursor: 'text',
-          transition: 'border-color 0.18s ease, border-radius 0.18s ease',
+          transition: 'background 0.22s ease, border-color 0.18s ease, border-radius 0.18s ease',
           boxShadow: showDropdown ? 'none' : (open ? '0 0 0 2px rgba(155,63,255,0.2)' : 'rgba(0,0,0,0.25) 0 1px 3px'),
           ...inputStyle,
         }}
@@ -265,20 +268,20 @@ export default function InlineSearch({
               <p style={{
                 fontSize: 13, fontWeight: 700, textTransform: 'uppercase',
                 letterSpacing: '0.07em', color: 'rgba(255,255,255,0.45)', marginBottom: 12,
+                fontFamily: 'var(--font-body)',
               }}>
                 Quick navigate
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {QUICK.map(link => {
                   const c = TYPE_CFG[link.type]
-                  const Icon = c.icon
                   return (
                     <button
                       key={link.href}
                       onClick={() => go(link.href)}
                       style={{
-                        display: 'flex', alignItems: 'center', gap: 6,
-                        padding: '7px 13px', borderRadius: 20,
+                        /* No icon — text only */
+                        padding: '7px 14px', borderRadius: 20,
                         background: c.bg, border: `1px solid ${c.border}`,
                         color: c.color, fontSize: 13, fontWeight: 500, cursor: 'pointer',
                         fontFamily: 'var(--font-body)',
@@ -293,15 +296,13 @@ export default function InlineSearch({
                         e.currentTarget.style.boxShadow = ''
                       }}
                     >
-                      <Icon size={12} /> {link.label}
+                      {link.label}
                     </button>
                   )
                 })}
               </div>
-              <p style={{
-                fontSize: 13, color: 'rgba(255,255,255,0.35)', marginTop: 14, lineHeight: 1.5,
-                fontFamily: 'var(--font-body)',
-              }}>
+              {/* Hint text removed per request */}
+              <p style={{ display: 'none' }}>
                 Start typing to search across all skills, prompts, and terms.
               </p>
             </div>

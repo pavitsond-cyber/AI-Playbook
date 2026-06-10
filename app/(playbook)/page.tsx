@@ -171,7 +171,7 @@ export default function LandingPage() {
       >
         <img src="/images/headout-logo.svg" alt="Headout" style={{ height: 16, width: 109, display: 'block', flexShrink: 0 }} />
         <div style={{ width: 'clamp(240px, 28vw, 400px)' }}>
-          <InlineSearch placeholder="Search…" compact />
+          <InlineSearch placeholder="Search" compact />
         </div>
       </div>
 
