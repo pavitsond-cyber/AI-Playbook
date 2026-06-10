@@ -26,10 +26,10 @@ const TYPE_CFG: Record<SearchItemType, {
 const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt']
 
 const QUICK = [
-  { label: 'Prompt Systems', href: '/prompts',  type: 'prompt' as SearchItemType },
-  { label: 'Skills',         href: '/skills',   type: 'skill'  as SearchItemType },
-  { label: 'Glossary',       href: '/glossary', type: 'term'   as SearchItemType },
-  { label: 'Tools',          href: '/tools',    type: 'skill'  as SearchItemType },
+  { label: 'PROMPTS',  href: '/prompts',  color: '#9B3FFF', bg: 'rgba(155,63,255,0.1)',  border: 'rgba(155,63,255,0.2)'  },
+  { label: 'SKILLS',   href: '/skills',   color: '#FF69DB', bg: 'rgba(255,105,219,0.1)', border: 'rgba(255,105,219,0.2)' },
+  { label: 'GLOSSARY', href: '/glossary', color: '#00CCA8', bg: 'rgba(0,204,168,0.1)',   border: 'rgba(0,204,168,0.2)'   },
+  { label: 'TOOLS',    href: '/tools',    color: '#E8C840', bg: 'rgba(232,200,64,0.1)',  border: 'rgba(232,200,64,0.2)'  },
 ]
 
 // ─── Highlight helper ─────────────────────────────────────────────────────
@@ -273,35 +273,31 @@ export default function InlineSearch({
                 Quick navigate
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                {QUICK.map(link => {
-                  const c = TYPE_CFG[link.type]
-                  return (
-                    <button
-                      key={link.href}
-                      onClick={() => go(link.href)}
-                      style={{
-                        /* No icon — text only */
-                        padding: '7px 14px', borderRadius: 20,
-                        background: c.bg, border: `1px solid ${c.border}`,
-                        color: c.color, fontSize: 13, fontWeight: 500, cursor: 'pointer',
-                        fontFamily: 'var(--font-body)',
-                        transition: 'transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease',
-                      }}
-                      onMouseEnter={e => {
-                        e.currentTarget.style.transform = 'translateY(-1px)'
-                        e.currentTarget.style.boxShadow = `0 4px 10px ${c.color}25`
-                      }}
-                      onMouseLeave={e => {
-                        e.currentTarget.style.transform = ''
-                        e.currentTarget.style.boxShadow = ''
-                      }}
-                    >
-                      {link.label}
-                    </button>
-                  )
-                })}
+                {QUICK.map(link => (
+                  <button
+                    key={link.href}
+                    onClick={() => go(link.href)}
+                    style={{
+                      padding: '7px 14px', borderRadius: 20,
+                      background: link.bg, border: `1px solid ${link.border}`,
+                      color: link.color, fontSize: 11, fontWeight: 700,
+                      letterSpacing: '0.08em',
+                      cursor: 'pointer', fontFamily: 'var(--font-body)',
+                      transition: 'transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease',
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.transform = 'translateY(-1px)'
+                      e.currentTarget.style.boxShadow = `0 4px 10px ${link.color}25`
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.transform = ''
+                      e.currentTarget.style.boxShadow = ''
+                    }}
+                  >
+                    {link.label}
+                  </button>
+                ))}
               </div>
-              {/* Hint text removed per request */}
               <p style={{ display: 'none' }}>
                 Start typing to search across all skills, prompts, and terms.
               </p>

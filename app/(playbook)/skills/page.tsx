@@ -383,7 +383,7 @@ const skills: Skill[] = [
 
   {
     name: 'Localization QA Agent',
-    domain: 'Product / Content',
+    domain: 'Systems & Quality',
     what: 'Check translated product content for accuracy, fluency, tone, and cultural appropriateness against the source language version.',
     whenToUse: 'Before any translated copy goes to production. For new market launches, high-traffic page updates, and any content where accuracy issues could harm users.',
     qualityBar: 'Accuracy issues are critical: incorrect prices, times, or policies can harm users. Every issue must include the original text, the problem, and a suggested correction. Output must classify overall quality: Publish-ready / Needs editing / Needs retranslation.',
@@ -778,7 +778,7 @@ function downloadSkill(skill: Skill) {
   URL.revokeObjectURL(url)
 }
 
-function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; onToggle: () => void }) {
+function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: boolean; onToggle: () => void; showTag: boolean }) {
   const [downloaded, setDownloaded] = useState(false)
 
   const handleDownload = (e: React.MouseEvent) => {
@@ -861,17 +861,18 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
       >
         {/* Name + description */}
         <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
-          {/* Badge always above title — stacked layout everywhere */}
+          {/* Badge above title — only shown in "All" tab */}
           <div
             className="flex flex-col"
             style={{ gap: 8, marginBottom: 6, paddingRight: 72 }}
           >
-            {skill.domain && (
+            {skill.domain && showTag && (
               <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, color: '#FF69DB', background: 'rgba(255,105,219,0.1)', border: '1px solid rgba(255,105,219,0.2)', borderRadius: 100, padding: '2px 8px', textTransform: 'uppercase' as const, letterSpacing: '0.08em', flexShrink: 0, alignSelf: 'flex-start' }}>
                 {skill.domain}
               </span>
             )}
-            <div className="flex items-center" style={{ gap: 8 }}>
+            {/* Title + chevron inline — chevron follows end of text, never floats */}
+            <div style={{ display: 'inline-flex', alignItems: 'flex-start', gap: 8 }}>
               <span style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 20,
@@ -888,6 +889,7 @@ function SkillRow({ skill, isOpen, onToggle }: { skill: Skill; isOpen: boolean; 
                   transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                   transition: 'transform 0.22s ease, color 0.18s ease',
                   flexShrink: 0,
+                  marginTop: 4,   /* aligns chevron with text cap-height */
                 }}
               />
             </div>
@@ -1108,6 +1110,7 @@ export default function SkillsPage() {
               skill={skill}
               isOpen={openName === skill.name}
               onToggle={() => toggle(skill.name)}
+              showTag={activeTab === 'All'}
             />
           ))}
         </div>
