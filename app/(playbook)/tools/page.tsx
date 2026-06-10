@@ -147,7 +147,7 @@ function ToolCard({ tool }: { tool: Tool }) {
         position: 'relative',
         background: `linear-gradient(180deg, ${tool.accentColor}20 0%, rgba(8,0,18,0.94) 52%)`,
         border: `1px solid ${hovered ? tool.accentColor + '40' : 'rgba(255,255,255,0.07)'}`,
-        borderRadius: 18,
+        borderRadius: 14,
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
@@ -281,7 +281,7 @@ export default function ToolsPage() {
 
   return (
     <div>
-      <div style={{ padding: '24px 48px 48px', maxWidth: 1440, margin: '0 auto' }}>
+      <div style={{ padding: '24px clamp(20px,4vw,48px) 16px', maxWidth: 960, margin: '0 auto' }}>
         <PageHeader
           title="Tools"
           description="Daily AI tool stack for vibe-coding designers — 37 tools across 5 categories."
