@@ -111,11 +111,11 @@ export default function LandingPage() {
     <div style={{ position: 'fixed', inset: 0, background: '#0D0B1E', overflow: 'hidden' }}>
 
       {/* ── Video ─────────────────────────────────────────────────────── */}
-      {/* Mobile  (Figma 111:2009): diver centered, light from upper-left → object-position 60% 45%
-          Desktop (Figma 111:1954): diver right-of-center, light rays upper-right → 80% 50%  */}
+      {/* Mobile  (Figma 118:2057): diver centered-left, purple atmosphere, light upper-left → 52% 38%
+          Desktop (Figma 111:1954): diver right-of-center, light rays upper-right → 80% 50%       */}
       <video
         autoPlay muted loop playsInline
-        className="absolute object-[60%_45%] sm:object-[80%_50%]"
+        className="absolute object-[52%_38%] sm:object-[80%_50%]"
         style={{
           bottom: 0, left: 0,
           width: '100%', height: '100%',
