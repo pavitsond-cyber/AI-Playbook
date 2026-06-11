@@ -152,11 +152,25 @@ export default function ContributePage() {
     setErrors({})
     setSubmitting(true)
     try {
-      await new Promise(r => setTimeout(r, 1400))
-      console.log('Contribution:', { ...form, attachment: form.attachment?.name, submittedAt: new Date().toISOString() })
+      const res = await fetch('/api/contribute', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          category: form.category,
+          description: form.description,
+          link: form.link,
+          attachmentName: form.attachment?.name ?? '',
+        }),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error((data as { error?: string }).error || 'Submission failed.')
+      }
       setSubmitted(true)
-    } catch {
-      setErrors({ submit: 'Something went wrong. Please try again.' })
+    } catch (err) {
+      setErrors({ submit: err instanceof Error ? err.message : 'Something went wrong. Please try again.' })
     } finally {
       setSubmitting(false)
     }
