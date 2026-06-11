@@ -33,11 +33,15 @@ export async function proxy(request: NextRequest) {
   const isLoginRoute = request.nextUrl.pathname === '/admin/login'
 
   if (isAdminRoute && !isLoginRoute && !user) {
-    return NextResponse.redirect(new URL('/admin/login', request.url))
+    const url = request.nextUrl.clone()
+    url.pathname = '/admin/login'
+    return NextResponse.redirect(url)
   }
 
   if (isLoginRoute && user) {
-    return NextResponse.redirect(new URL('/admin/dashboard', request.url))
+    const url = request.nextUrl.clone()
+    url.pathname = '/admin/dashboard'
+    return NextResponse.redirect(url)
   }
 
   return supabaseResponse

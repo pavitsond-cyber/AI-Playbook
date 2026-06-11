@@ -3,6 +3,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Input from '@/components/ui/Input'
+
+const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 import Textarea from '@/components/ui/Textarea'
 import Select from '@/components/ui/Select'
 import TagInput from '@/components/ui/TagInput'
@@ -52,7 +54,7 @@ export default function TermForm({ mode, initialData }: TermFormProps) {
         return
       }
       try {
-        const res = await fetch('/api/terms/check-duplicate', {
+        const res = await fetch(`${BP}/api/terms/check-duplicate`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ term, excludeId: initialData?.id }),
@@ -86,12 +88,12 @@ export default function TermForm({ mode, initialData }: TermFormProps) {
     try {
       const res =
         mode === 'create'
-          ? await fetch('/api/terms', {
+          ? await fetch(`${BP}/api/terms`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload),
             })
-          : await fetch(`/api/terms/${initialData!.id}`, {
+          : await fetch(`${BP}/api/terms/${initialData!.id}`, {
               method: 'PATCH',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload),

@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 import { Edit2, Trash2 } from 'lucide-react'
+
+const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 import { GlossaryTerm, CATEGORY_LABELS } from '@/types'
 import StatusBadge from './StatusBadge'
 import { useRouter } from 'next/navigation'
@@ -19,7 +21,7 @@ export default function TermsTable({ terms }: TermsTableProps) {
     if (!confirm(`Delete "${termName}"? This cannot be undone.`)) return
     setDeletingId(id)
     try {
-      await fetch(`/api/terms/${id}`, { method: 'DELETE' })
+      await fetch(`${BP}/api/terms/${id}`, { method: 'DELETE' })
       router.refresh()
     } finally {
       setDeletingId(null)

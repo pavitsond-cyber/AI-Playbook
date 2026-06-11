@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { ExternalLink } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 
+const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 /* ────────────────────────────────────────────────────────────────────────────
    Data types
 ──────────────────────────────────────────────────────────────────────────── */
@@ -42,7 +44,7 @@ const groups: ToolGroup[] = [
     theme: 'Whiteboarding, Flows & Thinking', tab: 'Capture', color: '#4FC3F7',
     tools: [
       { name: 'Excalidraw', initial: 'Ex', logoDomain: 'excalidraw.com',   accentColor: '#7C3AED', use: 'Create rough flows, product logic diagrams, workshop sketches, and wireframes.',        href: 'https://excalidraw.com' },
-      { name: 'Mermaid',    initial: 'Mm', logoDomain: 'mermaidchart.com', localLogo: '/images/tools/mermaid.png', accentColor: '#10B981', use: 'Turn written flows into diagrams using simple text syntax.',                            href: 'https://mermaid.js.org' },
+      { name: 'Mermaid',    initial: 'Mm', logoDomain: 'mermaidchart.com', localLogo: `${BP}/images/tools/mermaid.png`, accentColor: '#10B981', use: 'Turn written flows into diagrams using simple text syntax.',                            href: 'https://mermaid.js.org' },
       { name: 'tldraw',     initial: 'tl', logoDomain: 'tldraw.com',       accentColor: '#0EA5E9', use: 'Sketch flows, map journeys, create quick diagrams, and explain system logic visually.', href: 'https://tldraw.com' },
     ],
   },
@@ -68,7 +70,7 @@ const groups: ToolGroup[] = [
       { name: 'Paper',        initial: 'Pa', logoDomain: 'paper.design',    accentColor: '#D97706', use: 'Quickly create HTML-like UI concepts and editable layouts without heavy setup.',                       href: 'https://paper.design' },
       { name: 'Replit Agent', initial: 'Re', logoDomain: 'replit.com',      accentColor: '#F97316', use: 'Build small tools, forms, dashboards, and interactive prototypes.',                                    href: 'https://replit.com' },
       { name: 'Super Design', initial: 'SD', logoDomain: 'superdesign.dev', accentColor: '#4F46E5', use: 'Generate UI mockups, components, and layouts inside coding tools like Cursor or VS Code.',            href: 'https://superdesign.dev' },
-      { name: 'Tome', initial: 'To', localLogo: '/images/tools/tome.jpg', accentColor: '#FF4DFF', use: 'Create AI-powered presentations and visual narratives.', href: 'https://tome.app' },
+      { name: 'Tome', initial: 'To', localLogo: `${BP}/images/tools/tome.jpg`, accentColor: '#FF4DFF', use: 'Create AI-powered presentations and visual narratives.', href: 'https://tome.app' },
     ],
   },
   {

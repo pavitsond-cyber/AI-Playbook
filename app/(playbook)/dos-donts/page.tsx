@@ -2,6 +2,8 @@
 
 import PageHeader from '@/components/playbook/PageHeader'
 
+const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 
 /* ── Cinematic gradient artworks — designed for landscape card-top format ── */
 const ARTWORKS: Record<string, { bg: string; overlay?: string }> = {
@@ -142,16 +144,16 @@ const ARTWORKS: Record<string, { bg: string; overlay?: string }> = {
 
 // Actual photo images, one per card in order
 const CARD_IMAGES = [
-  '/images/principles/p1.png',
-  '/images/principles/p2.png',
-  '/images/principles/p3.png',
-  '/images/principles/p4.png',
-  '/images/principles/p5.png',
-  '/images/principles/p6.png',
-  '/images/principles/p7.png',
-  '/images/principles/p8.png',
-  '/images/principles/p9.png',
-  '/images/principles/p10.png',
+  `${BP}/images/principles/p1.png`,
+  `${BP}/images/principles/p2.png`,
+  `${BP}/images/principles/p3.png`,
+  `${BP}/images/principles/p4.png`,
+  `${BP}/images/principles/p5.png`,
+  `${BP}/images/principles/p6.png`,
+  `${BP}/images/principles/p7.png`,
+  `${BP}/images/principles/p8.png`,
+  `${BP}/images/principles/p9.png`,
+  `${BP}/images/principles/p10.png`,
 ]
 
 const principles = [

@@ -1,3 +1,5 @@
+const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 export default function MobileBg() {
   return (
     <div
@@ -8,7 +10,7 @@ export default function MobileBg() {
         inset: 0,
         zIndex: 0,
         pointerEvents: 'none',
-        backgroundImage: "url('/images/mobile-bg.jpg')",
+        backgroundImage: `url('${BP}/images/mobile-bg.jpg')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',

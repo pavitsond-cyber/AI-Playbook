@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 
+const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 const sections = [
   { num: '01', title: 'Skills',   sub: '21 resources',  href: '/skills'   },
   { num: '02', title: 'Prompts',  sub: '15 templates',  href: '/prompts'  },
@@ -124,7 +126,7 @@ export default function LandingPage() {
           opacity: 0.65,           /* Figma opacity: 60% */
         }}
       >
-        <source src="/videos/landing-bg.mp4" type="video/mp4" />
+        <source src={`${BP}/videos/landing-bg.mp4`} type="video/mp4" />
       </video>
 
       {/* ── MOBILE background — Figma node 163:587 ──────────────────────── */}
@@ -132,7 +134,7 @@ export default function LandingPage() {
         className="sm:hidden absolute"
         style={{
           inset: 0, zIndex: 0,
-          backgroundImage: "url('/images/mobile-bg.jpg')",
+          backgroundImage: `url('${BP}/images/mobile-bg.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
@@ -155,7 +157,7 @@ export default function LandingPage() {
         zIndex: 1, pointerEvents: 'none',
         transform: 'scaleY(-1)', opacity: 0.4, mixBlendMode: 'screen',
       }}>
-        <img src="/images/landing-gradient.svg" alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
+        <img src={`${BP}/images/landing-gradient.svg`} alt="" style={{ width: '100%', height: '100%', display: 'block' }} />
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════

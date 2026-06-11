@@ -3,7 +3,7 @@
 /* ── Halyard Display (local) ─────────────────────────── */
 @font-face {
   font-family: 'Halyard Display';
-  src: url('/fonts/HalyardDisplay-Regular.otf') format('opentype');
+  src: url('../public/fonts/HalyardDisplay-Regular.otf') format('opentype');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
