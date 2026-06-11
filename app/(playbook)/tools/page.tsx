@@ -179,7 +179,7 @@ function ToolCard({ tool }: { tool: Tool }) {
         ) : logoSrc ? (
           <div style={{
             width: 38, height: 38, borderRadius: 10,
-            background: 'rgba(255,255,255,0.95)',
+            background: '#ffffff',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             overflow: 'hidden', flexShrink: 0,
           }}>
@@ -195,7 +195,7 @@ function ToolCard({ tool }: { tool: Tool }) {
         ) : (
           <div style={{
             width: 38, height: 38, borderRadius: 10,
-            background: 'rgba(255,255,255,0.95)',
+            background: '#ffffff',
             display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
           }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: tool.accentColor, fontFamily: 'var(--font-display)' }}>
