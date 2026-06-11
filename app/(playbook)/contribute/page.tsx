@@ -4,7 +4,6 @@ import { useState, useRef, useCallback, useEffect } from 'react'
 import Link from 'next/link'
 import { Upload, X, CheckCircle, Check, ChevronDown, Loader2, ArrowLeft } from 'lucide-react'
 import BlobLayer from '@/components/ui/BlobLayer'
-import SiteFooter from '@/components/glossary/SiteFooter'
 
 type Category = 'Prompt' | 'Tool' | 'Skill' | 'Miscellaneous' | ''
 
@@ -412,7 +411,6 @@ export default function ContributePage() {
           </form>
         </div>
       </div>
-      <SiteFooter />
 
       <style>{`
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }

@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { ExternalLink } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
-import SiteFooter from '@/components/glossary/SiteFooter'
 
 /* ────────────────────────────────────────────────────────────────────────────
    Data types
@@ -360,7 +359,6 @@ export default function ToolsPage() {
         </div>
       </div>
 
-      <SiteFooter />
     </div>
   )
 }

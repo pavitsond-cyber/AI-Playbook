@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react'
 import { ChevronDown, Download, Check } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 
-import SiteFooter from '@/components/glossary/SiteFooter'
 
 interface Skill {
   name: string
@@ -1137,7 +1136,6 @@ export default function SkillsPage() {
           ))}
         </div>
       </div>
-      <SiteFooter />
     </div>
   )
 }

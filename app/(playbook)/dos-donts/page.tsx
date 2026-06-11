@@ -2,7 +2,6 @@
 
 import PageHeader from '@/components/playbook/PageHeader'
 
-import SiteFooter from '@/components/glossary/SiteFooter'
 
 /* ── Cinematic gradient artworks — designed for landscape card-top format ── */
 const ARTWORKS: Record<string, { bg: string; overlay?: string }> = {
@@ -302,7 +301,6 @@ export default function OperatingPrinciplesPage() {
           ))}
         </div>
       </div>
-      <SiteFooter />
     </div>
   )
 }

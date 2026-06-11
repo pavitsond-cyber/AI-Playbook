@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 import TopNav from '@/components/nav/TopNav'
 import BlobLayer from '@/components/ui/BlobLayer'
+import SiteFooter from '@/components/glossary/SiteFooter'
 
 export default function PlaybookLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -34,6 +35,7 @@ export default function PlaybookLayout({ children }: { children: React.ReactNode
       }}>
         {children}
       </main>
+      <SiteFooter />
     </div>
   )
 }

@@ -5,7 +5,6 @@ import { ChevronDown } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 import CopyButton from '@/components/playbook/CopyButton'
 
-import SiteFooter from '@/components/glossary/SiteFooter'
 
 interface PromptTemplate {
   id: string
@@ -922,7 +921,6 @@ export default function PromptsPage() {
           ))}
         </div>
       </div>
-      <SiteFooter />
     </div>
   )
 }
