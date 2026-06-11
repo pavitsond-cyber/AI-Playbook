@@ -1,8 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from 'react'
-import Link from 'next/link'
-import { Upload, X, CheckCircle, Check, ChevronDown, Loader2, ArrowLeft } from 'lucide-react'
+import { Upload, X, CheckCircle, Check, ChevronDown, Loader2 } from 'lucide-react'
 
 type Category = 'Prompt' | 'Tool' | 'Skill' | 'Miscellaneous' | ''
 
@@ -33,7 +32,7 @@ const ACCEPTED_MIME = [
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 ]
 
-/* ── Custom dropdown ──────────────────────────────────────────────────── */
+/* ── Custom category dropdown ─────────────────────────────────────────── */
 function CategorySelect({
   value, onChange, error,
 }: { value: Category; onChange: (v: Category) => void; error?: string }) {
@@ -50,43 +49,28 @@ function CategorySelect({
 
   return (
     <div ref={ref} style={{ position: 'relative' }}>
-      {/* Trigger */}
       <button
         type="button"
         onClick={() => setOpen(o => !o)}
-        style={{
-          width: '100%', padding: '12px 44px 12px 16px',
-          background: open ? 'rgba(155,63,255,0.08)' : 'rgba(255,255,255,0.06)',
-          border: `1px solid ${error ? '#9B3FFF' : open ? 'rgba(155,63,255,0.6)' : 'rgba(255,255,255,0.1)'}`,
-          borderRadius: open ? '12px 12px 0 0' : 12,
-          color: value ? '#ffffff' : 'rgba(255,255,255,0.35)',
-          fontSize: 15, fontFamily: 'var(--font-body)',
-          textAlign: 'left', cursor: 'pointer',
-          transition: 'all 0.18s ease',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          boxSizing: 'border-box',
-        }}
+        className={`feedback-input category-trigger${error ? ' has-error' : ''}${open ? ' is-open' : ''}`}
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', borderRadius: open ? '8px 8px 0 0' : 8 }}
       >
-        <span>{value || 'Select a category'}</span>
+        <span style={{ color: value ? '#ffffff' : 'rgba(255,255,255,0.4)' }}>
+          {value || 'Select a category'}
+        </span>
         <ChevronDown
           size={16}
           color="rgba(255,255,255,0.4)"
-          style={{
-            position: 'absolute', right: 14,
-            transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
-            transition: 'transform 0.22s ease',
-            flexShrink: 0,
-          }}
+          style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.22s ease', flexShrink: 0 }}
         />
       </button>
 
-      {/* Panel */}
       <div style={{
         position: 'absolute', left: 0, right: 0, zIndex: 50,
         background: '#0E0018',
-        border: '1px solid rgba(155,63,255,0.35)',
+        border: '1px solid rgba(255,255,255,0.15)',
         borderTop: 'none',
-        borderRadius: '0 0 12px 12px',
+        borderRadius: '0 0 8px 8px',
         overflow: 'hidden',
         clipPath: open ? 'inset(0 0 0% 0)' : 'inset(0 0 100% 0)',
         transition: open
@@ -102,29 +86,19 @@ function CategorySelect({
             onClick={() => { onChange(cat); setOpen(false) }}
             style={{
               width: '100%', padding: '12px 16px',
-              background: value === cat ? 'rgba(155,63,255,0.15)' : 'transparent',
+              background: value === cat ? 'rgba(255,255,255,0.08)' : 'transparent',
               border: 'none', borderBottom: '1px solid rgba(255,255,255,0.05)',
-              color: value === cat ? '#C27FFF' : 'rgba(255,255,255,0.75)',
-              fontSize: 15, fontFamily: 'var(--font-body)',
+              color: value === cat ? '#ffffff' : 'rgba(255,255,255,0.65)',
+              fontSize: 16, fontFamily: 'var(--font-body)',
               textAlign: 'left', cursor: 'pointer',
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               transition: 'background 0.12s ease, color 0.12s ease',
             }}
-            onMouseEnter={e => {
-              if (value !== cat) {
-                e.currentTarget.style.background = 'rgba(155,63,255,0.08)'
-                e.currentTarget.style.color = '#ffffff'
-              }
-            }}
-            onMouseLeave={e => {
-              if (value !== cat) {
-                e.currentTarget.style.background = 'transparent'
-                e.currentTarget.style.color = 'rgba(255,255,255,0.75)'
-              }
-            }}
+            onMouseEnter={e => { if (value !== cat) { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.color = '#ffffff' } }}
+            onMouseLeave={e => { if (value !== cat) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'rgba(255,255,255,0.65)' } }}
           >
             {cat}
-            {value === cat && <Check size={14} color="#9B3FFF" />}
+            {value === cat && <Check size={14} color="rgba(255,255,255,0.7)" />}
           </button>
         ))}
       </div>
@@ -132,6 +106,7 @@ function CategorySelect({
   )
 }
 
+/* ── Page ─────────────────────────────────────────────────────────────── */
 export default function ContributePage() {
   const [form, setForm] = useState<FormData>({
     name: '', email: '', category: '', description: '', link: '', attachment: null,
@@ -151,7 +126,7 @@ export default function ContributePage() {
     if (!form.description.trim())                             e.description = 'Please add a short description.'
     if (form.description.length > 500)                        e.description = 'Description must be 500 characters or fewer.'
     if (form.link && !/^https?:\/\/.+/.test(form.link))      e.link        = 'Please enter a valid URL (https://…)'
-    if (!form.attachment)                                      e.attachment  = 'Please attach a file.'
+    if (!form.attachment)                                     e.attachment  = 'Please attach a file.'
     return e
   }
 
@@ -178,7 +153,6 @@ export default function ContributePage() {
     setSubmitting(true)
     try {
       await new Promise(r => setTimeout(r, 1400))
-      // TODO: replace with real API — e.g. fetch('https://formspree.io/f/YOUR_ID', { method:'POST', ... })
       console.log('Contribution:', { ...form, attachment: form.attachment?.name, submittedAt: new Date().toISOString() })
       setSubmitted(true)
     } catch {
@@ -193,69 +167,29 @@ export default function ContributePage() {
     setErrors({}); setSubmitted(false)
   }
 
-  /* Shared styles */
-  const inputStyle = (hasError?: string): React.CSSProperties => ({
-    width: '100%', padding: '12px 16px',
-    background: 'rgba(255,255,255,0.06)',
-    border: `1px solid ${hasError ? '#9B3FFF' : 'rgba(255,255,255,0.1)'}`,
-    borderRadius: 12, color: '#ffffff', fontSize: 15,
-    fontFamily: 'var(--font-body)', outline: 'none',
-    transition: 'border-color 0.18s ease, background 0.18s ease',
-    boxSizing: 'border-box' as const,
-  })
-  const focusIn  = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.currentTarget.style.borderColor = 'rgba(155,63,255,0.6)'
-    e.currentTarget.style.background  = 'rgba(155,63,255,0.06)'
-  }
-  const focusOut = (err?: string) => (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.currentTarget.style.borderColor = err ? '#9B3FFF' : 'rgba(255,255,255,0.1)'
-    e.currentTarget.style.background  = 'rgba(255,255,255,0.06)'
-  }
-  const lbl: React.CSSProperties = { display: 'block', fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 500, color: 'rgba(255,255,255,0.8)', marginBottom: 8 }
-  const err: React.CSSProperties = { fontFamily: 'var(--font-body)', fontSize: 13, color: '#C27FFF', marginTop: 6 }
-  const req = <span style={{ color: '#ffffff', marginLeft: 2 }}>*</span>
-
-  /* ── Success ─────────────────────────────────────────────────────────── */
+  /* ── Success state ───────────────────────────────────────────────────── */
   if (submitted) {
     return (
-      <div style={{
-        flex: 1, display: 'flex', flexDirection: 'column',
-        alignItems: 'center', justifyContent: 'center', padding: '80px 24px',
-      }}>
-          <div style={{
-            maxWidth: 480, width: '100%', textAlign: 'center',
-            background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
-            borderRadius: 24, padding: '48px 40px',
-            boxShadow: '0 24px 64px rgba(0,0,0,0.4)',
-          }}>
-            <div style={{
-              width: 64, height: 64, borderRadius: '50%',
-              background: 'rgba(155,63,255,0.12)', border: '1px solid rgba(155,63,255,0.3)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              margin: '0 auto 24px',
-            }}>
-              <CheckCircle size={28} color="#9B3FFF" />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '80px 24px' }}>
+        <div style={{ maxWidth: 480, width: '100%' }}>
+          <div className="feedback-done">
+            <div className="feedback-done-icon">
+              <CheckCircle size={20} />
             </div>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 800, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.02em' }}>
-              Submitted to Headout
-            </h2>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 32 }}>
-              Your entry has been submitted to the Headout team. We&apos;ll review it and get back to you shortly at the email you provided.
-            </p>
+            <div>
+              <h2>Submitted to Headout</h2>
+              <p>Your entry has been submitted to the Headout team. We&apos;ll review it and get back to you shortly at the email you provided.</p>
+            </div>
             <button
               onClick={resetForm}
-              style={{
-                width: '100%', padding: '14px', borderRadius: 12, border: 'none',
-                background: '#9B3FFF', color: '#ffffff', fontSize: 15, fontWeight: 600,
-                fontFamily: 'var(--font-body)', cursor: 'pointer',
-                transition: 'background 0.18s ease',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#7B2FDF' }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#9B3FFF' }}
+              className="feedback-submit"
+              style={{ width: '100%', marginTop: 8 }}
             >
               Submit another entry
             </button>
           </div>
+        </div>
+        <style>{CONTRIBUTE_CSS}</style>
       </div>
     )
   }
@@ -263,9 +197,7 @@ export default function ContributePage() {
   /* ── Form ────────────────────────────────────────────────────────────── */
   return (
     <div style={{ position: 'relative' }}>
-
-        {/* Hero + form share one container so text and card left edges align */}
-        <div style={{ maxWidth: 840, margin: '0 auto', padding: '0 clamp(20px,4vw,48px) 80px' }}>
+      <div style={{ maxWidth: 840, margin: '0 auto', padding: '0 clamp(20px,4vw,48px) 80px' }}>
 
         {/* Hero */}
         <div className="animate-fade-up delay-75" style={{ padding: '48px 0 32px' }}>
@@ -278,157 +210,347 @@ export default function ContributePage() {
         </div>
 
         {/* Form card */}
-          <form onSubmit={handleSubmit} noValidate
-            className="contribute-form"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 'clamp(24px,4vw,48px)', boxShadow: '0 24px 64px rgba(0,0,0,0.3)' }}>
+        <form onSubmit={handleSubmit} noValidate className="contribute-form feedback-form">
 
-            {/* Name + Email */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 24, marginBottom: 24 }}>
-              <div>
-                <label htmlFor="name" style={lbl}>Your name {req}</label>
-                <input id="name" type="text" autoComplete="name" placeholder="Enter your name"
-                  value={form.name} onChange={e => setForm(p => ({ ...p, name: e.target.value }))}
-                  onFocus={focusIn} onBlur={focusOut(errors.name)} style={inputStyle(errors.name)} />
-                {errors.name && <p style={err}>{errors.name}</p>}
-              </div>
-              <div>
-                <label htmlFor="email" style={lbl}>Email {req}</label>
-                <input id="email" type="email" autoComplete="email" placeholder="you@example.com"
-                  value={form.email} onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-                  onFocus={focusIn} onBlur={focusOut(errors.email)} style={inputStyle(errors.email)} />
-                {errors.email && <p style={err}>{errors.email}</p>}
-              </div>
-            </div>
+          {/* Name + Email — 2-col grid */}
+          <div className="field-grid">
+            <label className="feedback-field">
+              <span className="feedback-label">Your name <span className="required">*</span></span>
+              <input
+                id="name" type="text" autoComplete="name" placeholder="Enter your name"
+                value={form.name} onChange={e => setForm(p => ({ ...p, name: e.target.value }))}
+                className={`feedback-input${errors.name ? ' has-error' : ''}`}
+              />
+              {errors.name && <span className="feedback-error">{errors.name}</span>}
+            </label>
 
-            {/* Category */}
-            <div style={{ marginBottom: 24 }}>
-              <label style={lbl}>What are you submitting? {req}</label>
-              <CategorySelect value={form.category} onChange={cat => setForm(p => ({ ...p, category: cat }))} error={errors.category} />
-              {errors.category && <p style={err}>{errors.category}</p>}
-            </div>
+            <label className="feedback-field">
+              <span className="feedback-label">Email <span className="required">*</span></span>
+              <input
+                id="email" type="email" autoComplete="email" placeholder="you@example.com"
+                value={form.email} onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
+                className={`feedback-input${errors.email ? ' has-error' : ''}`}
+              />
+              {errors.email && <span className="feedback-error">{errors.email}</span>}
+            </label>
+          </div>
 
-            {/* Description */}
-            <div style={{ marginBottom: 24 }}>
-              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 8 }}>
-                <label htmlFor="description" style={{ ...lbl, marginBottom: 0 }}>Description {req}</label>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: form.description.length > 480 ? '#9B3FFF' : 'rgba(255,255,255,0.25)', transition: 'color 0.18s ease' }}>
-                  {form.description.length}/500
-                </span>
-              </div>
-              <textarea id="description" rows={5}
-                placeholder="Tell us what this is, why it is useful, and how designers can use it."
-                value={form.description} maxLength={500}
-                onChange={e => setForm(p => ({ ...p, description: e.target.value }))}
-                onFocus={focusIn} onBlur={focusOut(errors.description)}
-                style={{ ...inputStyle(errors.description), resize: 'vertical', minHeight: 120, lineHeight: 1.6 }} />
-              {errors.description && <p style={err}>{errors.description}</p>}
-            </div>
+          {/* Category */}
+          <label className="feedback-field">
+            <span className="feedback-label">What are you submitting? <span className="required">*</span></span>
+            <CategorySelect
+              value={form.category}
+              onChange={cat => setForm(p => ({ ...p, category: cat }))}
+              error={errors.category}
+            />
+            {errors.category && <span className="feedback-error">{errors.category}</span>}
+          </label>
 
-            {/* Link — no "(optional)" label */}
-            <div style={{ marginBottom: 24 }}>
-              <label htmlFor="link" style={lbl}>Link</label>
-              <input id="link" type="url" placeholder="Paste a URL, if available"
-                value={form.link} onChange={e => setForm(p => ({ ...p, link: e.target.value }))}
-                onFocus={focusIn} onBlur={focusOut(errors.link)} style={inputStyle(errors.link)} />
-              {errors.link && <p style={err}>{errors.link}</p>}
-            </div>
+          {/* Description */}
+          <label className="feedback-field">
+            <span className="feedback-label" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+              <span>Description <span className="required">*</span></span>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 300, color: form.description.length > 480 ? 'var(--glow-rose)' : 'rgba(255,255,255,0.3)', transition: 'color 0.15s ease' }}>
+                {form.description.length}/500
+              </span>
+            </span>
+            <textarea
+              id="description" rows={5}
+              placeholder="Tell us what this is, why it is useful, and how designers can use it."
+              value={form.description} maxLength={500}
+              onChange={e => setForm(p => ({ ...p, description: e.target.value }))}
+              className={`feedback-input${errors.description ? ' has-error' : ''}`}
+              style={{ minHeight: 120, lineHeight: 1.6 }}
+            />
+            {errors.description && <span className="feedback-error">{errors.description}</span>}
+          </label>
 
-            {/* Attachment */}
-            <div style={{ marginBottom: 36 }}>
-              <label style={lbl}>Attachment</label>
-              {form.attachment ? (
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', background: 'rgba(155,63,255,0.08)', border: '1px solid rgba(155,63,255,0.25)', borderRadius: 12 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <div style={{ width: 32, height: 32, borderRadius: 8, background: 'rgba(155,63,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Upload size={14} color="#C27FFF" />
-                    </div>
-                    <span style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.8)' }}>{form.attachment.name}</span>
-                  </div>
-                  <button type="button" onClick={() => { setForm(p => ({ ...p, attachment: null })); if (fileRef.current) fileRef.current.value = '' }}
-                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.4)', padding: 4, borderRadius: 6, display: 'flex', transition: 'color 0.18s ease' }}
-                    onMouseEnter={e => { e.currentTarget.style.color = '#C27FFF' }}
-                    onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.4)' }}
-                    aria-label="Remove file"
-                  >
-                    <X size={16} />
-                  </button>
+          {/* Link */}
+          <label className="feedback-field">
+            <span className="feedback-label">Link <span className="optional">(optional)</span></span>
+            <input
+              id="link" type="url" placeholder="Paste a URL, if available"
+              value={form.link} onChange={e => setForm(p => ({ ...p, link: e.target.value }))}
+              className={`feedback-input${errors.link ? ' has-error' : ''}`}
+            />
+            {errors.link && <span className="feedback-error">{errors.link}</span>}
+          </label>
+
+          {/* Attachment */}
+          <div className="feedback-field">
+            <span className="feedback-label">Attachment <span className="required">*</span></span>
+            {form.attachment ? (
+              <div className="attachment-preview">
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <div className="attachment-icon"><Upload size={14} /></div>
+                  <span className="attachment-name">{form.attachment.name}</span>
                 </div>
-              ) : (
-                <div onClick={() => fileRef.current?.click()}
-                  onDragOver={e => { e.preventDefault(); setDragOver(true) }}
-                  onDragLeave={() => setDragOver(false)}
-                  onDrop={onDrop}
-                  style={{ padding: '28px 20px', background: dragOver ? 'rgba(155,63,255,0.08)' : 'rgba(255,255,255,0.03)', border: `1px dashed ${errors.attachment ? '#9B3FFF' : dragOver ? 'rgba(155,63,255,0.5)' : 'rgba(255,255,255,0.12)'}`, borderRadius: 12, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, cursor: 'pointer', transition: 'all 0.18s ease' }}>
-                  <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Upload size={18} color="rgba(255,255,255,0.4)" />
-                  </div>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.5)', margin: 0 }}>Click to upload or drag and drop</p>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.25)', margin: 0 }}>PDF, Markdown, TXT, DOC, DOCX</p>
-                </div>
-              )}
-              <input ref={fileRef} type="file" accept={ACCEPTED.join(',')} style={{ display: 'none' }} onChange={e => { const f = e.target.files?.[0]; if (f) handleFile(f) }} />
-              {errors.attachment && <p style={err}>{errors.attachment}</p>}
-            </div>
-
-            {/* Submit row — right-aligned on desktop, full-width on mobile */}
-            <div className="submit-row" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 10 }}>
-              {errors.submit && (
-                <p style={{ ...err, alignSelf: 'stretch', padding: '12px 16px', background: 'rgba(155,63,255,0.08)', border: '1px solid rgba(155,63,255,0.2)', borderRadius: 10, margin: 0 }}>
-                  {errors.submit}
-                </p>
-              )}
-              <button
-                type="submit"
-                disabled={submitting}
-                style={{
-                  padding: '14px 32px', borderRadius: 12, border: 'none',
-                  background: submitting ? 'rgba(155,63,255,0.5)' : '#9B3FFF',
-                  color: '#ffffff', fontSize: 15, fontWeight: 600,
-                  fontFamily: 'var(--font-body)', cursor: submitting ? 'not-allowed' : 'pointer',
-                  transition: 'background 0.18s ease',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                  textAlign: 'center',
-                  opacity: submitting ? 0.8 : 1,
-                  letterSpacing: '-0.01em', minWidth: 160,
-                }}
-                onMouseEnter={e => { if (!submitting) e.currentTarget.style.background = '#7B2FDF' }}
-                onMouseLeave={e => { if (!submitting) e.currentTarget.style.background = '#9B3FFF' }}
+                <button
+                  type="button"
+                  onClick={() => { setForm(p => ({ ...p, attachment: null })); if (fileRef.current) fileRef.current.value = '' }}
+                  className="attachment-remove"
+                  aria-label="Remove file"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            ) : (
+              <div
+                className={`attachment-dropzone${dragOver ? ' drag-over' : ''}${errors.attachment ? ' has-error' : ''}`}
+                onClick={() => fileRef.current?.click()}
+                onDragOver={e => { e.preventDefault(); setDragOver(true) }}
+                onDragLeave={() => setDragOver(false)}
+                onDrop={onDrop}
               >
-                {submitting ? (
-                  <>
-                    <Loader2 size={16} style={{ animation: 'spin 0.8s linear infinite' }} />
-                    Submitting…
-                  </>
-                ) : 'Submit entry'}
-              </button>
-            </div>
+                <div className="attachment-upload-icon"><Upload size={18} /></div>
+                <p>Click to upload or drag and drop</p>
+                <p className="attachment-hint">PDF, Markdown, TXT, DOC, DOCX</p>
+              </div>
+            )}
+            <input ref={fileRef} type="file" accept={ACCEPTED.join(',')} style={{ display: 'none' }} onChange={e => { const f = e.target.files?.[0]; if (f) handleFile(f) }} />
+            {errors.attachment && <span className="feedback-error">{errors.attachment}</span>}
+          </div>
 
-          </form>
-        </div>
+          {/* Submit */}
+          <div className="submit-row">
+            {errors.submit && <span className="feedback-error submit-error">{errors.submit}</span>}
+            <button type="submit" disabled={submitting} className="feedback-submit">
+              {submitting ? (
+                <><Loader2 size={16} className="spin-icon" /> Sending…</>
+              ) : 'Submit entry'}
+            </button>
+          </div>
 
-      <style>{`
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        select option { background: #0E0018; }
-        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
-        input:focus, textarea:focus { outline: none; }
-        /* Mobile: no card — full-width, no border, no shadow, no radius */
-        @media (max-width: 639px) {
-          .contribute-form {
-            background: transparent !important;
-            border: none !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            padding: 0 20px !important;
-          }
-          .submit-row {
-            align-items: stretch !important;
-          }
-          .submit-row button[type="submit"] {
-            width: 100% !important;
-            min-width: unset !important;
-          }
-        }
-      `}</style>
+        </form>
+      </div>
+
+      <style>{CONTRIBUTE_CSS}</style>
     </div>
   )
 }
+
+/* ── Styles ───────────────────────────────────────────────────────────── */
+const CONTRIBUTE_CSS = `
+  :root {
+    --glow-rose: #f692a8;
+  }
+
+  /* ── Form card ── */
+  .contribute-form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: clamp(24px,4vw,48px);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+  }
+
+  /* ── Layout ── */
+  .feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .field-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+  }
+  .feedback-field {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* ── Labels ── */
+  .feedback-label {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+  .feedback-label .optional {
+    margin-left: 6px;
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+  }
+  .feedback-label .required {
+    margin-left: 2px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ── Inputs ── */
+  .feedback-input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 300;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+    box-sizing: border-box;
+  }
+  .feedback-input::placeholder { color: rgba(255,255,255,0.35); }
+  .feedback-input:focus {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.06);
+  }
+  .feedback-input.has-error { border-color: var(--glow-rose); }
+  textarea.feedback-input { resize: none; }
+
+  /* ── Category trigger inherits feedback-input ── */
+  button.feedback-input { text-align: left; cursor: pointer; }
+  button.feedback-input.is-open {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* ── Errors ── */
+  .feedback-error {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--glow-rose);
+  }
+  .submit-error {
+    align-self: stretch;
+    padding: 12px 16px;
+    background: rgba(246,146,168,0.08);
+    border: 1px solid rgba(246,146,168,0.2);
+    border-radius: 8px;
+  }
+
+  /* ── Attachment dropzone ── */
+  .attachment-dropzone {
+    padding: 28px 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,255,255,0.12);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+  }
+  .attachment-dropzone p { margin: 0; }
+  .attachment-dropzone .attachment-hint { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .attachment-dropzone:hover,
+  .attachment-dropzone.drag-over { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.3); }
+  .attachment-dropzone.has-error { border-color: var(--glow-rose); }
+  .attachment-upload-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ── Attachment preview (file chosen) ── */
+  .attachment-preview {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+  }
+  .attachment-icon {
+    width: 32px; height: 32px; border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.6);
+  }
+  .attachment-name {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+  }
+  .attachment-remove {
+    background: none; border: none; cursor: pointer;
+    color: rgba(255,255,255,0.35); padding: 4px; border-radius: 6px;
+    display: flex; transition: color 0.15s ease;
+  }
+  .attachment-remove:hover { color: #ffffff; }
+
+  /* ── Submit ── */
+  .submit-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .feedback-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border: 0;
+    border-radius: 9999px;
+    background: #ffffff;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: #0e1439;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    min-width: 160px;
+  }
+  .feedback-submit:hover { background: rgba(255,255,255,0.88); }
+  .feedback-submit:disabled { opacity: 0.55; cursor: default; }
+
+  /* ── Success card ── */
+  .feedback-done {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+  }
+  .feedback-done-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; border-radius: 9999px;
+    background: rgba(255,255,255,0.1); color: #ffffff;
+  }
+  .feedback-done h2 {
+    font-family: var(--font-display);
+    font-size: 20px; font-weight: 500; color: #ffffff;
+    margin: 0 0 6px;
+  }
+  .feedback-done p {
+    font-family: var(--font-body);
+    font-size: 15px; font-weight: 300; line-height: 1.6;
+    color: rgba(255,255,255,0.6); margin: 0;
+  }
+
+  /* ── Spinner ── */
+  .spin-icon { animation: spin 0.8s linear infinite; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* ── Mobile ── */
+  @media (max-width: 639px) {
+    .contribute-form {
+      background: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+    .submit-row { align-items: stretch; }
+    .feedback-submit { width: 100%; min-width: unset; }
+  }
+`
