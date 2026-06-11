@@ -251,6 +251,43 @@ export default function LandingPage() {
         </div>
       </div>
 
+      {/* ── Contribute nudge — bottom of page, both breakpoints ─────────── */}
+      <div
+        className="animate-fade-up delay-350"
+        style={{
+          position: 'absolute',
+          bottom: 'clamp(24px, 4vh, 40px)',
+          left: 'clamp(20px, 5.15vw, 80px)',
+          right: 'clamp(20px, 5.15vw, 80px)',
+          zIndex: 10,
+          fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
+          fontSize: 'clamp(14px, 1.11vw, 16px)',
+          fontWeight: 400,
+          color: 'rgba(255,255,255,0.55)',
+          letterSpacing: '-0.01em',
+        }}
+      >
+        Share your prompts, tools, and skills with the team.{' '}
+        <Link
+          href="/contribute"
+          style={{
+            color: '#ffffff',
+            textDecoration: 'underline',
+            textUnderlineOffset: 3,
+            textDecorationColor: 'rgba(255,255,255,0.5)',
+            transition: 'text-decoration-color 0.15s ease, color 0.15s ease',
+          }}
+          onMouseEnter={e => {
+            (e.currentTarget as HTMLAnchorElement).style.textDecorationColor = '#ffffff'
+          }}
+          onMouseLeave={e => {
+            (e.currentTarget as HTMLAnchorElement).style.textDecorationColor = 'rgba(255,255,255,0.5)'
+          }}
+        >
+          Contribute now
+        </Link>
+      </div>
+
     </div>
   )
 }
