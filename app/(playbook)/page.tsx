@@ -107,7 +107,7 @@ function MobileCard({ s }: { s: typeof sections[0] }) {
 /* ── Page ───────────────────────────────────────────────────────────────── */
 export default function LandingPage() {
   return (
-    <div style={{ position: 'fixed', inset: 0, background: '#0D0B1E', overflow: 'hidden' }}>
+    <div className="landing-root" style={{ position: 'fixed', inset: 0, overflow: 'hidden' }}>
 
       {/* ── DESKTOP video (Figma 111:1954) — hidden on mobile ──────────── */}
       {/* Spec: bottom:0 left:0 w:1440 h:800, opacity:60%
@@ -127,22 +127,15 @@ export default function LandingPage() {
         <source src="/videos/landing-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* ── MOBILE video (Figma 118:2057) — hidden on desktop ───────────── */}
-      {/* Spec: bottom:0 left:0 w:390 h:844, diver centered-right of frame  */}
-      <video
-        autoPlay muted loop playsInline
-        className="sm:hidden absolute"
-        style={{
-          bottom: 0, left: 0,
-          width: '100%', height: '100%',
-          objectFit: 'cover',
-          objectPosition: '70% 48%',
-          zIndex: 0,
-          opacity: 0.85,
-        }}
-      >
-        <source src="/videos/landing-bg.mp4" type="video/mp4" />
-      </video>
+      {/* ── MOBILE background — Figma node 163:587 ──────────────────────── */}
+      <div className="sm:hidden absolute" style={{ inset: 0, zIndex: 0 }}>
+        <img
+          src="/images/mobile-bg.jpg"
+          alt=""
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+        />
+        <div style={{ position: 'absolute', inset: 0, backdropFilter: 'blur(100px)', WebkitBackdropFilter: 'blur(100px)', background: 'linear-gradient(176.63deg, rgb(14,20,57) 5.67%, rgba(14,20,57,0.4) 129.83%)' }} />
+      </div>
 
       {/* ── Desktop gradient mask — left solid dark → transparent right ── */}
       <div
@@ -153,35 +146,8 @@ export default function LandingPage() {
         }}
       />
 
-      {/* ── Mobile: top gradient — exact Figma 118:2057 spec ─────────── */}
-      {/* from-[#0e1439] height:239px, positioned to bleed beyond screen edges */}
-      <div
-        className="sm:hidden absolute pointer-events-none"
-        style={{
-          top: 0, left: 0, right: 0, height: 239,
-          zIndex: 2,
-          background: 'linear-gradient(to bottom, #0e1439 0%, rgba(14,20,57,0.85) 40%, rgba(14,20,57,0) 100%)',
-        }}
-      />
-
-      {/* ── Mobile: bottom gradient — fades diver into dark ──────────── */}
-      <div
-        className="sm:hidden absolute pointer-events-none"
-        style={{
-          bottom: 0, left: 0, right: 0, height: 280,
-          zIndex: 2,
-          background: 'linear-gradient(to top, #0D0B1E 0%, rgba(13,11,30,0.8) 40%, rgba(13,11,30,0) 100%)',
-        }}
-      />
-
-      {/* ── Mobile: subtle mid-tint so content over video stays readable ─ */}
-      <div
-        className="sm:hidden absolute inset-0 pointer-events-none"
-        style={{ zIndex: 1, background: 'rgba(13,11,30,0.25)' }}
-      />
-
-      {/* ── Purple/pink atmosphere ─────────────────────────────────────── */}
-      <div style={{
+      {/* ── Purple/pink atmosphere (desktop only) ────────────────────── */}
+      <div className="hidden sm:block" style={{
         position: 'absolute', top: '-60%', left: '-15%',
         width: '130%', height: '260%',
         zIndex: 1, pointerEvents: 'none',

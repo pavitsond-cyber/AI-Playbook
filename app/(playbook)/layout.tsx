@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 import TopNav from '@/components/nav/TopNav'
 import BlobLayer from '@/components/ui/BlobLayer'
+import MobileBg from '@/components/ui/MobileBg'
 import SiteFooter from '@/components/glossary/SiteFooter'
 
 export default function PlaybookLayout({ children }: { children: React.ReactNode }) {
@@ -22,6 +23,7 @@ export default function PlaybookLayout({ children }: { children: React.ReactNode
       display: 'flex',
       flexDirection: 'column',
     }}>
+      <MobileBg />
       {!isHome && <BlobLayer />}
       <TopNav />
       {/* flex:1 pushes footer to viewport bottom even on short pages */}

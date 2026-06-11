@@ -368,3 +368,11 @@ mark { background: rgba(155,63,255,0.2) !important; color: #C27FFF !important; b
 main > * {
   animation: page-enter 0.42s cubic-bezier(0.16,1,0.3,1) both;
 }
+
+/* Landing page: dark bg on desktop, transparent on mobile (MobileBg provides it) */
+.landing-root {
+  background: #0D0B1E;
+}
+@media (max-width: 639px) {
+  .landing-root { background: transparent; }
+}

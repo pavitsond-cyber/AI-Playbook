@@ -4,6 +4,7 @@ export default function BlobLayer() {
   return (
     <div
       aria-hidden
+      className="hidden sm:block"
       style={{
         position: 'fixed',
         inset: 0,
