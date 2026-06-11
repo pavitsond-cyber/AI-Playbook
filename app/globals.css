@@ -324,9 +324,12 @@ a, button, [role="button"] {
 .card-stagger > *:nth-child(4) { animation-delay: 230ms; }
 .card-stagger > *:nth-child(5) { animation-delay: 290ms; }
 
-/* Every page root remounts on navigation → triggers enter animation */
+/* Every page root: animation + flex:1 so footer is always at viewport bottom */
 main > * {
   animation: page-enter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Inner content sections — stagger slightly after the page enters */

@@ -15,16 +15,23 @@ export default function PlaybookLayout({ children }: { children: React.ReactNode
   }, [pathname])
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0A0010' }}>
-      {/* Single BlobLayer instance shared across all inner pages — never remounts,
-          so switching tabs/routes never causes the background to shift */}
+    <div style={{
+      minHeight: '100vh',
+      background: '#0A0010',
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
       {!isHome && <BlobLayer />}
-
       <TopNav />
-
-      {/* position: relative + z-index: 1 ensures all page content renders
-          above the fixed BlobLayer (z-index: 0) without needing per-page wrappers */}
-      <main style={{ paddingTop: isHome ? 0 : 64, position: 'relative', zIndex: 1 }}>
+      {/* flex:1 pushes footer to viewport bottom even on short pages */}
+      <main style={{
+        paddingTop: isHome ? 0 : 64,
+        position: 'relative',
+        zIndex: 1,
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+      }}>
         {children}
       </main>
     </div>
