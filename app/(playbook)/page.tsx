@@ -128,14 +128,16 @@ export default function LandingPage() {
       </video>
 
       {/* ── MOBILE background — Figma node 163:587 ──────────────────────── */}
-      <div className="sm:hidden absolute" style={{ inset: 0, zIndex: 0 }}>
-        <img
-          src="/images/mobile-bg.jpg"
-          alt=""
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
-        />
-        <div style={{ position: 'absolute', inset: 0, backdropFilter: 'blur(100px)', WebkitBackdropFilter: 'blur(100px)', background: 'linear-gradient(176.63deg, rgb(14,20,57) 5.67%, rgba(14,20,57,0.4) 129.83%)' }} />
-      </div>
+      <div
+        className="sm:hidden absolute"
+        style={{
+          inset: 0, zIndex: 0,
+          backgroundImage: "url('/images/mobile-bg.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
 
       {/* ── Desktop gradient mask — left solid dark → transparent right ── */}
       <div
