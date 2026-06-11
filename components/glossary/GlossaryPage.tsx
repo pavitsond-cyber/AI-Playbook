@@ -166,9 +166,6 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
         <div
           className="sticky top-14 z-20"
           style={{
-            background: 'rgba(10,0,16,0.92)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
             borderBottom: '1px solid rgba(255,255,255,0.06)',
           }}
         >
