@@ -6,7 +6,6 @@ import { filterTerms } from '@/lib/utils/search'
 import GlossaryGrid from './GlossaryGrid'
 import GlossaryCard from './GlossaryCard'
 import EmptyState from './EmptyState'
-import SiteFooter from './SiteFooter'
 
 type TabId = 'abbreviations' | 'terminologies'
 
@@ -367,7 +366,6 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
         </div>
 
       </div>
-      <SiteFooter />
     </div>
   )
 }

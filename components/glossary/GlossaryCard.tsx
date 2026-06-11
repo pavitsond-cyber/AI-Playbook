@@ -72,26 +72,22 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
         ref={cardRef as React.RefObject<HTMLDivElement>}
         style={{
           background: 'rgba(255,255,255,0.03)',
-          border: '1px solid rgba(255,255,255,0.07)',
+          border: expanded
+            ? '1px solid rgba(155,63,255,0.25)'
+            : hovered
+            ? '1px solid rgba(155,63,255,0.15)'
+            : '1px solid rgba(255,255,255,0.07)',
           borderRadius: 16,
           overflow: 'hidden',
+          boxShadow: hovered && !expanded ? 'rgba(0,0,0,0.2) 0 4px 12px' : 'none',
+          transform: hovered && !expanded ? 'translateY(-1px)' : 'translateY(0)',
           transition: 'border-color 0.18s ease, box-shadow 0.18s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1)',
         }}
-        onMouseEnter={e => {
-          e.currentTarget.style.borderColor = 'rgba(155,63,255,0.3)'
-          e.currentTarget.style.boxShadow = '0 0 0 1px rgba(155,63,255,0.1)'
-          e.currentTarget.style.transform = 'translateY(-2px)'
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'
-          e.currentTarget.style.boxShadow = 'none'
-          e.currentTarget.style.transform = 'translateY(0)'
-        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
         <button
           onClick={toggle}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
           className="w-full text-left px-5 py-5 flex items-start gap-4"
           style={{
             background: hovered && !expanded ? 'rgba(155,63,255,0.03)' : 'transparent',
