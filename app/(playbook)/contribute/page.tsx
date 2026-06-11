@@ -3,7 +3,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import Link from 'next/link'
 import { Upload, X, CheckCircle, Check, ChevronDown, Loader2, ArrowLeft } from 'lucide-react'
-import BlobLayer from '@/components/ui/BlobLayer'
 
 type Category = 'Prompt' | 'Tool' | 'Skill' | 'Miscellaneous' | ''
 
@@ -219,13 +218,10 @@ export default function ContributePage() {
   /* ── Success ─────────────────────────────────────────────────────────── */
   if (submitted) {
     return (
-      <div style={{ position: 'relative', overflow: 'clip', minHeight: '100vh', background: '#0A0010' }}>
-        <BlobLayer />
-        <div style={{
-          position: 'relative', zIndex: 1,
-          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-          minHeight: 'calc(100vh - 64px)', padding: '80px 24px',
-        }}>
+      <div style={{
+        flex: 1, display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center', padding: '80px 24px',
+      }}>
           <div style={{
             maxWidth: 480, width: '100%', textAlign: 'center',
             background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
@@ -260,19 +256,19 @@ export default function ContributePage() {
               Submit another entry
             </button>
           </div>
-        </div>
       </div>
     )
   }
 
   /* ── Form ────────────────────────────────────────────────────────────── */
   return (
-    <div style={{ position: 'relative', overflow: 'clip', minHeight: '100vh', background: '#0A0010' }}>
-      <BlobLayer />
-      <div style={{ position: 'relative', zIndex: 1 }}>
+    <div style={{ position: 'relative' }}>
+
+        {/* Hero + form share one container so text and card left edges align */}
+        <div style={{ maxWidth: 840, margin: '0 auto', padding: '0 clamp(20px,4vw,48px) 80px' }}>
 
         {/* Hero */}
-        <div className="animate-fade-up delay-75" style={{ padding: '48px clamp(20px,4vw,48px) 32px', maxWidth: 840, margin: '0 auto' }}>
+        <div className="animate-fade-up delay-75" style={{ padding: '48px 0 32px' }}>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px,4vw,52px)', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 12 }}>
             Contribute to the AI Playbook
           </h1>
@@ -281,8 +277,7 @@ export default function ContributePage() {
           </p>
         </div>
 
-        {/* Form card — bordered on desktop, edge-to-edge on mobile */}
-        <div style={{ maxWidth: 840, margin: '0 auto', padding: '0 0 80px' }}>
+        {/* Form card */}
           <form onSubmit={handleSubmit} noValidate
             className="contribute-form"
             style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 'clamp(24px,4vw,48px)', boxShadow: '0 24px 64px rgba(0,0,0,0.3)' }}>
@@ -410,7 +405,6 @@ export default function ContributePage() {
 
           </form>
         </div>
-      </div>
 
       <style>{`
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }

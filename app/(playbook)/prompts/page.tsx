@@ -903,11 +903,12 @@ export default function PromptsPage() {
 
         <div className={!fading ? 'animate-tab-fade' : ''} style={{
           display: 'flex', flexDirection: 'column', gap: 16,
+          minHeight: '50vh',
           opacity: fading ? 0 : 1,
-          transform: fading ? 'translateY(6px)' : 'translateY(0px)',
+          transform: fading ? 'translateY(4px)' : 'translateY(0px)',
           transition: fading
-            ? 'opacity 0.16s ease-in, transform 0.16s ease-in'
-            : 'opacity 0.26s ease-out, transform 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            ? 'opacity 0.14s ease-in'
+            : 'opacity 0.22s ease-out, transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         }}>
           {filteredPrompts.map((prompt, i) => (
             <div key={prompt.id} className="animate-fade-up" style={{ animationDelay: `${Math.min(i * 35, 280)}ms` }}>
