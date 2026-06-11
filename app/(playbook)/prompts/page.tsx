@@ -245,7 +245,7 @@ Return:
   },
   {
     id: 'research-synthesis-insight',
-    title: 'Research synthesis and insight',
+    title: 'Research Insight',
     description: 'Use this to turn raw research inputs into themes, insight statements, evidence, implications, opportunities, and possible next actions.',
     template: `Act like a researcher turning raw input into decision-ready insights.
 

@@ -46,18 +46,9 @@ export default function TopNav() {
     >
       <div style={{
         maxWidth: 1440, margin: '0 auto', width: '100%',
-        padding: '0 clamp(20px, 8.33vw, 120px)',
+        padding: '0 clamp(20px, 5.15vw, 80px)',
         display: 'flex', alignItems: 'center', gap: 12,
       }}>
-        {/* Headout logo */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
-          <img
-            src="/images/headout-logo.svg"
-            alt="headout"
-            style={{ height: 16, width: 109, display: 'block' }}
-          />
-        </Link>
-
         {/* Desktop nav — hidden on homepage (no links needed there) */}
         <nav className={`${isHome ? 'hidden' : 'hidden sm:flex'}`} style={{ flex: 1, alignItems: 'center', gap: 2, paddingLeft: 8 }}>
           {navItems.map(item => {
