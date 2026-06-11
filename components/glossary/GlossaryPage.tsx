@@ -167,10 +167,42 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
         <div
           className="sticky top-14 z-20"
           style={{
-            background: 'transparent',
+            background: 'rgba(10,0,16,0.92)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
             borderBottom: '1px solid rgba(255,255,255,0.06)',
           }}
         >
+          {/* Sectional search — only searches within the active tab */}
+          <div style={{ padding: '10px clamp(20px,4vw,48px) 8px' }}>
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 10,
+              padding: '9px 14px',
+              background: 'rgba(255,255,255,0.05)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: 10,
+            }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <input
+                type="text"
+                inputMode="search"
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+                placeholder="Search terms, abbreviations…"
+                style={{
+                  flex: 1, border: 'none', outline: 'none',
+                  background: 'transparent',
+                  fontSize: 14, color: 'rgba(255,255,255,0.88)',
+                  fontFamily: 'var(--font-body)',
+                }}
+              />
+              {query && (
+                <button onClick={() => setQuery('')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.4)', padding: 0, display: 'flex' }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+              )}
+            </div>
+          </div>
           <div style={{ display: "flex", padding: "0 clamp(20px,4vw,48px)" }}>
             {TABS.map(tab => {
               const isActive = activeTab === tab.id

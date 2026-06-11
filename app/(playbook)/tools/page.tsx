@@ -26,7 +26,7 @@ interface ToolGroup {
 }
 
 /* ── 5 tabs: All + 4 consolidated categories ─────────────────────────────── */
-const TABS = ['All', 'Capture', 'Design', 'Automate', 'Visuals']
+const TABS = ['All', 'Capture', 'Design', 'Automate', 'Visuals', 'MCP']
 
 /* ── Tool groups — each tagged with one of the 4 content tabs ────────────── */
 const groups: ToolGroup[] = [
@@ -55,7 +55,7 @@ const groups: ToolGroup[] = [
     ],
   },
   {
-    theme: 'MCPs', tab: 'Capture', color: '#C27FFF',
+    theme: 'MCPs', tab: 'MCP', color: '#C27FFF',
     tools: [
       { name: 'Mobbin MCP', initial: 'MM', logoDomain: 'mobbin.com',    accentColor: '#60A5FA', use: 'Let AI tools use Mobbin-style references while generating or critiquing UI.',       href: 'https://mobbin.com' },
       { name: 'Refero MCP', initial: 'RM', logoDomain: 'refero.design', accentColor: '#A5B4FC', use: 'Let AI agents inspect product screens and flows before giving design suggestions.', href: 'https://refero.design' },
@@ -117,7 +117,6 @@ const groups: ToolGroup[] = [
     tools: [
       { name: 'Gamma', initial: 'Gm', logoDomain: 'gamma.app', accentColor: '#8B5CF6', use: 'Turn rough ideas into structured decks, concept pitches, and workshop material.', href: 'https://gamma.app' },
       { name: 'Pitch', initial: 'Pi', logoDomain: 'pitch.com', accentColor: '#3B82F6', use: 'Create clean team presentations and design review decks.',                        href: 'https://pitch.com' },
-      { name: 'Tome',  initial: 'Tm', logoDomain: 'tome.app',  accentColor: '#CCCCCC', use: 'Build visual stories, concept decks, and product narratives.',                   href: 'https://tome.app' },
     ],
   },
 ]
@@ -166,15 +165,13 @@ function ToolCard({ tool }: { tool: Tool }) {
         {/* Logo */}
         {tool.localLogo ? (
           <div style={{
-            width: 56, height: 56, borderRadius: 14,
+            width: 38, height: 38, borderRadius: 10,
             background: '#ffffff',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             overflow: 'hidden',
-            boxShadow: '0 2px 12px rgba(0,0,0,0.3)',
-            position: 'relative', zIndex: 1,
             flexShrink: 0,
           }}>
-            <img src={tool.localLogo} alt={tool.name} style={{ width: 44, height: 44, objectFit: 'contain', borderRadius: 8 }} />
+            <img src={tool.localLogo} alt={tool.name} style={{ width: 26, height: 26, objectFit: 'contain' }} />
           </div>
         ) : logoSrc ? (
           <div style={{
@@ -277,10 +274,14 @@ export default function ToolsPage() {
     ? groups
     : groups.filter(g => g.tab === displayTab)
 
-  /* Flat, alphabetically sorted list of all visible tools */
-  const flatTools = visibleGroups
-    .flatMap(g => g.tools)
-    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
+  /* Flat, deduplicated, alphabetically sorted list of all visible tools */
+  const flatTools = Array.from(
+    new Map(
+      visibleGroups
+        .flatMap(g => g.tools)
+        .map(t => [t.name, t])
+    ).values()
+  ).sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
 
   return (
     <div>

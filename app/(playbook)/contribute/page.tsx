@@ -153,6 +153,7 @@ export default function ContributePage() {
     if (!form.description.trim())                             e.description = 'Please add a short description.'
     if (form.description.length > 500)                        e.description = 'Description must be 500 characters or fewer.'
     if (form.link && !/^https?:\/\/.+/.test(form.link))      e.link        = 'Please enter a valid URL (https://…)'
+    if (!form.attachment)                                      e.attachment  = 'Please attach a file.'
     return e
   }
 
@@ -241,13 +242,10 @@ export default function ContributePage() {
               <CheckCircle size={28} color="#9B3FFF" />
             </div>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 800, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.02em' }}>
-              Entry submitted
+              Submitted to Headout
             </h2>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 8 }}>
-              Thanks for contributing. We&apos;ll review it and get back to you at the email you provided before adding it to the AI Playbook.
-            </p>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(155,127,255,0.5)', marginBottom: 32 }}>
-              Submissions are reviewed by the Headout team.
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 32 }}>
+              Your entry has been submitted to the Headout team. We&apos;ll review it and get back to you shortly at the email you provided.
             </p>
             <button
               onClick={resetForm}
@@ -394,7 +392,8 @@ export default function ContributePage() {
                   color: '#ffffff', fontSize: 15, fontWeight: 600,
                   fontFamily: 'var(--font-body)', cursor: submitting ? 'not-allowed' : 'pointer',
                   transition: 'background 0.18s ease',
-                  display: 'flex', alignItems: 'center', gap: 8,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                  textAlign: 'center',
                   opacity: submitting ? 0.8 : 1,
                   letterSpacing: '-0.01em', minWidth: 160,
                 }}

@@ -123,7 +123,6 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
       style={{
         position: 'fixed',
         inset: 0,
-        height: '100dvh',
         zIndex: 999,
         background: '#0A0010',
         willChange: 'transform',
@@ -225,11 +224,13 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
       {/* Scroll only when results are present; locked in empty state */}
       <div style={{
         flex: 1,
+        minHeight: 0,
         overflowY: hasQ ? 'auto' : 'hidden',
         overflowX: 'hidden',
         scrollbarWidth: 'none',
         overscrollBehavior: 'contain',
-      }}>
+        WebkitOverflowScrolling: 'touch',
+      } as React.CSSProperties}>
 
         {/* Quick nav */}
         {!hasQ && (
@@ -349,7 +350,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
           )
         })}
 
-        <div style={{ height: 40 }} />
+        <div style={{ height: 40, paddingBottom: 'env(safe-area-inset-bottom, 20px)' }} />
       </div>
     </div>
   )
