@@ -8,7 +8,11 @@ export default function SiteFooter() {
       marginTop: 64,
     }}>
       <div style={{ maxWidth: 768, margin: '0 auto', padding: '28px 20px', display: 'flex', flexDirection: 'column' as const, gap: 10, alignItems: 'center' }}>
-        <img src={`${BP}/images/headout-logo.svg`} alt="Headout" style={{ height: 16, width: 'auto', opacity: 0.5 }} />
+        <img
+          src={`${BP}/images/headout-logo.svg`}
+          alt="Headout"
+          style={{ height: 16, width: 'auto', opacity: 0.3, filter: 'brightness(0) invert(1)' }}
+        />
         <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.2)', textAlign: 'center' }}>A practical AI reference · 2026</p>
       </div>
     </footer>
