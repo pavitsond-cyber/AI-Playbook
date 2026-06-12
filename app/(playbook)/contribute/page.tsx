@@ -50,12 +50,19 @@ function CategorySelect({
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const close = (event: MouseEvent) => {
+    const closeOnClick = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) setOpen(false)
     }
-    document.addEventListener('mousedown', close)
-    return () => document.removeEventListener('mousedown', close)
+    document.addEventListener('mousedown', closeOnClick)
+    return () => document.removeEventListener('mousedown', closeOnClick)
   }, [])
+
+  useEffect(() => {
+    if (!open) return
+    const closeOnScroll = () => setOpen(false)
+    window.addEventListener('scroll', closeOnScroll, { passive: true })
+    return () => window.removeEventListener('scroll', closeOnScroll)
+  }, [open])
 
   return (
     <div ref={ref} className="category-select">
