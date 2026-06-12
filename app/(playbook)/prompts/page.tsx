@@ -85,7 +85,7 @@ Opportunity → User problem → Evidence → Possible direction → Validation 
   },
   {
     id: 'idea-framing-alignment-approval',
-    title: 'Idea to Stakeholder Pitch',
+    title: 'Pitch the Idea',
     description: 'Use this to shape, pitch, align, or get approval for an idea before it moves into design, build, or experimentation.',
     template: `Act like a product partner helping turn an idea into a clear, approval-ready direction.
 
@@ -366,7 +366,7 @@ Rules:
   {
     id: 'edge-case-finder',
     title: 'Edge case finder',
-    description: 'Use this to stress-test a feature or flow before design handoff or implementation across broken states, confusing states, policy gaps, system failures, and platform differences.',
+    description: 'Stress-test a feature for broken states, confusing paths, and things users will absolutely try.',
     template: `Act like a product designer stress-testing a feature.
 
 Feature:
@@ -406,8 +406,8 @@ Return:
   },
   {
     id: 'experiment-and-measurement',
-    title: 'Experiment and measurement',
-    description: 'Use this to design an experiment and define how success, failure, guardrails, segments, and decision criteria should be measured.',
+    title: 'Plan the Experiment',
+    description: 'Define the hypothesis, audience, success metric, guardrails, and what happens next.',
     template: `Act like a product experimenter and analyst designing a test and measurement framework.
 
 Context:
@@ -537,8 +537,8 @@ For each idea, include:
   },
   {
     id: 'prd',
-    title: 'Generate PRD',
-    description: 'Use this to convert a feature or initiative into a structured product requirements document with goals, non-goals, requirements, edge cases, dependencies, metrics, risks, and rollout plan.',
+    title: 'Draft the PRD',
+    description: 'Turn a feature idea into goals, requirements, risks, open questions, and rollout notes.',
     template: `Act like a product partner turning a feature idea into a clear PRD.
 
 Context:
@@ -583,7 +583,7 @@ Rules:
   },
   {
     id: 'implementation',
-    title: 'Implementation',
+    title: 'Prep for Build',
     description: 'Use this to hand off a design or product change to an AI coding tool or engineer with clear scope, constraints, acceptance criteria, and boundaries.',
     template: `You are working inside this codebase as a careful design engineer.
 
