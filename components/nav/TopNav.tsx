@@ -51,6 +51,7 @@ export default function TopNav() {
         data-docked={dockedTitle ? 'true' : 'false'}
         data-menu-open={menuOpen ? 'true' : 'false'}
         data-home={isHome ? 'true' : 'false'}
+        data-no-search={!showSearch ? 'true' : 'false'}
       >
         <div className="playbook-page-header__backdrop" aria-hidden />
 

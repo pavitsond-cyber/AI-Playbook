@@ -573,7 +573,7 @@ const CONTRIBUTE_CSS = `
     border-radius: 8px;
     background:
       linear-gradient(155deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 42%, rgba(255,255,255,0.04)),
-      rgba(14,10,30,0.95);
+      rgba(25,15,42,0.72);
     -webkit-backdrop-filter: blur(30px) saturate(165%);
     backdrop-filter: blur(30px) saturate(165%);
     box-shadow:

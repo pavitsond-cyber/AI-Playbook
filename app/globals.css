@@ -276,12 +276,14 @@ html.safari-glass .playbook-header-control--frost {
   pointer-events: none;
 }
 
-.playbook-page-header[data-home='true'] .playbook-header-actions {
+.playbook-page-header[data-home='true'] .playbook-header-actions,
+.playbook-page-header[data-no-search='true'] .playbook-header-actions {
   width: 44px;
   flex-basis: 44px;
 }
 
-.playbook-page-header[data-home='true'] .playbook-header-action {
+.playbook-page-header[data-home='true'] .playbook-header-action,
+.playbook-page-header[data-no-search='true'] .playbook-header-action {
   width: 42px;
   flex-basis: 42px;
 }
