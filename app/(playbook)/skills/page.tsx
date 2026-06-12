@@ -794,7 +794,10 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
   useEffect(() => {
     if (isOpen && rowRef.current) {
       setTimeout(() => {
-        rowRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+        const el = rowRef.current
+        if (!el) return
+        const top = el.getBoundingClientRect().top + window.scrollY
+        window.scrollTo({ top: Math.max(0, top - 120), behavior: 'smooth' })
       }, 80)
     }
   }, [isOpen])
@@ -1132,7 +1135,7 @@ export default function SkillsPage() {
       </StickyTabs>
 
       {/* ── Skill list ── */}
-      <div style={{ maxWidth: 960, margin: '0 auto', width: '100%', padding: '8px clamp(20px,4vw,48px) 48px' }}>
+      <div style={{ maxWidth: 960, margin: '0 auto', width: '100%', padding: '24px clamp(20px,4vw,48px) 48px' }}>
         <div className={!fading ? 'animate-tab-fade' : ''} style={{
           display: 'flex', flexDirection: 'column', gap: 16,
           minHeight: '50vh',

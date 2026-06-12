@@ -354,7 +354,7 @@ export default function ToolsPage() {
       </StickyTabs>
 
       {/* ── Tool grid ── */}
-      <div style={{ maxWidth: 960, margin: '0 auto', width: '100%', padding: '8px clamp(20px,4vw,48px) 48px' }}>
+      <div style={{ maxWidth: 960, margin: '0 auto', width: '100%', padding: '24px clamp(20px,4vw,48px) 48px' }}>
         <div style={{
           opacity: fading ? 0 : 1,
           transform: fading ? 'translateY(6px)' : 'translateY(0)',
