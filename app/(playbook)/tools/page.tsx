@@ -264,6 +264,13 @@ export default function ToolsPage() {
   const [activeTab, setActiveTab]   = useState('All')
   const [displayTab, setDisplayTab] = useState('All')
   const [fading, setFading]         = useState(false)
+  const [tabsBlurred, setTabsBlurred] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setTabsBlurred(window.scrollY > 10)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const switchTab = (tab: string) => {
     if (tab === activeTab) return
@@ -321,10 +328,11 @@ export default function ToolsPage() {
       {/* ── Sticky tabs bar — full viewport width, docks below nav ──────── */}
       <div style={{
         position: 'sticky', top: 'var(--playbook-sticky-offset)', zIndex: 20,
-        background: 'rgba(10,0,16,0.22)',
-        backdropFilter: 'blur(28px) saturate(160%)',
-        WebkitBackdropFilter: 'blur(28px) saturate(160%)',
-        borderBottom: '1px solid rgba(255,255,255,0.07)',
+        background: tabsBlurred ? 'rgba(10,0,16,0.65)' : 'transparent',
+        backdropFilter: tabsBlurred ? 'blur(28px) saturate(160%)' : 'none',
+        WebkitBackdropFilter: tabsBlurred ? 'blur(28px) saturate(160%)' : 'none',
+        borderBottom: tabsBlurred ? '1px solid rgba(255,255,255,0.07)' : 'none',
+        transition: 'background 0.25s ease',
       }}>
         <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>

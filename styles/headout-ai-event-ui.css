@@ -1,0 +1,358 @@
+/*
+ * Portable extraction of the visual primitives used by
+ * aromalashok-ho/headout-ai-event at revision 5cdddc1.
+ *
+ * Scope a route with .headout-event-theme, then use the hai-* component
+ * classes below. This file intentionally excludes source-specific assets
+ * and application logic.
+ */
+
+:root {
+  --hai-night: #0e1439;
+  --hai-ink: #141b34;
+  --hai-glow-pink: #ff7ad5;
+  --hai-glow-rose: #f692a8;
+
+  --hai-white: #ffffff;
+  --hai-text-primary: rgba(255, 255, 255, 1);
+  --hai-text-secondary: rgba(255, 255, 255, 0.9);
+  --hai-text-muted: rgba(255, 255, 255, 0.6);
+  --hai-text-placeholder: rgba(255, 255, 255, 0.4);
+
+  --hai-surface-quiet: rgba(255, 255, 255, 0.04);
+  --hai-surface-frost: rgba(255, 255, 255, 0.12);
+  --hai-surface-frost-hover: rgba(255, 255, 255, 0.17);
+  --hai-border-subtle: rgba(255, 255, 255, 0.1);
+  --hai-border-frost: rgba(255, 255, 255, 0.18);
+
+  --hai-font-display: "Halyard Display", "halyard-display", ui-sans-serif,
+    system-ui, sans-serif;
+  --hai-font-text: "Halyard Text", "halyard-text", ui-sans-serif, system-ui,
+    sans-serif;
+
+  --hai-radius-field: 8px;
+  --hai-radius-media: 12px;
+  --hai-radius-card: 16px;
+  --hai-radius-sheet: 24px;
+  --hai-radius-pill: 9999px;
+
+  --hai-ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --hai-ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.headout-event-theme {
+  min-height: 100dvh;
+  background: var(--hai-night);
+  color: var(--hai-text-primary);
+  font-family: var(--hai-font-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.hai-app-column {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  max-width: 430px;
+  min-height: 100dvh;
+  margin-inline: auto;
+  padding:
+    calc(env(safe-area-inset-top, 0px) + 2rem)
+    1.5rem
+    calc(env(safe-area-inset-bottom, 0px) + 2.5rem);
+  flex-direction: column;
+}
+
+.hai-display {
+  font-family: var(--hai-font-display);
+}
+
+.hai-page-title {
+  margin: 0;
+  font-family: var(--hai-font-display);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.hai-landing-title {
+  margin: 0;
+  font-family: var(--hai-font-display);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.hai-body {
+  margin: 0;
+  color: var(--hai-text-secondary);
+  font-family: var(--hai-font-text);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.hai-frost {
+  background: var(--hai-surface-frost);
+  border: 1px solid var(--hai-border-frost);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  backdrop-filter: blur(28px) saturate(160%);
+  box-shadow: 0 3px 10px -8px rgba(0, 0, 0, 0.3);
+  transition:
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.hai-frost:hover {
+  background: var(--hai-surface-frost-hover);
+  box-shadow: 0 5px 14px -8px rgba(0, 0, 0, 0.35);
+}
+
+.hai-card {
+  overflow: hidden;
+  padding: 20px;
+  border-radius: var(--hai-radius-card);
+}
+
+.hai-link-card {
+  position: relative;
+  display: flex;
+  min-height: 72px;
+  align-items: center;
+  overflow: hidden;
+  padding: 16px 24px 16px 16px;
+  border-radius: var(--hai-radius-card);
+  color: var(--hai-text-primary);
+  text-decoration: none;
+}
+
+.hai-link-card__copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  padding-right: 56px;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hai-link-card__title {
+  font-family: var(--hai-font-display);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.hai-link-card__subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--hai-font-text);
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.hai-icon-button {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--hai-radius-pill);
+  color: var(--hai-white);
+}
+
+.hai-primary-button {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border: 0;
+  border-radius: var(--hai-radius-pill);
+  background: var(--hai-white);
+  color: var(--hai-night);
+  font-family: var(--hai-font-display);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color 200ms ease,
+    opacity 200ms ease;
+}
+
+.hai-primary-button:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.hai-primary-button:disabled {
+  opacity: 0.6;
+}
+
+.hai-label {
+  color: var(--hai-white);
+  font-family: var(--hai-font-display);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.hai-field {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--hai-border-subtle);
+  border-radius: var(--hai-radius-field);
+  outline: none;
+  background: var(--hai-surface-quiet);
+  color: var(--hai-white);
+  font-family: var(--hai-font-text);
+  font-size: 16px;
+  font-weight: 300;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
+}
+
+.hai-field::placeholder {
+  color: var(--hai-text-placeholder);
+}
+
+.hai-field:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.hai-focusable:focus-visible,
+.hai-frost:focus-visible,
+.hai-primary-button:focus-visible,
+.hai-field:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 2px;
+}
+
+.hai-segmented {
+  position: relative;
+  display: flex;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--hai-radius-pill);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.hai-segmented__indicator {
+  position: absolute;
+  inset-block: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  border-radius: var(--hai-radius-pill);
+  background: var(--hai-white);
+  transition: transform 300ms var(--hai-ease-spring);
+}
+
+.hai-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  animation: hai-fade-in 300ms ease both;
+}
+
+.hai-sheet {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 430px;
+  margin-inline: auto;
+  padding:
+    8px 20px
+    calc(env(safe-area-inset-bottom, 0px) + 24px);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--hai-radius-sheet) var(--hai-radius-sheet) 0 0;
+  background: rgba(14, 20, 57, 0.9);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  box-shadow: 0 -12px 40px -12px rgba(0, 0, 0, 0.6);
+  animation: hai-sheet-in 400ms var(--hai-ease-spring) both;
+}
+
+.hai-content-reveal {
+  animation: hai-content-reveal 700ms var(--hai-ease-reveal) both;
+}
+
+.hai-card-rise {
+  animation: hai-card-rise 1300ms var(--hai-ease-reveal) both;
+  animation-delay: var(--hai-rise-delay, 0ms);
+}
+
+/*
+ * Optional page-transition primitive. Apply view-transition-name:
+ * hai-page only while navigation is active; keeping it permanently applied
+ * can isolate backdrop-filter surfaces from a fixed background.
+ */
+::view-transition-group(hai-page) {
+  animation: none;
+}
+
+::view-transition-old(hai-page),
+::view-transition-new(hai-page) {
+  width: 100%;
+  height: auto;
+  animation-duration: 420ms;
+  animation-timing-function: var(--hai-ease-spring);
+  animation-fill-mode: both;
+  mix-blend-mode: normal;
+}
+
+@keyframes hai-content-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hai-card-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hai-sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes hai-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headout-event-theme *,
+  .headout-event-theme *::before,
+  .headout-event-theme *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
