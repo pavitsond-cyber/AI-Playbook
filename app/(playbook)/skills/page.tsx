@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { ChevronDown, Download, Check } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
+import StickyTabs from '@/components/playbook/StickyTabs'
 
 
 interface Skill {
@@ -1092,7 +1093,7 @@ export default function SkillsPage() {
       </div>
 
       {/* ── Tab bar — sticks directly below the frosted navigation ── */}
-      <div className="playbook-sticky-tabs" style={{ marginTop: 8 }}>
+      <StickyTabs style={{ marginTop: 8 }}>
         <div className="playbook-sticky-tabs__track" style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
             {TABS.map(tab => {
@@ -1122,7 +1123,7 @@ export default function SkillsPage() {
             })}
           </div>
         </div>
-      </div>
+      </StickyTabs>
 
       {/* ── Skill list ── */}
       <div style={{ maxWidth: 960, margin: '0 auto', width: '100%', padding: '8px clamp(20px,4vw,48px) 48px' }}>

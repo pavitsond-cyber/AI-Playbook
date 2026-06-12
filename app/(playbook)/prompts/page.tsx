@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { ChevronDown } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 import CopyButton from '@/components/playbook/CopyButton'
+import StickyTabs from '@/components/playbook/StickyTabs'
 
 
 interface PromptTemplate {
@@ -863,7 +864,7 @@ export default function PromptsPage() {
       </div>
 
       {/* ── Tab bar — sticks directly below the frosted navigation ── */}
-      <div className="playbook-sticky-tabs" style={{ marginTop: 8 }}>
+      <StickyTabs style={{ marginTop: 8 }}>
         <div className="playbook-sticky-tabs__track" style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
             {PROMPT_TABS.map(tab => {
@@ -893,7 +894,7 @@ export default function PromptsPage() {
             })}
           </div>
         </div>
-      </div>
+      </StickyTabs>
 
       {/* ── Prompt list ── */}
       <div style={{ maxWidth: 960, margin: '0 auto', width: '100%', padding: '8px clamp(20px,4vw,48px) 48px' }}>

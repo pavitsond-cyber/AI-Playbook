@@ -131,15 +131,32 @@ body {
   position: sticky;
   top: var(--playbook-sticky-offset);
   z-index: 90;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018)),
-    rgba(14, 20, 57, 0.76);
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+  box-shadow: none;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    backdrop-filter 220ms ease;
+}
+
+.playbook-sticky-tabs__marker {
+  height: 1px;
+  margin-bottom: -1px;
+  pointer-events: none;
+}
+
+.playbook-sticky-tabs[data-stuck='true'] {
+  border-bottom-color: rgba(255,255,255,0.08);
+  background: rgba(14, 20, 57, 0.7);
   -webkit-backdrop-filter: blur(24px) saturate(145%);
   backdrop-filter: blur(24px) saturate(145%);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.08),
-    0 12px 28px -24px rgba(0,0,0,0.9);
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 14px 24px -22px rgba(0,0,0,0.95);
 }
 
 .playbook-sticky-tabs__track {
@@ -152,6 +169,17 @@ body {
 
 .playbook-sticky-tabs__track::-webkit-scrollbar {
   display: none;
+}
+
+.playbook-sticky-tabs__track > div {
+  width: max-content;
+  min-width: 100%;
+}
+
+@media (max-width: 639px) {
+  .playbook-sticky-tabs__track > div {
+    min-width: calc(100% + 24px);
+  }
 }
 
 .playbook-header-control {
@@ -172,43 +200,37 @@ body {
 
 .playbook-header-control--frost {
   overflow: hidden;
-  background:
-    linear-gradient(155deg, rgba(255,255,255,0.24), rgba(255,255,255,0.11) 55%, rgba(255,255,255,0.16)),
-    rgba(73, 67, 137, 0.62);
-  border: 1px solid rgba(255,255,255,0.28);
-  -webkit-backdrop-filter: blur(22px) saturate(145%);
-  backdrop-filter: blur(22px) saturate(145%);
-  box-shadow:
-    inset 0 1.5px 0 rgba(255,255,255,0.58),
-    inset 0 0 0 1px rgba(255,255,255,0.12),
-    0 8px 20px -10px rgba(0,0,0,0.6);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  backdrop-filter: blur(28px) saturate(160%);
+  box-shadow: 0 3px 10px -8px rgba(0, 0, 0, 0.3);
   transition:
-    background 280ms ease,
-    border-color 280ms ease,
-    box-shadow 280ms ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
     transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .playbook-header-control--frost:hover {
-  background:
-    linear-gradient(155deg, rgba(255,255,255,0.32), rgba(255,255,255,0.16) 55%, rgba(255,255,255,0.22)),
-    rgba(84, 76, 156, 0.78);
-  border-color: rgba(255,255,255,0.36);
+  background: rgba(255, 255, 255, 0.17);
+  box-shadow: 0 5px 14px -8px rgba(0, 0, 0, 0.35);
 }
 
 .playbook-header-control--frost:active {
+  background: rgba(255, 255, 255, 0.20);
   transform: scale(0.96);
-  border-color: rgba(255,255,255,0.34);
-  background:
-    radial-gradient(circle at 38% 28%, rgba(255,255,255,0.24), transparent 42%),
-    linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.045) 58%, rgba(255,255,255,0.08)),
-    rgba(73,67,137,0.66);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.56),
-    inset 0 0 0 2px rgba(255,255,255,0.1),
-    inset 0 -5px 12px rgba(12,10,46,0.16),
-    0 5px 14px -10px rgba(0,0,0,0.68);
   transition-duration: 90ms;
+}
+
+html.safari-glass .playbook-header-control--frost {
+  background: linear-gradient(160deg, rgba(255,255,255,0.16), rgba(255,255,255,0.05) 55%, rgba(255,255,255,0.09));
+  border-color: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(20px) saturate(100%);
+  backdrop-filter: blur(20px) saturate(100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 6px 16px -8px rgba(0, 0, 0, 0.4);
 }
 
 .playbook-header-control:focus-visible {
@@ -258,34 +280,34 @@ body {
   flex: 0 0 89px;
   align-items: center;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 9999px;
-  background:
-    linear-gradient(155deg, rgba(255,255,255,0.24), rgba(255,255,255,0.11) 55%, rgba(255,255,255,0.16)),
-    rgba(73, 67, 137, 0.62);
-  -webkit-backdrop-filter: blur(22px) saturate(145%);
-  backdrop-filter: blur(22px) saturate(145%);
-  box-shadow:
-    inset 0 1.5px 0 rgba(255,255,255,0.58),
-    inset 0 0 0 1px rgba(255,255,255,0.12),
-    0 8px 20px -10px rgba(0,0,0,0.6);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  backdrop-filter: blur(28px) saturate(160%);
+  box-shadow: 0 3px 10px -8px rgba(0, 0, 0, 0.3);
   pointer-events: auto;
   transition:
-    background 280ms ease,
-    border-color 280ms ease,
-    box-shadow 280ms ease,
-    transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .playbook-page-header[data-menu-open='true'] .playbook-header-actions {
-  border-color: rgba(255,255,255,0.36);
-  background:
-    linear-gradient(155deg, rgba(255,255,255,0.32), rgba(255,255,255,0.16) 55%, rgba(255,255,255,0.22)),
-    rgba(84, 76, 156, 0.78);
+  background: rgba(255, 255, 255, 0.17);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 0 5px 14px -8px rgba(0, 0, 0, 0.35);
+}
+
+html.safari-glass .playbook-header-actions {
+  background: linear-gradient(160deg, rgba(255,255,255,0.16), rgba(255,255,255,0.05) 55%, rgba(255,255,255,0.09));
+  border-color: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(20px) saturate(100%);
+  backdrop-filter: blur(20px) saturate(100%);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.48),
-    inset 0 0 0 1px rgba(255,255,255,0.1),
-    0 12px 28px -12px rgba(0,0,0,0.65);
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 6px 16px -8px rgba(0, 0, 0, 0.4);
 }
 
 .playbook-glass-shine {
@@ -295,7 +317,7 @@ body {
   height: 42%;
   border-radius: 9999px 9999px 50% 50%;
   background: linear-gradient(to bottom, rgba(255,255,255,0.24), transparent);
-  opacity: 1;
+  opacity: 0;
   pointer-events: none;
 }
 

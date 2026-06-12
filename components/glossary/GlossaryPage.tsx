@@ -5,6 +5,7 @@ import { GlossaryTerm } from '@/types'
 import GlossaryGrid from './GlossaryGrid'
 import GlossaryCard from './GlossaryCard'
 import { useDockedTitle } from '@/components/nav/PageChromeContext'
+import StickyTabs from '@/components/playbook/StickyTabs'
 
 type TabId = 'abbreviations' | 'terminologies'
 
@@ -142,7 +143,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
         </div>
 
         {/* Sticky tabs — sits directly below the frosted navigation */}
-        <div className="playbook-sticky-tabs">
+        <StickyTabs>
           <div className="playbook-sticky-tabs__track" style={{ display: "flex", padding: "8px clamp(20px,4vw,48px) 0" }}>
             {TABS.map(tab => {
               const isActive = activeTab === tab.id
@@ -178,7 +179,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
               )
             })}
           </div>
-        </div>
+        </StickyTabs>
 
         {/* Results */}
         <div style={{ padding: "20px clamp(20px,4vw,48px) clamp(40px,4vw,64px)" }}>

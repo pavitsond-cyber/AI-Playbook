@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { ExternalLink } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
+import StickyTabs from '@/components/playbook/StickyTabs'
 
 /* Stable slug matching the id= on each card in the search index */
 function toolSlug(name: string) {
@@ -316,7 +317,7 @@ export default function ToolsPage() {
       </div>
 
       {/* ── Tab bar — sticks directly below the frosted navigation ── */}
-      <div className="playbook-sticky-tabs" style={{ marginTop: 8 }}>
+      <StickyTabs style={{ marginTop: 8 }}>
         <div className="playbook-sticky-tabs__track" style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
             {TABS.map(tab => {
@@ -350,7 +351,7 @@ export default function ToolsPage() {
             })}
           </div>
         </div>
-      </div>
+      </StickyTabs>
 
       {/* ── Tool grid ── */}
       <div style={{ maxWidth: 960, margin: '0 auto', width: '100%', padding: '8px clamp(20px,4vw,48px) 48px' }}>

@@ -12,6 +12,13 @@ export default function PlaybookLayout({ children }: { children: React.ReactNode
   const pathname = usePathname()
   const isHome = pathname === '/'
 
+  /* Tag <html> for Safari-specific glass overrides */
+  useEffect(() => {
+    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+      document.documentElement.classList.add('safari-glass')
+    }
+  }, [])
+
   /* Scroll to the very top instantly on every route change */
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
