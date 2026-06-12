@@ -785,6 +785,17 @@ async function downloadSkill(skill: Skill) {
   URL.revokeObjectURL(url)
 }
 
+function domainAccent(domain?: string): string {
+  if (!domain) return '#9B3FFF'
+  const d = domain.toLowerCase()
+  if (d.includes('research')) return '#00CCA8'
+  if (d.includes('motion') || d.includes('interaction')) return '#C27FFF'
+  if (d.includes('craft') || d.includes('taste')) return '#E8C840'
+  if (d.includes('system') || d.includes('quality')) return '#9B3FFF'
+  if (d.includes('performance')) return '#00CCA8'
+  return '#FF69DB' // design / frontend
+}
+
 function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: boolean; onToggle: () => void; showTag: boolean }) {
   const [downloaded, setDownloaded] = useState(false)
   const [downloading, setDownloading] = useState(false)
@@ -824,8 +835,8 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
       id={'skill-' + skill.name.replace(/\s+/g, '-').toLowerCase()}
       style={{
         position: 'relative',
-        background: 'rgba(255,255,255,0.03)',
-        border: isOpen ? '1px solid rgba(155,63,255,0.25)' : '1px solid rgba(255,255,255,0.07)',
+        background: `linear-gradient(180deg, ${domainAccent(skill.domain)}28 0%, rgba(8,0,18,0.46) 52%)`,
+        border: isOpen ? `1px solid ${domainAccent(skill.domain)}40` : '1px solid rgba(255,255,255,0.07)',
         borderRadius: 14,
         overflow: 'hidden',
         transition: 'border-color 0.18s ease',

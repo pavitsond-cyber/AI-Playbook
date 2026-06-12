@@ -71,13 +71,11 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
         id={term.id}
         ref={cardRef as React.RefObject<HTMLDivElement>}
         style={{
-          background: 'rgba(255,255,255,0.05)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
+          background: `linear-gradient(180deg, ${ABBR_COLORS[term.category] ?? '#9B3FFF'}28 0%, rgba(8,0,18,0.46) 52%)`,
           border: expanded
-            ? '1px solid rgba(155,63,255,0.25)'
+            ? `1px solid ${ABBR_COLORS[term.category] ?? '#9B3FFF'}40`
             : hovered
-            ? '1px solid rgba(155,63,255,0.15)'
+            ? `1px solid ${ABBR_COLORS[term.category] ?? '#9B3FFF'}25`
             : '1px solid rgba(255,255,255,0.09)',
           borderRadius: 16,
           overflow: 'hidden',
@@ -204,13 +202,11 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
       onMouseLeave={() => setHovered(false)}
       className="rounded-2xl overflow-hidden"
       style={{
-        background: 'rgba(255,255,255,0.05)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
+        background: `linear-gradient(180deg, ${ABBR_COLORS[term.category] ?? '#9B3FFF'}28 0%, rgba(8,0,18,0.46) 52%)`,
         border: expanded
-          ? '1px solid rgba(155,63,255,0.25)'
+          ? `1px solid ${ABBR_COLORS[term.category] ?? '#9B3FFF'}40`
           : hovered
-          ? '1px solid rgba(155,63,255,0.15)'
+          ? `1px solid ${ABBR_COLORS[term.category] ?? '#9B3FFF'}25`
           : '1px solid rgba(255,255,255,0.09)',
         boxShadow: hovered && !expanded ? 'rgba(0,0,0,0.2) 0 4px 12px' : 'none',
         transform: hovered && !expanded ? 'translateY(-1px)' : 'translateY(0)',
