@@ -315,9 +315,9 @@ export default function ToolsPage() {
         />
       </div>
 
-      {/* ── Tab bar — below the header, natural document flow ── */}
-      <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', marginTop: 8 }}>
-        <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
+      {/* ── Tab bar — sticks directly below the frosted navigation ── */}
+      <div className="playbook-sticky-tabs" style={{ marginTop: 8 }}>
+        <div className="playbook-sticky-tabs__track" style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
             {TABS.map(tab => {
               const isActive = activeTab === tab

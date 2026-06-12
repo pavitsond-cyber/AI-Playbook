@@ -141,18 +141,9 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
           </p>
         </div>
 
-        {/* Sticky tabs — sits flush under the 64px fixed nav */}
-        <div
-          className="sticky z-20"
-          style={{
-            top: 'var(--playbook-sticky-offset)',
-            background: 'rgba(10,0,16,0.22)',
-            backdropFilter: 'blur(28px) saturate(160%)',
-            WebkitBackdropFilter: 'blur(28px) saturate(160%)',
-            borderBottom: '1px solid rgba(255,255,255,0.06)',
-          }}
-        >
-          <div style={{ display: "flex", padding: "8px clamp(20px,4vw,48px) 0" }}>
+        {/* Sticky tabs — sits directly below the frosted navigation */}
+        <div className="playbook-sticky-tabs">
+          <div className="playbook-sticky-tabs__track" style={{ display: "flex", padding: "8px clamp(20px,4vw,48px) 0" }}>
             {TABS.map(tab => {
               const isActive = activeTab === tab.id
               const count = tabTerms[tab.id].length

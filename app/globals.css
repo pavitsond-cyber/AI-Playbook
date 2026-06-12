@@ -46,7 +46,7 @@
 :root {
   --playbook-header-top: calc(env(safe-area-inset-top, 0px) + 2rem);
   --playbook-content-top: calc(env(safe-area-inset-top, 0px) + 5.25rem);
-  --playbook-sticky-offset: calc(env(safe-area-inset-top, 0px) + 6.75rem);
+  --playbook-sticky-offset: calc(env(safe-area-inset-top, 0px) + 4.75rem);
   --bg-base:       #0A0010;
   --bg-dark:       #0D0D0D;
   --bg-light:      #F5F5F3;
@@ -125,6 +125,33 @@ body {
 
 .playbook-page-header[data-docked='true'] .playbook-page-header__backdrop {
   opacity: 1;
+}
+
+.playbook-sticky-tabs {
+  position: sticky;
+  top: var(--playbook-sticky-offset);
+  z-index: 90;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018)),
+    rgba(14, 20, 57, 0.76);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+  backdrop-filter: blur(24px) saturate(145%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 12px 28px -24px rgba(0,0,0,0.9);
+}
+
+.playbook-sticky-tabs__track {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.playbook-sticky-tabs__track::-webkit-scrollbar {
+  display: none;
 }
 
 .playbook-header-control {
