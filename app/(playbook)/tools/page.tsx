@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { ExternalLink } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 
@@ -264,7 +264,6 @@ export default function ToolsPage() {
   const [activeTab, setActiveTab]   = useState('All')
   const [displayTab, setDisplayTab] = useState('All')
   const [fading, setFading]         = useState(false)
-  const scrollRef                   = useRef<HTMLDivElement>(null)
 
   const switchTab = (tab: string) => {
     if (tab === activeTab) return
@@ -284,10 +283,9 @@ export default function ToolsPage() {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const el = document.getElementById(hash.slice(1))
-        const container = scrollRef.current
-        if (!el || !container) return
-        const y = container.scrollTop + el.getBoundingClientRect().top - container.getBoundingClientRect().top - 16
-        container.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
+        if (!el) return
+        const y = el.getBoundingClientRect().top + window.scrollY - 100
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
       })
     })
   }, [])
@@ -307,10 +305,18 @@ export default function ToolsPage() {
   ).sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
 
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
 
-      {/* ── Tab bar — sits at top, content never scrolls above it ──── */}
-      <div style={{ flexShrink: 0, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      {/* ── Page header ── */}
+      <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto', width: '100%' }}>
+        <PageHeader
+          title="Tools"
+          description="Daily AI tool stack for vibe-coding designers — 37 tools across 5 categories."
+        />
+      </div>
+
+      {/* ── Tab bar — below the header, natural document flow ── */}
+      <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', marginTop: 8 }}>
         <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
             {TABS.map(tab => {
@@ -346,38 +352,26 @@ export default function ToolsPage() {
         </div>
       </div>
 
-      {/* ── Scroll container — only this scrolls ───────────────────── */}
-      <div
-        ref={scrollRef}
-        style={{ flex: 1, overflowY: 'auto', overscrollBehavior: 'contain' }}
-      >
-        <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto' }}>
-          <PageHeader
-            title="Tools"
-            description="Daily AI tool stack for vibe-coding designers — 37 tools across 5 categories."
-          />
-        </div>
-
-        <div style={{ maxWidth: 960, margin: '0 auto', padding: '8px clamp(20px,4vw,48px) 48px' }}>
-          <div style={{
-            opacity: fading ? 0 : 1,
-            transform: fading ? 'translateY(6px)' : 'translateY(0)',
-            transition: fading
-              ? 'opacity 0.16s ease-in, transform 0.16s ease-in'
-              : 'opacity 0.26s ease-out, transform 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          }}>
-            <div className="grid grid-cols-2 sm:grid-cols-3" style={{ gap: 12 }}>
-              {flatTools.map((tool, i) => (
-                <div
-                  key={tool.name}
-                  id={toolSlug(tool.name)}
-                  className="animate-fade-up"
-                  style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, height: '100%' }}
-                >
-                  <ToolCard tool={tool} />
-                </div>
-              ))}
-            </div>
+      {/* ── Tool grid ── */}
+      <div style={{ maxWidth: 960, margin: '0 auto', width: '100%', padding: '8px clamp(20px,4vw,48px) 48px' }}>
+        <div style={{
+          opacity: fading ? 0 : 1,
+          transform: fading ? 'translateY(6px)' : 'translateY(0)',
+          transition: fading
+            ? 'opacity 0.16s ease-in, transform 0.16s ease-in'
+            : 'opacity 0.26s ease-out, transform 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        }}>
+          <div className="grid grid-cols-2 sm:grid-cols-3" style={{ gap: 12 }}>
+            {flatTools.map((tool, i) => (
+              <div
+                key={tool.name}
+                id={toolSlug(tool.name)}
+                className="animate-fade-up"
+                style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, height: '100%' }}
+              >
+                <ToolCard tool={tool} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

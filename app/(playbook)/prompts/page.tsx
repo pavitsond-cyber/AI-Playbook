@@ -815,7 +815,6 @@ export default function PromptsPage() {
   const [activePromptTab, setActivePromptTab] = useState<string>('All')
   const [displayPromptTab, setDisplayPromptTab] = useState<string>('All')
   const [fading, setFading]                 = useState(false)
-  const scrollRef                           = useRef<HTMLDivElement>(null)
 
   const toggle = (id: string) => setOpenId(prev => prev === id ? null : id)
 
@@ -841,10 +840,9 @@ export default function PromptsPage() {
       setOpenId(match.id)
       setTimeout(() => {
         const el = document.getElementById('prompt-' + match.id)
-        const container = scrollRef.current
-        if (!el || !container) return
-        const y = container.scrollTop + el.getBoundingClientRect().top - container.getBoundingClientRect().top - 16
-        container.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
+        if (!el) return
+        const y = el.getBoundingClientRect().top + window.scrollY - 100
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
       }, 180)
     }
   }, [])
@@ -854,10 +852,18 @@ export default function PromptsPage() {
     : prompts.filter(p => PROMPT_TO_TAB[p.id] === displayPromptTab)
 
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
 
-      {/* ── Tab bar — sits at top, content never scrolls above it ──── */}
-      <div style={{ flexShrink: 0, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      {/* ── Page header ── */}
+      <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto', width: '100%' }}>
+        <PageHeader
+          title="Prompt Systems"
+          description="15 reusable prompt templates for product thinking, UX writing, research, strategy, and decision-making."
+        />
+      </div>
+
+      {/* ── Tab bar — below the header, natural document flow ── */}
+      <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', marginTop: 8 }}>
         <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
             {PROMPT_TABS.map(tab => {
@@ -889,39 +895,27 @@ export default function PromptsPage() {
         </div>
       </div>
 
-      {/* ── Scroll container — only this scrolls ───────────────────── */}
-      <div
-        ref={scrollRef}
-        style={{ flex: 1, overflowY: 'auto', overscrollBehavior: 'contain' }}
-      >
-        <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto' }}>
-          <PageHeader
-            title="Prompt Systems"
-            description="15 reusable prompt templates for product thinking, UX writing, research, strategy, and decision-making."
-          />
-        </div>
-
-        <div style={{ maxWidth: 960, margin: '0 auto', padding: '8px clamp(20px,4vw,48px) 48px' }}>
-          <div className={!fading ? 'animate-tab-fade' : ''} style={{
-            display: 'flex', flexDirection: 'column', gap: 16,
-            minHeight: '50vh',
-            opacity: fading ? 0 : 1,
-            transform: fading ? 'translateY(4px)' : 'translateY(0px)',
-            transition: fading
-              ? 'opacity 0.14s ease-in'
-              : 'opacity 0.22s ease-out, transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          }}>
-            {filteredPrompts.map((prompt, i) => (
-              <div key={prompt.id} className="animate-fade-up" style={{ animationDelay: `${Math.min(i * 35, 280)}ms` }}>
-                <PromptRow
-                  prompt={prompt}
-                  index={i}
-                  isOpen={openId === prompt.id}
-                  onToggle={() => toggle(prompt.id)}
-                />
-              </div>
-            ))}
-          </div>
+      {/* ── Prompt list ── */}
+      <div style={{ maxWidth: 960, margin: '0 auto', width: '100%', padding: '8px clamp(20px,4vw,48px) 48px' }}>
+        <div className={!fading ? 'animate-tab-fade' : ''} style={{
+          display: 'flex', flexDirection: 'column', gap: 16,
+          minHeight: '50vh',
+          opacity: fading ? 0 : 1,
+          transform: fading ? 'translateY(4px)' : 'translateY(0px)',
+          transition: fading
+            ? 'opacity 0.14s ease-in'
+            : 'opacity 0.22s ease-out, transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        }}>
+          {filteredPrompts.map((prompt, i) => (
+            <div key={prompt.id} className="animate-fade-up" style={{ animationDelay: `${Math.min(i * 35, 280)}ms` }}>
+              <PromptRow
+                prompt={prompt}
+                index={i}
+                isOpen={openId === prompt.id}
+                onToggle={() => toggle(prompt.id)}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>
