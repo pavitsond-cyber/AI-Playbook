@@ -328,11 +328,11 @@ export default function ToolsPage() {
       {/* ── Sticky tabs bar — full viewport width, docks below nav ──────── */}
       <div style={{
         position: 'sticky', top: 'var(--playbook-sticky-offset)', zIndex: 20,
-        background: tabsBlurred ? 'rgba(10,0,16,0.65)' : 'transparent',
-        backdropFilter: tabsBlurred ? 'blur(28px) saturate(160%)' : 'none',
-        WebkitBackdropFilter: tabsBlurred ? 'blur(28px) saturate(160%)' : 'none',
-        borderBottom: tabsBlurred ? '1px solid rgba(255,255,255,0.07)' : 'none',
-        transition: 'background 0.25s ease',
+        background: tabsBlurred ? 'rgba(10,0,16,0.72)' : 'rgba(10,0,16,0)',
+        backdropFilter: tabsBlurred ? 'blur(24px) saturate(150%)' : 'blur(0px)',
+        WebkitBackdropFilter: tabsBlurred ? 'blur(24px) saturate(150%)' : 'blur(0px)',
+        borderBottom: tabsBlurred ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(255,255,255,0)',
+        transition: 'background 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease, border-color 0.3s ease',
       }}>
         <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
