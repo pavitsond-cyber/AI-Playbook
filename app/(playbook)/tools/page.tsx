@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ExternalLink } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 
@@ -264,13 +264,7 @@ export default function ToolsPage() {
   const [activeTab, setActiveTab]   = useState('All')
   const [displayTab, setDisplayTab] = useState('All')
   const [fading, setFading]         = useState(false)
-  const [tabsBlurred, setTabsBlurred] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setTabsBlurred(window.scrollY > 96)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  const scrollRef                   = useRef<HTMLDivElement>(null)
 
   const switchTab = (tab: string) => {
     if (tab === activeTab) return
@@ -282,21 +276,18 @@ export default function ToolsPage() {
     }, 160)
   }
 
-  // Hash deep-link: navigate to a specific tool card from search results
   useEffect(() => {
     const hash = window.location.hash
     if (!hash) return
-    const NAV_OFFSET = 96 // fixed nav (64) + a bit of breathing room
-    // Ensure All tab is showing so the target card is in the DOM
     setDisplayTab('All')
     setActiveTab('All')
-    // Wait a frame for state + render, then scroll
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const el = document.getElementById(hash.slice(1))
-        if (!el) return
-        const top = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
-        window.scrollTo({ top, behavior: 'smooth' })
+        const container = scrollRef.current
+        if (!el || !container) return
+        const y = container.scrollTop + el.getBoundingClientRect().top - container.getBoundingClientRect().top - 16
+        container.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
       })
     })
   }, [])
@@ -316,22 +307,10 @@ export default function ToolsPage() {
   ).sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
 
   return (
-    <div>
-      {/* ── Page title — scrolls away, triggers nav dock ────────────────── */}
-      <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto' }}>
-        <PageHeader
-          title="Tools"
-          description="Daily AI tool stack for vibe-coding designers — 37 tools across 5 categories."
-        />
-      </div>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
 
-      {/* ── Sticky tabs bar — full viewport width, docks below nav ──────── */}
-      <div style={{
-        position: 'sticky', top: 'var(--playbook-sticky-offset)', zIndex: 20,
-        background: tabsBlurred ? 'rgba(10,0,16,0.9)' : 'rgba(10,0,16,0)',
-        borderBottom: tabsBlurred ? '1px solid rgba(255,255,255,0.06)' : '1px solid rgba(255,255,255,0)',
-        transition: 'background 0.35s ease, border-color 0.35s ease',
-      }}>
+      {/* ── Tab bar — sits at top, content never scrolls above it ──── */}
+      <div style={{ flexShrink: 0, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
             {TABS.map(tab => {
@@ -347,10 +326,7 @@ export default function ToolsPage() {
                     fontFamily: 'var(--font-body)', padding: '20px 0',
                   }}
                 >
-                  <span style={{
-                    color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)',
-                    transition: 'color 0.2s ease',
-                  }}>
+                  <span style={{ color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)', transition: 'color 0.2s ease' }}>
                     {tab}
                   </span>
                   <span
@@ -370,27 +346,38 @@ export default function ToolsPage() {
         </div>
       </div>
 
-      {/* ── Tool grid ────────────────────────────────────────────────────── */}
-      <div style={{ maxWidth: 960, margin: '0 auto', padding: '24px clamp(20px,4vw,48px) 48px' }}>
-        <div style={{
-          opacity: fading ? 0 : 1,
-          transform: fading ? 'translateY(6px)' : 'translateY(0)',
-          transition: fading
-            ? 'opacity 0.16s ease-in, transform 0.16s ease-in'
-            : 'opacity 0.26s ease-out, transform 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-        }}>
-          {/* grid-cols-1 mobile → 3 sm (max 3 cols) */}
-          <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: 12 }}>
-            {flatTools.map((tool, i) => (
-              <div
-                key={tool.name}
-                id={toolSlug(tool.name)}
-                className="animate-fade-up"
-                style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, height: '100%' }}
-              >
-                <ToolCard tool={tool} />
-              </div>
-            ))}
+      {/* ── Scroll container — only this scrolls ───────────────────── */}
+      <div
+        ref={scrollRef}
+        style={{ flex: 1, overflowY: 'auto', overscrollBehavior: 'contain' }}
+      >
+        <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto' }}>
+          <PageHeader
+            title="Tools"
+            description="Daily AI tool stack for vibe-coding designers — 37 tools across 5 categories."
+          />
+        </div>
+
+        <div style={{ maxWidth: 960, margin: '0 auto', padding: '8px clamp(20px,4vw,48px) 48px' }}>
+          <div style={{
+            opacity: fading ? 0 : 1,
+            transform: fading ? 'translateY(6px)' : 'translateY(0)',
+            transition: fading
+              ? 'opacity 0.16s ease-in, transform 0.16s ease-in'
+              : 'opacity 0.26s ease-out, transform 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: 12 }}>
+              {flatTools.map((tool, i) => (
+                <div
+                  key={tool.name}
+                  id={toolSlug(tool.name)}
+                  className="animate-fade-up"
+                  style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, height: '100%' }}
+                >
+                  <ToolCard tool={tool} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

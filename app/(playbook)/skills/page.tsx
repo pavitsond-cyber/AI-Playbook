@@ -1024,33 +1024,26 @@ const DOMAIN_TO_TAB: Record<string, string> = {
 const TABS = ['All', 'Research', 'Design', 'Motion & Craft', 'Systems']
 
 export default function SkillsPage() {
-  const [openName, setOpenName]         = useState<string | null>(null)
-  const [activeTab, setActiveTab]       = useState<string>('All')
-  const [displayTab, setDisplayTab]     = useState<string>('All')
-  const [fading, setFading]             = useState(false)
-  const [tabsBlurred, setTabsBlurred]   = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setTabsBlurred(window.scrollY > 96)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  const [openName, setOpenName]     = useState<string | null>(null)
+  const [activeTab, setActiveTab]   = useState<string>('All')
+  const [displayTab, setDisplayTab] = useState<string>('All')
+  const [fading, setFading]         = useState(false)
+  const scrollRef                   = useRef<HTMLDivElement>(null)
 
   const toggle = (name: string) => setOpenName(prev => prev === name ? null : name)
 
-  /* Smooth tab switch: fade out → swap content → fade in */
   const switchTab = (tab: string) => {
     if (tab === activeTab) return
-    setFading(true)                         // start fade-out (160ms)
+    setFading(true)
     setTimeout(() => {
       setDisplayTab(tab)
       setActiveTab(tab)
       setOpenName(null)
-      setFading(false)                      // trigger fade-in
+      setFading(false)
     }, 160)
   }
 
-  // Deep-link handler: open the skill named in the URL hash
+  // Deep-link: open skill from URL hash and scroll it into view inside the local container
   useEffect(() => {
     const hash = decodeURIComponent(window.location.hash.slice(1))
     if (!hash) return
@@ -1060,11 +1053,10 @@ export default function SkillsPage() {
       setActiveTab('All')
       setTimeout(() => {
         const el = document.getElementById('skill-' + match.name.replace(/\s+/g, '-').toLowerCase())
-        if (!el) return
-        // Offset by sticky nav (64px) + filter tabs (~52px) + breathing room
-        const NAV_OFFSET = 130
-        const y = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
-        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
+        const container = scrollRef.current
+        if (!el || !container) return
+        const y = container.scrollTop + el.getBoundingClientRect().top - container.getBoundingClientRect().top - 16
+        container.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
       }, 160)
     }
   }, [])
@@ -1074,21 +1066,14 @@ export default function SkillsPage() {
     : skills.filter(s => DOMAIN_TO_TAB[s.domain ?? ''] === displayTab)
 
   return (
-    <div>
-      {/* ── Page title ─────────────────────────────────────────────────── */}
-      <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto' }}>
-        <PageHeader
-          title="Skills"
-          description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
-        />
-      </div>
+    /* Outer shell fills the space the layout reserves below the TopNav.
+       overflow:hidden ensures nothing can bleed above the tab bar. */
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
 
-      {/* ── Sticky tabs bar ────────────────────────────────────────────── */}
+      {/* ── Tab bar — sits at the top, content never scrolls above it ── */}
       <div style={{
-        position: 'sticky', top: 'var(--playbook-sticky-offset)', zIndex: 20,
-        background: tabsBlurred ? 'rgba(10,0,16,0.9)' : 'rgba(10,0,16,0)',
-        borderBottom: tabsBlurred ? '1px solid rgba(255,255,255,0.06)' : '1px solid rgba(255,255,255,0)',
-        transition: 'background 0.35s ease, border-color 0.35s ease',
+        flexShrink: 0,
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
       }}>
         <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
@@ -1121,27 +1106,41 @@ export default function SkillsPage() {
         </div>
       </div>
 
-      {/* ── Skill list ─────────────────────────────────────────────────── */}
-      <div style={{ maxWidth: 960, margin: '0 auto', padding: '24px clamp(20px,4vw,48px) 48px' }}>
-        <div className={!fading ? 'animate-tab-fade' : ''} style={{
-          display: 'flex', flexDirection: 'column', gap: 16,
-          minHeight: '50vh',
-          opacity: fading ? 0 : 1,
-          transform: fading ? 'translateY(4px)' : 'translateY(0px)',
-          transition: fading
-            ? 'opacity 0.14s ease-in'
-            : 'opacity 0.22s ease-out, transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-        }}>
-          {filtered.map((skill, i) => (
-            <div key={skill.name} className="animate-fade-up" style={{ animationDelay: `${Math.min(i * 35, 280)}ms` }}>
-              <SkillRow
-                skill={skill}
-                isOpen={openName === skill.name}
-                onToggle={() => toggle(skill.name)}
-                showTag={activeTab === 'All'}
-              />
-            </div>
-          ))}
+      {/* ── Scroll container — only this scrolls; nothing reaches the tab bar ── */}
+      <div
+        ref={scrollRef}
+        style={{ flex: 1, overflowY: 'auto', overscrollBehavior: 'contain' }}
+      >
+        {/* Page title */}
+        <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto' }}>
+          <PageHeader
+            title="Skills"
+            description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
+          />
+        </div>
+
+        {/* Skill list */}
+        <div style={{ maxWidth: 960, margin: '0 auto', padding: '8px clamp(20px,4vw,48px) 48px' }}>
+          <div className={!fading ? 'animate-tab-fade' : ''} style={{
+            display: 'flex', flexDirection: 'column', gap: 16,
+            minHeight: '50vh',
+            opacity: fading ? 0 : 1,
+            transform: fading ? 'translateY(4px)' : 'translateY(0px)',
+            transition: fading
+              ? 'opacity 0.14s ease-in'
+              : 'opacity 0.22s ease-out, transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          }}>
+            {filtered.map((skill, i) => (
+              <div key={skill.name} className="animate-fade-up" style={{ animationDelay: `${Math.min(i * 35, 280)}ms` }}>
+                <SkillRow
+                  skill={skill}
+                  isOpen={openName === skill.name}
+                  onToggle={() => toggle(skill.name)}
+                  showTag={activeTab === 'All'}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
