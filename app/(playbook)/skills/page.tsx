@@ -872,6 +872,8 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
 
       {/* ── Collapsed row ─────────────────────────────────────────────── */}
       <button
+        aria-expanded={isOpen}
+        aria-controls={'skill-expand-' + skill.name.replace(/\s+/g, '-').toLowerCase()}
         onClick={onToggle}
         style={{
           width: '100%',
@@ -916,7 +918,7 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
                 style={{
                   color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.25)',
                   transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                  transition: 'transform 0.22s ease, color 0.18s ease',
+                  transition: 'transform 240ms cubic-bezier(0.22,1,0.36,1), color 180ms ease',
                   flexShrink: 0,
                   marginTop: 4,   /* aligns chevron with text cap-height */
                 }}
@@ -937,11 +939,13 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
       </button>
 
       {/* ── Expanded dropdown ─────────────────────────────────────────── */}
-      <div style={{
-        maxHeight: isOpen ? '2400px' : '0px',
-        overflow: 'hidden',
-        transition: isOpen ? 'max-height 0.38s cubic-bezier(0,0,0.2,1)' : 'max-height 0.22s ease-in',
-      }}>
+      <div
+        id={'skill-expand-' + skill.name.replace(/\s+/g, '-').toLowerCase()}
+        role="region"
+        className={isOpen ? 'accordion-body is-open' : 'accordion-body'}
+      >
+        <div className="accordion-content">
+        <div className="accordion-inner">
         <div style={{ padding: '20px 20px 28px', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', gap: 28 }}>
 
           {/* ── What you provide ───────────────────────────────────────── */}
@@ -1020,7 +1024,9 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
           )}
 
         </div>
-      </div>
+        </div>{/* accordion-inner */}
+        </div>{/* accordion-content */}
+      </div>{/* accordion-body */}
     </div>
   )
 }

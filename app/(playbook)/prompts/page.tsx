@@ -707,6 +707,8 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
       >
         {/* Clickable title + chevron */}
         <button
+          aria-expanded={isOpen}
+          aria-controls={'prompt-expand-' + prompt.id}
           onClick={onToggle}
           style={{
             flex: 1, minWidth: 0, display: 'inline-flex', alignItems: 'center',
@@ -723,7 +725,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
           <ChevronDown size={15} style={{
             color: isOpen ? '#C27FFF' : 'rgba(255,255,255,0.3)',
             transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-            transition: 'transform 0.22s ease, color 0.2s ease',
+            transition: 'transform 240ms cubic-bezier(0.22,1,0.36,1), color 180ms ease',
             flexShrink: 0,
           }} />
         </button>
@@ -753,13 +755,13 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
       </button>
 
       {/* ── Expanded: template ────────────────────────────────── */}
-      <div style={{
-        overflow: 'hidden',
-        maxHeight: isOpen ? '3000px' : '0px',
-        transition: isOpen
-          ? 'max-height 0.38s cubic-bezier(0,0,0.2,1)'
-          : 'max-height 0.18s ease-in',
-      }}>
+      <div
+        id={'prompt-expand-' + prompt.id}
+        role="region"
+        className={isOpen ? 'accordion-body is-open' : 'accordion-body'}
+      >
+        <div className="accordion-content">
+        <div className="accordion-inner">
         <div style={{
           borderTop: '1px solid rgba(255,255,255,0.06)',
           padding: '20px 20px 24px',
@@ -786,7 +788,9 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
             </pre>
           </div>
         </div>
-      </div>
+        </div>{/* accordion-inner */}
+        </div>{/* accordion-content */}
+      </div>{/* accordion-body */}
     </div>
   )
 }
