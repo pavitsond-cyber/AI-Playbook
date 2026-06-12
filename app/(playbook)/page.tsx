@@ -171,11 +171,11 @@ export default function LandingPage() {
       ══════════════════════════════════════════════════════════════════ */}
       <div
         className="sm:hidden absolute flex flex-col"
-        style={{ top: 80, left: 30, right: 30, zIndex: 10, gap: 25 }}
+        style={{ top: 120, left: 30, right: 30, zIndex: 10, gap: 25 }}
       >
         {/* Title — slides in from left */}
         <h1 className="animate-slide-right delay-75" style={{
-          fontFamily: "'Halyard Display', Georgia, serif",
+          fontFamily: 'var(--font-display)',
           fontSize: 60, fontWeight: 400, lineHeight: 1,
           letterSpacing: '-0.02em', margin: 0, paddingBottom: '0.06em', color: '#ffffff',
         }}>
@@ -214,7 +214,7 @@ export default function LandingPage() {
         {/* Title + subtitle side by side — slide in from left */}
         <div className="flex flex-row items-center animate-slide-right delay-100" style={{ gap: 'clamp(12px, 2.2vw, 32px)' }}>
           <h1 style={{
-            fontFamily: "'Halyard Display', Georgia, serif",
+            fontFamily: 'var(--font-display)',
             fontSize: 'clamp(44px, 6.25vw, 90px)',
             fontWeight: 400,
             lineHeight: 1.15,

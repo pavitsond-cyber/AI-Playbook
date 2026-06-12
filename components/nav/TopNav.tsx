@@ -28,6 +28,10 @@ export default function TopNav() {
     pathname === href || (href !== '/' && pathname.startsWith(href))
 
   const goBack = () => {
+    if (isHome) {
+      window.location.href = '/'
+      return
+    }
     if (window.history.length > 1) {
       router.back()
       return
@@ -50,20 +54,19 @@ export default function TopNav() {
         className="playbook-page-header"
         data-docked={dockedTitle ? 'true' : 'false'}
         data-menu-open={menuOpen ? 'true' : 'false'}
+        data-home={isHome ? 'true' : 'false'}
       >
         <div className="playbook-page-header__backdrop" aria-hidden />
 
         <div className="playbook-page-header__content">
-          {!isHome && (
-            <button
-              type="button"
-              onClick={goBack}
-              aria-label="Back"
-              className="playbook-header-control playbook-header-control--frost"
-            >
-              <ArrowLeft size={24} strokeWidth={2} aria-hidden />
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={goBack}
+            aria-label={isHome ? 'Back to event site' : 'Back'}
+            className="playbook-header-control playbook-header-control--frost"
+          >
+            <ArrowLeft size={30} strokeWidth={2} aria-hidden />
+          </button>
 
           {!isHome && (
             <span
@@ -89,21 +92,25 @@ export default function TopNav() {
               <Search size={22} strokeWidth={2} aria-hidden />
             </button>
 
-            <span className="playbook-header-actions__divider" aria-hidden />
+            {!isHome && (
+              <>
+                <span className="playbook-header-actions__divider" aria-hidden />
 
-            <button
-              type="button"
-              onClick={() => setMenuOpen(current => !current)}
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={menuOpen}
-              aria-controls="playbook-header-menu"
-              className="playbook-header-action playbook-header-action--menu"
-            >
-              <span className={menuOpen ? 'menu-icon menu-icon--open' : 'menu-icon'}>
-                <Menu className="menu-icon__menu" size={22} strokeWidth={2} aria-hidden />
-                <X className="menu-icon__close" size={22} strokeWidth={2} aria-hidden />
-              </span>
-            </button>
+                <button
+                  type="button"
+                  onClick={() => setMenuOpen(current => !current)}
+                  aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+                  aria-expanded={menuOpen}
+                  aria-controls="playbook-header-menu"
+                  className="playbook-header-action playbook-header-action--menu"
+                >
+                  <span className={menuOpen ? 'menu-icon menu-icon--open' : 'menu-icon'}>
+                    <Menu className="menu-icon__menu" size={22} strokeWidth={2} aria-hidden />
+                    <X className="menu-icon__close" size={22} strokeWidth={2} aria-hidden />
+                  </span>
+                </button>
+              </>
+            )}
           </div>
 
           <nav

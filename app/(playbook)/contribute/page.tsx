@@ -715,7 +715,7 @@ const CONTRIBUTE_CSS = `
   .submit-row {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: stretch;
     gap: 10px;
   }
 
@@ -729,25 +729,26 @@ const CONTRIBUTE_CSS = `
 
   .feedback-submit {
     display: inline-flex;
+    width: 100%;
     min-width: 160px;
     align-items: center;
     justify-content: center;
     gap: 8px;
     padding: 14px 32px;
     border: 0;
-    border-radius: 8px;
-    background: #9b3fff;
-    color: #ffffff;
-    font-family: var(--font-body);
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    border-radius: 9999px;
+    background: #ffffff;
+    color: #0e1439;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
     cursor: pointer;
     transition: background 180ms ease, opacity 180ms ease;
   }
 
   .feedback-submit:hover {
-    background: #7b2fdf;
+    background: rgba(255,255,255,0.9);
   }
 
   .feedback-submit:disabled {

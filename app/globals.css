@@ -45,8 +45,8 @@
 /* ── Design tokens ───────────────────────────────────── */
 :root {
   --playbook-header-top: calc(env(safe-area-inset-top, 0px) + 2rem);
-  --playbook-content-top: calc(env(safe-area-inset-top, 0px) + 7.75rem);
-  --playbook-sticky-offset: calc(env(safe-area-inset-top, 0px) + 6.75rem);
+  --playbook-content-top: calc(env(safe-area-inset-top, 0px) + 8.5rem);
+  --playbook-sticky-offset: calc(env(safe-area-inset-top, 0px) + 7.5rem);
   --bg-base:       #0A0010;
   --bg-dark:       #0D0D0D;
   --bg-light:      #F5F5F3;
@@ -90,7 +90,7 @@ body {
   left: 0;
   right: 0;
   z-index: 100;
-  height: 44px;
+  height: 56px;
   padding-inline:
     max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))
     max(env(safe-area-inset-right, 0px), clamp(20px, 4vw, 48px));
@@ -102,7 +102,7 @@ body {
   display: flex;
   width: 100%;
   max-width: 1060px;
-  height: 44px;
+  height: 56px;
   margin-inline: auto;
   align-items: center;
   gap: 40px;
@@ -129,9 +129,9 @@ body {
 
 .playbook-header-control {
   display: inline-flex;
-  width: 44px;
-  height: 44px;
-  flex: 0 0 44px;
+  width: 56px;
+  height: 56px;
+  flex: 0 0 56px;
   align-items: center;
   justify-content: center;
   padding: 0;
@@ -146,15 +146,16 @@ body {
 .playbook-header-control--frost {
   overflow: hidden;
   background:
-    linear-gradient(155deg, rgba(255,255,255,0.24), rgba(255,255,255,0.11) 55%, rgba(255,255,255,0.16)),
-    rgba(73, 67, 137, 0.62);
-  border: 1px solid rgba(255,255,255,0.28);
-  -webkit-backdrop-filter: blur(22px) saturate(145%);
-  backdrop-filter: blur(22px) saturate(145%);
+    linear-gradient(145deg, rgba(255,255,255,0.13), rgba(255,255,255,0.035) 58%, rgba(255,255,255,0.07)),
+    rgba(48, 49, 102, 0.62);
+  border: 1px solid rgba(255,255,255,0.24);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  backdrop-filter: blur(18px) saturate(125%);
   box-shadow:
-    inset 0 1.5px 0 rgba(255,255,255,0.58),
-    inset 0 0 0 1px rgba(255,255,255,0.12),
-    0 8px 20px -10px rgba(0,0,0,0.6);
+    inset 0 1px 0 rgba(255,255,255,0.38),
+    inset 0 0 0 2px rgba(255,255,255,0.07),
+    0 3px 0 rgba(7,8,32,0.3),
+    0 10px 24px -14px rgba(0,0,0,0.7);
   transition:
     background 220ms ease,
     box-shadow 220ms ease,
@@ -163,15 +164,15 @@ body {
 
 .playbook-header-control--frost:hover {
   background:
-    linear-gradient(155deg, rgba(255,255,255,0.3), rgba(255,255,255,0.14) 55%, rgba(255,255,255,0.2)),
-    rgba(79, 72, 148, 0.72);
+    linear-gradient(145deg, rgba(255,255,255,0.17), rgba(255,255,255,0.055) 58%, rgba(255,255,255,0.09)),
+    rgba(55, 56, 116, 0.7);
 }
 
 .playbook-header-control--frost:active {
   transform: scale(0.92);
   background:
-    linear-gradient(155deg, rgba(255,255,255,0.34), rgba(255,255,255,0.17) 55%, rgba(255,255,255,0.22)),
-    rgba(84, 76, 156, 0.78);
+    linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0.075) 58%, rgba(255,255,255,0.11)),
+    rgba(62, 63, 126, 0.76);
 }
 
 .playbook-header-control:focus-visible {
@@ -195,6 +196,16 @@ body {
     opacity 300ms ease,
     transform 300ms ease;
   pointer-events: none;
+}
+
+.playbook-page-header[data-home='true'] .playbook-header-actions {
+  width: 48px;
+  flex-basis: 48px;
+}
+
+.playbook-page-header[data-home='true'] .playbook-header-action {
+  width: 46px;
+  flex-basis: 46px;
 }
 
 .playbook-page-header[data-docked='true'] .playbook-page-header__title {
