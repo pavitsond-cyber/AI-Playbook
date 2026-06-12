@@ -26,7 +26,13 @@ export default function TopNav() {
   const isActive = (href: string) =>
     pathname === href || (href !== '/' && pathname.startsWith(href))
 
-  const goBack = () => router.push('/')
+  const goBack = () => {
+    if (isHome) {
+      window.location.href = '/'
+      return
+    }
+    router.push('/')
+  }
 
   return (
     <>
@@ -51,7 +57,7 @@ export default function TopNav() {
           <button
             type="button"
             onClick={goBack}
-            aria-label="Back to AI Playbook"
+            aria-label={isHome ? 'Back to events landing page' : 'Back to AI Playbook'}
             className="playbook-header-control playbook-header-control--frost"
           >
             <ArrowLeft size={24} strokeWidth={2} aria-hidden />

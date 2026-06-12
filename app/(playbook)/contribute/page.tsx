@@ -419,7 +419,7 @@ const CONTRIBUTE_CSS = `
     margin: 0 0 12px;
     color: #ffffff;
     font-family: var(--font-display);
-    font-size: clamp(60px, 6.25vw, 90px);
+    font-size: 38px;
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.02em;

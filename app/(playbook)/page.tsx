@@ -176,7 +176,7 @@ export default function LandingPage() {
         {/* Title — slides in from left */}
         <h1 className="animate-slide-right delay-75" style={{
           fontFamily: 'var(--font-display)',
-          fontSize: 60, fontWeight: 400, lineHeight: 1,
+          fontSize: 38, fontWeight: 400, lineHeight: 1,
           letterSpacing: '-0.02em', margin: 0, paddingBottom: '0.06em', color: '#ffffff',
         }}>
           AI Playbook
@@ -215,7 +215,7 @@ export default function LandingPage() {
         <div className="flex flex-row items-center animate-slide-right delay-100" style={{ gap: 'clamp(12px, 2.2vw, 32px)' }}>
           <h1 style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(44px, 6.25vw, 90px)',
+            fontSize: 38,
             fontWeight: 400,
             lineHeight: 1.15,
             letterSpacing: '-0.02em',

@@ -28,7 +28,7 @@ export default function PageHeader({ title, description, badge }: PageHeaderProp
       )}
       <h1 style={{
         fontFamily: 'var(--font-display)',
-        fontSize: 'clamp(60px,6.25vw,90px)',
+        fontSize: 38,
         fontWeight: 400,
         lineHeight: 1,
         letterSpacing: '-0.02em',
