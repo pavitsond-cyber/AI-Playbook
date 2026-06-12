@@ -166,12 +166,12 @@ export default function LandingPage() {
 
       {/* ══════════════════════════════════════════════════════════════════
           MOBILE LAYOUT  — Figma node 110:1842
-          Content: left:30px, top:80px (just below TopNav 64px)
+          Content: 20px mobile gutter, below the shared page header
           Title: 60px stacked, cards: 2×2 grid, gap: 7.6px
       ══════════════════════════════════════════════════════════════════ */}
       <div
         className="sm:hidden absolute flex flex-col"
-        style={{ top: 120, left: 30, right: 30, zIndex: 10, gap: 25 }}
+        style={{ top: 120, left: 20, right: 20, zIndex: 10, gap: 25 }}
       >
         {/* Title — slides in from left */}
         <h1 className="animate-slide-right delay-75" style={{

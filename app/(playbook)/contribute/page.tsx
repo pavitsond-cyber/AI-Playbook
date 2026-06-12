@@ -845,5 +845,10 @@ const CONTRIBUTE_CSS = `
       width: 100%;
       min-width: 0;
     }
+
+    .contribute-success-shell {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
   }
 `

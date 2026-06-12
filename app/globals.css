@@ -361,7 +361,7 @@ body {
   right: 0;
   z-index: 2;
   display: flex;
-  width: min(280px, calc(100vw - 48px));
+  width: min(280px, calc(100vw - 40px));
   padding: 8px;
   flex-direction: column;
   gap: 2px;
@@ -447,12 +447,12 @@ body {
 @media (max-width: 639px) {
   .playbook-page-header {
     padding-inline:
-      max(env(safe-area-inset-left, 0px), 40px)
-      max(env(safe-area-inset-right, 0px), 40px);
+      max(env(safe-area-inset-left, 0px), 20px)
+      max(env(safe-area-inset-right, 0px), 20px);
   }
 
   .playbook-page-header__content {
-    gap: 40px;
+    gap: 16px;
   }
 
   .playbook-page-header__title {
