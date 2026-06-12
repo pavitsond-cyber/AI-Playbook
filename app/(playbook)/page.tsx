@@ -171,7 +171,7 @@ export default function LandingPage() {
       ══════════════════════════════════════════════════════════════════ */}
       <div
         className="sm:hidden absolute flex flex-col"
-        style={{ top: 120, left: 20, right: 20, zIndex: 10, gap: 25 }}
+        style={{ top: 108, left: 20, right: 20, zIndex: 10, gap: 25 }}
       >
         {/* Title — slides in from left */}
         <h1 className="animate-slide-right delay-75" style={{
