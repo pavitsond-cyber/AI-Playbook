@@ -1,14 +1,5 @@
 @import "tailwindcss";
 
-/* ── Halyard Display (local) ─────────────────────────── */
-@font-face {
-  font-family: 'Halyard Display';
-  src: url('../public/fonts/HalyardDisplay-Regular.otf') format('opentype');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ── Halyard Text (Adobe Typekit) — 300/400/500/600 ──── */
 @font-face {
   font-family: 'halyard-text';
@@ -70,7 +61,7 @@
   --border-subtle: rgba(255,255,255,0.06);
   --border-mid:    rgba(255,255,255,0.12);
   --card-bg:       rgba(255,255,255,0.04);
-  --font-display:  'Halyard Display', Georgia, serif;
+  --font-display:  var(--font-halyard), Georgia, serif;
   --font-body:     'halyard-text', var(--font-dm-sans, 'DM Sans'), system-ui, sans-serif;
 }
 
