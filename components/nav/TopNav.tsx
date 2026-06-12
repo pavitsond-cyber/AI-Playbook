@@ -23,6 +23,7 @@ export default function TopNav() {
   const [searchOpen, setSearchOpen] = useState(false)
   const { dockedTitle } = usePageChrome()
   const isHome = pathname === '/'
+  const showSearch = pathname !== '/contribute'
   const isActive = (href: string) =>
     pathname === href || (href !== '/' && pathname.startsWith(href))
 
@@ -75,21 +76,23 @@ export default function TopNav() {
           <div className="playbook-header-actions">
             <span className="playbook-glass-shine" aria-hidden />
 
-            <button
-              type="button"
-              onClick={() => {
-                setMenuOpen(false)
-                setSearchOpen(true)
-              }}
-              aria-label="Search"
-              className="playbook-header-action"
-            >
-              <Search size={20} strokeWidth={2} aria-hidden />
-            </button>
+            {showSearch && (
+              <button
+                type="button"
+                onClick={() => {
+                  setMenuOpen(false)
+                  setSearchOpen(true)
+                }}
+                aria-label="Search"
+                className="playbook-header-action"
+              >
+                <Search size={20} strokeWidth={2} aria-hidden />
+              </button>
+            )}
 
             {!isHome && (
               <>
-                <span className="playbook-header-actions__divider" aria-hidden />
+                {showSearch && <span className="playbook-header-actions__divider" aria-hidden />}
 
                 <button
                   type="button"
@@ -130,7 +133,7 @@ export default function TopNav() {
         </div>
       </header>
 
-      <MobileSearchSheet open={searchOpen} onClose={() => setSearchOpen(false)} />
+      {showSearch && <MobileSearchSheet open={searchOpen} onClose={() => setSearchOpen(false)} />}
     </>
   )
 }

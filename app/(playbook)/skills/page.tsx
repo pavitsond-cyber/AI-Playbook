@@ -1095,7 +1095,7 @@ export default function SkillsPage() {
       {/* ── Tab bar — sticks directly below the frosted navigation ── */}
       <StickyTabs style={{ marginTop: 8 }}>
         <div className="playbook-sticky-tabs__track" style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
-          <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 20 }}>
+          <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 24 }}>
             {TABS.map(tab => {
               const isActive = activeTab === tab
               return (

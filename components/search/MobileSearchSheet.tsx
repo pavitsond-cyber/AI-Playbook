@@ -120,9 +120,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
         paddingTop: 'max(12px, env(safe-area-inset-top))',
         borderBottom: '1px solid rgba(255,255,255,0.06)',
         flexShrink: 0,
-        background: 'rgba(10,0,16,0.95)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
+        background: 'transparent',
         }}>
         {/* Search input */}
         <div style={{
@@ -131,10 +129,12 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
           alignItems: 'center',
           gap: 10,
           padding: '10px 14px',
-          background: 'rgba(255,255,255,0.05)',
-          border: '1px solid rgba(155,63,255,0.35)',
-          borderRadius: 12,
-          boxShadow: '0 0 0 3px rgba(155,63,255,0.07)',
+          background: 'rgba(255,255,255,0.07)',
+          border: '1px solid rgba(255,255,255,0.16)',
+          borderRadius: 18,
+          backdropFilter: 'blur(24px) saturate(150%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(150%)',
+          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.18)',
         }}>
           <Search size={15} style={{ color: '#C27FFF', flexShrink: 0 }} />
           <input
