@@ -268,8 +268,12 @@ function AbbreviationCard({ item, groupColor, isLast }: CardProps) {
         onClick={() => setExpanded(p => !p)}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="w-full text-left px-4 py-3.5 flex items-center gap-3 transition-colors duration-100"
-        style={{ background: hovered && !expanded ? 'rgba(155,63,255,0.05)' : expanded ? 'rgba(155,63,255,0.07)' : 'transparent' }}
+        className="w-full text-left px-4 flex items-center gap-3 transition-colors duration-100"
+        style={{
+          paddingTop: 14,
+          paddingBottom: expanded ? 6 : 14,
+          background: hovered && !expanded ? 'rgba(155,63,255,0.05)' : expanded ? 'rgba(155,63,255,0.07)' : 'transparent',
+        }}
       >
         <span
           className="shrink-0 px-2 py-0.5 rounded-md text-xs font-bold font-mono text-center"

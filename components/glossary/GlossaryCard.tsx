@@ -90,15 +90,17 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
       >
         <button
           onClick={toggle}
-          className="w-full text-left px-5 py-5 flex items-start gap-4"
+          className="w-full text-left px-5 flex items-start gap-4"
           style={{
+            paddingTop: 20,
+            paddingBottom: expanded ? 8 : 20,
             background: hovered && !expanded ? 'rgba(155,63,255,0.03)' : 'transparent',
             transition: 'background 0.18s ease',
           }}
         >
           {/* Abbreviation tag first, then full name */}
           <div className="flex-1 min-w-0 text-left">
-            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline" style={{ gap: '6px 10px', marginBottom: 8 }}>
+            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline" style={{ gap: '6px 10px', marginBottom: expanded ? 0 : 8 }}>
               {/* Abbreviation badge — comes first */}
               <span
                 style={{
@@ -160,7 +162,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
             transition: expanded ? 'max-height 0.32s cubic-bezier(0.4,0,0.2,1)' : 'max-height 0.22s ease-in',
           }}
         >
-          <div className="px-4 pb-4 space-y-3" style={{ paddingTop: '2px' }}>
+          <div className="px-5 pb-5 pt-1 space-y-3">
             <p
               className="text-sm leading-relaxed"
               style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.6)' }}

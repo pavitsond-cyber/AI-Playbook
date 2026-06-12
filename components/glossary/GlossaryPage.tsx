@@ -144,7 +144,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
 
         {/* Sticky tabs — sits directly below the frosted navigation */}
         <StickyTabs>
-          <div className="playbook-sticky-tabs__track" style={{ display: "flex", padding: "8px clamp(20px,4vw,48px) 0" }}>
+          <div className="playbook-sticky-tabs__track" style={{ display: "flex", gap: 20, padding: "8px clamp(20px,4vw,48px) 0" }}>
             {TABS.map(tab => {
               const isActive = activeTab === tab.id
               const count = tabTerms[tab.id].length
@@ -152,7 +152,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className="relative flex items-center gap-2 px-1 pb-5 pt-2 mr-6 text-sm font-medium transition-all duration-200 focus-visible:outline-none"
+                  className="relative flex items-center gap-2 px-1 pb-5 pt-2 text-sm font-medium transition-all duration-200 focus-visible:outline-none"
                 >
                   <span className="transition-colors duration-200" style={{ color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)' }}>
                     {tab.label}
