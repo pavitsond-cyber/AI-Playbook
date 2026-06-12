@@ -59,18 +59,19 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
   const hasQ = q.trim().length >= 2
 
   // Mount → animate in
+  // setTimeout(60) is more reliable than double-rAF on low-end devices
   useEffect(() => {
     if (open) {
       setVisible(true)
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() => {
-          setAnimate(true)
-          setTimeout(() => inputRef.current?.focus(), 20)
-        })
-      )
+      const raf = requestAnimationFrame(() => {
+        setAnimate(true)
+        // Delay focus slightly so the sheet animation starts first
+        setTimeout(() => inputRef.current?.focus(), 80)
+      })
+      return () => cancelAnimationFrame(raf)
     } else {
       setAnimate(false)
-      const t = setTimeout(() => setVisible(false), 300)
+      const t = setTimeout(() => setVisible(false), 320)
       return () => clearTimeout(t)
     }
   }, [open])
@@ -122,24 +123,25 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
           flexShrink: 0,
           background: 'transparent',
         }}>
-          {/* Search input */}
+          {/* Search input — styled to match .playbook-header-actions glass pill */}
           <div style={{
             flex: 1,
             display: 'flex',
             alignItems: 'center',
             gap: 10,
-            padding: '11px 14px',
-            background: 'rgba(255,255,255,0.08)',
-            border: '1px solid rgba(255,255,255,0.14)',
-            borderRadius: 20,
-            backdropFilter: 'blur(24px) saturate(150%)',
-            WebkitBackdropFilter: 'blur(24px) saturate(150%)',
-            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.16)',
+            height: 44,
+            padding: '0 14px',
+            background: 'rgba(255,255,255,0.12)',
+            border: '1px solid rgba(255,255,255,0.18)',
+            borderRadius: 9999,
+            backdropFilter: 'blur(28px) saturate(160%)',
+            WebkitBackdropFilter: 'blur(28px) saturate(160%)',
+            boxShadow: '0 3px 10px -8px rgba(0,0,0,0.3)',
+            overflow: 'hidden',
           }}>
-            <Search size={15} style={{ color: '#C27FFF', flexShrink: 0 }} />
+            <Search size={16} style={{ color: 'rgba(255,255,255,0.5)', flexShrink: 0 }} />
             <input
               ref={inputRef}
-              autoFocus
               type="text"
               inputMode="search"
               enterKeyHint="search"
@@ -158,19 +160,20 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
                 fontSize: 15,
                 color: 'rgba(255,255,255,0.9)',
                 fontFamily: 'var(--font-body)',
+                minWidth: 0,
               }}
             />
             {q && (
               <button
                 onClick={() => { setQ(''); inputRef.current?.focus() }}
                 style={{
-                  width: 20, height: 20, borderRadius: 6,
-                  background: 'none',
+                  width: 24, height: 24, borderRadius: '50%',
+                  background: 'rgba(255,255,255,0.12)',
                   border: 'none', display: 'flex', alignItems: 'center',
                   justifyContent: 'center', cursor: 'pointer', flexShrink: 0,
                 }}
               >
-                <X size={11} color="rgba(255,255,255,0.5)" />
+                <X size={12} color="rgba(255,255,255,0.6)" />
               </button>
             )}
           </div>
@@ -188,15 +191,16 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
         </div>
 
         {/* ── Results ─────────────────────────────────────────── */}
-        {/* Always scrollable so the iOS keyboard never traps content */}
+        {/* overflow-y: scroll (not auto) ensures momentum scroll on iOS even with keyboard open */}
         <div style={{
           flex: 1,
           minHeight: 0,
-          overflowY: 'auto',
+          overflowY: 'scroll',
           overflowX: 'hidden',
           scrollbarWidth: 'none',
           overscrollBehavior: 'contain',
           WebkitOverflowScrolling: 'touch',
+          touchAction: 'pan-y',
         } as React.CSSProperties}>
 
           {/* Empty state */}
