@@ -41,14 +41,14 @@ export default function TopNav() {
 
   return (
     <>
-      {menuOpen && (
-        <button
-          type="button"
-          aria-label="Close navigation"
-          className="playbook-menu-scrim"
-          onClick={() => setMenuOpen(false)}
-        />
-      )}
+      <button
+        type="button"
+        aria-label="Close navigation"
+        aria-hidden={!menuOpen}
+        tabIndex={menuOpen ? 0 : -1}
+        className={menuOpen ? 'playbook-menu-scrim is-open' : 'playbook-menu-scrim'}
+        onClick={() => setMenuOpen(false)}
+      />
 
       <header
         className="playbook-page-header"
