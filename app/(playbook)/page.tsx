@@ -196,7 +196,7 @@ export default function LandingPage() {
           fontSize: 16, fontWeight: 400, lineHeight: 1.5,
           letterSpacing: '-0.02em', margin: 0, color: '#ffffff',
         }}>
-          Headout team&apos;s repository for everything in design and beyond
+          Prompts, tools, skills, and field notes from how we use AI to think sharper, design faster, and ship with fewer blank pages.
         </p>
 
         {/* 2×2 card grid — each card pops in with stagger */}
@@ -253,7 +253,7 @@ export default function LandingPage() {
             
             
           }}>
-            Headout team&apos;s repository for everything in design and beyond
+            Prompts, tools, skills, and field notes from how we use AI to think sharper, design faster, and ship with fewer blank pages.
           </p>
         </div>
 

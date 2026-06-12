@@ -50,7 +50,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
   const router = useRouter()
   const [q, setQ] = useState('')
   const [visible, setVisible] = useState(false)
-  const [animate, setAnimate] = useState(false)
+  const [closing, setClosing] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const grouped = useMemo(() => searchAll(q), [q])
@@ -58,20 +58,20 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
   const total = flat.length
   const hasQ = q.trim().length >= 2
 
-  // Mount → animate in
-  // setTimeout(60) is more reliable than double-rAF on low-end devices
+  // CSS @keyframes handle the animation automatically on mount/unmount.
+  // No two-phase render needed — avoids React batching the state updates together.
   useEffect(() => {
     if (open) {
+      setClosing(false)
       setVisible(true)
-      const raf = requestAnimationFrame(() => {
-        setAnimate(true)
-        // Delay focus slightly so the sheet animation starts first
-        setTimeout(() => inputRef.current?.focus(), 80)
-      })
-      return () => cancelAnimationFrame(raf)
-    } else {
-      setAnimate(false)
-      const t = setTimeout(() => setVisible(false), 320)
+      const t = setTimeout(() => inputRef.current?.focus(), 100)
+      return () => clearTimeout(t)
+    } else if (visible) {
+      setClosing(true) // data-closing='true' → triggers out animation
+      const t = setTimeout(() => {
+        setVisible(false)
+        setClosing(false)
+      }, 280)
       return () => clearTimeout(t)
     }
   }, [open])
@@ -86,15 +86,15 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
     return () => window.removeEventListener('keydown', h)
   }, [onClose])
 
-  // Lock body scroll — only overflow:hidden, NOT position:fixed (fixes iOS keyboard scroll)
+  // Lock body scroll while visible (release immediately on close — sheet animates out on its own)
   useEffect(() => {
-    if (open) {
+    if (visible) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
     }
     return () => { document.body.style.overflow = '' }
-  }, [open])
+  }, [visible])
 
   const go = useCallback((href: string) => {
     router.push(href)
@@ -106,7 +106,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
   return (
     <div
       className="playbook-search-overlay"
-      data-open={animate ? 'true' : 'false'}
+      data-closing={closing ? 'true' : 'false'}
       onMouseDown={event => {
         if (event.target === event.currentTarget) onClose()
       }}

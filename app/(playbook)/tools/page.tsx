@@ -229,7 +229,7 @@ function ToolCard({ tool }: { tool: Tool }) {
   if (tool.href) {
     return (
       <a href={tool.href} target="_blank" rel="noopener noreferrer"
-        style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', flex: 1 }}>
+        style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
         {cardInner}
       </a>
     )
@@ -347,7 +347,7 @@ export default function ToolsPage() {
                 key={tool.name}
                 id={toolSlug(tool.name)}
                 className="animate-fade-up"
-                style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, display: 'flex', flexDirection: 'column' }}
+                style={{ animationDelay: `${Math.min(i * 30, 300)}ms` }}
               >
                 <ToolCard tool={tool} />
               </div>
