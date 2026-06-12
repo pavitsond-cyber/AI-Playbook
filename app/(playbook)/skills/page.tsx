@@ -790,16 +790,18 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
   const [downloading, setDownloading] = useState(false)
   const rowRef = useRef<HTMLDivElement>(null)
 
-  // Scroll the opened card into view so it's always fully visible
+  // Scroll so card top is below nav (120px). Wait 320ms so any closing card above
+  // finishes its 280ms animation before we measure position.
   useEffect(() => {
-    if (isOpen && rowRef.current) {
-      setTimeout(() => {
-        const el = rowRef.current
-        if (!el) return
-        const top = el.getBoundingClientRect().top + window.scrollY
-        window.scrollTo({ top: Math.max(0, top - 120), behavior: 'smooth' })
-      }, 80)
-    }
+    if (!isOpen || !rowRef.current) return
+    setTimeout(() => {
+      const el = rowRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      if (rect.top < 120) {
+        window.scrollTo({ top: Math.max(0, rect.top + window.scrollY - 120), behavior: 'smooth' })
+      }
+    }, 320)
   }, [isOpen])
 
   const handleDownload = async (e: React.MouseEvent) => {

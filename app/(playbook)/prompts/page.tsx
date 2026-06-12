@@ -677,14 +677,15 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
 }) {
   const rowRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    if (isOpen && rowRef.current) {
-      setTimeout(() => {
-        const el = rowRef.current
-        if (!el) return
-        const top = el.getBoundingClientRect().top + window.scrollY
-        window.scrollTo({ top: Math.max(0, top - 120), behavior: 'smooth' })
-      }, 80)
-    }
+    if (!isOpen || !rowRef.current) return
+    setTimeout(() => {
+      const el = rowRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      if (rect.top < 120) {
+        window.scrollTo({ top: Math.max(0, rect.top + window.scrollY - 120), behavior: 'smooth' })
+      }
+    }, 320)
   }, [isOpen])
 
   return (

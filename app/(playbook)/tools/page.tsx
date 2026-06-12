@@ -33,21 +33,21 @@ interface ToolGroup {
 }
 
 /* ── 5 tabs: All + 4 consolidated categories ─────────────────────────────── */
-const TABS = ['All', 'Capture', 'Design', 'Automate', 'Audio Visuals', 'MCP']
+const TABS = ['All', 'Productivity', 'Design', 'Automate', 'Audio Visuals', 'MCP']
 
 /* ── Tool groups — each tagged with one of the 4 content tabs ────────────── */
 const groups: ToolGroup[] = [
   {
-    theme: 'Capture, Notes & Prompting', tab: 'Capture', color: '#9B59FF',
+    theme: 'Productivity, Notes & Prompting', tab: 'Productivity', color: '#9B59FF',
     tools: [
-      { name: 'Granola',    initial: 'G',  logoDomain: 'granola.ai',            accentColor: '#F59E0B', use: 'Capture design reviews, PM calls, research calls, decisions, and action items.',       href: 'https://granola.ai' },
+      { name: 'Granola',    initial: 'G',  logoDomain: 'granola.ai',            accentColor: '#F59E0B', use: 'Productivity design reviews, PM calls, research calls, decisions, and action items.',       href: 'https://granola.ai' },
       { name: 'NotebookLM', initial: 'NB', logoDomain: 'notebooklm.google.com', accentColor: '#4285F4', use: 'Upload docs, PRDs, research notes, and transcripts to ask grounded questions.',        href: 'https://notebooklm.google.com' },
       { name: 'Notion AI',  initial: 'N',  logoDomain: 'notion.so',             accentColor: '#FFFFFF', use: 'Clean rough notes, summarize meetings, create decision logs, and organize playbooks.', href: 'https://notion.so' },
       { name: 'Raycast AI', initial: 'R',  logoDomain: 'raycast.com',           accentColor: '#F97316', use: 'Rewrite selected text, summarize snippets, and trigger quick AI actions.',             href: 'https://raycast.com' },
     ],
   },
   {
-    theme: 'Whiteboarding, Flows & Thinking', tab: 'Capture', color: '#4FC3F7',
+    theme: 'Whiteboarding, Flows & Thinking', tab: 'Productivity', color: '#4FC3F7',
     tools: [
       { name: 'Excalidraw', initial: 'Ex', logoDomain: 'excalidraw.com',   accentColor: '#7C3AED', use: 'Create rough flows, product logic diagrams, workshop sketches, and wireframes.',        href: 'https://excalidraw.com' },
       { name: 'Mermaid',    initial: 'Mm', logoDomain: 'mermaidchart.com', localLogo: `${BP}/images/tools/mermaid.png`, accentColor: '#10B981', use: 'Turn written flows into diagrams using simple text syntax.',                            href: 'https://mermaid.js.org' },
@@ -55,7 +55,7 @@ const groups: ToolGroup[] = [
     ],
   },
   {
-    theme: 'Research & References', tab: 'Capture', color: '#00CCA8',
+    theme: 'Research & References', tab: 'Productivity', color: '#00CCA8',
     tools: [
       { name: 'Mobbin', initial: 'Mo', logoDomain: 'mobbin.com',    accentColor: '#3B82F6', use: 'Find real product flows like checkout, onboarding, cancellation, settings, and empty states.', href: 'https://mobbin.com' },
       { name: 'Refero',  initial: 'Rf', logoDomain: 'refero.design', accentColor: '#818CF8', use: 'Search web and mobile interface references for visual and interaction patterns.',             href: 'https://refero.design' },

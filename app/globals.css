@@ -910,7 +910,7 @@ a, button, [role="button"] {
 
 /* Every page root: animation + flex:1 so footer is always at viewport bottom */
 main > * {
-  animation: page-enter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: page-enter 0.28s cubic-bezier(0.16,1,0.3,1) both;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -950,7 +950,7 @@ mark { background: rgba(155,63,255,0.2) !important; color: #C27FFF !important; b
 
 /* Every page root remounts on navigation — this triggers the rise animation */
 main > * {
-  animation: page-enter 0.42s cubic-bezier(0.16,1,0.3,1) both;
+  animation: page-enter 0.28s cubic-bezier(0.16,1,0.3,1) both;
 }
 
 /* Landing page: dark bg on desktop, transparent on mobile (MobileBg provides it) */
