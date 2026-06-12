@@ -33,10 +33,10 @@ export default function TopNav() {
         /* Homepage: transparent (video visible through nav).
            Other pages: frosted glass. Hamburger open: always solid. */
         background: mobileOpen
-          ? 'rgba(10,0,16,0.97)'
+          ? 'rgba(28,6,52,0.82)'
           : 'rgba(10,0,16,0.45)',
-        backdropFilter: mobileOpen ? 'blur(24px)' : 'blur(28px) saturate(180%)',
-        WebkitBackdropFilter: mobileOpen ? 'blur(24px)' : 'blur(28px) saturate(180%)',
+        backdropFilter: mobileOpen ? 'blur(28px) saturate(160%)' : 'blur(28px) saturate(180%)',
+        WebkitBackdropFilter: mobileOpen ? 'blur(28px) saturate(160%)' : 'blur(28px) saturate(180%)',
         borderBottom: mobileOpen
           ? '1px solid rgba(255,255,255,0.08)'
           : '1px solid rgba(255,255,255,0.06)',
@@ -136,8 +136,10 @@ export default function TopNav() {
         }}
       >
         <div style={{
-          background: '#08000F',
-          borderBottom: '1px solid rgba(255,255,255,0.08)',
+          background: 'rgba(40,8,72,0.72)',
+          backdropFilter: 'blur(28px) saturate(160%)',
+          WebkitBackdropFilter: 'blur(28px) saturate(160%)',
+          borderBottom: '1px solid rgba(155,63,255,0.12)',
         }}
         >
         <div style={{ padding: '12px 20px 16px' }}>

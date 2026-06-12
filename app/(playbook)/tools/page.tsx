@@ -145,7 +145,7 @@ function ToolCard({ tool }: { tool: Tool }) {
       onMouseLeave={() => setHovered(false)}
       style={{
         position: 'relative',
-        background: `linear-gradient(180deg, ${tool.accentColor}20 0%, rgba(8,0,18,0.94) 52%)`,
+        background: `linear-gradient(180deg, ${tool.accentColor}28 0%, rgba(8,0,18,0.46) 52%)`,
         border: `1px solid ${hovered ? tool.accentColor + '40' : 'rgba(255,255,255,0.07)'}`,
         borderRadius: 14,
         overflow: 'hidden',

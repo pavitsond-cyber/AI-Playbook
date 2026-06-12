@@ -22,14 +22,7 @@ const TYPE_CFG: Record<SearchItemType, {
   tool:         { label: 'Tools',           color: '#E8C840', bg: 'rgba(232,200,64,0.07)', border: 'rgba(232,200,64,0.15)', icon: Lightbulb },
 }
 
-const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt', 'tool']
-
-const QUICK = [
-  { label: 'PROMPTS',  href: '/prompts',  color: '#9B3FFF', bg: 'rgba(155,63,255,0.1)',  border: 'rgba(155,63,255,0.2)'  },
-  { label: 'SKILLS',   href: '/skills',   color: '#FF69DB', bg: 'rgba(255,105,219,0.1)', border: 'rgba(255,105,219,0.2)' },
-  { label: 'GLOSSARY', href: '/glossary', color: '#00CCA8', bg: 'rgba(0,204,168,0.1)',   border: 'rgba(0,204,168,0.2)'   },
-  { label: 'TOOLS',    href: '/tools',    color: '#E8C840', bg: 'rgba(232,200,64,0.1)',  border: 'rgba(232,200,64,0.2)'  },
-]
+const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt', 'tool', 'principle']
 
 function Hi({ text, q }: { text: string; q: string }) {
   if (!q || !text) return <>{text}</>
@@ -93,22 +86,14 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
     return () => window.removeEventListener('keydown', h)
   }, [onClose])
 
-  // Lock body scroll
+  // Lock body scroll — only overflow:hidden, NOT position:fixed (fixes iOS keyboard scroll)
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden'
-      document.body.style.position = 'fixed'
-      document.body.style.width = '100%'
     } else {
       document.body.style.overflow = ''
-      document.body.style.position = ''
-      document.body.style.width = ''
     }
-    return () => {
-      document.body.style.overflow = ''
-      document.body.style.position = ''
-      document.body.style.width = ''
-    }
+    return () => { document.body.style.overflow = '' }
   }, [open])
 
   const go = useCallback((href: string) => {
@@ -122,7 +107,10 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
     <div
       style={{
         position: 'fixed',
-        inset: 0,
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '100dvh',           /* shrinks when iOS keyboard opens */
         zIndex: 999,
         background: '#0A0010',
         willChange: 'transform',
@@ -221,45 +209,26 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
       </div>
 
       {/* ── Results ─────────────────────────────────────────── */}
-      {/* Scroll only when results are present; locked in empty state */}
+      {/* Always scrollable so the iOS keyboard never traps content */}
       <div style={{
         flex: 1,
         minHeight: 0,
-        overflowY: hasQ ? 'auto' : 'hidden',
+        overflowY: 'auto',
         overflowX: 'hidden',
         scrollbarWidth: 'none',
         overscrollBehavior: 'contain',
         WebkitOverflowScrolling: 'touch',
       } as React.CSSProperties}>
 
-        {/* Quick nav */}
+        {/* Empty state */}
         {!hasQ && (
-          <div style={{ padding: '24px 16px' }}>
+          <div style={{ padding: '48px 16px', textAlign: 'center' }}>
             <p style={{
               fontFamily: 'var(--font-body)',
-              fontSize: 12, fontWeight: 700,
-              textTransform: 'uppercase', letterSpacing: '0.08em',
-              color: 'rgba(255,255,255,0.3)', marginBottom: 14,
+              fontSize: 14, color: 'rgba(255,255,255,0.3)', lineHeight: 1.6,
             }}>
-              Quick navigate
+              Start typing to search skills, prompts, tools, terms…
             </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 9 }}>
-              {QUICK.map(link => (
-                <button
-                  key={link.href}
-                  onClick={() => go(link.href)}
-                  style={{
-                    padding: '9px 16px', borderRadius: 100,
-                    background: link.bg, border: `1px solid ${link.border}`,
-                    color: link.color, fontSize: 12, fontWeight: 700,
-                    letterSpacing: '0.08em',
-                    fontFamily: 'var(--font-body)', cursor: 'pointer',
-                  }}
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
           </div>
         )}
 
