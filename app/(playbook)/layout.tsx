@@ -7,10 +7,13 @@ import BlobLayer from '@/components/ui/BlobLayer'
 import MobileBg from '@/components/ui/MobileBg'
 import SiteFooter from '@/components/glossary/SiteFooter'
 import { PageChromeProvider } from '@/components/nav/PageChromeContext'
+import { useKeyboardAwareScroll } from '@/hooks/useKeyboardAwareScroll'
 
 export default function PlaybookLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const isHome = pathname === '/'
+
+  useKeyboardAwareScroll()
 
   /* Tag <html> for Safari-specific glass overrides */
   useEffect(() => {
