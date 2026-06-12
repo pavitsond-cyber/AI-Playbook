@@ -570,16 +570,16 @@ const CONTRIBUTE_CSS = `
     gap: 2px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 20px;
+    border-radius: 8px;
     background:
-      linear-gradient(155deg, rgba(255,255,255,0.17), rgba(255,255,255,0.055) 42%, rgba(255,255,255,0.09)),
-      rgba(21,5,40,0.66);
+      linear-gradient(155deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 42%, rgba(255,255,255,0.04)),
+      rgba(14,10,30,0.95);
     -webkit-backdrop-filter: blur(30px) saturate(165%);
     backdrop-filter: blur(30px) saturate(165%);
     box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.2),
+      inset 0 1px 0 rgba(255,255,255,0.1),
       0 24px 60px -20px rgba(0,0,0,0.75);
-    clip-path: inset(0 0 100% 0 round 20px);
+    clip-path: inset(0 0 100% 0 round 8px);
     opacity: 0.7;
     transform: translateY(-6px);
     transform-origin: top center;
@@ -593,7 +593,7 @@ const CONTRIBUTE_CSS = `
   }
 
   .category-options.is-open {
-    clip-path: inset(0 0 0 0 round 20px);
+    clip-path: inset(0 0 0 0 round 8px);
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
@@ -613,7 +613,7 @@ const CONTRIBUTE_CSS = `
     min-height: 44px;
     padding: 10px 14px;
     border: 0;
-    border-radius: 14px;
+    border-radius: 4px;
     background: transparent;
     color: rgba(255,255,255,0.65);
     font-family: var(--font-body);
