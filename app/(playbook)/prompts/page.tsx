@@ -818,7 +818,7 @@ export default function PromptsPage() {
   const [tabsBlurred, setTabsBlurred] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setTabsBlurred(window.scrollY > 10)
+    const onScroll = () => setTabsBlurred(window.scrollY > 96)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -874,11 +874,9 @@ export default function PromptsPage() {
       {/* ── Sticky tabs bar ────────────────────────────────────────────── */}
       <div style={{
         position: 'sticky', top: 'var(--playbook-sticky-offset)', zIndex: 20,
-        background: tabsBlurred ? 'rgba(10,0,16,0.38)' : 'rgba(10,0,16,0)',
-        backdropFilter: tabsBlurred ? 'blur(20px)' : 'blur(0px)',
-        WebkitBackdropFilter: tabsBlurred ? 'blur(20px)' : 'blur(0px)',
-        borderBottom: tabsBlurred ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(255,255,255,0)',
-        transition: 'background 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease, border-color 0.3s ease',
+        background: tabsBlurred ? 'rgba(10,0,16,0.9)' : 'rgba(10,0,16,0)',
+        borderBottom: tabsBlurred ? '1px solid rgba(255,255,255,0.06)' : '1px solid rgba(255,255,255,0)',
+        transition: 'background 0.35s ease, border-color 0.35s ease',
       }}>
         <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
