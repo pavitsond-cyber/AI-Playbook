@@ -22,6 +22,21 @@ export default function PlaybookLayout({ children }: { children: React.ReactNode
     }
   }, [])
 
+  /* On landing page: lock scroll so Android overscroll can't expose the footer area */
+  useEffect(() => {
+    if (isHome) {
+      document.body.style.overflow = 'hidden'
+      document.documentElement.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
+    }
+  }, [isHome])
+
   /* Scroll to the very top instantly on every route change */
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
@@ -50,7 +65,7 @@ export default function PlaybookLayout({ children }: { children: React.ReactNode
         }}>
           {children}
         </main>
-        <SiteFooter />
+        {!isHome && <SiteFooter />}
       </div>
     </PageChromeProvider>
   )

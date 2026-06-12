@@ -81,10 +81,10 @@ function MobileCard({ s }: { s: typeof sections[0] }) {
           ? 'linear-gradient(109deg, rgba(255,255,255,0.22) 3.87%, rgba(255,255,255,0.06) 101%)'
           : 'linear-gradient(109deg, rgba(255,255,255,0.12) 3.87%, rgba(255,255,255,0.00) 101%)',
         border: active ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(255,255,255,0.07)',
-        backdropFilter: active ? 'blur(20px) saturate(180%)' : 'blur(12px)',
-        WebkitBackdropFilter: active ? 'blur(20px) saturate(180%)' : 'blur(12px)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         boxShadow: active ? '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15)' : 'none',
-        transition: 'background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, backdrop-filter 0.18s ease',
+        transition: 'background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease',
         cursor: 'pointer',
         /* Kills the browser default dark tap flash entirely */
         WebkitTapHighlightColor: 'transparent',
