@@ -8,10 +8,10 @@ import { ArrowUpRight } from 'lucide-react'
 const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 const sections = [
-  { num: '01', title: 'Skills',   sub: '21 resources',  href: '/skills'   },
-  { num: '02', title: 'Prompts',  sub: '15 templates',  href: '/prompts'  },
-  { num: '03', title: 'Glossary', sub: '54 terms',      href: '/glossary' },
-  { num: '04', title: 'Tools',    sub: '18 tools',      href: '/tools'    },
+  { num: '01', title: 'Skills',   sub: '21 modules',    href: '/skills'   },
+  { num: '02', title: 'Prompts',  sub: '15 patterns',   href: '/prompts'  },
+  { num: '03', title: 'Glossary', sub: '54 concepts',   href: '/glossary' },
+  { num: '04', title: 'Tools',    sub: '18 essentials', href: '/tools'    },
 ]
 
 /* ── Desktop card (single row, larger) ──────────────────────────────────── */
