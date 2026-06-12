@@ -874,9 +874,9 @@ export default function PromptsPage() {
       {/* ── Sticky tabs bar ────────────────────────────────────────────── */}
       <div style={{
         position: 'sticky', top: 'var(--playbook-sticky-offset)', zIndex: 20,
-        background: tabsBlurred ? 'rgba(10,0,16,0.72)' : 'rgba(10,0,16,0)',
-        backdropFilter: tabsBlurred ? 'blur(24px) saturate(150%)' : 'blur(0px)',
-        WebkitBackdropFilter: tabsBlurred ? 'blur(24px) saturate(150%)' : 'blur(0px)',
+        background: tabsBlurred ? 'rgba(10,0,16,0.38)' : 'rgba(10,0,16,0)',
+        backdropFilter: tabsBlurred ? 'blur(20px)' : 'blur(0px)',
+        WebkitBackdropFilter: tabsBlurred ? 'blur(20px)' : 'blur(0px)',
         borderBottom: tabsBlurred ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(255,255,255,0)',
         transition: 'background 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease, border-color 0.3s ease',
       }}>
