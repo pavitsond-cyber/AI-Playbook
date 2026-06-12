@@ -1,8 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ExternalLink } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
+import { useDockedTitle } from '@/components/nav/PageChromeContext'
+
+/* Stable slug matching the id= on each card in the search index */
+function toolSlug(name: string) {
+  return 'tool-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '')
+}
 
 const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
@@ -270,6 +276,25 @@ export default function ToolsPage() {
     }, 160)
   }
 
+  // Hash deep-link: navigate to a specific tool card from search results
+  useEffect(() => {
+    const hash = window.location.hash
+    if (!hash) return
+    const NAV_OFFSET = 96 // fixed nav (64) + a bit of breathing room
+    // Ensure All tab is showing so the target card is in the DOM
+    setDisplayTab('All')
+    setActiveTab('All')
+    // Wait a frame for state + render, then scroll
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash.slice(1))
+        if (!el) return
+        const top = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
+        window.scrollTo({ top, behavior: 'smooth' })
+      })
+    })
+  }, [])
+
   /* Filter groups by active tab */
   const visibleGroups = displayTab === 'All'
     ? groups
@@ -284,61 +309,68 @@ export default function ToolsPage() {
     ).values()
   ).sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
 
+  const titleRef = useDockedTitle('Tools')
+
   return (
     <div>
-      <div style={{ padding: '24px clamp(20px,4vw,48px) 16px', maxWidth: 960, margin: '0 auto' }}>
-        <PageHeader
-          title="Tools"
-          description="Daily AI tool stack for vibe-coding designers — 37 tools across 5 categories."
-        />
-
-        {/* ── Filter tabs — 5 tabs, consistent gap matching Skills + Prompts ── */}
-        <div style={{
-          display: 'flex',
-          flexWrap: 'nowrap',
-          gap: 'clamp(16px,3vw,36px)',
-          marginBottom: 24,
-          marginLeft: 'calc(-1 * clamp(20px,4vw,48px))',
-          marginRight: 'calc(-1 * clamp(20px,4vw,48px))',
-          paddingLeft: 'clamp(20px,4vw,48px)',
-          paddingRight: 'clamp(20px,4vw,48px)',
-          borderBottom: '1px solid rgba(255,255,255,0.07)',
-        } as React.CSSProperties}>
-          {TABS.map(tab => {
-            const isActive = activeTab === tab
-            return (
-              <button
-                key={tab}
-                onClick={() => switchTab(tab)}
-                className="relative flex items-center text-sm font-medium focus-visible:outline-none"
-                style={{
-                  background: 'none', border: 'none', cursor: 'pointer',
-                  flexShrink: 0, WebkitTapHighlightColor: 'transparent',
-                  fontFamily: 'var(--font-body)', padding: '8px 0 12px',
-                }}
-              >
-                <span style={{
-                  color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)',
-                  transition: 'color 0.2s ease',
-                }}>
-                  {tab}
-                </span>
-                <span
-                  className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
-                  style={{
-                    background: '#9B3FFF',
-                    opacity: isActive ? 1 : 0,
-                    transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
-                    transformOrigin: 'left',
-                    transition: 'opacity 0.2s, transform 0.2s',
-                  }}
-                />
-              </button>
-            )
-          })}
+      {/* ── Page title — scrolls away, triggers nav dock ────────────────── */}
+      <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto' }}>
+        <div ref={titleRef}>
+          <PageHeader
+            title="Tools"
+            description="Daily AI tool stack for vibe-coding designers — 37 tools across 5 categories."
+          />
         </div>
+      </div>
 
-        {/* ── Tool grid — alphabetically sorted, max 3 cols ─────────────────── */}
+      {/* ── Sticky tabs bar — full viewport width, docks below nav ──────── */}
+      <div style={{
+        position: 'sticky', top: 64, zIndex: 20,
+        background: 'rgba(10,0,16,0.22)',
+        backdropFilter: 'blur(28px) saturate(160%)',
+        WebkitBackdropFilter: 'blur(28px) saturate(160%)',
+        borderBottom: '1px solid rgba(255,255,255,0.07)',
+      }}>
+        <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
+          <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
+            {TABS.map(tab => {
+              const isActive = activeTab === tab
+              return (
+                <button
+                  key={tab}
+                  onClick={() => switchTab(tab)}
+                  className="relative flex items-center text-sm font-medium focus-visible:outline-none"
+                  style={{
+                    background: 'none', border: 'none', cursor: 'pointer',
+                    flexShrink: 0, WebkitTapHighlightColor: 'transparent',
+                    fontFamily: 'var(--font-body)', padding: '20px 0',
+                  }}
+                >
+                  <span style={{
+                    color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)',
+                    transition: 'color 0.2s ease',
+                  }}>
+                    {tab}
+                  </span>
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
+                    style={{
+                      background: '#9B3FFF',
+                      opacity: isActive ? 1 : 0,
+                      transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
+                      transformOrigin: 'left',
+                      transition: 'opacity 0.2s, transform 0.2s',
+                    }}
+                  />
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Tool grid ────────────────────────────────────────────────────── */}
+      <div style={{ maxWidth: 960, margin: '0 auto', padding: '24px clamp(20px,4vw,48px) 48px' }}>
         <div style={{
           opacity: fading ? 0 : 1,
           transform: fading ? 'translateY(6px)' : 'translateY(0)',
@@ -346,11 +378,12 @@ export default function ToolsPage() {
             ? 'opacity 0.16s ease-in, transform 0.16s ease-in'
             : 'opacity 0.26s ease-out, transform 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         }}>
-          {/* grid-cols-1 mobile → 2 sm → 3 lg (max 3 cols) */}
+          {/* grid-cols-1 mobile → 3 sm (max 3 cols) */}
           <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: 12 }}>
             {flatTools.map((tool, i) => (
               <div
                 key={tool.name}
+                id={toolSlug(tool.name)}
                 className="animate-fade-up"
                 style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, height: '100%' }}
               >
@@ -360,7 +393,6 @@ export default function ToolsPage() {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

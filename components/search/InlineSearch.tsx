@@ -24,14 +24,7 @@ const TYPE_CFG: Record<SearchItemType, {
   tool:         { label: 'Tools',           color: '#E8C840', bg: 'rgba(232,200,64,0.07)', border: 'rgba(232,200,64,0.15)', icon: Lightbulb },
 }
 
-const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt', 'tool']
-
-const QUICK = [
-  { label: 'PROMPTS',  href: '/prompts',  color: '#9B3FFF', bg: 'rgba(155,63,255,0.1)',  border: 'rgba(155,63,255,0.2)'  },
-  { label: 'SKILLS',   href: '/skills',   color: '#FF69DB', bg: 'rgba(255,105,219,0.1)', border: 'rgba(255,105,219,0.2)' },
-  { label: 'GLOSSARY', href: '/glossary', color: '#00CCA8', bg: 'rgba(0,204,168,0.1)',   border: 'rgba(0,204,168,0.2)'   },
-  { label: 'TOOLS',    href: '/tools',    color: '#E8C840', bg: 'rgba(232,200,64,0.1)',  border: 'rgba(232,200,64,0.2)'  },
-]
+const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt', 'tool', 'principle']
 
 // ─── Highlight helper ─────────────────────────────────────────────────────
 

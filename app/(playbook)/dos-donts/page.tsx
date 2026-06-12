@@ -1,6 +1,21 @@
 'use client'
 
+import { useEffect } from 'react'
 import PageHeader from '@/components/playbook/PageHeader'
+
+/* Stable slug → DOM id mapping for search deep-linking */
+const PRINCIPLE_IDS: Record<string, string> = {
+  'Define good before you run AI.':                                          'principle-define-good',
+  'Fast and wrong is worse than slow and right.':                            'principle-fast-wrong',
+  'No workflow without a test set.':                                         'principle-test-set',
+  'Taste, ethics, and final decisions stay human.':                          'principle-taste-human',
+  'Customer-facing output requires a verification path.':                    'principle-verification',
+  'A prompt that works once is a note. A prompt system is leverage.':        'principle-systems',
+  'Context before prompts.':                                                 'principle-context',
+  'Use AI where tasks repeat and inputs are predictable.':                   'principle-right-task',
+  'Do not use AI where judgment is singular.':                               'principle-singular-judgment',
+  'AI should sharpen review, not replace it.':                               'principle-sharpen-review',
+}
 
 const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
@@ -196,6 +211,21 @@ const principles = [
 export default function OperatingPrinciplesPage() {
   let idx = 0
 
+  // Hash deep-link: scroll to a specific principle from search results
+  useEffect(() => {
+    const hash = window.location.hash
+    if (!hash) return
+    const NAV_OFFSET = 96
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash.slice(1))
+        if (!el) return
+        const top = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
+        window.scrollTo({ top, behavior: 'smooth' })
+      })
+    })
+  }, [])
+
   return (
     <div>
       <div style={{ padding: '24px clamp(20px,4vw,48px) 48px', maxWidth: 1060, margin: '0 auto' }}>
@@ -225,9 +255,11 @@ export default function OperatingPrinciplesPage() {
               >
                 {group.items.map((item) => {
                   const imgSrc = CARD_IMAGES[idx++]
+                  const principleId = PRINCIPLE_IDS[item.title]
                   return (
                     <div
                       key={item.title}
+                      id={principleId}
                       style={{
                         borderRadius: 18,
                         overflow: 'hidden',

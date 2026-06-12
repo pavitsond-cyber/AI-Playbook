@@ -1,11 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { Menu, X, Search } from 'lucide-react'
+import { Menu, X, Search, ChevronLeft } from 'lucide-react'
 import InlineSearch from '@/components/search/InlineSearch'
 import MobileSearchSheet from '@/components/search/MobileSearchSheet'
+import { usePageChrome } from '@/components/nav/PageChromeContext'
 
 const navItems = [
   { href: '/prompts',    label: 'Prompts' },
@@ -17,10 +18,12 @@ const navItems = [
 
 export default function TopNav() {
   const pathname = usePathname()
+  const router = useRouter()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const isHome = pathname === '/'
   const isActive = (href: string) => pathname === href || (href !== '/' && pathname.startsWith(href))
+  const { dockedTitle } = usePageChrome()
 
   return (
     <>
@@ -49,24 +52,62 @@ export default function TopNav() {
         padding: '0 clamp(20px, 5.15vw, 80px)',
         display: 'flex', alignItems: 'center', gap: 12,
       }}>
-        {/* Desktop nav — hidden on homepage (no links needed there) */}
-        <nav className={`${isHome ? 'hidden' : 'hidden sm:flex'}`} style={{ flex: 1, alignItems: 'center', gap: 2, paddingLeft: 8 }}>
-          {navItems.map(item => {
-            const active = isActive(item.href)
-            return (
-              <Link key={item.href} href={item.href} style={{
-                padding: '6px 14px', borderRadius: 100,
-                fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 400,
-                color: active ? '#ffffff' : 'rgba(255,255,255,0.45)',
-                background: active ? 'rgba(255,255,255,0.08)' : 'transparent',
-                textDecoration: 'none', transition: 'color 0.18s ease, background 0.18s ease', whiteSpace: 'nowrap',
+        {/* Desktop nav — hidden on homepage. Wraps both nav links + docked title. */}
+        <nav className={`${isHome ? 'hidden' : 'hidden sm:flex'}`} style={{ flex: 1, position: 'relative', alignItems: 'center', gap: 2, paddingLeft: 8 }}>
+          {/* Nav links — fade out when a page title is docked */}
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 2,
+            opacity: dockedTitle ? 0 : 1,
+            transition: 'opacity 0.2s ease',
+            pointerEvents: dockedTitle ? 'none' : 'auto',
+          }}>
+            {navItems.map(item => {
+              const active = isActive(item.href)
+              return (
+                <Link key={item.href} href={item.href} style={{
+                  padding: '6px 14px', borderRadius: 100,
+                  fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 400,
+                  color: active ? '#ffffff' : 'rgba(255,255,255,0.45)',
+                  background: active ? 'rgba(255,255,255,0.08)' : 'transparent',
+                  textDecoration: 'none', transition: 'color 0.18s ease, background 0.18s ease', whiteSpace: 'nowrap',
+                }}
+                onMouseEnter={e => { if (!active) { e.currentTarget.style.color = 'rgba(255,255,255,0.75)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}}
+                onMouseLeave={e => { if (!active) { e.currentTarget.style.color = 'rgba(255,255,255,0.45)'; e.currentTarget.style.background = 'transparent' }}}>
+                  {item.label}
+                </Link>
+              )
+            })}
+          </div>
+
+          {/* Docked page title — fades in when the page header scrolls behind the nav */}
+          <div style={{
+            position: 'absolute', left: 0, top: 0, bottom: 0,
+            display: 'flex', alignItems: 'center', gap: 10,
+            opacity: dockedTitle ? 1 : 0,
+            transform: dockedTitle ? 'translateY(0)' : 'translateY(4px)',
+            transition: 'opacity 0.22s ease, transform 0.22s ease',
+            pointerEvents: dockedTitle ? 'auto' : 'none',
+          }}>
+            <button
+              onClick={() => router.back()}
+              style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: 8, padding: '5px 9px', cursor: 'pointer',
+                color: 'rgba(255,255,255,0.65)', transition: 'background 0.15s, color 0.15s',
               }}
-              onMouseEnter={e => { if (!active) { e.currentTarget.style.color = 'rgba(255,255,255,0.75)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}}
-              onMouseLeave={e => { if (!active) { e.currentTarget.style.color = 'rgba(255,255,255,0.45)'; e.currentTarget.style.background = 'transparent' }}}>
-                {item.label}
-              </Link>
-            )
-          })}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = '#fff' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.65)' }}
+            >
+              <ChevronLeft size={15} />
+            </button>
+            <span style={{
+              fontSize: 14, fontWeight: 600, color: '#ffffff',
+              fontFamily: 'var(--font-body)', letterSpacing: '-0.01em',
+            }}>
+              {dockedTitle}
+            </span>
+          </div>
         </nav>
 
         {/* Desktop search — hidden on contribute page */}
@@ -76,8 +117,35 @@ export default function TopNav() {
           </div>
         )}
 
+        {/* Mobile docked title — visible on scroll, takes flex:1 to push controls right */}
+        <div className="sm:hidden" style={{
+          flex: 1, display: 'flex', alignItems: 'center', gap: 8, overflow: 'hidden',
+          opacity: dockedTitle ? 1 : 0,
+          transform: dockedTitle ? 'translateY(0)' : 'translateY(4px)',
+          transition: 'opacity 0.22s ease, transform 0.22s ease',
+          pointerEvents: dockedTitle ? 'auto' : 'none',
+        }}>
+          <button
+            onClick={() => router.back()}
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+              background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: 8, padding: '5px 9px', cursor: 'pointer', color: 'rgba(255,255,255,0.65)',
+            }}
+          >
+            <ChevronLeft size={14} />
+          </button>
+          <span style={{
+            fontSize: 14, fontWeight: 600, color: '#ffffff',
+            fontFamily: 'var(--font-body)', letterSpacing: '-0.01em',
+            overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+          }}>
+            {dockedTitle}
+          </span>
+        </div>
+
         {/* Mobile: search icon + hamburger (hamburger hidden on home) */}
-        <div className="sm:hidden flex items-center" style={{ marginLeft: 'auto', gap: 4 }}>
+        <div className="sm:hidden flex items-center" style={{ gap: 4 }}>
           {/* Search icon */}
           <button
             onClick={() => { setMobileOpen(false); setSearchOpen(true) }}

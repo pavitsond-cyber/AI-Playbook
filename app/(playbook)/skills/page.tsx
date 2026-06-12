@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { ChevronDown, Download, Check } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
+import { useDockedTitle } from '@/components/nav/PageChromeContext'
 
 
 interface Skill {
@@ -1066,56 +1067,61 @@ export default function SkillsPage() {
     ? skills
     : skills.filter(s => DOMAIN_TO_TAB[s.domain ?? ''] === displayTab)
 
+  const titleRef = useDockedTitle('Skills')
+
   return (
     <div>
-      <div style={{ padding: '24px clamp(20px,4vw,48px) 48px', maxWidth: 960, margin: '0 auto' }}>
-        <PageHeader
-          title="Skills"
-          description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
-        />
-
-        {/* ── Filter tabs — exact glossary style ───────────────────────── */}
-        <div style={{
-          display: 'flex',
-          flexWrap: 'nowrap',
-          gap: 'clamp(16px,3vw,36px)',
-          marginBottom: 24,
-          marginLeft: 'calc(-1 * clamp(20px,4vw,48px))',
-          marginRight: 'calc(-1 * clamp(20px,4vw,48px))',
-          paddingLeft: 'clamp(20px,4vw,48px)',
-          paddingRight: 'clamp(20px,4vw,48px)',
-          borderBottom: '1px solid rgba(255,255,255,0.07)',
-        } as React.CSSProperties}>
-          {TABS.map(tab => {
-            const isActive = activeTab === tab
-            return (
-              <button
-                key={tab}
-                onClick={() => switchTab(tab)}
-                className="relative flex items-center text-sm font-medium focus-visible:outline-none"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0, WebkitTapHighlightColor: 'transparent', fontFamily: 'var(--font-body)', padding: '8px 0 12px' }}
-              >
-                <span className="transition-colors duration-200" style={{ color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)' }}>
-                  {tab}
-                </span>
-                <span
-                  className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
-                  style={{
-                    background: '#9B3FFF',
-                    opacity: isActive ? 1 : 0,
-                    transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
-                    transformOrigin: 'left',
-                    transition: 'opacity 0.2s, transform 0.2s',
-                  }}
-                />
-              </button>
-            )
-          })}
+      {/* ── Page title ─────────────────────────────────────────────────── */}
+      <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto' }}>
+        <div ref={titleRef}>
+          <PageHeader
+            title="Skills"
+            description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
+          />
         </div>
+      </div>
 
-        {/* ── Skill list — fade + subtle rise on tab enter ─────────────── */}
-        {/* Fade out: opacity→0, drifts down 6px (ease-in, 160ms)          */}
-        {/* Fade in:  opacity→1, rises from 6px to 0 (ease-out, 260ms)     */}
+      {/* ── Sticky tabs bar ────────────────────────────────────────────── */}
+      <div style={{
+        position: 'sticky', top: 64, zIndex: 20,
+        background: 'rgba(10,0,16,0.22)',
+        backdropFilter: 'blur(28px) saturate(160%)',
+        WebkitBackdropFilter: 'blur(28px) saturate(160%)',
+        borderBottom: '1px solid rgba(255,255,255,0.07)',
+      }}>
+        <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
+          <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
+            {TABS.map(tab => {
+              const isActive = activeTab === tab
+              return (
+                <button
+                  key={tab}
+                  onClick={() => switchTab(tab)}
+                  className="relative flex items-center text-sm font-medium focus-visible:outline-none"
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0, WebkitTapHighlightColor: 'transparent', fontFamily: 'var(--font-body)', padding: '20px 0' }}
+                >
+                  <span className="transition-colors duration-200" style={{ color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)' }}>
+                    {tab}
+                  </span>
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full"
+                    style={{
+                      background: '#9B3FFF',
+                      opacity: isActive ? 1 : 0,
+                      transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
+                      transformOrigin: 'left',
+                      transition: 'opacity 0.2s, transform 0.2s',
+                    }}
+                  />
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Skill list ─────────────────────────────────────────────────── */}
+      <div style={{ maxWidth: 960, margin: '0 auto', padding: '24px clamp(20px,4vw,48px) 48px' }}>
         <div className={!fading ? 'animate-tab-fade' : ''} style={{
           display: 'flex', flexDirection: 'column', gap: 16,
           minHeight: '50vh',

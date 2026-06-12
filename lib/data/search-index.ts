@@ -81,16 +81,17 @@ const promptItems: SearchItem[] = [
   { id: 'prompt-launch-readiness',             type: 'prompt', title: 'Launch readiness',             subtitle: 'Execution',snippet: 'Check whether a feature, experiment, or product change is ready to go live across product, design, engineering, analytics, and support.',   href: '/prompts#prompt-launch-readiness',             keywords: 'launch readiness checklist product design engineering analytics support rollout rollback blockers' },
 ]
 
-// ─── Operating Principles ──────────────────────────────────────────────────
+// ─── Operating Principles — synced with app/(playbook)/dos-donts/page.tsx ──
+// Note: use slugged IDs matching the `id=` attributes added to each card.
 
 const principleItems: SearchItem[] = [
   {
     id: 'principle-define-good',
     type: 'principle',
-    title: "Define 'good' before you run AI",
+    title: 'Define good before you run AI',
     subtitle: 'Quality',
-    snippet: "If you can't write a one-line quality bar for the output, AI won't produce it reliably. The quality bar comes first.",
-    href: '/dos-donts',
+    snippet: 'If you cannot write one sentence describing a good output, AI will not produce it reliably.',
+    href: '/dos-donts#principle-define-good',
     keywords: 'define good quality bar output criteria standard evaluation rubric first before running ai',
   },
   {
@@ -98,8 +99,8 @@ const principleItems: SearchItem[] = [
     type: 'principle',
     title: 'Fast and wrong is worse than slow and right',
     subtitle: 'Quality',
-    snippet: "AI-assisted output at lower quality than manual work is not progress. The goal is better output. Speed is a bonus.",
-    href: '/dos-donts',
+    snippet: 'Speed is a bonus, not the goal. If AI gets you there faster but worse, you have not saved time.',
+    href: '/dos-donts#principle-fast-wrong',
     keywords: 'fast wrong slow right quality speed progress output lower bar regression test 10 inputs',
   },
   {
@@ -107,26 +108,17 @@ const principleItems: SearchItem[] = [
     type: 'principle',
     title: 'No workflow without a test set',
     subtitle: 'Quality',
-    snippet: 'Every prompt system that runs at team scale needs a representative sample of inputs it has been tested against.',
-    href: '/dos-donts',
+    snippet: 'Every prompt system needs real inputs tested against it and real outputs someone has signed off on.',
+    href: '/dos-donts#principle-test-set',
     keywords: 'workflow test set representative inputs tested evaluated scale team deployment quality consistent',
-  },
-  {
-    id: 'principle-own-output',
-    type: 'principle',
-    title: 'You own the output. Not the model.',
-    subtitle: 'Ownership',
-    snippet: "There is no 'AI did it' as an excuse. If you ran the prompt, reviewed the output, and published it — you authored it.",
-    href: '/dos-donts',
-    keywords: 'ownership own output model accountability responsibility authored published reviewed professional',
   },
   {
     id: 'principle-taste-human',
     type: 'principle',
     title: 'Taste, ethics, and final decisions stay human',
     subtitle: 'Ownership',
-    snippet: 'AI drafts, synthesises, challenges, and classifies. It does not decide. Creative direction and final approval belong to the person responsible.',
-    href: '/dos-donts',
+    snippet: 'AI drafts and challenges. It does not decide. Creative direction and final approval belong to you.',
+    href: '/dos-donts#principle-taste-human',
     keywords: 'taste ethics decisions human creative direction approval judgment responsibility strategic call',
   },
   {
@@ -134,8 +126,8 @@ const principleItems: SearchItem[] = [
     type: 'principle',
     title: 'Customer-facing output requires a verification path',
     subtitle: 'Ownership',
-    snippet: 'Any AI output that reaches a customer needs a human review step. Ship without a verification path only when the cost of error is negligible.',
-    href: '/dos-donts',
+    snippet: 'Any AI output reaching a customer needs a human review step. No exceptions.',
+    href: '/dos-donts#principle-verification',
     keywords: 'customer facing verification path human review ship error cost negligible review step product',
   },
   {
@@ -143,18 +135,9 @@ const principleItems: SearchItem[] = [
     type: 'principle',
     title: 'A prompt that works once is a note. A prompt system is leverage.',
     subtitle: 'Systems over one-offs',
-    snippet: "If a prompt produces consistent useful output across inputs and team members, document it. If it works three times, build a reusable workflow.",
-    href: '/dos-donts',
+    snippet: 'If it works three times, make it reusable. One-off prompting does not compound.',
+    href: '/dos-donts#principle-systems',
     keywords: 'prompt system workflow leverage document reusable one-off consistent team members compound',
-  },
-  {
-    id: 'principle-evaluate',
-    type: 'principle',
-    title: "Don't build workflows you can't evaluate",
-    subtitle: 'Systems over one-offs',
-    snippet: "If you can't tell whether the output is good or bad, you can't run it at scale. Evaluation criteria are not optional.",
-    href: '/dos-donts',
-    keywords: 'evaluate evaluation criteria scale workflow quality bad good output standard cannot assess',
   },
   {
     id: 'principle-context',
@@ -162,25 +145,25 @@ const principleItems: SearchItem[] = [
     title: 'Context before prompts',
     subtitle: 'Systems over one-offs',
     snippet: 'Weak output is almost always a context problem, not a model problem. Invest in context first.',
-    href: '/dos-donts',
+    href: '/dos-donts#principle-context',
     keywords: 'context prompts weak output model problem invest context engineering quality disappointing',
   },
   {
     id: 'principle-right-task',
     type: 'principle',
-    title: 'Use AI where tasks repeat, inputs are predictable, quality bar is clear',
+    title: 'Use AI where tasks repeat and inputs are predictable',
     subtitle: 'Right task for AI',
-    snippet: 'Three conditions define where AI creates real leverage: high-volume, well-defined tasks where the quality bar can be articulated.',
-    href: '/dos-donts',
+    snippet: 'These conditions define where AI creates real leverage. If one is missing, do not build yet.',
+    href: '/dos-donts#principle-right-task',
     keywords: 'right task repeat volume predictable inputs quality bar leverage conditions automation candidates',
   },
   {
     id: 'principle-singular-judgment',
     type: 'principle',
-    title: "Don't use AI where judgment is singular",
+    title: 'Do not use AI where judgment is singular',
     subtitle: 'Right task for AI',
-    snippet: 'Some work requires irreplaceable human context: knowing the person, the room, the history. AI cannot substitute for this.',
-    href: '/dos-donts',
+    snippet: 'Knowing the person, the room, the history. AI cannot substitute for judgment built on relationships.',
+    href: '/dos-donts#principle-singular-judgment',
     keywords: 'singular judgment human context irreplaceable relationships institutional knowledge strategic personal history room',
   },
   {
@@ -188,29 +171,65 @@ const principleItems: SearchItem[] = [
     type: 'principle',
     title: 'AI should sharpen review, not replace it',
     subtitle: 'Right task for AI',
-    snippet: 'The best use of AI in a review process is as a first-pass filter — surfacing the 80% that is systematic so humans focus on the 20% requiring judgment.',
-    href: '/dos-donts',
-    keywords: 'sharpen review replace filter first pass 80% systematic judgment human focus quality assurance',
+    snippet: 'AI surfaces the predictable issues. The human focuses on what actually requires judgment.',
+    href: '/dos-donts#principle-sharpen-review',
+    keywords: 'sharpen review replace filter first pass systematic judgment human focus quality assurance',
   },
 ]
 
-// ─── Tools ────────────────────────────────────────────────────────────────
+// ─── Tools — synced with app/(playbook)/tools/page.tsx groups ──────────────
+// IDs match the `id=` added to each card: 'tool-' + name.toLowerCase().replace(/[^a-z0-9]+/g,'-')
 
 const toolItems: SearchItem[] = [
-  { id: 'tool-claude',     type: 'tool', title: 'Claude',          subtitle: 'Writing & Thinking', snippet: 'Long-form thinking, document analysis, structured reasoning.',       href: '/tools', keywords: 'claude anthropic ai assistant reasoning document analysis brief prd writing thinking' },
-  { id: 'tool-chatgpt',    type: 'tool', title: 'ChatGPT',         subtitle: 'Writing & Thinking', snippet: 'Quick answers, brainstorming, drafting.',                              href: '/tools', keywords: 'chatgpt openai gpt4 gpt writing drafting brainstorming ideas' },
-  { id: 'tool-perplexity', type: 'tool', title: 'Perplexity',      subtitle: 'Writing & Thinking', snippet: 'Real-time research with citations.',                                   href: '/tools', keywords: 'perplexity search research citations sources live web' },
-  { id: 'tool-notion',     type: 'tool', title: 'Notion AI',       subtitle: 'Writing & Thinking', snippet: 'Drafting and editing inside Notion docs.',                             href: '/tools', keywords: 'notion ai drafting editing notes summarise meeting docs' },
-  { id: 'tool-mj',         type: 'tool', title: 'Midjourney',      subtitle: 'Design & Image',     snippet: 'Cinematic image generation for concepts and moodboards.',               href: '/tools', keywords: 'midjourney image generation art moodboard visual concept cinematic' },
-  { id: 'tool-dalle',      type: 'tool', title: 'DALL-E 3',        subtitle: 'Design & Image',     snippet: 'Quick image generation via ChatGPT.',                                  href: '/tools', keywords: 'dalle dall-e image generation openai illustration' },
-  { id: 'tool-firefly',    type: 'tool', title: 'Adobe Firefly',   subtitle: 'Design & Image',     snippet: 'Brand-safe generative fill and image editing.',                         href: '/tools', keywords: 'adobe firefly generative fill image editing photoshop licensed' },
-  { id: 'tool-v0',         type: 'tool', title: 'v0',              subtitle: 'Design & Image',     snippet: 'UI generation from text prompts.',                                      href: '/tools', keywords: 'v0 vercel ui generation react tailwind component design frontend' },
-  { id: 'tool-cursor',     type: 'tool', title: 'Cursor',          subtitle: 'Code & Build',       snippet: 'AI-native code editor for product teams.',                              href: '/tools', keywords: 'cursor ai code editor vscode autocomplete codebase engineering' },
-  { id: 'tool-cc',         type: 'tool', title: 'Claude Code',     subtitle: 'Code & Build',       snippet: 'Agentic coding from the terminal.',                                     href: '/tools', keywords: 'claude code agentic coding terminal cli refactor implement' },
-  { id: 'tool-copilot',    type: 'tool', title: 'GitHub Copilot',  subtitle: 'Code & Build',       snippet: 'Inline code suggestions in any editor.',                                href: '/tools', keywords: 'github copilot code suggestions vscode jetbrains inline' },
-  { id: 'tool-runway',     type: 'tool', title: 'Runway',          subtitle: 'Video & Motion',     snippet: 'Video generation and editing.',                                         href: '/tools', keywords: 'runway video generation editing motion background removal clips' },
-  { id: 'tool-pika',       type: 'tool', title: 'Pika',            subtitle: 'Video & Motion',     snippet: 'Fast short video generation from images.',                              href: '/tools', keywords: 'pika video animation short clips social content motion' },
-  { id: 'tool-elevenlabs', type: 'tool', title: 'ElevenLabs',      subtitle: 'Video & Motion',     snippet: 'Voice synthesis and audio generation.',                                 href: '/tools', keywords: 'elevenlabs voice synthesis tts text to speech audio voiceover' },
+  // Capture, Notes & Prompting
+  { id: 'tool-granola',      type: 'tool', title: 'Granola',       subtitle: 'Capture',  snippet: 'Capture design reviews, PM calls, research calls, decisions, and action items.',              href: '/tools#tool-granola',      keywords: 'granola meeting notes capture design reviews pm calls research decisions action items' },
+  { id: 'tool-notebooklm',   type: 'tool', title: 'NotebookLM',    subtitle: 'Capture',  snippet: 'Upload docs, PRDs, research notes, and transcripts to ask grounded questions.',               href: '/tools#tool-notebooklm',   keywords: 'notebooklm google notebook docs prd research notes transcripts grounded questions' },
+  { id: 'tool-notion-ai',    type: 'tool', title: 'Notion AI',     subtitle: 'Capture',  snippet: 'Clean rough notes, summarize meetings, create decision logs, and organize playbooks.',        href: '/tools#tool-notion-ai',    keywords: 'notion ai notes summarize meetings decision logs playbooks organize drafting editing' },
+  { id: 'tool-raycast-ai',   type: 'tool', title: 'Raycast AI',    subtitle: 'Capture',  snippet: 'Rewrite selected text, summarize snippets, and trigger quick AI actions.',                   href: '/tools#tool-raycast-ai',   keywords: 'raycast ai rewrite text summarize snippets quick actions launcher' },
+  // Whiteboarding, Flows & Thinking
+  { id: 'tool-excalidraw',   type: 'tool', title: 'Excalidraw',    subtitle: 'Capture',  snippet: 'Create rough flows, product logic diagrams, workshop sketches, and wireframes.',             href: '/tools#tool-excalidraw',   keywords: 'excalidraw whiteboard flows product logic diagrams workshop sketches wireframes drawing' },
+  { id: 'tool-mermaid',      type: 'tool', title: 'Mermaid',       subtitle: 'Capture',  snippet: 'Turn written flows into diagrams using simple text syntax.',                                  href: '/tools#tool-mermaid',      keywords: 'mermaid diagrams text syntax flowchart sequence diagram code chart' },
+  { id: 'tool-tldraw',       type: 'tool', title: 'tldraw',        subtitle: 'Capture',  snippet: 'Sketch flows, map journeys, create quick diagrams, and explain system logic visually.',      href: '/tools#tool-tldraw',       keywords: 'tldraw sketch flows journeys diagrams system logic canvas visual' },
+  // Research & References
+  { id: 'tool-mobbin',       type: 'tool', title: 'Mobbin',        subtitle: 'Capture',  snippet: 'Find real product flows like checkout, onboarding, cancellation, settings, and empty states.',href: '/tools#tool-mobbin',       keywords: 'mobbin product flows checkout onboarding cancellation settings empty states ux reference' },
+  { id: 'tool-refero',       type: 'tool', title: 'Refero',        subtitle: 'Capture',  snippet: 'Search web and mobile interface references for visual and interaction patterns.',             href: '/tools#tool-refero',       keywords: 'refero interface references visual interaction patterns web mobile design' },
+  // MCPs
+  { id: 'tool-mobbin-mcp',   type: 'tool', title: 'Mobbin MCP',    subtitle: 'MCP',      snippet: 'Let AI tools use Mobbin-style references while generating or critiquing UI.',               href: '/tools#tool-mobbin-mcp',   keywords: 'mobbin mcp ai tools references ui critique generation model context protocol' },
+  { id: 'tool-refero-mcp',   type: 'tool', title: 'Refero MCP',    subtitle: 'MCP',      snippet: 'Let AI agents inspect product screens and flows before giving design suggestions.',          href: '/tools#tool-refero-mcp',   keywords: 'refero mcp ai agents screens flows design suggestions model context protocol' },
+  // Prompt-to-UI & Design Generation
+  { id: 'tool-banani',       type: 'tool', title: 'Banani',        subtitle: 'Design',   snippet: 'Generate editable UI screens, wireframes, prototypes, and website layouts from prompts.',   href: '/tools#tool-banani',       keywords: 'banani ui screens wireframes prototypes website layouts prompts design generation' },
+  { id: 'tool-galileo-ai',   type: 'tool', title: 'Galileo AI',    subtitle: 'Design',   snippet: 'Create polished UI directions from written prompts.',                                         href: '/tools#tool-galileo-ai',   keywords: 'galileo ai ui directions prompts polished design generation' },
+  { id: 'tool-paper',        type: 'tool', title: 'Paper',         subtitle: 'Design',   snippet: 'Quickly create HTML-like UI concepts and editable layouts without heavy setup.',             href: '/tools#tool-paper',        keywords: 'paper design html ui concepts editable layouts quick prototype' },
+  { id: 'tool-replit-agent', type: 'tool', title: 'Replit Agent',  subtitle: 'Design',   snippet: 'Build small tools, forms, dashboards, and interactive prototypes.',                          href: '/tools#tool-replit-agent', keywords: 'replit agent tools forms dashboards interactive prototypes build' },
+  { id: 'tool-super-design', type: 'tool', title: 'Super Design',  subtitle: 'Design',   snippet: 'Generate UI mockups, components, and layouts inside coding tools like Cursor or VS Code.',  href: '/tools#tool-super-design', keywords: 'super design ui mockups components layouts cursor vscode coding tools' },
+  { id: 'tool-tome',         type: 'tool', title: 'Tome',          subtitle: 'Design',   snippet: 'Create AI-powered presentations and visual narratives.',                                      href: '/tools#tool-tome',         keywords: 'tome presentations visual narratives ai powered slides decks' },
+  // Vibe Coding & Design-to-Code
+  { id: 'tool-claude-code',  type: 'tool', title: 'Claude Code',   subtitle: 'Design',   snippet: 'Ask an agent to inspect files, make UI changes, explain code, or implement small flows.',   href: '/tools#tool-claude-code',  keywords: 'claude code agent inspect files ui changes explain implement flows agentic terminal' },
+  { id: 'tool-codex',        type: 'tool', title: 'Codex',         subtitle: 'Design',   snippet: 'Generate, refactor, explain, and test code from plain English.',                             href: '/tools#tool-codex',        keywords: 'codex openai generate refactor explain test code plain english' },
+  { id: 'tool-cursor',       type: 'tool', title: 'Cursor',        subtitle: 'Design',   snippet: 'Edit UI, create components, fix layout issues, explain code, and build prototypes.',         href: '/tools#tool-cursor',       keywords: 'cursor ai code editor ui components layout explain build prototypes vscode' },
+  { id: 'tool-github-desktop',type:'tool', title: 'GitHub Desktop', subtitle: 'Design',  snippet: 'Commit changes, switch branches, and create small PRs without terminal-heavy workflows.',   href: '/tools#tool-github-desktop',keywords: 'github desktop commits branches prs pull requests no terminal git workflow' },
+  { id: 'tool-vercel',       type: 'tool', title: 'Vercel',        subtitle: 'Design',   snippet: 'Deploy vibe-coded prototypes and share live URLs.',                                           href: '/tools#tool-vercel',       keywords: 'vercel deploy prototypes live urls hosting nextjs frontend' },
+  // Workflow Automation & Integrations
+  { id: 'tool-airtable',     type: 'tool', title: 'Airtable',      subtitle: 'Automate', snippet: 'Create research repos, design QA trackers, prompt libraries, and ops dashboards.',          href: '/tools#tool-airtable',     keywords: 'airtable research repos design qa trackers prompt libraries ops dashboards database' },
+  { id: 'tool-make',         type: 'tool', title: 'Make',          subtitle: 'Automate', snippet: 'Build multi-step automations with conditions and branching.',                                 href: '/tools#tool-make',         keywords: 'make integromat automations conditions branching workflow multi-step' },
+  { id: 'tool-n8n',          type: 'tool', title: 'n8n',           subtitle: 'Automate', snippet: 'Create internal automations, AI workflows, alerts, summaries, and tool-to-tool handoffs.',  href: '/tools#tool-n8n',          keywords: 'n8n automations ai workflows alerts summaries tool-to-tool handoffs internal' },
+  { id: 'tool-zapier',       type: 'tool', title: 'Zapier',        subtitle: 'Automate', snippet: 'Connect Slack, Gmail, Notion, Airtable, Sheets, forms, and webhooks.',                      href: '/tools#tool-zapier',       keywords: 'zapier slack gmail notion airtable sheets forms webhooks connect integration' },
+  // Browser Agents, UI Screening & QA
+  { id: 'tool-agentation',   type: 'tool', title: 'Agentation',    subtitle: 'Automate', snippet: 'Prompt a browser agent to inspect, compare, and operate websites.',                         href: '/tools#tool-agentation',   keywords: 'agentation browser agent inspect compare operate websites automation ui' },
+  { id: 'tool-dialkit',      type: 'tool', title: 'Dialkit',       subtitle: 'Automate', snippet: 'Run browser-based prompting and workflow execution.',                                         href: '/tools#tool-dialkit',      keywords: 'dialkit browser prompting workflow execution automation' },
+  { id: 'tool-playwright',   type: 'tool', title: 'Playwright',    subtitle: 'Automate', snippet: 'Open pages, click through flows, test UI states, and detect broken experiences.',           href: '/tools#tool-playwright',   keywords: 'playwright testing automation browser ui states flows broken experiences end to end' },
+  { id: 'tool-scribe',       type: 'tool', title: 'Scribe',        subtitle: 'Automate', snippet: 'Auto-create step-by-step guides from actions.',                                              href: '/tools#tool-scribe',       keywords: 'scribe guides documentation step by step actions auto create howto' },
+  // Visual Exploration, Imagery & Motion
+  { id: 'tool-elevenlabs',   type: 'tool', title: 'ElevenLabs',    subtitle: 'Visuals',  snippet: 'Create narration, audio mockups, and voice concepts.',                                       href: '/tools#tool-elevenlabs',   keywords: 'elevenlabs voice synthesis tts text to speech audio voiceover narration mockups' },
+  { id: 'tool-jitter',       type: 'tool', title: 'Jitter',        subtitle: 'Visuals',  snippet: 'Quickly animate UI, social posts, product moments, and lightweight motion concepts.',        href: '/tools#tool-jitter',       keywords: 'jitter animate ui social posts product moments motion animation lightweight' },
+  { id: 'tool-krea',         type: 'tool', title: 'Krea',          subtitle: 'Visuals',  snippet: 'Create visuals, icons, style explorations, and campaign imagery.',                           href: '/tools#tool-krea',         keywords: 'krea visuals icons style explorations campaign imagery generation ai image' },
+  { id: 'tool-lottiefiles',  type: 'tool', title: 'LottieFiles',   subtitle: 'Visuals',  snippet: 'Preview, manage, and export lightweight animations.',                                        href: '/tools#tool-lottiefiles',  keywords: 'lottiefiles animations lightweight preview manage export lottie json' },
+  { id: 'tool-midjourney',   type: 'tool', title: 'Midjourney',    subtitle: 'Visuals',  snippet: 'Generate moodboards, visual territories, concept imagery, and campaign directions.',        href: '/tools#tool-midjourney',   keywords: 'midjourney image generation art moodboard visual concept cinematic campaign directions' },
+  { id: 'tool-rive',         type: 'tool', title: 'Rive',          subtitle: 'Visuals',  snippet: 'Create production-ready interactive animations and state-based motion.',                     href: '/tools#tool-rive',         keywords: 'rive interactive animations state machine motion production ready flutter' },
+  { id: 'tool-runway',       type: 'tool', title: 'Runway',        subtitle: 'Visuals',  snippet: 'Generate short videos, motion experiments, and cinematic visual treatments.',               href: '/tools#tool-runway',       keywords: 'runway video generation editing motion background removal clips cinematic' },
+  // Presentation & Storytelling
+  { id: 'tool-gamma',        type: 'tool', title: 'Gamma',         subtitle: 'Visuals',  snippet: 'Turn rough ideas into structured decks, concept pitches, and workshop material.',           href: '/tools#tool-gamma',        keywords: 'gamma presentations decks concept pitches workshop material ai slides' },
+  { id: 'tool-pitch',        type: 'tool', title: 'Pitch',         subtitle: 'Visuals',  snippet: 'Create clean team presentations and design review decks.',                                   href: '/tools#tool-pitch',        keywords: 'pitch presentations design review decks team slides clean' },
 ]
 
 // ─── Combined index ────────────────────────────────────────────────────────

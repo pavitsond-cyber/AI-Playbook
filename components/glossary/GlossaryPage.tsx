@@ -6,6 +6,7 @@ import { filterTerms } from '@/lib/utils/search'
 import GlossaryGrid from './GlossaryGrid'
 import GlossaryCard from './GlossaryCard'
 import EmptyState from './EmptyState'
+import { useDockedTitle } from '@/components/nav/PageChromeContext'
 
 type TabId = 'abbreviations' | 'terminologies'
 
@@ -31,6 +32,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
   const [activeAlpha, setActiveAlpha]     = useState<string | null>(null)
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [openCardId, setOpenCardId]       = useState<string | null>(null)
+  const titleRef = useDockedTitle('Glossary')
 
   const tabTerms = useMemo(() => ({
     abbreviations: terms.filter(t => t.full_form && t.full_form.trim() !== ''),
@@ -153,7 +155,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
       <div style={{ maxWidth: 960, margin: "0 auto", width: "100%" }}>
 
         {/* Page title */}
-        <div className="animate-fade-up delay-75" style={{ padding: "24px clamp(20px,4vw,48px) 16px" }}>
+        <div ref={titleRef} className="animate-fade-up delay-75" style={{ padding: "24px clamp(20px,4vw,48px) 16px" }}>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px,4vw,64px)', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 8 }}>
             Glossary
           </h1>
@@ -162,10 +164,11 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
           </p>
         </div>
 
-        {/* Sticky tabs */}
+        {/* Sticky tabs — sits flush under the 64px fixed nav */}
         <div
-          className="sticky top-14 z-20"
+          className="sticky z-20"
           style={{
+            top: 64,
             background: 'rgba(10,0,16,0.22)',
             backdropFilter: 'blur(28px) saturate(160%)',
             WebkitBackdropFilter: 'blur(28px) saturate(160%)',
@@ -173,7 +176,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
           }}
         >
           {/* Sectional search — only searches within the active tab */}
-          <div style={{ padding: '10px clamp(20px,4vw,48px) 8px' }}>
+          <div style={{ padding: '20px clamp(20px,4vw,48px) 8px' }}>
             <div style={{
               display: 'flex', alignItems: 'center', gap: 10,
               padding: '9px 14px',
@@ -202,7 +205,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
               )}
             </div>
           </div>
-          <div style={{ display: "flex", padding: "0 clamp(20px,4vw,48px)" }}>
+          <div style={{ display: "flex", padding: "8px clamp(20px,4vw,48px) 0" }}>
             {TABS.map(tab => {
               const isActive = activeTab === tab.id
               const count = query ? matchCounts[tab.id] : tabTerms[tab.id].length
@@ -210,7 +213,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className="relative flex items-center gap-2 px-1 pb-3 pt-2 mr-6 text-sm font-medium transition-all duration-200 focus-visible:outline-none"
+                  className="relative flex items-center gap-2 px-1 pb-5 pt-2 mr-6 text-sm font-medium transition-all duration-200 focus-visible:outline-none"
                 >
                   <span className="transition-colors duration-200" style={{ color: isActive ? '#ffffff' : 'rgba(255,255,255,0.4)' }}>
                     {tab.label}
