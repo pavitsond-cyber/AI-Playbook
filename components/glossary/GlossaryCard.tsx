@@ -61,7 +61,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
   const badgeColor = ABBR_COLORS[term.category] ?? '#9B3FFF'
 
   const validLinks = (term.related_links ?? []).filter((l) =>
-    ['/skills', '/prompts', '/dos-donts', '/glossary'].some((p) => l.href.startsWith(p))
+    ['/skills', '/prompts', '/glossary'].some((p) => l.href.startsWith(p))
   )
 
   // ── Abbreviation card (matches /abbreviations page style) ───────────────

@@ -28,14 +28,14 @@ export default function PageHeader({ title, description, badge }: PageHeaderProp
       )}
       <h1 style={{
         fontFamily: 'var(--font-display)',
-        fontSize: 'clamp(36px,4vw,64px)',
-        fontWeight: 800,
-        lineHeight: 1.1,
+        fontSize: 'clamp(60px,6.25vw,90px)',
+        fontWeight: 400,
+        lineHeight: 1,
         letterSpacing: '-0.02em',
         color: '#ffffff',
         marginBottom: description ? 14 : 0,
       }}>
-        <span className="gradient-text">{first}</span>
+        <span style={{ color: '#ffffff' }}>{first}</span>
         {rest && <span style={{ color: '#ffffff' }}>{' '}{rest}</span>}
       </h1>
       {description && (

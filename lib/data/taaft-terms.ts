@@ -209,7 +209,6 @@ function buildRelatedLinks(term: string, taaftCategory: string): Array<{ label: 
   }
   if (taaftCategory === 'Ethics & Safety' || taaftCategory === 'AI in Society') {
     links.push({ label: 'Risks & Limitations', href: '/risks' })
-    links.push({ label: "Do's & Don'ts", href: '/dos-donts' })
   }
   if (taaftCategory === 'User-Facing AI Concepts' || t.includes('prompt')) {
     links.push({ label: 'Prompt Library', href: '/prompts' })

@@ -1,12 +1,12 @@
 import { staticTerms } from './glossary-static'
 
-export type SearchItemType = 'abbreviation' | 'term' | 'skill' | 'prompt' | 'principle' | 'tool'
+export type SearchItemType = 'abbreviation' | 'term' | 'skill' | 'prompt' | 'tool'
 
 export interface SearchItem {
   id: string
   type: SearchItemType
   title: string
-  subtitle?: string   // full_form for abbrevs, team for prompts, theme for principles
+  subtitle?: string
   snippet: string     // short display text
   href: string
   keywords: string    // full concatenated text for matching
@@ -81,102 +81,6 @@ const promptItems: SearchItem[] = [
   { id: 'prompt-launch-readiness',             type: 'prompt', title: 'Launch readiness',             subtitle: 'Execution',snippet: 'Check whether a feature, experiment, or product change is ready to go live across product, design, engineering, analytics, and support.',   href: '/prompts#prompt-launch-readiness',             keywords: 'launch readiness checklist product design engineering analytics support rollout rollback blockers' },
 ]
 
-// ─── Operating Principles — synced with app/(playbook)/dos-donts/page.tsx ──
-// Note: use slugged IDs matching the `id=` attributes added to each card.
-
-const principleItems: SearchItem[] = [
-  {
-    id: 'principle-define-good',
-    type: 'principle',
-    title: 'Define good before you run AI',
-    subtitle: 'Quality',
-    snippet: 'If you cannot write one sentence describing a good output, AI will not produce it reliably.',
-    href: '/dos-donts#principle-define-good',
-    keywords: 'define good quality bar output criteria standard evaluation rubric first before running ai',
-  },
-  {
-    id: 'principle-fast-wrong',
-    type: 'principle',
-    title: 'Fast and wrong is worse than slow and right',
-    subtitle: 'Quality',
-    snippet: 'Speed is a bonus, not the goal. If AI gets you there faster but worse, you have not saved time.',
-    href: '/dos-donts#principle-fast-wrong',
-    keywords: 'fast wrong slow right quality speed progress output lower bar regression test 10 inputs',
-  },
-  {
-    id: 'principle-test-set',
-    type: 'principle',
-    title: 'No workflow without a test set',
-    subtitle: 'Quality',
-    snippet: 'Every prompt system needs real inputs tested against it and real outputs someone has signed off on.',
-    href: '/dos-donts#principle-test-set',
-    keywords: 'workflow test set representative inputs tested evaluated scale team deployment quality consistent',
-  },
-  {
-    id: 'principle-taste-human',
-    type: 'principle',
-    title: 'Taste, ethics, and final decisions stay human',
-    subtitle: 'Ownership',
-    snippet: 'AI drafts and challenges. It does not decide. Creative direction and final approval belong to you.',
-    href: '/dos-donts#principle-taste-human',
-    keywords: 'taste ethics decisions human creative direction approval judgment responsibility strategic call',
-  },
-  {
-    id: 'principle-verification',
-    type: 'principle',
-    title: 'Customer-facing output requires a verification path',
-    subtitle: 'Ownership',
-    snippet: 'Any AI output reaching a customer needs a human review step. No exceptions.',
-    href: '/dos-donts#principle-verification',
-    keywords: 'customer facing verification path human review ship error cost negligible review step product',
-  },
-  {
-    id: 'principle-systems',
-    type: 'principle',
-    title: 'A prompt that works once is a note. A prompt system is leverage.',
-    subtitle: 'Systems over one-offs',
-    snippet: 'If it works three times, make it reusable. One-off prompting does not compound.',
-    href: '/dos-donts#principle-systems',
-    keywords: 'prompt system workflow leverage document reusable one-off consistent team members compound',
-  },
-  {
-    id: 'principle-context',
-    type: 'principle',
-    title: 'Context before prompts',
-    subtitle: 'Systems over one-offs',
-    snippet: 'Weak output is almost always a context problem, not a model problem. Invest in context first.',
-    href: '/dos-donts#principle-context',
-    keywords: 'context prompts weak output model problem invest context engineering quality disappointing',
-  },
-  {
-    id: 'principle-right-task',
-    type: 'principle',
-    title: 'Use AI where tasks repeat and inputs are predictable',
-    subtitle: 'Right task for AI',
-    snippet: 'These conditions define where AI creates real leverage. If one is missing, do not build yet.',
-    href: '/dos-donts#principle-right-task',
-    keywords: 'right task repeat volume predictable inputs quality bar leverage conditions automation candidates',
-  },
-  {
-    id: 'principle-singular-judgment',
-    type: 'principle',
-    title: 'Do not use AI where judgment is singular',
-    subtitle: 'Right task for AI',
-    snippet: 'Knowing the person, the room, the history. AI cannot substitute for judgment built on relationships.',
-    href: '/dos-donts#principle-singular-judgment',
-    keywords: 'singular judgment human context irreplaceable relationships institutional knowledge strategic personal history room',
-  },
-  {
-    id: 'principle-sharpen-review',
-    type: 'principle',
-    title: 'AI should sharpen review, not replace it',
-    subtitle: 'Right task for AI',
-    snippet: 'AI surfaces the predictable issues. The human focuses on what actually requires judgment.',
-    href: '/dos-donts#principle-sharpen-review',
-    keywords: 'sharpen review replace filter first pass systematic judgment human focus quality assurance',
-  },
-]
-
 // ─── Tools — synced with app/(playbook)/tools/page.tsx groups ──────────────
 // IDs match the `id=` added to each card: 'tool-' + name.toLowerCase().replace(/[^a-z0-9]+/g,'-')
 
@@ -220,16 +124,16 @@ const toolItems: SearchItem[] = [
   { id: 'tool-playwright',   type: 'tool', title: 'Playwright',    subtitle: 'Automate', snippet: 'Open pages, click through flows, test UI states, and detect broken experiences.',           href: '/tools#tool-playwright',   keywords: 'playwright testing automation browser ui states flows broken experiences end to end' },
   { id: 'tool-scribe',       type: 'tool', title: 'Scribe',        subtitle: 'Automate', snippet: 'Auto-create step-by-step guides from actions.',                                              href: '/tools#tool-scribe',       keywords: 'scribe guides documentation step by step actions auto create howto' },
   // Visual Exploration, Imagery & Motion
-  { id: 'tool-elevenlabs',   type: 'tool', title: 'ElevenLabs',    subtitle: 'Visuals',  snippet: 'Create narration, audio mockups, and voice concepts.',                                       href: '/tools#tool-elevenlabs',   keywords: 'elevenlabs voice synthesis tts text to speech audio voiceover narration mockups' },
-  { id: 'tool-jitter',       type: 'tool', title: 'Jitter',        subtitle: 'Visuals',  snippet: 'Quickly animate UI, social posts, product moments, and lightweight motion concepts.',        href: '/tools#tool-jitter',       keywords: 'jitter animate ui social posts product moments motion animation lightweight' },
-  { id: 'tool-krea',         type: 'tool', title: 'Krea',          subtitle: 'Visuals',  snippet: 'Create visuals, icons, style explorations, and campaign imagery.',                           href: '/tools#tool-krea',         keywords: 'krea visuals icons style explorations campaign imagery generation ai image' },
-  { id: 'tool-lottiefiles',  type: 'tool', title: 'LottieFiles',   subtitle: 'Visuals',  snippet: 'Preview, manage, and export lightweight animations.',                                        href: '/tools#tool-lottiefiles',  keywords: 'lottiefiles animations lightweight preview manage export lottie json' },
-  { id: 'tool-midjourney',   type: 'tool', title: 'Midjourney',    subtitle: 'Visuals',  snippet: 'Generate moodboards, visual territories, concept imagery, and campaign directions.',        href: '/tools#tool-midjourney',   keywords: 'midjourney image generation art moodboard visual concept cinematic campaign directions' },
-  { id: 'tool-rive',         type: 'tool', title: 'Rive',          subtitle: 'Visuals',  snippet: 'Create production-ready interactive animations and state-based motion.',                     href: '/tools#tool-rive',         keywords: 'rive interactive animations state machine motion production ready flutter' },
-  { id: 'tool-runway',       type: 'tool', title: 'Runway',        subtitle: 'Visuals',  snippet: 'Generate short videos, motion experiments, and cinematic visual treatments.',               href: '/tools#tool-runway',       keywords: 'runway video generation editing motion background removal clips cinematic' },
+  { id: 'tool-elevenlabs',   type: 'tool', title: 'ElevenLabs',    subtitle: 'Audio Visuals',  snippet: 'Create narration, audio mockups, and voice concepts.',                                       href: '/tools#tool-elevenlabs',   keywords: 'elevenlabs voice synthesis tts text to speech audio voiceover narration mockups' },
+  { id: 'tool-jitter',       type: 'tool', title: 'Jitter',        subtitle: 'Audio Visuals',  snippet: 'Quickly animate UI, social posts, product moments, and lightweight motion concepts.',        href: '/tools#tool-jitter',       keywords: 'jitter animate ui social posts product moments motion animation lightweight' },
+  { id: 'tool-krea',         type: 'tool', title: 'Krea',          subtitle: 'Audio Visuals',  snippet: 'Create visuals, icons, style explorations, and campaign imagery.',                           href: '/tools#tool-krea',         keywords: 'krea visuals icons style explorations campaign imagery generation ai image' },
+  { id: 'tool-lottiefiles',  type: 'tool', title: 'LottieFiles',   subtitle: 'Audio Visuals',  snippet: 'Preview, manage, and export lightweight animations.',                                        href: '/tools#tool-lottiefiles',  keywords: 'lottiefiles animations lightweight preview manage export lottie json' },
+  { id: 'tool-midjourney',   type: 'tool', title: 'Midjourney',    subtitle: 'Audio Visuals',  snippet: 'Generate moodboards, visual territories, concept imagery, and campaign directions.',        href: '/tools#tool-midjourney',   keywords: 'midjourney image generation art moodboard visual concept cinematic campaign directions' },
+  { id: 'tool-rive',         type: 'tool', title: 'Rive',          subtitle: 'Audio Visuals',  snippet: 'Create production-ready interactive animations and state-based motion.',                     href: '/tools#tool-rive',         keywords: 'rive interactive animations state machine motion production ready flutter' },
+  { id: 'tool-runway',       type: 'tool', title: 'Runway',        subtitle: 'Audio Visuals',  snippet: 'Generate short videos, motion experiments, and cinematic visual treatments.',               href: '/tools#tool-runway',       keywords: 'runway video generation editing motion background removal clips cinematic' },
   // Presentation & Storytelling
-  { id: 'tool-gamma',        type: 'tool', title: 'Gamma',         subtitle: 'Visuals',  snippet: 'Turn rough ideas into structured decks, concept pitches, and workshop material.',           href: '/tools#tool-gamma',        keywords: 'gamma presentations decks concept pitches workshop material ai slides' },
-  { id: 'tool-pitch',        type: 'tool', title: 'Pitch',         subtitle: 'Visuals',  snippet: 'Create clean team presentations and design review decks.',                                   href: '/tools#tool-pitch',        keywords: 'pitch presentations design review decks team slides clean' },
+  { id: 'tool-gamma',        type: 'tool', title: 'Gamma',         subtitle: 'Audio Visuals',  snippet: 'Turn rough ideas into structured decks, concept pitches, and workshop material.',           href: '/tools#tool-gamma',        keywords: 'gamma presentations decks concept pitches workshop material ai slides' },
+  { id: 'tool-pitch',        type: 'tool', title: 'Pitch',         subtitle: 'Audio Visuals',  snippet: 'Create clean team presentations and design review decks.',                                   href: '/tools#tool-pitch',        keywords: 'pitch presentations design review decks team slides clean' },
 ]
 
 // ─── Combined index ────────────────────────────────────────────────────────
@@ -238,7 +142,6 @@ export const searchIndex: SearchItem[] = [
   ...glossaryItems,
   ...skillItems,
   ...promptItems,
-  ...principleItems,
   ...toolItems,
 ]
 
@@ -252,7 +155,6 @@ export function searchAll(query: string): Record<SearchItemType, SearchItem[]> {
     term: [],
     skill: [],
     prompt: [],
-    principle: [],
     tool: [],
   }
 

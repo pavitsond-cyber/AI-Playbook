@@ -13,7 +13,6 @@ const navSections = [
   {
     label: 'Foundations',
     items: [
-      { href: '/dos-donts', label: 'Operating Principles' },
       { href: '/maturity', label: 'AI Maturity Model' },
       { href: '/build-vs-buy', label: 'Build vs Buy' },
     ],

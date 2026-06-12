@@ -48,7 +48,7 @@ const abbreviations: AbbreviationEntry[] = [
     full: 'Reinforcement Learning from Human Feedback',
     meaning: 'Fine-tuning AI with human preference feedback for better alignment: teaching AI via feedback loops to improve model accuracy and alignment with human goals.',
     example: 'RLHF is how Claude and ChatGPT learned to be genuinely helpful rather than just technically correct. Human reviewers compared pairs of model responses and their preferences shaped behavior. When AI feels naturally useful rather than robotic, RLHF is why.',
-    links: [{ label: 'Operating Principles', href: '/dos-donts' }],
+    links: [],
     category: 'ai_concepts',
   },
   {
@@ -80,7 +80,7 @@ const abbreviations: AbbreviationEntry[] = [
     full: 'Model Latency Evaluation',
     meaning: 'Measuring AI response time and efficiency: checking how fast and efficient AI is. Helps optimize AI usage and cost for real-time product features.',
     example: 'Before shipping an AI copy generator into a live checkout flow, benchmark MLE. If the model takes 4+ seconds per response, users abandon. MLE identifies which model tier fits your latency budget, so you choose the right one before launch, not after users churn.',
-    links: [{ label: 'Operating Principles', href: '/dos-donts' }],
+    links: [],
     category: 'ai_concepts',
   },
 
@@ -107,7 +107,7 @@ const abbreviations: AbbreviationEntry[] = [
     full: 'AI Response Filtering',
     meaning: 'Post-processing AI outputs to remove noise, bias, or irrelevant content: filtering AI results before showing them. Reduces errors and improves output quality.',
     example: 'AI generates 20 product descriptions but 3 drift from the brief and 2 have factual errors. ARF is the filtering layer (automated or human) that removes those before the batch gets used. Think of it as quality control that runs between generation and publication.',
-    links: [{ label: 'AI output evaluation skill', href: '/skills' }, { label: 'Operating Principles', href: '/dos-donts' }],
+    links: [{ label: 'AI output evaluation skill', href: '/skills' }],
     category: 'prompting_ops',
   },
   {
@@ -217,7 +217,7 @@ const abbreviations: AbbreviationEntry[] = [
     full: 'AI Iteration Metrics',
     meaning: 'Measuring effectiveness of AI outputs across iterations: metrics to check if AI is helping or not. Helps validate AI impact and ROI.',
     example: 'After refining your copy prompt 3 times, AIM gives you the evidence: brand voice compliance 60% → 85%, factual accuracy 70% → 95%. Without AIM you improve by feel. With it, you improve by data and can show stakeholders exactly what the iteration investment produced.',
-    links: [{ label: 'AI output evaluation skill', href: '/skills' }, { label: 'Operating Principles', href: '/dos-donts' }],
+    links: [{ label: 'AI output evaluation skill', href: '/skills' }],
     category: 'workflow_data',
   },
   {

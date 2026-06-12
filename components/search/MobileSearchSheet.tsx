@@ -5,7 +5,7 @@ import {
 } from 'react'
 import {
   Search, X, ArrowUpRight, Hash, Lightbulb,
-  MessageSquare, Shield, BookOpen
+  MessageSquare, BookOpen
 } from 'lucide-react'
 import { searchAll, SearchItemType } from '@/lib/data/search-index'
 import { useRouter } from 'next/navigation'
@@ -18,11 +18,10 @@ const TYPE_CFG: Record<SearchItemType, {
   term:         { label: 'Terms',           color: '#0d7a5f', bg: 'rgba(13,122,95,0.07)',  border: 'rgba(13,122,95,0.15)',  icon: BookOpen },
   skill:        { label: 'Skills',          color: '#b45309', bg: 'rgba(180,83,9,0.07)',   border: 'rgba(180,83,9,0.15)',   icon: Lightbulb },
   prompt:       { label: 'Prompt Systems',  color: '#7c3aed', bg: 'rgba(124,58,237,0.07)', border: 'rgba(124,58,237,0.15)', icon: MessageSquare },
-  principle:    { label: 'Principles',      color: '#be185d', bg: 'rgba(190,24,93,0.07)',  border: 'rgba(190,24,93,0.15)',  icon: Shield },
   tool:         { label: 'Tools',           color: '#E8C840', bg: 'rgba(232,200,64,0.07)', border: 'rgba(232,200,64,0.15)', icon: Lightbulb },
 }
 
-const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt', 'tool', 'principle']
+const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt', 'tool']
 
 function Hi({ text, q }: { text: string; q: string }) {
   if (!q || !text) return <>{text}</>
@@ -105,27 +104,15 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
 
   return (
     <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '100dvh',           /* shrinks when iOS keyboard opens */
-        zIndex: 999,
-        background: '#0A0010',
-        willChange: 'transform',
-        // Slide in from right
-        transform: animate ? 'translateX(0)' : 'translateX(100%)',
-        transition: animate
-          ? 'transform 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-          : 'transform 0.22s cubic-bezier(0.55, 0, 1, 0.45)',
-        display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden',
+      className="playbook-search-overlay"
+      data-open={animate ? 'true' : 'false'}
+      onMouseDown={event => {
+        if (event.target === event.currentTarget) onClose()
       }}
     >
-      {/* ── Top bar ─────────────────────────────────────────── */}
-      <div style={{
+      <div className="playbook-search-sheet">
+        {/* ── Top bar ─────────────────────────────────────────── */}
+        <div style={{
         display: 'flex',
         alignItems: 'center',
         gap: 12,
@@ -136,7 +123,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
         background: 'rgba(10,0,16,0.95)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-      }}>
+        }}>
         {/* Search input */}
         <div style={{
           flex: 1,
@@ -206,11 +193,11 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
         >
           Cancel
         </button>
-      </div>
+        </div>
 
-      {/* ── Results ─────────────────────────────────────────── */}
-      {/* Always scrollable so the iOS keyboard never traps content */}
-      <div style={{
+        {/* ── Results ─────────────────────────────────────────── */}
+        {/* Always scrollable so the iOS keyboard never traps content */}
+        <div style={{
         flex: 1,
         minHeight: 0,
         overflowY: 'auto',
@@ -218,7 +205,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
         scrollbarWidth: 'none',
         overscrollBehavior: 'contain',
         WebkitOverflowScrolling: 'touch',
-      } as React.CSSProperties}>
+        } as React.CSSProperties}>
 
         {/* Empty state */}
         {!hasQ && (
@@ -319,7 +306,8 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
           )
         })}
 
-        <div style={{ height: 40, paddingBottom: 'env(safe-area-inset-bottom, 20px)' }} />
+          <div style={{ height: 40, paddingBottom: 'env(safe-area-inset-bottom, 20px)' }} />
+        </div>
       </div>
     </div>
   )

@@ -9,7 +9,6 @@ import { usePageChrome } from '@/components/nav/PageChromeContext'
 
 const navItems = [
   { href: '/', label: 'Home' },
-  { href: '/dos-donts', label: 'Operating Principles' },
   { href: '/prompts', label: 'Prompts' },
   { href: '/skills', label: 'Skills' },
   { href: '/glossary', label: 'Glossary' },
@@ -27,17 +26,7 @@ export default function TopNav() {
   const isActive = (href: string) =>
     pathname === href || (href !== '/' && pathname.startsWith(href))
 
-  const goBack = () => {
-    if (isHome) {
-      window.location.href = '/'
-      return
-    }
-    if (window.history.length > 1) {
-      router.back()
-      return
-    }
-    router.push('/')
-  }
+  const goBack = () => router.push('/')
 
   return (
     <>
@@ -62,7 +51,7 @@ export default function TopNav() {
           <button
             type="button"
             onClick={goBack}
-            aria-label={isHome ? 'Back to event site' : 'Back'}
+            aria-label="Back to AI Playbook"
             className="playbook-header-control playbook-header-control--frost"
           >
             <ArrowLeft size={24} strokeWidth={2} aria-hidden />

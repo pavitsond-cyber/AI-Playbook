@@ -63,9 +63,7 @@ export const staticTerms: GlossaryTerm[] = [
     where_used: null,
     aliases: ['Human feedback training', 'Preference learning'],
     tool_tags: [],
-    related_links: [
-      { label: 'Operating Principles', href: '/dos-donts' },
-    ],
+    related_links: [],
   }),
 
   makeTerm({
@@ -128,9 +126,7 @@ export const staticTerms: GlossaryTerm[] = [
     where_used: null,
     aliases: ['Latency benchmarking', 'Inference speed evaluation'],
     tool_tags: [],
-    related_links: [
-      { label: 'Operating Principles', href: '/dos-donts' },
-    ],
+    related_links: [],
   }),
 
   // Prompting & Ops
@@ -181,7 +177,6 @@ export const staticTerms: GlossaryTerm[] = [
     tool_tags: [],
     related_links: [
       { label: 'AI output evaluation skill', href: '/skills' },
-      { label: 'Operating Principles', href: '/dos-donts' },
     ],
   }),
 
@@ -400,7 +395,6 @@ export const staticTerms: GlossaryTerm[] = [
     tool_tags: [],
     related_links: [
       { label: 'AI output evaluation skill', href: '/skills' },
-      { label: 'Operating Principles', href: '/dos-donts' },
     ],
   }),
 
@@ -569,9 +563,7 @@ export const staticTerms: GlossaryTerm[] = [
     where_used: null,
     aliases: ['System prompts', 'Safety constraints', 'Output filters', 'AI rules'],
     tool_tags: [],
-    related_links: [
-      { label: 'Operating Principles', href: '/dos-donts' },
-    ],
+    related_links: [],
   }),
 
   makeTerm({
@@ -586,7 +578,6 @@ export const staticTerms: GlossaryTerm[] = [
     aliases: ['Hallucination reduction', 'AI fact-checking', 'Grounding'],
     tool_tags: [],
     related_links: [
-      { label: 'Operating Principles', href: '/dos-donts' },
       { label: 'UX Research Synthesis prompt', href: '/prompts' },
     ],
   }),

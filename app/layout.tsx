@@ -19,7 +19,7 @@ const halyardDisplay = localFont({
 
 export const metadata: Metadata = {
   title: 'AI Playbook',
-  description: 'A practical AI reference for teams — operating principles, prompt systems, and skills.',
+  description: 'A practical AI reference for teams, prompt systems, skills, and tools.',
 }
 
 export const viewport: Viewport = {

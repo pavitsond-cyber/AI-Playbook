@@ -32,7 +32,7 @@ interface ToolGroup {
 }
 
 /* ── 5 tabs: All + 4 consolidated categories ─────────────────────────────── */
-const TABS = ['All', 'Capture', 'Design', 'Automate', 'Visuals', 'MCP']
+const TABS = ['All', 'Capture', 'Design', 'Automate', 'Audio Visuals', 'MCP']
 
 /* ── Tool groups — each tagged with one of the 4 content tabs ────────────── */
 const groups: ToolGroup[] = [
@@ -107,7 +107,7 @@ const groups: ToolGroup[] = [
     ],
   },
   {
-    theme: 'Visual Exploration, Imagery & Motion', tab: 'Visuals', color: '#00D4FF',
+    theme: 'Audio, Visual Exploration & Motion', tab: 'Audio Visuals', color: '#00D4FF',
     tools: [
       { name: 'ElevenLabs',  initial: '11', logoDomain: 'elevenlabs.io',   accentColor: '#38BDF8', use: 'Create narration, audio mockups, and voice concepts.',                                           href: 'https://elevenlabs.io' },
       { name: 'Jitter',      initial: 'Ji', logoDomain: 'jitter.video',    accentColor: '#7C3AED', use: 'Quickly animate UI, social posts, product moments, and lightweight motion concepts.',           href: 'https://jitter.video' },
@@ -119,7 +119,7 @@ const groups: ToolGroup[] = [
     ],
   },
   {
-    theme: 'Presentation & Storytelling', tab: 'Visuals', color: '#FF8A65',
+    theme: 'Presentation & Visual Storytelling', tab: 'Audio Visuals', color: '#FF8A65',
     tools: [
       { name: 'Gamma', initial: 'Gm', logoDomain: 'gamma.app', accentColor: '#8B5CF6', use: 'Turn rough ideas into structured decks, concept pitches, and workshop material.', href: 'https://gamma.app' },
       { name: 'Pitch', initial: 'Pi', logoDomain: 'pitch.com', accentColor: '#3B82F6', use: 'Create clean team presentations and design review decks.',                        href: 'https://pitch.com' },
@@ -366,7 +366,7 @@ export default function ToolsPage() {
               ? 'opacity 0.16s ease-in, transform 0.16s ease-in'
               : 'opacity 0.26s ease-out, transform 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           }}>
-            <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: 12 }}>
+            <div className="grid grid-cols-2 sm:grid-cols-3" style={{ gap: 12 }}>
               {flatTools.map((tool, i) => (
                 <div
                   key={tool.name}

@@ -752,33 +752,41 @@ const skills: Skill[] = [
 
 ]
 
+const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 function buildMarkdown(skill: Skill): string {
   return `# ${skill.name}\n\n## What this skill is\n${skill.what}\n\n## When to use\n${skill.whenToUse}\n\n## Quality bar\n${skill.qualityBar}\n\n## Tools\n${skill.tools.join(', ')}\n\n## Teams\n${skill.teams.join(', ')}\n`
 }
 
-function downloadSkill(skill: Skill) {
-  // If a pre-built MD file exists in /public, download it directly
+async function downloadSkill(skill: Skill) {
+  let blob: Blob
+  let filename: string
+
   if (skill.mdFile) {
-    const a = document.createElement('a')
-    a.href = skill.mdFile
-    a.download = skill.mdFile.split('/').pop() ?? 'skill.md'
-    a.click()
-    return
+    const response = await fetch(`${BP}${skill.mdFile}`)
+    if (!response.ok) throw new Error('Unable to download this skill.')
+    blob = await response.blob()
+    filename = skill.mdFile.split('/').pop() ?? 'skill.md'
+  } else {
+    const content = buildMarkdown(skill)
+    filename = skill.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '.md'
+    blob = new Blob([content], { type: 'text/markdown' })
   }
-  // Otherwise generate from data
-  const content = buildMarkdown(skill)
-  const filename = skill.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '.md'
-  const blob = new Blob([content], { type: 'text/markdown' })
+
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
   a.download = filename
+  document.body.appendChild(a)
   a.click()
+  a.remove()
+  await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
   URL.revokeObjectURL(url)
 }
 
 function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: boolean; onToggle: () => void; showTag: boolean }) {
   const [downloaded, setDownloaded] = useState(false)
+  const [downloading, setDownloading] = useState(false)
   const rowRef = useRef<HTMLDivElement>(null)
 
   // Scroll the opened card into view so it's always fully visible
@@ -790,11 +798,18 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
     }
   }, [isOpen])
 
-  const handleDownload = (e: React.MouseEvent) => {
+  const handleDownload = async (e: React.MouseEvent) => {
     e.stopPropagation()
-    downloadSkill(skill)
-    setDownloaded(true)
-    setTimeout(() => setDownloaded(false), 2000)
+    if (downloading) return
+    setDownloading(true)
+    setDownloaded(false)
+    try {
+      await downloadSkill(skill)
+      setDownloaded(true)
+      setTimeout(() => setDownloaded(false), 2000)
+    } finally {
+      setDownloading(false)
+    }
   }
 
   return (
@@ -813,6 +828,7 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
       {/* ── Download button — top right, outside the toggle button ────── */}
       <button
         onClick={handleDownload}
+        disabled={downloading}
         title="Download as .md"
         style={{
           position: 'absolute',
@@ -830,7 +846,8 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
           fontSize: 11,
           fontFamily: 'var(--font-body)',
           fontWeight: 500,
-          cursor: 'pointer',
+          cursor: downloading ? 'wait' : 'pointer',
+          opacity: downloading ? 0.65 : 1,
           transition: 'background 0.18s ease, border-color 0.18s ease, color 0.18s ease',
         }}
         onMouseEnter={e => {
@@ -849,7 +866,7 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
         }}
       >
         {downloaded ? <Check size={11} /> : <Download size={11} />}
-        {downloaded ? 'Saved' : '.md'}
+        {downloaded ? 'Saved' : downloading ? 'Downloading' : '.md'}
       </button>
 
       {/* ── Collapsed row ─────────────────────────────────────────────── */}
@@ -1028,7 +1045,6 @@ export default function SkillsPage() {
   const [activeTab, setActiveTab]   = useState<string>('All')
   const [displayTab, setDisplayTab] = useState<string>('All')
   const [fading, setFading]         = useState(false)
-  const scrollRef                   = useRef<HTMLDivElement>(null)
 
   const toggle = (name: string) => setOpenName(prev => prev === name ? null : name)
 
@@ -1043,7 +1059,7 @@ export default function SkillsPage() {
     }, 160)
   }
 
-  // Deep-link: open skill from URL hash and scroll it into view inside the local container
+  // Deep-link: open skill from URL hash and scroll into view
   useEffect(() => {
     const hash = decodeURIComponent(window.location.hash.slice(1))
     if (!hash) return
@@ -1053,10 +1069,9 @@ export default function SkillsPage() {
       setActiveTab('All')
       setTimeout(() => {
         const el = document.getElementById('skill-' + match.name.replace(/\s+/g, '-').toLowerCase())
-        const container = scrollRef.current
-        if (!el || !container) return
-        const y = container.scrollTop + el.getBoundingClientRect().top - container.getBoundingClientRect().top - 16
-        container.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
+        if (!el) return
+        const y = el.getBoundingClientRect().top + window.scrollY - 100
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
       }, 160)
     }
   }, [])
@@ -1066,15 +1081,18 @@ export default function SkillsPage() {
     : skills.filter(s => DOMAIN_TO_TAB[s.domain ?? ''] === displayTab)
 
   return (
-    /* Outer shell fills the space the layout reserves below the TopNav.
-       overflow:hidden ensures nothing can bleed above the tab bar. */
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
 
-      {/* ── Tab bar — sits at the top, content never scrolls above it ── */}
-      <div style={{
-        flexShrink: 0,
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-      }}>
+      {/* ── Page header ── */}
+      <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto', width: '100%' }}>
+        <PageHeader
+          title="Skills"
+          description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
+        />
+      </div>
+
+      {/* ── Tab bar — below the header, natural document flow ── */}
+      <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', marginTop: 8 }}>
         <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
           <div style={{ display: 'flex', flexWrap: 'nowrap', gap: 'clamp(16px,3vw,36px)' }}>
             {TABS.map(tab => {
@@ -1106,41 +1124,27 @@ export default function SkillsPage() {
         </div>
       </div>
 
-      {/* ── Scroll container — only this scrolls; nothing reaches the tab bar ── */}
-      <div
-        ref={scrollRef}
-        style={{ flex: 1, overflowY: 'auto', overscrollBehavior: 'contain' }}
-      >
-        {/* Page title */}
-        <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto' }}>
-          <PageHeader
-            title="Skills"
-            description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
-          />
-        </div>
-
-        {/* Skill list */}
-        <div style={{ maxWidth: 960, margin: '0 auto', padding: '8px clamp(20px,4vw,48px) 48px' }}>
-          <div className={!fading ? 'animate-tab-fade' : ''} style={{
-            display: 'flex', flexDirection: 'column', gap: 16,
-            minHeight: '50vh',
-            opacity: fading ? 0 : 1,
-            transform: fading ? 'translateY(4px)' : 'translateY(0px)',
-            transition: fading
-              ? 'opacity 0.14s ease-in'
-              : 'opacity 0.22s ease-out, transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          }}>
-            {filtered.map((skill, i) => (
-              <div key={skill.name} className="animate-fade-up" style={{ animationDelay: `${Math.min(i * 35, 280)}ms` }}>
-                <SkillRow
-                  skill={skill}
-                  isOpen={openName === skill.name}
-                  onToggle={() => toggle(skill.name)}
-                  showTag={activeTab === 'All'}
-                />
-              </div>
-            ))}
-          </div>
+      {/* ── Skill list ── */}
+      <div style={{ maxWidth: 960, margin: '0 auto', width: '100%', padding: '8px clamp(20px,4vw,48px) 48px' }}>
+        <div className={!fading ? 'animate-tab-fade' : ''} style={{
+          display: 'flex', flexDirection: 'column', gap: 16,
+          minHeight: '50vh',
+          opacity: fading ? 0 : 1,
+          transform: fading ? 'translateY(4px)' : 'translateY(0px)',
+          transition: fading
+            ? 'opacity 0.14s ease-in'
+            : 'opacity 0.22s ease-out, transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        }}>
+          {filtered.map((skill, i) => (
+            <div key={skill.name} className="animate-fade-up" style={{ animationDelay: `${Math.min(i * 35, 280)}ms` }}>
+              <SkillRow
+                skill={skill}
+                isOpen={openName === skill.name}
+                onToggle={() => toggle(skill.name)}
+                showTag={activeTab === 'All'}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>

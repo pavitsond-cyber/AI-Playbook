@@ -2,10 +2,8 @@
 
 import { useState, useMemo, useEffect, useCallback } from 'react'
 import { GlossaryTerm } from '@/types'
-import { filterTerms } from '@/lib/utils/search'
 import GlossaryGrid from './GlossaryGrid'
 import GlossaryCard from './GlossaryCard'
-import EmptyState from './EmptyState'
 import { useDockedTitle } from '@/components/nav/PageChromeContext'
 
 type TabId = 'abbreviations' | 'terminologies'
@@ -28,9 +26,7 @@ interface GlossaryPageProps { terms: GlossaryTerm[] }
 
 export default function GlossaryPage({ terms }: GlossaryPageProps) {
   const [activeTab, setActiveTab]         = useState<TabId>('abbreviations')
-  const [query, setQuery]                 = useState('')
   const [activeAlpha, setActiveAlpha]     = useState<string | null>(null)
-  const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [openCardId, setOpenCardId]       = useState<string | null>(null)
   const titleRef = useDockedTitle('Glossary')
 
@@ -39,15 +35,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
     terminologies: terms.filter(t => !t.full_form || t.full_form.trim() === ''),
   }), [terms])
 
-  const filtered = useMemo(
-    () => filterTerms(tabTerms[activeTab], query),
-    [tabTerms, activeTab, query]
-  )
-
-  const matchCounts = useMemo(() => ({
-    abbreviations: filterTerms(tabTerms.abbreviations, query).length,
-    terminologies: filterTerms(tabTerms.terminologies, query).length,
-  }), [tabTerms, query])
+  const filtered = tabTerms[activeTab]
 
   // ── Abbreviation groups ────────────────────────────────────────────────
   const abbrGroups = useMemo(() => {
@@ -79,9 +67,8 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
 
   useEffect(() => {
     setActiveAlpha(null)
-    setActiveCategory(null)
     setOpenCardId(null)
-  }, [activeTab, query])
+  }, [activeTab])
 
   // Deep-link handler: switch to correct tab, open card, scroll to exact position
   useEffect(() => {
@@ -96,11 +83,11 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
     setActiveTab(isAbbrev ? 'abbreviations' : 'terminologies')
     setOpenCardId(hash)
 
-    // Wait for tab content to render, then scroll — offset for sticky nav + search/tabs bar
+    // Wait for tab content to render, then scroll below the sticky navigation and tabs.
     setTimeout(() => {
       const el = document.getElementById(hash)
       if (!el) return
-      const NAV_OFFSET = 180 // topnav 64px + search bar ~50px + tabs ~44px + gap
+      const NAV_OFFSET = 132
       const y = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
       window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
     }, 300)
@@ -117,18 +104,8 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
     }
   }, [activeLetters])
 
-  // Scroll to a category section (abbreviations)
-  const scrollToCategory = useCallback((category: string) => {
-    const el = document.getElementById(`abbr-group-${category}`)
-    if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY - 172
-      window.scrollTo({ top: y, behavior: 'smooth' })
-      setActiveCategory(category)
-    }
-  }, [])
-
   // ── Shared sidebar button style ────────────────────────────────────────
-  const sidebarBtn = (isActive: boolean, has: boolean, color = '#C27FFF') => ({
+  const sidebarBtn = (isActive: boolean, has: boolean) => ({
     width: 32,
     height: 28,
     display: 'flex' as const,
@@ -156,7 +133,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
 
         {/* Page title */}
         <div ref={titleRef} data-page-title className="animate-fade-up delay-75" style={{ padding: "24px clamp(20px,4vw,48px) 16px" }}>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px,4vw,64px)', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 8 }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(60px,6.25vw,90px)', fontWeight: 400, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1, marginBottom: 12 }}>
             Glossary
           </h1>
           <p className="mt-1" style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.3)' }}>
@@ -175,40 +152,10 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
             borderBottom: '1px solid rgba(255,255,255,0.06)',
           }}
         >
-          {/* Sectional search — only searches within the active tab */}
-          <div style={{ padding: '20px clamp(20px,4vw,48px) 8px' }}>
-            <div style={{
-              display: 'flex', alignItems: 'center', gap: 10,
-              padding: '9px 14px',
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: 10,
-            }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-              <input
-                type="text"
-                inputMode="search"
-                value={query}
-                onChange={e => setQuery(e.target.value)}
-                placeholder="Search terms, abbreviations…"
-                style={{
-                  flex: 1, border: 'none', outline: 'none',
-                  background: 'transparent',
-                  fontSize: 14, color: 'rgba(255,255,255,0.88)',
-                  fontFamily: 'var(--font-body)',
-                }}
-              />
-              {query && (
-                <button onClick={() => setQuery('')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.4)', padding: 0, display: 'flex' }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
-                </button>
-              )}
-            </div>
-          </div>
           <div style={{ display: "flex", padding: "8px clamp(20px,4vw,48px) 0" }}>
             {TABS.map(tab => {
               const isActive = activeTab === tab.id
-              const count = query ? matchCounts[tab.id] : tabTerms[tab.id].length
+              const count = tabTerms[tab.id].length
               return (
                 <button
                   key={tab.id}
@@ -244,19 +191,10 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
 
         {/* Results */}
         <div style={{ padding: "20px clamp(20px,4vw,48px) clamp(40px,4vw,64px)" }}>
-          {filtered.length === 0 ? (
-            <EmptyState query={query} />
-
-          ) : activeTab === 'abbreviations' ? (
+          {activeTab === 'abbreviations' ? (
             /* ── Abbreviations — single column, no sidebar ─────────────── */
             <div key="abbreviations" className="animate-tab-fade">
               <div style={{ flex: 1, minWidth: 0 }}>
-                {query && (
-                  <p className="text-xs mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>
-                    {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
-                  </p>
-                )}
-
                 <div className="space-y-8">
                   {abbrGroups.map((group, gi) => (
                     <div key={group.category} id={`abbr-group-${group.category}`} className="animate-fade-up" style={{ animationDelay: `${gi * 40}ms` }}>
@@ -295,12 +233,6 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
 
               {/* Terms grouped by letter — comes first (left) */}
               <div style={{ flex: 1, minWidth: 0 }}>
-                {query && (
-                  <p className="text-xs mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>
-                    {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for &ldquo;{query}&rdquo;
-                  </p>
-                )}
-
                 <div className="space-y-8">
                   {letterGroups.map(({ letter, terms: groupTerms }, gi) => (
                     <div key={letter} id={`alpha-section-${letter}`} className="animate-fade-up" style={{ animationDelay: `${gi * 40}ms` }}>

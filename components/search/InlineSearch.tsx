@@ -5,7 +5,7 @@ import {
 } from 'react'
 import {
   Search, X, ArrowUpRight, Hash, Lightbulb,
-  MessageSquare, Shield, BookOpen, CornerDownLeft
+  MessageSquare, BookOpen, CornerDownLeft
 } from 'lucide-react'
 import { searchAll, SearchItem, SearchItemType } from '@/lib/data/search-index'
 import { useRouter } from 'next/navigation'
@@ -20,11 +20,10 @@ const TYPE_CFG: Record<SearchItemType, {
   term:         { label: 'Terms',           color: '#0d7a5f', bg: 'rgba(13,122,95,0.07)',  border: 'rgba(13,122,95,0.15)',  icon: BookOpen },
   skill:        { label: 'Skills',          color: '#b45309', bg: 'rgba(180,83,9,0.07)',   border: 'rgba(180,83,9,0.15)',   icon: Lightbulb },
   prompt:       { label: 'Prompt Systems',  color: '#7c3aed', bg: 'rgba(124,58,237,0.07)', border: 'rgba(124,58,237,0.15)', icon: MessageSquare },
-  principle:    { label: 'Principles',      color: '#be185d', bg: 'rgba(190,24,93,0.07)',  border: 'rgba(190,24,93,0.15)',  icon: Shield },
   tool:         { label: 'Tools',           color: '#E8C840', bg: 'rgba(232,200,64,0.07)', border: 'rgba(232,200,64,0.15)', icon: Lightbulb },
 }
 
-const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt', 'tool', 'principle']
+const ORDER: SearchItemType[] = ['abbreviation', 'term', 'skill', 'prompt', 'tool']
 
 // ─── Highlight helper ─────────────────────────────────────────────────────
 

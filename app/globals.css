@@ -146,26 +146,27 @@ body {
 .playbook-header-control--frost {
   overflow: hidden;
   background:
-    linear-gradient(145deg, rgba(255,255,255,0.13), rgba(255,255,255,0.035) 58%, rgba(255,255,255,0.07)),
-    rgba(48, 49, 102, 0.62);
-  border: 1px solid rgba(255,255,255,0.24);
-  -webkit-backdrop-filter: blur(18px) saturate(125%);
-  backdrop-filter: blur(18px) saturate(125%);
+    linear-gradient(155deg, rgba(255,255,255,0.24), rgba(255,255,255,0.11) 55%, rgba(255,255,255,0.16)),
+    rgba(73, 67, 137, 0.62);
+  border: 1px solid rgba(255,255,255,0.28);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  backdrop-filter: blur(22px) saturate(145%);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.38),
-    inset 0 0 0 2px rgba(255,255,255,0.07),
-    0 3px 0 rgba(7,8,32,0.3),
-    0 10px 24px -14px rgba(0,0,0,0.7);
+    inset 0 1.5px 0 rgba(255,255,255,0.58),
+    inset 0 0 0 1px rgba(255,255,255,0.12),
+    0 8px 20px -10px rgba(0,0,0,0.6);
   transition:
-    background 220ms ease,
-    box-shadow 220ms ease,
-    transform 380ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    background 280ms ease,
+    border-color 280ms ease,
+    box-shadow 280ms ease,
+    transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .playbook-header-control--frost:hover {
   background:
-    linear-gradient(145deg, rgba(255,255,255,0.17), rgba(255,255,255,0.055) 58%, rgba(255,255,255,0.09)),
-    rgba(55, 56, 116, 0.7);
+    linear-gradient(155deg, rgba(255,255,255,0.32), rgba(255,255,255,0.16) 55%, rgba(255,255,255,0.22)),
+    rgba(84, 76, 156, 0.78);
+  border-color: rgba(255,255,255,0.36);
 }
 
 .playbook-header-control--frost:active {
@@ -412,6 +413,79 @@ body {
     visibility 0s;
 }
 
+.playbook-search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 100dvh;
+  overflow: hidden;
+  background: rgba(4, 2, 16, 0);
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+  opacity: 0;
+  transition:
+    opacity 220ms ease-in,
+    background-color 220ms ease-in,
+    backdrop-filter 220ms ease-in;
+}
+
+.playbook-search-overlay[data-open='true'] {
+  background: rgba(4, 2, 16, 0.42);
+  -webkit-backdrop-filter: blur(22px) saturate(125%);
+  backdrop-filter: blur(22px) saturate(125%);
+  opacity: 1;
+  transition:
+    opacity 320ms ease-out,
+    background-color 320ms ease-out,
+    backdrop-filter 320ms ease-out;
+}
+
+.playbook-search-sheet {
+  display: flex;
+  width: min(520px, 100%);
+  height: min(76dvh, 720px);
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 30px 0 0;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.035) 48%, rgba(255,255,255,0.07)),
+    rgba(14, 9, 38, 0.88);
+  -webkit-backdrop-filter: blur(36px) saturate(155%);
+  backdrop-filter: blur(36px) saturate(155%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.34),
+    -18px -18px 64px rgba(0,0,0,0.34);
+  opacity: 0;
+  transform: translate3d(28px, 100%, 0);
+  transform-origin: bottom right;
+  transition:
+    transform 240ms cubic-bezier(0.55, 0, 1, 0.45),
+    opacity 180ms ease-in;
+  will-change: transform;
+}
+
+.playbook-search-overlay[data-open='true'] .playbook-search-sheet {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 260ms ease-out;
+}
+
+@media (max-width: 639px) {
+  .playbook-search-sheet {
+    width: calc(100% - 12px);
+    height: min(78dvh, 680px);
+    border-radius: 28px 0 0;
+  }
+}
+
 .playbook-glass-menu {
   position: absolute;
   top: 56px;
@@ -519,6 +593,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .playbook-header-action,
   .playbook-header-actions,
+  .playbook-search-overlay,
+  .playbook-search-sheet,
   .playbook-glass-menu,
   .menu-icon__menu,
   .menu-icon__close {
