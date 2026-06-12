@@ -9,10 +9,7 @@ interface FilePayload {
 interface ContributeBody {
   name: string
   email: string
-  role: string
-  title: string
   category: string
-  timeSaved?: string
   description: string
   files?: FilePayload[]
 }
@@ -30,19 +27,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid request body.' }, { status: 400 })
   }
 
-  const { name, email, role, title, category, description } = body
+  const { name, email, category, description } = body
   console.log(`[contribute] received files: ${(body.files ?? []).length}`)
-  if (!name || !email || !role || !title || !category || !description) {
+  if (!name || !email || !category || !description) {
     return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 })
   }
 
   const payload: ContributeBody = {
     name,
     email,
-    role,
-    title,
     category,
-    timeSaved:   body.timeSaved ?? '',
     description,
     files:       body.files ?? [],
   }
