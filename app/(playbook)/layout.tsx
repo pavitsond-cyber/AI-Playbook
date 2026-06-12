@@ -26,7 +26,7 @@ export default function PlaybookLayout({ children }: { children: React.ReactNode
 
   return (
     <PageChromeProvider>
-      <div style={{
+      <div className="playbook-layout-root" style={{
         minHeight: '100vh',
         background: '#0D0B1E',
         display: 'flex',
