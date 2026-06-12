@@ -65,7 +65,7 @@ export default function TopNav() {
             aria-label={isHome ? 'Back to event site' : 'Back'}
             className="playbook-header-control playbook-header-control--frost"
           >
-            <ArrowLeft size={30} strokeWidth={2} aria-hidden />
+            <ArrowLeft size={24} strokeWidth={2} aria-hidden />
           </button>
 
           {!isHome && (
@@ -89,7 +89,7 @@ export default function TopNav() {
               aria-label="Search"
               className="playbook-header-action"
             >
-              <Search size={22} strokeWidth={2} aria-hidden />
+              <Search size={20} strokeWidth={2} aria-hidden />
             </button>
 
             {!isHome && (
@@ -105,8 +105,8 @@ export default function TopNav() {
                   className="playbook-header-action playbook-header-action--menu"
                 >
                   <span className={menuOpen ? 'menu-icon menu-icon--open' : 'menu-icon'}>
-                    <Menu className="menu-icon__menu" size={22} strokeWidth={2} aria-hidden />
-                    <X className="menu-icon__close" size={22} strokeWidth={2} aria-hidden />
+                    <Menu className="menu-icon__menu" size={20} strokeWidth={2} aria-hidden />
+                    <X className="menu-icon__close" size={20} strokeWidth={2} aria-hidden />
                   </span>
                 </button>
               </>
