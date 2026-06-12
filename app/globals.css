@@ -169,10 +169,18 @@ body {
 }
 
 .playbook-header-control--frost:active {
-  transform: scale(0.92);
+  transform: scale(0.96);
+  border-color: rgba(255,255,255,0.34);
   background:
-    linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0.075) 58%, rgba(255,255,255,0.11)),
-    rgba(62, 63, 126, 0.76);
+    radial-gradient(circle at 38% 28%, rgba(255,255,255,0.24), transparent 42%),
+    linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.045) 58%, rgba(255,255,255,0.08)),
+    rgba(48,49,102,0.66);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.56),
+    inset 0 0 0 2px rgba(255,255,255,0.1),
+    inset 0 -5px 12px rgba(12,10,46,0.16),
+    0 5px 14px -10px rgba(0,0,0,0.68);
+  transition-duration: 90ms;
 }
 
 .playbook-header-control:focus-visible {
@@ -278,18 +286,53 @@ body {
   background: transparent;
   color: #ffffff;
   cursor: pointer;
+  isolation: isolate;
   transition:
-    background-color 180ms ease,
+    color 180ms ease,
     transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.playbook-header-action:hover {
-  background: rgba(255,255,255,0.08);
+.playbook-header-action::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  z-index: -1;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 38% 26%, rgba(255,255,255,0.16), transparent 46%),
+    rgba(255,255,255,0);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0);
+  opacity: 0;
+  transform: scale(0.88);
+  transition:
+    opacity 180ms ease,
+    transform 360ms cubic-bezier(0.2,0.8,0.2,1),
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.playbook-header-action:hover::before {
+  opacity: 0.72;
+  transform: scale(1);
 }
 
 .playbook-header-action:active {
-  transform: scale(0.84);
-  background: rgba(255,255,255,0.14);
+  transform: scale(0.95);
+  transition-duration: 90ms;
+}
+
+.playbook-header-action:active::before {
+  opacity: 1;
+  transform: scale(0.94);
+  border-color: rgba(255,255,255,0.2);
+  background:
+    radial-gradient(circle at 38% 26%, rgba(255,255,255,0.28), transparent 45%),
+    linear-gradient(145deg, rgba(255,255,255,0.13), rgba(255,255,255,0.045));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.38),
+    inset 0 -4px 9px rgba(16,12,52,0.13);
   transition-duration: 90ms;
 }
 
