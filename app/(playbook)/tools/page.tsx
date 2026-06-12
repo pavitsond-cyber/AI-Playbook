@@ -291,7 +291,7 @@ export default function ToolsPage() {
       <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto', width: '100%' }}>
         <PageHeader
           title="Tools"
-          description="Daily AI tool stack for vibe-coding designers — 38 tools across 6 categories."
+          description="Our AI tool shelf"
         />
       </div>
 

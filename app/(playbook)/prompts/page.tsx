@@ -869,7 +869,7 @@ export default function PromptsPage() {
       <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto', width: '100%' }}>
         <PageHeader
           title="Prompt Systems"
-          description="15 reusable prompt templates for product thinking, UX writing, research, strategy, and decision-making."
+          description="Starting points, not magic spells"
         />
       </div>
 

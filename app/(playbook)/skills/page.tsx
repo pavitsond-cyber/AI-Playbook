@@ -1099,7 +1099,7 @@ export default function SkillsPage() {
       <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto', width: '100%' }}>
         <PageHeader
           title="Skills"
-          description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
+          description="Senior-level shortcuts"
         />
       </div>
 

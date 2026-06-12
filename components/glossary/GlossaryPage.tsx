@@ -138,7 +138,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
             Glossary
           </h1>
           <p className="mt-1" style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'rgba(255,255,255,0.3)' }}>
-            {terms.length} terms · tap any card to expand
+Buzzwords, translated and how they&apos;re used
           </p>
         </div>
 
