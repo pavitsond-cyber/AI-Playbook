@@ -26,13 +26,14 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-  themeColor: '#0A0010',
+  interactiveWidget: 'resizes-visual',
+  themeColor: '#0D0B1E',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${dmSans.variable} ${halyardDisplay.variable}`}>
-      <body style={{ minHeight: '100vh', background: '#0A0010', fontFamily: 'var(--font-body)' }}>
+      <body style={{ minHeight: '100vh', background: '#0D0B1E', fontFamily: 'var(--font-body)' }}>
         {children}
       </body>
     </html>

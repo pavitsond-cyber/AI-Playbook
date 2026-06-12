@@ -70,15 +70,22 @@
 
 :root { color-scheme: dark; }
 
-html { background-color: #0A0010; scroll-behavior: smooth; }
+html { background-color: #0D0B1E; scroll-behavior: smooth; }
 
 body {
-  background-color: #0A0010;
+  background-color: #0D0B1E;
   color: rgba(255,255,255,0.88);
   font-family: var(--font-body);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Inputs: give 80px breathing room above keyboard when scrolled into view */
+input:focus,
+textarea:focus,
+select:focus {
+  scroll-margin-bottom: 80px;
 }
 
 * { box-sizing: border-box; }
@@ -955,7 +962,7 @@ main > * {
 
 /* Landing page: dark bg on desktop, transparent on mobile (MobileBg provides it) */
 .landing-root {
-  background: #0D0B1E;
+  background: #0D0B1E; /* same as body — intentional match */
 }
 @media (max-width: 639px) {
   .landing-root { background: transparent; }
