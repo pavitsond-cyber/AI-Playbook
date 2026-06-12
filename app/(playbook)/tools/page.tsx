@@ -33,7 +33,7 @@ interface ToolGroup {
 }
 
 /* ── 7 tabs: All + 6 categories ──────────────────────────────────────────── */
-const TABS = ['All', 'Organize', 'Brainstorm', 'Reference', 'Create', 'Build', 'Audio & Visuals']
+const TABS = ['All', 'Organize', 'Brainstorm', 'Reference', 'Create & Build', 'Audio & Visuals', 'MCP']
 
 const A = (f: string) => `${BP}/Assets/${f}`   /* shorthand for Assets path */
 
@@ -60,51 +60,51 @@ const groups: ToolGroup[] = [
   {
     theme: 'Reference', tab: 'Reference', color: '#00CCA8',
     tools: [
-      { name: 'Mobbin',     initial: 'Mo', localLogo: A('mobbin.jpg'),           accentColor: '#3B82F6', use: 'Find real product flows like checkout, onboarding, cancellation, settings, and empty states.', href: 'https://mobbin.com' },
-      { name: 'Refero',     initial: 'Rf', localLogo: A('Refero.jpg'),           accentColor: '#818CF8', use: 'Search web and mobile interface references for visual and interaction patterns.',              href: 'https://refero.design' },
-      { name: 'Mobbin MCP', initial: 'MM', localLogo: A('mobbin.jpg'),           accentColor: '#60A5FA', use: 'Let AI tools use Mobbin-style references while generating or critiquing UI.',                 href: 'https://mobbin.com' },
-      { name: 'Refero MCP', initial: 'RM', localLogo: A('Refero.jpg'),           accentColor: '#A5B4FC', use: 'Let AI agents inspect product screens and flows before giving design suggestions.',           href: 'https://refero.design' },
+      { name: 'Mobbin', initial: 'Mo', localLogo: A('mobbin.jpg'), accentColor: '#3B82F6', use: 'Find real product flows like checkout, onboarding, cancellation, settings, and empty states.', href: 'https://mobbin.com' },
+      { name: 'Refero', initial: 'Rf', localLogo: A('Refero.jpg'), accentColor: '#818CF8', use: 'Search web and mobile interface references for visual and interaction patterns.',              href: 'https://refero.design' },
     ],
   },
   {
-    theme: 'Create', tab: 'Create', color: '#FF69DB',
+    theme: 'Create & Build', tab: 'Create & Build', color: '#FF69DB',
     tools: [
-      { name: 'Banani',       initial: 'Ba', localLogo: A('Banani.jpg'),         accentColor: '#F43F5E', use: 'Generate editable UI screens, wireframes, prototypes, and website layouts from prompts or PRDs.', href: 'https://banani.co' },
-      { name: 'Galileo AI',   initial: 'Ga', localLogo: A('Galelio.jpg'),        accentColor: '#1D4ED8', use: 'Create polished UI directions from written prompts.',                                            href: 'https://usegalileo.ai' },
-      { name: 'Krea',         initial: 'Kr', localLogo: A('Krea.jpg'),           accentColor: '#3B82F6', use: 'Create visuals, icons, style explorations, and campaign imagery.',                              href: 'https://krea.ai' },
-      { name: 'Midjourney',   initial: 'MJ', localLogo: A('Midjourney.jpg'),     accentColor: '#8B5CF6', use: 'Generate moodboards, visual territories, concept imagery, and campaign directions.',            href: 'https://midjourney.com' },
-      { name: 'Gamma',        initial: 'Gm', localLogo: A('Gamma.jpg'),          accentColor: '#8B5CF6', use: 'Turn rough ideas into structured decks, concept pitches, and workshop material.',               href: 'https://gamma.app' },
-      { name: 'Pitch',        initial: 'Pi', logoDomain: 'pitch.com',            accentColor: '#3B82F6', use: 'Create clean team presentations and design review decks.',                                      href: 'https://pitch.com' },
-      { name: 'Tome',         initial: 'To', localLogo: A('Tome.jpg'),           accentColor: '#FF4DFF', use: 'Create AI-powered presentations and visual narratives.',                                        href: 'https://tome.app' },
-      { name: 'Paper',        initial: 'Pa', localLogo: A('Paper.jpg'),          accentColor: '#D97706', use: 'Quickly create HTML-like UI concepts and editable layouts without heavy setup.',                href: 'https://paper.design' },
-      { name: 'Super Design', initial: 'SD', localLogo: A('Super design.jpg'),   accentColor: '#4F46E5', use: 'Generate UI mockups, components, and layouts inside coding tools like Cursor or VS Code.',     href: 'https://superdesign.dev' },
-    ],
-  },
-  {
-    theme: 'Build', tab: 'Build', color: '#FB923C',
-    tools: [
-      { name: 'Claude Code',    initial: 'CC',  localLogo: A('Claude.jpg'),      accentColor: '#FB923C', use: 'Ask an agent to inspect files, make UI changes, explain code, or implement small flows.',  href: 'https://claude.ai/code' },
-      { name: 'Codex',          initial: 'Cx',  localLogo: A('Codex.jpg'),       accentColor: '#10B981', use: 'Generate, refactor, explain, and test code from plain English.',                           href: 'https://openai.com/codex' },
-      { name: 'Cursor',         initial: 'Cur', localLogo: A('Cursor.jpg'),      accentColor: '#0EA5E9', use: 'Edit UI, create components, fix layout issues, explain code, and build prototypes.',       href: 'https://cursor.com' },
-      { name: 'Replit Agent',   initial: 'Re',  localLogo: A('replit.jpg'),      accentColor: '#F97316', use: 'Build small tools, forms, dashboards, and interactive prototypes.',                        href: 'https://replit.com' },
-      { name: 'GitHub Desktop', initial: 'GH',  localLogo: A('Github.jpg'),      accentColor: '#8B949E', use: 'Commit changes, switch branches, and create small PRs without terminal-heavy workflows.', href: 'https://desktop.github.com' },
-      { name: 'Playwright',     initial: 'Pl',  localLogo: A('Playwright.jpg'),  accentColor: '#00B050', use: 'Open pages, click through flows, test UI states, and detect broken experiences.',         href: 'https://playwright.dev' },
-      { name: 'Vercel',         initial: 'Ve',  localLogo: A('Vercel.jpg'),      accentColor: '#EEEEEE', use: 'Deploy vibe-coded prototypes and share live URLs.',                                        href: 'https://vercel.com' },
-      { name: 'Make',           initial: 'Mk',  localLogo: A('Make.jpg'),        accentColor: '#7C3AED', use: 'Build multi-step automations with conditions and branching.',                              href: 'https://make.com' },
-      { name: 'n8n',            initial: 'n8',  localLogo: A('N8N.jpg'),         accentColor: '#EF4444', use: 'Create internal automations, AI workflows, alerts, summaries, and tool-to-tool handoffs.', href: 'https://n8n.io' },
-      { name: 'Zapier',         initial: 'Za',  localLogo: A('zapier.jpg'),      accentColor: '#FF4A00', use: 'Connect Slack, Gmail, Notion, Airtable, Sheets, forms, and webhooks.',                   href: 'https://zapier.com' },
-      { name: 'Raycast AI',     initial: 'R',   localLogo: A('Raycast.jpg'),     accentColor: '#F97316', use: 'Rewrite selected text, summarize snippets, and trigger quick AI actions.',               href: 'https://raycast.com' },
-      { name: 'Agentation',     initial: 'Ag',  localLogo: A('Agentation.jpg'),  accentColor: '#64748B', use: 'Prompt a browser agent to inspect, compare, and operate websites.',                      href: 'https://agentation.com' },
+      { name: 'Banani',         initial: 'Ba',  localLogo: A('Banani.jpg'),         accentColor: '#F43F5E', use: 'Generate editable UI screens, wireframes, prototypes, and website layouts from prompts or PRDs.', href: 'https://banani.co' },
+      { name: 'Galileo AI',     initial: 'Ga',  localLogo: A('Galelio.jpg'),        accentColor: '#1D4ED8', use: 'Create polished UI directions from written prompts.',                                            href: 'https://usegalileo.ai' },
+      { name: 'Krea',           initial: 'Kr',  localLogo: A('Krea.jpg'),           accentColor: '#3B82F6', use: 'Create visuals, icons, style explorations, and campaign imagery.',                              href: 'https://krea.ai' },
+      { name: 'Midjourney',     initial: 'MJ',  localLogo: A('Midjourney.jpg'),     accentColor: '#8B5CF6', use: 'Generate moodboards, visual territories, concept imagery, and campaign directions.',            href: 'https://midjourney.com' },
+      { name: 'Gamma',          initial: 'Gm',  localLogo: A('Gamma.jpg'),          accentColor: '#8B5CF6', use: 'Turn rough ideas into structured decks, concept pitches, and workshop material.',               href: 'https://gamma.app' },
+      { name: 'Pitch',          initial: 'Pi',  logoDomain: 'pitch.com',            accentColor: '#3B82F6', use: 'Create clean team presentations and design review decks.',                                      href: 'https://pitch.com' },
+      { name: 'Tome',           initial: 'To',  localLogo: A('Tome.jpg'),           accentColor: '#FF4DFF', use: 'Create AI-powered presentations and visual narratives.',                                        href: 'https://tome.app' },
+      { name: 'Paper',          initial: 'Pa',  localLogo: A('Paper.jpg'),          accentColor: '#D97706', use: 'Quickly create HTML-like UI concepts and editable layouts without heavy setup.',                href: 'https://paper.design' },
+      { name: 'Super Design',   initial: 'SD',  localLogo: A('Super design.jpg'),   accentColor: '#4F46E5', use: 'Generate UI mockups, components, and layouts inside coding tools like Cursor or VS Code.',     href: 'https://superdesign.dev' },
+      { name: 'Claude Code',    initial: 'CC',  localLogo: A('Claude.jpg'),         accentColor: '#FB923C', use: 'Ask an agent to inspect files, make UI changes, explain code, or implement small flows.',      href: 'https://claude.ai/code' },
+      { name: 'Codex',          initial: 'Cx',  localLogo: A('Codex.jpg'),          accentColor: '#10B981', use: 'Generate, refactor, explain, and test code from plain English.',                               href: 'https://openai.com/codex' },
+      { name: 'Cursor',         initial: 'Cur', localLogo: A('Cursor.jpg'),         accentColor: '#0EA5E9', use: 'Edit UI, create components, fix layout issues, explain code, and build prototypes.',           href: 'https://cursor.com' },
+      { name: 'Replit Agent',   initial: 'Re',  localLogo: A('replit.jpg'),         accentColor: '#F97316', use: 'Build small tools, forms, dashboards, and interactive prototypes.',                            href: 'https://replit.com' },
+      { name: 'GitHub Desktop', initial: 'GH',  localLogo: A('Github.jpg'),         accentColor: '#8B949E', use: 'Commit changes, switch branches, and create small PRs without terminal-heavy workflows.',     href: 'https://desktop.github.com' },
+      { name: 'Playwright',     initial: 'Pl',  localLogo: A('Playwright.jpg'),     accentColor: '#00B050', use: 'Open pages, click through flows, test UI states, and detect broken experiences.',             href: 'https://playwright.dev' },
+      { name: 'Vercel',         initial: 'Ve',  localLogo: A('Vercel.jpg'),         accentColor: '#EEEEEE', use: 'Deploy vibe-coded prototypes and share live URLs.',                                            href: 'https://vercel.com' },
+      { name: 'Make',           initial: 'Mk',  localLogo: A('Make.jpg'),           accentColor: '#7C3AED', use: 'Build multi-step automations with conditions and branching.',                                  href: 'https://make.com' },
+      { name: 'n8n',            initial: 'n8',  localLogo: A('N8N.jpg'),            accentColor: '#EF4444', use: 'Create internal automations, AI workflows, alerts, summaries, and tool-to-tool handoffs.',    href: 'https://n8n.io' },
+      { name: 'Zapier',         initial: 'Za',  localLogo: A('zapier.jpg'),         accentColor: '#FF4A00', use: 'Connect Slack, Gmail, Notion, Airtable, Sheets, forms, and webhooks.',                       href: 'https://zapier.com' },
+      { name: 'Raycast AI',     initial: 'R',   localLogo: A('Raycast.jpg'),        accentColor: '#F97316', use: 'Rewrite selected text, summarize snippets, and trigger quick AI actions.',                   href: 'https://raycast.com' },
+      { name: 'Agentation',     initial: 'Ag',  localLogo: A('Agentation.jpg'),     accentColor: '#64748B', use: 'Prompt a browser agent to inspect, compare, and operate websites.',                          href: 'https://agentation.com' },
     ],
   },
   {
     theme: 'Audio & Visuals', tab: 'Audio & Visuals', color: '#00D4FF',
     tools: [
-      { name: 'Jitter',      initial: 'Ji', localLogo: A('Jitter.jpg'),          accentColor: '#7C3AED', use: 'Quickly animate UI, social posts, product moments, and lightweight motion concepts.',    href: 'https://jitter.video' },
-      { name: 'LottieFiles', initial: 'LF', localLogo: A('lottie.jpg'),          accentColor: '#14B8A6', use: 'Preview, manage, and export lightweight animations.',                                    href: 'https://lottiefiles.com' },
-      { name: 'Rive',        initial: 'Rv', localLogo: A('Rive.jpg'),            accentColor: '#A855F7', use: 'Create production-ready interactive animations and state-based motion.',                  href: 'https://rive.app' },
-      { name: 'Runway',      initial: 'RW', localLogo: A('Runway.jpg'),          accentColor: '#EC4899', use: 'Generate short videos, motion experiments, and cinematic visual treatments.',            href: 'https://runwayml.com' },
-      { name: 'ElevenLabs',  initial: '11', localLogo: A('Eleven labs.jpg'),     accentColor: '#38BDF8', use: 'Create narration, audio mockups, and voice concepts.',                                   href: 'https://elevenlabs.io' },
+      { name: 'Jitter',      initial: 'Ji', localLogo: A('Jitter.jpg'),      accentColor: '#7C3AED', use: 'Quickly animate UI, social posts, product moments, and lightweight motion concepts.',    href: 'https://jitter.video' },
+      { name: 'LottieFiles', initial: 'LF', localLogo: A('lottie.jpg'),      accentColor: '#14B8A6', use: 'Preview, manage, and export lightweight animations.',                                    href: 'https://lottiefiles.com' },
+      { name: 'Rive',        initial: 'Rv', localLogo: A('Rive.jpg'),        accentColor: '#A855F7', use: 'Create production-ready interactive animations and state-based motion.',                  href: 'https://rive.app' },
+      { name: 'Runway',      initial: 'RW', localLogo: A('Runway.jpg'),      accentColor: '#EC4899', use: 'Generate short videos, motion experiments, and cinematic visual treatments.',            href: 'https://runwayml.com' },
+      { name: 'ElevenLabs',  initial: '11', localLogo: A('Eleven labs.jpg'), accentColor: '#38BDF8', use: 'Create narration, audio mockups, and voice concepts.',                                   href: 'https://elevenlabs.io' },
+    ],
+  },
+  {
+    theme: 'MCP', tab: 'MCP', color: '#7C3AED',
+    tools: [
+      { name: 'Mobbin MCP', initial: 'MM', localLogo: A('mobbin.jpg'), accentColor: '#60A5FA', use: 'Let AI tools use Mobbin-style references while generating or critiquing UI.',            href: 'https://mobbin.com' },
+      { name: 'Refero MCP', initial: 'RM', localLogo: A('Refero.jpg'), accentColor: '#A5B4FC', use: 'Let AI agents inspect product screens and flows before giving design suggestions.', href: 'https://refero.design' },
     ],
   },
 ]
@@ -135,12 +135,11 @@ function ToolCard({ tool }: { tool: Tool }) {
         background: `linear-gradient(180deg, ${tool.accentColor}28 0%, rgba(8,0,18,0.46) 52%)`,
         border: `1px solid ${hovered ? tool.accentColor + '40' : 'rgba(255,255,255,0.07)'}`,
         borderRadius: 14,
-        overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         gap: 10,
         padding: '16px 16px 18px',
-        height: '100%',
+        flex: 1,
         cursor: 'pointer',
         transition: 'border-color 0.18s ease, transform 0.22s cubic-bezier(0,0,0.2,1), box-shadow 0.22s ease',
         transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
@@ -230,7 +229,7 @@ function ToolCard({ tool }: { tool: Tool }) {
   if (tool.href) {
     return (
       <a href={tool.href} target="_blank" rel="noopener noreferrer"
-        style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
+        style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', flex: 1 }}>
         {cardInner}
       </a>
     )
@@ -348,7 +347,7 @@ export default function ToolsPage() {
                 key={tool.name}
                 id={toolSlug(tool.name)}
                 className="animate-fade-up"
-                style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, height: '100%' }}
+                style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, display: 'flex', flexDirection: 'column' }}
               >
                 <ToolCard tool={tool} />
               </div>

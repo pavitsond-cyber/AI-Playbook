@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { ArrowUpRight } from 'lucide-react'
 
 const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
@@ -108,6 +109,13 @@ function MobileCard({ s }: { s: typeof sections[0] }) {
 
 /* ── Page ───────────────────────────────────────────────────────────────── */
 export default function LandingPage() {
+  const router = useRouter()
+
+  /* Eagerly prefetch all section routes so navigation is instant on tap */
+  useEffect(() => {
+    sections.forEach(s => router.prefetch(s.href))
+  }, [router])
+
   return (
     <div className="landing-root" style={{ position: 'fixed', inset: 0, overflow: 'hidden' }}>
 
