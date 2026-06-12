@@ -1,8 +1,15 @@
+// ContributeForm.jsx
+// Drop this into your v0/Next.js project at: app/contribute/page.jsx
+// (or wherever your /contribute route lives)
+//
+// ⚠️ BEFORE YOU SHIP:
+//   Replace APPS_SCRIPT_URL below with your deployed Google Apps Script URL
+
 "use client";
 
 import { useState, useRef } from "react";
 
-const CONTRIBUTE_URL = "/api/contribute";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec";
 
 const CATEGORIES = ["Tool", "Workflow", "Prompt", "Case Study"];
 const ROLES = ["Product Manager", "Product Designer", "Design System Manager", "Engineer", "Other"];
@@ -20,25 +27,24 @@ const INITIAL = {
 
 export default function ContributeForm() {
   const [form, setForm] = useState(INITIAL);
-  const [files, setFiles] = useState<File[]>([]);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [files, setFiles] = useState([]);
+  const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState("");
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef(null);
 
   // ── Handlers ────────────────────────────────────────────────
-  const set = (key: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    setForm((f) => ({ ...f, [key]: e.target.value }));
+  const set = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
-  const handleFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selected = Array.from(e.target.files ?? []).slice(0, 3); // max 3 files
+  const handleFiles = (e) => {
+    const selected = Array.from(e.target.files).slice(0, 3); // max 3 files
     setFiles(selected);
   };
 
-  const removeFile = (i: number) => setFiles((f) => f.filter((_, idx) => idx !== i));
+  const removeFile = (i) => setFiles((f) => f.filter((_, idx) => idx !== i));
 
   const validate = () => {
-    const e: Record<string, string> = {};
+    const e = {};
     if (!form.name.trim()) e.name = "Required";
     if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = "Valid email required";
     if (!form.role) e.role = "Select your role";
@@ -49,7 +55,7 @@ export default function ContributeForm() {
     return e;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length) {
@@ -60,46 +66,40 @@ export default function ContributeForm() {
     setStatus("loading");
 
     try {
+      // Encode files to base64
       const encodedFiles = await Promise.all(
         files.map(
           (f) =>
-            new Promise<{ name: string; mimeType: string; data: string }>((resolve, reject) => {
+            new Promise((resolve, reject) => {
               const reader = new FileReader();
-              reader.onload = () => {
-                const dataUrl = reader.result as string;
-                const commaIndex = dataUrl.indexOf(",");
-                const base64 = commaIndex >= 0 ? dataUrl.slice(commaIndex + 1) : dataUrl;
+              reader.onload = () =>
                 resolve({
                   name: f.name,
                   mimeType: f.type || "application/octet-stream",
-                  data: base64,
+                  data: reader.result.split(",")[1],
                 });
-              };
               reader.onerror = reject;
               reader.readAsDataURL(f);
             })
         )
       );
 
-      console.log(`Submitting with ${encodedFiles.length} file(s):`, encodedFiles.map(f => f.name));
-
       const payload = { ...form, files: encodedFiles };
 
-      const res = await fetch(CONTRIBUTE_URL, {
+      const res = await fetch(APPS_SCRIPT_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
       const json = await res.json();
-      if (!res.ok || !json.ok) throw new Error(json.error || "Submission failed");
+      if (!json.success) throw new Error(json.error || "Submission failed");
 
       setStatus("success");
       setForm(INITIAL);
       setFiles([]);
     } catch (err) {
       setStatus("error");
-      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
+      setErrorMsg(err.message);
     }
   };
 
@@ -131,7 +131,7 @@ export default function ContributeForm() {
         <div style={styles.badge}>Community</div>
         <h1 style={styles.heading}>Contribute a Play</h1>
         <p style={styles.subheading}>
-          Share a workflow, prompt, tool, or case study that&apos;s saved you real time.
+          Share a workflow, prompt, tool, or case study that's saved you real time.
           Reviewed by the team before going live.
         </p>
       </div>
@@ -294,7 +294,7 @@ export default function ContributeForm() {
             {status === "loading" ? "Submitting…" : "Submit Play →"}
           </button>
           <span style={styles.disclaimer}>
-            Reviewed by the team before publishing. You&apos;ll get a confirmation email.
+            Reviewed by the team before publishing. You'll get a confirmation email.
           </span>
         </div>
       </form>
@@ -303,13 +303,7 @@ export default function ContributeForm() {
 }
 
 // ── Sub-components ───────────────────────────────────────────
-function Field({ label, children, error, hint, required }: {
-  label: string;
-  children: React.ReactNode;
-  error?: string;
-  hint?: string;
-  required?: boolean;
-}) {
+function Field({ label, children, error, hint, required }) {
   return (
     <div style={styles.field}>
       <label style={styles.label}>
@@ -324,7 +318,7 @@ function Field({ label, children, error, hint, required }: {
 }
 
 // ── Styles ───────────────────────────────────────────────────
-const inputStyle = (hasError?: string): React.CSSProperties => ({
+const inputStyle = (hasError) => ({
   width: "100%",
   padding: "10px 12px",
   fontSize: 14,
@@ -338,7 +332,7 @@ const inputStyle = (hasError?: string): React.CSSProperties => ({
   transition: "border-color 0.15s",
 });
 
-const chipStyle = (active: boolean): React.CSSProperties => ({
+const chipStyle = (active) => ({
   padding: "6px 14px",
   fontSize: 13,
   borderRadius: 20,
@@ -350,7 +344,7 @@ const chipStyle = (active: boolean): React.CSSProperties => ({
   transition: "all 0.15s",
 });
 
-const styles: Record<string, React.CSSProperties> = {
+const styles = {
   page: {
     maxWidth: 680,
     margin: "0 auto",

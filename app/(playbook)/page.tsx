@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, ArrowLeft } from 'lucide-react'
 
 const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
@@ -110,6 +110,41 @@ function MobileCard({ s }: { s: typeof sections[0] }) {
 export default function LandingPage() {
   return (
     <div className="landing-root" style={{ position: 'fixed', inset: 0, overflow: 'hidden' }}>
+
+      {/* ── Back to event site — landing page only ──────────────────────── */}
+      <a
+        href="/"
+        aria-label="Back to the event site"
+        style={{
+          position: 'absolute',
+          top: 'calc(env(safe-area-inset-top) + 1rem)',
+          left: 'calc(env(safe-area-inset-left) + 1rem)',
+          zIndex: 20,
+          width: 44,
+          height: 44,
+          borderRadius: 9999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'rgba(255,255,255,0.12)',
+          border: '1px solid rgba(255,255,255,0.18)',
+          backdropFilter: 'blur(16px) saturate(140%)',
+          WebkitBackdropFilter: 'blur(16px) saturate(140%)',
+          flexShrink: 0,
+          textDecoration: 'none',
+          transition: 'background 0.15s ease, border-color 0.15s ease',
+        }}
+        onMouseEnter={e => {
+          (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.2)'
+          ;(e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.3)'
+        }}
+        onMouseLeave={e => {
+          (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.12)'
+          ;(e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.18)'
+        }}
+      >
+        <ArrowLeft size={18} color="#ffffff" />
+      </a>
 
       {/* ── DESKTOP video (Figma 111:1954) — hidden on mobile ──────────── */}
       {/* Spec: bottom:0 left:0 w:1440 h:800, opacity:60%
