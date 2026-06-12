@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react'
 import { ChevronDown } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
 import CopyButton from '@/components/playbook/CopyButton'
-import { useDockedTitle } from '@/components/nav/PageChromeContext'
 
 
 interface PromptTemplate {
@@ -855,23 +854,19 @@ export default function PromptsPage() {
     ? prompts
     : prompts.filter(p => PROMPT_TO_TAB[p.id] === displayPromptTab)
 
-  const titleRef = useDockedTitle('Prompt Systems')
-
   return (
     <div>
       {/* ── Page title ─────────────────────────────────────────────────── */}
       <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto' }}>
-        <div ref={titleRef}>
-          <PageHeader
-            title="Prompt Systems"
-            description="15 reusable prompt templates for product thinking, UX writing, research, strategy, and decision-making."
-          />
-        </div>
+        <PageHeader
+          title="Prompt Systems"
+          description="15 reusable prompt templates for product thinking, UX writing, research, strategy, and decision-making."
+        />
       </div>
 
       {/* ── Sticky tabs bar ────────────────────────────────────────────── */}
       <div style={{
-        position: 'sticky', top: 64, zIndex: 20,
+        position: 'sticky', top: 'var(--playbook-sticky-offset)', zIndex: 20,
         background: 'rgba(10,0,16,0.22)',
         backdropFilter: 'blur(28px) saturate(160%)',
         WebkitBackdropFilter: 'blur(28px) saturate(160%)',

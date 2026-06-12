@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { ChevronDown, Download, Check } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
-import { useDockedTitle } from '@/components/nav/PageChromeContext'
 
 
 interface Skill {
@@ -1067,23 +1066,19 @@ export default function SkillsPage() {
     ? skills
     : skills.filter(s => DOMAIN_TO_TAB[s.domain ?? ''] === displayTab)
 
-  const titleRef = useDockedTitle('Skills')
-
   return (
     <div>
       {/* ── Page title ─────────────────────────────────────────────────── */}
       <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto' }}>
-        <div ref={titleRef}>
-          <PageHeader
-            title="Skills"
-            description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
-          />
-        </div>
+        <PageHeader
+          title="Skills"
+          description="Senior-level AI skills with quality bars, each downloadable as a Markdown template."
+        />
       </div>
 
       {/* ── Sticky tabs bar ────────────────────────────────────────────── */}
       <div style={{
-        position: 'sticky', top: 64, zIndex: 20,
+        position: 'sticky', top: 'var(--playbook-sticky-offset)', zIndex: 20,
         background: 'rgba(10,0,16,0.22)',
         backdropFilter: 'blur(28px) saturate(160%)',
         WebkitBackdropFilter: 'blur(28px) saturate(160%)',

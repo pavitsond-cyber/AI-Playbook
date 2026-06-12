@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { useDockedTitle } from "@/components/nav/PageChromeContext";
 
 const CONTRIBUTE_URL = "/api/contribute";
 
@@ -19,6 +20,7 @@ const INITIAL = {
 };
 
 export default function ContributeForm() {
+  const titleRef = useDockedTitle("Contribute a Play");
   const [form, setForm] = useState(INITIAL);
   const [files, setFiles] = useState<File[]>([]);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -126,8 +128,7 @@ export default function ContributeForm() {
   return (
     <div style={styles.page}>
       {/* Header */}
-      <div style={styles.header}>
-        <a href="/" style={styles.backLink}>← Back to Playbook</a>
+      <div ref={titleRef} data-page-title style={styles.header}>
         <div style={styles.badge}>Community</div>
         <h1 style={styles.heading}>Contribute a Play</h1>
         <p style={styles.subheading}>
@@ -359,13 +360,6 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#0f172a",
   },
   header: { marginBottom: 40 },
-  backLink: {
-    fontSize: 13,
-    color: "#64748b",
-    textDecoration: "none",
-    display: "inline-block",
-    marginBottom: 16,
-  },
   badge: {
     display: "inline-block",
     fontSize: 11,

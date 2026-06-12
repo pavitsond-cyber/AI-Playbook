@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { ExternalLink } from 'lucide-react'
 import PageHeader from '@/components/playbook/PageHeader'
-import { useDockedTitle } from '@/components/nav/PageChromeContext'
 
 /* Stable slug matching the id= on each card in the search index */
 function toolSlug(name: string) {
@@ -309,23 +308,19 @@ export default function ToolsPage() {
     ).values()
   ).sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
 
-  const titleRef = useDockedTitle('Tools')
-
   return (
     <div>
       {/* ── Page title — scrolls away, triggers nav dock ────────────────── */}
       <div style={{ padding: '24px clamp(20px,4vw,48px) 0', maxWidth: 960, margin: '0 auto' }}>
-        <div ref={titleRef}>
-          <PageHeader
-            title="Tools"
-            description="Daily AI tool stack for vibe-coding designers — 37 tools across 5 categories."
-          />
-        </div>
+        <PageHeader
+          title="Tools"
+          description="Daily AI tool stack for vibe-coding designers — 37 tools across 5 categories."
+        />
       </div>
 
       {/* ── Sticky tabs bar — full viewport width, docks below nav ──────── */}
       <div style={{
-        position: 'sticky', top: 64, zIndex: 20,
+        position: 'sticky', top: 'var(--playbook-sticky-offset)', zIndex: 20,
         background: 'rgba(10,0,16,0.22)',
         backdropFilter: 'blur(28px) saturate(160%)',
         WebkitBackdropFilter: 'blur(28px) saturate(160%)',

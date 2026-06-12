@@ -38,13 +38,13 @@ export function useDockedTitle(title: string): RefObject<HTMLDivElement | null> 
     const el = ref.current
     if (!el) return
 
-    // Shrink the viewport observation area by the nav height so the dock
-    // triggers the moment the title disappears behind the fixed nav bar.
+    // Match the source event site's sticky header: the compact title appears
+    // once the page heading has passed behind the safe-area header.
     const observer = new IntersectionObserver(
       ([entry]) => {
         setDockedTitle(entry.isIntersecting ? null : title)
       },
-      { rootMargin: '-64px 0px 0px 0px', threshold: 0 }
+      { rootMargin: '-100px 0px 0px 0px', threshold: 0 }
     )
 
     observer.observe(el)

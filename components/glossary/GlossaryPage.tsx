@@ -155,7 +155,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
       <div style={{ maxWidth: 960, margin: "0 auto", width: "100%" }}>
 
         {/* Page title */}
-        <div ref={titleRef} className="animate-fade-up delay-75" style={{ padding: "24px clamp(20px,4vw,48px) 16px" }}>
+        <div ref={titleRef} data-page-title className="animate-fade-up delay-75" style={{ padding: "24px clamp(20px,4vw,48px) 16px" }}>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px,4vw,64px)', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 8 }}>
             Glossary
           </h1>
@@ -168,7 +168,7 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
         <div
           className="sticky z-20"
           style={{
-            top: 64,
+            top: 'var(--playbook-sticky-offset)',
             background: 'rgba(10,0,16,0.22)',
             backdropFilter: 'blur(28px) saturate(160%)',
             WebkitBackdropFilter: 'blur(28px) saturate(160%)',

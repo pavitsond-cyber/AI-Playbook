@@ -1,3 +1,7 @@
+'use client'
+
+import { useDockedTitle } from '@/components/nav/PageChromeContext'
+
 interface PageHeaderProps {
   title: string
   description?: string
@@ -5,11 +9,17 @@ interface PageHeaderProps {
 }
 
 export default function PageHeader({ title, description, badge }: PageHeaderProps) {
+  const titleRef = useDockedTitle(title)
   const words = title.split(' ')
   const first = words[0]
   const rest = words.slice(1).join(' ')
   return (
-    <div className="animate-fade-up delay-75" style={{ marginBottom: 20 }}>
+    <div
+      ref={titleRef}
+      data-page-title
+      className="animate-fade-up delay-75"
+      style={{ marginBottom: 20 }}
+    >
       {badge && (
         <div className="eyebrow-tag" style={{ marginBottom: 20 }}>
           <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg,#FF00CC,#9B3FFF)', display: 'inline-block', flexShrink: 0 }} />

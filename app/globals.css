@@ -44,6 +44,9 @@
 
 /* ── Design tokens ───────────────────────────────────── */
 :root {
+  --playbook-header-top: calc(env(safe-area-inset-top, 0px) + 2rem);
+  --playbook-content-top: calc(env(safe-area-inset-top, 0px) + 7.75rem);
+  --playbook-sticky-offset: calc(env(safe-area-inset-top, 0px) + 6.75rem);
   --bg-base:       #0A0010;
   --bg-dark:       #0D0D0D;
   --bg-light:      #F5F5F3;
@@ -79,6 +82,126 @@ body {
 }
 
 * { box-sizing: border-box; }
+
+/* ── Source-faithful event page header ─────────────────── */
+.playbook-page-header {
+  position: fixed;
+  top: var(--playbook-header-top);
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 44px;
+  padding-inline:
+    max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))
+    max(env(safe-area-inset-right, 0px), clamp(20px, 4vw, 48px));
+  pointer-events: none;
+}
+
+.playbook-page-header__content {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 1060px;
+  height: 44px;
+  margin-inline: auto;
+  align-items: center;
+  gap: 24px;
+}
+
+.playbook-page-header__backdrop {
+  position: absolute;
+  top: calc(-1 * var(--playbook-header-top));
+  right: 0;
+  bottom: -40px;
+  left: 0;
+  background: rgba(14, 20, 57, 0.85);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 62px), transparent 100%);
+  mask-image: linear-gradient(to bottom, black calc(100% - 62px), transparent 100%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.playbook-page-header[data-docked='true'] .playbook-page-header__backdrop {
+  opacity: 1;
+}
+
+.playbook-header-control {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.playbook-header-control--frost {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  backdrop-filter: blur(28px) saturate(160%);
+  box-shadow: 0 3px 10px -8px rgba(0, 0, 0, 0.3);
+  transition:
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.playbook-header-control--frost:hover {
+  background: rgba(255, 255, 255, 0.17);
+  box-shadow: 0 5px 14px -8px rgba(0, 0, 0, 0.35);
+}
+
+.playbook-header-control--frost:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.playbook-header-control:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 2px;
+}
+
+.playbook-page-header__title {
+  min-width: 0;
+  overflow: hidden;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+  pointer-events: none;
+}
+
+.playbook-page-header[data-docked='true'] .playbook-page-header__title {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.playbook-page-header__search {
+  margin-left: auto;
+}
+
+@media (max-width: 639px) {
+  .playbook-page-header {
+    padding-inline:
+      max(env(safe-area-inset-left, 0px), 24px)
+      max(env(safe-area-inset-right, 0px), 24px);
+  }
+}
 
 /* Tool cards: redirect icon always visible on mobile (no hover on touch) */
 @media (max-width: 639px) {
