@@ -14,12 +14,26 @@ const sections = [
   { num: '04', title: 'Tools',    sub: '18 essentials', href: '/tools'    },
 ]
 
+type Section = typeof sections[0]
+type CardNavigateHandler = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => void
+
 /* ── Desktop card (single row, larger) ──────────────────────────────────── */
-function DesktopCard({ s }: { s: typeof sections[0] }) {
+function DesktopCard({
+  s,
+  navigating,
+  onNavigate,
+}: {
+  s: Section
+  navigating: boolean
+  onNavigate: CardNavigateHandler
+}) {
   const [hovered, setHovered] = useState(false)
+  const active = hovered || navigating
+
   return (
     <Link
       href={s.href}
+      onClick={event => onNavigate(event, s.href)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -30,14 +44,15 @@ function DesktopCard({ s }: { s: typeof sections[0] }) {
         padding: 'clamp(10px, 0.84vw, 12px)',
         borderRadius: 14, overflow: "hidden",
         flexShrink: 0,
-        background: hovered
+        background: active
           ? 'linear-gradient(109deg, rgba(255,255,255,0.22) 3.87%, rgba(255,255,255,0.06) 101%)'
           : 'linear-gradient(109deg, rgba(255,255,255,0.12) 3.87%, rgba(255,255,255,0.00) 101%)',
-        border: hovered ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(255,255,255,0.07)',
-        backdropFilter: hovered ? 'blur(20px) saturate(180%)' : 'blur(12px)',
-        WebkitBackdropFilter: hovered ? 'blur(20px) saturate(180%)' : 'blur(12px)',
-        boxShadow: hovered ? '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15)' : '0 2px 12px rgba(0,0,0,0.15)',
-        transition: 'background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, backdrop-filter 0.18s ease',
+        border: active ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(255,255,255,0.07)',
+        backdropFilter: active ? 'blur(20px) saturate(180%)' : 'blur(12px)',
+        WebkitBackdropFilter: active ? 'blur(20px) saturate(180%)' : 'blur(12px)',
+        boxShadow: active ? '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15)' : '0 2px 12px rgba(0,0,0,0.15)',
+        filter: navigating ? 'brightness(0.92)' : 'brightness(1)',
+        transition: 'background 0.24s ease-in-out, border-color 0.24s ease-in-out, box-shadow 0.24s ease-in-out, backdrop-filter 0.24s ease-in-out, filter 0.3s ease-in-out',
         cursor: 'pointer',
       }}
     >
@@ -45,11 +60,11 @@ function DesktopCard({ s }: { s: typeof sections[0] }) {
         {s.num}
       </span>
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', width: '100%' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 7, transform: hovered ? 'scale(1.04)' : 'scale(1)', transformOrigin: 'bottom left', transition: 'transform 0.22s cubic-bezier(0.34,1.56,0.64,1)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 7, transform: active ? 'scale(1.04)' : 'scale(1)', transformOrigin: 'bottom left', transition: 'transform 0.3s ease-in-out' }}>
           <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 'clamp(18px,1.95vw,28px)', fontWeight: 400, letterSpacing: '-0.02em', color: '#ffffff', lineHeight: 1 }}>{s.title}</span>
           <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 'clamp(11px,0.97vw,14px)', fontWeight: 400, letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.5)', lineHeight: 1 }}>{s.sub}</span>
         </div>
-        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: hovered ? 1 : 0.5, transform: hovered ? 'translateX(3px) translateY(-3px)' : 'translateX(0)', transition: 'opacity 0.18s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1)' }}>
+        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: active ? 1 : 0.5, transform: active ? 'translateX(3px) translateY(-3px)' : 'translateX(0)', transition: 'opacity 0.24s ease-in-out, transform 0.3s ease-in-out' }}>
           <ArrowUpRight size={24} color="#ffffff" />
         </div>
       </div>
@@ -58,11 +73,22 @@ function DesktopCard({ s }: { s: typeof sections[0] }) {
 }
 
 /* ── Mobile card (2-col grid, Figma spec) ──────────────────────────────── */
-function MobileCard({ s }: { s: typeof sections[0] }) {
+function MobileCard({
+  s,
+  navigating,
+  onNavigate,
+}: {
+  s: Section
+  navigating: boolean
+  onNavigate: CardNavigateHandler
+}) {
   const [active, setActive] = useState(false)
+  const pressed = active || navigating
+
   return (
     <Link
       href={s.href}
+      onClick={event => onNavigate(event, s.href)}
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
       onTouchStart={() => setActive(true)}
@@ -77,14 +103,15 @@ function MobileCard({ s }: { s: typeof sections[0] }) {
         borderRadius: 14, overflow: "hidden",
         flexShrink: 0,
         /* Tap = desktop hover: glass solidifies, inset highlight, shadow */
-        background: active
+        background: pressed
           ? 'linear-gradient(109deg, rgba(255,255,255,0.22) 3.87%, rgba(255,255,255,0.06) 101%)'
           : 'linear-gradient(109deg, rgba(255,255,255,0.12) 3.87%, rgba(255,255,255,0.00) 101%)',
-        border: active ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(255,255,255,0.07)',
+        border: pressed ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(255,255,255,0.07)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        boxShadow: active ? '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15)' : 'none',
-        transition: 'background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease',
+        boxShadow: pressed ? '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15)' : 'none',
+        filter: navigating ? 'brightness(0.92)' : 'brightness(1)',
+        transition: 'background 0.24s ease-in-out, border-color 0.24s ease-in-out, box-shadow 0.24s ease-in-out, filter 0.3s ease-in-out',
         cursor: 'pointer',
         /* Kills the browser default dark tap flash entirely */
         WebkitTapHighlightColor: 'transparent',
@@ -101,7 +128,7 @@ function MobileCard({ s }: { s: typeof sections[0] }) {
           <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 20, fontWeight: 400, letterSpacing: '-0.02em', color: '#ffffff', lineHeight: 1 }}>{s.title}</span>
           <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 12, fontWeight: 400, letterSpacing: '-0.015em', color: 'rgba(255,255,255,0.5)', lineHeight: 1 }}>{s.sub}</span>
         </div>
-        <ArrowUpRight size={20} color={active ? '#ffffff' : 'rgba(255,255,255,0.7)'} style={{ flexShrink: 0, transition: 'color 0.18s ease' }} />
+        <ArrowUpRight size={20} color={pressed ? '#ffffff' : 'rgba(255,255,255,0.7)'} style={{ flexShrink: 0, transition: 'color 0.24s ease-in-out' }} />
       </div>
     </Link>
   )
@@ -110,14 +137,49 @@ function MobileCard({ s }: { s: typeof sections[0] }) {
 /* ── Page ───────────────────────────────────────────────────────────────── */
 export default function LandingPage() {
   const router = useRouter()
+  const [navigatingHref, setNavigatingHref] = useState<string | null>(null)
 
   /* Eagerly prefetch all section routes so navigation is instant on tap */
   useEffect(() => {
     sections.forEach(s => router.prefetch(s.href))
   }, [router])
 
+  const navigateFromCard: CardNavigateHandler = (event, href) => {
+    if (navigatingHref) {
+      event.preventDefault()
+      return
+    }
+
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return
+    }
+
+    event.preventDefault()
+    setNavigatingHref(href)
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.setTimeout(() => router.push(href), reduceMotion ? 0 : 300)
+  }
+
   return (
-    <div className="landing-root" style={{ position: 'fixed', inset: 0, overflow: 'hidden' }}>
+    <div
+      className="landing-root"
+      data-navigating={navigatingHref ? 'true' : 'false'}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        overflow: 'hidden',
+        filter: navigatingHref ? 'blur(2px)' : 'blur(0)',
+        transition: 'filter 0.3s ease-in-out',
+      }}
+    >
 
       {/* ── DESKTOP video (Figma 111:1954) — hidden on mobile ──────────── */}
       {/* Spec: bottom:0 left:0 w:1440 h:800, opacity:60%
@@ -181,8 +243,15 @@ export default function LandingPage() {
         className="sm:hidden absolute flex flex-col"
         style={{ top: 108, left: 20, right: 20, zIndex: 10, gap: 25 }}
       >
-        {/* Eyebrow + Title — slides in from left */}
+        {/* Title + byline — slides in from left */}
         <div className="animate-slide-right delay-75" style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <h1 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 38, fontWeight: 400, lineHeight: 1,
+            letterSpacing: '-0.02em', margin: 0, paddingBottom: '0.06em', color: '#ffffff',
+          }}>
+            An AI head start
+          </h1>
           <span style={{
             fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
             fontSize: 13, fontWeight: 400, letterSpacing: '0.01em',
@@ -190,13 +259,6 @@ export default function LandingPage() {
           }}>
             from Headout Design
           </span>
-          <h1 style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 30, fontWeight: 400, lineHeight: 1,
-            letterSpacing: '-0.02em', margin: 0, paddingBottom: '0.06em', color: '#ffffff',
-          }}>
-            An AI head start
-          </h1>
         </div>
 
         {/* Subtitle — fades up slightly after title */}
@@ -210,7 +272,14 @@ export default function LandingPage() {
 
         {/* 2×2 card grid — each card pops in with stagger */}
         <div className="card-stagger" style={{ display: 'flex', flexWrap: 'wrap', gap: 7.6 }}>
-          {sections.map(s => <MobileCard key={s.href} s={s} />)}
+          {sections.map(s => (
+            <MobileCard
+              key={s.href}
+              s={s}
+              navigating={navigatingHref === s.href}
+              onNavigate={navigateFromCard}
+            />
+          ))}
         </div>
       </div>
 
@@ -228,19 +297,12 @@ export default function LandingPage() {
           gap: 'clamp(28px, 4.3vw, 62px)',
         }}
       >
-        {/* Eyebrow + Title + subtitle — slide in from left */}
+        {/* Title + byline + subtitle — slide in from left */}
         <div className="flex flex-row items-center animate-slide-right delay-100" style={{ gap: 'clamp(12px, 2.2vw, 32px)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flexShrink: 0 }}>
-            <span style={{
-              fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
-              fontSize: 'clamp(11px, 0.9vw, 13px)', fontWeight: 400, letterSpacing: '0.01em',
-              color: 'rgba(255,255,255,0.4)', lineHeight: 1, whiteSpace: 'nowrap',
-            }}>
-              from Headout Design
-            </span>
             <h1 style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(24px, 2.2vw, 32px)',
+              fontSize: 38,
               fontWeight: 400,
               lineHeight: 1.15,
               letterSpacing: '-0.02em',
@@ -252,6 +314,13 @@ export default function LandingPage() {
             }}>
               An AI head start
             </h1>
+            <span style={{
+              fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
+              fontSize: 'clamp(11px, 0.9vw, 13px)', fontWeight: 400, letterSpacing: '0.01em',
+              color: 'rgba(255,255,255,0.4)', lineHeight: 1, whiteSpace: 'nowrap',
+            }}>
+              from Headout Design
+            </span>
           </div>
           <p style={{
             fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
@@ -273,7 +342,14 @@ export default function LandingPage() {
 
         {/* Single-row cards — pop in with stagger */}
         <div className="card-stagger" style={{ display: 'flex', gap: 'clamp(8px, 1.6vw, 23px)', flexWrap: 'nowrap', overflowX: 'auto', scrollbarWidth: 'none', paddingBottom: 4 }}>
-          {sections.map(s => <DesktopCard key={s.href} s={s} />)}
+          {sections.map(s => (
+            <DesktopCard
+              key={s.href}
+              s={s}
+              navigating={navigatingHref === s.href}
+              onNavigate={navigateFromCard}
+            />
+          ))}
         </div>
       </div>
 
@@ -313,6 +389,19 @@ export default function LandingPage() {
           Contribute now
         </Link>
       </div>
+
+      <div
+        aria-hidden
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 20,
+          pointerEvents: 'none',
+          background: '#0D0B1E',
+          opacity: navigatingHref ? 0.72 : 0,
+          transition: 'opacity 0.3s ease-in-out',
+        }}
+      />
 
     </div>
   )
