@@ -694,7 +694,7 @@ function PromptRow({ prompt, index, isOpen, onToggle }: {
       id={'prompt-' + prompt.id}
       style={{
         position: 'relative',
-        background: 'linear-gradient(180deg, rgba(155,63,255,0.16) 0%, rgba(8,0,18,0.46) 52%)',
+        background: 'linear-gradient(180deg, rgba(155,63,255,0.10) 0%, rgba(8,0,18,0.20) 100%)',
         border: isOpen ? '1px solid rgba(155,63,255,0.35)' : '1px solid rgba(255,255,255,0.07)',
         borderRadius: 14,
         overflow: 'hidden',

@@ -71,7 +71,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
         id={term.id}
         ref={cardRef as React.RefObject<HTMLDivElement>}
         style={{
-          background: `linear-gradient(180deg, ${ABBR_COLORS[term.category] ?? '#9B3FFF'}28 0%, rgba(8,0,18,0.46) 52%)`,
+          background: `linear-gradient(180deg, ${ABBR_COLORS[term.category] ?? '#9B3FFF'}18 0%, rgba(8,0,18,0.20) 100%)`,
           border: expanded
             ? `1px solid ${ABBR_COLORS[term.category] ?? '#9B3FFF'}40`
             : hovered
@@ -202,7 +202,7 @@ export default function GlossaryCard({ term, openId, onOpen }: GlossaryCardProps
       onMouseLeave={() => setHovered(false)}
       className="rounded-2xl overflow-hidden"
       style={{
-        background: `linear-gradient(180deg, ${ABBR_COLORS[term.category] ?? '#9B3FFF'}28 0%, rgba(8,0,18,0.46) 52%)`,
+        background: `linear-gradient(180deg, ${ABBR_COLORS[term.category] ?? '#9B3FFF'}18 0%, rgba(8,0,18,0.20) 100%)`,
         border: expanded
           ? `1px solid ${ABBR_COLORS[term.category] ?? '#9B3FFF'}40`
           : hovered
