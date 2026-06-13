@@ -901,10 +901,14 @@ const CONTRIBUTE_CSS = `
      clip-path combined with backdrop-filter renders incorrectly on Android Chrome — the blur
      paints against a wrong compositor layer, making the dropdown appear opaque/wrong-coloured. */
   @media (hover: none) and (pointer: coarse) {
+    /* clip-path is removed so backdrop-filter can now run without the compositor glitch.
+       88% opacity base blocks all background text; the blur + gradient give the glass look. */
     .category-options {
-      -webkit-backdrop-filter: none;
-      backdrop-filter: none;
-      background: rgba(16, 8, 32, 0.98);
+      -webkit-backdrop-filter: blur(36px) saturate(180%);
+      backdrop-filter: blur(36px) saturate(180%);
+      background:
+        linear-gradient(155deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02) 42%, rgba(255,255,255,0.05)),
+        rgba(14, 6, 30, 0.88);
       border-color: rgba(255,255,255,0.14);
       clip-path: none !important;
       transform: translateY(-6px) scaleY(0.96);
