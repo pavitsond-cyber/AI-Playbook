@@ -132,7 +132,7 @@ function ToolCard({ tool }: { tool: Tool }) {
       onMouseLeave={() => setHovered(false)}
       style={{
         position: 'relative',
-        background: `linear-gradient(180deg, ${tool.accentColor}28 0%, rgba(8,0,18,0.46) 52%)`,
+        background: `linear-gradient(180deg, ${tool.accentColor}18 0%, rgba(8,0,18,0.20) 100%)`,
         border: `1px solid ${hovered ? tool.accentColor + '40' : 'rgba(255,255,255,0.07)'}`,
         borderRadius: 14,
         display: 'flex',
@@ -229,7 +229,7 @@ function ToolCard({ tool }: { tool: Tool }) {
   if (tool.href) {
     return (
       <a href={tool.href} target="_blank" rel="noopener noreferrer"
-        style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
+        style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', flex: 1 }}>
         {cardInner}
       </a>
     )
@@ -347,7 +347,7 @@ export default function ToolsPage() {
                 key={tool.name}
                 id={toolSlug(tool.name)}
                 className="animate-fade-up"
-                style={{ animationDelay: `${Math.min(i * 30, 300)}ms` }}
+                style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, display: 'flex', flexDirection: 'column' }}
               >
                 <ToolCard tool={tool} />
               </div>
