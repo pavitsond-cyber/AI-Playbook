@@ -904,11 +904,11 @@ const CONTRIBUTE_CSS = `
     /* clip-path is removed so backdrop-filter can now run without the compositor glitch.
        88% opacity base blocks all background text; the blur + gradient give the glass look. */
     .category-options {
-      -webkit-backdrop-filter: blur(36px) saturate(180%);
-      backdrop-filter: blur(36px) saturate(180%);
+      -webkit-backdrop-filter: blur(10px) saturate(160%);
+      backdrop-filter: blur(10px) saturate(160%);
       background:
-        linear-gradient(155deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02) 42%, rgba(255,255,255,0.05)),
-        rgba(14, 6, 30, 0.88);
+        linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0.01) 42%, rgba(255,255,255,0.03)),
+        rgba(14, 6, 30, 0.60);
       border-color: rgba(255,255,255,0.14);
       clip-path: none !important;
       transform: translateY(-6px) scaleY(0.96);
