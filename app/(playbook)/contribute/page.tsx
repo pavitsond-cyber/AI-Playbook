@@ -896,4 +896,42 @@ const CONTRIBUTE_CSS = `
       padding-left: 20px;
     }
   }
+
+  /* Android Chrome: replace clip-path+backdrop-filter with a solid dark bg + simple opacity fade.
+     clip-path combined with backdrop-filter renders incorrectly on Android Chrome — the blur
+     paints against a wrong compositor layer, making the dropdown appear opaque/wrong-coloured. */
+  @media (hover: none) and (pointer: coarse) {
+    .category-options {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      background: rgba(16, 8, 32, 0.98);
+      border-color: rgba(255,255,255,0.14);
+      clip-path: none !important;
+      transform: translateY(-6px) scaleY(0.96);
+      transform-origin: top center;
+      transition:
+        opacity 180ms ease-in,
+        transform 180ms ease-in,
+        visibility 0s linear 180ms;
+    }
+
+    .category-options.is-open {
+      clip-path: none !important;
+      transform: translateY(0) scaleY(1);
+      transition:
+        opacity 220ms ease-out,
+        transform 220ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        visibility 0s;
+    }
+
+    .category-option:hover {
+      background: transparent;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .category-option:active {
+      background: rgba(255,255,255,0.10);
+      color: #ffffff;
+    }
+  }
 `

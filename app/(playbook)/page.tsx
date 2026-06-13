@@ -181,14 +181,23 @@ export default function LandingPage() {
         className="sm:hidden absolute flex flex-col"
         style={{ top: 108, left: 20, right: 20, zIndex: 10, gap: 25 }}
       >
-        {/* Title — slides in from left */}
-        <h1 className="animate-slide-right delay-75" style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 38, fontWeight: 400, lineHeight: 1,
-          letterSpacing: '-0.02em', margin: 0, paddingBottom: '0.06em', color: '#ffffff',
-        }}>
-          AI Playbook
-        </h1>
+        {/* Eyebrow + Title — slides in from left */}
+        <div className="animate-slide-right delay-75" style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <span style={{
+            fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
+            fontSize: 13, fontWeight: 400, letterSpacing: '0.01em',
+            color: 'rgba(255,255,255,0.4)', lineHeight: 1,
+          }}>
+            from Headout Design
+          </span>
+          <h1 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 30, fontWeight: 400, lineHeight: 1,
+            letterSpacing: '-0.02em', margin: 0, paddingBottom: '0.06em', color: '#ffffff',
+          }}>
+            An AI head start
+          </h1>
+        </div>
 
         {/* Subtitle — fades up slightly after title */}
         <p className="animate-fade-up delay-150" style={{
@@ -219,26 +228,31 @@ export default function LandingPage() {
           gap: 'clamp(28px, 4.3vw, 62px)',
         }}
       >
-        {/* Title + subtitle side by side — slide in from left */}
+        {/* Eyebrow + Title + subtitle — slide in from left */}
         <div className="flex flex-row items-center animate-slide-right delay-100" style={{ gap: 'clamp(12px, 2.2vw, 32px)' }}>
-          <h1 style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 38,
-            fontWeight: 400,
-            lineHeight: 1.15,
-            letterSpacing: '-0.02em',
-            margin: 0,
-            whiteSpace: 'nowrap',
-            flexShrink: 0,
-            paddingBottom: '0.06em',
-            paddingRight: '0.04em',
-            color: '#ffffff',
-            
-            
-            
-          }}>
-            AI Playbook
-          </h1>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flexShrink: 0 }}>
+            <span style={{
+              fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
+              fontSize: 'clamp(11px, 0.9vw, 13px)', fontWeight: 400, letterSpacing: '0.01em',
+              color: 'rgba(255,255,255,0.4)', lineHeight: 1, whiteSpace: 'nowrap',
+            }}>
+              from Headout Design
+            </span>
+            <h1 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(24px, 2.2vw, 32px)',
+              fontWeight: 400,
+              lineHeight: 1.15,
+              letterSpacing: '-0.02em',
+              margin: 0,
+              whiteSpace: 'nowrap',
+              paddingBottom: '0.06em',
+              paddingRight: '0.04em',
+              color: '#ffffff',
+            }}>
+              An AI head start
+            </h1>
+          </div>
           <p style={{
             fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
             fontSize: 'clamp(13px, 1.67vw, 24px)',
