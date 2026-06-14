@@ -13,7 +13,6 @@ export default function SiteFooter() {
           alt="Headout"
           style={{ height: 16, width: 'auto', opacity: 0.3, filter: 'brightness(0) invert(1)' }}
         />
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.2)', textAlign: 'center' }}>A practical AI reference · 2026</p>
       </div>
     </footer>
   )
