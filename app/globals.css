@@ -203,7 +203,9 @@ select:focus {
     transparent 100%
   );
   opacity: 0;
-  transition: opacity 220ms ease-in-out;
+  visibility: hidden;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 
 .playbook-sticky-tabs__marker {
@@ -218,6 +220,9 @@ select:focus {
 
 .playbook-sticky-tabs[data-stuck='true']::before {
   opacity: 1;
+  visibility: visible;
+  -webkit-backdrop-filter: blur(48px) saturate(150%);
+  backdrop-filter: blur(48px) saturate(150%);
 }
 
 .playbook-sticky-tabs__track {
@@ -1056,7 +1061,7 @@ main > * {
     transition: none;
   }
   /* Keep enough blur on touch devices to fully obscure scrolling content. */
-  .playbook-sticky-tabs::before {
+  .playbook-sticky-tabs[data-stuck='true']::before {
     -webkit-backdrop-filter: blur(40px) saturate(140%);
     backdrop-filter: blur(40px) saturate(140%);
   }
