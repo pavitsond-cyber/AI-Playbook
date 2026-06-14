@@ -17,7 +17,7 @@ const sections = [
 type Section = typeof sections[0]
 type CardNavigateHandler = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => void
 
-/* ── Desktop card (single row, larger) ──────────────────────────────────── */
+/* ── Desktop card (2×2 grid, large) ──────────────────────────────────────── */
 function DesktopCard({
   s,
   navigating,
@@ -39,33 +39,35 @@ function DesktopCard({
       style={{
         textDecoration: 'none',
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-        width: 'clamp(140px, 14.8vw, 213px)',
-        height: 'clamp(120px, 11vw, 159px)',
-        padding: 'clamp(10px, 0.84vw, 12px)',
-        borderRadius: 14, overflow: "hidden",
-        flexShrink: 0,
+        padding: 'clamp(20px, 2.2vw, 32px)',
+        borderRadius: 20, overflow: 'hidden',
         background: active
-          ? 'linear-gradient(109deg, rgba(255,255,255,0.22) 3.87%, rgba(255,255,255,0.06) 101%)'
-          : 'linear-gradient(109deg, rgba(255,255,255,0.12) 3.87%, rgba(255,255,255,0.00) 101%)',
-        border: active ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(255,255,255,0.07)',
-        backdropFilter: active ? 'blur(20px) saturate(180%)' : 'blur(12px)',
-        WebkitBackdropFilter: active ? 'blur(20px) saturate(180%)' : 'blur(12px)',
-        boxShadow: active ? '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15)' : '0 2px 12px rgba(0,0,0,0.15)',
+          ? 'linear-gradient(109deg, rgba(255,255,255,0.18) 3.87%, rgba(255,255,255,0.05) 101%)'
+          : 'linear-gradient(109deg, rgba(255,255,255,0.10) 3.87%, rgba(255,255,255,0.00) 101%)',
+        border: active ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(255,255,255,0.09)',
+        backdropFilter: active ? 'blur(24px) saturate(180%)' : 'blur(16px)',
+        WebkitBackdropFilter: active ? 'blur(24px) saturate(180%)' : 'blur(16px)',
+        boxShadow: active ? '0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15)' : '0 2px 16px rgba(0,0,0,0.18)',
         filter: navigating ? 'brightness(0.92)' : 'brightness(1)',
         transition: 'background 0.24s ease-in-out, border-color 0.24s ease-in-out, box-shadow 0.24s ease-in-out, backdrop-filter 0.24s ease-in-out, filter 0.3s ease-in-out',
         cursor: 'pointer',
+        minHeight: 'clamp(140px, 13vw, 180px)',
+        position: 'relative',
       }}
     >
-      <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 'clamp(20px,2.1vw,30px)', fontWeight: 400, letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.4)', lineHeight: 1 }}>
+      {/* Number — top left */}
+      <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 'clamp(13px,1.1vw,16px)', fontWeight: 400, letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.3)', lineHeight: 1 }}>
         {s.num}
       </span>
+
+      {/* Title + sub + arrow — bottom */}
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', width: '100%' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 7, transform: active ? 'scale(1.04)' : 'scale(1)', transformOrigin: 'bottom left', transition: 'transform 0.3s ease-in-out' }}>
-          <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 'clamp(18px,1.95vw,28px)', fontWeight: 400, letterSpacing: '-0.02em', color: '#ffffff', lineHeight: 1 }}>{s.title}</span>
-          <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 'clamp(11px,0.97vw,14px)', fontWeight: 400, letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.5)', lineHeight: 1 }}>{s.sub}</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(22px,2.4vw,34px)', fontWeight: 400, letterSpacing: '-0.02em', color: '#ffffff', lineHeight: 1 }}>{s.title}</span>
+          <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 'clamp(13px,1.05vw,15px)', fontWeight: 400, letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.45)', lineHeight: 1 }}>{s.sub}</span>
         </div>
-        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: active ? 1 : 0.5, transform: active ? 'translateX(3px) translateY(-3px)' : 'translateX(0)', transition: 'opacity 0.24s ease-in-out, transform 0.3s ease-in-out' }}>
-          <ArrowUpRight size={24} color="#ffffff" />
+        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '50%', background: active ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.07)', transform: active ? 'translateX(3px) translateY(-3px)' : 'translateX(0)', transition: 'background 0.24s ease-in-out, transform 0.3s ease-in-out' }}>
+          <ArrowUpRight size={20} color="#ffffff" />
         </div>
       </div>
     </Link>
@@ -181,24 +183,6 @@ export default function LandingPage() {
       }}
     >
 
-      {/* ── DESKTOP video (Figma 111:1954) — hidden on mobile ──────────── */}
-      {/* Spec: bottom:0 left:0 w:1440 h:800, opacity:60%
-          Diver at ~75% from left, light rays upper-right                    */}
-      <video
-        autoPlay muted loop playsInline
-        className="hidden sm:block absolute"
-        style={{
-          bottom: 0, left: 0,
-          width: '100%', height: '100%',
-          objectFit: 'cover',
-          objectPosition: '75% 45%',
-          zIndex: 0,
-          opacity: 0.65,           /* Figma opacity: 60% */
-        }}
-      >
-        <source src={`${BP}/videos/landing-bg.mp4`} type="video/mp4" />
-      </video>
-
       {/* ── MOBILE background — Figma node 163:587 ──────────────────────── */}
       <div
         className="sm:hidden absolute"
@@ -284,64 +268,57 @@ export default function LandingPage() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════
-          DESKTOP LAYOUT — Figma node 91:1716
-          Content: left:74px, top:244px, title+subtitle side-by-side, cards in single row
+          DESKTOP LAYOUT — heading stacked above 2×2 card grid
       ══════════════════════════════════════════════════════════════════ */}
       <div
         className="hidden sm:flex flex-col absolute"
         style={{
-          top: 'clamp(120px, 30vh, 244px)',
+          top: 'clamp(80px, 16vh, 140px)',
           left: 'clamp(20px, 5.15vw, 80px)',
           right: 'clamp(20px, 5.15vw, 80px)',
           zIndex: 10,
-          gap: 'clamp(28px, 4.3vw, 62px)',
+          gap: 'clamp(24px, 3vw, 40px)',
+          maxWidth: 960,
         }}
       >
-        {/* Title + byline + subtitle — slide in from left */}
-        <div className="flex flex-row items-center animate-slide-right delay-100" style={{ gap: 'clamp(12px, 2.2vw, 32px)' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flexShrink: 0 }}>
+        {/* Heading + byline + subtitle — stacked */}
+        <div className="flex flex-col animate-slide-right delay-100" style={{ gap: 16 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <h1 style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 38,
+              fontSize: 'clamp(36px, 4.2vw, 60px)',
               fontWeight: 400,
-              lineHeight: 1.15,
-              letterSpacing: '-0.02em',
+              lineHeight: 1.1,
+              letterSpacing: '-0.03em',
               margin: 0,
-              whiteSpace: 'nowrap',
-              paddingBottom: '0.06em',
-              paddingRight: '0.04em',
               color: '#ffffff',
             }}>
               An AI head start
             </h1>
             <span style={{
               fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
-              fontSize: 'clamp(11px, 0.9vw, 13px)', fontWeight: 400, letterSpacing: '0.01em',
-              color: 'rgba(255,255,255,0.4)', lineHeight: 1, whiteSpace: 'nowrap',
+              fontSize: 'clamp(12px, 0.9vw, 14px)', fontWeight: 400, letterSpacing: '0.01em',
+              color: 'rgba(255,255,255,0.4)', lineHeight: 1,
             }}>
               from Headout Design
             </span>
           </div>
           <p style={{
             fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
-            fontSize: 'clamp(13px, 1.67vw, 24px)',
+            fontSize: 'clamp(14px, 1.25vw, 18px)',
             fontWeight: 400,
-            lineHeight: 1.5,
-            letterSpacing: '-0.02em',
-            maxWidth: 337,
+            lineHeight: 1.55,
+            letterSpacing: '-0.01em',
+            maxWidth: 560,
             margin: 0,
-            flexShrink: 0,
-            color: '#ffffff',
-            
-            
-            
+            color: 'rgba(255,255,255,0.7)',
           }}>
             Prompts, tools, skills, and field notes from how we use AI to think sharper, design faster, and ship with fewer blank pages.
           </p>
         </div>
 
-        {/* Single-row cards — pop in with stagger */}
-        <div className="card-stagger" style={{ display: 'flex', gap: 'clamp(8px, 1.6vw, 23px)', flexWrap: 'nowrap', overflowX: 'auto', scrollbarWidth: 'none', paddingBottom: 4 }}>
+        {/* 2×2 card grid */}
+        <div className="card-stagger" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(10px, 1.2vw, 16px)' }}>
           {sections.map(s => (
             <DesktopCard
               key={s.href}
