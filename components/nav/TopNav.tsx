@@ -266,143 +266,162 @@ export default function TopNav() {
               style={{ marginLeft: 'auto', alignItems: 'center', pointerEvents: 'auto', position: 'relative' }}
               onClick={e => e.stopPropagation()}
             >
-              {desktopSearchOpen ? (
-                /* Expanded search bar + dropdown anchored to it */
-                <div style={{ position: 'relative', width: 'clamp(260px, 24vw, 360px)' }}>
-                  {/* Search input row */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 10,
-                      height: 44,
-                      padding: '0 8px 0 16px',
-                      background: 'rgba(255,255,255,0.10)',
-                      border: '1px solid rgba(255,255,255,0.2)',
-                      borderRadius: hasQ ? '22px 22px 0 0' : 9999,
-                      borderBottom: hasQ ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(255,255,255,0.2)',
-                      overflow: 'hidden',
-                      transition: 'border-radius 0.15s ease',
-                    }}
-                  >
-                    <Search size={16} style={{ color: 'rgba(255,255,255,0.45)', flexShrink: 0 }} />
-                    <input
-                      ref={desktopInputRef}
-                      type="text"
-                      value={desktopQuery}
-                      onChange={e => setDesktopQuery(e.target.value)}
-                      placeholder="Search skills, prompts, terms…"
-                      autoComplete="off"
-                      autoCorrect="off"
-                      autoCapitalize="off"
-                      spellCheck={false}
-                      style={{
-                        flex: 1,
-                        border: 'none',
-                        outline: 'none',
-                        background: 'transparent',
-                        fontSize: 15,
-                        color: 'rgba(255,255,255,0.9)',
-                        fontFamily: 'var(--font-body)',
-                        minWidth: 0,
-                      }}
-                    />
-                    <button
-                      onClick={closeDesktopSearch}
-                      aria-label="Close search"
-                      style={{
-                        width: 30, height: 30, borderRadius: '50%', flexShrink: 0,
-                        background: 'rgba(255,255,255,0.10)',
-                        border: '1px solid rgba(255,255,255,0.14)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      <X size={13} color="rgba(255,255,255,0.7)" />
-                    </button>
-                  </div>
-
-                  {/* Dropdown — only when user has typed, same width, connected to bar */}
-                  {hasQ && (
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: '100%',
-                        left: 0,
-                        right: 0,
-                        maxHeight: 480,
-                        overflowY: 'auto',
-                        overflowX: 'hidden',
-                        scrollbarWidth: 'none' as const,
-                        background: 'rgba(13,11,30,0.98)',
-                        border: '1px solid rgba(255,255,255,0.2)',
-                        borderTop: 'none',
-                        borderRadius: '0 0 16px 16px',
-                        boxShadow: '0 16px 40px rgba(0,0,0,0.5)',
-                        zIndex: 200,
-                      }}
-                    >
-                      {flat.length === 0 && (
-                        <div style={{ padding: '24px 16px', textAlign: 'center' }}>
-                          <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>
-                            Nothing found for &ldquo;<strong>{desktopQuery}</strong>&rdquo;
-                          </p>
-                        </div>
-                      )}
-
-                      {flat.length > 0 && ORDER.map(type => {
-                        const items = grouped[type] ?? []
-                        if (!items.length) return null
-                        const color = TYPE_COLOR[type]
-                        const label = TYPE_LABEL[type]
-
-                        return (
-                          <div key={type}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '12px 16px 6px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                              <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.08em', color }}>
-                                {label}
-                              </span>
-                              <span style={{ fontSize: 10, fontWeight: 600, padding: '1px 6px', borderRadius: 8, background: `${color}18`, color, fontFamily: 'var(--font-body)' }}>
-                                {items.length}
-                              </span>
-                            </div>
-                            {items.map(item => (
-                              <div
-                                key={item.id}
-                                onClick={() => { router.push(item.href); closeDesktopSearch() }}
-                                style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.04)', cursor: 'pointer', transition: 'background 0.12s ease' }}
-                                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)' }}
-                                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '' }}
-                              >
-                                <div style={{ flex: 1, minWidth: 0 }}>
-                                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 500, color: 'rgba(255,255,255,0.9)', margin: '0 0 2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                    <Hi text={item.title} q={desktopQuery} />
-                                  </p>
-                                  {item.snippet && (
-                                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.32)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                      <Hi text={item.snippet} q={desktopQuery} />
-                                    </p>
-                                  )}
-                                </div>
-                                <ArrowUpRight size={13} color="rgba(255,255,255,0.2)" style={{ flexShrink: 0 }} />
-                              </div>
-                            ))}
-                          </div>
-                        )
-                      })}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                /* Search icon button */
+              {/* Animated width container — overflow:hidden clips the input bar during slide */}
+              <div
+                style={{
+                  position: 'relative',
+                  width: desktopSearchOpen ? 'clamp(260px, 24vw, 360px)' : 44,
+                  height: 44,
+                  flexShrink: 0,
+                  transition: 'width 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
+                  overflow: 'hidden',
+                }}
+              >
+                {/* Search icon button — fades out when bar slides open */}
                 <button
                   type="button"
                   onClick={handleSearchClick}
                   aria-label="Search"
                   className="playbook-header-control playbook-header-control--frost"
+                  style={{
+                    position: 'absolute',
+                    right: 0,
+                    top: 0,
+                    opacity: desktopSearchOpen ? 0 : 1,
+                    transition: 'opacity 0.15s ease',
+                    pointerEvents: desktopSearchOpen ? 'none' : 'auto',
+                  }}
                 >
                   <Search size={20} strokeWidth={2} aria-hidden />
                 </button>
+
+                {/* Search input row — fades in as bar expands */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10,
+                    padding: '0 8px 0 16px',
+                    background: 'rgba(255,255,255,0.10)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    borderRadius: hasQ ? '22px 22px 0 0' : 9999,
+                    borderBottom: hasQ ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(255,255,255,0.2)',
+                    overflow: 'hidden',
+                    opacity: desktopSearchOpen ? 1 : 0,
+                    transition: 'border-radius 0.15s ease, opacity 0.18s ease',
+                    transitionDelay: desktopSearchOpen ? '0.08s' : '0s',
+                    pointerEvents: desktopSearchOpen ? 'auto' : 'none',
+                  }}
+                >
+                  <Search size={16} style={{ color: 'rgba(255,255,255,0.45)', flexShrink: 0 }} />
+                  <input
+                    ref={desktopInputRef}
+                    type="text"
+                    value={desktopQuery}
+                    onChange={e => setDesktopQuery(e.target.value)}
+                    placeholder="Search skills, prompts, terms…"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    spellCheck={false}
+                    style={{
+                      flex: 1,
+                      border: 'none',
+                      outline: 'none',
+                      background: 'transparent',
+                      fontSize: 15,
+                      color: 'rgba(255,255,255,0.9)',
+                      fontFamily: 'var(--font-body)',
+                      minWidth: 0,
+                    }}
+                  />
+                  <button
+                    onClick={closeDesktopSearch}
+                    aria-label="Close search"
+                    style={{
+                      width: 30, height: 30, borderRadius: '50%', flexShrink: 0,
+                      background: 'rgba(255,255,255,0.10)',
+                      border: '1px solid rgba(255,255,255,0.14)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    <X size={13} color="rgba(255,255,255,0.7)" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Dropdown — outside the overflow:hidden container so it isn't clipped */}
+              {desktopSearchOpen && hasQ && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 44,
+                    right: 0,
+                    width: 'clamp(260px, 24vw, 360px)',
+                    maxHeight: 480,
+                    overflowY: 'auto',
+                    overflowX: 'hidden',
+                    scrollbarWidth: 'none' as const,
+                    background: 'rgba(13,11,30,0.98)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    borderTop: 'none',
+                    borderRadius: '0 0 16px 16px',
+                    boxShadow: '0 16px 40px rgba(0,0,0,0.5)',
+                    zIndex: 200,
+                  }}
+                >
+                  {flat.length === 0 && (
+                    <div style={{ padding: '24px 16px', textAlign: 'center' }}>
+                      <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>
+                        Nothing found for &ldquo;<strong>{desktopQuery}</strong>&rdquo;
+                      </p>
+                    </div>
+                  )}
+
+                  {flat.length > 0 && ORDER.map(type => {
+                    const items = grouped[type] ?? []
+                    if (!items.length) return null
+                    const color = TYPE_COLOR[type]
+                    const label = TYPE_LABEL[type]
+
+                    return (
+                      <div key={type}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '12px 16px 6px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                          <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.08em', color }}>
+                            {label}
+                          </span>
+                          <span style={{ fontSize: 10, fontWeight: 600, padding: '1px 6px', borderRadius: 8, background: `${color}18`, color, fontFamily: 'var(--font-body)' }}>
+                            {items.length}
+                          </span>
+                        </div>
+                        {items.map(item => (
+                          <div
+                            key={item.id}
+                            onClick={() => { router.push(item.href); closeDesktopSearch() }}
+                            style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.04)', cursor: 'pointer', transition: 'background 0.12s ease' }}
+                            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)' }}
+                            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '' }}
+                          >
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 500, color: 'rgba(255,255,255,0.9)', margin: '0 0 2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                <Hi text={item.title} q={desktopQuery} />
+                              </p>
+                              {item.snippet && (
+                                <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.32)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                  <Hi text={item.snippet} q={desktopQuery} />
+                                </p>
+                              )}
+                            </div>
+                            <ArrowUpRight size={13} color="rgba(255,255,255,0.2)" style={{ flexShrink: 0 }} />
+                          </div>
+                        ))}
+                      </div>
+                    )
+                  })}
+                </div>
               )}
             </div>
           )}
