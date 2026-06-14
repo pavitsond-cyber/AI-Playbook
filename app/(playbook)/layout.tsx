@@ -58,7 +58,6 @@ export default function PlaybookLayout({ children }: { children: React.ReactNode
         <main style={{
           paddingTop: isHome ? 0 : 'var(--playbook-content-top)',
           position: 'relative',
-          zIndex: 1,
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
