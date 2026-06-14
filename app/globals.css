@@ -333,30 +333,38 @@ select:focus {
       box-shadow 220ms ease;
   }
 
-  /* Enable ::before on mobile — same opacity-based approach as desktop, lighter values */
+  /* Enable ::before on mobile — progressive blur: long fade zone, soft top + bottom */
   .playbook-sticky-tabs::before {
-    bottom: -48px;
+    bottom: -88px;
     background: linear-gradient(
       to bottom,
-      rgba(8, 4, 24, 0.68) 0,
-      rgba(8, 4, 24, 0.68) calc(100% - 48px),
-      rgba(8, 4, 24, 0.24) calc(100% - 22px),
+      rgba(8, 4, 24, 0) 0,
+      rgba(8, 4, 24, 0.44) 8%,
+      rgba(8, 4, 24, 0.66) 20%,
+      rgba(8, 4, 24, 0.68) calc(100% - 88px),
+      rgba(8, 4, 24, 0.18) calc(100% - 44px),
       rgba(8, 4, 24, 0) 100%
     );
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-mask-image: linear-gradient(
       to bottom,
-      black 0,
-      black calc(100% - 48px),
-      rgba(0,0,0,0.5) calc(100% - 22px),
+      transparent 0,
+      rgba(0,0,0,0.5) 6%,
+      black 18%,
+      black calc(100% - 88px),
+      rgba(0,0,0,0.45) calc(100% - 54px),
+      rgba(0,0,0,0.15) calc(100% - 28px),
       transparent 100%
     );
     mask-image: linear-gradient(
       to bottom,
-      black 0,
-      black calc(100% - 48px),
-      rgba(0,0,0,0.5) calc(100% - 22px),
+      transparent 0,
+      rgba(0,0,0,0.5) 6%,
+      black 18%,
+      black calc(100% - 88px),
+      rgba(0,0,0,0.45) calc(100% - 54px),
+      rgba(0,0,0,0.15) calc(100% - 28px),
       transparent 100%
     );
   }
