@@ -111,7 +111,7 @@ select:focus {
 
 * { box-sizing: border-box; }
 
-/* ── Source-faithful event page header ─────────────────── */
+/* ── Nav header + sticky tabs: unified glass backdrop ───── */
 .playbook-page-header {
   position: fixed;
   top: var(--playbook-header-top);
