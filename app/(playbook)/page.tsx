@@ -39,7 +39,7 @@ function DesktopCard({
       style={{
         textDecoration: 'none',
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-        padding: 'clamp(20px, 2.2vw, 32px)',
+        padding: 16,
         borderRadius: 20, overflow: 'hidden',
         background: active
           ? 'linear-gradient(109deg, rgba(255,255,255,0.18) 3.87%, rgba(255,255,255,0.05) 101%)'
@@ -101,7 +101,7 @@ function MobileCard({
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
         width: 'calc(50% - 3.8px)',
         height: 121,
-        padding: 9,
+        padding: 16,
         borderRadius: 14, overflow: "hidden",
         flexShrink: 0,
         /* Tap = desktop hover: glass solidifies, inset highlight, shadow */
