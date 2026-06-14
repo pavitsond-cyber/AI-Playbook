@@ -341,10 +341,9 @@ export default function LandingPage() {
           left: 0,
           right: 0,
           zIndex: 10,
-          paddingInline: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))',
         }}
       >
-        <div style={{ width: '100%', maxWidth: 960, marginInline: 'auto' }}>
+        <div style={{ width: '100%', maxWidth: 960, marginInline: 'auto', paddingInline: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))' }}>
           <span style={{
             fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
             fontSize: 'clamp(14px, 1.11vw, 16px)',
