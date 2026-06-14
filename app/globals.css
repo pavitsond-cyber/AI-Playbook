@@ -748,19 +748,13 @@ html.safari-glass .playbook-header-actions {
 
 @media (max-width: 639px) {
   .playbook-page-header {
-    left: 20px;
-    right: 20px;
-    border-radius: 16px;
-  }
-
-  .playbook-page-header__backdrop {
-    top: 0;
-    border-radius: 16px;
+    padding-inline:
+      max(env(safe-area-inset-left, 0px), 20px)
+      max(env(safe-area-inset-right, 0px), 20px);
   }
 
   .playbook-page-header__content {
-    gap: 12px;
-    padding-inline: 6px;
+    gap: 16px;
   }
 
   .playbook-page-header__title {
