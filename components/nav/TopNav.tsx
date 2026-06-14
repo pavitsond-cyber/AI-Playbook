@@ -358,7 +358,9 @@ export default function TopNav() {
                       color: 'rgba(255,255,255,0.9)',
                       fontFamily: 'var(--font-body)',
                       minWidth: 0,
+                      overflow: 'hidden',
                       textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
                     }}
                   />
                   <button
