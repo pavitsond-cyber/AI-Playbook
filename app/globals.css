@@ -320,6 +320,12 @@ html.safari-glass .playbook-header-control--frost {
   transform: translateX(0);
 }
 
+@media (min-width: 640px) {
+  .playbook-header-actions {
+    display: none !important;
+  }
+}
+
 .playbook-header-actions {
   position: relative;
   display: flex;

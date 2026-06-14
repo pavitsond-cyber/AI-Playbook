@@ -169,7 +169,7 @@ export default function TopNav() {
             </span>
           )}
 
-          {/* ── Desktop center: nav links OR search input ─────────────── */}
+          {/* ── Desktop center: nav links (always visible) ───────────── */}
           <div
             className="hidden sm:flex"
             style={{
@@ -177,100 +177,42 @@ export default function TopNav() {
               left: '50%',
               transform: 'translateX(-50%)',
               alignItems: 'center',
-              gap: desktopSearchOpen ? 0 : 4,
+              gap: 4,
               pointerEvents: 'auto',
             }}
           >
-            {!desktopSearchOpen ? (
-              /* Nav links */
-              navItems.map(item => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: 15,
-                    fontWeight: isActive(item.href) ? 500 : 400,
-                    color: isActive(item.href) ? '#ffffff' : 'rgba(255,255,255,0.6)',
-                    textDecoration: 'none',
-                    padding: '6px 14px',
-                    borderRadius: 9999,
-                    background: isActive(item.href) ? 'rgba(255,255,255,0.10)' : 'transparent',
-                    transition: 'color 0.18s ease, background 0.18s ease',
-                    whiteSpace: 'nowrap',
-                  }}
-                  onMouseEnter={e => {
-                    if (!isActive(item.href)) {
-                      (e.currentTarget as HTMLAnchorElement).style.color = '#ffffff'
-                      ;(e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.06)'
-                    }
-                  }}
-                  onMouseLeave={e => {
-                    if (!isActive(item.href)) {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.6)'
-                      ;(e.currentTarget as HTMLAnchorElement).style.background = 'transparent'
-                    }
-                  }}
-                >
-                  {item.label}
-                </Link>
-              ))
-            ) : (
-              /* Desktop search input */
-              <div
+            {navItems.map(item => (
+              <Link
+                key={item.href}
+                href={item.href}
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 10,
-                  height: 44,
-                  width: 'clamp(240px, 28vw, 400px)',
-                  padding: '0 16px',
-                  background: 'rgba(255,255,255,0.10)',
-                  border: '1px solid rgba(255,255,255,0.2)',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 15,
+                  fontWeight: isActive(item.href) ? 500 : 400,
+                  color: isActive(item.href) ? '#ffffff' : 'rgba(255,255,255,0.6)',
+                  textDecoration: 'none',
+                  padding: '6px 14px',
                   borderRadius: 9999,
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
-                  overflow: 'hidden',
-                  pointerEvents: 'auto',
+                  background: isActive(item.href) ? 'rgba(255,255,255,0.10)' : 'transparent',
+                  transition: 'color 0.18s ease, background 0.18s ease',
+                  whiteSpace: 'nowrap',
                 }}
-                onClick={e => e.stopPropagation()}
+                onMouseEnter={e => {
+                  if (!isActive(item.href)) {
+                    (e.currentTarget as HTMLAnchorElement).style.color = '#ffffff'
+                    ;(e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.06)'
+                  }
+                }}
+                onMouseLeave={e => {
+                  if (!isActive(item.href)) {
+                    (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.6)'
+                    ;(e.currentTarget as HTMLAnchorElement).style.background = 'transparent'
+                  }
+                }}
               >
-                <Search size={16} style={{ color: 'rgba(255,255,255,0.45)', flexShrink: 0 }} />
-                <input
-                  ref={desktopInputRef}
-                  type="text"
-                  value={desktopQuery}
-                  onChange={e => setDesktopQuery(e.target.value)}
-                  placeholder="Search skills, prompts, terms…"
-                  autoComplete="off"
-                  autoCorrect="off"
-                  autoCapitalize="off"
-                  spellCheck={false}
-                  style={{
-                    flex: 1,
-                    border: 'none',
-                    outline: 'none',
-                    background: 'transparent',
-                    fontSize: 15,
-                    color: 'rgba(255,255,255,0.9)',
-                    fontFamily: 'var(--font-body)',
-                    minWidth: 0,
-                  }}
-                />
-                {desktopQuery && (
-                  <button
-                    onClick={() => { setDesktopQuery(''); desktopInputRef.current?.focus() }}
-                    style={{
-                      width: 22, height: 22, borderRadius: '50%',
-                      background: 'rgba(255,255,255,0.12)',
-                      border: 'none', display: 'flex', alignItems: 'center',
-                      justifyContent: 'center', cursor: 'pointer', flexShrink: 0,
-                    }}
-                  >
-                    <X size={11} color="rgba(255,255,255,0.6)" />
-                  </button>
-                )}
-              </div>
-            )}
+                {item.label}
+              </Link>
+            ))}
           </div>
 
           {/* ── Mobile actions pill (search + menu) ─────────────────── */}
@@ -308,20 +250,78 @@ export default function TopNav() {
             )}
           </div>
 
-          {/* ── Desktop search button ───────────────────────────────── */}
+          {/* ── Desktop right: search button → expands into search bar ── */}
           {showSearch && (
-            <button
-              type="button"
-              onClick={desktopSearchOpen ? closeDesktopSearch : handleSearchClick}
-              aria-label={desktopSearchOpen ? 'Close search' : 'Search'}
-              className="hidden sm:inline-flex playbook-header-control playbook-header-control--frost"
-              style={{ marginLeft: 'auto' }}
+            <div
+              className="hidden sm:flex"
+              style={{ marginLeft: 'auto', alignItems: 'center', pointerEvents: 'auto', position: 'relative' }}
+              onClick={e => e.stopPropagation()}
             >
-              {desktopSearchOpen
-                ? <X size={20} strokeWidth={2} aria-hidden />
-                : <Search size={20} strokeWidth={2} aria-hidden />
-              }
-            </button>
+              {desktopSearchOpen ? (
+                /* Expanded search bar */
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10,
+                    height: 44,
+                    width: 'clamp(220px, 22vw, 320px)',
+                    padding: '0 8px 0 16px',
+                    background: 'rgba(255,255,255,0.10)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    borderRadius: 9999,
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+                    overflow: 'hidden',
+                  }}
+                >
+                  <Search size={16} style={{ color: 'rgba(255,255,255,0.45)', flexShrink: 0 }} />
+                  <input
+                    ref={desktopInputRef}
+                    type="text"
+                    value={desktopQuery}
+                    onChange={e => setDesktopQuery(e.target.value)}
+                    placeholder="Search skills, prompts, terms…"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    spellCheck={false}
+                    style={{
+                      flex: 1,
+                      border: 'none',
+                      outline: 'none',
+                      background: 'transparent',
+                      fontSize: 15,
+                      color: 'rgba(255,255,255,0.9)',
+                      fontFamily: 'var(--font-body)',
+                      minWidth: 0,
+                    }}
+                  />
+                  <button
+                    onClick={closeDesktopSearch}
+                    aria-label="Close search"
+                    style={{
+                      width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
+                      background: 'rgba(255,255,255,0.10)',
+                      border: '1px solid rgba(255,255,255,0.15)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    <X size={14} color="rgba(255,255,255,0.7)" />
+                  </button>
+                </div>
+              ) : (
+                /* Search icon button */
+                <button
+                  type="button"
+                  onClick={handleSearchClick}
+                  aria-label="Search"
+                  className="playbook-header-control playbook-header-control--frost"
+                >
+                  <Search size={20} strokeWidth={2} aria-hidden />
+                </button>
+              )}
+            </div>
           )}
 
           {/* Mobile dropdown menu */}
@@ -346,14 +346,13 @@ export default function TopNav() {
           </nav>
         </div>
 
-        {/* ── Desktop search results dropdown ─────────────────────────── */}
+        {/* ── Desktop search results dropdown (anchored right) ─────────── */}
         {desktopSearchOpen && (
           <div
             className="hidden sm:block"
             style={{
               position: 'absolute',
               top: '100%',
-              left: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))',
               right: 'max(env(safe-area-inset-right, 0px), clamp(20px, 4vw, 48px))',
               marginTop: 10,
               zIndex: 200,
@@ -361,17 +360,9 @@ export default function TopNav() {
             }}
             onClick={e => e.stopPropagation()}
           >
-            <div
-              style={{
-                maxWidth: 1060,
-                marginInline: 'auto',
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-            >
               <div
                 style={{
-                  width: 'clamp(240px, 28vw, 400px)',
+                  width: 'clamp(240px, 22vw, 320px)',
                   maxHeight: 480,
                   overflowY: 'auto',
                   overflowX: 'hidden',
@@ -439,7 +430,6 @@ export default function TopNav() {
                   )
                 })}
               </div>
-            </div>
           </div>
         )}
       </header>
