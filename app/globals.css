@@ -151,7 +151,8 @@ select:focus {
   transition: opacity 300ms ease;
 }
 
-.playbook-page-header[data-docked='true'] .playbook-page-header__backdrop {
+.playbook-page-header[data-docked='true'] .playbook-page-header__backdrop,
+.playbook-page-header[data-scrolled='true'] .playbook-page-header__backdrop {
   opacity: 1;
 }
 
@@ -161,8 +162,8 @@ select:focus {
   z-index: 90;
   border-bottom: 1px solid transparent;
   background: transparent;
-  -webkit-backdrop-filter: blur(0);
-  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   box-shadow: none;
   transition:
     background-color 220ms ease,
@@ -180,8 +181,8 @@ select:focus {
   left: 0;
   pointer-events: none;
   background: rgba(14, 20, 57, 0.52);
-  -webkit-backdrop-filter: blur(28px) saturate(145%);
-  backdrop-filter: blur(28px) saturate(145%);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   opacity: 0;
   transition: opacity 220ms ease-in-out;
 }
@@ -203,6 +204,8 @@ select:focus {
 }
 
 .playbook-sticky-tabs[data-stuck='true']::before {
+  -webkit-backdrop-filter: blur(28px) saturate(145%);
+  backdrop-filter: blur(28px) saturate(145%);
   opacity: 1;
 }
 
