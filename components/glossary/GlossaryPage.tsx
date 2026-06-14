@@ -129,10 +129,10 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
   })
 
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-
-      {/* Page title */}
+    <div>
       <div style={{ maxWidth: 960, margin: "0 auto", width: "100%" }}>
+
+        {/* Page title */}
         <div ref={titleRef} data-page-title className="animate-fade-up delay-75" style={{ padding: "24px clamp(20px,4vw,48px) 16px" }}>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 38, fontWeight: 400, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1, marginBottom: 12 }}>
             Glossary
@@ -141,12 +141,10 @@ export default function GlossaryPage({ terms }: GlossaryPageProps) {
 Buzzwords, translated and how they&apos;re used
           </p>
         </div>
-      </div>
 
-      {/* Sticky tabs — full-width direct child so ::before glass covers the viewport */}
-      <StickyTabs>
-        <div className="playbook-sticky-tabs__track" style={{ maxWidth: 960, margin: '0 auto', padding: '0 clamp(20px,4vw,48px)' }}>
-          <div style={{ display: "flex", gap: 24, paddingTop: 8 }}>
+        {/* Sticky tabs — sits directly below the frosted navigation */}
+        <StickyTabs>
+          <div className="playbook-sticky-tabs__track" style={{ display: "flex", gap: 24, padding: "8px clamp(20px,4vw,48px) 0" }}>
             {TABS.map(tab => {
               const isActive = activeTab === tab.id
               return (
@@ -172,11 +170,9 @@ Buzzwords, translated and how they&apos;re used
               )
             })}
           </div>
-        </div>
-      </StickyTabs>
+        </StickyTabs>
 
-      {/* Results */}
-      <div style={{ maxWidth: 960, margin: "0 auto", width: "100%" }}>
+        {/* Results */}
         <div style={{ padding: "20px clamp(20px,4vw,48px) clamp(40px,4vw,64px)" }}>
           {activeTab === 'abbreviations' ? (
             /* ── Abbreviations — single column, no sidebar ─────────────── */

@@ -303,8 +303,64 @@ select:focus {
 }
 
 @media (max-width: 639px) {
+  .playbook-main {
+    z-index: 1;
+  }
+
+  .playbook-page-header {
+    z-index: 100;
+  }
+
+  .playbook-page-header__content {
+    padding-inline: 0;
+  }
+
+  .playbook-page-header__backdrop {
+    background: rgba(8, 4, 24, 0.88);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+
+  .playbook-page-header[data-tabs-stuck='true'] .playbook-page-header__backdrop {
+    opacity: 1;
+  }
+
+  .playbook-sticky-tabs {
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+    transition:
+      background-color 220ms ease,
+      border-color 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .playbook-sticky-tabs::before {
+    top: calc(0px - var(--playbook-sticky-offset));
+    bottom: 100%;
+    background: rgba(8, 4, 24, 0.60);
+    -webkit-mask-image: none;
+    mask-image: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .playbook-sticky-tabs[data-stuck='true'] {
+    background: rgba(8, 4, 24, 0.88);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    backdrop-filter: blur(20px) saturate(140%);
+    border-bottom-color: rgba(255,255,255,0.08);
+    box-shadow: 0 12px 24px -20px rgba(0,0,0,0.9);
+  }
+
   .playbook-sticky-tabs__track > div {
     min-width: calc(100% + 24px);
+  }
+
+  .glossary-sticky-tabs__inner {
+    width: auto !important;
+    min-width: 0 !important;
   }
 }
 
@@ -383,13 +439,15 @@ html.safari-glass .playbook-header-control--frost {
 }
 
 .playbook-page-header[data-home='true'] .playbook-header-actions,
-.playbook-page-header[data-no-search='true'] .playbook-header-actions {
+.playbook-page-header[data-no-search='true'] .playbook-header-actions,
+.playbook-page-header[data-mobile-no-search='true'] .playbook-header-actions {
   width: 44px;
   flex-basis: 44px;
 }
 
 .playbook-page-header[data-home='true'] .playbook-header-action,
-.playbook-page-header[data-no-search='true'] .playbook-header-action {
+.playbook-page-header[data-no-search='true'] .playbook-header-action,
+.playbook-page-header[data-mobile-no-search='true'] .playbook-header-action {
   width: 42px;
   flex-basis: 42px;
 }
@@ -613,11 +671,12 @@ html.safari-glass .playbook-header-actions {
 }
 
 .playbook-search-overlay {
-  --search-viewport-height: 100dvh;
-  --search-viewport-bottom: 0px;
   position: fixed;
   inset: 0;
   z-index: 999;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   /* Static glass — never animated (animating backdrop-filter causes jank) */
   background: rgba(4, 2, 16, 0.58);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
@@ -632,15 +691,9 @@ html.safari-glass .playbook-header-actions {
 }
 
 .playbook-search-sheet {
-  position: fixed;
-  top: auto;
-  right: 0;
-  bottom: var(--search-viewport-bottom);
-  left: 0;
   display: flex;
   width: 100%;
-  height: max(0px, calc(var(--search-viewport-height) - 60px));
-  min-height: 0;
+  height: calc(100dvh - 60px);
   flex-direction: column;
   /* overflow: clip lets inner scroll work; fall back to hidden for old Safari */
   overflow: hidden;
@@ -1123,12 +1176,12 @@ main > * {
   }
   /* Sticky tabs: never animate backdrop-filter (causes GPU jank on Android) */
   .playbook-sticky-tabs {
-    transition: none;
+    transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
   }
-  /* Keep enough blur on touch devices to fully obscure scrolling content. */
-  .playbook-sticky-tabs[data-stuck='true']::before {
-    -webkit-backdrop-filter: blur(40px) saturate(140%);
-    backdrop-filter: blur(40px) saturate(140%);
+  /* Reduce blur intensity on sticky panel (cheaper composite layer) */
+  .playbook-sticky-tabs::before {
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    backdrop-filter: blur(16px) saturate(130%);
   }
   /* Hamburger dropdown: skip clip-path animation on touch, use simpler opacity */
   .playbook-glass-menu {

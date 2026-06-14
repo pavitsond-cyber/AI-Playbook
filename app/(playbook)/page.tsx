@@ -101,7 +101,7 @@ function MobileCard({
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
         width: 'calc(50% - 3.8px)',
         height: 121,
-        padding: 16,
+        padding: 9,
         borderRadius: 14, overflow: "hidden",
         flexShrink: 0,
         /* Tap = desktop hover: glass solidifies, inset highlight, shadow */

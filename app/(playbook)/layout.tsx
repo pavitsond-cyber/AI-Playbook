@@ -55,7 +55,7 @@ export default function PlaybookLayout({ children }: { children: React.ReactNode
 
         <TopNav />
         {/* flex:1 pushes footer to viewport bottom even on short pages */}
-        <main style={{
+        <main className="playbook-main" style={{
           paddingTop: isHome ? 0 : 'var(--playbook-content-top)',
           position: 'relative',
           flex: 1,
