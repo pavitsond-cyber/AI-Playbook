@@ -63,9 +63,11 @@ export default function TopNav() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [desktopSearchOpen, setDesktopSearchOpen] = useState(false)
+  const [desktopSearchClosing, setDesktopSearchClosing] = useState(false)
   const [desktopQuery, setDesktopQuery] = useState('')
   const [scrolled, setScrolled] = useState(false)
   const desktopInputRef = useRef<HTMLInputElement>(null)
+  const desktopCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const { dockedTitle } = usePageChrome()
   const isHome = pathname === '/'
   const showSearch = pathname !== '/contribute'
@@ -80,8 +82,22 @@ export default function TopNav() {
   const hasQ = desktopQuery.trim().length >= 2
 
   const closeDesktopSearch = useCallback(() => {
-    setDesktopSearchOpen(false)
-    setDesktopQuery('')
+    if (!desktopSearchOpen || desktopSearchClosing) return
+
+    setDesktopSearchClosing(true)
+    desktopInputRef.current?.blur()
+    desktopCloseTimerRef.current = setTimeout(() => {
+      setDesktopSearchOpen(false)
+      setDesktopSearchClosing(false)
+      setDesktopQuery('')
+      desktopCloseTimerRef.current = null
+    }, 320)
+  }, [desktopSearchClosing, desktopSearchOpen])
+
+  useEffect(() => {
+    return () => {
+      if (desktopCloseTimerRef.current) clearTimeout(desktopCloseTimerRef.current)
+    }
   }, [])
 
   useEffect(() => {
@@ -119,6 +135,11 @@ export default function TopNav() {
 
   const handleSearchClick = () => {
     if (window.innerWidth >= 640) {
+      if (desktopCloseTimerRef.current) {
+        clearTimeout(desktopCloseTimerRef.current)
+        desktopCloseTimerRef.current = null
+      }
+      setDesktopSearchClosing(false)
       setDesktopSearchOpen(true)
     } else {
       setMenuOpen(false)
@@ -270,10 +291,10 @@ export default function TopNav() {
               <div
                 style={{
                   position: 'relative',
-                  width: desktopSearchOpen ? 'clamp(200px, 18vw, 260px)' : 44,
+                  width: desktopSearchOpen && !desktopSearchClosing ? 'clamp(200px, 18vw, 260px)' : 44,
                   height: 44,
                   flexShrink: 0,
-                  transition: 'width 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
+                  transition: 'width 0.32s cubic-bezier(0.4, 0, 0.2, 1)',
                   overflow: 'hidden',
                 }}
               >
@@ -287,8 +308,9 @@ export default function TopNav() {
                     position: 'absolute',
                     right: 0,
                     top: 0,
-                    opacity: desktopSearchOpen ? 0 : 1,
-                    transition: 'opacity 0.15s ease',
+                    opacity: desktopSearchOpen && !desktopSearchClosing ? 0 : 1,
+                    transition: 'opacity 0.16s ease',
+                    transitionDelay: desktopSearchClosing ? '0.16s' : '0s',
                     pointerEvents: desktopSearchOpen ? 'none' : 'auto',
                   }}
                 >
@@ -309,10 +331,11 @@ export default function TopNav() {
                     borderRadius: hasQ ? '22px 22px 0 0' : 9999,
                     borderBottom: hasQ ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(255,255,255,0.2)',
                     overflow: 'hidden',
-                    opacity: desktopSearchOpen ? 1 : 0,
-                    transition: 'border-radius 0.15s ease, opacity 0.18s ease',
-                    transitionDelay: desktopSearchOpen ? '0.08s' : '0s',
-                    pointerEvents: desktopSearchOpen ? 'auto' : 'none',
+                    opacity: desktopSearchOpen && !desktopSearchClosing ? 1 : 0,
+                    transform: desktopSearchClosing ? 'translateX(24px)' : 'translateX(0)',
+                    transition: 'border-radius 0.15s ease, opacity 0.2s ease, transform 0.32s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transitionDelay: desktopSearchOpen && !desktopSearchClosing ? '0.08s' : '0s',
+                    pointerEvents: desktopSearchOpen && !desktopSearchClosing ? 'auto' : 'none',
                   }}
                 >
                   <Search size={16} style={{ color: 'rgba(255,255,255,0.45)', flexShrink: 0 }} />
@@ -355,7 +378,7 @@ export default function TopNav() {
               </div>
 
               {/* Dropdown — outside the overflow:hidden container so it isn't clipped */}
-              {desktopSearchOpen && hasQ && (
+              {desktopSearchOpen && !desktopSearchClosing && hasQ && (
                 <div
                   style={{
                     position: 'absolute',
