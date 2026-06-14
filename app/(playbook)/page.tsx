@@ -278,11 +278,10 @@ export default function LandingPage() {
           left: 0,
           right: 0,
           zIndex: 10,
-          paddingInline: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))',
           alignItems: 'center',
         }}
       >
-      <div style={{ width: '100%', maxWidth: 960, marginInline: 'auto', display: 'flex', flexDirection: 'column', gap: 'clamp(24px, 3vw, 40px)' }}>
+      <div style={{ width: '100%', maxWidth: 960, marginInline: 'auto', paddingInline: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))', display: 'flex', flexDirection: 'column', gap: 'clamp(24px, 3vw, 40px)' }}>
         {/* Heading + byline + subtitle — stacked */}
         <div className="flex flex-col animate-slide-right delay-100" style={{ gap: 16 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
