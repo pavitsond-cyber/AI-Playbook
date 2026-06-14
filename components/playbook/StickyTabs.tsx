@@ -18,6 +18,7 @@ export default function StickyTabs({ children, className = '', style }: StickyTa
       const header = document.querySelector<HTMLElement>('.playbook-page-header')
       if (!marker || !header) return
 
+      header.dataset.hasStickyTabs = 'true'
       const nextStuck = marker.getBoundingClientRect().top <= header.getBoundingClientRect().bottom
       header.dataset.tabsStuck = nextStuck ? 'true' : 'false'
       setStuck(current => current === nextStuck ? current : nextStuck)
@@ -32,7 +33,9 @@ export default function StickyTabs({ children, className = '', style }: StickyTa
       window.removeEventListener('scroll', update)
       document.removeEventListener('scroll', update, true)
       window.removeEventListener('resize', update)
-      document.querySelector<HTMLElement>('.playbook-page-header')?.removeAttribute('data-tabs-stuck')
+      const header = document.querySelector<HTMLElement>('.playbook-page-header')
+      header?.removeAttribute('data-tabs-stuck')
+      header?.removeAttribute('data-has-sticky-tabs')
     }
   }, [])
 
