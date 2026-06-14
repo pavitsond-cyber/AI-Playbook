@@ -143,9 +143,9 @@ select:focus {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(8, 4, 24, 0.92);
-  -webkit-backdrop-filter: blur(48px) saturate(150%);
-  backdrop-filter: blur(48px) saturate(150%);
+  background: rgba(8, 4, 24, 0.76);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+  backdrop-filter: blur(24px) saturate(145%);
   opacity: 0;
   transition: opacity 300ms ease;
 }
@@ -181,13 +181,13 @@ select:focus {
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(8, 4, 24, 0.92) 0,
-    rgba(8, 4, 24, 0.92) calc(100% - 48px),
-    rgba(8, 4, 24, 0.62) calc(100% - 22px),
+    rgba(8, 4, 24, 0.74) 0,
+    rgba(8, 4, 24, 0.74) calc(100% - 48px),
+    rgba(8, 4, 24, 0.34) calc(100% - 22px),
     rgba(8, 4, 24, 0) 100%
   );
-  -webkit-backdrop-filter: blur(48px) saturate(150%);
-  backdrop-filter: blur(48px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+  backdrop-filter: blur(24px) saturate(145%);
   -webkit-mask-image: linear-gradient(
     to bottom,
     black 0,
@@ -203,9 +203,7 @@ select:focus {
     transparent 100%
   );
   opacity: 0;
-  visibility: hidden;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
+  transition: opacity 220ms ease-in-out;
 }
 
 .playbook-sticky-tabs__marker {
@@ -220,9 +218,6 @@ select:focus {
 
 .playbook-sticky-tabs[data-stuck='true']::before {
   opacity: 1;
-  visibility: visible;
-  -webkit-backdrop-filter: blur(48px) saturate(150%);
-  backdrop-filter: blur(48px) saturate(150%);
 }
 
 .playbook-sticky-tabs__track {
@@ -288,9 +283,13 @@ select:focus {
       rgba(0,0,0,0.58) calc(100% - 34px),
       transparent 100%
     );
+    visibility: hidden;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 
   .playbook-sticky-tabs[data-stuck='true']::before {
+    visibility: visible;
     -webkit-backdrop-filter: blur(52px) saturate(145%);
     backdrop-filter: blur(52px) saturate(145%);
     transition: opacity 260ms ease;
