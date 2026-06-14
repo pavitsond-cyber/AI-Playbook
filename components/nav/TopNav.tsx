@@ -270,7 +270,7 @@ export default function TopNav() {
               <div
                 style={{
                   position: 'relative',
-                  width: desktopSearchOpen ? 'clamp(260px, 24vw, 360px)' : 44,
+                  width: desktopSearchOpen ? 'clamp(200px, 18vw, 260px)' : 44,
                   height: 44,
                   flexShrink: 0,
                   transition: 'width 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -360,7 +360,7 @@ export default function TopNav() {
                     position: 'absolute',
                     top: 44,
                     right: 0,
-                    width: 'clamp(260px, 24vw, 360px)',
+                    width: 'clamp(200px, 18vw, 260px)',
                     maxHeight: 480,
                     overflowY: 'auto',
                     overflowX: 'hidden',
