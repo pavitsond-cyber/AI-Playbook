@@ -68,6 +68,7 @@ export default function TopNav() {
   const [scrolled, setScrolled] = useState(false)
   const desktopInputRef = useRef<HTMLInputElement>(null)
   const desktopCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const pendingDesktopHrefRef = useRef<string | null>(null)
   const { dockedTitle } = usePageChrome()
   const isHome = pathname === '/'
   const showSearch = true
@@ -88,12 +89,15 @@ export default function TopNav() {
     setDesktopSearchClosing(true)
     desktopInputRef.current?.blur()
     desktopCloseTimerRef.current = setTimeout(() => {
+      const pendingHref = pendingDesktopHrefRef.current
+      pendingDesktopHrefRef.current = null
       setDesktopSearchOpen(false)
       setDesktopSearchClosing(false)
       setDesktopQuery('')
       desktopCloseTimerRef.current = null
+      if (pendingHref) router.push(pendingHref)
     }, 320)
-  }, [desktopSearchClosing, desktopSearchOpen])
+  }, [desktopSearchClosing, desktopSearchOpen, router])
 
   useEffect(() => {
     return () => {
@@ -140,12 +144,35 @@ export default function TopNav() {
         clearTimeout(desktopCloseTimerRef.current)
         desktopCloseTimerRef.current = null
       }
+      pendingDesktopHrefRef.current = null
       setDesktopSearchClosing(false)
       setDesktopSearchOpen(true)
     } else {
       setMenuOpen(false)
       setSearchOpen(true)
     }
+  }
+
+  const handleDesktopNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (
+      window.innerWidth < 640 ||
+      !desktopSearchOpen ||
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return
+    }
+
+    event.preventDefault()
+    pendingDesktopHrefRef.current = isActive(href) ? null : href
+    closeDesktopSearch()
   }
 
   return (
@@ -217,6 +244,7 @@ export default function TopNav() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={event => handleDesktopNavClick(event, item.href)}
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 15,
