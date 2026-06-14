@@ -159,7 +159,7 @@ select:focus {
 .playbook-sticky-tabs {
   position: sticky;
   top: var(--playbook-sticky-offset);
-  z-index: 90;
+  z-index: 101;
   border-bottom: 1px solid transparent;
   background: transparent;
   -webkit-backdrop-filter: none;
