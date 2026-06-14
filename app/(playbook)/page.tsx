@@ -272,16 +272,15 @@ export default function LandingPage() {
           Aligned to the back arrow: same max-width + padding as the nav
       ══════════════════════════════════════════════════════════════════ */}
       <div
-        className="hidden sm:flex flex-col absolute"
+        className="hidden sm:block absolute"
         style={{
           top: 'clamp(80px, 16vh, 140px)',
           left: 0,
           right: 0,
           zIndex: 10,
-          alignItems: 'center',
         }}
       >
-      <div style={{ width: '100%', maxWidth: 960, marginInline: 'auto', paddingInline: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))', display: 'flex', flexDirection: 'column', gap: 'clamp(24px, 3vw, 40px)' }}>
+      <div style={{ maxWidth: 960, marginInline: 'auto', paddingInline: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))', display: 'flex', flexDirection: 'column', gap: 'clamp(24px, 3vw, 40px)' }}>
         {/* Heading + byline + subtitle — stacked */}
         <div className="flex flex-col animate-slide-right delay-100" style={{ gap: 16 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
