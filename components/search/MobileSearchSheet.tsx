@@ -52,6 +52,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
   const [visible, setVisible] = useState(false)
   const [closing, setClosing] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const overlayRef = useRef<HTMLDivElement>(null)
 
   const grouped = useMemo(() => searchAll(q), [q])
   const flat = useMemo(() => ORDER.flatMap(t => grouped[t] ?? []), [grouped])
@@ -96,6 +97,32 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
     return () => { document.body.style.overflow = '' }
   }, [visible])
 
+  useEffect(() => {
+    if (!visible) return
+
+    const viewport = window.visualViewport
+    const updateViewport = () => {
+      const overlay = overlayRef.current
+      if (!overlay) return
+
+      const height = viewport?.height ?? window.innerHeight
+      const bottom = Math.max(0, window.innerHeight - ((viewport?.offsetTop ?? 0) + height))
+      overlay.style.setProperty('--search-viewport-height', `${height}px`)
+      overlay.style.setProperty('--search-viewport-bottom', `${bottom}px`)
+    }
+
+    updateViewport()
+    viewport?.addEventListener('resize', updateViewport)
+    viewport?.addEventListener('scroll', updateViewport)
+    window.addEventListener('resize', updateViewport)
+
+    return () => {
+      viewport?.removeEventListener('resize', updateViewport)
+      viewport?.removeEventListener('scroll', updateViewport)
+      window.removeEventListener('resize', updateViewport)
+    }
+  }, [visible])
+
   const go = useCallback((href: string) => {
     router.push(href)
     onClose()
@@ -105,6 +132,7 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
 
   return (
     <div
+      ref={overlayRef}
       className="playbook-search-overlay"
       data-closing={closing ? 'true' : 'false'}
       onMouseDown={event => {

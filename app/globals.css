@@ -608,6 +608,8 @@ html.safari-glass .playbook-header-actions {
 }
 
 .playbook-search-overlay {
+  --search-viewport-height: 100dvh;
+  --search-viewport-bottom: 0px;
   position: fixed;
   inset: 0;
   z-index: 999;
@@ -625,13 +627,14 @@ html.safari-glass .playbook-header-actions {
 }
 
 .playbook-search-sheet {
-  position: absolute;
-  top: 60px;
+  position: fixed;
+  top: auto;
   right: 0;
-  bottom: 0;
+  bottom: var(--search-viewport-bottom);
   left: 0;
   display: flex;
   width: 100%;
+  height: max(0px, calc(var(--search-viewport-height) - 60px));
   min-height: 0;
   flex-direction: column;
   /* overflow: clip lets inner scroll work; fall back to hidden for old Safari */
