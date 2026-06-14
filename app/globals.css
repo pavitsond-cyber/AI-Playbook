@@ -141,13 +141,13 @@ select:focus {
   position: absolute;
   top: calc(-1 * var(--playbook-header-top));
   right: 0;
-  bottom: -96px;
+  bottom: 0;
   left: 0;
-  background: rgba(8, 4, 24, 0.72);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 94%);
-  mask-image: linear-gradient(to bottom, black 72%, transparent 94%);
+  background: rgba(8, 4, 24, 0.88);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   opacity: 0;
   transition: opacity 300ms ease;
 }
