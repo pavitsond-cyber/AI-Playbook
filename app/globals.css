@@ -175,14 +175,12 @@ select:focus {
   content: '';
   position: absolute;
   z-index: -1;
-  top: calc(0px - var(--playbook-sticky-offset));
+  top: 100%;
   right: 0;
-  bottom: 0;
   left: 0;
+  height: 28px;
   pointer-events: none;
-  background: rgba(14, 20, 57, 0.52);
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
+  background: linear-gradient(to bottom, rgba(8, 4, 24, 0.90), transparent);
   opacity: 0;
   transition: opacity 220ms ease-in-out;
 }
@@ -194,18 +192,16 @@ select:focus {
 }
 
 .playbook-sticky-tabs[data-stuck='true'] {
+  background: rgba(8, 4, 24, 0.92);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
   border-bottom-color: rgba(255,255,255,0.08);
-  background: transparent;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.06),
     0 14px 24px -22px rgba(0,0,0,0.95);
 }
 
 .playbook-sticky-tabs[data-stuck='true']::before {
-  -webkit-backdrop-filter: blur(28px) saturate(145%);
-  backdrop-filter: blur(28px) saturate(145%);
   opacity: 1;
 }
 
