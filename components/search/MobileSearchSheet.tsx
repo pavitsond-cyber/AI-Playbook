@@ -205,12 +205,12 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
 
           {/* Empty state */}
           {!hasQ && (
-            <div style={{ padding: '56px 20px', textAlign: 'center' }}>
+            <div style={{ padding: '20px 20px', textAlign: 'center' }}>
               <p style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: 14, color: 'rgba(255,255,255,0.3)', lineHeight: 1.6,
+                fontSize: 14, color: 'rgba(255,255,255,0.3)', lineHeight: 1.7,
               }}>
-                Start typing to search skills, prompts, tools, terms…
+                Start typing to search<br />skills, prompts, tools, terms…
               </p>
             </div>
           )}

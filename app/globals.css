@@ -209,7 +209,7 @@ select:focus {
     transparent 100%
   );
   opacity: 0;
-  transition: opacity 220ms ease-in-out;
+  transition: opacity 320ms ease-out;
 }
 
 .playbook-sticky-tabs__marker {
@@ -359,6 +359,11 @@ select:focus {
       rgba(0,0,0,0.5) calc(100% - 22px),
       transparent 100%
     );
+  }
+
+  /* Enter: snappy in; exit uses the base 320ms ease-out for smooth scroll-back */
+  .playbook-sticky-tabs[data-stuck='true']::before {
+    transition: opacity 180ms ease-out;
   }
 
   /* Stuck: ::before (opacity 1) handles glass — keep only the visual border separator */
