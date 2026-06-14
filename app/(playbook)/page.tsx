@@ -63,7 +63,7 @@ function DesktopCard({
       {/* Title + sub + arrow — bottom */}
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', width: '100%' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(22px,2.4vw,34px)', fontWeight: 400, letterSpacing: '-0.02em', color: '#ffffff', lineHeight: 1 }}>{s.title}</span>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(20px,1.8vw,28px)', fontWeight: 400, letterSpacing: '-0.02em', color: '#ffffff', lineHeight: 1 }}>{s.title}</span>
           <span style={{ fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif", fontSize: 'clamp(13px,1.05vw,15px)', fontWeight: 400, letterSpacing: '-0.01em', color: 'rgba(255,255,255,0.45)', lineHeight: 1 }}>{s.sub}</span>
         </div>
         <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '50%', background: active ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.07)', transform: active ? 'translateX(3px) translateY(-3px)' : 'translateX(0)', transition: 'background 0.24s ease-in-out, transform 0.3s ease-in-out' }}>
@@ -281,7 +281,7 @@ export default function LandingPage() {
           paddingInline: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))',
         }}
       >
-      <div style={{ width: '100%', maxWidth: 1060, marginInline: 'auto', display: 'flex', flexDirection: 'column', gap: 'clamp(24px, 3vw, 40px)' }}>
+      <div style={{ width: '100%', maxWidth: 960, marginInline: 'auto', display: 'flex', flexDirection: 'column', gap: 'clamp(24px, 3vw, 40px)' }}>
         {/* Heading + byline + subtitle — stacked */}
         <div className="flex flex-col animate-slide-right delay-100" style={{ gap: 16 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -318,8 +318,8 @@ export default function LandingPage() {
           </p>
         </div>
 
-        {/* 2×2 card grid */}
-        <div className="card-stagger" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(10px, 1.2vw, 16px)' }}>
+        {/* 4-col single-row card grid */}
+        <div className="card-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'clamp(10px, 1.2vw, 14px)' }}>
           {sections.map(s => (
             <DesktopCard
               key={s.href}
@@ -344,7 +344,7 @@ export default function LandingPage() {
           paddingInline: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))',
         }}
       >
-        <div style={{ width: '100%', maxWidth: 1060, marginInline: 'auto' }}>
+        <div style={{ width: '100%', maxWidth: 960, marginInline: 'auto' }}>
           <span style={{
             fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
             fontSize: 'clamp(14px, 1.11vw, 16px)',

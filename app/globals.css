@@ -129,7 +129,7 @@ select:focus {
   position: relative;
   display: flex;
   width: 100%;
-  max-width: 1060px;
+  max-width: 960px;
   height: 44px;
   margin-inline: auto;
   align-items: center;

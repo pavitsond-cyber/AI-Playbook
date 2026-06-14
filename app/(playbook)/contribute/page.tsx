@@ -413,7 +413,7 @@ const CONTRIBUTE_CSS = `
 
   .contribute-container {
     width: 100%;
-    max-width: 840px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 0 clamp(20px, 4vw, 48px) 80px;
   }
