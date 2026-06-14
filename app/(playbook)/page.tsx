@@ -269,18 +269,19 @@ export default function LandingPage() {
 
       {/* ══════════════════════════════════════════════════════════════════
           DESKTOP LAYOUT — heading stacked above 2×2 card grid
+          Aligned to the back arrow: same max-width + padding as the nav
       ══════════════════════════════════════════════════════════════════ */}
       <div
         className="hidden sm:flex flex-col absolute"
         style={{
           top: 'clamp(80px, 16vh, 140px)',
-          left: 'clamp(20px, 5.15vw, 80px)',
-          right: 'clamp(20px, 5.15vw, 80px)',
+          left: 0,
+          right: 0,
           zIndex: 10,
-          gap: 'clamp(24px, 3vw, 40px)',
-          maxWidth: 960,
+          paddingInline: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))',
         }}
       >
+      <div style={{ width: '100%', maxWidth: 1060, marginInline: 'auto', display: 'flex', flexDirection: 'column', gap: 'clamp(24px, 3vw, 40px)' }}>
         {/* Heading + byline + subtitle — stacked */}
         <div className="flex flex-col animate-slide-right delay-100" style={{ gap: 16 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -329,6 +330,7 @@ export default function LandingPage() {
           ))}
         </div>
       </div>
+      </div>
 
       {/* ── Contribute nudge — bottom of page, both breakpoints ─────────── */}
       <div
@@ -336,8 +338,8 @@ export default function LandingPage() {
         style={{
           position: 'absolute',
           bottom: 'clamp(24px, 4vh, 40px)',
-          left: 'clamp(20px, 5.15vw, 80px)',
-          right: 'clamp(20px, 5.15vw, 80px)',
+          left: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))',
+          right: 'max(env(safe-area-inset-right, 0px), clamp(20px, 4vw, 48px))',
           zIndex: 10,
           fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
           fontSize: 'clamp(14px, 1.11vw, 16px)',
