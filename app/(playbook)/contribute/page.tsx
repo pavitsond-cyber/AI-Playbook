@@ -580,9 +580,9 @@ const CONTRIBUTE_CSS = `
     border-radius: 8px;
     background:
       linear-gradient(155deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 42%, rgba(255,255,255,0.04)),
-      rgba(22,14,40,0.52);
-    -webkit-backdrop-filter: blur(72px) saturate(200%);
-    backdrop-filter: blur(72px) saturate(200%);
+      rgba(18,10,34,0.97);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    backdrop-filter: blur(40px) saturate(180%);
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,0.1),
       0 24px 60px -20px rgba(0,0,0,0.75);
@@ -760,7 +760,7 @@ const CONTRIBUTE_CSS = `
   .submit-row {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-end;
     gap: 10px;
   }
 
@@ -774,7 +774,7 @@ const CONTRIBUTE_CSS = `
 
   .feedback-submit {
     display: inline-flex;
-    width: 100%;
+    width: auto;
     min-width: 160px;
     align-items: center;
     justify-content: center;

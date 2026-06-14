@@ -338,35 +338,41 @@ export default function LandingPage() {
         style={{
           position: 'absolute',
           bottom: 'clamp(24px, 4vh, 40px)',
-          left: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))',
-          right: 'max(env(safe-area-inset-right, 0px), clamp(20px, 4vw, 48px))',
+          left: 0,
+          right: 0,
           zIndex: 10,
-          fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
-          fontSize: 'clamp(14px, 1.11vw, 16px)',
-          fontWeight: 400,
-          color: 'rgba(255,255,255,0.55)',
-          letterSpacing: '-0.01em',
+          paddingInline: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))',
         }}
       >
-        Share your prompts, tools, and skills with the team.{' '}
-        <Link
-          href="/contribute"
-          style={{
-            color: '#ffffff',
-            textDecoration: 'underline',
-            textUnderlineOffset: 3,
-            textDecorationColor: 'rgba(255,255,255,0.5)',
-            transition: 'text-decoration-color 0.15s ease, color 0.15s ease',
-          }}
-          onMouseEnter={e => {
-            (e.currentTarget as HTMLAnchorElement).style.textDecorationColor = '#ffffff'
-          }}
-          onMouseLeave={e => {
-            (e.currentTarget as HTMLAnchorElement).style.textDecorationColor = 'rgba(255,255,255,0.5)'
-          }}
-        >
-          Contribute now
-        </Link>
+        <div style={{ width: '100%', maxWidth: 1060, marginInline: 'auto' }}>
+          <span style={{
+            fontFamily: "'halyard-text','DM Sans',system-ui,sans-serif",
+            fontSize: 'clamp(14px, 1.11vw, 16px)',
+            fontWeight: 400,
+            color: 'rgba(255,255,255,0.55)',
+            letterSpacing: '-0.01em',
+          }}>
+            Share your prompts, tools, and skills with the team.{' '}
+            <Link
+              href="/contribute"
+              style={{
+                color: '#ffffff',
+                textDecoration: 'underline',
+                textUnderlineOffset: 3,
+                textDecorationColor: 'rgba(255,255,255,0.5)',
+                transition: 'text-decoration-color 0.15s ease, color 0.15s ease',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLAnchorElement).style.textDecorationColor = '#ffffff'
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLAnchorElement).style.textDecorationColor = 'rgba(255,255,255,0.5)'
+              }}
+            >
+              Contribute now
+            </Link>
+          </span>
+        </div>
       </div>
 
       <div
