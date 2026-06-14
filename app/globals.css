@@ -323,33 +323,49 @@ select:focus {
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   }
 
-  .playbook-page-header[data-tabs-stuck='true'] .playbook-page-header__backdrop {
-    opacity: 1;
-  }
+  /* When tabs stick, ::before provides unified glass — base CSS opacity:0 applies here */
 
   .playbook-sticky-tabs {
     border-bottom: 1px solid transparent;
     box-shadow: none;
     transition:
-      background-color 220ms ease,
       border-color 220ms ease,
       box-shadow 220ms ease;
   }
 
+  /* Enable ::before on mobile — same opacity-based approach as desktop, lighter values */
   .playbook-sticky-tabs::before {
-    top: calc(0px - var(--playbook-sticky-offset));
-    bottom: 100%;
-    background: rgba(8, 4, 24, 0.60);
-    -webkit-mask-image: none;
-    mask-image: none;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
-
-  .playbook-sticky-tabs[data-stuck='true'] {
-    background: rgba(8, 4, 24, 0.88);
+    bottom: -48px;
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 4, 24, 0.84) 0,
+      rgba(8, 4, 24, 0.84) calc(100% - 48px),
+      rgba(8, 4, 24, 0.30) calc(100% - 22px),
+      rgba(8, 4, 24, 0) 100%
+    );
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     backdrop-filter: blur(20px) saturate(140%);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0,
+      black calc(100% - 48px),
+      rgba(0,0,0,0.5) calc(100% - 22px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0,
+      black calc(100% - 48px),
+      rgba(0,0,0,0.5) calc(100% - 22px),
+      transparent 100%
+    );
+  }
+
+  /* Stuck: ::before (opacity 1) handles glass — keep only the visual border separator */
+  .playbook-sticky-tabs[data-stuck='true'] {
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     border-bottom-color: rgba(255,255,255,0.08);
     box-shadow: 0 12px 24px -20px rgba(0,0,0,0.9);
   }
