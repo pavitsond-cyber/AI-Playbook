@@ -335,19 +335,19 @@ export default function ToolsPage() {
       {/* ── Tool grid ── */}
       <div style={{ maxWidth: 960, margin: '0 auto', width: '100%', padding: '24px clamp(20px,4vw,48px) 48px' }}>
         <div style={{
+          minHeight: '50vh',
           opacity: fading ? 0 : 1,
-          transform: fading ? 'translateY(6px)' : 'translateY(0)',
+          transform: fading ? 'translateY(4px)' : 'translateY(0)',
           transition: fading
             ? 'opacity 0.16s ease-in, transform 0.16s ease-in'
             : 'opacity 0.26s ease-out, transform 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         }}>
           <div className="grid grid-cols-2 sm:grid-cols-3" style={{ gap: 12 }}>
-            {flatTools.map((tool, i) => (
+            {flatTools.map((tool) => (
               <div
                 key={tool.name}
                 id={toolSlug(tool.name)}
-                className="animate-fade-up"
-                style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, display: 'flex', flexDirection: 'column' }}
+                style={{ display: 'flex', flexDirection: 'column' }}
               >
                 <ToolCard tool={tool} />
               </div>
