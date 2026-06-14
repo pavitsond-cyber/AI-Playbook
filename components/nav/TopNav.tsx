@@ -70,7 +70,7 @@ export default function TopNav() {
   const desktopCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const { dockedTitle } = usePageChrome()
   const isHome = pathname === '/'
-  const showSearch = pathname !== '/contribute'
+  const showSearch = true
   const isActive = (href: string) =>
     pathname === href || (href !== '/' && pathname.startsWith(href))
 
