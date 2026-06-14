@@ -75,6 +75,12 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (min-width: 640px) {
+  html {
+    scrollbar-gutter: stable;
+  }
+}
+
 /* On mobile, paint the background image onto html (the root canvas).
    This covers the area behind the keyboard and overscroll regions —
    places where position:fixed MobileBg cannot reach on modern iOS.    */
