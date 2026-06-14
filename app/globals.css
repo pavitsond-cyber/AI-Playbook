@@ -140,13 +140,13 @@ select:focus {
   position: absolute;
   top: calc(-1 * var(--playbook-header-top));
   right: 0;
-  bottom: -48px;
+  bottom: -96px;
   left: 0;
   background: rgba(8, 4, 24, 0.72);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
-  -webkit-mask-image: linear-gradient(to bottom, black 52%, transparent 88%);
-  mask-image: linear-gradient(to bottom, black 52%, transparent 88%);
+  -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 94%);
+  mask-image: linear-gradient(to bottom, black 72%, transparent 94%);
   opacity: 0;
   transition: opacity 300ms ease;
 }
@@ -194,15 +194,15 @@ select:focus {
 }
 
 .playbook-sticky-tabs[data-stuck='true'] {
-  background: rgba(8, 4, 24, 0.92);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
-  backdrop-filter: blur(20px) saturate(140%);
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   border-bottom-color: rgba(255,255,255,0.08);
-  box-shadow: 0 14px 24px -22px rgba(0,0,0,0.95);
+  box-shadow: none;
 }
 
 .playbook-sticky-tabs[data-stuck='true']::before {
-  opacity: 1;
+  opacity: 0;
 }
 
 .playbook-sticky-tabs__track {
