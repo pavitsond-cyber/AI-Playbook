@@ -267,6 +267,10 @@ select:focus {
   }
 
   .playbook-sticky-tabs::before {
+    left: 50%;
+    right: auto;
+    width: 100vw;
+    transform: translateX(-50%);
     bottom: -72px;
     background: linear-gradient(
       to bottom,
