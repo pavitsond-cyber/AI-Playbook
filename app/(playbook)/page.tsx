@@ -279,6 +279,7 @@ export default function LandingPage() {
           right: 0,
           zIndex: 10,
           paddingInline: 'max(env(safe-area-inset-left, 0px), clamp(20px, 4vw, 48px))',
+          alignItems: 'center',
         }}
       >
       <div style={{ width: '100%', maxWidth: 960, marginInline: 'auto', display: 'flex', flexDirection: 'column', gap: 'clamp(24px, 3vw, 40px)' }}>
