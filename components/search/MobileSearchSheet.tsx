@@ -117,6 +117,8 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
           display: 'flex',
           alignItems: 'center',
           gap: 12,
+          width: '100%',
+          minWidth: 0,
           padding: '14px 20px',
           paddingTop: 'max(20px, env(safe-area-inset-top))',
           borderBottom: '1px solid rgba(255,255,255,0.07)',
@@ -125,7 +127,8 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
         }}>
           {/* Search input — styled to match .playbook-header-actions glass pill */}
           <div style={{
-            flex: 1,
+            flex: '1 1 0%',
+            minWidth: 0,
             display: 'flex',
             alignItems: 'center',
             gap: 10,
@@ -153,7 +156,9 @@ export default function MobileSearchSheet({ open, onClose }: MobileSearchSheetPr
               onChange={e => setQ(e.target.value)}
               placeholder="Search skills, prompts, terms…"
               style={{
-                flex: 1,
+                flex: '1 1 0%',
+                width: 0,
+                maxWidth: '100%',
                 border: 'none',
                 outline: 'none',
                 background: 'transparent',
