@@ -248,8 +248,8 @@ select:focus {
   .playbook-page-header__backdrop {
     bottom: -28px;
     background: rgba(8, 4, 24, 0.86);
-    -webkit-backdrop-filter: blur(20px) saturate(145%);
-    backdrop-filter: blur(20px) saturate(145%);
+    -webkit-backdrop-filter: blur(30px) saturate(145%);
+    backdrop-filter: blur(30px) saturate(145%);
     -webkit-mask-image: linear-gradient(to bottom, black 0%, black 62%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 0%, black 62%, transparent 100%);
     transition: opacity 260ms ease;
@@ -300,8 +300,8 @@ select:focus {
 
   .playbook-sticky-tabs[data-stuck='true']::before {
     visibility: visible;
-    -webkit-backdrop-filter: blur(20px) saturate(145%);
-    backdrop-filter: blur(20px) saturate(145%);
+    -webkit-backdrop-filter: blur(30px) saturate(145%);
+    backdrop-filter: blur(30px) saturate(145%);
     transition: opacity 260ms ease;
   }
 }
