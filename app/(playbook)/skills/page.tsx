@@ -835,8 +835,8 @@ function SkillRow({ skill, isOpen, onToggle, showTag }: { skill: Skill; isOpen: 
       id={'skill-' + skill.name.replace(/\s+/g, '-').toLowerCase()}
       style={{
         position: 'relative',
-        background: `linear-gradient(180deg, ${domainAccent(skill.domain)}18 0%, rgba(8,0,18,0.20) 100%)`,
-        border: isOpen ? `1px solid ${domainAccent(skill.domain)}40` : '1px solid rgba(255,255,255,0.07)',
+        background: 'linear-gradient(180deg, rgba(155,63,255,0.10) 0%, rgba(8,0,18,0.20) 100%)',
+        border: isOpen ? '1px solid rgba(155,63,255,0.35)' : '1px solid rgba(255,255,255,0.07)',
         borderRadius: 14,
         overflow: 'hidden',
         transition: 'border-color 0.18s ease',
